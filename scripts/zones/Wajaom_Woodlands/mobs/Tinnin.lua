@@ -25,7 +25,7 @@ end
 entity.onMobSpawn = function(mob)
     mob:setLocalVar('[rage]timer', 3600) -- 60 minutes
     mob:setHP(mob:getMaxHP() / 2)
-    mob:setUnkillable(true)
+  --  mob:setUnkillable(true)
     mob:setMod(xi.mod.REGEN, 50)
 
     -- Regen Head every 1.5-4 minutes 90-240
@@ -98,7 +98,7 @@ entity.onMobFight = function(mob, target)
             mob:setMod(xi.mod.REGEN, 10)
             mob:addHP(mob:getMaxHP() * .25)
             mob:setLocalVar('thirdHead', 1)
-            mob:setUnkillable(false) -- It can be killed now that has all his heads
+         --   mob:setUnkillable(false) -- It can be killed now that has all his heads
         else
             mob:addHP(mob:getMaxHP() * .05)
         end

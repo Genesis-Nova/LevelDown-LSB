@@ -8,11 +8,10 @@
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    -- xi.abyssea.qmOnTrade(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    -- xi.abyssea.qmOnTrigger(player, npc)
+    xi.abyssea.qmOnTrigger(player, npc, ID.mob.APADEMAK, { xi.ki.TORN_KHIMAIRA_WING })
 end
 
 entity.onEventUpdate = function(player, csid, option, npc)
