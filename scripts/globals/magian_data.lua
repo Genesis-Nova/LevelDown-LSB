@@ -7602,6 +7602,24 @@ xi.magian.trials =
         },
     },
 
+    [3589] =
+    {
+        previousTrial = 3126,
+        requiredItem  =
+        {
+            itemId = xi.item.DEATH_PENALTY_95,
+        },
+
+        textOffset  = 1329,
+        tradeItem   = xi.item.MULCIBARS_SCORIA,
+        numRequired = 3,
+
+        rewardItem =
+        {
+            itemId = xi.item.DEATH_PENALTY_99,
+        },
+    },
+
     [3591] =
     {
         previousTrial = 3128,
@@ -7887,6 +7905,24 @@ xi.magian.trials =
         rewardItem =
         {
             itemId = xi.item.ANNIHILATOR_99_II,
+        },
+    },
+
+    [3639] =
+    {
+        previousTrial = 3589,
+        requiredItem  =
+        {
+            itemId = xi.item.DEATH_PENALTY_99,
+        },
+
+        textOffset  = 1329,
+        tradeItem   = xi.item.MULCIBARS_SCORIA,
+        numRequired = 150,
+
+        rewardItem =
+        {
+            itemId = xi.item.DEATH_PENALTY_99_II,
         },
     },
 
@@ -11508,6 +11544,68 @@ xi.magian.trials =
         },
     },
 
+    [4397] =
+    {
+        previousTrial = 0,
+        requiredItem  =
+        {
+            itemId = xi.item.UTILIS_SHIELD,
+        },
+
+        textOffset  = 1136,
+        tradeItem   = xi.item.IRON_PLATE,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.UTILIS_SHIELD,
+            itemAugments =
+            {
+                [1] = { 33, 8 }, -- Defense +9
+            },
+        },
+    },
+
+    [4398] =
+    {
+        previousTrial = 4397,
+        requiredItem  =
+        {
+            itemId = xi.item.UTILIS_SHIELD,
+            itemAugments =
+            {
+                [1] = { 33, 8 }, -- Defense +9
+            },
+        },
+
+        textOffset  = 1138,
+        tradeItem   = xi.item.COLORLESS_SOUL,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.OCHAIN_85,
+        },
+    },
+    
+    [4399] =
+    {
+        previousTrial = 4398,
+        requiredItem  =
+        {
+            itemId = xi.item.OCHAIN_85,
+        },
+
+        textOffset  = 1138,
+        tradeItem   = xi.item.AZDAJAS_HORN,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.OCHAIN_90,
+        },
+    },
+    
     [4401] =
     {
         previousTrial = 0,
@@ -11559,6 +11657,24 @@ xi.magian.trials =
         },
     },
 
+    [4447] =
+    {
+        previousTrial = 4399,
+        requiredItem  =
+        {
+            itemId = xi.item.OCHAIN_90,
+        },
+
+        textOffset  = 1138,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.OCHAIN_95,
+        },
+    },
+
     [4448] =
     {
         previousTrial = 4403,
@@ -11576,6 +11692,24 @@ xi.magian.trials =
         },
     },
 
+    [4452] =
+    {
+        previousTrial = 4447,
+        requiredItem  =
+        {
+            itemId = xi.item.OCHAIN_95,
+        },
+
+        textOffset  = 1138,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.OCHAIN_99,
+        },
+    },
+    
     [4453] =
     {
         previousTrial = 4448,
@@ -15217,6 +15351,24 @@ xi.magian.trials =
         },
     },
 
+    [5055] =
+    {
+        previousTrial = 4452,
+        requiredItem  =
+        {
+            itemId = xi.item.OCHAIN_99,
+        },
+
+        textOffset  = 1138,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.OCHAIN_99_II,
+        },
+    },
+    
     [5056] =
     {
         previousTrial = 4453,

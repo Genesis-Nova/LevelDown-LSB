@@ -229,6 +229,14 @@ xi.voidwalker.npcOnTrigger = function(player, npc)
     if xi.settings.main.ENABLE_VOIDWALKER ~= 1 then
         return
     end
+    local vwKeyItems = {1253,1254,1255,1256,1257,1258,1259,1260,1590}
+    local silent = true
+          if player:getCharVar('[VW]AssaiDialog') == 0 then
+             for i = 1, #vwKeyItems do
+                 player:delKeyItem(vwKeyItems[i], silent)
+            end
+                 player:setCharVar('[VW]AssaiDialog', 1)
+         end
 
     local currentKIS = getCurrentKIsBitsFromPlayer(player)
     player:startEvent(10120, currentKIS)
@@ -450,6 +458,73 @@ xi.voidwalker.onMobSpawn = function(mob)
     mob:setUntargetable(true)
     local mods = modByMobName[mobName]
 
+if mob:getMainLvl() > 104 and mob:getMainLvl() <= 115 then
+        mob:addMod(xi.mod.ATT, 500)
+        mob:addMod(xi.mod.DEF, 50)
+        mob:addMod(xi.mod.ACC, 250)
+        mob:addMod(xi.mod.EVA, 75)
+        mob:addMod(xi.mod.MATT, 20)
+        mob:addMod(xi.mod.MDEF, 100)
+        mob:addMod(xi.mod.MACC, 200)
+        mob:addMod(xi.mod.MEVA, 100)
+        mob:addMod(xi.mod.HASTE_MAGIC, 5)
+elseif mob:getMainLvl() > 116 and mob:getMainLvl() <= 119 then
+        mob:addMod(xi.mod.ATT, 750)
+        mob:addMod(xi.mod.DEF, 75)
+        mob:addMod(xi.mod.ACC, 300)
+        mob:addMod(xi.mod.EVA, 100)
+        mob:addMod(xi.mod.MATT, 30)
+        mob:addMod(xi.mod.MDEF, 125)
+        mob:addMod(xi.mod.MACC, 300)
+        mob:addMod(xi.mod.MEVA, 125)
+        mob:addMod(xi.mod.HASTE_MAGIC, 7)
+elseif mob:getMainLvl() > 120 and mob:getMainLvl() <= 122 then
+        mob:addMod(xi.mod.ATT, 900)
+        mob:addMod(xi.mod.DEF, 100)
+        mob:addMod(xi.mod.ACC, 400)
+        mob:addMod(xi.mod.EVA, 125)
+        mob:addMod(xi.mod.MATT, 40)
+        mob:addMod(xi.mod.MDEF, 135)
+        mob:addMod(xi.mod.MACC, 400)
+        mob:addMod(xi.mod.MEVA, 140)
+        mob:addMod(xi.mod.HASTE_MAGIC, 9)
+        mob:addMod(xi.mod.REGEN, 20)
+elseif mob:getMainLvl() > 121 and mob:getMainLvl() <= 125 then
+        mob:addMod(xi.mod.ATT, 1000)
+        mob:addMod(xi.mod.DEF, 150)
+        mob:addMod(xi.mod.ACC, 500)
+        mob:addMod(xi.mod.EVA, 150)
+        mob:addMod(xi.mod.MATT, 50)
+        mob:addMod(xi.mod.MDEF, 150)
+        mob:addMod(xi.mod.MACC, 500)
+        mob:addMod(xi.mod.MEVA, 150)
+        mob:addMod(xi.mod.HASTE_MAGIC, 10)
+elseif mob:getMainLvl() > 126 and mob:getMainLvl() <= 130 then
+        mob:addMod(xi.mod.ATT, 1400)
+        mob:addMod(xi.mod.DEF, 250)
+        mob:addMod(xi.mod.ACC, 700)
+        mob:addMod(xi.mod.EVA, 200)
+        mob:addMod(xi.mod.MATT, 100)
+        mob:addMod(xi.mod.MDEF, 250)
+        mob:addMod(xi.mod.MACC, 700)
+        mob:addMod(xi.mod.MEVA, 200)
+        mob:addMod(xi.mod.HASTE_MAGIC, 15)
+        mob:addMod(xi.mod.REGEN, 20)
+        mob:addMod(xi.mod.REFRESH, 20)
+elseif mob:getMainLvl() > 131 and mob:getMainLvl() <= 135 then
+        mob:addMod(xi.mod.ATT, 1800)
+        mob:addMod(xi.mod.DEF, 350)
+        mob:addMod(xi.mod.ACC, 900)
+        mob:addMod(xi.mod.EVA, 250)
+        mob:addMod(xi.mod.MATT, 150)
+        mob:addMod(xi.mod.MDEF, 350)
+        mob:addMod(xi.mod.MACC, 900)
+        mob:addMod(xi.mod.MEVA, 250)
+        mob:addMod(xi.mod.HASTE_MAGIC, 20)
+        mob:addMod(xi.mod.REGEN, 30)
+        mob:addMod(xi.mod.REFRESH, 30)
+        mob:addMod(xi.mod.REGAIN, 20)
+end
     if mods then
         mods(mob)
     end
@@ -564,6 +639,9 @@ xi.voidwalker.onHealing = function(player)
         not zones[zoneId].mob.VOIDWALKER
     then
         return
+    end
+    if player:getCharVar('[VW]AssaiDialog') ~= 1 then
+       return
     end
 
     local mobs       = getMobsFromAbyssites(zoneId, abyssites)

@@ -1202,8 +1202,18 @@ xi.conquest.overseerOnTrigger = function(player, npc, guardNation, guardType, gu
         local a3 = conquestRanking()
         local a6 = getArg6(player)
         local a7 = player:getCP()
+        ------------------ added in to make players nation 1st place ----------------------
+        local aa = 0
+        if pNation == 0 then
+           aa = 41 -- sandy
+        elseif pNation == 1 then
+           aa = 38 -- bastok
+        elseif pNation == 2 then
+           aa = 26 -- windyRegions
+        end
 
-        player:startEvent(guardEvent, a1, 0, a3, 0, 0, a6, a7, 0)
+         -- player:startEvent(guardEvent, a1, 0, a3, 0, 0, a6, a7, 0) -- original 
+         player:startEvent(guardEvent, a1, 0, aa, 0, 0, a6, a7, 0) -- new 
 
     -- CITY AND FOREIGN OVERSEERS
     elseif guardType <= xi.conquest.guard.FOREIGN then
@@ -1215,8 +1225,17 @@ xi.conquest.overseerOnTrigger = function(player, npc, guardNation, guardType, gu
         local a6 = getArg6(player)
         local a7 = player:getCP()
         local a8 = getExForceReward(player, guardNation)
-
-        player:startEvent(guardEvent, a1, a2, a3, a4, a5, a6, a7, a8)
+        ------------------ added in to make players nation 1st place ----------------------
+        local ab = 0
+        if pNation == 0 then
+           ab = 41 -- sandy
+        elseif pNation == 1 then
+           ab = 38 -- bastok
+        elseif pNation == 2 then
+           ab = 26 -- windyRegions
+        end
+           -- player:startEvent(guardEvent, a1, a2, a3, a4, a5, a6, a7, a8) -- original 
+           player:startEvent(guardEvent, a1, a2, ab, a4, a5, a6, a7, a8) -- new
 
     -- OUTPOST AND BORDER OVERSEERS
     elseif guardType >= xi.conquest.guard.OUTPOST then
@@ -1275,7 +1294,7 @@ xi.conquest.overseerOnEventUpdate = function(player, csid, option, guardNation)
             guardNation ~= pNation
         then -- buy from other nation, cannot buy items with nation rank requirement
             rankCheck = false
-        elseif stock.place ~= nil and pRank > stock.place then -- buy from own nation, check nation rank
+        elseif stock.place ~= nil and pRank > 4 then -- (> stock.place then) -- buy from own nation, check nation rank
             rankCheck = false
         end
 

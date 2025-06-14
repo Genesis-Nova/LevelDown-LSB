@@ -21,9 +21,9 @@ xi.pyxis.time.giveTime = function(npc, player)
 
             member:messageSpecial(ID.text.ABYSSEA_TIME_OFFSET + 3, 10, 1)
 
-            effect:setDuration(newDuration)
-            effect:resetStartTime()
-            effect:setIcon(xi.effect.VISITANT)
+           -- effect:setDuration(newDuration)
+           -- effect:resetStartTime()
+           -- effect:setIcon(xi.effect.VISITANT)
         end
     end
 end

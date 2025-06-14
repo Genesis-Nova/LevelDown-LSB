@@ -9644,6 +9644,460 @@ xi.roe.records =
     { -- 10 RoE Objectives Complete (All for One requirement)
         flags = set { 'hidden' },
     },
+
+    -----------------------------------
+    -- UNITY Wanted Battles - No Category
+    -----------------------------------
+
+
+    [817] =
+    { -- Subjugation: Hugemaw Harold
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Hugemaw_Harold' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [818] =
+    { -- Subjugation: Bounding Belinda
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Bounding_Belinda' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [819] =
+    { -- Subjugation: Prickly Pitriv
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Prickly_Pitriv' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [820] =
+    { -- Subjugation: Ironhorn Baldurno
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Ironhorn_Baldurno' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+    
+    [821] =
+    { -- Subjugation: Sleepy Mabel
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Sleepy_Mabel' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [822] =
+    { -- Subjugation: Valkurm Imperator
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Valkurm_Imperator' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [823] =
+    { -- Subjugation: Serpopard Ninlil
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Serpopard_Ninlil' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [824] =
+    { -- Subjugation: Abyssdiver
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Abyssdiver' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [825] =
+    { -- Subjugation: Intuila
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Intuila' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [826] =
+    { -- Subjugation: Emperor Arthro
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Emperor_Arthro' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [827] =
+    { -- Subjugation: Orcfeltrap
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Orcfeltrap' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [828] =
+    { -- Subjugation: Lumber Jill
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Lumber_Jill' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [829] =
+    { -- Subjugation: Joyous Green
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Joyous_Green' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [830] =
+    { -- Subjugation: Strix
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Strix' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [831] =
+    { -- Subjugation: Warblade Beak
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Warblade_Beak' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [832] =
+    { -- Subjugation: Arke
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Arke' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [833] =
+    { -- Subjugation: Largantua
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Largantua' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [834] =
+    { -- Subjugation: Beist
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Beist' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [835] =
+    { -- Subjugation: Jester Malatrix
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Jester_Malatrix' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [836] =
+    { -- Subjugation: Cactrot Veloz
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Cactrot_Veloz' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [837] =
+    { -- Subjugation: Woodland Mender
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Woodland_Mender' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [854] =
+    { -- Subjugation: Sybaritic Samantha
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Sybaritic_Samantha' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [855] =
+    { -- Subjugation: Keeper of Heiligtum
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Keeper_of_Heiligtum' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [856] =
+    { -- Subjugation: Douma Weapon
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Douma_Weapon' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [857] =
+    { -- Subjugation: King Uropygid
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'King_Uropygid' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [858] =
+    { -- Subjugation: Vedrfolnir
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Vedrfolnir' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [859] =
+    { -- Subjugation: Immanibugard
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Immanibugard' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [860] =
+    { -- Subjugation: Tiyanak
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Tiyanak' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [861] =
+    { -- Subjugation: Muut
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Muut' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [862] =
+    { -- Subjugation: Camahueto
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Camahueto' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [863] =
+    { -- Subjugation: Voso
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Voso' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [864] =
+    { -- Subjugation: Mephitas
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Mephitas' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [865] =
+    { -- Subjugation: Coca
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Coca' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [866] =
+    { -- Subjugation: Ayapec
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Ayapec' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [867] =
+    { -- Subjugation: Specter Worm
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Specter_Worm' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [868] =
+    { -- Subjugation: Azrael
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Azrael' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [869] =
+    { -- Subjugation: Borealis Shadow
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Borealis_Shadow' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [891] =
+    { -- Subjugation: Garbage Gel
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Garbage Gel' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [892] =
+    { -- Subjugation: Bakunawa
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Bakunawa' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [893] =
+    { -- Subjugation: Azure-toothed Clawberry
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Azure-toothed_Clawberry' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [894] =
+    { -- Subjugation: Vermillion Fishfly
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Vermillion_Fishfly' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [895] =
+    { -- Subjugation: Volatile Cluster
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Volatile_Cluster' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [896] =
+    { -- Subjugation: Kubool Ja's Mhuufya
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Kubool_Jas_Mhuufya' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [897] =
+    { -- Subjugation: Grand Grenade
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Grand_Grenade' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [898] =
+    { -- Subjugation: Centurio XX-I
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Centurio_XX-I' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [899] =
+    { -- Subjugation: Vidmapire
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Vidmapire' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [914] =
+    { -- Subjugation: Sovereign Behemoth
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Sovereign_Behemoth' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [915] =
+    { -- Subjugation: Hidhaegg
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Hidhaegg' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [916] =
+    { -- Subjugation: Tolba
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Tolba' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [918] =
+    { -- Subjugation: Carousing Celine
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Carousing Celine' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [919] =
+    { -- Subjugation: Glazemane
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Glazemane' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [920] =
+    { -- Subjugation: Wyvernhunter Bambrox
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Wyvernhunter_Bambrox' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [921] =
+    { -- Subjugation: Thu'ban
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Thuban' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [922] =
+    { -- Subjugation: Sarama
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Sarama' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [923] =
+    { -- Subjugation: Shedu
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Shedu' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
+    [924] =
+    { -- Subjugation: Tumult Curator *
+        trigger = xi.roeTrigger.DEFEAT_MOB,
+        reqs = { mobName = set { 'Tumult_Curator' } },
+        flags = set { 'repeat' },
+        reward = { sparks = 500, xp = 2500, accolades = 500, capacity = 1500 },
+    },
+
 }
 
 if xi.roe.initialize then

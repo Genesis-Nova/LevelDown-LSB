@@ -194,7 +194,7 @@ xi.crafting.guildMasterOnTrigger = function(player, npc)
         end
     end
 
-    player:startEvent(eventId, testItem, skillLevel, skillCap, guildsJoined, questStatus, 0, artisanCount, artisanBitmask)
+    player:startEvent(eventId, testItem, skillLevel, skillCap, guildsJoined, questStatus, 0, 0, 0)
 end
 
 xi.crafting.guildMasterOnEventFinish = function(player, csid, option, npc)

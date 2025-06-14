@@ -66,6 +66,8 @@ local regimeInfo =
             [133] = { act = 'SALTED_FISH',     cost = 50, discounted = 25, food = true },
             [149] = { act = 'HARD_COOKIE',     cost = 50, discounted = 25, food = true },
             [165] = { act = 'INSTANT_NOODLES', cost = 50, discounted = 25, food = true },
+            [181] = { act = 'CIPHER_SAKURA',   cost = 300, discounted = 300 },
+            [197] = { act = 'CIPHER_KORU',     cost = 300, discounted = 300 },
 
             -- TODO: implement elite training
             -- ELITE_INTRO     =  36,
@@ -1318,14 +1320,24 @@ xi.regime.bookOnEventFinish = function(player, option, regimeType)
             end,
 
             ['CIPHER_SAKURA'] = function()
-                if not npcUtil.giveItem(player, xi.item.CIPHER_OF_SAKURAS_ALTER_EGO) then
+                if player:hasSpell(927) or
+                   player:hasItem(xi.item.CIPHER_OF_SAKURAS_ALTER_EGO) then
                     player:addCurrency('valor_point', 300) --refund player if they can't obtain
+                    player:printToplayer('You have that spell or item already!')
+                   return
+                else
+                    npcUtil.giveItem(player, xi.item.CIPHER_OF_SAKURAS_ALTER_EGO)
                 end
             end,
 
             ['CIPHER_KORU'] = function()
-                if not npcUtil.giveItem(player, xi.item.CIPHER_OF_KORU_MORUS_ALTER_EGO) then
+                if player:hasSpell(952) or
+                   player:hasItem(xi.item.CIPHER_OF_KORU_MORUS_ALTER_EGO) then
                     player:addCurrency('valor_point', 300) --refund player if they can't obtain
+                    player:printToplayer('You have that spell or item already!')
+                   return
+                else
+                npcUtil.giveItem(player, xi.item.CIPHER_OF_KORU_MORUS_ALTER_EGO)
                 end
             end,
         }
@@ -1490,10 +1502,12 @@ xi.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
         player:setCharVar('[regime]lastReward', vanadielEpoch)
     end
 
+    local exprate = player:getCharVar('[regime]repeatxpb') / 100
+    local expfact = reward * xi.settings.main.BOOK_EXP_RATE * exprate
     -- Award EXP for page completion
     -- Player must be equal or greater than REGIME_REWARD_THRESHOLD levels below the minimum suggested level
     if player:getMainLvl() >= math.max(1, page[5] - xi.settings.main.REGIME_REWARD_THRESHOLD) then
-        player:addExp(reward * xi.settings.main.BOOK_EXP_RATE)
+       player:addExp(reward * xi.settings.main.BOOK_EXP_RATE + expfact)
     end
 
     -- repeating regimes
@@ -1503,7 +1517,11 @@ xi.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
         end
 
         player:messageBasic(xi.msg.basic.FOV_REGIME_BEGINS_ANEW)
+        if player:getCharVar('[regime]repeatxpb') < 200 then 
+           player:setCharVar('[regime]repeatxpb', exprate +4)
+        end
     else
         xi.regime.clearRegimeVars(player)
+        player:setCharVar('[regime]repeatxpb', 0)
     end
 end

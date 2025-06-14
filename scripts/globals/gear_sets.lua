@@ -2444,6 +2444,34 @@ local gearSets =
             { xi.mod.ENH_DRAIN_ASPIR, 5 },
         },
     },
+    [134] = -- Mekira Meikogai set
+    {
+        items =
+        {
+            xi.item.MEKIRA_MEIKOGAI,
+            xi.item.MEKIRA_OTO,
+            xi.item.MEKIRA_OTO_P1,
+        },
+        minEquipped = 2,
+        mods =
+        {
+            { xi.mod.HASTE_GEAR, 800 },
+        },
+    },
+    [135] = -- Toci Harness set
+    {
+        items =
+        {
+            xi.item.TOCIS_HARNESS,
+            xi.item.OCELOMEH_HEADPIECE,
+            xi.item.OCELOMEH_HEADPIECE_P1,
+        },
+        minEquipped = 2,
+        mods =
+        {
+            { xi.mod.TRIPLE_ATTACK, 3 },
+        },
+    },
 }
 
 -- Build Table to lookup Set ID based on Item ID.  This is cached in xi.gear_sets.itemToSetId table,

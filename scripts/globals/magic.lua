@@ -260,6 +260,9 @@ function finalMagicAdjustments(caster, target, spell, dmg)
         dmg = utils.clamp(dmg, 0, 99999)
     end
 
+    --handling magic barrier
+    dmg = utils.magicBarrier(target, dmg)
+
     -- handle one for all
     dmg = utils.oneforall(target, dmg)
 

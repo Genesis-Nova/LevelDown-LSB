@@ -75,7 +75,7 @@ local unityOptions =
         [52] = {  100.000,  -12.000, -163.000,  63, xi.zone.WAJAOM_WOODLANDS        },
         [53] = { -613.000,  -21.301,  230.000, 224, xi.zone.MOUNT_ZHAYOLM           },
         [54] = {  660.000,   -4.000,  239.500,  79, xi.zone.CAEDARVA_MIRE           },
-        [55] = {    9.500,   21.123,   87.500,   0, xi.zone.AYDEEWA_SUBTERRANE      },
+        [55] = {  95.9093,  11.5231, 139.0650, 131, xi.zone.AYDEEWA_SUBTERRANE      },
     },
 
     [4] = -- Items (Item ID, askQuantity (0 = true), limitSize (99 = limit by accolades), cost)
@@ -140,7 +140,7 @@ function xi.unity.onTrigger(player, npc)
     elseif not allForOneCompleted then
         player:startEvent(zoneEventIds[zoneId][3])
     else
-        player:startEvent(zoneEventIds[zoneId][4], 0, player:getUnityLeader(), accolades, remainingLimit, 0, 0, 0, 0)
+        player:startEvent(zoneEventIds[zoneId][4], 0, player:getUnityLeader(), accolades, remainingLimit, 89653249, 33554431, 33554431, 33554431) -- Updated last 4 parameters to unlock all unity warps
     end
 end
 
