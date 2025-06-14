@@ -915,9 +915,9 @@ namespace petutils
         PPet->SetMJob(JOB_DRG);
         // https://www.bg-wiki.com/ffxi/Wyvern_(Dragoon_Pet)#About_the_Wyvern
         uint8 mLvl = PMaster->GetMLevel();
-        uint8 iLvl = std::clamp(charutils::getMainhandItemLevel(static_cast<CCharEntity*>(PMaster)) - 99, 0, 20);
+        // uint8 iLvl = std::clamp(charutils::getMainhandItemLevel(static_cast<CCharEntity*>(PMaster)) - 99, 0, 20);
 
-        PPet->SetMLevel(mLvl + iLvl + PMaster->getMod(Mod::WYVERN_LVL_BONUS));
+        PPet->SetMLevel(mLvl + PMaster->getMod(Mod::WYVERN_LVL_BONUS));
 
         LoadAvatarStats(PMaster, PPet);                                                                               // follows PC calcs (w/o SJ)
         static_cast<CItemWeapon*>(PPet->m_Weapons[SLOT_MAIN])->setDelay((uint16)(floor(1000.0f * (320.0f / 60.0f)))); // 320 delay
@@ -1696,10 +1696,10 @@ namespace petutils
 
         auto* PPetData = *maybePetData;
 
-        if (PMaster->GetMJob() != JOB_DRG && PetID == PETID_WYVERN)
-        {
-            return;
-        }
+        // if (PMaster->GetMJob() != JOB_DRG && PetID == PETID_WYVERN)
+        // {
+        //    return;
+        // }
 
         if (PMaster->objtype == TYPE_PC)
         {
