@@ -6,7 +6,7 @@
 --  1 -100% UDMGMAGIC (e.g. Spiritual Incense, Polar Bulwark, Fool's Drink)
 --  2 All Element Specific Absorb 100% (Arcane Stomp)
 --  3 All Magic (incl. non-elemental) Absorb 100% (e.g. Mind Wall)
---
+--  4 Blue spell magic barrier - negate amount of dmg based on skill
 -- subPower Notes:
 --  0 Standard Magic Shield (adds magic immunity)
 --  1 Fake Magic Shield (does not resist non-damage spells)
