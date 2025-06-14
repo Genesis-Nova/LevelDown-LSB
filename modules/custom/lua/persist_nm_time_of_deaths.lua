@@ -23,6 +23,28 @@ local nmsToPersist =
             return 75600 + math.random(0, 6) * 1800
         end
     },
+    {
+        'Yuhtunga_Jungle',
+        'Overgrown_Rose',
+        function()
+            return 36000 + math.random(0, 6) * 300
+        end
+    },
+    {
+        'Yuhtunga_Jungle',
+        'Voluptuous_Vilma',
+        function()
+            return 36000 + math.random(0, 6) * 300
+        end
+    },
+    {
+        'Yuhtunga_Jungle',
+        'Rose_Garden',
+        function()
+            return 36000 + math.random(0, 6) * 300
+        end
+    },
+
 }
 
 -- NOTE: At the time we iterate over these entries, the Lua zone and mob objects won't be ready,
