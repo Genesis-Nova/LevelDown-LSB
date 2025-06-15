@@ -39,6 +39,7 @@ zones[xi.zone.CLOISTER_OF_FROST] =
     {
         DRYAD             = GetFirstID('Dryad'),
         SHIVA_PRIME_ASA   = GetFirstID('Shiva_Prime_ASA')
+        SHIVA_PRIME_HTBF  = GetFirstID('Shiva_Prime_HTBF'),
     },
     npc =
     {
