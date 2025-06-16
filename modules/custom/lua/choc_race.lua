@@ -42,39 +42,73 @@ local m = Module:new("choc_race")
 -----------------------------------------------------------------------------------
 m:addOverride('xi.zones.Chocobo_Circuit.Zone.onInitialize', function(zone)
     super(super)
-
-                     -- Event    West X      Y    South Z    East X   Y    North Z
-zone:registerTriggerArea(249,    -511,      -1,    -359,      -507,   3,    -355 ) -- TA1  Sandy to GCS
-zone:registerTriggerArea(250,    -361,      -4.5,  -460,      -357,   0,    -456 ) -- TA2  GSC to Sandy
-zone:registerTriggerArea(251,    -487,      -1,    -535,      -483,   3,    -531 ) -- TA3  Bas to GCS 
-zone:registerTriggerArea(252,    -362,      -4.5,  -504,      -358,   0,    -500 ) -- TA4  GCS to Bas 
-zone:registerTriggerArea(253,    -152,      -1,    -550,      -148,   3,    -546 ) -- TA5  Win to GCS 
-zone:registerTriggerArea(254,    -282,      -4.5,  -504,      -278,   0,    -500 ) -- TA6  GCS to Win 
-zone:registerTriggerArea(255,    -328,      -1,    -289,      -324,   3,    -285 ) -- TA7  Jeu to GCS 
-zone:registerTriggerArea(256,    -320,      -4.5,  -442,      -316,   0,    -438 ) -- TA8  GCS to Jeu 
-zone:registerTriggerArea(257,    -166,      -1,    -370,      -162,   3,    -366 ) -- TA9  Whi to GCS 
-zone:registerTriggerArea(258,    -282,      -4.5,  -460,      -278,   0,    -456 ) -- TA10 GCS to Whi
+                
+    zone:registerCylindricalTriggerArea(1,  -508.907, -356.975, 3) -- TA1  Sandy to GCS
+    zone:registerCylindricalTriggerArea(2,  -360.071, -457.893, 3) -- TA2  GSC to Sandy
+    zone:registerCylindricalTriggerArea(3,  -485.767, -533.127, 3) -- TA3  Bas to GCS 
+    zone:registerCylindricalTriggerArea(4,  -359.982, -502.051, 3) -- TA4  GCS to Bas 
+    zone:registerCylindricalTriggerArea(5,  -149.995, -548.087, 3) -- TA5  Win to GCS 
+    zone:registerCylindricalTriggerArea(6,  -280.167, -502.102, 3) -- TA6  GCS to Win 
+    zone:registerCylindricalTriggerArea(7,  -326.143, -287.949, 3) -- TA7  Jeu to GCS 
+    zone:registerCylindricalTriggerArea(8,  -318.238, -440.042, 3) -- TA8  GCS to Jeu 
+    zone:registerCylindricalTriggerArea(9,  -164.002, -367.984, 3) -- TA9  Whi to GCS 
+    zone:registerCylindricalTriggerArea(10, -279.875, -457.891, 3) -- TA10 GCS to Whi
 
 end)
 
 m:addOverride('xi.zones.Chocobo_Circuit.Zone.onTriggerAreaEnter', function(player, triggerArea)
+    switch (triggerArea:getTriggerAreaID()): caseof
+    {
+        [1] = function()
+            player:startEvent(249)
+        end,
 
-local teleportEventsByArea =
-{
-    [ 249] = 249,
-    [ 250] = 250,
-    [ 251] = 251,
-    [ 252] = 252,
-    [ 253] = 253,
-    [ 254] = 254,
-    [ 255] = 255,
-    [ 256] = 256,
-    [ 257] = 257,
-    [ 258] = 258,
-}
-local areaId = triggerArea:GetTriggerAreaID()
-player:startEvent(teleportEventsByArea[areaId])
+        [2] = function()
+            player:startEvent(250)
+        end,
 
+        [3] = function()
+            player:startEvent(251)
+        end,
+
+        [4] = function()
+            player:startEvent(252)
+        end,
+
+        [5] = function()
+            player:startEvent(253)
+        end,
+
+        [6] = function()
+            player:startEvent(254)
+        end,
+
+        [7] = function()
+            player:startEvent(255)
+        end,
+
+        [8] = function()
+            player:startEvent(256)
+        end,
+
+        [9] = function()
+            player:startEvent(257)
+        end,
+
+        [10] = function()
+            player:startEvent(258)
+        end,
+    }
+
+end)
+
+m:addOverride('xi.zones.Chocobo_Circuit.Zone.onEventFinish', function(player, csid, option, npc)
+    for i = 249, 258 do
+        if csid == i and
+            option == 1 then  
+        else return
+        end
+    end
 end)
 --------------------------------------------------------------------------------------
 ------------ add events to npcs inside of grand central station to get to and from chocobo race
@@ -161,7 +195,7 @@ end)
 ----- below code is the entrance doors in primary zones to get into chocobo circuit
 -----------------------------------------------------------------------------------
 m:addOverride('xi.zones.Port_Jeuno.npcs.Gate_Chocobo_Circuit.onTrigger', function(player, npc)
-player:startEvent(319)
+    player:startEvent(319)
 end)
 
 m:addOverride('xi.zones.Port_Jeuno.npcs.Gate_Chocobo_Circuit.onEventFinish', function(player, csid, option, npc)
@@ -172,7 +206,7 @@ m:addOverride('xi.zones.Port_Jeuno.npcs.Gate_Chocobo_Circuit.onEventFinish', fun
 end)
 
 m:addOverride('xi.zones.Windurst_Woods.npcs.Gate_Chocobo_Circuit.onTrigger', function(player, npc)
-player:startEvent(795)
+    player:startEvent(795)
 end)
 
 m:addOverride('xi.zones.Windurst_Woods.npcs.Gate_Chocobo_Circuit.onEventFinish', function(player, csid, option, npc)
@@ -183,7 +217,7 @@ m:addOverride('xi.zones.Windurst_Woods.npcs.Gate_Chocobo_Circuit.onEventFinish',
 end)
 
 m:addOverride('xi.zones.Southern_San_dOria.npcs.Gate_Chocobo_Circuit.onTrigger', function(player, npc)
-player:startEvent(882)
+    player:startEvent(882)
 end)
 
 m:addOverride('xi.zones.Southern_San_dOria.npcs.Gate_Chocobo_Circuit.onEventFinish', function(player, csid, option, npc)
@@ -194,7 +228,7 @@ m:addOverride('xi.zones.Southern_San_dOria.npcs.Gate_Chocobo_Circuit.onEventFini
 end)
 
 m:addOverride('xi.zones.Bastok_Mines.npcs.Gate_Chocobo_Circuit.onTrigger', function(player, npc)
-player:startEvent(566)
+    player:startEvent(566)
 end)
 
 m:addOverride('xi.zones.Bastok_Mines.npcs.Gate_Chocobo_Circuit.onEventFinish', function(player, csid, option, npc)
@@ -205,7 +239,7 @@ m:addOverride('xi.zones.Bastok_Mines.npcs.Gate_Chocobo_Circuit.onEventFinish', f
 end)
 
 m:addOverride('xi.zones.Aht_Urhgan_Whitegate.npcs.Gate_Chocobo_Circuit.onTrigger', function(player, npc)
-player:startEvent(132)
+    player:startEvent(132)
 end)
 
 m:addOverride('xi.zones.Aht_Urhgan_Whitegate.npcs.Gate_Chocobo_Circuit.onEventFinish', function(player, csid, option, npc)
@@ -214,8 +248,6 @@ m:addOverride('xi.zones.Aht_Urhgan_Whitegate.npcs.Gate_Chocobo_Circuit.onEventFi
                   player:setPos(EnWhiPos.x, EnWhiPos.y, EnWhiPos.z, EnWhiPos.rot, xi.zone.CHOCOBO_CIRCUIT)
      end 
 end)
-
-
 
 return m
 
