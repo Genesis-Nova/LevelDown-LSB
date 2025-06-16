@@ -293,26 +293,26 @@ page4 =
 }
 page2 =
     {
-            18492, 1000000,   -- Sturdy Axe
-            18753, 1000000,   -- Burning Fists
-            18851, 1000000,   -- Werebuster
-            18589, 1000000,   -- Mages Staff
-            17742, 1000000,   -- Vorpal Sword
-            18003, 1000000,   -- Swordbreaker
-            17744, 1000000,   -- Brave Blade
-            18944, 1000000,   -- Death Sickle
-            17956, 1000000,   -- Double Axe
-            18034, 1000000,   -- Dancing Dagger
-            18719, 1000000,   -- Killer Bow
-            18443, 1000000,   -- Windslicer
-            18426, 1000000,   -- Sasuke Katana
-            18120, 1000000,   -- Radiant Lance
-            18590, 1000000,   -- Scepter Staff
-	        17743, 1000000,   -- Wightslayer
-            18720, 1000000,   -- Quicksilver
-            18754, 1000000,   -- Inferno Claws
-            19102, 1000000,   -- Main Gauche
-	        18592, 1000000,   -- Elder Staff
+            { 18492, 1000000 },   -- Sturdy Axe
+            { 18753, 1000000 },   -- Burning Fists
+            { 18851, 1000000 },   -- Werebuster
+            { 18589, 1000000 },   -- Mages Staff
+            { 17742, 1000000 },   -- Vorpal Sword
+            { 18003, 1000000 },   -- Swordbreaker
+            { 17744, 1000000 },   -- Brave Blade
+            { 18944, 1000000 },   -- Death Sickle
+            { 17956, 1000000 },   -- Double Axe
+            { 18034, 1000000 },   -- Dancing Dagger
+            { 18719, 1000000 },   -- Killer Bow
+            { 18443, 1000000 },   -- Windslicer
+            { 18426, 1000000 },   -- Sasuke Katana
+            { 18120, 1000000 },   -- Radiant Lance
+            { 18590, 1000000 },   -- Scepter Staff
+	        { 17743, 1000000 },   -- Wightslayer
+            { 18720, 1000000 },   -- Quicksilver
+            { 18754, 1000000 },   -- Inferno Claws
+            { 19102, 1000000 },   -- Main Gauche
+	        { 18592, 1000000 },   -- Elder Staff
     }
 page3 =
 {

@@ -42,7 +42,7 @@ entity.onTrigger = function(player, npc)
                 }
                 rustycoins =
                     {
-                            4049,     amount,   -- rusty coins
+                            { 4049,     amount },   -- rusty coins
                     }
                 menu.options = xi.shop.general(player, rustycoins)
 end

@@ -16,22 +16,22 @@ super(zone)
 
     local crystal_stock =
     {
-        4096,   100,   -- Fire Crystal
-        4097,   100,   -- Ice Crystal
-        4098,   100,   -- Wind Crystal
-        4099,   100,   -- Earth Crystal
-        4100,   100,   -- Lightning Crystal
-        4101,   100,   -- Water Crystal
-        4102,   100,   -- Light Crystal
-        4103,   100,   -- Dark Crystal
-        4238,   5000,  -- HQ Fire Crystal
-        4239,   5000,  -- HQ Ice Crystal
-        4240,   5000,  -- HQ Wind Crystal
-        4241,   5000,  -- HQ Earth Crystal
-        4242,   5000,  -- HQ Lightning Crystal
-        4243,   5000,  -- HQ Water Crystal
-        4244,   5000,  -- HQ Light Crystal
-        4245,   5000,  -- HQ Dark Crystal
+        { 4096,   100 },   -- Fire Crystal
+        { 4097,   100 },   -- Ice Crystal
+        { 4098,   100 },   -- Wind Crystal
+        { 4099,   100 },   -- Earth Crystal
+        { 4100,   100 },   -- Lightning Crystal
+        { 4101,   100 },   -- Water Crystal
+        { 4102,   100 },   -- Light Crystal
+        { 4103,   100 },   -- Dark Crystal
+        { 4238,   5000 },  -- HQ Fire Crystal
+        { 4239,   5000 },  -- HQ Ice Crystal
+        { 4240,   5000 },  -- HQ Wind Crystal
+        { 4241,   5000 },  -- HQ Earth Crystal
+        { 4242,   5000 },  -- HQ Lightning Crystal
+        { 4243,   5000 },  -- HQ Water Crystal
+        { 4244,   5000 },  -- HQ Light Crystal
+        { 4245,   5000 },  -- HQ Dark Crystal
     }
 
     local crystalmerchant = zone:insertDynamicEntity({
