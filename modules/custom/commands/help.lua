@@ -37,6 +37,9 @@ player:printToPlayer('!nmhuntone # - Displays the NMHunt kill count per tier, re
 player:printToPlayer('!nmhunttwo # - Displays the NMHunt kill count per tier, replace # with tier 4 - 6', 3, xi.msg.channel.system_3)
 player:printToPlayer('!addallportals - Gives players all portals Abyssea, Escha zones, Adoulin Waypoints.', 3, xi.msg.channel.system_3)
 player:printToPlayer('!travel <autotranslate city> - Teleport player to spcified city!.', 3, xi.msg.channel.system_3)
+player:printToPlayer('!mountain - Teleport player to top of Parradamo while in Abyssea Attohwa.', 3, xi.msg.channel.system_3)
+player:printToPlayer('!paidmoles - Starts Whackamole in the current zone for 15M gil. 60min cooldown for current zone.', 3, xi.msg.channel.system_3)
+
 
 end
 
