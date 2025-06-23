@@ -7530,7 +7530,7 @@ xi.magian.trials =
         },
     },
 
-    [3581] =
+    [3580] =
     {
         previousTrial = 3117,
         requiredItem  =
@@ -7599,24 +7599,6 @@ xi.magian.trials =
         rewardItem =
         {
             itemId = xi.item.ANNIHILATOR_99,
-        },
-    },
-
-    [3589] =
-    {
-        previousTrial = 3126,
-        requiredItem  =
-        {
-            itemId = xi.item.DEATH_PENALTY_95,
-        },
-
-        textOffset  = 1329,
-        tradeItem   = xi.item.MULCIBARS_SCORIA,
-        numRequired = 3,
-
-        rewardItem =
-        {
-            itemId = xi.item.DEATH_PENALTY_99,
         },
     },
 
@@ -7905,24 +7887,6 @@ xi.magian.trials =
         rewardItem =
         {
             itemId = xi.item.ANNIHILATOR_99_II,
-        },
-    },
-
-    [3639] =
-    {
-        previousTrial = 3589,
-        requiredItem  =
-        {
-            itemId = xi.item.DEATH_PENALTY_99,
-        },
-
-        textOffset  = 1329,
-        tradeItem   = xi.item.MULCIBARS_SCORIA,
-        numRequired = 150,
-
-        rewardItem =
-        {
-            itemId = xi.item.DEATH_PENALTY_99_II,
         },
     },
 
@@ -11544,68 +11508,6 @@ xi.magian.trials =
         },
     },
 
-    [4397] =
-    {
-        previousTrial = 0,
-        requiredItem  =
-        {
-            itemId = xi.item.UTILIS_SHIELD,
-        },
-
-        textOffset  = 1136,
-        tradeItem   = xi.item.IRON_PLATE,
-        numRequired = 50,
-
-        rewardItem =
-        {
-            itemId = xi.item.UTILIS_SHIELD,
-            itemAugments =
-            {
-                [1] = { 33, 8 }, -- Defense +9
-            },
-        },
-    },
-
-    [4398] =
-    {
-        previousTrial = 4397,
-        requiredItem  =
-        {
-            itemId = xi.item.UTILIS_SHIELD,
-            itemAugments =
-            {
-                [1] = { 33, 8 }, -- Defense +9
-            },
-        },
-
-        textOffset  = 1138,
-        tradeItem   = xi.item.COLORLESS_SOUL,
-        numRequired = 75,
-
-        rewardItem =
-        {
-            itemId = xi.item.OCHAIN_85,
-        },
-    },
-    
-    [4399] =
-    {
-        previousTrial = 4398,
-        requiredItem  =
-        {
-            itemId = xi.item.OCHAIN_85,
-        },
-
-        textOffset  = 1138,
-        tradeItem   = xi.item.AZDAJAS_HORN,
-        numRequired = 75,
-
-        rewardItem =
-        {
-            itemId = xi.item.OCHAIN_90,
-        },
-    },
-    
     [4401] =
     {
         previousTrial = 0,
@@ -11657,24 +11559,6 @@ xi.magian.trials =
         },
     },
 
-    [4447] =
-    {
-        previousTrial = 4399,
-        requiredItem  =
-        {
-            itemId = xi.item.OCHAIN_90,
-        },
-
-        textOffset  = 1138,
-        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
-        numRequired = 1500,
-
-        rewardItem =
-        {
-            itemId = xi.item.OCHAIN_95,
-        },
-    },
-
     [4448] =
     {
         previousTrial = 4403,
@@ -11692,24 +11576,6 @@ xi.magian.trials =
         },
     },
 
-    [4452] =
-    {
-        previousTrial = 4447,
-        requiredItem  =
-        {
-            itemId = xi.item.OCHAIN_95,
-        },
-
-        textOffset  = 1138,
-        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
-        numRequired = 60,
-
-        rewardItem =
-        {
-            itemId = xi.item.OCHAIN_99,
-        },
-    },
-    
     [4453] =
     {
         previousTrial = 4448,
@@ -15351,24 +15217,6 @@ xi.magian.trials =
         },
     },
 
-    [5055] =
-    {
-        previousTrial = 4452,
-        requiredItem  =
-        {
-            itemId = xi.item.OCHAIN_99,
-        },
-
-        textOffset  = 1138,
-        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
-        numRequired = 3000,
-
-        rewardItem =
-        {
-            itemId = xi.item.OCHAIN_99_II,
-        },
-    },
-    
     [5056] =
     {
         previousTrial = 4453,
@@ -15384,6 +15232,1694 @@ xi.magian.trials =
         rewardItem =
         {
             itemId = xi.item.AEGIS_99_II,
+        },
+    },
+
+    [1093] =
+    {
+        previousTrial = 1092,
+        requiredItem  =
+        {
+            itemId = xi.item.KARTIKA,
+			itemAugments =
+            {
+                [1] = { 45, 5 }, -- DMG:+6
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.GLAVOID_SHELL,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.TWASHTAR,
+        },
+    },
+
+    [1886] =
+    {
+        previousTrial = 1093,
+        requiredItem  =
+        {
+            itemId = xi.item.TWASHTAR,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ITZPAPALOTLS_SCALE,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.TWASHTAR_85,
+        },
+    },
+
+    [2283] =
+    {
+        previousTrial = 1886,
+        requiredItem  =
+        {
+            itemId = xi.item.TWASHTAR_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ORTHRUSS_CLAW,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.TWASHTAR_90,
+        },
+    },
+
+    [2716] =
+    {
+        previousTrial = 2283,
+        requiredItem  =
+        {
+            itemId = xi.item.TWASHTAR_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.TWASHTAR_95,
+        },
+    },
+
+    [3179] =
+    {
+        previousTrial = 2716,
+        requiredItem  =
+        {
+            itemId = xi.item.TWASHTAR_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.TWASHTAR_99,
+        },
+    },
+
+    [3592] =
+    {
+        previousTrial = 3179,
+        requiredItem  =
+        {
+            itemId = xi.item.TWASHTAR_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.TWASHTAR_99_II,
+        },
+    },
+
+    [1201] =
+    {
+        previousTrial = 1200,
+        requiredItem  =
+        {
+            itemId = xi.item.NOBILIS,
+			itemAugments =
+            {
+                [1] = { 45, 7 }, -- DMG:+8
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.HELM_OF_BRIAREUS,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.ALMACE,
+        },
+    },
+
+    [1940] =
+    {
+        previousTrial = 1201,
+        requiredItem  =
+        {
+            itemId = xi.item.ALMACE,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.SOBEKS_SKIN,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.ALMACE_85,
+        },
+    },
+
+    [2339] =
+    {
+        previousTrial = 1940,
+        requiredItem  =
+        {
+            itemId = xi.item.ALMACE_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.APADEMAKS_HORN,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.ALMACE_90,
+        },
+    },
+
+    [2772] =
+    {
+        previousTrial = 2339,
+        requiredItem  =
+        {
+            itemId = xi.item.ALMACE_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.ALMACE_95,
+        },
+    },
+
+    [3235] =
+    {
+        previousTrial = 2772,
+        requiredItem  =
+        {
+            itemId = xi.item.ALMACE_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.ALMACE_99,
+        },
+    },
+
+    [3594] =
+    {
+        previousTrial = 3235,
+        requiredItem  =
+        {
+            itemId = xi.item.ALMACE_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.ALMACE_99_II,
+        },
+    },
+
+    [1247] =
+    {
+        previousTrial = 1246,
+        requiredItem  =
+        {
+            itemId = xi.item.ALBION,
+			itemAugments =
+            {
+                [1] = { 45, 11 }, -- DMG:+12
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CARABOSSES_GEM,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.CALADBOLG,
+        },
+    },
+
+    [1963] =
+    {
+        previousTrial = 1247,
+        requiredItem  =
+        {
+            itemId = xi.item.CALADBOLG,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CIREIN_CROINS_LANTERN,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.CALADBOLG_85,
+        },
+    },
+
+    [2363] =
+    {
+        previousTrial = 1963,
+        requiredItem  =
+        {
+            itemId = xi.item.CALADBOLG_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ISGEBINDS_HEART,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.CALADBOLG_90,
+        },
+    },
+
+    [2796] =
+    {
+        previousTrial = 2363,
+        requiredItem  =
+        {
+            itemId = xi.item.CALADBOLG_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.CALADBOLG_95,
+        },
+    },
+
+    [3259] =
+    {
+        previousTrial = 2796,
+        requiredItem  =
+        {
+            itemId = xi.item.CALADBOLG_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.CALADBOLG_99,
+        },
+    },
+
+    [3595] =
+    {
+        previousTrial = 3259,
+        requiredItem  =
+        {
+            itemId = xi.item.CALADBOLG_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.CALADBOLG_99_II,
+        },
+    },
+
+    [1293] =
+    {
+        previousTrial = 1292,
+        requiredItem  =
+        {
+            itemId = xi.item.BONEBITER,
+			itemAugments =
+            {
+                [1] = { 45, 7 }, -- DMG:+8
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.VIAL_OF_FISTULE_DISCHARGE,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.FARSHA,
+        },
+    },
+
+    [1986] =
+    {
+        previousTrial = 1293,
+        requiredItem  =
+        {
+            itemId = xi.item.FARSHA,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.BUKHISS_WING,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.FARSHA_85,
+        },
+    },
+
+    [2387] =
+    {
+        previousTrial = 1986,
+        requiredItem  =
+        {
+            itemId = xi.item.FARSHA_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ALFARDS_FANG,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.FARSHA_90,
+        },
+    },
+
+    [2820] =
+    {
+        previousTrial = 2387,
+        requiredItem  =
+        {
+            itemId = xi.item.FARSHA_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.FARSHA_95,
+        },
+    },
+
+    [3283] =
+    {
+        previousTrial = 2820,
+        requiredItem  =
+        {
+            itemId = xi.item.FARSHA_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.FARSHA_99,
+        },
+    },
+
+    [3596] =
+    {
+        previousTrial = 3283,
+        requiredItem  =
+        {
+            itemId = xi.item.FARSHA_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.FARSHA_99_II,
+        },
+    },
+
+    [1355] =
+    {
+        previousTrial = 1354,
+        requiredItem  =
+        {
+            itemId = xi.item.BONESPLITTER,
+			itemAugments =
+            {
+                [1] = { 45, 12 }, -- DMG:+13
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.GLAVOID_SHELL,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.UKONVASARA,
+        },
+    },
+
+    [2017] =
+    {
+        previousTrial = 1355,
+        requiredItem  =
+        {
+            itemId = xi.item.UKONVASARA,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ITZPAPALOTLS_SCALE,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.UKONVASARA_85,
+        },
+    },
+
+    [2419] =
+    {
+        previousTrial = 2017,
+        requiredItem  =
+        {
+            itemId = xi.item.UKONVASARA_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ORTHRUSS_CLAW,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.UKONVASARA_90,
+        },
+    },
+
+    [2852] =
+    {
+        previousTrial = 2419,
+        requiredItem  =
+        {
+            itemId = xi.item.UKONVASARA_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.UKONVASARA_95,
+        },
+    },
+
+    [3315] =
+    {
+        previousTrial = 2852,
+        requiredItem  =
+        {
+            itemId = xi.item.UKONVASARA_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.UKONVASARA_99,
+        },
+    },
+
+    [3597] =
+    {
+        previousTrial = 3315,
+        requiredItem  =
+        {
+            itemId = xi.item.UKONVASARA_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.UKONVASARA_99_II,
+        },
+    },
+
+    [1463] =
+    {
+        previousTrial = 1462,
+        requiredItem  =
+        {
+            itemId = xi.item.ULTIMATUM,
+			itemAugments =
+            {
+                [1] = { 45, 13 }, -- DMG:+14
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.TWO_LEAF_CHLORIS_BUD,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.REDEMPTION,
+        },
+    },
+
+    [2040] =
+    {
+        previousTrial = 1463,
+        requiredItem  =
+        {
+            itemId = xi.item.REDEMPTION,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ULHUADSHIS_FANG,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.REDEMPTION_85,
+        },
+    },
+
+    [2443] =
+    {
+        previousTrial = 2040,
+        requiredItem  =
+        {
+            itemId = xi.item.REDEMPTION_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.DRAGUAS_SCALE,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.REDEMPTION_90,
+        },
+    },
+
+    [2876] =
+    {
+        previousTrial = 2443,
+        requiredItem  =
+        {
+            itemId = xi.item.REDEMPTION_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.REDEMPTION_95,
+        },
+    },
+
+    [3339] =
+    {
+        previousTrial = 2876,
+        requiredItem  =
+        {
+            itemId = xi.item.REDEMPTION_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.REDEMPTION_99,
+        },
+    },
+
+    [3598] =
+    {
+        previousTrial = 3339,
+        requiredItem  =
+        {
+            itemId = xi.item.REDEMPTION_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.REDEMPTION_99_II,
+        },
+    },
+
+    [1401] =
+    {
+        previousTrial = 1400,
+        requiredItem  =
+        {
+            itemId = xi.item.OATHKEEPER,
+			itemAugments =
+            {
+                [1] = { 45, 13 }, -- DMG:+14
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.TWO_LEAF_CHLORIS_BUD,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.RHONGOMIANT,
+        },
+    },
+
+    [2063] =
+    {
+        previousTrial = 1401,
+        requiredItem  =
+        {
+            itemId = xi.item.RHONGOMIANT,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ULHUADSHIS_FANG,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.RHONGOMIANT_85,
+        },
+    },
+
+    [2467] =
+    {
+        previousTrial = 2063,
+        requiredItem  =
+        {
+            itemId = xi.item.RHONGOMIANT_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.DRAGUAS_SCALE,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.RHONGOMIANT_90,
+        },
+    },
+
+    [2900] =
+    {
+        previousTrial = 2467,
+        requiredItem  =
+        {
+            itemId = xi.item.RHONGOMIANT_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.RHONGOMIANT_95,
+        },
+    },
+
+    [3363] =
+    {
+        previousTrial = 2900,
+        requiredItem  =
+        {
+            itemId = xi.item.RHONGOMIANT_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.RHONGOMIANT_99,
+        },
+    },
+
+    [3599] =
+    {
+        previousTrial = 3363,
+        requiredItem  =
+        {
+            itemId = xi.item.RHONGOMIANT_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.RHONGOMIANT_99_II,
+        },
+    },
+
+    [1509] =
+    {
+        previousTrial = 1508,
+        requiredItem  =
+        {
+            itemId = xi.item.MOZU,
+			itemAugments =
+            {
+                [1] = { 45, 7 }, -- DMG:+8
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.HELM_OF_BRIAREUS,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.KANNAGI,
+        },
+    },
+
+    [2094] =
+    {
+        previousTrial = 1509,
+        requiredItem  =
+        {
+            itemId = xi.item.KANNAGI,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.SOBEKS_SKIN,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.KANNAGI_85,
+        },
+    },
+
+    [2499] =
+    {
+        previousTrial = 2094,
+        requiredItem  =
+        {
+            itemId = xi.item.KANNAGI_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.APADEMAKS_HORN,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.KANNAGI_90,
+        },
+    },
+
+    [2932] =
+    {
+        previousTrial = 2499,
+        requiredItem  =
+        {
+            itemId = xi.item.KANNAGI_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.KANNAGI_95,
+        },
+    },
+
+    [3395] =
+    {
+        previousTrial = 2932,
+        requiredItem  =
+        {
+            itemId = xi.item.KANNAGI_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.KANNAGI_99,
+        },
+    },
+
+    [3600] =
+    {
+        previousTrial = 3395,
+        requiredItem  =
+        {
+            itemId = xi.item.KANNAGI_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.KANNAGI_99_II,
+        },
+    },
+
+    [1555] =
+    {
+        previousTrial = 1554,
+        requiredItem  =
+        {
+            itemId = xi.item.RADENNOTACHI,
+			itemAugments =
+            {
+                [1] = { 45, 11 }, -- DMG:+12
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CARABOSSES_GEM,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.MASAMUNE,
+        },
+    },
+
+    [2117] =
+    {
+        previousTrial = 1555,
+        requiredItem  =
+        {
+            itemId = xi.item.MASAMUNE,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CIREIN_CROINS_LANTERN,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.MASAMUNE_85,
+        },
+    },
+
+    [2523] =
+    {
+        previousTrial = 2117,
+        requiredItem  =
+        {
+            itemId = xi.item.MASAMUNE_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ISGEBINDS_HEART,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.MASAMUNE_90,
+        },
+    },
+
+    [2956] =
+    {
+        previousTrial = 2523,
+        requiredItem  =
+        {
+            itemId = xi.item.MASAMUNE_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.MASAMUNE_95,
+        },
+    },
+
+    [3419] =
+    {
+        previousTrial = 2956,
+        requiredItem  =
+        {
+            itemId = xi.item.MASAMUNE_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.MASAMUNE_99,
+        },
+    },
+
+    [3601] =
+    {
+        previousTrial = 3419,
+        requiredItem  =
+        {
+            itemId = xi.item.MASAMUNE_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.MASAMUNE_99_II,
+        },
+    },
+
+    [1601] =
+    {
+        previousTrial = 1600,
+        requiredItem  =
+        {
+            itemId = xi.item.CULACULA,
+			itemAugments =
+            {
+                [1] = { 45, 15 }, -- DMG:+16
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.VIAL_OF_FISTULE_DISCHARGE,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.GAMBANTEINN,
+        },
+    },
+
+    [2140] =
+    {
+        previousTrial = 1601,
+        requiredItem  =
+        {
+            itemId = xi.item.GAMBANTEINN,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.BUKHISS_WING,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.GAMBANTEINN_85,
+        },
+    },
+
+    [2547] =
+    {
+        previousTrial = 2140,
+        requiredItem  =
+        {
+            itemId = xi.item.GAMBANTEINN_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ALFARDS_FANG,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.GAMBANTEINN_90,
+        },
+    },
+
+    [2980] =
+    {
+        previousTrial = 2547,
+        requiredItem  =
+        {
+            itemId = xi.item.GAMBANTEINN_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.GAMBANTEINN_95,
+        },
+    },
+
+    [3443] =
+    {
+        previousTrial = 2980,
+        requiredItem  =
+        {
+            itemId = xi.item.GAMBANTEINN_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.GAMBANTEINN_99,
+        },
+    },
+
+    [3602] =
+    {
+        previousTrial = 3443,
+        requiredItem  =
+        {
+            itemId = xi.item.GAMBANTEINN_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.GAMBANTEINN_99_II,
+        },
+    },
+
+    [1647] =
+    {
+        previousTrial = 1646,
+        requiredItem  =
+        {
+            itemId = xi.item.SLAINE,
+			itemAugments =
+            {
+                [1] = { 45, 14 }, -- DMG:+15
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.KUKULKANS_FANG,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.HVERGELMIR,
+        },
+    },
+
+    [2163] =
+    {
+        previousTrial = 1647,
+        requiredItem  =
+        {
+            itemId = xi.item.HVERGELMIR,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.SEDNAS_TUSK,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.HVERGELMIR_85,
+        },
+    },
+
+    [2571] =
+    {
+        previousTrial = 2163,
+        requiredItem  =
+        {
+            itemId = xi.item.HVERGELMIR_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.AZDAJAS_HORN,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.HVERGELMIR_90,
+        },
+    },
+
+    [3004] =
+    {
+        previousTrial = 2571,
+        requiredItem  =
+        {
+            itemId = xi.item.HVERGELMIR_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.HVERGELMIR_95,
+        },
+    },
+
+    [3467] =
+    {
+        previousTrial = 3004,
+        requiredItem  =
+        {
+            itemId = xi.item.HVERGELMIR_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.HVERGELMIR_99,
+        },
+    },
+
+    [3603] =
+    {
+        previousTrial = 3467,
+        requiredItem  =
+        {
+            itemId = xi.item.HVERGELMIR_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.HVERGELMIR_99_II,
+        },
+    },
+
+    [1789] =
+    {
+        previousTrial = 1788,
+        requiredItem  =
+        {
+            itemId = xi.item.ASTRILD,
+			itemAugments =
+            {
+                [1] = { 45, 10 }, -- DMG:+11
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.VIAL_OF_FISTULE_DISCHARGE,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.GANDIVA,
+        },
+    },
+
+    [2219] =
+    {
+        previousTrial = 1789,
+        requiredItem  =
+        {
+            itemId = xi.item.GANDIVA,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.BUKHISS_WING,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.GANDIVA_85,
+        },
+    },
+
+    [2628] =
+    {
+        previousTrial = 2219,
+        requiredItem  =
+        {
+            itemId = xi.item.GANDIVA_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ALFARDS_FANG,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.GANDIVA_90,
+        },
+    },
+
+    [3061] =
+    {
+        previousTrial = 2628,
+        requiredItem  =
+        {
+            itemId = xi.item.GANDIVA_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.GANDIVA_95,
+        },
+    },
+
+    [3524] =
+    {
+        previousTrial = 3061,
+        requiredItem  =
+        {
+            itemId = xi.item.GANDIVA_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.GANDIVA_99,
+        },
+    },
+
+    [3604] =
+    {
+        previousTrial = 3524,
+        requiredItem  =
+        {
+            itemId = xi.item.GANDIVA_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.GANDIVA_99_II,
+        },
+    },
+
+    [1759] =
+    {
+        previousTrial = 1758,
+        requiredItem  =
+        {
+            itemId = xi.item.MAGNATUS,
+			itemAugments =
+            {
+                [1] = { 45, 7 }, -- DMG:+8
+            },			
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CARABOSSES_GEM,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.ARMAGEDDON,
+        },
+    },
+
+    [2234] =
+    {
+        previousTrial = 1759,
+        requiredItem  =
+        {
+            itemId = xi.item.ARMAGEDDON,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CIREIN_CROINS_LANTERN,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.ARMAGEDDON_85,
+        },
+    },
+
+    [2644] =
+    {
+        previousTrial = 2234,
+        requiredItem  =
+        {
+            itemId = xi.item.ARMAGEDDON_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.ISGEBINDS_HEART,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.ARMAGEDDON_90,
+        },
+    },
+
+    [3077] =
+    {
+        previousTrial = 2644,
+        requiredItem  =
+        {
+            itemId = xi.item.ARMAGEDDON_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.ARMAGEDDON_95,
+        },
+    },
+
+    [3540] =
+    {
+        previousTrial = 3077,
+        requiredItem  =
+        {
+            itemId = xi.item.ARMAGEDDON_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.ARMAGEDDON_99,
+        },
+    },
+
+    [3605] =
+    {
+        previousTrial = 3540,
+        requiredItem  =
+        {
+            itemId = xi.item.ARMAGEDDON_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.CLUMP_OF_RIFTDROSS,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.ARMAGEDDON_99_II,
+        },
+    },
+	  
+	[2709] =
+    {
+        previousTrial = 0,
+        requiredItem  =
+        {
+            itemId = xi.item.PYF_HARP,		
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.IRON_PLATE,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.PYF_HARP,
+			itemAugments =
+            {
+                [1] = { 45, 7 }, -- DMG:+8
+            },
+        },
+    },
+
+    [2710] =
+    {
+        previousTrial = 2709,
+        requiredItem  =
+        {
+            itemId = xi.item.PYF_HARP,
+			itemAugments =
+            {
+                [1] = { 45, 7 }, -- DMG:+8
+            },
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.COLORLESS_SOUL,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.DAURDABLA_85,
+        },
+    },
+
+    [2711] =
+    {
+        previousTrial = 2710,
+        requiredItem  =
+        {
+            itemId = xi.item.DAURDABLA_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.APADEMAKS_HORN,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.DAURDABLA_90,
+        },
+    },
+
+    [3127] =
+    {
+        previousTrial = 2711,
+        requiredItem  =
+        {
+            itemId = xi.item.DAURDABLA_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.DAURDABLA_95,
+        },
+    },
+
+    [3590] =
+    {
+        previousTrial = 3127,
+        requiredItem  =
+        {
+            itemId = xi.item.DAURDABLA_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.DAURDABLA_99,
+        },
+    },
+
+    [3640] =
+    {
+        previousTrial = 3590,
+        requiredItem  =
+        {
+            itemId = xi.item.DAURDABLA_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.DAURDABLA_99_II,
+        },
+    },
+
+    [4397] =
+    {
+        previousTrial = 0,
+        requiredItem  =
+        {
+            itemId = xi.item.UTILIS_SHIELD,		
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.IRON_PLATE,
+        numRequired = 50,
+
+        rewardItem =
+        {
+            itemId = xi.item.UTILIS_SHIELD,
+			itemAugments =
+            {
+                [1] = { 45, 7 }, -- DMG:+8
+            },
+        },
+    },
+
+    [4398] =
+    {
+        previousTrial = 4397,
+        requiredItem  =
+        {
+            itemId = xi.item.UTILIS_SHIELD,
+			itemAugments =
+            {
+                [1] = { 45, 7 }, -- DMG:+8
+            },
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.COLORLESS_SOUL,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.OCHAIN_85,
+        },
+    },
+
+    [4399] =
+    {
+        previousTrial = 4398,
+        requiredItem  =
+        {
+            itemId = xi.item.OCHAIN_85,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.AZDAJAS_HORN,
+        numRequired = 75,
+
+        rewardItem =
+        {
+            itemId = xi.item.OCHAIN_90,
+        },
+    },
+
+    [4447] =
+    {
+        previousTrial = 4399,
+        requiredItem  =
+        {
+            itemId = xi.item.OCHAIN_90,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PLATE_OF_HEAVY_METAL,
+        numRequired = 1500,
+
+        rewardItem =
+        {
+            itemId = xi.item.OCHAIN_95,
+        },
+    },
+
+    [4452] =
+    {
+        previousTrial = 4447,
+        requiredItem  =
+        {
+            itemId = xi.item.OCHAIN_95,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 60,
+
+        rewardItem =
+        {
+            itemId = xi.item.OCHAIN_99,
+        },
+    },
+
+    [5055] =
+    {
+        previousTrial = 4452,
+        requiredItem  =
+        {
+            itemId = xi.item.OCHAIN_99,
+        },
+
+        textOffset  = 70,
+        tradeItem   = xi.item.PINCH_OF_RIFTCINDER,
+        numRequired = 3000,
+
+        rewardItem =
+        {
+            itemId = xi.item.OCHAIN_99_II,
         },
     },
 }
