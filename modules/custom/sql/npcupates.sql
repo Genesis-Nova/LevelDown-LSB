@@ -15,3 +15,4 @@ UPDATE npc_list SET pos_x =   21.847, pos_y =   0.000, pos_z =  223.028 WHERE np
 -- Updated 5/4/2025
 UPDATE npc_list SET flag = 0,animationsub = 6,namevis = 4,status = 0, entityFlags = 0, look = 0x0000f70800000000000000000000000000000000  WHERE polutils_name = 'Mog-Tablet';
 INSERT INTO `npc_list` VALUES (17970039, 'Coelestrox', 'Coelestrox', 64,-360.000,-440.000,-800.000,32790,50,50,0,0,0,0,27,0x0000E20300000000000000000000000000000000,32,NULL,1 );
+UPDATE npc_list SET status = 0 WHERE npcid = 17662578; -- correct Sodek Aby Misx npc

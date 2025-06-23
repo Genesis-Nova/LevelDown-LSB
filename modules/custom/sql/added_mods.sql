@@ -6479,3 +6479,5 @@ INSERT INTO `item_mods` VALUES (23603, 161, -500); --vitiation tights +3 -- DMGP
 INSERT INTO `item_mods` VALUES (23603, 384, 500); --vitiation tights +3 -- HASTE_GEAR
 -- Vrikodara Jupon
 INSERT INTO `item_mods` VALUES (26969,161,-300); -- DMGPHYS
+-- Terpander
+INSERT INTO `item_mods` VALUES (21407,453,1); -- add additional song

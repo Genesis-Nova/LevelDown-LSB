@@ -444,6 +444,7 @@ UPDATE mob_groups SET HP = 105000, minLevel = 120, maxLevel = 120 WHERE name = '
 UPDATE mob_groups SET HP = 115000, minLevel = 121, maxLevel = 121 WHERE name = 'Karkatakam' AND zoneid = 216;
 UPDATE mob_groups SET HP = 115000, minLevel = 121, maxLevel = 121 WHERE name = 'Kutharei' AND zoneid = 216;
 UPDATE mob_groups SET HP = 115000, minLevel = 121, maxLevel = 121 WHERE name = 'Sirrush' AND zoneid = 216;
+UPDATE mob_groups SET HP = 115000, minLevel = 121, maxLevel = 121 WHERE name = 'Sobek' AND zoneid = 216;
 --						    110 HP 78000 Abyssea Vunkerl
 UPDATE mob_groups SET HP = 78000, minLevel = 110, maxLevel = 110 WHERE name = 'Armillaria' AND zoneid = 217;
 UPDATE mob_groups SET HP = 78000, minLevel = 110, maxLevel = 110 WHERE name = 'Bukhis' AND zoneid = 217;
