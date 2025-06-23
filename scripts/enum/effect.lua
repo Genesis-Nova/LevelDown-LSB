@@ -677,8 +677,7 @@ xi.effect =
     HYSTERIA                 = 804, -- Used for Hysteroanima to stop after readying a weaponskill with no msg.
     TOMAHAWK                 = 805, -- Silent status effect inflicted by a Warrior using the "Tomahawk" job ability
     NUKE_WALL                = 806, -- Custom effect for NM type mobs only.
-    PARAGON                  = 1000, -- LD custom effect for paragon levels
-    BUFF                     = 1001, -- LD custom buff for players buff
+    PARAGON                  = 650, -- LD custom effect for paragon levels
 
     -- 789
     -- 807-1022
