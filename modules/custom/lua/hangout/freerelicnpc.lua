@@ -377,7 +377,7 @@ local freeaf =
 
   onTrigger = function(player, npc)
   if player:getCharVar('[CapAllSkills]') == 0 then
-     player:capAllSkillsNew()
+     player:capAllSkills()
      player:setCharVar('[CapAllSkills]', 1)
      player:printToPlayer('All your Skills have been capped!', 0, npc:getPacketName())
   end
