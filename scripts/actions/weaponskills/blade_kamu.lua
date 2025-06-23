@@ -27,7 +27,7 @@ weaponskillObject.onUseWeaponSkill = function(player, target, wsID, tp, primary,
         params.str_wsc        = 0.6
         params.int_wsc        = 0.6
         params.ignoredDefense = { 0.25, 0.25, 0.25 }
-        params.atkVaries      = { 2.25, 2.25, 2.25 } -- http://wiki.ffo.jp/html/15893.html
+        params.atkVaries      = { 3, 3, 3 } -- http://wiki.ffo.jp/html/15893.html
     end
 
     -- Apply Aftermath

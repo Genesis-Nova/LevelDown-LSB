@@ -251,6 +251,12 @@ page11 =
             playerArg:setPos(329.6800, 0.3515, 126.9239, 72, xi.zone.CEIZAK_BATTLEGROUNDS)
         end,
     },
+	{
+        'Lvl 93-99 Morimar Basalt Mines',
+        function(playerArg)
+            playerArg:setPos(-128.0082, -33.4823, 294.7052, 67, xi.zone.MORIMAR_BASALT_FIELDS)
+        end,
+    },
     {
         'Previous Page',
         function(playerArg)
@@ -274,9 +280,15 @@ page5 =
         end,
     },
     {
-        'Bhaflau Thickets', 
+        'Bhaflau Thickets - Lower Camp', 
         function(playerArg)
             playerArg:setPos(-574.0469, -8.2500, 40.2076, 63, xi.zone.BHAFLAU_THICKETS)
+        end,
+    },
+	    {
+        'Bhaflau Thickets - Upper Camp', 
+        function(playerArg)
+            playerArg:setPos(-493.5, -16, -76.4994, 129, xi.zone.BHAFLAU_THICKETS)
         end,
     },
     {
@@ -343,9 +355,15 @@ page5 =
         end,
     },
    {
-        'RaKaznar Inner Court',
+        'Bibiki Bay - Camp 1',
         function(playerArg)
-            playerArg:setPos(-339.9206, -431.1964, 299.9980, 1, xi.zone.RAKAZNAR_INNER_COURT)
+            playerArg:setPos(150.4, -28.2, 414.6331, 196, xi.zone.BIBIKI_BAY)
+        end,
+    },
+	{
+        'Bibiki Bay - Camp 2 - Crabs',
+        function(playerArg)
+            playerArg:setPos(196.56, -20, 274.2421, 66, xi.zone.BIBIKI_BAY)
         end,
     },
     {
@@ -377,6 +395,18 @@ page5 =
             playerArg:setPos(526.1202, 2.4993, -179.8479, 6, xi.zone.ESCHA_ZITAH)
         end,
     },
+	{
+        'Gustav Tunnel - Worms/Turtles',
+        function(playerArg)
+            playerArg:setPos(-26, -9.6, 131.5421, 241, xi.zone.GUSTAV_TUNNEL)
+        end,
+    },
+   {
+        'RaKaznar Inner Court',
+        function(playerArg)
+            playerArg:setPos(-339.9206, -431.1964, 299.9980, 1, xi.zone.RAKAZNAR_INNER_COURT)
+        end,
+    },	
     {
         'Previous Page',
         function(playerArg)
@@ -386,28 +416,16 @@ page5 =
     },
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-m:addOverride('xi.zones.Bastok_Mines.Zone.onInitialize', function(zone)
+m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
     super(zone)
     local exp_guidetwo = zone:insertDynamicEntity({
         objtype = xi.objType.NPC,
         name = 'EXP Guide',
         look = 2433,
-        x         = 20.0531,
-        y         = 0.0000,
-        z         = -111.4293,
-        rotation = 3,
+        x         = 354.5341,
+        y         = -2.8338,
+        z         = -545.1909,
+        rotation = 196,
         widescan = 1,
         onTrade = function(player, npc, trade)
         end,
@@ -420,10 +438,10 @@ m:addOverride('xi.zones.Bastok_Mines.Zone.onInitialize', function(zone)
         objtype = xi.objType.NPC,
         name = 'Merit Guide',
         look = 2433,
-        x         = 20.5386,
-        y         = 0.0000,
-        z         = -107.9352,
-        rotation = 3,
+        x         = 356.8286,
+        y         = -2.7344,
+        z         = -545.3015,
+        rotation = 196,
         widescan = 1,
         onTrade = function(player, npc, trade)
         end,
@@ -434,112 +452,5 @@ m:addOverride('xi.zones.Bastok_Mines.Zone.onInitialize', function(zone)
     })
 end)
 
-m:addOverride('xi.zones.Northern_San_dOria.Zone.onInitialize', function(zone)
-    super(zone)
-    local exp_guideone = zone:insertDynamicEntity({
-        objtype = xi.objType.NPC,
-        name = 'EXP Guide',
-        look = 2433,
-        x         = 78.7980,
-        y         = 0.000,
-        z         = 7.0669,
-        rotation = 100,
-        widescan = 1,
-        onTrade = function(player, npc, trade)
-        end,
-        onTrigger = function(player, npc)
-     menu.options = page1
-     delaySendMenu(player)
-        end,
-    })
-    local mrt_guideone = zone:insertDynamicEntity({
-        objtype = xi.objType.NPC,
-        name = 'Merit Guide',
-        look = 2433,
-        x         = 80.2230,
-        y         = 0.0000,
-        z         = 5.5288,
-        rotation = 100,
-        widescan = 1,
-        onTrade = function(player, npc, trade)
-        end,
-        onTrigger = function(player, npc)
-     menu.options = page5
-     delaySendMenu(player)
-        end,
-    })
-end)
-
-m:addOverride('xi.zones.Port_Windurst.Zone.onInitialize', function(zone)
-    super(zone)
-    local exp_guidethree = zone:insertDynamicEntity({
-        objtype = xi.objType.NPC,
-        name = 'EXP Guide',
-        look = 2433,
-        x         = -221.9980,
-        y         = -8.1233,
-        z         = 178.3394,
-        rotation = 59,
-        widescan = 1,
-        onTrade = function(player, npc, trade)
-        end,
-        onTrigger = function(player, npc)
-     menu.options = page1
-     delaySendMenu(player)
-        end,
-    })
-    local mrt_guidethree = zone:insertDynamicEntity({
-        objtype = xi.objType.NPC,
-        name = 'Merit Guide',
-        look = 2433,
-        x         = -226.1122,
-        y         = -8.2927,
-        z         = 177.9062,
-        rotation = 59,
-        widescan = 1,
-        onTrade = function(player, npc, trade)
-        end,
-        onTrigger = function(player, npc)
-     menu.options = page5
-     delaySendMenu(player)
-        end,
-    })
-end)
-
-m:addOverride('xi.zones.RuLude_Gardens.Zone.onInitialize', function(zone)
-    super(zone)
-    local exp_guidefour = zone:insertDynamicEntity({
-        objtype = xi.objType.NPC,
-        name = 'EXP Guide',
-        look = 2433,
-        x         = 42.8837,
-        y         = 10.0000,
-        z         = -70.9866,
-        rotation = 127,
-        widescan = 1,
-        onTrade = function(player, npc, trade)
-        end,
-        onTrigger = function(player, npc)
-     menu.options = page1
-     delaySendMenu(player)
-        end,
-    })
-    local mrt_guidefour = zone:insertDynamicEntity({
-        objtype = xi.objType.NPC,
-        name = 'Merit Guide',
-        look = 2433,
-        x         = 42.9253,
-        y         = 10.0000,
-        z         = -73.0407,
-        rotation = 127,
-        widescan = 1,
-        onTrade = function(player, npc, trade)
-        end,
-        onTrigger = function(player, npc)
-     menu.options = page5
-     delaySendMenu(player)
-        end,
-    })
-end)
 return m
 

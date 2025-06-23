@@ -1869,14 +1869,14 @@ INSERT INTO `item_mods` VALUES (21749, 161, -300);   -- DMGPHYS
 INSERT INTO `item_mods` VALUES (21070, 30, 25); --idris -- MACC
 INSERT INTO `item_mods` VALUES (21070, 28, 25); --idris -- MATT
 INSERT INTO `item_mods` VALUES (21070, 311, 155); --idris -- MAGIC_DAMAGE
-INSERT INTO `item_mods` VALUES (21070, 123, 10); --idris -- GEOMANCY_SKILL
+INSERT INTO `item_mods` VALUES (21070, 961, 10); --idris -- GEOMANCY_SKILL - Instead of applying a bonus to Geomancy Skill, this item applies a direct bonus to the potency of all Geomancy Spells on a per-spell basis
 INSERT INTO `item_mods` VALUES (21070, 256, 40); --idris -- AFTERMATH
 INSERT INTO `item_mods_pet` VALUES (21070, 160, -2500, 7); --idris -- DMG
 -- Idris i199 II
 INSERT INTO `item_mods` VALUES (21080, 30, 40); --idris -- MACC
 INSERT INTO `item_mods` VALUES (21080, 28, 40); --idris -- MATT
 INSERT INTO `item_mods` VALUES (21080, 311, 217); --idris -- MAGIC_DAMAGE
-INSERT INTO `item_mods` VALUES (21080, 123, 10); --idris -- GEOMANCY_SKILL
+INSERT INTO `item_mods` VALUES (21080, 961, 10); --idris -- GEOMANCY_SKILL - Instead of applying a bonus to Geomancy Skill, this item applies a direct bonus to the potency of all Geomancy Spells on a per-spell basis
 INSERT INTO `item_mods` VALUES (21080, 256, 40); --idris -- AFTERMATH
 INSERT INTO `item_mods_pet` VALUES (21080, 160, -2500, 7); --idris -- DMG
 -- Kunimune
