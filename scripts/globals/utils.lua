@@ -1329,3 +1329,20 @@ function utils.timeIsBefore(current, target)
 
     return current.hour < target.hour
 end
+
+-- returns unabsorbed damage
+---@nodiscard
+---@param target CBaseEntity
+---@param dmg integer
+---@return integer
+function utils.magicBarrier(target, dmg)
+    --handling blue magic barrier
+    if dmg > 0 then
+        local effect = target:getStatusEffect(xi.effect.MAGIC_SHIELD)
+        local dmgReduction = target:getSkillLevel(xi.skill.BLUE_MAGIC) * 2.5
+        if target:hasStatusEffect(xi.effect.MAGIC_SHIELD, 2) then
+            dmg = math.max(0, dmg - dmgReduction)
+        end
+    end
+    return dmg
+end
