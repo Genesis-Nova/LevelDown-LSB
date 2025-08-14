@@ -247,16 +247,20 @@ local function buildMagianLookupTables()
         table.insert(relationTable[trialData.previousTrial], trialId)
 
         -- Build Item + Augment to Trial Table
-        local itemId     = trialData.requiredItem.itemId
-        local lookupKeys = { itemId, 0, 0, 0, 0 }
+        local itemId = trialData.requiredItem and trialData.requiredItem.itemId or nil
 
-        if trialData.requiredItem.itemAugments then
-            for augmentPos = 1, #trialData.requiredItem.itemAugments do
-                lookupKeys[augmentPos + 1] = packAugment(trialData.requiredItem.itemAugments[augmentPos])
+        -- FIX: Only proceed if the trial has a valid required item ID.
+        if itemId then
+            local lookupKeys = { itemId, 0, 0, 0, 0 }
+
+            if trialData.requiredItem.itemAugments then
+                for augmentPos = 1, #trialData.requiredItem.itemAugments do
+                    lookupKeys[augmentPos + 1] = packAugment(trialData.requiredItem.itemAugments[augmentPos])
+                end
             end
-        end
 
-        insertOrCreate(requiredItemTable, lookupKeys, trialId)
+            insertOrCreate(requiredItemTable, lookupKeys, trialId)
+        end
     end
 
     return relationTable, requiredItemTable
