@@ -23,18 +23,18 @@ local prizes =
             1452, -- ordelle bronzepiece
             1449, -- tukuku whiteshell
             1875, -- ancient beastcoin
-
+            --[[
             --- Month 1 ---------------------------------------------
             6377, -- imperial chair set
             6378, -- decorative chair set
             6379, -- ornate stool set
-            --[[
+            ]]--
             --- Month 2 ---------------------------------------------
 
             6380, -- refined chair set
             6408, -- portable container
             6409, -- ephramadian throne
-
+            --[[
             --- Month 3 ---------------------------------------------
             6410, -- shadow throne
             6411, -- chocobo chair
@@ -51,7 +51,7 @@ local prizes =
         {
             --- Alway active ----------------------------------------
              8711, -- copper aman voucher
-
+             --[[
             --- Month 1 ---------------------------------------------
             10124, -- cipher of luzafs alter ego
             10125, -- cipher of najeliths alter ego
@@ -64,7 +64,7 @@ local prizes =
             10069, -- ♪goobbue
             10070, -- ♪raaz
             10129, -- cipher of d. shantottos alter ego
-             --[[
+             ]]--
             --- Month 2 ---------------------------------------------
 
             10134, -- cipher of star sibyls alter ego
@@ -76,7 +76,7 @@ local prizes =
             10074, -- ♪doll
             10075, -- ♪red raptor
             10076, -- ♪golden bomb
-
+            --[[
             --- Month 3 ---------------------------------------------
             10179, -- cipher of teodors alter ego
             10183, -- cipher of darrcuilns alter ego
@@ -94,7 +94,7 @@ local prizes =
         ['price'] = 100,
         ['items'] =
         {
-
+            --[[
             --- Month 1 ---------------------------------------------
             10136, -- cipher of ukas alter ego
             10141, -- cipher of kuyins alter ego
@@ -107,7 +107,7 @@ local prizes =
             10053, -- ♪bomb
             10054, -- ♪ram
             10150, -- cipher of lhes alter ego
-            --[[
+            ]]--
             --- Month 2 ---------------------------------------------
 
             10151, -- cipher of mayakovs alter ego
@@ -119,7 +119,7 @@ local prizes =
             10058, -- ♪beetle
             10059, -- ♪moogle
             10060, -- ♪magic pot
-
+            --[[
             --- Month 3 ---------------------------------------------
             10161, -- cipher of rongeloutss alter ego
             10166, -- cipher of robel-akbels alter ego
@@ -144,7 +144,7 @@ local prizes =
             4066, -- copy of rems tale, chapter 3
             4067, -- copy of rems tale, chapter 4
             4068, -- copy of rems tale, chapter 5
-
+            --[[
             --- Month 1 ---------------------------------------------
             27760, -- chocobo masque +1
             27906, -- chocobo suit +1
@@ -155,7 +155,7 @@ local prizes =
             27468, -- Starlet Boots
             25715, -- Korrigan Suite
             25639, -- Korrigan Masque
-            --[[            
+            ]]--            
             --- Month 2 ---------------------------------------------
 
             25658, -- Wyrm. Masque +1
@@ -165,7 +165,7 @@ local prizes =
             27111, -- Agent Cuffs
             27296, -- Agent Pants
             27467, -- Agent Boots
-
+            --[[
             --- Month 3 ---------------------------------------------
             1854, -- deed of moderation
             1851, -- deed of placidity
@@ -191,7 +191,7 @@ local prizes =
             15737, -- sarutobi kyahan
              3676, -- celestial globe
              4254, -- Megalixir
-
+            --[[
             --- Month 1 ---------------------------------------------
             20713, -- Excalipoor
             20666, -- Blizzard Brand
@@ -199,7 +199,7 @@ local prizes =
             11854, -- Novennial Dress
             10431, -- decennial tiara
             10252, -- decennial dress
-            --[[                     
+            ]]--                    
             --- Month 2 ---------------------------------------------
 
             20668, -- Fire Tongue
@@ -210,7 +210,7 @@ local prizes =
             11853, -- Novennial Coat
             11953, -- Novennial Hose
             10593, -- Decennial tights
-
+            --[[
             --- Month 3 ---------------------------------------------
             1850, -- first virtue
             1853, -- second virtue
@@ -238,12 +238,12 @@ local prizes =
             3353, -- Barbaric Bijou
             3354, -- Steelwall BiJou
             3356, -- Roving Bijou
-
+            --[[
             --- Month 1 ---------------------------------------------
             3339, -- Honey Wine
             3341, -- Beastly Shank
             3343, -- Blue Pond Water
-            --[[            
+            ]]--            
             --- Month 2 ---------------------------------------------
 
             1419, -- Spring Stone
@@ -254,7 +254,7 @@ local prizes =
             1422, -- Gem of the West
             1424, -- Gem of the North
             1420, -- Gem of the South
-
+            --[[
             --- Month 3 ---------------------------------------------
             1848, -- fourth virtue
             1847, -- fifth virtue
@@ -283,18 +283,18 @@ local prizes =
             3458, -- undying juju
             3459, -- heralds juju
             3358, -- Shrouded Bijou
-
+            --[[
             --- Month 1 ---------------------------------------------
             15543, -- rajas ring
             15544, -- sattva ring
             15545, -- tamas ring
-            --[[            
+            ]]--            
             --- Month 2 ---------------------------------------------
 
             15807, -- balrahns ring
             15808, -- ulthalams ring
             15809, -- jalzahns ring
-
+            --[[
             --- Month 3 ---------------------------------------------
             15962, -- static earring
             15963, -- magnetic earring
@@ -315,13 +315,13 @@ local prizes =
             3344, -- Red Pondweed
             8720, -- Maliya. Coral Orb
             10178, -- cipher of ullegores alter ego
-
+            --[[
             --- Month 1 ---------------------------------------------
             10193, -- cipher of monberauxs alter ego
             28419, -- hachirin-no-obi
             18852, -- octave club
             25679, -- white rarab cap +1
-             --[[                       
+             ]]--                       
             --- Month 2 ---------------------------------------------
 
             8722, -- Hepatizon Ingot
@@ -329,7 +329,7 @@ local prizes =
             10120, -- cipher of lehkos alter ego
             19163, -- nightfall
             28450, -- chaac belt
-
+            --[[
             --- Month 3 ---------------------------------------------
             8726, -- Exalted Lumber
             8728, -- Sif's Macrame
