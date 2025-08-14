@@ -154,14 +154,14 @@ local JSEAugs =
 [ 7] = {trade = {28623, 9049}, base = 28623, aug1 = 513, aug1MAX =  4, aug2 =  514, aug2MAX =  4, aug3 =   39, aug3MAX =  6, aug4 =  368, aug4MAX =  4, cost = 400}, --Weard Mantle
 [ 8] = {trade = {28624, 9049}, base = 28624, aug1 =  25, aug1MAX = 14, aug2 =  293, aug2MAX =  9, aug3 =  343, aug3MAX = 24, aug4 = 1592, aug4MAX =  0, cost = 400}, --Niht Mantle
 [ 9] = {trade = {28625, 9049}, base = 28625, aug1 = 550, aug1MAX =  4, aug2 =   23, aug2MAX =  4, aug3 =  106, aug3MAX = 19, aug4 =  112, aug4MAX =  4, cost = 400}, --Pastoralists Mantle
-[10] = {trade = {28626, 9049}, base = 28626, aug1 =   1, aug1MAX = 29, aug2 =   35, aug2MAX =  6, aug3 =   39, aug3MAX =  9, aug4 =   71, aug4MAX =  2, cost = 400}, --Rhapsodes Cape
+[10] = {trade = {28626, 9049}, base = 28626, aug1 =   1, aug1MAX = 29, aug2 =   35, aug2MAX =  6, aug3 =   40, aug3MAX =  9, aug4 =   71, aug4MAX =  2, cost = 400}, --Rhapsodes Cape
 [11] = {trade = {28627, 9049}, base = 28627, aug1 = 513, aug1MAX =  4, aug2 =  515, aug2MAX =  4, aug3 =  142, aug3MAX =  2, aug4 =  211, aug4MAX =  2, cost = 400}, --Lutian Cape
 [12] = {trade = {28628, 9049}, base = 28628, aug1 = 512, aug1MAX =  4, aug2 =  142, aug2MAX =  2, aug3 =  198, aug3MAX =  4, aug4 = 1264, aug4MAX =  7, cost = 400}, --Takaha Mantle
 [13] = {trade = {28629, 9049}, base = 28629, aug1 = 512, aug1MAX =  4, aug2 =  513, aug2MAX =  4, aug3 =  332, aug3MAX =  4, aug4 = 1592, aug4MAX =  0, cost = 400}, --Yokaze Mantle
-[14] = {trade = {28630, 9049}, base = 28630, aug1 = 512, aug1MAX =  4, aug2 = 1592, aug2MAX =  0, aug3 =  112, aug3MAX =  4, aug4 =  121, aug4MAX =  4, cost = 400}, --Updraft Mantle
+[14] = {trade = {28630, 9049}, base = 28630, aug1 = 512, aug1MAX =  4, aug2 = 1592, aug2MAX =  0, aug3 =  112, aug3MAX =  4, aug4 =  121, aug4MAX =  9, cost = 400}, --Updraft Mantle
 [15] = {trade = {28631, 9049}, base = 28631, aug1 = 294, aug1MAX =  4, aug2 =  369, aug2MAX =  4, aug3 =  320, aug3MAX =  2, aug4 =  104, aug4MAX = 14, cost = 400}, --Conveyance Cape
 [16] = {trade = {28632, 9049}, base = 28632, aug1 =   9, aug1MAX = 29, aug2 =  513, aug2MAX =  4, aug3 =   23, aug3MAX =  6, aug4 =  299, aug4MAX =  9, cost = 400}, --Cornflower Cape
-[17] = {trade = {28633, 9049}, base = 28633, aug1 = 133, aug1MAX =  4, aug2 =   39, aug2MAX =  4, aug3 =  340, aug3MAX =  4, aug4 = 1592, aug4MAX =  0, cost = 400}, --Gunslingers Cape
+[17] = {trade = {28633, 9049}, base = 28633, aug1 = 133, aug1MAX =  4, aug2 =   40, aug2MAX =  4, aug3 =  340, aug3MAX =  4, aug4 = 1592, aug4MAX =  0, cost = 400}, --Gunslingers Cape
 [18] = {trade = {28634, 9049}, base = 28634, aug1 = 512, aug1MAX =  4, aug2 =  513, aug2MAX =  4, aug3 =  151, aug3MAX = 19, aug4 =  122, aug4MAX = 24, cost = 400}, --Dispersal Mantle
 [19] = {trade = {28635, 9049}, base = 28635, aug1 = 142, aug1MAX =  4, aug2 =  146, aug2MAX =  4, aug3 =  370, aug3MAX = 29, aug4 = 1592, aug4MAX =  0, cost = 400}, --Toetapper Mantle
 [20] = {trade = {28636, 9049}, base = 28636, aug1 = 516, aug1MAX =  4, aug2 =  517, aug2MAX =  4, aug3 = 1249, aug3MAX = 19, aug4 =  371, aug4MAX =  9, cost = 400}, --Bookworms Cape

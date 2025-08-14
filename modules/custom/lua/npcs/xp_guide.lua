@@ -416,16 +416,18 @@ page5 =
     },
 }
 
-m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
+
+
+m:addOverride('xi.zones.Bastok_Mines.Zone.onInitialize', function(zone)
     super(zone)
     local exp_guidetwo = zone:insertDynamicEntity({
         objtype = xi.objType.NPC,
         name = 'EXP Guide',
         look = 2433,
-        x         = 354.5341,
-        y         = -2.8338,
-        z         = -545.1909,
-        rotation = 196,
+        x         = 20.0531,
+        y         = 0.0000,
+        z         = -111.4293,
+        rotation = 3,
         widescan = 1,
         onTrade = function(player, npc, trade)
         end,
@@ -438,10 +440,10 @@ m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
         objtype = xi.objType.NPC,
         name = 'Merit Guide',
         look = 2433,
-        x         = 356.8286,
-        y         = -2.7344,
-        z         = -545.3015,
-        rotation = 196,
+        x         = 20.5386,
+        y         = 0.0000,
+        z         = -107.9352,
+        rotation = 3,
         widescan = 1,
         onTrade = function(player, npc, trade)
         end,
@@ -452,5 +454,112 @@ m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
     })
 end)
 
+m:addOverride('xi.zones.Northern_San_dOria.Zone.onInitialize', function(zone)
+    super(zone)
+    local exp_guideone = zone:insertDynamicEntity({
+        objtype = xi.objType.NPC,
+        name = 'EXP Guide',
+        look = 2433,
+        x         = 78.7980,
+        y         = 0.000,
+        z         = 7.0669,
+        rotation = 100,
+        widescan = 1,
+        onTrade = function(player, npc, trade)
+        end,
+        onTrigger = function(player, npc)
+     menu.options = page1
+     delaySendMenu(player)
+        end,
+    })
+    local mrt_guideone = zone:insertDynamicEntity({
+        objtype = xi.objType.NPC,
+        name = 'Merit Guide',
+        look = 2433,
+        x         = 80.2230,
+        y         = 0.0000,
+        z         = 5.5288,
+        rotation = 100,
+        widescan = 1,
+        onTrade = function(player, npc, trade)
+        end,
+        onTrigger = function(player, npc)
+     menu.options = page5
+     delaySendMenu(player)
+        end,
+    })
+end)
+
+m:addOverride('xi.zones.Port_Windurst.Zone.onInitialize', function(zone)
+    super(zone)
+    local exp_guidethree = zone:insertDynamicEntity({
+        objtype = xi.objType.NPC,
+        name = 'EXP Guide',
+        look = 2433,
+        x         = -221.9980,
+        y         = -8.1233,
+        z         = 178.3394,
+        rotation = 59,
+        widescan = 1,
+        onTrade = function(player, npc, trade)
+        end,
+        onTrigger = function(player, npc)
+     menu.options = page1
+     delaySendMenu(player)
+        end,
+    })
+    local mrt_guidethree = zone:insertDynamicEntity({
+        objtype = xi.objType.NPC,
+        name = 'Merit Guide',
+        look = 2433,
+        x         = -226.1122,
+        y         = -8.2927,
+        z         = 177.9062,
+        rotation = 59,
+        widescan = 1,
+        onTrade = function(player, npc, trade)
+        end,
+        onTrigger = function(player, npc)
+     menu.options = page5
+     delaySendMenu(player)
+        end,
+    })
+end)
+
+m:addOverride('xi.zones.RuLude_Gardens.Zone.onInitialize', function(zone)
+    super(zone)
+    local exp_guidefour = zone:insertDynamicEntity({
+        objtype = xi.objType.NPC,
+        name = 'EXP Guide',
+        look = 2433,
+        x         = 42.8837,
+        y         = 10.0000,
+        z         = -70.9866,
+        rotation = 127,
+        widescan = 1,
+        onTrade = function(player, npc, trade)
+        end,
+        onTrigger = function(player, npc)
+     menu.options = page1
+     delaySendMenu(player)
+        end,
+    })
+    local mrt_guidefour = zone:insertDynamicEntity({
+        objtype = xi.objType.NPC,
+        name = 'Merit Guide',
+        look = 2433,
+        x         = 42.9253,
+        y         = 10.0000,
+        z         = -73.0407,
+        rotation = 127,
+        widescan = 1,
+        onTrade = function(player, npc, trade)
+        end,
+        onTrigger = function(player, npc)
+     menu.options = page5
+     delaySendMenu(player)
+        end,
+    })
+end)
 return m
 
