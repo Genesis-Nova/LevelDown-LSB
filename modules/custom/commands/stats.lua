@@ -113,7 +113,7 @@ player:printToPlayer(string.format('DEF: [%i] Magic DEF: [%i] EVA: [%i] Magic EA
 
 player:printToPlayer(string.format('Dmg Taken: [%i%%] Magic DT: [%i%%] Magic DT II: [%i%%] Phy DT: [%i%%] Phy DT II: [%i%%]', target:getMod(xi.mod.DMG) * .01, target:getMod(xi.mod.DMGMAGIC) * .01, target:getMod(xi.mod.DMGMAGIC_II) * .01, target:getMod(xi.mod.DMGPHYS) * .01, target:getMod(xi.mod.DMGPHYS_II) * .01), xi.msg.channel.SYSTEM_3)
 
-player:printToPlayer(string.format('Magic ACC: [%i] Magic ATT: [%i] Magic Burst: [%i%%] Magic Att Bonus: [%i]', target:getMod(xi.mod.MACC), target:getMod(xi.mod.MATT), target:getMod(xi.mod.MAGIC_BURST_BONUS_CAPPED), target:getMod(xi.mod.MAGIC_DAMAGE)), xi.msg.channel.SYSTEM_3)
+player:printToPlayer(string.format('Magic ACC: [%i] Magic DMG: [%i] Magic Burst: [%i%%] Magic Att Bonus: [%i]', target:getMod(xi.mod.MACC), target:getMod(xi.mod.MAGIC_DAMAGE), target:getMod(xi.mod.MAGIC_BURST_BONUS_CAPPED), target:getMod(xi.mod.MATT)), xi.msg.channel.SYSTEM_3)
 
 player:printToPlayer(string.format('Haste Ability: [%i%%] Haste Magic: [%i%%] Haste Gear: [%i%%] Fast Cast: [%i%%]', target:getMod(xi.mod.HASTE_ABILITY) * .01, target:getMod(xi.mod.HASTE_MAGIC) * .01, target:getMod(xi.mod.HASTE_GEAR) * .01, target:getMod(xi.mod.FASTCAST)), xi.msg.channel.SYSTEM_3)
 
@@ -123,8 +123,7 @@ player:printToPlayer(string.format('Refresh / Tick: [%i] Regen / Tick: [%i] Rega
 
 player:printToPlayer(string.format('Quick Magic: [%i%%] Cure Potency: [%i%%] Cure Ptency II: [%i%%]', target:getMod(xi.mod.QUICK_MAGIC) * .01, target:getMod(xi.mod.CURE_POTENCY) * .01, target:getMod(xi.mod.CURE_POTENCY_II) * .01), xi.msg.channel.SYSTEM_3)
 
-player:printToPlayer(string.format('Crit Hit Rate: [%i%%]', target:getMod(xi.mod.CRITHITRATE)), xi.msg.channel.SYSTEM_3)
-
+player:printToPlayer(string.format('Crit Hit Rate: [%i] Crit Hit DMG: [%i] Double Attack [%i] Triple Attack [%i] Quadruple Attack [%i]', target:getMod(xi.mod.CRITHITRATE), target:getMod(xi.mod.CRIT_DMG_INCREASE), target:getMod(xi.mod.DOUBLE_ATTACK), target:getMod(xi.mod.TRIPLE_ATTACK), target:getMod(xi.mod.QUAD_ATTACK)), xi.msg.channel.SYSTEM_3)
 
 player:printToPlayer(string.format('Your enmity against %s is ... CE = %u ... VE = %u', target:getName(), target:getCE(player), target:getVE(player)), xi.msg.channel.SYSTEM_3)
 
