@@ -264,7 +264,7 @@ INSERT INTO `abilities` VALUES (246,'afflatus_misery',3,40,1,60,30,0,0,217,2000,
 INSERT INTO `abilities` VALUES (247,'composure',5,50,1,300,50,0,0,215,2000,0,6,20.0,0,1,80,0,4,'WOTG');
 INSERT INTO `abilities` VALUES (248,'yonin',13,40,1,180,146,0,0,218,2000,0,6,20.0,0,1,600,0,4,'WOTG');
 INSERT INTO `abilities` VALUES (249,'innin',13,40,1,180,147,0,0,219,2000,0,6,20.0,0,1,60,0,4,'WOTG');
-INSERT INTO `abilities` VALUES (250,'avatars_favor',15,55,1,300,176,100,0,94,2000,0,6,10.0,1,1,80,0,0,'WOTG');
+INSERT INTO `abilities` VALUES (250,'avatars_favor',15,55,1,300,176,100,0,94,2000,0,6,10.0,1,1,80,0,256,'WOTG');
 INSERT INTO `abilities` VALUES (251,'ready',9,25,1,0,102,0,0,83,2000,0,6,18.0,0,0,0,902,64,NULL);
 INSERT INTO `abilities` VALUES (252,'restraint',1,77,1,600,9,100,0,220,2000,0,6,20.0,0,1,300,0,0,'WOTG');
 INSERT INTO `abilities` VALUES (253,'perfect_counter',2,79,1,60,22,100,0,221,2000,0,6,20.0,0,1,80,0,0,NULL);
@@ -294,8 +294,8 @@ INSERT INTO `abilities` VALUES (277,'sepulcher',7,87,4,300,41,100,0,253,2000,0,6
 INSERT INTO `abilities` VALUES (278,'palisade',7,95,1,300,42,100,0,253,2000,0,6,20.0,0,900,1800,0,0,NULL);
 INSERT INTO `abilities` VALUES (279,'arcane_crest',8,87,4,300,43,100,0,250,2000,0,6,20.0,0,1,80,0,0,NULL); -- needs animation
 INSERT INTO `abilities` VALUES (280,'scarlet_delirium',8,95,1,90,44,100,0,250,2000,0,6,20.0,0,1,80,0,0,NULL);
--- INSERT INTO `abilities` VALUES (281,'spur',9,83,1,180,45,100,0,255,2000,0,6,20.0,0,0,0,0,0,NULL);
--- INSERT INTO `abilities` VALUES (282,'run_wild',9,93,1,900,46,100,0,255,2000,0,6,20.0,0,0,0,0,0,NULL); -- needs animation
+INSERT INTO `abilities` VALUES (281,'spur',9,83,1,180,45,100,0,255,2000,0,6,20.0,0,0,0,0,0,NULL);
+INSERT INTO `abilities` VALUES (282,'run_wild',9,93,1,900,46,100,0,247,2000,0,6,20.0,0,0,0,0,0,NULL);
 INSERT INTO `abilities` VALUES (283,'tenuto',10,83,1,5,47,0,0,257,2000,0,6,20.0,0,0,0,0,0,'ABYSSEA');
 INSERT INTO `abilities` VALUES (284,'marcato',10,95,1,600,48,0,0,251,2000,0,6,20.0,0,0,0,0,0,'ABYSSEA');
 INSERT INTO `abilities` VALUES (285,'bounty_shot',11,87,4,60,51,100,0,189,2000,0,3,21.0,0,0,0,0,0,NULL);
@@ -335,7 +335,7 @@ INSERT INTO `abilities` VALUES (327,'stymie',5,96,1,3600,254,100,0,275,2000,0,6,
 INSERT INTO `abilities` VALUES (328,'larceny',6,96,4,3600,254,453,0,181,2000,0,3,4.0,0,0,0,0,0,NULL);
 INSERT INTO `abilities` VALUES (329,'intervene',7,96,4,3600,254,110,0,120,2000,0,3,4.0,0,0,340,0,0,NULL);
 INSERT INTO `abilities` VALUES (330,'soul_enslavement',8,96,1,3600,254,100,0,278,2000,0,6,0.0,0,0,0,0,0,NULL);
-INSERT INTO `abilities` VALUES (331,'unleash',9,96,1,3600,254,100,0,279,2000,0,6,0.0,0,0,0,0,0,NULL); -- check animation
+INSERT INTO `abilities` VALUES (331,'unleash',9,96,1,3600,254,100,0,279,2000,0,6,0.0,0,0,0,0,0,NULL);
 INSERT INTO `abilities` VALUES (332,'clarion_call',10,96,1,3600,254,100,0,280,2000,0,6,0.0,0,0,0,0,0,NULL); -- check animation
 INSERT INTO `abilities` VALUES (333,'overkill',11,96,1,3600,254,100,0,281,2000,0,6,0.0,0,0,0,0,0,NULL);
 INSERT INTO `abilities` VALUES (334,'yaegasumi',12,96,1,3600,254,100,0,282,2000,0,6,0.0,0,0,0,0,0,NULL); -- check animation
@@ -523,7 +523,7 @@ INSERT INTO `abilities` VALUES (667,'blindside',15,99,4,60,173,0,0,94,2000,0,6,1
 -- INSERT INTO `abilities` VALUES (668,'deconstruction',22,1,1,0,300,0,0,???,2000,0,6,20.0,0,450,900,0,0,NULL);
 -- INSERT INTO `abilities` VALUES (669,'chronoshift',22,1,1,0,300,0,0,???,2000,0,6,20.0,0,450,900,0,0,NULL);
 -- INSERT INTO `abilities` VALUES (670,'zantetsuken',22,1,1,0,300,0,0,???,2000,0,6,20.0,0,450,900,0,0,NULL);
--- INSERT INTO `abilities` VALUES (671,'perfect Defense',22,1,1,0,300,0,0,???,2000,0,6,20.0,0,450,900,0,0,NULL);
+INSERT INTO `abilities` VALUES (671,'perfect_defense',15,75,1,0,300,0,0,152,2000,0,6,18.0,0,0,0,0,2,NULL);
 INSERT INTO `abilities` VALUES (672,'foot_kick',9,25,257,1,102,0,0,0,2000,0,6,18.0,0,1,60,0,0,NULL);
 INSERT INTO `abilities` VALUES (673,'dust_cloud',9,25,257,1,102,0,0,0,2000,0,6,18.0,0,1,60,0,0,NULL);
 INSERT INTO `abilities` VALUES (674,'whirl_claws',9,25,257,1,102,0,0,0,2000,0,6,18.0,0,1,60,0,0,NULL);

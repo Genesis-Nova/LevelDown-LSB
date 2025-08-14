@@ -40,7 +40,6 @@
 #include "packets/char_abilities.h"
 #include "packets/char_appearance.h"
 #include "packets/char_equip.h"
-#include "packets/char_health.h"
 #include "packets/char_job_extra.h"
 #include "packets/char_jobs.h"
 #include "packets/char_recast.h"
@@ -48,9 +47,7 @@
 #include "packets/char_stats.h"
 #include "packets/char_status.h"
 #include "packets/char_sync.h"
-#include "packets/chat_message.h"
 #include "packets/conquest_map.h"
-#include "packets/delivery_box.h"
 #include "packets/inventory_assign.h"
 #include "packets/inventory_count.h"
 #include "packets/inventory_finish.h"
@@ -62,21 +59,24 @@
 #include "packets/menu_merit.h"
 #include "packets/message_basic.h"
 #include "packets/message_combat.h"
-#include "packets/message_special.h"
 #include "packets/message_standard.h"
 #include "packets/monipulator1.h"
 #include "packets/monipulator2.h"
 #include "packets/objective_utility.h"
 #include "packets/quest_mission_log.h"
+#include "packets/roe_questlog.h"
 #include "packets/roe_sparkupdate.h"
+#include "packets/roe_update.h"
 #include "packets/server_ip.h"
 
 #include "ability.h"
 #include "alliance.h"
+#include "aman.h"
 #include "conquest_system.h"
 #include "grades.h"
 #include "ipc_client.h"
 #include "item_container.h"
+#include "items.h"
 #include "latent_effect_container.h"
 #include "linkshell.h"
 #include "map_networking.h"
@@ -101,12 +101,13 @@
 #include "battleutils.h"
 #include "blueutils.h"
 #include "charutils.h"
-#include "enums/key_items.h"
 #include "itemutils.h"
 #include "petutils.h"
 #include "puppetutils.h"
 #include "synthutils.h"
 #include "zoneutils.h"
+
+#include "enums/key_items.h"
 
 /************************************************************************
  *                                                                       *
@@ -382,7 +383,7 @@ namespace charutils
      *                                                                       *
      ************************************************************************/
 
-    auto LoadChar(uint32 charId) -> std::unique_ptr<CCharEntity>
+    auto LoadChar(const uint32 charId) -> std::unique_ptr<CCharEntity>
     {
         TracyZoneScoped;
 
@@ -426,7 +427,6 @@ namespace charutils
                                "playtime, "
                                "gmlevel, "
                                "languages, "
-                               "mentor, "
                                "job_master, "
                                "campaign_allegiance, "
                                "isstylelocked, "
@@ -481,12 +481,11 @@ namespace charutils
             PChar->search.language = rset->get<uint8>("languages");
 
             PChar->m_GMlevel          = rset->get<uint8>("gmlevel");
-            PChar->m_mentorUnlocked   = rset->get<uint32>("mentor") > 0;
             PChar->m_jobMasterDisplay = rset->get<uint32>("job_master") > 0;
 
-            uint32 playerSettings = rset->get<uint32>("settings");
-            uint32 MessageFilter  = rset->get<uint32>("chatfilters_1");
-            uint32 MessageFilter2 = rset->get<uint32>("chatfilters_2");
+            const auto playerSettings = rset->get<uint32>("settings");
+            const auto MessageFilter  = rset->get<uint32>("chatfilters_1");
+            const auto MessageFilter2 = rset->get<uint32>("chatfilters_2");
 
             std::memcpy(&PChar->playerConfig, &playerSettings, sizeof(uint32_t));
             std::memcpy(&PChar->playerConfig.MessageFilter, &MessageFilter, sizeof(uint32_t));
@@ -1220,6 +1219,31 @@ namespace charutils
         // Current Nation, Zilart, COP, Add-On, SOA, and ROV missions are all sent in a shared, single packet.
         // So sending this packet updates multiple Mission logs at once.
         PChar->pushPacket<CQuestMissionLogPacket>(PChar, MISSION_ZILART, LOG_MISSION_CURRENT);
+    }
+
+    void SendRecordsOfEminenceLog(CCharEntity* PChar)
+    {
+        // Send spark updates
+        PChar->pushPacket<CRoeSparkUpdatePacket>(PChar);
+
+        if (settings::get<bool>("main.ENABLE_ROE"))
+        {
+            // Current RoE quests
+            PChar->pushPacket<CRoeUpdatePacket>(PChar);
+
+            // Players logging in to a new timed record get one-time message
+            if (PChar->m_eminenceCache.notifyTimedRecord)
+            {
+                PChar->m_eminenceCache.notifyTimedRecord = false;
+                PChar->pushPacket<CMessageBasicPacket>(PChar, PChar, roeutils::GetActiveTimedRecord(), 0, MSGBASIC_ROE_TIMED);
+            }
+
+            // 4-part Eminence Completion bitmap
+            for (int i = 0; i < 4; i++)
+            {
+                PChar->pushPacket<CRoeQuestLogPacket>(PChar, i);
+            }
+        }
     }
 
     /************************************************************************
@@ -2274,6 +2298,13 @@ namespace charutils
             CItemWeapon* PWeapon = dynamic_cast<CItemWeapon*>(PItem);
             CItemWeapon* AWeapon = dynamic_cast<CItemWeapon*>(AItem);
 
+            // Marvelous Cheer special case
+            // It is not technically a Wind Instrument, but it can lockstyle one.
+            if (AItem->getID() == MARVELOUS_CHEER && PWeapon->getSkillType() == SKILL_WIND_INSTRUMENT)
+            {
+                return HasItem(PChar, AItem->getID());
+            }
+
             if (PWeapon && AWeapon && PWeapon->getSkillType() == AWeapon->getSkillType())
             {
                 return HasItem(PChar, AItem->getID()) && canEquipItemOnAnyJob(PChar, AItem);
@@ -3224,6 +3255,82 @@ namespace charutils
         }
     }
 
+    // determines if this player has bonus for this skill based on the active sch arts
+    bool isArtsBonusActive(CCharEntity* PChar, SKILLTYPE SkillID)
+    {
+        return (SkillID >= SKILL_DIVINE_MAGIC && SkillID <= SKILL_ENFEEBLING_MAGIC &&
+                PChar->StatusEffectContainer->HasStatusEffect({ EFFECT_LIGHT_ARTS, EFFECT_ADDENDUM_WHITE })) ||
+               (SkillID >= SKILL_ENFEEBLING_MAGIC && SkillID <= SKILL_DARK_MAGIC &&
+                PChar->StatusEffectContainer->HasStatusEffect({ EFFECT_DARK_ARTS, EFFECT_ADDENDUM_BLACK }));
+    }
+
+    // calculates the bonus skill based on active sch arts
+    int16 ArtsBonusSkill(CCharEntity* PChar, SKILLTYPE SkillID)
+    {
+        int16 skillBonus = 0;
+
+        uint16 maxMainSkill = battleutils::GetMaxSkill(SkillID, PChar->GetMJob(), PChar->GetMLevel());
+        uint16 maxSubSkill  = battleutils::GetMaxSkill(SkillID, PChar->GetSJob(), PChar->GetSLevel());
+
+        uint16 artsSkill    = battleutils::GetMaxSkill(SKILL_ENHANCING_MAGIC, JOB_RDM, PChar->GetMLevel());                               // B+ skill
+        uint16 skillCapD    = battleutils::GetMaxSkill(SkillID, JOB_SCH, PChar->GetMLevel());                                             // D skill cap
+        uint16 skillCapE    = battleutils::GetMaxSkill(SKILL_DARK_MAGIC, JOB_RDM, PChar->GetMLevel());                                    // E skill cap
+        auto   currentSkill = std::clamp<uint16>((PChar->RealSkills.skill[(int32)SkillID] / 10), 0, std::max(maxMainSkill, maxSubSkill)); // working skill before bonuses
+        uint16 artsBaseline = 0;                                                                                                          // Level based baseline to which to raise skills
+        uint8  mLevel       = PChar->GetMLevel();
+        if (mLevel < 51)
+        {
+            artsBaseline = (uint16)(5 + 2.7 * (mLevel - 1));
+        }
+        else if (mLevel < 61)
+        {
+            artsBaseline = (uint16)(137 + 4.7 * (mLevel - 50));
+        }
+        else if (mLevel < 71)
+        {
+            artsBaseline = (uint16)(184 + 3.7 * (mLevel - 60));
+        }
+        else if (mLevel < 75)
+        {
+            artsBaseline = (uint16)(221 + 5.0 * (mLevel - 70));
+        }
+        else // >= 75
+        {
+            artsBaseline = skillCapD + 36;
+        }
+
+        if (currentSkill < skillCapE)
+        {
+            // If the player's skill is below the E cap
+            // give enough bonus points to raise it to the arts baseline
+            skillBonus += std::max(artsBaseline - currentSkill, 0);
+        }
+        else if (currentSkill < skillCapD)
+        {
+            // if the skill is at or above the E cap but below the D cap
+            // raise it up to the B+ skill cap minus the difference between the current skill rank and the scholar base skill cap (D)
+            // i.e. give a bonus of the difference between the B+ skill cap and the D skill cap
+            skillBonus += std::max((artsSkill - skillCapD), 0);
+        }
+        else if (currentSkill < artsSkill)
+        {
+            // If the player's skill is at or above the D cap but below the B+ cap
+            // give enough bonus points to raise it to the B+ cap
+            skillBonus += std::max(artsSkill - currentSkill, 0);
+        }
+
+        if (PChar->StatusEffectContainer->HasStatusEffect({ EFFECT_LIGHT_ARTS, EFFECT_ADDENDUM_WHITE }))
+        {
+            skillBonus += PChar->getMod(Mod::LIGHT_ARTS_SKILL);
+        }
+        else
+        {
+            skillBonus += PChar->getMod(Mod::DARK_ARTS_SKILL);
+        }
+
+        return skillBonus;
+    }
+
     /************************************************************************
      *                                                                       *
      *  Collect the work table of the character skills based on real.        *
@@ -3289,64 +3396,9 @@ namespace charutils
             int16  skillBonus   = 0;
 
             // apply arts bonuses
-            if ((i >= SKILL_DIVINE_MAGIC && i <= SKILL_ENFEEBLING_MAGIC && PChar->StatusEffectContainer->HasStatusEffect({ EFFECT_LIGHT_ARTS, EFFECT_ADDENDUM_WHITE })) ||
-                (i >= SKILL_ENFEEBLING_MAGIC && i <= SKILL_DARK_MAGIC && PChar->StatusEffectContainer->HasStatusEffect({ EFFECT_DARK_ARTS, EFFECT_ADDENDUM_BLACK })))
+            if (isArtsBonusActive(PChar, static_cast<SKILLTYPE>(i)))
             {
-                uint16 artsSkill    = battleutils::GetMaxSkill(SKILL_ENHANCING_MAGIC, JOB_RDM, PChar->GetMLevel());                  // B+ skill
-                uint16 skillCapD    = battleutils::GetMaxSkill((SKILLTYPE)i, JOB_SCH, PChar->GetMLevel());                           // D skill cap
-                uint16 skillCapE    = battleutils::GetMaxSkill(SKILL_DARK_MAGIC, JOB_RDM, PChar->GetMLevel());                       // E skill cap
-                auto   currentSkill = std::clamp<uint16>((PChar->RealSkills.skill[i] / 10), 0, std::max(maxMainSkill, maxSubSkill)); // working skill before bonuses
-                uint16 artsBaseline = 0;                                                                                             // Level based baseline to which to raise skills
-                uint8  mLevel       = PChar->GetMLevel();
-                if (mLevel < 51)
-                {
-                    artsBaseline = (uint16)(5 + 2.7 * (mLevel - 1));
-                }
-                else if (mLevel < 61)
-                {
-                    artsBaseline = (uint16)(137 + 4.7 * (mLevel - 50));
-                }
-                else if (mLevel < 71)
-                {
-                    artsBaseline = (uint16)(184 + 3.7 * (mLevel - 60));
-                }
-                else if (mLevel < 75)
-                {
-                    artsBaseline = (uint16)(221 + 5.0 * (mLevel - 70));
-                }
-                else // >= 75
-                {
-                    artsBaseline = skillCapD + 36;
-                }
-
-                if (currentSkill < skillCapE)
-                {
-                    // If the player's skill is below the E cap
-                    // give enough bonus points to raise it to the arts baseline
-                    skillBonus += std::max(artsBaseline - currentSkill, 0);
-                }
-                else if (currentSkill < skillCapD)
-                {
-                    // if the skill is at or above the E cap but below the D cap
-                    // raise it up to the B+ skill cap minus the difference between the current skill rank and the scholar base skill cap (D)
-                    // i.e. give a bonus of the difference between the B+ skill cap and the D skill cap
-                    skillBonus += std::max((artsSkill - skillCapD), 0);
-                }
-                else if (currentSkill < artsSkill)
-                {
-                    // If the player's skill is at or above the D cap but below the B+ cap
-                    // give enough bonus points to raise it to the B+ cap
-                    skillBonus += std::max(artsSkill - currentSkill, 0);
-                }
-
-                if (PChar->StatusEffectContainer->HasStatusEffect({ EFFECT_LIGHT_ARTS, EFFECT_ADDENDUM_WHITE }))
-                {
-                    skillBonus += PChar->getMod(Mod::LIGHT_ARTS_SKILL);
-                }
-                else
-                {
-                    skillBonus += PChar->getMod(Mod::DARK_ARTS_SKILL);
-                }
+                skillBonus += ArtsBonusSkill(PChar, static_cast<SKILLTYPE>(i));
             }
             else if (i >= SKILL_AUTOMATON_MELEE && i <= SKILL_AUTOMATON_MAGIC)
             {
@@ -3665,12 +3717,32 @@ namespace charutils
                     PChar->WorkingSkills.skill[SkillID] |= 0x8000;
                 }
 
+                // check if skillup changed the bonus from sch arts
+                int16 skillBonus = 0;
+                if (isArtsBonusActive(PChar, SkillID))
+                {
+                    skillBonus = ArtsBonusSkill(PChar, SkillID);
+                }
+
                 PChar->RealSkills.skill[SkillID] += SkillAmount;
                 PChar->pushPacket<CMessageBasicPacket>(PChar, PChar, SkillID, SkillAmount, 38);
 
                 if ((CurSkill / 10) < (CurSkill + SkillAmount) / 10) // if gone up a level
                 {
-                    PChar->WorkingSkills.skill[SkillID] += 1;
+                    // Light/Dark Arts artificially boost certain skills
+                    // if skillup happens when real skill is below the base for active arts, don't increment the shown skill
+                    if (isArtsBonusActive(PChar, SkillID))
+                    {
+                        // if the bonus is the same, our real skill was already past the base bonus, so increment the shown skill from skillup
+                        if (skillBonus == ArtsBonusSkill(PChar, SkillID))
+                        {
+                            PChar->WorkingSkills.skill[SkillID] += 1;
+                        }
+                    }
+                    else
+                    {
+                        PChar->WorkingSkills.skill[SkillID] += 1;
+                    }
                     PChar->pushPacket<CCharSkillsPacket>(PChar);
                     PChar->pushPacket<CMessageBasicPacket>(PChar, PChar, SkillID, (CurSkill + SkillAmount) / 10, 53);
 
@@ -3727,7 +3799,7 @@ namespace charutils
      *                                                                       *
      ************************************************************************/
 
-    auto hasKeyItem(CCharEntity* PChar, KeyItem keyItemId) -> bool
+    auto hasKeyItem(const CCharEntity* PChar, const KeyItem keyItemId) -> bool
     {
         const auto keyItemTable = static_cast<uint16_t>(keyItemId) / 512;
         const auto keyItemIndex = static_cast<uint16_t>(keyItemId) % 512;
@@ -3753,6 +3825,20 @@ namespace charutils
         }
 
         return PChar->keys.tables[keyItemTable].seenList[keyItemIndex];
+    }
+
+    void markSeenKeyItem(CCharEntity* PChar, KeyItem keyItemId)
+    {
+        const auto keyItemTable = static_cast<uint16_t>(keyItemId) / 512;
+        const auto keyItemIndex = static_cast<uint16_t>(keyItemId) % 512;
+
+        if (keyItemTable >= MAX_KEYS_TABLE)
+        {
+            ShowWarning("Attempt to mark keyItem in table out of range (%d)!", static_cast<uint16_t>(keyItemId));
+            return;
+        }
+
+        PChar->keys.tables[keyItemTable].seenList[keyItemIndex] = true;
     }
 
     void unseenKeyItem(CCharEntity* PChar, KeyItem keyItemId)
@@ -5607,17 +5693,6 @@ namespace charutils
                          PChar->visibleGmLevel >= 3 ? 1 : 0, PChar->id);
     }
 
-    void SaveMentorFlag(CCharEntity* PChar)
-    {
-        TracyZoneScoped;
-
-        db::preparedStmt("UPDATE chars "
-                         "SET mentor = ? "
-                         "WHERE charid = ? "
-                         "LIMIT 1",
-                         PChar->m_mentorUnlocked, PChar->id);
-    }
-
     void SavePlayerSettings(CCharEntity* PChar)
     {
         TracyZoneScoped;
@@ -6042,6 +6117,16 @@ namespace charutils
         }
     }
 
+    void SaveLastLogout(const CCharEntity* PChar)
+    {
+        TracyZoneScoped;
+
+        db::preparedStmt("UPDATE chars "
+                         "SET last_logout = CURRENT_TIMESTAMP "
+                         "WHERE charid = ?",
+                         PChar->id);
+    }
+
     float AddExpBonus(CCharEntity* PChar, float exp)
     {
         TracyZoneScoped;
@@ -6084,14 +6169,39 @@ namespace charutils
         return exp;
     }
 
-    bool hasMogLockerAccess(CCharEntity* PChar)
+    auto hasMogLockerAccess(const CCharEntity* PChar) -> bool
     {
         TracyZoneScoped;
-        auto tstamp = static_cast<uint32>(PChar->getCharVar("mog-locker-expiry-timestamp"));
+
+        const auto tstamp     = static_cast<uint32>(PChar->getCharVar("mog-locker-expiry-timestamp"));
+        const auto accessType = static_cast<uint32>(PChar->getCharVar("mog-locker-access-type"));
         if (earth_time::vanadiel_timestamp() < tstamp)
         {
-            return true;
+            const auto curZone = PChar->loc.zone;
+            switch (accessType)
+            {
+                case 1: // All areas
+                    // Allowed if in a zone with a Nomad Moogle or in your own Mog House
+                    return curZone->CanUseMisc(MISC_MOGMENU) || PChar->m_moghouseID == PChar->id;
+                case 0: // Al Zahbi only
+                default:
+                    const auto zoneId = curZone->GetID();
+
+                    // Either in your own MH in Al Zahbi or Whitegate
+                    if (PChar->m_moghouseID == PChar->id &&
+                        (zoneId == ZONE_AL_ZAHBI || zoneId == ZONE_AHT_URHGAN_WHITEGATE))
+                    {
+                        return true;
+                    }
+
+                    // Or in Nashmau where a Nomad Moogle is present.
+                    if (zoneId == ZONE_NASHMAU)
+                    {
+                        return true;
+                    }
+            };
         }
+
         return false;
     }
 
@@ -6208,17 +6318,17 @@ namespace charutils
         BuildingCharWeaponSkills(PChar);
     }
 
-    bool CheckAbilityAddtype(CCharEntity* PChar, CAbility* PAbility)
+    auto CheckAbilityAddtype(CCharEntity* PChar, const CAbility* PAbility) -> bool
     {
         if (PAbility->getAddType() & ADDTYPE_MERIT)
         {
-            if (!PChar->PMeritPoints->GetMerit((MERIT_TYPE)PAbility->getMeritModID()))
+            if (!PChar->PMeritPoints->GetMerit(static_cast<MERIT_TYPE>(PAbility->getMeritModID())))
             {
                 ShowWarning("charutils::CheckAbilityAddtype: Attempt to add invalid Merit Ability (%d).", PAbility->getMeritModID());
                 return false;
             }
 
-            if (!(PChar->PMeritPoints->GetMerit((MERIT_TYPE)PAbility->getMeritModID())->count > 0))
+            if (!(PChar->PMeritPoints->GetMerit(static_cast<MERIT_TYPE>(PAbility->getMeritModID()))->count > 0))
             {
                 return false;
             }
@@ -6276,6 +6386,13 @@ namespace charutils
         if (PAbility->getAddType() & ADDTYPE_AVATAR)
         {
             if (!PChar->PPet || PChar->PPet->objtype != TYPE_PET || static_cast<CPetEntity*>(PChar->PPet)->getPetType() != PET_TYPE::AVATAR)
+            {
+                return false;
+            }
+
+            // Alexander and Odin grant no abilities (Assault, Release...) to the master.
+            const auto* petEntity = static_cast<CPetEntity*>(PChar->PPet);
+            if (petEntity->m_PetID == PETID_ALEXANDER || petEntity->m_PetID == PETID_ODIN)
             {
                 return false;
             }
@@ -6826,6 +6943,11 @@ namespace charutils
         // clang-format on
     }
 
+    void IncrementCharVar(uint32 charId, std::string const& var, int32 value)
+    {
+        db::preparedStmt("INSERT INTO char_vars SET charid = ?, varname = ?, value = ? ON DUPLICATE KEY UPDATE value = value + ?", charId, var, value, value);
+    }
+
     void IncrementCharVar(CCharEntity* PChar, std::string const& var, int32 value)
     {
         if (PChar == nullptr)
@@ -6833,7 +6955,7 @@ namespace charutils
             return;
         }
 
-        db::preparedStmt("INSERT INTO char_vars SET charid = ?, varname = ?, value = ? ON DUPLICATE KEY UPDATE value = value + ?", PChar->id, var, value, value);
+        IncrementCharVar(PChar->id, var, value);
 
         PChar->removeFromCharVarCache(var);
     }
@@ -7413,6 +7535,7 @@ namespace charutils
         charutils::SaveCharStats(PChar);
         charutils::SaveCharExp(PChar, PChar->GetMJob());
         charutils::SaveEminenceData(PChar);
+        charutils::SaveLastLogout(PChar);
 
         PChar->status = STATUS_TYPE::DISAPPEAR;
     }
