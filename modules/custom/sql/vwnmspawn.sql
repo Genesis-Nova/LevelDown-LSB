@@ -1,6 +1,6 @@
 
 UPDATE mob_spawn_points SET pos_X = -478.338, pos_y = -0.152,  pos_z = 764.157,  pos_rot = 85  WHERE mobid = 17572221; -- Voidwrought
-UPDATE mob_spawn_points SET pos_X = -273.751, pos_y = -40.202, pos_z = -725.477, pos_rot = 136 WHERE mobid = 17117891; -- 17117891
+UPDATE mob_spawn_points SET pos_X = -273.751, pos_y = -40.202, pos_z = -725.477, pos_rot = 136 WHERE mobid = 17117891; -- Gaunab
 UPDATE mob_spawn_points SET pos_X = -273.087, pos_y = 0.3,     pos_z = -914.407, pos_rot = 103 WHERE mobid = 16793943; -- Bismarck
 UPDATE mob_spawn_points SET pos_X = -223.851, pos_y = -1.589,  pos_z = -495.487, pos_rot = 109 WHERE mobid = 17289664; -- Sabotender_Campeador
 UPDATE mob_spawn_points SET pos_X = -193.038, pos_y = -0.657,  pos_z = 191.900,  pos_rot = 193 WHERE mobid = 17584429; -- Mellonia
@@ -29,19 +29,7 @@ UPDATE mob_spawn_points SET pos_X = 562.442,  pos_y = -10.519, pos_z = 606.098, 
 UPDATE mob_spawn_points SET pos_X = 200.167,  pos_y = -24.028, pos_z = -164.006, pos_rot = 198 WHERE mobid = 17256920; -- Smierc
 
 
-UPDATE npc_list SET status = 0 WHERE npcid = 17809534;
-UPDATE npc_list SET status = 0 WHERE npcid = 17752373;
-UPDATE npc_list SET status = 0 WHERE npcid = 17134277;
-UPDATE npc_list SET status = 0 WHERE npcid = 17122262;
-UPDATE npc_list SET status = 0 WHERE npcid = 17801354;
-UPDATE npc_list SET status = 0 WHERE npcid = 17789016;
-UPDATE npc_list SET status = 0 WHERE npcid = 17228394;
-UPDATE npc_list SET status = 0 WHERE npcid = 17269279;
-UPDATE npc_list SET status = 0 WHERE npcid = 17179523;
-UPDATE npc_list SET status = 0 WHERE npcid = 17105695;
 
-
-UPDATE npc_list SET look = 0x0100060800106620003002400250006000700000 WHERE npcid = 17826146;
                            
 
 
