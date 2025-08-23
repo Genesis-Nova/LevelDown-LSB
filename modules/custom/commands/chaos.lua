@@ -312,7 +312,19 @@ commandObj.onTrigger = function(player)
                         -----------onMobDespawn
                         ---------------------------------------------------------------------------
                         onMobDespawn = function(mob, playerArg, optParams)
+                            local alliance = player:getAlliance()
+                            local partyAllianceCheck = 0
 
+                            if player:checkSoloPartyAlliance() == 2 then
+                                partyAllianceCheck = player:getAlliance()
+                            else
+                                partyAllianceCheck = player:getPartyWithTrusts()
+                            end
+
+                            for _, member in pairs(partyAllianceCheck) do
+                                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                member:delStatusEffect(xi.effect.CONFRONTATION)
+                            end
                         end,
 
                         releaseIdOnDisappear = true,
