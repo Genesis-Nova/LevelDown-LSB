@@ -173,15 +173,17 @@ public:
     bool sendGuild(uint16 guildID, uint8 open, uint8 close, uint8 holiday); // Sends guild shop menu
     void openSendBox() const;                                               // Opens send box (to deliver items)
     void leaveGame();
-    void sendEmote(CLuaBaseEntity* target, uint8 emID, uint8 emMode);
+    void sendEmote(const CLuaBaseEntity* target, uint8 emID, uint8 emMode) const;
 
     // Location and Positioning
-    int16 getWorldAngle(sol::variadic_args va);                                 // return angle (rot) between two points (vector from a to b), aligned to absolute cardinal degree
-    int16 getFacingAngle(CLuaBaseEntity const* target);                         // return angle between entity rot and target pos, aligned to number of degrees of difference
-    bool  isFacing(CLuaBaseEntity const* target, sol::object const& angleArg);  // true if you are facing the target
-    bool  isInfront(CLuaBaseEntity const* target, sol::object const& angleArg); // true if you're infront of the input target
-    bool  isBehind(CLuaBaseEntity const* target, sol::object const& angleArg);  // true if you're behind the input target
-    bool  isBeside(CLuaBaseEntity const* target, sol::object const& angleArg);  // true if you're to the side of the input target
+    int16 getWorldAngle(sol::variadic_args va);                                                // return angle (rot) between two points (vector from a to b), aligned to absolute cardinal degree
+    int16 getFacingAngle(CLuaBaseEntity const* target);                                        // return angle between entity rot and target pos, aligned to number of degrees of difference
+    bool  isFacing(CLuaBaseEntity const* target, sol::object const& angleArg);                 // true if you are facing the target
+    bool  isInfront(CLuaBaseEntity const* target, sol::object const& angleArg);                // true if you're infront of the input target
+    bool  isBehind(CLuaBaseEntity const* target, sol::object const& angleArg);                 // true if you're behind the input target
+    bool  isBeside(CLuaBaseEntity const* target, sol::object const& angleArg);                 // true if you're to the side of the input target
+    auto  isToEntitysLeft(CLuaBaseEntity const* target, sol::object const& angleArg) -> bool;  // true if you're to the left side of the input target (from target's perspective)
+    auto  isToEntitysRight(CLuaBaseEntity const* target, sol::object const& angleArg) -> bool; // true if you're to the right side of the input target (from target's perspective)
 
     auto   getZone(sol::object const& arg0) -> CZone*;
     uint16 getZoneID();
@@ -670,7 +672,7 @@ public:
 
     // Status Effects
     bool  addStatusEffect(sol::variadic_args va);
-    bool  addStatusEffectEx(sol::variadic_args va);
+    auto  addStatusEffectEx(sol::variadic_args va) -> bool;
     auto  getStatusEffect(uint16 StatusID, sol::object const& SubType, sol::object const& SourceType, sol::object const& SourceTypeParam) -> CStatusEffect*;
     auto  getStatusEffectBySource(uint16 StatusID, EffectSourceType SourceType, uint16 SourceTypeParam) -> CStatusEffect*;
     auto  getStatusEffects() -> sol::table;
@@ -704,8 +706,7 @@ public:
     void   fold();
     void   doWildCard(CLuaBaseEntity* PEntity, uint8 total);
     bool   doRandomDeal(CLuaBaseEntity* PTarget);
-    bool   addCorsairRoll(uint8 casterJob, uint8 bustDuration, uint16 effectID, uint16 power, uint32 tick, uint32 duration,
-                          sol::object const& arg6, sol::object const& arg7, sol::object const& arg8);
+    auto   addCorsairRoll(sol::variadic_args va) -> bool;
     bool   hasCorsairEffect();
     bool   hasBustEffect(uint16 id); // Checks to see if a character has a specified busted corsair roll
     uint8  numBustEffects();         // Gets the number of bust effects on the player
@@ -747,6 +748,7 @@ public:
     uint16 getRangedDmgRank();              // Get ranged weapond DMG rating used for calculating rank
     uint16 getAmmoDmg();                    // Get ammo DMG rating
     uint16 getWeaponHitCount(bool offhand); // Get PC weapon hit count (Occasionally Attacks N times weapons)
+    uint32 addDamageFromMultipliers(uint32 damage, PHYSICAL_ATTACK_TYPE attackType, uint8 weaponSlot, bool allowProc);
 
     void removeAmmo();
 
@@ -762,6 +764,7 @@ public:
     int32 takeSpellDamage(CLuaBaseEntity* caster, CLuaSpell* spell, int32 damage, uint8 atkType, uint8 dmgType);
     int32 takeSwipeLungeDamage(CLuaBaseEntity* caster, int32 damage, uint8 atkType, uint8 dmgType);
     int32 checkDamageCap(int32 damage);
+    auto  handleSevereDamage(int32 damage, bool isPhysical) -> int32;
 
     // Pets and Automations
     void spawnPet(sol::object const& arg0);
@@ -905,7 +908,7 @@ public:
     void usePetAbility(uint16 skillId, sol::object const& target) const; // forces a pet to use a pet ability
     auto getAbilityDistance(uint16 skillID) -> float;                    // Returns the specified distance for mob skill
     bool hasTPMoves();
-    void drawIn(sol::variadic_args va); // Forces a mob to draw-in the specified target, or its current target with no args
+    void drawIn(const sol::variadic_args& va) const; // Forces a mob to draw-in the specified target, or its current target with no args
 
     void weaknessTrigger(uint8 level);
     void restoreFromChest(CLuaBaseEntity* PLuaBaseEntity, uint32 restoreType);
