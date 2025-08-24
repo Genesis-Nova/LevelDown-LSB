@@ -2,6 +2,7 @@
 #include "common/sql.h"
 #include "lua/lua_baseentity.h"
 #include "lua/luautils.h"
+#include "map_engine.h"
 #include "map/utils/charutils.h"
 #include "map/utils/moduleutils.h"
 /************************************************************************

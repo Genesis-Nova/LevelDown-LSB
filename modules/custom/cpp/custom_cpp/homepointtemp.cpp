@@ -2,6 +2,7 @@
 #include "common/logging.h"
 #include "common/sql.h"
 #include "lua/luautils.h"
+#include "map_engine.h"
 #include "utils/itemutils.h"
 #include "lua/lua_baseentity.h"
 #include "map/utils/charutils.h"
