@@ -39,8 +39,12 @@ commandObj.onTrigger = function(player, race, target)
 
         local toString = { 'Hume Male', 'Hume Female', 'Elvan Male', 'Elvan Female', 'Taru Male', 'Taru Female', 'Mithra', 'Galka' }
 
+        
+    local playerSize = targ:getSize()
+    local playerFace = targ:getFace()
+
     player:printToPlayer(string.format('You set %s\'s Race to %s', targ:getName(), toString[race]))
-    targ:setRace(race)
+    targ:raceChange(race, playerFace, playerSize)
     targ:setPos(targ:getXPos(), targ:getYPos(), targ:getZPos(), targ:getRotPos(), targ:getZoneID())
 end
 

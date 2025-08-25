@@ -37,8 +37,11 @@ commandObj.onTrigger = function(player, face, target)
         return
     end
 
+    local playerSize = targ:getSize()
+    local playerRace = targ:getRace()
+
     player:printToPlayer(string.format('You set %s\'s Face', targ:getName()))
-    targ:setFace(face)
+    targ:raceChange(playerRace, face, playerSize)
     targ:setPos(targ:getXPos(), targ:getYPos(), targ:getZPos(), targ:getRotPos(), targ:getZoneID())
 end
 

@@ -185,24 +185,22 @@ page4 =
         local toString = { 'Hume Male', 'Hume Female', 'Elvan Male', 'Elvan Female', 'Taru Male', 'Taru Female', 'Mithra', 'Galka' }
         if change > 0 then
             player:printToPlayer(string.format('Thank you, your Race is now being changed to %s!',toString[race]), 0, 'Alfred')
-            player:setRace(race)
+            local playerSize = player:getSize()
+            local playerFace = player:getFace()
+            player:raceChange(race, playerFace, playerSize)
             player:setCharVar('[RaceChange]', 0)
             player:setCharVar('[GMEvent]freerc', player:getCharVar('[GMEvent]freerc') -1 )
             player:injectActionPacket(player:getID(), 6, 643, 0, 0, 0, 10, 1)
-            player:timer(1000, function()
-            player:setPos(player:getXPos(), player:getYPos(), player:getZPos(), player:getRotPos(), player:getZoneID())
-            end)
         elseif change == 0 and player:getGil() < 1000000 then
             player:printToPlayer('You do not have enough gil to make this purchase!. ', 0, 'Alfred')
         elseif change == 0 and player:getGil() > 1000000 then
             player:printToPlayer(string.format('Thank you, your Race is now being changed to %s!',toString[race]), 0, 'Alfred')
             player:delGil(1000000)
-            player:setRace(race)
+            local playerSize = player:getSize()
+            local playerFace = player:getFace()
+            player:raceChange(race, playerFace, playerSize)
             player:setCharVar('[RaceChange]', 0)
             player:injectActionPacket(player:getID(), 6, 643, 0, 0, 0, 10, 1)
-            player:timer(1000, function()
-            player:setPos(player:getXPos(), player:getYPos(), player:getZPos(), player:getRotPos(), player:getZoneID())
-            end)
         end
         end,
     },
@@ -2126,24 +2124,22 @@ page15 =
         local toString = { 'Hume Male', 'Hume Female', 'Elvan Male', 'Elvan Female', 'Taru Male', 'Taru Female', 'Mithra', 'Galka' }
         if change > 0 then
             player:printToPlayer('Thank you, your Face is now being changed!', 0, 'Alfred')
-            player:setFace(face)
+            local playerSize = player:getSize()
+            local playerRace = player:getRace()
+                 player:raceChange(playerRace, face, playerSize)
             player:setCharVar('[FaceChange]', 0)
             player:setCharVar('[GMEvent]freefc', player:getCharVar('[GMEvent]freefc') -1 )
             player:injectActionPacket(player:getID(), 6, 643, 0, 0, 0, 10, 1)
-            player:timer(1000, function()
-            player:setPos(player:getXPos(), player:getYPos(), player:getZPos(), player:getRotPos(), player:getZoneID())
-            end)
         elseif change == 0 and player:getGil() < 500000 then
             player:printToPlayer('You do not have enough gil to make this purchase!. ', 0, 'Alfred')
         elseif change == 0 and player:getGil() > 500000 then
             player:printToPlayer('Thank you, your Face is now being changed!', 0, 'Alfred')
             player:delGil(500000)
-            player:setFace(face)
+            local playerSize = player:getSize()
+            local playerRace = player:getRace()
+                 player:raceChange(playerRace, face, playerSize)
             player:setCharVar('[FaceChange]', 0)
             player:injectActionPacket(player:getID(), 6, 643, 0, 0, 0, 10, 1)
-            player:timer(1000, function()
-            player:setPos(player:getXPos(), player:getYPos(), player:getZPos(), player:getRotPos(), player:getZoneID())
-            end)
         end
         end,
     },
