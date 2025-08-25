@@ -1,31 +1,31 @@
 -- update mob spawn points to shift them to qms
-UPDATE mob_spawn_points SET pos_X = 39.0766,   pos_y = -0.7559, pos_z = 135.6011,   pos_rot = 75  WHERE mobid = 17957299;
-UPDATE mob_spawn_points SET pos_X = 601.2795,  pos_y = -0.2433, pos_z = -168.8869,  pos_rot = 162 WHERE mobid = 17957301;
-UPDATE mob_spawn_points SET pos_X = -11.9079,  pos_y = -0.3944, pos_z = -435.8526,  pos_rot = 39  WHERE mobid = 17957304;
-UPDATE mob_spawn_points SET pos_X = 510.6931,  pos_y = -0.2643, pos_z = -483.201,   pos_rot = 238 WHERE mobid = 17957308;
-UPDATE mob_spawn_points SET pos_X = 325.7415,  pos_y = -0.1989, pos_z = -129.1349,  pos_rot = 172 WHERE mobid = 17957310;
-UPDATE mob_spawn_points SET pos_X = 401.6606,  pos_y = -0.0000, pos_z = -638.9804,  pos_rot = 114 WHERE mobid = 17957313;
-UPDATE mob_spawn_points SET pos_X = -364.7595, pos_y = -0.1233, pos_z = -434.251,   pos_rot = 31  WHERE mobid = 17957317;
-UPDATE mob_spawn_points SET pos_X = -245.3619, pos_y = -0.4082, pos_z = 617.7747,   pos_rot = 16  WHERE mobid = 17957319;
-UPDATE mob_spawn_points SET pos_X = -10.3273,  pos_y = -0.3153, pos_z = -158.021,   pos_rot = 20  WHERE mobid = 17957322;
-UPDATE mob_spawn_points SET pos_X = -356.6668, pos_y = -0.496,  pos_z = 426.998,    pos_rot = 163 WHERE mobid = 17957325;
-UPDATE mob_spawn_points SET pos_X = 249.8434,  pos_y = -0.989,  pos_z = -298.2996,  pos_rot = 145 WHERE mobid = 17957329;
-UPDATE mob_spawn_points SET pos_X = 452.257,   pos_y = -0.4118, pos_z = -280.8013,  pos_rot = 249 WHERE mobid = 17957332;
-UPDATE mob_spawn_points SET pos_X = -10.3273,  pos_y = -0.3153, pos_z = -158.021,   pos_rot = 20  WHERE mobid = 17957352;
-UPDATE mob_spawn_points SET pos_X = 601.2795,  pos_y = -0.2433, pos_z = -168.8869,  pos_rot = 162 WHERE mobid = 17957355;
-UPDATE mob_spawn_points SET pos_X = -356.6668, pos_y = -0.496,  pos_z = 426.998,    pos_rot = 163 WHERE mobid = 17957358;
-UPDATE mob_spawn_points SET pos_X = -11.9079,  pos_y = -0.3944, pos_z = -435.8526,  pos_rot = 39  WHERE mobid = 17957361;
-UPDATE mob_spawn_points SET pos_X = 510.6931,  pos_y = -0.2643, pos_z = -483.201,   pos_rot = 238 WHERE mobid = 17957365;
-UPDATE mob_spawn_points SET pos_X = 325.7415,  pos_y = -0.1989, pos_z = -129.1349,  pos_rot = 172 WHERE mobid = 17957367;
-UPDATE mob_spawn_points SET pos_X = 249.8434,  pos_y = -0.989,  pos_z = -298.2996,  pos_rot = 145 WHERE mobid = 17957370;
-UPDATE mob_spawn_points SET pos_X = 452.257,   pos_y = -0.4118, pos_z = -280.8013,  pos_rot = 249 WHERE mobid = 17957373;
-UPDATE mob_spawn_points SET pos_X = 39.0766,   pos_y = -0.7559, pos_z = 135.6011,   pos_rot = 75  WHERE mobid = 17957376;
-UPDATE mob_spawn_points SET pos_X = 401.6606,  pos_y = -0.0000, pos_z = -638.9804,  pos_rot = 114 WHERE mobid = 17957343;
-UPDATE mob_spawn_points SET pos_X = 403.1004,  pos_y = -0.0000, pos_z = -640.4817,  pos_rot = 125 WHERE mobid = 17957337;
-UPDATE mob_spawn_points SET pos_X = 400.8694,  pos_y = -0.0000, pos_z = -635.8933,  pos_rot = 94  WHERE mobid = 17957385;
-UPDATE mob_spawn_points SET pos_X = -364.7595, pos_y = -0.1233, pos_z = -434.251,   pos_rot = 31  WHERE mobid = 17957334;
-UPDATE mob_spawn_points SET pos_X = -245.3619, pos_y = -0.4082, pos_z = 617.7747,   pos_rot = 16  WHERE mobid = 17957349;
-UPDATE mob_spawn_points SET pos_X = -10.3273,  pos_y = -0.3153, pos_z = -158.021,   pos_rot = 20  WHERE mobid = 17957347;
+UPDATE mob_spawn_points SET pos_X = 39.0766,   pos_y = -0.7559, pos_z = 135.6011,   pos_rot = 75  WHERE mobid = 17957299; -- Wepwawet
+UPDATE mob_spawn_points SET pos_X = 601.2795,  pos_y = -0.2433, pos_z = -168.8869,  pos_rot = 162 WHERE mobid = 17957301; -- Lustful Lydia
+UPDATE mob_spawn_points SET pos_X = -11.9079,  pos_y = -0.3944, pos_z = -435.8526,  pos_rot = 39  WHERE mobid = 17957304; -- Aglaophotis
+UPDATE mob_spawn_points SET pos_X = 510.6931,  pos_y = -0.2643, pos_z = -483.201,   pos_rot = 238 WHERE mobid = 17957308; -- Tangata Manu
+UPDATE mob_spawn_points SET pos_X = 325.7415,  pos_y = -0.1989, pos_z = -129.1349,  pos_rot = 172 WHERE mobid = 17957310; -- Vidala
+UPDATE mob_spawn_points SET pos_X = 401.6606,  pos_y = -0.0000, pos_z = -638.9804,  pos_rot = 114 WHERE mobid = 17957313; -- Gestalt
+UPDATE mob_spawn_points SET pos_X = -364.7595, pos_y = -0.1233, pos_z = -434.251,   pos_rot = 31  WHERE mobid = 17957317; -- Angrboda
+UPDATE mob_spawn_points SET pos_X = -245.3619, pos_y = -0.4082, pos_z = 617.7747,   pos_rot = 16  WHERE mobid = 17957319; -- Cunnast
+UPDATE mob_spawn_points SET pos_X = -10.3273,  pos_y = -0.3153, pos_z = -158.021,   pos_rot = 20  WHERE mobid = 17957322; -- Revetaur
+UPDATE mob_spawn_points SET pos_X = -356.6668, pos_y = -0.496,  pos_z = 426.998,    pos_rot = 163 WHERE mobid = 17957325; -- Ferrodon
+UPDATE mob_spawn_points SET pos_X = 249.8434,  pos_y = -0.989,  pos_z = -298.2996,  pos_rot = 145 WHERE mobid = 17957329; -- Gulltop
+UPDATE mob_spawn_points SET pos_X = 452.257,   pos_y = -0.4118, pos_z = -280.8013,  pos_rot = 249 WHERE mobid = 17957332; -- Vyala
+UPDATE mob_spawn_points SET pos_X = -10.3273,  pos_y = -0.3153, pos_z = -158.021,   pos_rot = 20  WHERE mobid = 17957352; -- Ionos
+UPDATE mob_spawn_points SET pos_X = 601.2795,  pos_y = -0.2433, pos_z = -168.8869,  pos_rot = 162 WHERE mobid = 17957355; -- Sensual Sandy
+UPDATE mob_spawn_points SET pos_X = -356.6668, pos_y = -0.496,  pos_z = 426.998,    pos_rot = 163 WHERE mobid = 17957358; -- Nosoi
+UPDATE mob_spawn_points SET pos_X = -11.9079,  pos_y = -0.3944, pos_z = -435.8526,  pos_rot = 39  WHERE mobid = 17957361; -- Brittlis
+UPDATE mob_spawn_points SET pos_X = 510.6931,  pos_y = -0.2643, pos_z = -483.201,   pos_rot = 238 WHERE mobid = 17957365; -- Kamohoalii
+UPDATE mob_spawn_points SET pos_X = 325.7415,  pos_y = -0.1989, pos_z = -129.1349,  pos_rot = 172 WHERE mobid = 17957367; -- Umdhlebi
+UPDATE mob_spawn_points SET pos_X = 249.8434,  pos_y = -0.989,  pos_z = -298.2996,  pos_rot = 145 WHERE mobid = 17957370; -- Fleetstalker
+UPDATE mob_spawn_points SET pos_X = 452.257,   pos_y = -0.4118, pos_z = -280.8013,  pos_rot = 249 WHERE mobid = 17957373; -- Shockmaw
+UPDATE mob_spawn_points SET pos_X = 39.0766,   pos_y = -0.7559, pos_z = 135.6011,   pos_rot = 75  WHERE mobid = 17957376; -- Urmahlullu
+UPDATE mob_spawn_points SET pos_X = 401.6606,  pos_y = -0.0000, pos_z = -638.9804,  pos_rot = 114 WHERE mobid = 17957343; -- Alpluachra
+UPDATE mob_spawn_points SET pos_X = 403.1004,  pos_y = -0.0000, pos_z = -640.4817,  pos_rot = 125 WHERE mobid = 17957337; -- Bucca
+UPDATE mob_spawn_points SET pos_X = 400.8694,  pos_y = -0.0000, pos_z = -635.8933,  pos_rot = 94  WHERE mobid = 17957385; -- Puca
+UPDATE mob_spawn_points SET pos_X = -364.7595, pos_y = -0.1233, pos_z = -434.251,   pos_rot = 31  WHERE mobid = 17957334; -- blaze wing
+UPDATE mob_spawn_points SET pos_X = -245.3619, pos_y = -0.4082, pos_z = 617.7747,   pos_rot = 16  WHERE mobid = 17957349; -- Wrathare
+UPDATE mob_spawn_points SET pos_X = -10.3273,  pos_y = -0.3153, pos_z = -158.021,   pos_rot = 20  WHERE mobid = 17957347; -- Pazuzu
 -- add NM spawn points
 INSERT INTO `nm_spawn_points` VALUES (17957278,0,-124.4,-0.268,34.275); -- Prickly_Pitriv
 INSERT INTO `nm_spawn_points` VALUES (17957280,0,-19.01,0.475,80.188); -- Abyssdiver

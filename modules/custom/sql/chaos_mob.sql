@@ -66,5 +66,5 @@ INSERT INTO mob_skill_lists VALUES ('[Supreme]Chaos', 49990, 4381); -- Seeping D
 INSERT INTO mob_skill_lists VALUES ('[Supreme]Chaos', 49990, 4385); -- Pellucid Surge
 INSERT INTO mob_skill_lists VALUES ('[Supreme]Chaos', 49990, 4383); -- Luminous Surge
 INSERT INTO mob_skill_lists VALUES ('[Supreme]Chaos', 49990, 4378); -- Landfall
-INSERT INTO 'mob_skill_lists' VALUES ('[Supreme]Chaos', 49990, 4386); -- Black Sanctus
+INSERT INTO mob_skill_lists VALUES ('[Supreme]Chaos', 49990, 4386); -- Black Sanctus
 

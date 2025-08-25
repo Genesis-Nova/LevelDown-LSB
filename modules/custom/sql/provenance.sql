@@ -4,21 +4,21 @@ INSERT INTO `npc_list` VALUES (17686590,'Provenance_Crystal','Provenance Crystal
 INSERT INTO `npc_list` VALUES (17686591,'Provenance_Crystal','Provenance Crystal',192,-150.000,3.911,-670.000,1,50,50,0,0,32,0,27,0x0000710900000000000000000000000000000000,0,'WOTG',1);
 INSERT INTO `npc_list` VALUES (17686592,'Provenance_Crystal','Provenance Crystal',192,-150.000,3.911,-670.000,1,50,50,0,0,32,0,27,0x0000710900000000000000000000000000000000,0,'WOTG',1);
 INSERT INTO `npc_list` VALUES (17686593,'Provenance_Crystal','Provenance Crystal',192,-150.000,3.911,-670.000,1,50,50,0,0,32,0,27,0x0000710900000000000000000000000000000000,0,'WOTG',1);
-UPDATE npc_list SET name = 'Provenance_Crystal#1', pos_rot = 192, pos_x = -150.000, pos_y =    3.911, pos_z = -670.000 WHERE npcid = 17686589;
-UPDATE npc_list SET name = 'Provenance_Crystal#2', pos_rot =  26, pos_x =  585.781, pos_y =   19.500, pos_z = -666.283 WHERE npcid = 17686590;
-UPDATE npc_list SET name = 'Provenance_Crystal#3', pos_rot = 245, pos_x =  620.811, pos_y =   39.500, pos_z = -216.670 WHERE npcid = 17686591;
-UPDATE npc_list SET name = 'Provenance_Crystal#4', pos_rot = 192, pos_x = -285.000, pos_y =  -19.655, pos_z = -245.000 WHERE npcid = 17686588;
-UPDATE npc_list SET name = 'Provenance_Crystal#5', pos_rot =  93, pos_x =   40.527, pos_y = -108.000, pos_z =  560.272 WHERE npcid = 17686593;
-UPDATE npc_list SET name = 'Provenance_Crystal#6', pos_rot = 106, pos_x =  560.213, pos_y =   12.000, pos_z =  560.929 WHERE npcid = 17686592;
-UPDATE npc_list SET name = 'Provenance_Crystal#7', pos_rot =  96, pos_x =  -558.88, pos_y = -228.000, pos_z = 559.0488 WHERE npcid = 17686586;
+UPDATE npc_list SET name = 'Provenance_Crystal#1', pos_rot = 192, pos_x = -150.000, pos_y =    3.911, pos_z = -670.000 WHERE npcid = 17686589; -- Provenance Crystal
+UPDATE npc_list SET name = 'Provenance_Crystal#2', pos_rot =  26, pos_x =  585.781, pos_y =   19.500, pos_z = -666.283 WHERE npcid = 17686590; -- Provenance Crystal
+UPDATE npc_list SET name = 'Provenance_Crystal#3', pos_rot = 245, pos_x =  620.811, pos_y =   39.500, pos_z = -216.670 WHERE npcid = 17686591; -- Provenance Crystal
+UPDATE npc_list SET name = 'Provenance_Crystal#4', pos_rot = 192, pos_x = -285.000, pos_y =  -19.655, pos_z = -245.000 WHERE npcid = 17686588; -- Provenance Crystal
+UPDATE npc_list SET name = 'Provenance_Crystal#5', pos_rot =  93, pos_x =   40.527, pos_y = -108.000, pos_z =  560.272 WHERE npcid = 17686593; -- Provenance Crystal
+UPDATE npc_list SET name = 'Provenance_Crystal#6', pos_rot = 106, pos_x =  560.213, pos_y =   12.000, pos_z =  560.929 WHERE npcid = 17686592; -- Provenance Crystal
+UPDATE npc_list SET name = 'Provenance_Crystal#7', pos_rot =  96, pos_x =  -558.88, pos_y = -228.000, pos_z = 559.0488 WHERE npcid = 17686586; -- Provenance Crystal
 UPDATE mob_spawn_points SET pos_x = -581.1092, pos_y = -228.000, pos_z =  563.1008, pos_rot =  80 WHERE mobid = 17686530;
-UPDATE mob_spawn_points SET groupid = 11526,pos_x =  -156.834, pos_y =   0.7654, pos_z = -679.9487, pos_rot =  90 WHERE mobid = 17686542;
-UPDATE mob_spawn_points SET groupid = 11525,pos_x =  616.4836, pos_y =  20.4582, pos_z = -692.1054, pos_rot =  44 WHERE mobid = 17686543;
-UPDATE mob_spawn_points SET groupid = 11529,pos_x =  634.9714, pos_y =  40.2474, pos_z = -207.8789, pos_rot = 249 WHERE mobid = 17686545;
-UPDATE mob_spawn_points SET groupid = 11527,pos_x =  -265.130, pos_y = -19.0198, pos_z = -241.5804, pos_rot = 231 WHERE mobid = 17686544;
-UPDATE mob_spawn_points SET groupid = 11528,pos_x =    37.444, pos_y = -108.000, pos_z =   555.792, pos_rot =  93 WHERE mobid = 17686541;
-UPDATE mob_spawn_points SET groupid = 11530,pos_x =  557.5035, pos_y =   12.000, pos_z =  558.8103, pos_rot = 100 WHERE mobid = 17686546;
-UPDATE mob_spawn_points SET groupid = 11531,pos_x =  -566.961, pos_y = -228.000, pos_z =  547.7069, pos_rot =  95 WHERE mobid = 17686529;
+UPDATE mob_spawn_points SET groupid = 11526,pos_x =  -156.834, pos_y =   0.7654, pos_z = -679.9487, pos_rot =  90 WHERE mobid = 17686542; -- Pil
+UPDATE mob_spawn_points SET groupid = 11525,pos_x =  616.4836, pos_y =  20.4582, pos_z = -692.1054, pos_rot =  44 WHERE mobid = 17686543; -- ASDB
+UPDATE mob_spawn_points SET groupid = 11529,pos_x =  634.9714, pos_y =  40.2474, pos_z = -207.8789, pos_rot = 249 WHERE mobid = 17686545; -- Shah
+UPDATE mob_spawn_points SET groupid = 11527,pos_x =  -265.130, pos_y = -19.0198, pos_z = -241.5804, pos_rot = 231 WHERE mobid = 17686544; -- Rukh
+UPDATE mob_spawn_points SET groupid = 11528,pos_x =    37.444, pos_y = -108.000, pos_z =   555.792, pos_rot =  93 WHERE mobid = 17686541; -- Sarbaz
+UPDATE mob_spawn_points SET groupid = 11530,pos_x =  557.5035, pos_y =   12.000, pos_z =  558.8103, pos_rot = 100 WHERE mobid = 17686546; -- Wazir
+UPDATE mob_spawn_points SET groupid = 11531,pos_x =  -566.961, pos_y = -228.000, pos_z =  547.7069, pos_rot =  95 WHERE mobid = 17686529; -- Provenance Watcher
 UPDATE mob_spawn_points SET pos_x = -562.205, pos_y = -228.000, pos_z =  529.688,  pos_rot =  155 WHERE mobid = 17686539;
 UPDATE mob_spawn_points SET pos_x = -585.271, pos_y = -228.000, pos_z =  -556.769, pos_rot =   30 WHERE mobid = 17686540;
 UPDATE mob_pools SET spellList = 523 WHERE poolid = 4654 AND name = 'Provenance_Watcher';
