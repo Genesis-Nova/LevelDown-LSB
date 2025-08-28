@@ -1,4 +1,3 @@
------------------------------------
 require("modules/module_utils")
 -----------------------------------
 local m = Module:new("freerelicnpc")
@@ -14,8 +13,7 @@ local page3 = {}
 local page4 = {}
 local page5 = {}
 local page6 = {}
-local page7 = {}
-
+local page7 = {} -- New page for skill capping
 
 local delaySendMenu = function(player)
     player:timer(50, function(playerArg)
@@ -208,7 +206,7 @@ page3 =
     },
          {
          'Next Page',
-         function(player)
+           function(player)
            menu.options = page4
            delaySendMenu(player)
          end
@@ -286,13 +284,14 @@ page5 =
                else
                npcUtil.giveItem(player, Relic)
                player:setCharVar('FreeRelic', 2)
+               return
                end
          end
     },
         {
         'No',
          function(player)
-
+             return
          end
     },
 }
@@ -321,11 +320,11 @@ local freeaf =
 [16] = {reward = {27678,27822,27958,28105,28238}}, -- blu
 [17] = {reward = {27679,27823,27959,28106,28239}}, -- cor
 [18] = {reward = {27680,27824,27960,28107,28240}}, -- pup
-[19] = {reward = {27681,27825,27961,28108,28241}}, -- dnc male 1      
+[19] = {reward = {27681,27825,27961,28108,28241}}, -- dnc male 1
 [20] = {reward = {27683,27827,27963,28110,28243}}, -- sch
 [21] = {reward = {27786,27926,28066,28206,28346}}, -- geo
 [22] = {reward = {27787,27927,28067,28207,28347}}, -- run
--- [23] = {reward = {27682,27826,27962,28109,28242}}, -- dnc female 0 
+-- [23] = {reward = {27682,27826,27962,28109,28242}}, -- dnc female 0
 }
               if player:getFreeSlotsCount() < 5 then
                  player:printToPlayer('Please check your inventory and try again!')
@@ -354,8 +353,30 @@ local freeaf =
         {
         'Let me think about it!',
          function(player)
+         return
          end
         },
+}
+
+-- New page7 for skill capping
+page7 =
+{
+    {
+        'Yes, cap my skills!',
+        function(player)
+            player:capAllSkills()
+            player:setCharVar('[CapAllSkills]', 1)
+            player:printToPlayer('All your Skills have been capped!', 0, npc:getPacketName())
+            return
+        end
+    },
+    {
+        'No, not right now.',
+        function(player)
+            return
+            -- Do nothing, player chooses not to cap skills
+        end
+    },
 }
 
 
@@ -377,9 +398,11 @@ local freeaf =
 
   onTrigger = function(player, npc)
   if player:getCharVar('[CapAllSkills]') == 0 then
-     player:capAllSkills()
-     player:setCharVar('[CapAllSkills]', 1)
-     player:printToPlayer('All your Skills have been capped!', 0, npc:getPacketName())
+     player:printToPlayer('Would you like to cap all your skills now?', 0, npc:getPacketName())
+     player:timer(250, function(playerArg)
+         menu.options = page7 -- Direct to the new skill capping menu
+         delaySendMenu(playerArg)
+     end)
   end
 
 
@@ -428,14 +451,14 @@ local freeaf =
                        end)
                 else
                        player:printToPlayer('I am here to distribute your Free Relic Weapon or Free Reforged 109 armor. ', 0, npc:getPacketName())
-                       player:printToPlayer('Please see me when you have obtained rank 10 for your free Relic Weapon or . ', 0, npc:getPacketName())
+                       player:printToPlayer('Please see me when you have obtained rank 10 for your free Relic Weapon or ', 0, npc:getPacketName())
                        player:printToPlayer('when you have obtained Level 99 to receive you free Reforged Armor. ', 0, npc:getPacketName())
                 end
           elseif player:getCharVar('FreeRelic') >= 2 and
                  player:getCharVar('FreeAFArmor') >= 2 then
                  player:printToPlayer('Leave me be! i am all out of free rewards for you!', 0, npc:getPacketName())
           end
-  end,  
+  end,
     })
     utils.unused(Reja)
 end)
