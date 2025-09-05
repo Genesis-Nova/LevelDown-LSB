@@ -217,7 +217,8 @@ menu.options =
                     mob:setSpawn(playerArg:getXPos() + math.random(5, 15), playerArg:getYPos(), playerArg:getZPos() + math.random(5, 15), playerArg:getRotPos())
                     mob:setDropID(0)
                     mob:setMobMod(xi.mobMod.NO_DROPS, 1)
-					mob:setClaimable(false)
+                    mob:setMobMod(xi.mobMod.CLAIM_TYPE, xi.claimType.UNCLAIMABLE)
+					-- mob:setClaimable(false)
                     mob:spawn()
                 end
             end

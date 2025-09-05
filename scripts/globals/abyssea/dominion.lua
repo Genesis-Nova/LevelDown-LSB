@@ -148,7 +148,7 @@ local function completeDominionOp(player, opID)
     player:addExp(dominionOpQuests[opID][3] * xpMultiplier)
     player:addCurrency('cruor', dominionOpQuests[opID][3] / 5)
     player:messageSpecial(ID.text.CRUOR_TOTAL, dominionOpQuests[opID][3] / 5, player:getCurrency('cruor'))
-    player:addCurrency('dominion_note', dominionOpQuests[opID][3] / 10)
+    player:addCurrency('dominion_note', dominionOpQuests[opID][3] / 2) -- was 10 changed to 2 to increase the amount of points obtained
     player:messageSpecial(ID.text.OBTAINS_DOMINION_NOTES, dominionOpQuests[opID][3] / 10, player:getCurrency('dominion_note'))
 
     clearOpVars(player, opID)

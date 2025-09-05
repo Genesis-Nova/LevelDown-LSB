@@ -192,3 +192,16 @@ xi.customutil.levelAdjustmentMods = function(mob)
             mob:addMod(xi.mod.REGAIN, 20)
     end
 end
+
+function progressiveLevelUp(mob, target)
+    for i = xi.mod.STR, xi.mod.CHR do
+        local amt = math.floor(mob:getStat(i) * 1.25)
+        mob:addMod(i, amt)
+    end
+
+    mob:injectActionPacket(mob:getID(),4,5000,0,0,185,10,1)
+    mob:addHP(mob:getHP() * .25)
+    mob:setMP(mob:getMaxMP())
+    mob:setTP(3000)
+    mob:resetEnmity(target)
+end
