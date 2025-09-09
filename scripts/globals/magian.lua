@@ -721,7 +721,6 @@ xi.magian.deliveryCrateOnTrade = function(player, npc, trade)
         player:setLocalVar('tradedItemId', trialInfo.tradeItem)
         player:setLocalVar('tradedItemQty', numItemsTraded)
 
-        player:confirmTrade()
         player:startEvent(10134, trialInfo.tradeItem, numItemsTraded, numRelevantTrials, trialId, 0, 0, 0, 0)
     end
 end
@@ -769,6 +768,7 @@ xi.magian.deliveryCrateOnEventFinish = function(player, csid, option, npc)
             player:messageSpecial(ruludeID.text.RETURN_ITEM, tradedItemId)
         elseif optionMod == 102 then
             progressPlayerTrial(player, trialId, tradedItemQty)
+            player:confirmTrade()
         end
 
         if
