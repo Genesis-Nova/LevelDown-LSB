@@ -27,6 +27,7 @@ UPDATE mob_pools SET aggro = 1 WHERE name = "Locus_Bight_Rarab";
 UPDATE mob_pools SET aggro = 1 WHERE name = "Locus_Armet_Beetle";
 UPDATE mob_pools SET links = 1 WHERE name = "Locus_Cutlass_Scorpion";
 UPDATE mob_pools SET links = 1 WHERE name = "Locus_Ghost_Crab";
+UPDATE mob_pools SET sJob = 4 WHERE name = "Tolba"; 
 --						Mob Group settings	
 --							Zone 190			
 UPDATE mob_groups SET HP = 17000 WHERE name = "Locus_Spartoi_Sorcerer";
