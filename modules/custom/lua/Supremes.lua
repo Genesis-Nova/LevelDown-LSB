@@ -335,7 +335,19 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
         -----------onMobDespawn
         ---------------------------------------------------------------------------
         onMobDespawn = function(mob, playerArg, optParams)
+            local alliance = player:getAlliance()
+            local partyAllianceCheck = 0
 
+            if player:checkSoloPartyAlliance() == 2 then
+                partyAllianceCheck = player:getAlliance()
+            else
+                partyAllianceCheck = player:getPartyWithTrusts()
+            end
+
+            for _, member in pairs(partyAllianceCheck) do
+                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                member:delStatusEffect(xi.effect.CONFRONTATION)
+            end
         end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
@@ -688,7 +700,19 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
         -----------onMobDespawn
         ---------------------------------------------------------------------------
         onMobDespawn = function(mob, playerArg, optParams)
+            local alliance = player:getAlliance()
+            local partyAllianceCheck = 0
 
+            if player:checkSoloPartyAlliance() == 2 then
+                partyAllianceCheck = player:getAlliance()
+            else
+                partyAllianceCheck = player:getPartyWithTrusts()
+            end
+
+            for _, member in pairs(partyAllianceCheck) do
+                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                member:delStatusEffect(xi.effect.CONFRONTATION)
+            end
         end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
@@ -1023,7 +1047,19 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
         -----------onMobDespawn
         ---------------------------------------------------------------------------
         onMobDespawn = function(mob, playerArg, optParams)
+            local alliance = player:getAlliance()
+            local partyAllianceCheck = 0
 
+            if player:checkSoloPartyAlliance() == 2 then
+                partyAllianceCheck = player:getAlliance()
+            else
+                partyAllianceCheck = player:getPartyWithTrusts()
+            end
+
+            for _, member in pairs(partyAllianceCheck) do
+                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                member:delStatusEffect(xi.effect.CONFRONTATION)
+            end
         end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
@@ -1358,7 +1394,19 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
         -----------onMobDespawn
         ---------------------------------------------------------------------------
         onMobDespawn = function(mob, playerArg, optParams)
+            local alliance = player:getAlliance()
+            local partyAllianceCheck = 0
 
+            if player:checkSoloPartyAlliance() == 2 then
+                partyAllianceCheck = player:getAlliance()
+            else
+                partyAllianceCheck = player:getPartyWithTrusts()
+            end
+
+            for _, member in pairs(partyAllianceCheck) do
+                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                member:delStatusEffect(xi.effect.CONFRONTATION)
+            end
         end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
@@ -1691,7 +1739,19 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
         -----------onMobDespawn
         ---------------------------------------------------------------------------
         onMobDespawn = function(mob, playerArg, optParams)
+            local alliance = player:getAlliance()
+            local partyAllianceCheck = 0
 
+            if player:checkSoloPartyAlliance() == 2 then
+                partyAllianceCheck = player:getAlliance()
+            else
+                partyAllianceCheck = player:getPartyWithTrusts()
+            end
+
+            for _, member in pairs(partyAllianceCheck) do
+                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                member:delStatusEffect(xi.effect.CONFRONTATION)
+            end
         end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
@@ -2029,7 +2089,19 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
         -----------onMobDespawn
         ---------------------------------------------------------------------------
         onMobDespawn = function(mob, playerArg, optParams)
+            local alliance = player:getAlliance()
+            local partyAllianceCheck = 0
 
+            if player:checkSoloPartyAlliance() == 2 then
+                partyAllianceCheck = player:getAlliance()
+            else
+                partyAllianceCheck = player:getPartyWithTrusts()
+            end
+
+            for _, member in pairs(partyAllianceCheck) do
+                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                member:delStatusEffect(xi.effect.CONFRONTATION)
+            end
         end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
@@ -2050,7 +2122,11 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
     mob:updateClaim(player)
  end 
 end)
---[[
+
+---------------------------------------------------------------------------
+-----------Chaos
+---------------------------------------------------------------------------
+
 
 local menu  = {}
 local page1 = {}
@@ -2064,7 +2140,7 @@ end
 
 menu =
 {
-    title = 'Spawn Supreme?',
+    title = 'Spawn Supreme Bahamut?',
     options = {},
 }
 
@@ -2073,8 +2149,7 @@ page1 =
         {
         'Yes',
          function(player)
-                local rand = math.random(1, 100)
-                local zone = mob:getZone()
+                local zone = player:getZone()
                 local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
                 local spawnSupreme = true
 
@@ -2084,11 +2159,9 @@ page1 =
                     end
                 end
 
-                if rand <= 25 and
-                    spawnSupreme then
+                if spawnSupreme then
 
                     local alliance = player:getAlliance()
-                    local killerClaim = optParams.isKiller
                     local partyAllianceCheck = 0
 
                     if player:checkSoloPartyAlliance() == 2 then
@@ -2098,11 +2171,8 @@ page1 =
                     end
 
                     for _, member in pairs(partyAllianceCheck) do
-                        if killerClaim then
-                            print(member)
                             member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
                             member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
-                        end
                     end
 
                     local zoneOrInstanceObj = player:getZone()
@@ -2112,7 +2182,7 @@ page1 =
                         zoneOrInstanceObj = instance
                     end
 
-                    local zone = GetZone(xi.zone.xi.zone.MISAREAUX_COAST)
+                    local zone = GetZone(xi.zone.MISAREAUX_COAST)
                     local mob = zoneOrInstanceObj:insertDynamicEntity({
 
                         objtype = xi.objType.MOB,
@@ -2122,14 +2192,14 @@ page1 =
                         y = -15.6770,
                         z = 632.2044,
                         rotation = 23,
-                        groupId = 4, -- NEED TO FIX
-                        groupZoneId = 222, -- NEED TO FIX
+                        groupId = 11506,
+                        groupZoneId = 299,
                         ---------------------------------------------------------------------------
                         -----------onMobSpawn
                         ---------------------------------------------------------------------------
                         onMobSpawn = function(mob)
                             mob:setLocalVar('[rage]timer', 900) -- 3600 = 60 minutes
-                            mob:setMobLevel(140)
+                            mob:setLocalVar('BSanctusUse', 1)
                             mob:addMod(xi.mod.MAIN_DMG_RATING, 150)
                             mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
                             mob:addMod(xi.mod.MP, 9500)
@@ -2158,7 +2228,7 @@ page1 =
                             mob:setMod(xi.mod.THUNDER_SDT, 200)
                             mob:setMod(xi.mod.WIND_SDT, 200)
                             mob:setMod(xi.mod.SILENCERES, 100) 
-                            mob:setMod(xi.mod.STUNRES, 10) 
+                            mob:setMod(xi.mod.STUNRES, 1000) 
                             mob:setMod(xi.mod.BINDRES, 100) 
                             mob:setMod(xi.mod.GRAVITYRES, 100) 
                             mob:setMod(xi.mod.SLEEPRES, 100) 
@@ -2169,12 +2239,12 @@ page1 =
                             mob:addStatusEffect(xi.effect.DREAD_SPIKES, 100, 0, 0)
                             mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
                             mob:addStatusEffect(xi.effect.REGAIN, 50, 3, 0)
+                            mob:addStatusEffect(xi.effect.REFRESH, 50, 3, 0)
                             mob:addStatusEffect(xi.effect.ENTHUNDER_II, 100, 0, 0)
                             mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                            mob:setMobMod(xi.mobMod.SKILL_LIST, 2)
                             mob:setMP(mob:getMaxMP())
 
-                            mob:addListener('TAKE_DAMAGE', 'ASPIDS_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
+                            mob:addListener('TAKE_DAMAGE', 'CHAOS_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
                                 local accumulatedPhisical = mob:getLocalVar('physical')
                                 local accumulatedMagical  = mob:getLocalVar('magical')
                                     if attackType == xi.attackType.PHYSICAL or
@@ -2212,7 +2282,7 @@ page1 =
                                 [xi.job.BLU] = 'ma',
                                 [xi.job.PUP] = 'ws',
                             }
-                            mob:addListener('MAGIC_TAKE', 'BAHAMUT_MAGIC_TAKE', function(target, caster, spell) -- prevents from charming 
+                            mob:addListener('MAGIC_TAKE', 'CHAOS_MAGIC_TAKE', function(target, caster, spell) -- prevents from charming 
                                 if procjobs[caster:getMainJob()] == 'ma' and
                                     math.random(0, 99) < 10 and
                                     target:getLocalVar('supreme_procm') == 0 then
@@ -2220,9 +2290,14 @@ page1 =
                                     target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
                                     target:setLocalVar('supreme_procm', 1)
                                 end
+
+                                if math.random(0,99) < 5 and
+                                    caster:isPC() then
+                                        progressiveLevelUp(mob)
+                                end
                             end)
 
-                            mob:addListener('WEAPONSKILL_TAKE', 'BAHAMUT_WEAPONSKILL_TAKE', function(target, user, wsid) -- removes ability to use Benidiction at 10%
+                            mob:addListener('WEAPONSKILL_TAKE', 'CHAOS_WEAPONSKILL_TAKE', function(target, user, wsid) -- removes ability to use Benidiction at 10%
                                 if math.random(0, 99) < 10 then
                                     if target:getLocalVar('supreme_procw') == 0 and user:isPC() or user:isTrust() and procjobs[user:getMainJob()] == 'ws' then
                                         target:weaknessTrigger(0) -- Blue proc
@@ -2230,9 +2305,15 @@ page1 =
                                         target:setLocalVar('supreme_procw', 1)
                                     end
                                 end
+
+                                if math.random(0,99) < 5 and
+                                    user:isPC() then
+                                        progressiveLevelUp(mob)
+                                end
+
                             end)
 
-                            mob:addListener('ABILITY_TAKE', 'BAHAMUT_ABILITY_TAKE', function(mob, user, ability, action) -- removed status effects
+                            mob:addListener('ABILITY_TAKE', 'CHAOS_ABILITY_TAKE', function(mob, user, ability, action) -- removed status effects
                                 if procjobs[user:getMainJob()] == 'ja' and
                                     math.random(0, 99) < 10 and
                                     mob:getLocalVar('supreme_proca') == 0 then
@@ -2243,6 +2324,11 @@ page1 =
                                     mob:delStatusEffect(xi.effect.ENTHUNDER_II)
                                     mob:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
                                     mob:setLocalVar('supreme_proca', 1)
+                                end
+
+                                if math.random(0,99) < 5 and
+                                    user:isPC() then
+                                    progressiveLevelUp(mob)
                                 end
                             end)
 
@@ -2271,26 +2357,30 @@ page1 =
                         ---------------------------------------------------------------------------
                         onMobFight = function(mob, target)
                             target:addListener('ABILITY_USE',  'PLAYER_ABILITY', function(player, target, ability, action)
-                                if player:isPC() and ability:getID() == 20 then -- chainspell
-                                    mob:useMobAbility(694) -- Invinvible
+                                if player:isPC() and ability:getID() == 17 then -- hundred fist
+                                    mob:useMobAbility(693) -- perfect dodge
                                 end
                             end)
                             if mob:getHPP() <= 90 and
-                               mob:getLocalVar('Ebreath') == 0 then
-                               mob:useMobAbility(808)
-                               mob:setLocalVar('Ebreath', 1)
+                               mob:getLocalVar('Bsanctus') == 0 then
+                               mob:setLocalVar('BSanctusUse', 0)
+                               mob:useMobAbility(4386) -- Black Sanctus
+                               mob:setLocalVar('Bsanctus', 1)
                             end
                             if mob:getHPP() <= 75 and
-                               mob:getLocalVar('Ebreath') == 1 then
-                               mob:useMobAbility(808)
-                               mob:setLocalVar('Ebreath', 2)
-                            end
-                            if mob:getHPP() <= 25 and
-                               mob:getLocalVar('Ebreath') == 2 then
-                               mob:useMobAbility(808)
-                               mob:setLocalVar('Ebreath', 3)
+                               mob:getLocalVar('Bsanctus') == 1 then
+                               mob:useMobAbility(4386) -- Black Sanctus
+                               mob:setLocalVar('Bsanctus', 2)
                             end
                             if mob:getHPP() <= 50 and
+                               mob:getLocalVar('Bsanctus') == 2 then
+                               mob:useMobAbility(4386) -- Black Sanctus
+                               mob:setLocalVar('Bsanctus',3)
+                            end
+                            if mob:getHPP() <= 25 and
+                               mob:getLocalVar('Bsanctus') == 3 then
+                               mob:useMobAbility(4386) -- Black Sanctus
+                               mob:setLocalVar('Bsanctus', 4)
                             end
                             if mob:getHPP() <= 10 and
                                mob:getLocalVar('supreme_procw') == 0 and
@@ -2299,16 +2389,16 @@ page1 =
                                mob:setLocalVar('Benidiction', 1) -- set so he wont use again
                             end
                             if mob:getHPP() <= 5 and
-                               mob:getLocalVar('invincible') == 0 then
-                               mob:useMobAbility(694) -- uses invincible
-                               mob:setLocalVar('invincible', 1) -- set so he wont use again
+                               mob:getLocalVar('mijin_gakure') == 0 then
+                               mob:useMobAbility(731) -- uses mijin_gakure
+                               mob:setLocalVar('mijin_gakure', 1) -- set so he wont use again
                             end
                         end,
                         ---------------------------------------------------------------------------
                         -----------onSpellPrecast
                         ---------------------------------------------------------------------------
                         onSpellPrecast = function(mob, spell)
-                            if spell:getID() == 173 or 214 then
+                            if spell:getID() == 218 or spell:getID(252) or spell:getID(275) then
                                 spell:setAoE(xi.magic.aoe.RADIAL)
                                 spell:setFlag(xi.magic.spellFlag.HIT_ALL)
                                 spell:setRadius(20)
@@ -2323,25 +2413,28 @@ page1 =
                             local spellElement = spell:getElement()
                             local curhp = target:getHP()
                             local absorb = target:getLocalVar('magical')
-                              if spellElement == xi.combat.element.getDayElement(dayOfWeek) and
-                                 (caster:isPC() or caster:isPet() or caster:isTrust()) then
-                                 target:setHP(curhp + absorb) -- absorb spells
-                                 caster:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
-                              end
+
+                            if spellElement == xi.combat.element.getDayElement(dayOfWeek) and
+                                (caster:isPC() or caster:isPet() or caster:isTrust()) then
+                                target:setHP(curhp + absorb) -- absorb spells
+                                caster:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
+                            end
+
                             if spell:getID() == 23 or spell:getID() == 24 or spell:getID() == 25 then
-                               target:useMobAbility(695) -- use blood weapon on dia
+                                target:useMobAbility(695) -- use blood weapon on dia
                             end
+
                             if spell:getID() == 253 or spell:getID() == 273 or spell:getID() == 274 or spell:getID() == 259 and target:getLocalVar('supreme_procm') ~= 1  then
-                               target:useMobAbility(690) -- use hundred fist on sleep - this does not proc against lullaby
+                                target:useMobAbility(688) -- use mighty strike on sleep - this does not proc against lullaby
                             end
-                            if spell:getID() == 79 or spell:getID() == 80 or then
+
+                            if spell:getID() == 79 or spell:getID() == 80 then
                                 target:setMP(target:getMaxMP())
-                                target:useMobAbility(691) -- Manafont when using paralyze
+                                target:useMobAbility(691) -- Manafont when using paralyze / slow
                                 target:timer(100, function(targetArg)
-                                    target:useMobAbility(692) -- ChainSpell when using paralyze
+                                    target:useMobAbility(692) -- ChainSpell when using paralyze / slow
                                 end)
-                            end
-                                
+                            end  
                         end,
                         ---------------------------------------------------------------------------
                         -----------onMobDeath
@@ -2365,7 +2458,19 @@ page1 =
                         -----------onMobDespawn
                         ---------------------------------------------------------------------------
                         onMobDespawn = function(mob, playerArg, optParams)
+                            local alliance = player:getAlliance()
+                            local partyAllianceCheck = 0
 
+                            if player:checkSoloPartyAlliance() == 2 then
+                                partyAllianceCheck = player:getAlliance()
+                            else
+                                partyAllianceCheck = player:getPartyWithTrusts()
+                            end
+
+                            for _, member in pairs(partyAllianceCheck) do
+                                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                member:delStatusEffect(xi.effect.CONFRONTATION)
+                            end
                         end,
 
                         releaseIdOnDisappear = true,
@@ -2381,11 +2486,10 @@ page1 =
                         -- Use the mob object as you normally would
                         mob:setSpawn(-160.0604, -15.6770, 632.2044, 23)
                         mob:setDropID(4122)
-                        mob:setSpellList(256)-- ****NEED TO FIX
                         mob:spawn()
                         mob:updateEnmity(player)
                         mob:updateClaim(player)
-                end    
+                end
          end
     },
         {
@@ -2426,7 +2530,7 @@ m:addOverride('xi.zones.Misareaux_Coast.Zone.onInitialize',function(zone)
     })
 end)
 
-
+--[[
 Spawnpoint Mis Coast -160.0604 -15.6770 632.2044 rotation 23
 Chaos model look = 0x00004b0e00000000000000000000000000000000
 target:setAnimationSub(1) & 2 for sheilds

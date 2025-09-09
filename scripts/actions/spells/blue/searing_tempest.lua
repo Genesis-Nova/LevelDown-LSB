@@ -34,14 +34,15 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
-    params.addedEffect = xi.effect.BURN
-    local power = 5
-    local tick = 0
-    local duration = 60
+        -- Handle status effects. effect, power, tik, duration
+    local effectTable =
+    {
+        [1] = { xi.effect.BURN,5, 0, 60 },
+    }
 
     local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
-    xi.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
-
+        xi.spells.blue.applyBlueAdditionalEffect(caster, target, params, effectTable)
+        
     return damage
 end
 
