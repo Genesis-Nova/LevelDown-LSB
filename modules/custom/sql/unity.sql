@@ -231,6 +231,7 @@ INSERT INTO `item_mods_pet` VALUES (20807,14,10,2);
 INSERT INTO `item_mods_pet` VALUES (26887,992,30,0);
 INSERT INTO `item_mods_pet` VALUES (26888,992,30,0);
 
+
 -- UPDATE EXISTING Ethereal Junctions **** updated 4/28/2024 due to march retail id shift
 UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 17649908;
 UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 17649909;
@@ -249,20 +250,12 @@ UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name =
 UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 16896257;
 UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 16896258;
 UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 17429036;
-UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 17101404; --
-UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 17101405; --
-UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 17101406; --
 UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 16986835; --
 UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 16986836; --
 UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 16986837; --
-UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 17207879; --
-UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 17207880; --
-UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 17207881; --
+
 -- update pos of existing ethereal ***** did not update 4/24/2024 
 UPDATE npc_list SET pos_x = 68.9235,  pos_y = 0.5293,  pos_z = -289.9164 WHERE npcid = 17461595;
-UPDATE npc_list SET pos_x = 655.327,  pos_y = -12.250, pos_z = 483.406   WHERE npcid = 17101404;
-UPDATE npc_list SET pos_x = 579.177,  pos_y = -11.500, pos_z = 307.307   WHERE npcid = 17101405;
-UPDATE npc_list SET pos_x = 817.070,  pos_y = -10.649, pos_z = 422.275   WHERE npcid = 17101406;
 UPDATE npc_list SET pos_x = -119.087, pos_y = 0.347,   pos_z = 112.508   WHERE npcid = 17649908;
 UPDATE npc_list SET pos_x = -29.860,  pos_y = 5.515,   pos_z = 52.258    WHERE npcid = 17649909;
 UPDATE npc_list SET pos_x = 44.7163,  pos_y = 5,       pos_z = 149.019   WHERE npcid = 17649910;
@@ -272,9 +265,6 @@ UPDATE npc_list SET pos_x = 109.1181, pos_y = -20.4645,pos_z = 51.312    WHERE n
 UPDATE npc_list SET pos_x = -166.607, pos_y = 7.337,   pos_z = 46.534    WHERE npcid = 17240525;
 UPDATE npc_list SET pos_x = 364.5599, pos_y = 0.0703,  pos_z = -120.8697 WHERE npcid = 16875920;
 UPDATE npc_list SET pos_x = 78.262,   pos_y = -5.122,  pos_z = -582.4191 WHERE npcid = 16785788;
-UPDATE npc_list SET pos_x = -162.550,  pos_y = -24.000, pos_z = -162.560  WHERE npcid = 17207879;
-UPDATE npc_list SET pos_x = 309.540,   pos_y = 8.600,   pos_z = 147.450   WHERE npcid = 17207880;
-UPDATE npc_list SET pos_x = -519.7849, pos_y = -23.760, pos_z = 368.8091  WHERE npcid = 17207881;
 -- add new Ethereal ***** updated 4/28/2024 due to march retail id shift
 INSERT INTO `npc_list` VALUES (17645908,'Ethereal_Junction','Ethereal Junction', 0, -80.5138,0.3199,210.6046, 32769, 50, 50, 0, 5, 116, 0, 3, 0x00008F0900000000000000000000000000000000,0,NULL,1);
 INSERT INTO `npc_list` VALUES (17645909,'Ethereal_Junction','Ethereal Junction', 0, -141.5889,0,60.6313, 32769, 50, 50, 0, 5, 116, 0, 3, 0x00008F0900000000000000000000000000000000,0,NULL,1);
@@ -343,6 +333,15 @@ INSERT INTO `npc_list` VALUES (17199760,'Ethereal_Junction','Ethereal Junction',
 INSERT INTO `npc_list` VALUES (17285707,'Ethereal_Junction','Ethereal Junction', 0, -234.6288,0,-358.2806, 32769, 50, 50, 0, 5, 116, 0, 3, 0x00008F0900000000000000000000000000000000,0,NULL,1);
 INSERT INTO `npc_list` VALUES (17285708,'Ethereal_Junction','Ethereal Junction', 0, 86.6621,0,-406.4665, 32769, 50, 50, 0, 5, 116, 0, 3, 0x00008F0900000000000000000000000000000000,0,NULL,1);
 INSERT INTO `npc_list` VALUES (17281665,'Ethereal_Junction','Ethereal Junction', 0, 83.3189,0,446.3388, 32769, 50, 50, 0, 5, 116, 0, 3, 0x00008F0900000000000000000000000000000000,0,NULL,1);
+
+--missing Junction entries in npc_list.sql 9/5/25 Fixes Shedu and Lumber Jill
+INSERT INTO `npc_list` VALUES (17101404,'Ethereal_Junction','Ethereal Junction',0,655.327,-12.250,483.406,32769,50,50,0,5,116,0,3,0x00008f0900000000000000000000000000000000,0,NULL,1);
+INSERT INTO `npc_list` VALUES (17101405,'Ethereal_Junction','Ethereal Junction',0,579.177,-11.500,307.307,32769,50,50,0,5,116,0,3,0x00008f0900000000000000000000000000000000,0,NULL,1);
+INSERT INTO `npc_list` VALUES (17101406,'Ethereal_Junction','Ethereal Junction',0,817.070,-10.649,422.275,32769,50,50,0,5,116,0,3,0x00008f0900000000000000000000000000000000,0,NULL,1);
+INSERT INTO `npc_list` VALUES (17207879,'Ethereal_Junction','Ethereal Junction',0,-162.550,-24.000,-162.560,32769,50,50,0,5,116,0,3,0x00008f0900000000000000000000000000000000,0,NULL,1);
+INSERT INTO `npc_list` VALUES (17207880,'Ethereal_Junction','Ethereal Junction',0,309.540,8.600,147.450,32769,50,50,0,5,116,0,3,0x00008f0900000000000000000000000000000000,0,NULL,1);
+INSERT INTO `npc_list` VALUES (17207881,'Ethereal_Junction','Ethereal Junction',0,-519.7849,-23.760,368.8091,32769,50,50,0,5,116,0,3,0x00008f0900000000000000000000000000000000,0,NULL,1);
+
 
 -- update mob spawn points
 UPDATE mob_spawn_points SET pos_x = -280.9931, pos_y = 8,        pos_z = 38.6163,   pos_rot = 228 WHERE mobid = 17269131;
@@ -458,7 +457,5 @@ UPDATE mob_groups SET poolid = 6998 WHERE name = 'Emperor_Arthro';
 
 UPDATE item_usable SET reuseDelay = 300 WHERE itemid = 11538;
 
-
-
-
+UPDATE mob_pools SET sJob = 4 WHERE name = 'Tolba';
 
