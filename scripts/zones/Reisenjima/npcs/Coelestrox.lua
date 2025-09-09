@@ -159,7 +159,7 @@ entity.onTrade = function(player, npc, trade)
         end
             for i = 1, #jobCards do
                 if npcUtil.tradeHasExactly(trade, {{jobCards[i],count}}) then
-                  tradedCards = math.floor(count / 10)
+                  tradedCards = math.floor(count / 5)
                   cardTraded = jobCards[i]
                   end
             end
@@ -173,7 +173,7 @@ entity.onTrade = function(player, npc, trade)
         if tradedCards > 0 then
              -- csid / item traded / qty traded / amount received / cards to display
              player:setCharVar('JCardReturnedID',cardTraded )
-             player:setCharVar('JCardReturned', count % 10) -- set anything that isnt a multiple of 10 to be returned in case of an accidental trade
+             player:setCharVar('JCardReturned', count % 5) -- set anything that isnt a multiple of 10 to be returned in case of an accidental trade
              player:setCharVar('JCardExchange',tradedCards)
              player:startEvent(32,cardTraded,count, tradedCards,22)
         end
