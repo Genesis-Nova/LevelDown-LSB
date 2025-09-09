@@ -105,11 +105,11 @@ local afRArmorPlusOne =
 [88] = { trade = {27960, {4071, 8}, 2200, 8724}, reward = 27981}, -- foire dastanas +1
 [89] = { trade = {28107, {4072, 8}, 2200, 8726}, reward = 28128}, -- foire churidars +1
 [90] = { trade = {28240, {4073, 8}, 2200, 8728}, reward = 28261}, -- foire babouches +1
-[91] = { trade = {27681, {4069, 8}, 2476, 8720}, reward = 27702}, -- maxixi tiara +1
-[92] = { trade = {27825, {4070, 8}, 2476, 8722}, reward = 27846}, -- maxixi casaque +1
-[93] = { trade = {27961, {4071, 8}, 2476, 8724}, reward = 27982}, -- maxixi bangles +1
-[94] = { trade = {28108, {4072, 8}, 2476, 8726}, reward = 28129}, -- maxixi tights +1
-[95] = { trade = {28241, {4073, 8}, 2476, 8728}, reward = 28262}, -- maxixi toe shoes +1
+[91] = { trade = {27681, {4069, 8}, 2476, 8720}, reward = 27702}, -- maxixi tiara +1 (male)
+[92] = { trade = {27825, {4070, 8}, 2476, 8722}, reward = 27846}, -- maxixi casaque +1 (male)
+[93] = { trade = {27961, {4071, 8}, 2476, 8724}, reward = 27982}, -- maxixi bangles +1 (male)
+[94] = { trade = {28108, {4072, 8}, 2476, 8726}, reward = 28129}, -- maxixi tights +1 (male)
+[95] = { trade = {28241, {4073, 8}, 2476, 8728}, reward = 28262}, -- maxixi toe shoes +1 (male)
 [96] = { trade = {27683, {4069, 8}, 1313, 8720}, reward = 27704}, -- academics mortarboard +1
 [97] = { trade = {27827, {4070, 8}, 1313, 8722}, reward = 27848}, -- academics gown +1
 [98] = { trade = {27963, {4071, 8}, 1313, 8724}, reward = 27984}, -- academics bracers +1
@@ -362,7 +362,7 @@ local afRArmorPlusOne =
 [346] = { trade = {14521, 2340, 837, { 4065, 10}}, reward = 27822}, -- assimilators jubbah
 [347] = { trade = {14522, 2288, 837, { 4065, 10}}, reward = 27823}, -- laksamanas frac
 [348] = { trade = {14523, 2288, 837, { 4065, 10}}, reward = 27824}, -- foire tobe
-[349] = { trade = {14578, 823, 837, { 4065, 10}}, reward = 27825}, -- maxixi casaque
+[349] = { trade = {14578, 823, 837, { 4065, 10}}, reward = 27825}, -- maxixi casaque (male)
 [350] = { trade = {14580, 1699, 837, { 4065, 10}}, reward = 27827}, -- academics gown
 [351] = { trade = {14583, 1699, 837, { 4065, 5}}, reward = 27926}, -- geomancy tunic
 [352] = { trade = {12579, 823, 837, { 4065, 10}}, reward = 27927}, -- runeist coat
@@ -384,7 +384,7 @@ local afRArmorPlusOne =
 [368] = { trade = {15684, 2340, 1311, { 4068, 10}}, reward = 28238}, -- assimilators charuqs
 [369] = { trade = {15685, 2288, 1311, { 4068, 10}}, reward = 28239}, -- laksamanas bottes
 [370] = { trade = {15686, 2288, 1311, { 4068, 10}}, reward = 28240}, -- foire babouches
-[371] = { trade = {15746, 823, 1311, { 4068, 10}}, reward = 28241}, -- maxixi toe shoes
+[371] = { trade = {15746, 823, 1311, { 4068, 10}}, reward = 28241}, -- maxixi toe shoes (male)
 [372] = { trade = {15748, 1699, 1311, { 4068, 10}}, reward = 28243}, -- academics loafers
 [373] = { trade = {15751, 1699, 1311, { 4068, 10}}, reward = 28346}, -- geomancy sandals
 [374] = { trade = {12963, 823, 1311, { 4068, 5}}, reward = 28347}, -- runeist bottes
@@ -406,7 +406,7 @@ local afRArmorPlusOne =
 [390] = { trade = {14928, 2340, 1110, { 4066, 10}}, reward = 27958}, -- assimilators bazubands
 [391] = { trade = {14929, 2288, 1110, { 4066, 10}}, reward = 27959}, -- laksamanas gants
 [392] = { trade = {14930, 2288, 1110, { 4066, 10}}, reward = 27960}, -- foire dastanas
-[393] = { trade = {15002, 823, 1110, { 4066, 10}}, reward = 27961}, -- maxixi bangles
+[393] = { trade = {15002, 823, 1110, { 4066, 10}}, reward = 27961}, -- maxixi bangles (male)
 [394] = { trade = {15004, 1699, 1110, { 4066, 10}}, reward = 27963}, -- academics bracers
 [395] = { trade = {15007, 1699, 1110, { 4066, 10}}, reward = 28066}, -- geomancy mitaines
 [396] = { trade = {12707, 823, 1110, { 4066, 5}}, reward = 28067}, -- runeist mitons
@@ -428,7 +428,7 @@ local afRArmorPlusOne =
 [412] = { trade = {15265, 2340, 844, { 4064, 10}}, reward = 27678}, -- assimilators keffiyeh
 [413] = { trade = {15266, 2288, 844, { 4064, 10}}, reward = 27679}, -- laksamanas tricorne
 [414] = { trade = {15267, 2288, 844, { 4064, 10}}, reward = 27680}, -- foire taj
-[415] = { trade = {16138, 823, 844, { 4064, 10}}, reward = 27681}, -- maxixi tiara
+[415] = { trade = {16138, 823, 844, { 4064, 10}}, reward = 27681}, -- maxixi tiara (male)
 [416] = { trade = {16140, 1699, 844, { 4064, 10}}, reward = 27683}, -- academics mortarboard
 [417] = { trade = {16143, 1699, 844, { 4064, 10}}, reward = 27786}, -- geomancy galero
 [418] = { trade = {12451, 823, 844, { 4064, 5}}, reward = 27787}, -- runeist bandeau
@@ -450,7 +450,7 @@ local afRArmorPlusOne =
 [434] = { trade = {15600, 2340, 836, { 4067, 10}}, reward = 28105}, -- assimilators shalwar
 [435] = { trade = {15601, 2288, 836, { 4067, 10}}, reward = 28106}, -- laksamanas trews
 [436] = { trade = {15602, 2288, 836, { 4067, 10}}, reward = 28107}, -- foire churidars
-[437] = { trade = {15659, 823, 836, { 4067, 10}}, reward = 28108}, -- maxixi tights
+[437] = { trade = {15659, 823, 836, { 4067, 10}}, reward = 28108}, -- maxixi tights (male)
 [438] = { trade = {16311, 1699, 836, { 4067, 10}}, reward = 28110}, -- academics pants
 [439] = { trade = {16314, 1699, 836, { 4067, 5}}, reward = 28206}, -- geomancy pants
 [440] = { trade = {12838, 823, 836, { 4067, 10}}, reward = 28207}, -- runeist trousers
@@ -472,7 +472,7 @@ local afRArmorPlusOne =
 [456] = { trade = {16345, 2340, 836, { 4067, 5}}, reward = 28105}, -- assimilators shalwar
 [457] = { trade = {16348, 2288, 836, { 4067, 5}}, reward = 28106}, -- laksamanas trews
 [458] = { trade = {16351, 2288, 836, { 4067, 5}}, reward = 28107}, -- foire churidars
-[459] = { trade = {16357, 823, 836, { 4067, 5}}, reward = 28108}, -- maxixi tights
+[459] = { trade = {16357, 823, 836, { 4067, 5}}, reward = 28108}, -- maxixi tights (male)
 [460] = { trade = {16359, 1699, 836, { 4067, 5}}, reward = 28110}, -- academics pants
 [461] = { trade = {14473, 855, 837, { 4065, 5}}, reward = 27807}, -- pummelers lorica
 [462] = { trade = {14474, 823, 837, { 4065, 5}}, reward = 27808}, -- anchorites cyclas
@@ -492,7 +492,7 @@ local afRArmorPlusOne =
 [476] = { trade = {11291, 2340, 837, { 4065, 5}}, reward = 27822}, -- assimilators jubbah
 [477] = { trade = {11294, 2288, 837, { 4065, 5}}, reward = 27823}, -- laksamanas frac
 [478] = { trade = {11297, 2288, 837, { 4065, 5}}, reward = 27824}, -- foire tobe
-[479] = { trade = {11302, 823, 837, { 4065, 5}}, reward = 27825}, -- maxixi casaque
+[479] = { trade = {11302, 823, 837, { 4065, 5}}, reward = 27825}, -- maxixi casaque (male)
 [480] = { trade = {11304, 1699, 837, { 4065, 5}}, reward = 27827}, -- academics gown
 [481] = { trade = {15352, 855, 1311, { 4068, 5}}, reward = 28223}, -- pummelers calligae
 [482] = { trade = {15353, 823, 1311, { 4068, 5}}, reward = 28224}, -- anchorites gaiters
@@ -512,7 +512,7 @@ local afRArmorPlusOne =
 [496] = { trade = {11381, 2340, 1311, { 4068, 5}}, reward = 28238}, -- assimilators charuqs
 [497] = { trade = {11384, 2288, 1311, { 4068, 5}}, reward = 28239}, -- laksamanas bottes
 [498] = { trade = {11387, 2288, 1311, { 4068, 5}}, reward = 28240}, -- foire babouches
-[499] = { trade = {11393, 823, 1311, { 4068, 5}}, reward = 28241}, -- maxixi toe shoes
+[499] = { trade = {11393, 823, 1311, { 4068, 5}}, reward = 28241}, -- maxixi toe shoes (male)
 [500] = { trade = {11395, 1699, 1311, { 4068, 5}}, reward = 28243}, -- academics loafers
 [501] = { trade = {14890, 855, 1110, { 4066, 5}}, reward = 27943}, -- pummelers mufflers
 [502] = { trade = {14891, 823, 1110, { 4066, 5}}, reward = 27944}, -- anchorites gloves
@@ -532,7 +532,7 @@ local afRArmorPlusOne =
 [516] = { trade = {15024, 2340, 1110, { 4066, 5}}, reward = 27958}, -- assimilators bazubands
 [517] = { trade = {15027, 2288, 1110, { 4066, 5}}, reward = 27959}, -- laksamanas gants
 [518] = { trade = {15030, 2288, 1110, { 4066, 5}}, reward = 27960}, -- foire dastanas
-[519] = { trade = {15035, 823, 1110, { 4066, 5}}, reward = 27961}, -- maxixi bangles
+[519] = { trade = {15035, 823, 1110, { 4066, 5}}, reward = 27961}, -- maxixi bangles (male)
 [520] = { trade = {15037, 1699, 1110, { 4066, 5}}, reward = 27963}, -- academics bracers
 [521] = { trade = {15225, 855, 844, { 4064, 5}}, reward = 27663}, -- pummelers mask
 [522] = { trade = {15226, 823, 844, { 4064, 5}}, reward = 27664}, -- anchorites crown
@@ -552,7 +552,7 @@ local afRArmorPlusOne =
 [536] = { trade = {11464, 2340, 844, { 4064, 5}}, reward = 27678}, -- assimilators keffiyeh
 [537] = { trade = {11467, 2288, 844, { 4064, 5}}, reward = 27679}, -- laksamanas tricorne
 [538] = { trade = {11470, 2288, 844, { 4064, 5}}, reward = 27680}, -- foire taj
-[539] = { trade = {11475, 823, 844, { 4064, 5}}, reward = 27681}, -- maxixi tiara
+[539] = { trade = {11475, 823, 844, { 4064, 5}}, reward = 27681}, -- maxixi tiara (male)
 [540] = { trade = {11477, 1699, 844, { 4064, 5}}, reward = 27683}, -- academics mortarboard
 [541] = { trade = {11184, 2929, 837, {4065, 10}}, reward = 26898},  -- boii lorica
 [542] = { trade = {11185, 2962, 837, {4065, 10}}, reward = 26900},  -- bhikku cyclas
@@ -1071,6 +1071,21 @@ local afRArmorPlusOne =
 [1058] = { trade = {10667, 1464, 844,  {4064, 10}}, reward =  26658}, -- pitre taj
 [1059] = { trade = {10668, 1458, 844,  {4064, 10}}, reward =  26660}, -- horos tiara
 [1060] = { trade = {10669, 1464, 844,  {4064, 10}}, reward =  26662}, -- pedagogy mortarboard
+[1061] = { trade = {27682, {4069, 8}, 2476, 8720}, reward = 27703}, -- maxixi tiara +1 (female)
+[1062] = { trade = {27826, {4070, 8}, 2476, 8722}, reward = 27847}, -- maxixi casaque +1 (female)
+[1063] = { trade = {27962, {4071, 8}, 2476, 8724}, reward = 27983}, -- maxixi bangles +1 (female)
+[1064] = { trade = {28109, {4072, 8}, 2476, 8726}, reward = 28130}, -- maxixi tights +1 (female)
+[1065] = { trade = {28242, {4073, 8}, 2476, 8728}, reward = 28263}, -- maxixi toe shoes +1 (female)
+[1066] = { trade = {14579, 823, 837, { 4065, 10}}, reward = 27826}, -- maxixi casaque (female)
+[1067] = { trade = {15747, 823, 1311, { 4068, 10}}, reward = 28242}, -- maxixi toe shoes (female)
+[1068] = { trade = {15003, 823, 1110, { 4066, 10}}, reward = 27962}, -- maxixi bangles (female)
+[1069] = { trade = {16139, 823, 844, { 4064, 10}}, reward = 27682}, -- maxixi tiara (female)
+[1070] = { trade = {15660, 823, 836, { 4067, 10}}, reward = 28109}, -- maxixi tights (female)
+[1071] = { trade = {16358, 823, 836, { 4067, 5}}, reward = 28109}, -- maxixi tights (female)
+[1072] = { trade = {11303, 823, 837, { 4065, 5}}, reward = 27826}, -- maxixi casaque (female)
+[1073] = { trade = {11394, 823, 1311, { 4068, 5}}, reward = 28242}, -- maxixi toe shoes (female)
+[1074] = { trade = {15036, 823, 1110, { 4066, 5}}, reward = 27962}, -- maxixi bangles (female)
+[1075] = { trade = {11476, 823, 844, { 4064, 5}}, reward = 27682}, -- maxixi tiara (female)
 }
 
 local remChapTrade = 
@@ -1090,19 +1105,25 @@ local remChapTrade =
 
 m:addOverride("xi.zones.Port_Jeuno.npcs.Monisette.onTrade", function(player, npc, trade)
 
+    -- Block any new trades if the player already has a pending one.
+    if player:getCharVar('AFRupgrade') > 0 then
+        player:printToPlayer("You need to collect your items before you can start another upgrade!", 0, npc:getPacketName())
+        return
+    end
+
 local countc = trade:getItemCount()
 local remChap =
 {
-[1061] = { trade = {{4064, countc}}, item = 4064},
-[1062] = { trade = {{4065, countc}}, item = 4065},
-[1063] = { trade = {{4066, countc}}, item = 4066},
-[1064] = { trade = {{4067, countc}}, item = 4067},
-[1065] = { trade = {{4068, countc}}, item = 4068},
-[1066] = { trade = {{4069, countc}}, item = 4069},
-[1067] = { trade = {{4070, countc}}, item = 4070},
-[1068] = { trade = {{4071, countc}}, item = 4071},
-[1069] = { trade = {{4072, countc}}, item = 4072},
-[1070] = { trade = {{4073, countc}}, item = 4073},
+[1076] = { trade = {{4064, countc}}, item = 4064},
+[1077] = { trade = {{4065, countc}}, item = 4065},
+[1078] = { trade = {{4066, countc}}, item = 4066},
+[1079] = { trade = {{4067, countc}}, item = 4067},
+[1080] = { trade = {{4068, countc}}, item = 4068},
+[1081] = { trade = {{4069, countc}}, item = 4069},
+[1082] = { trade = {{4070, countc}}, item = 4070},
+[1083] = { trade = {{4071, countc}}, item = 4071},
+[1084] = { trade = {{4072, countc}}, item = 4072},
+[1085] = { trade = {{4073, countc}}, item = 4073},
 }
 
 -------------------------------------ArmorUpgrade-------------------------------------------------
