@@ -3266,7 +3266,8 @@ m:addOverride("xi.items.saramas_coffer.onItemUse", function(target)
         {    1, 20680   }, -- Tanmogayi +1
         {   10, 25855   }, -- Tatenashi Haidate
         {    1, 25856   }, -- Tatenashi Haidate +1
-        {   67, xi.item.NONE  },
+		{    5, 6479    }, -- Tumult's Coffer
+        {   62, xi.item.NONE  },
     }
     local loottwo =
     {
@@ -3434,7 +3435,8 @@ m:addOverride("xi.items.shedus_coffer.onItemUse", function(target)
         {    1, 21076   }, -- Septoptic +1
         {   10, 27148   }, -- Tatenashi Gote
         {    1, 27149   }, -- Tatenashi Gote +1
-        {   67, xi.item.NONE  },
+		{    5, 6479    }, -- Tumult's Coffer
+        {   62, xi.item.NONE  },
     }
     local loottwo =
     {
@@ -3937,7 +3939,8 @@ m:addOverride("xi.items.thubans_coffer.onItemUse", function(target)
         {    1, 25924   }, -- Tatenashi Sune-Ate +1
         {   10, 26021   }, -- Vim Torque
         {    1, 26022   }, -- Vim Torque +1
-        {   67, xi.item.NONE  },
+		{    5, 6479    }, -- Tumult's Coffer
+        {   62, xi.item.NONE  },
     }
     local loottwo =
     {
