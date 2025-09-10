@@ -169,7 +169,7 @@ INSERT INTO mob_pools VALUES (40008, 'Diabolos_Prime_HTBF', 'Diabolos_Prime', 35
 UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X =  -240.0419, pos_y =   -32.0000, pos_z = 291.0711,  pos_rot =  69 WHERE mobid = 16818226;
 UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 16818227;
 UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 16818228;
-UPDATE mob_groups SET poolid = 40008, HP = 155000, MP = 5000, minLevel = 110, maxLevel = 120 WHERE name = 'Diabolos_HTBF' AND groupid = 6;
+UPDATE mob_groups SET poolid = 40008, dropid = 4109, HP = 155000, MP = 5000, minLevel = 110, maxLevel = 120 WHERE name = 'Diabolos_HTBF' AND groupid = 6;
 INSERT INTO mob_skill_lists VALUES ('Diabolos_Prime_HTBF', 40002, 1910); -- Nether Blast -- no scipt -- testing
 INSERT INTO mob_skill_lists VALUES ('Diabolos_Prime_HTBF', 40002, 582); -- Cacodemonia -- no script -- testing
 INSERT INTO mob_skill_lists VALUES ('Diabolos_Prime_HTBF', 40002, 1905); -- Noctoshield -- no script -- testing
