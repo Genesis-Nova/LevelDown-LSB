@@ -42,6 +42,7 @@ custom/lua/hangout/
 custom/lua/npcs/
 custom/lua/trusts/
 custom/lua/weaponskills/
+custom/lua/Beachbesieged.lua
 custom/lua/test_npcs_in_gm_home.lua
 custom/lua/new_player_linkshell.lua
 custom/lua/nexuscape_update.lua
