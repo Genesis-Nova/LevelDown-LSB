@@ -200,9 +200,9 @@ local function checkUpgrade(player, mob, nextKeyItem)
     then
         local zoneTextTable  = zones[mob:getZoneID()].text
         local currentKeyItem = mob:getLocalVar('[VoidWalker]PopedWith')
-        local rand           = math.random(1, 10)
+        local rand           = math.random(1, 100)
 
-        if rand == 5 then
+        if rand <= 45 then
             if player:hasKeyItem(currentKeyItem) then
                 player:delKeyItem(currentKeyItem)
             end
@@ -583,14 +583,14 @@ xi.voidwalker.onMobDeath = function(mob, player, optParams, keyItem)
         if optParams.isKiller then
             local playerpoped = GetPlayerByID(mob:getLocalVar('[VoidWalker]PopedBy'))
             local alliance    = player:getAlliance()
-            local outOfParty  = true
-
+            local outOfParty  = false
+        
             for _, member in pairs(alliance) do
                 if
                     playerpoped and
                     member:getID() == playerpoped:getID()
                 then
-                    outOfParty = false
+                    outOfParty = true
                     break
                 end
             end

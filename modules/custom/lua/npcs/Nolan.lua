@@ -581,7 +581,7 @@ local tradeTablePathD =
 [  1] = { trade = { 26791,{ 9086, 6}}, base = 26791, aug1 =  512, aug1MAX =  8, aug2 =  514, aug2MAX =  6, aug3 =  329, aug3MAX =  6, aug4 =  0, aug4MAX = 0 }, -- Eschite Helm
 [  2] = { trade = { 26947,{ 9086, 6}}, base = 26947, aug1 =   25, aug1MAX = 14, aug2 =  514, aug2MAX =  6, aug3 =   71, aug3MAX =  3, aug4 =  0, aug4MAX = 0 }, -- Eschite Breastplate
 [  3] = { trade = { 27097,{ 9086, 6}}, base = 27097, aug1 =   23, aug1MAX = 19, aug2 =  143, aug2MAX =  3, aug3 =   39, aug3MAX =  6, aug4 =  0, aug4MAX = 0 }, -- Eschite Gauntlets
-[  4] = { trade = { 27282,{ 9086, 6}}, base = 27282, aug1 =   37, aug1MAX = 24, aug2 =  141, aug2MAX =  5, aug3 =  140, aug3MAX =  4, aug4 =  0, aug4MAX = 0 }, -- Eschite Cuisses
+[  4] = { trade = { 27282,{ 9086, 6}}, base = 27282, aug1 =  133, aug1MAX = 24, aug2 =  141, aug2MAX =  5, aug3 =  140, aug3MAX =  4, aug4 =  0, aug4MAX = 0 }, -- Eschite Cuisses
 [  5] = { trade = { 27457,{ 9086, 6}}, base = 27457, aug1 =  512, aug1MAX = 14, aug2 =   78, aug2MAX = 24, aug3 =  142, aug3MAX =  4, aug4 =  0, aug4MAX = 0 }, -- Eschite Greaves
 [  6] = { trade = { 26792,{ 9086, 6}}, base = 26792, aug1 =  512, aug1MAX = 15, aug2 =   39, aug2MAX =  6, aug3 =  142, aug3MAX =  2, aug4 =  0, aug4MAX = 0 }, -- Despair Helm
 [  7] = { trade = { 26948,{ 9086, 6}}, base = 26948, aug1 =   25, aug1MAX = 24, aug2 =   37, aug2MAX = 19, aug3 =  143, aug3MAX =  2, aug4 =  0, aug4MAX = 0 }, -- Despair Mail
