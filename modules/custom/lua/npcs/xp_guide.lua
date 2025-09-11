@@ -404,7 +404,7 @@ page5 =
    {
         'RaKaznar Inner Court',
         function(playerArg)
-            playerArg:setPos(-339.9206, -431.1964, 299.9980, 1, xi.zone.RAKAZNAR_INNER_COURT)
+            playerArg:setPos(-326, -430.25, 300, 0, xi.zone.RAKAZNAR_INNER_COURT)
         end,
     },	
     {
@@ -416,10 +416,14 @@ page5 =
     },
 }
 
-
-
 m:addOverride('xi.zones.Bastok_Mines.Zone.onInitialize', function(zone)
-    super(zone)
+    -- print('DEBUG: Initializing Bastok Mines zone for XP Guide.') -- Commented out debug print
+    local ok, err = pcall(function()
+        super(zone)
+    end)
+    if not ok then
+        print('ERROR: super(zone) failed in Bastok Mines: ' .. tostring(err))
+    end
     local exp_guidetwo = zone:insertDynamicEntity({
         objtype = xi.objType.NPC,
         name = 'EXP Guide',
@@ -455,7 +459,13 @@ m:addOverride('xi.zones.Bastok_Mines.Zone.onInitialize', function(zone)
 end)
 
 m:addOverride('xi.zones.Northern_San_dOria.Zone.onInitialize', function(zone)
-    super(zone)
+    -- print('DEBUG: Initializing Northern San d\'Oria zone for XP Guide.') -- Commented out debug print
+    local ok, err = pcall(function()
+        super(zone)
+    end)
+    if not ok then
+        print('ERROR: super(zone) failed in Northern San d\'Oria: ' .. tostring(err))
+    end
     local exp_guideone = zone:insertDynamicEntity({
         objtype = xi.objType.NPC,
         name = 'EXP Guide',
@@ -491,7 +501,13 @@ m:addOverride('xi.zones.Northern_San_dOria.Zone.onInitialize', function(zone)
 end)
 
 m:addOverride('xi.zones.Port_Windurst.Zone.onInitialize', function(zone)
-    super(zone)
+    -- print('DEBUG: Initializing Port Windurst zone for XP Guide.') -- Commented out debug print
+    local ok, err = pcall(function()
+        super(zone)
+    end)
+    if not ok then
+        print('ERROR: super(zone) failed in Port Windurst: ' .. tostring(err))
+    end
     local exp_guidethree = zone:insertDynamicEntity({
         objtype = xi.objType.NPC,
         name = 'EXP Guide',
@@ -527,7 +543,13 @@ m:addOverride('xi.zones.Port_Windurst.Zone.onInitialize', function(zone)
 end)
 
 m:addOverride('xi.zones.RuLude_Gardens.Zone.onInitialize', function(zone)
-    super(zone)
+    -- print('DEBUG: Initializing Ru\'Lude Gardens zone for XP Guide.') -- Commented out debug print
+    local ok, err = pcall(function()
+        super(zone)
+    end)
+    if not ok then
+        print('ERROR: super(zone) failed in Ru\'Lude Gardens: ' .. tostring(err))
+    end
     local exp_guidefour = zone:insertDynamicEntity({
         objtype = xi.objType.NPC,
         name = 'EXP Guide',
@@ -561,5 +583,47 @@ m:addOverride('xi.zones.RuLude_Gardens.Zone.onInitialize', function(zone)
         end,
     })
 end)
-return m
 
+m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
+    -- print('DEBUG: Initializing Mog Garden zone for XP Guide.') -- Commented out debug print
+    local ok, err = pcall(function()
+        super(zone)
+    end)
+    if not ok then
+        print('ERROR: super(zone) failed in Mog Garden: ' .. tostring(err))
+    end
+    local exp_guidetwo = zone:insertDynamicEntity({
+        objtype = xi.objType.NPC,
+        name = 'EXP Guide',
+        look = 2433,
+        x         = 354.5341,
+        y         = -2.8338,
+        z         = -545.1909,
+        rotation = 196,
+        widescan = 1,
+        onTrade = function(player, npc, trade)
+        end,
+        onTrigger = function(player, npc)
+     menu.options = page1
+     delaySendMenu(player)
+        end,
+    })
+    local mrt_guidetwo = zone:insertDynamicEntity({
+        objtype = xi.objType.NPC,
+        name = 'Merit Guide',
+        look = 2433,
+        x         = 356.8286,
+        y         = -2.7344,
+        z         = -545.3015,
+        rotation = 196,
+        widescan = 1,
+        onTrade = function(player, npc, trade)
+        end,
+        onTrigger = function(player, npc)
+     menu.options = page5
+     delaySendMenu(player)
+        end,
+    })
+end)
+
+return m
