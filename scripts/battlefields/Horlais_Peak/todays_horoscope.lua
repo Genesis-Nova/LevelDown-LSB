@@ -37,7 +37,7 @@ content.loot =
             { item = xi.item.GRAVEDIGGER, 		weight = 222 },
             { item = xi.item.RAMPAGER, 			weight = 245 },
             { item = xi.item.RETRIBUTOR, 		weight = 231 },
-            { item = xi.item.GONDO-SHIZUNORI,	weight = 302 },
+            { item = xi.item.GONDO_SHIZUNORI,	weight = 302 },
         },
         
         {
