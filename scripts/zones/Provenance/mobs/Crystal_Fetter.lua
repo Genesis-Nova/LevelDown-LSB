@@ -34,23 +34,14 @@ local function applyFetterAura(mob, target)
     [2145] = { xi.effect.DIA,   xi.effect.INHIBIT_TP}, -- white light
     [2146] = { xi.effect.BIO,   xi.effect.MAGIC_ACC_DOWN}, -- black dark
     }
+
     local modelId = mob:getLocalVar('FetterModel') -- 17686530
-    local fetterEffects = 0
-    local auraDuration = 0
-      if fetterEffects == 0 then
-        for fetterModel, effect in pairs(auraEffects) do
-            if fetterModel == modelId then
-                fetterEffects = fetterModel
-            -- Apply each effect individually without overwriting others
-            -- mob:addStatusEffectEx(effect, effect, 10, 3, auraDuration, effect, 50, xi.auraTarget.ENEMIES, xi.effectFlag.AURA)
-            end
-        break
-        end
+
+    for fetterModel, effect in pairs(auraEffects[modelId]) do
+        -- Apply each effect individually without overwriting others
+        mob:addStatusEffectEx(effect, effect, 10, 3, 180, effect, 50, xi.auraTarget.ENEMIES, xi.effectFlag.AURA)
     end
-            if fetterEffects > 0 then
-               mob:addStatusEffectEx(effect[1], effect[1], 10, 3, auraDuration, effect[1], 50, xi.auraTarget.ENEMIES, xi.effectFlag.AURA)
-               mob:addStatusEffectEx(effect[2], effect[2], 10, 3, auraDuration, effect[2], 50, xi.auraTarget.ENEMIES, xi.effectFlag.AURA)
-            end        
+
 end
 
 
@@ -59,47 +50,46 @@ entity.onMobInitialize = function(mob)
 end
 
 entity.onMobSpawn = function(mob)
-local provenanceWatcher = GetMobByID(ID.mob.PROVENANCE_WATCHER)
-local model = math.random(2139,2146)
+    local provenanceWatcher = GetMobByID(ID.mob.PROVENANCE_WATCHER)
+    local model = math.random(2139,2146)
+
     if provenanceWatcher:isAlive() then
         mob:setModelId(model)
         mob:setLocalVar('FetterModel', model)
     end
-            for location, newPOS in pairs(position) do
-                if location == math.random(1,12) then
-                   mob:setSpawn(newPOS[1],newPOS[2],newPOS[3],newPOS[4])
-                end
-            end
-            mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+
+    for location, newPOS in pairs(position) do
+        if location == math.random(1,12) then
+            mob:setSpawn(newPOS[1],newPOS[2],newPOS[3],newPOS[4])
+        end
+    end
+
+    mob:setMobMod(xi.mobMod.NO_MOVE, 1)
+    applyFetterAura(mob)
 end
+
 entity.onMobEngage = function(mob,target)
-        applyFetterAura(mob)
+
 end
 
 entity.onMobDespawn = function(mob)
- local provenanceWatcher = GetMobByID(ID.mob.PROVENANCE_WATCHER)
-        if GetMobByID(ID.mob.PROVENANCE_WATCHER):isAlive() then
-           provenanceWatcher:delStatusEffect(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-           provenanceWatcher:delStatusEffect(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-           provenanceWatcher:delStatusEffect(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
-        end
+    local provenanceWatcher = GetMobByID(ID.mob.PROVENANCE_WATCHER)
+
+    if GetMobByID(ID.mob.PROVENANCE_WATCHER):isAlive() then
+        provenanceWatcher:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
+        provenanceWatcher:delStatusEffect(xi.effect.ARROW_SHIELD)   
+        provenanceWatcher:delStatusEffect(xi.effect.MAGIC_SHIELD)
+    end
 end
 
 entity.onMobDeath = function(mob, player, optParams)
- local provenanceWatcher = GetMobByID(ID.mob.PROVENANCE_WATCHER)
-        if GetMobByID(ID.mob.PROVENANCE_WATCHER):isAlive() then
-           provenanceWatcher:delStatusEffect(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-           provenanceWatcher:delStatusEffect(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-           provenanceWatcher:delStatusEffect(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
-        end
+    local provenanceWatcher = GetMobByID(ID.mob.PROVENANCE_WATCHER)
+
+    if GetMobByID(ID.mob.PROVENANCE_WATCHER):isAlive() then
+        provenanceWatcher:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
+        provenanceWatcher:delStatusEffect(xi.effect.ARROW_SHIELD)   
+        provenanceWatcher:delStatusEffect(xi.effect.MAGIC_SHIELD)
+    end
 end
 
 return entity
-
---[[
-    NONE      = 0,
-    ROUND     = 1, // Normal AoE type
-    CONE      = 4, // Forward conal AoE
-    REAR_CONE = 8, // conal AoE behind the source
-
-]]--

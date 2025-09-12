@@ -163,11 +163,11 @@ INSERT INTO mob_droplist VALUES(2844,1,3,1000,1110,250); -- Beetle Blood / NMs I
 INSERT INTO mob_droplist VALUES(2844,1,3,1000,837,250); -- Malboro Fiber / NMs Ix'aern (DRK)
 INSERT INTO mob_droplist VALUES(2844,1,4,1000,20957,500); -- Concido Course / NMs Ix'aern (DRK)
 INSERT INTO mob_droplist VALUES(2844,1,4,1000,20626,500); -- Blitto Needle / NMs Ix'aern (DRK)
-INSERT INTO mob_droplist VALUES(2819,1,3,1000,4069,750); -- Rem tale 6 / NMs Kirin
-INSERT INTO mob_droplist VALUES(2819,1,3,1000,4070,750); -- Rem tale 7 / NMs Kirin
-INSERT INTO mob_droplist VALUES(2819,1,4,1000,4071,750); -- Rem tale 8 / NMs Kirin
-INSERT INTO mob_droplist VALUES(2819,1,4,1000,4072,750); -- Rem tale 9 / NMs Kirin
-INSERT INTO mob_droplist VALUES(2819,1,5,1000,4073,750); -- Rem tale 10 / NMs Kirin
+INSERT INTO mob_droplist VALUES(2819,1,5,1000,4069,750); -- Rem tale 6 / NMs Kirin
+INSERT INTO mob_droplist VALUES(2819,1,5,1000,4070,750); -- Rem tale 7 / NMs Kirin
+INSERT INTO mob_droplist VALUES(2819,1,6,1000,4071,750); -- Rem tale 8 / NMs Kirin
+INSERT INTO mob_droplist VALUES(2819,1,6,1000,4072,750); -- Rem tale 9 / NMs Kirin
+INSERT INTO mob_droplist VALUES(2819,1,7,1000,4073,750); -- Rem tale 10 / NMs Kirin
 INSERT INTO mob_droplist VALUES(3168,1,1,500,11632,125); -- Karka Ring / Void Walker Tier 2 Capricornus
 INSERT INTO mob_droplist VALUES(3168,1,1,500,11629,125); -- Zilant Ring  / Void Walker Tier 2 Capricornus
 INSERT INTO mob_droplist VALUES(3168,1,1,500,11633,125); -- Galdr Ring  / Void Walker Tier 2 Capricornus
@@ -1205,6 +1205,45 @@ INSERT INTO mob_droplist VALUES(4122,1,2,200,23722,50); -- Volte Brais / Supreme
 INSERT INTO mob_droplist VALUES(4122,1,2,200,23723,50); -- Volte Tights / Supreme Bahamut
 INSERT INTO mob_droplist VALUES(4122,1,2,200,23724,50); -- Volte Brayettes / Supreme Bahamut
 INSERT INTO mob_droplist VALUES(4122,1,2,200,23725,50); -- Volte Hose / Supreme Bahamut
+INSERT INTO mob_droplist VALUES(4123,0,0,1000,6367,1000); -- codex_of_etchings / Asb
+INSERT INTO mob_droplist VALUES(4123,1,1,250,6367,500); -- codex_of_etchings / Asb
+INSERT INTO mob_droplist VALUES(4123,1,2,500,3509,333); -- plate_of_heavy_metal / Asb
+INSERT INTO mob_droplist VALUES(4123,1,2,500,3499,333); -- pinch_of_riftcinder / Asb
+INSERT INTO mob_droplist VALUES(4123,1,2,500,3498,333); -- clump_of_riftdross / Asb
+INSERT INTO mob_droplist VALUES(4124,0,0,1000,6367,1000); -- codex_of_etchings / Pil
+INSERT INTO mob_droplist VALUES(4124,1,1,250,6367,500); -- codex_of_etchings / Pil
+INSERT INTO mob_droplist VALUES(4124,1,2,500,3509,333); -- plate_of_heavy_metal / Pil
+INSERT INTO mob_droplist VALUES(4124,1,2,500,3499,333); -- pinch_of_riftcinder / Pil
+INSERT INTO mob_droplist VALUES(4124,1,2,500,3498,333); -- clump_of_riftdross / Pil
+INSERT INTO mob_droplist VALUES(4125,0,0,1000,6367,1000); -- codex_of_etchings / Rukh
+INSERT INTO mob_droplist VALUES(4125,1,1,250,6367,500); -- codex_of_etchings / Rukh
+INSERT INTO mob_droplist VALUES(4125,1,2,500,3509,333); -- plate_of_heavy_metal / Rukh
+INSERT INTO mob_droplist VALUES(4125,1,2,500,3499,333); -- pinch_of_riftcinder / Rukh
+INSERT INTO mob_droplist VALUES(4125,1,2,500,3498,333); -- clump_of_riftdross / Rukh
+INSERT INTO mob_droplist VALUES(4126,0,0,1000,6367,1000); -- codex_of_etchings / Sarbaz
+INSERT INTO mob_droplist VALUES(4126,1,1,250,6367,500); -- codex_of_etchings / Sarbaz
+INSERT INTO mob_droplist VALUES(4126,1,2,500,3509,333); -- plate_of_heavy_metal / Sarbaz
+INSERT INTO mob_droplist VALUES(4126,1,2,500,3499,333); -- pinch_of_riftcinder / Sarbaz
+INSERT INTO mob_droplist VALUES(4126,1,2,500,3498,333); -- clump_of_riftdross / Sarbaz
+INSERT INTO mob_droplist VALUES(4127,0,0,1000,6367,1000); -- codex_of_etchings / Shah
+INSERT INTO mob_droplist VALUES(4127,1,1,250,6367,500); -- codex_of_etchings / Shah
+INSERT INTO mob_droplist VALUES(4127,1,2,500,3509,333); -- plate_of_heavy_metal / Shah
+INSERT INTO mob_droplist VALUES(4127,1,2,500,3499,333); -- pinch_of_riftcinder / Shah
+INSERT INTO mob_droplist VALUES(4127,1,2,500,3498,333); -- clump_of_riftdross / Shah
+INSERT INTO mob_droplist VALUES(4128,0,0,1000,6367,1000); -- codex_of_etchings / Wazir
+INSERT INTO mob_droplist VALUES(4128,1,1,250,6367,500); -- codex_of_etchings / Wazir
+INSERT INTO mob_droplist VALUES(4128,1,2,500,3509,333); -- plate_of_heavy_metal / Wazir
+INSERT INTO mob_droplist VALUES(4128,1,2,500,3499,333); -- pinch_of_riftcinder / Wazir
+INSERT INTO mob_droplist VALUES(4128,1,2,500,3498,333); -- clump_of_riftdross / Wazir
+INSERT INTO mob_droplist VALUES(4129,0,0,1000,6367,1000); -- codex_of_etchings / Provenance_Watcher
+INSERT INTO mob_droplist VALUES(4129,0,0,1000,6367,1000); -- codex_of_etchings / Provenance_Watcher
+INSERT INTO mob_droplist VALUES(4129,1,1,250,6367,500); -- codex_of_etchings / Provenance_Watcher
+INSERT INTO mob_droplist VALUES(4129,1,1,250,6367,500); -- codex_of_etchings / Provenance_Watcher
+INSERT INTO mob_droplist VALUES(4129,1,2,1000,3499,1000); -- pinch_of_riftcinder / Provenance_Watcher
+INSERT INTO mob_droplist VALUES(4129,1,2,1000,3498,1000); -- clump_of_riftdross / Provenance_Watcher
+INSERT INTO mob_droplist VALUES(4129,1,3,500,3509,333); -- heavy_metal_pouch / Provenance_Watcher
+INSERT INTO mob_droplist VALUES(4129,1,4,500,3499,333); -- pinch_of_riftcinder / Provenance_Watcher
+INSERT INTO mob_droplist VALUES(4129,1,5,500,3498,333); -- clump_of_riftdross / Provenance_Watcher
 
 UPDATE mob_groups SET dropid = 4000 WHERE name = 'Ground_Guzzler';
 UPDATE mob_groups SET dropid = 4000 WHERE name = 'Globster';
@@ -1357,9 +1396,10 @@ UPDATE mob_groups SET dropid = 4118 WHERE name = 'Ironclad_Executioner' AND grou
 -- 4120 = Supreme Fafnir
 -- 4121 = Supreme Aspid
 -- 4122 = Supreme Bahamut
-
-
-
-
-
-
+UPDATE mob_groups SET dropid = 4123 WHERE name = 'Asb' AND groupid = 11525;
+UPDATE mob_groups SET dropid = 4124 WHERE name = 'Pil' AND groupid = 11526;
+UPDATE mob_groups SET dropid = 4125 WHERE name = 'Rukh' AND groupid = 11527;
+UPDATE mob_groups SET dropid = 4126 WHERE name = 'Sarbaz' AND groupid = 11528;
+UPDATE mob_groups SET dropid = 4127 WHERE name = 'Shah' AND groupid = 11529;
+UPDATE mob_groups SET dropid = 4128 WHERE name = 'Wazir' AND groupid = 11530;
+UPDATE mob_groups SET dropid = 4129 WHERE name = 'Provenance_Watcher' AND groupid = 11531;

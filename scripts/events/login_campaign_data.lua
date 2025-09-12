@@ -208,7 +208,7 @@ local prizes =
             10430, -- Decennial Crown
             10251, -- Decennial Coat
             11853, -- Novennial Coat
-            11953, -- Novennial Hose
+            11956, -- Novennial Hose
             10593, -- Decennial tights
             --[[
             --- Month 3 ---------------------------------------------

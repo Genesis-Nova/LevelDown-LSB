@@ -21,6 +21,7 @@ entity.onMobSpawn = function(mob)
    mob:setSpellList(523)
    mob:setLocalVar('cometMeteorTrigger', 60)
    mob:setLocalVar('CFTrigger', 90)
+   mob:setMobMod(xi.mobMod.NO_MOVE, 1)
    if crystalFetter:isAlive() then
       DespawnMob(ID.mob.CRYSTAL_FETTER)
    end
@@ -53,6 +54,7 @@ entity.onMobFight = function(mob)
     local changePhase = mob:getLocalVar('PhaseChange')
     local crystalFetter = mob:getLocalVar('CFSummon')
     local cfTrigger     = mob:getLocalVar('CFTrigger')
+
     if
        act == xi.act.MOBABILITY_START or
        act == xi.act.MOBABILITY_USING or
@@ -63,36 +65,39 @@ entity.onMobFight = function(mob)
     then
        isBusy = true -- is set to true if PW is in any stage of using a mobskill or casting a spell
     end
-          -- set animatin sub to 2 to bring out 4 wings and change to skill set 2
-          if mob:getHPP() <= 50 and
-             changePhase == 0 or nil then
-             mob:setAnimationSub(2)
-             mob:setLocalVar('PhaseChange', 1)
-             mob:setMobMod(xi.mobMod.SKILL_LIST, 49998)
-          end
-              -- casts meteor or comet every -15% HPS starting at 60%
-              if mob:actionQueueEmpty() and not isBusy then
-                if cmUse < 5 then
-                            if mobHPP <= cmTrigger and
-                               mobHPP >= cmTrigger - 5 then
-                               mob:castSpell(math.random(218,219))
-                               mob:setLocalVar('cometMeteorTrigger', cmTrigger - 15)
-                               mob:setLocalVar('cometMeteorUse', cmUse +1)
-                            end
+
+    -- set animatin sub to 2 to bring out 4 wings and change to skill set 2
+        if mob:getHPP() <= 50 and
+            changePhase == 0 or nil then
+            mob:setAnimationSub(2)
+            mob:setLocalVar('PhaseChange', 1)
+            mob:setMobMod(xi.mobMod.SKILL_LIST, 49998)
+        end
+
+    -- casts meteor or comet every -15% HPS starting at 60%
+        if mob:actionQueueEmpty() and not isBusy then
+            if cmUse < 5 then
+                if mobHPP <= cmTrigger and
+                    mobHPP >= cmTrigger - 5 then
+                    mob:castSpell(math.random(218,219))
+                    mob:setLocalVar('cometMeteorTrigger', cmTrigger - 15)
+                    mob:setLocalVar('cometMeteorUse', cmUse +1)
                 end
-              end
-                  -- summons a crystal fetter every - 10% HPs starting at 90%
-                  if crystalFetter < 10 then
-                        if mobHPP <= cfTrigger and
-                           mobHPP >= cfTrigger - 5 then
-                           SpawnMob(ID.mob.CRYSTAL_FETTER):updateEnmity(target)
-                           mob:setLocalVar('CFTrigger', cfTrigger - 10)
-                           mob:setLocalVar('CFSummon', crystalFetter +1)
-                           mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-                           mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-                           mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
-                        end
-                  end
+            end
+        end
+
+        -- summons a crystal fetter every - 10% HPs starting at 90%
+        if crystalFetter < 10 then
+            if mobHPP <= cfTrigger and
+                mobHPP >= cfTrigger - 5 then
+                SpawnMob(ID.mob.CRYSTAL_FETTER):updateEnmity(target)
+                mob:setLocalVar('CFTrigger', cfTrigger - 10)
+                mob:setLocalVar('CFSummon', crystalFetter +1)
+                mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
+                mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
+                mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+            end
+        end
 end
 
 entity.onSpellPrecast = function(mob, spell)
