@@ -108,10 +108,10 @@ commandObj.onTrigger = function(player)
         rotation = player:getRotPos(),
 
         onTrade = function(player, npc, trade)
-
+            xi.custom_quest.onTrade(player, npc, trade)
         end,
         onTrigger = function(player, npc)
-
+            xi.custom_quest.onTrigger(player, npc)
         end,
         releaseIdOnDisappear = true,
     })

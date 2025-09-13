@@ -1560,6 +1560,8 @@ xi.helm.onTrade = function(player, npc, trade, helmType, csid, func)
             if uses == 0 then
                 movePoint(player, npc, zoneId, info)
             end
+
+            xi.custom_quest.helmAdjustment(player, helmType)
         end
 
         xi.helm.result(player, helmType, broke, itemID)

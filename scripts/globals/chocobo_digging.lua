@@ -2152,6 +2152,8 @@ local function calculateSkillUp(player)
             if (realSkill + increment) >= (skillRank * 100) + 100 then
                 player:setSkillRank(xi.skill.DIG, skillRank + 1)
             end
+
+            player:printToPlayer(string.format('%s current digging rank is %s and skill is %s', player:getName(), realSkill, skillRank),xi.msg.channel.SYSTEM_3)
         end
     end
 end
@@ -2254,6 +2256,7 @@ local function handleItemObtained(player, text, itemId)
     if itemId > 0 then
         -- Make sure we have enough room for the item.
         if player:addItem(itemId) then
+            xi.custom_quest.chocoboDigAdjustment(player)
             player:messageSpecial(text.ITEM_OBTAINED, itemId)
         else
             player:messageSpecial(text.DIG_THROW_AWAY, itemId)
