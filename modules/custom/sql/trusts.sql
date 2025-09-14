@@ -454,3 +454,15 @@ INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,110,44,255);-- REGEN_II
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,111,66,255);-- REGEN_III (66~255)
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,477,86,255);-- REGEN_IV (86~255)
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,504,99,255);-- REGEN_V (1~255)
+
+--Coborn
+INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 125, 7, 255); -- protectra
+INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 126, 27, 255); -- protectra_ii
+INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 127, 47, 255); -- protectra_iii
+INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 128, 63, 255); -- protectra_iv
+INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 129, 75, 255); -- protectra_v
+INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 130, 17, 255); -- shellra
+INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 131, 37, 255); -- shellra_ii
+INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 132, 57, 255); -- shellra_iii
+INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 133, 68, 255); -- shellra_iv
+INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 134, 75, 255); -- shellra_v
