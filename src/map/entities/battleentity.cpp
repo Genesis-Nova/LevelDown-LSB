@@ -23,7 +23,6 @@
 
 #include "common/database.h"
 #include "common/logging.h"
-#include "common/sql.h"
 #include "common/utils.h"
 
 #include "ai/ai_container.h"
@@ -2049,6 +2048,8 @@ void CBattleEntity::OnCastInterrupted(CMagicState& state, action_t& action, MSGB
             // For some reason, despite the system supporting interrupted message in the action packet (like auto attacks, JA), an 0x029 message is sent for spells.
             loc.zone->PushPacket(this, CHAR_INRANGE_SELF, std::make_unique<CMessageBasicPacket>(this, state.GetTarget() ? state.GetTarget() : this, 0, 0, msg));
         }
+
+        luautils::OnSpellInterrupted(this, PSpell);
     }
 }
 

@@ -29,7 +29,7 @@
 #include "status_effect_container.h"
 #include "utils/battleutils.h"
 
-CMobSkillState::CMobSkillState(CBattleEntity* PEntity, uint16 targid, uint16 wsid)
+CMobSkillState::CMobSkillState(CBattleEntity* PEntity, uint16 targid, uint16 wsid, std::optional<timer::duration> castTimeOverride)
 : CState(PEntity, targid)
 , m_PEntity(PEntity)
 , m_spentTP(0)
@@ -61,9 +61,16 @@ CMobSkillState::CMobSkillState(CBattleEntity* PEntity, uint16 targid, uint16 wsi
 
     m_PSkill = std::make_unique<CMobSkill>(*skill);
 
-    m_castTime = m_PSkill->getActivationTime();
+    if (castTimeOverride.has_value())
+    {
+        m_castTime = castTimeOverride.value();
+    }
+    else
+    {
+        m_castTime = m_PSkill->getActivationTime();
+    }
 
-    if (m_castTime > 0s)
+    if (m_castTime > 0s && !(m_PSkill->getFlag() & SKILLFLAG_NO_START_MSG))
     {
         action_t action;
         action.id         = m_PEntity->id;
@@ -140,7 +147,10 @@ bool CMobSkillState::Update(timer::time_point tick)
     {
         action_t action;
         m_PEntity->OnMobSkillFinished(*this, action);
-        m_PEntity->loc.zone->PushPacket(m_PEntity, CHAR_INRANGE_SELF, std::make_unique<CActionPacket>(action));
+        if (!(m_PSkill->getFlag() & SKILLFLAG_NO_FINISH_MSG))
+        {
+            m_PEntity->loc.zone->PushPacket(m_PEntity, CHAR_INRANGE_SELF, std::make_unique<CActionPacket>(action));
+        }
         m_finishTime = tick + m_PSkill->getAnimationTime();
         Complete();
     }
@@ -207,5 +217,11 @@ void CMobSkillState::Cleanup(timer::time_point tick)
                 m_PEntity->health.tp = std::floor(0.25f * tp);
             }
         }
+    }
+
+    if (m_PSkill->getFinalAnimationSub().has_value() && m_PEntity && m_PEntity->isAlive())
+    {
+        m_PEntity->animationsub = m_PSkill->getFinalAnimationSub().value();
+        m_PEntity->updatemask |= UPDATE_COMBAT;
     }
 }

@@ -77,6 +77,7 @@
 #include "fishingcontest.h"
 #include "instance.h"
 #include "ipc_client.h"
+#include "items/item_furnishing.h"
 #include "map_engine.h"
 #include "mob_modifier.h"
 #include "mobskill.h"
@@ -424,7 +425,8 @@ namespace luautils
 
                 // Spec meta files should not be cached, and are only used
                 // for Lua Language Server parsing
-                if (!parts.empty() && parts[2] == "specs")
+                // Test files are handled by xi_test exclusively
+                if (!parts.empty() && (parts[2] == "specs" || parts[2] == "tests"))
                 {
                     continue;
                 }
@@ -1226,16 +1228,23 @@ namespace luautils
         return PNpc;
     }
 
-    void InitInteractionGlobal(const std::vector<uint16>& zoneIds)
+    void InitInteractionGlobal()
     {
         auto initZones = lua["InteractionGlobal"]["initZones"];
-        auto table     = sol::as_table(zoneIds);
 
-        auto result = initZones(table);
+        std::vector<uint16> zoneIds;
+        // clang-format off
+        zoneutils::ForEachZone([&zoneIds](const CZone* PZone)
+        {
+            zoneIds.emplace_back(PZone->GetID());
+        });
+        // clang-format on
+
+        const auto result = initZones(zoneIds);
 
         if (!result.valid())
         {
-            sol::error err = result;
+            const sol::error err = result;
             ShowError("luautils::InitInteractionGlobal: %s", err.what());
         }
     }
@@ -2826,6 +2835,30 @@ namespace luautils
         }
     }
 
+    void OnSpellInterrupted(CBattleEntity* PCaster, CSpell* PSpell)
+    {
+        TracyZoneScoped;
+
+        if (PCaster->objtype != TYPE_MOB)
+        {
+            return;
+        }
+
+        sol::function onSpellInterrupted = getEntityCachedFunction(PCaster, "onSpellInterrupted");
+        if (!onSpellInterrupted.valid())
+        {
+            return;
+        }
+
+        auto result = onSpellInterrupted(PCaster, PSpell);
+        if (!result.valid())
+        {
+            sol::error err = result;
+            ShowError("luautils::onSpellInterrupted: %s", err.what());
+            ReportErrorToPlayer(PCaster, err.what());
+        }
+    }
+
     std::optional<SpellID> OnMobMagicPrepare(CBattleEntity* PCaster, CBattleEntity* PTarget, std::optional<SpellID> startingSpellId)
     {
         TracyZoneScoped;
@@ -3445,6 +3478,27 @@ namespace luautils
                 ShowError("luautils::onMobDeath: %s", err.what());
             }
         }
+    }
+
+    int32 OnMobSpawnCheck(CBaseEntity* PMob)
+    {
+        TracyZoneScoped;
+
+        auto onMobSpawnCheck = getEntityCachedFunction(PMob, "onMobSpawnCheck");
+        if (!onMobSpawnCheck.valid())
+        {
+            return 0;
+        }
+
+        auto result = onMobSpawnCheck(PMob);
+        if (!result.valid())
+        {
+            sol::error err = result;
+            ShowError("luautils::onMobSpawnCheck: %s", err.what());
+            return 0;
+        }
+
+        return result.get_type(0) == sol::type::number ? result.get<int32>(0) : 0;
     }
 
     void OnMobSpawn(CBaseEntity* PMob)

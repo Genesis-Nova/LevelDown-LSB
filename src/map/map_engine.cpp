@@ -92,7 +92,6 @@
 
 // TODO: These are all hacks and shouldn't be globally exposed like this!
 
-std::unique_ptr<SqlConnection>  _sql;
 extern std::map<uint16, CZone*> g_PZoneList; // Global array of pointers for zones
 
 MapEngine::MapEngine(asio::io_context& io_context, MapConfig& config)
@@ -158,13 +157,19 @@ void MapEngine::prepareWatchdog()
 
 void MapEngine::gameLoop()
 {
+    TracyZoneNamed(_tasks, "MapEngine Main Loop");
+
     timer::duration tasksDuration;
     timer::duration networkDuration;
     timer::duration tickDuration;
 
     const auto tickStart = timer::now();
     {
+        TracyZoneNamed(_tasks, "MapEngine Tasks");
         tasksDuration = CTaskManager::getInstance()->doExpiredTasks(tickStart);
+    }
+    {
+        TracyZoneNamed(_networking, "MapEngine Networking");
         // Use tick remainder for networking with a maximum to ensure that the network phase
         // doesn't starve and a minimum to prevent bumping up against the time limit.
         networkDuration = networking_->doSocketsBlocking(kMainLoopInterval - std::clamp<timer::duration>(tasksDuration, 50ms, 150ms));
@@ -192,6 +197,7 @@ void MapEngine::gameLoop()
 
     if (tickDiffTime > 0ms)
     {
+        TracyZoneNamed(_sleep, "MapEngine Sleep");
         std::this_thread::sleep_for(tickDiffTime);
     }
     else if (tickDiffTime < -kMainLoopBacklogThreshold)
@@ -223,10 +229,7 @@ void MapEngine::do_init()
     ShowInfo(fmt::format("Random samples (integer): {}", utils::getRandomSampleString(0, 255)));
     ShowInfo(fmt::format("Random samples (float): {}", utils::getRandomSampleString(0.0f, 1.0f)));
 
-    // TODO: Get rid of legacy _sql and SqlConnection
     ShowInfo("do_init: connecting to database");
-    _sql = std::make_unique<SqlConnection>();
-
     ShowInfo(fmt::format("database name: {}", db::getDatabaseSchema()).c_str());
     ShowInfo(fmt::format("database server version: {}", db::getDatabaseVersion()).c_str());
     ShowInfo(fmt::format("database client version: {}", db::getDriverVersion()).c_str());
@@ -336,7 +339,6 @@ void MapEngine::do_init()
 
     moduleutils::ReportLuaModuleUsage();
 
-    _sql->EnableTimers();
     db::enableTimers();
 
     if (!engineConfig_.isTestServer)
