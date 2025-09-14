@@ -36,9 +36,25 @@ job points
 5 daily resets at jpmidnight
 4 weekly resets at conquest tally
 2 monthly resets at the begining of each monthly
-
-crafting is random between all crafts
-helm is random between all helms
+All quests are based off of catagory and you cannot select a specific Quest
+craft quests are selected from a pool of items and must be a signed
+!custquest to keep track of your current quest and over all quest information
+Weapon skill quests will count your weaponskills used and print out your total after the mob is dead
+Rewards
+Gil & Xp when completing a quest
+Differenty types of currency when completing a quest 10 Domain points (Daily), 500 Hallmarks (Weekly), 2000 Gallantry (Monthly)
+5% chance to receive a gobbie box reward when completing quest
+Mile stone reward every 25 quests completed - Total Quest Completed Counter will reset after you have completed 250 quests
+     tier 1 rewards 25 completed missions Kupon I-AF109 - Rem Tales
+     tier 2 rewards 50 completed missions Kupon A-E+2 - empy +2 set
+     tier 3 rewards 75 completed missions Kupon I-Seal - Emp Seals
+     tier 4 rewards 100 completed missions Kupon I-AF119 - omen seals
+     tier 5 rewards 125 completed missions Kupon I-Mat - Reforged mats +1 / +2
+     tier 6 rewards 150 completed missions Ambuscade chit: footgear
+     tier 7 rewards 175 completed missions Ambuscade chit: handgear
+     tier 8 rewards 200 completed missions Ambuscade chit: headgear
+     tier 9 rewards 225 completed missions Ambuscade chit: leggear
+     tier 10 rewards 250 completed missions Ambuscade chit: bodygear
 ]]--
 
 local customQuestId =
@@ -61,7 +77,7 @@ local customQuestId =
     [101] = {'Kill Aquan', 2,50,2},
     [102] = {'Kill Arcana', 3,50,2},
     [103] = {'Kill Archaicachine', 4,50,2},
-    [104] = {'Kill Elemental', 5,50,2}, -- removing Avatar mobs because it will be difficult to do 50
+    [104] = {'Kill Elemental', 11,50,2}, -- removing Avatar mobs because it will be difficult to do 50
     [105] = {'Kill Beast', 6,50,2},
     [106] = {'Kill Beastman', 7,50,2},
     [107] = {'Kill Bird', 8,50,2},
@@ -69,12 +85,12 @@ local customQuestId =
     [109] = {'Kill Dragon', 10,50,2},
     [110] = {'Kill Elemental', 11,50,2},
     [111] = {'Kill Empty', 12,50,2},
-    [112] = {'Kill Bird', 13,50,2}, -- removing Humanoid mobs because it will be difficult to do 50
+    [112] = {'Kill Bird', 8,50,2}, -- removing Humanoid mobs because it will be difficult to do 50
     [113] = {'Kill Lizard', 14,50,2},
     [114] = {'Kill Luminian', 15,50,2},
     [115] = {'Kill Luminion', 16,50,2},
     [116] = {'Kill Plantoid', 17,50,2},
-    [117] = {'Kill Beastman', 18,50,2}, -- removing Unclassified mobs because it will be difficult to do 50
+    [117] = {'Kill Beastman', 7,50,2}, -- removing Unclassified mobs because it will be difficult to do 50
     [118] = {'Kill Undead', 19,50,2},
     [119] = {'Kill Vermin', 20,50,2},
     [120] = {'Kill Voragean', 21,50,2},
@@ -907,10 +923,12 @@ local tierRewards = -- Rewards can be changed from month to month
 -- Character variables - [LD]CustomQuestTimeDaily - getMidnight()
 --                       [LD]CustomQuestTimeWeekly - NextConquestTally()
 --                       [LD]CustomQuestTimeMonthly
+-- Character variables - [LD]CustomQuestXDaily - keeps track of canceled daily quests
+--                       [LD]CustomQuestXWeekly - keeps track of canceled weekly quests
+--                       [LD]CustomQuestXMonthly - keeps track of canceled monthly quests
 -- Quest Break Down    - Daily Quest = Crafting, Digging, Harvesting, Logging, Mining, Excavation
 --                     - Weekly Quest = Family Kills, WS Kills, NM Kills, NMH Kills
 --                     - Monthly Quest = Supreme Kills, Provenance Kills
--- 5% chance to receive a gobbie box reward when completing quest
 
 function totalCompletedReward(player) -- need to add into script and test
     local totalCompleted = player:getCharVar('[LD]CustomQuestTotal')
@@ -957,6 +975,7 @@ function deleteCustomQuest(player)
         player:printToPlayer(string.format('You have chosen to cancel your Daily Quest - %s',customQuestId[questId][1]), 0, 'Quest NPC')
         player:setCharVar('[LD]CustomQuestTotalDaily', player:getCharVar('[LD]CustomQuestTotalDaily') + 1)
         player:setCharVar('[LD]CustomQuestXDaily', player:getCharVar('[LD]CustomQuestXDaily') +1)
+        player:setCharVar('[LD]CustomQuest',0)
     elseif questType == 2 then
         player:printToPlayer(string.format('You have chosen to cancel your Weekly Quest - %s',customQuestId[questId][1]), 0, 'Quest NPC')
         player:setCharVar('[LD]CustomQuestTotalWeekly', player:getCharVar('[LD]CustomQuestTotalWeekly') + 1)
@@ -1050,11 +1069,11 @@ function checkQuestTimer(player)
                 player:setCharVar('[LD]CustomQuestTimeDaily', getMidnight())
                 player:setCharVar('[LD]CustomQuestTotal')
                 player:printToPlayer(string.format('You quest has expired, please select a new quest.'), 0, 'Quest NPC')
-                player:setCharVar('[LD]CustomQuestXDaily')
+                player:setCharVar('[LD]CustomQuestXDaily',0)
             else
                 player:setCharVar('[LD]CustomQuestTotalDaily',0)
                 player:setCharVar('[LD]CustomQuestTimeDaily', getMidnight())
-                player:setCharVar('[LD]CustomQuestXDaily')
+                player:setCharVar('[LD]CustomQuestXDaily',0)
             end
         end
 
@@ -1064,11 +1083,11 @@ function checkQuestTimer(player)
                 player:setCharVar('[LD]CustomQuestTotalWeekly',0)
                 player:setCharVar('[LD]CustomQuestTimeWeekly', NextConquestTally())
                 player:printToPlayer(string.format('You quest has expired, please select a new quest.'), 0, 'Quest NPC')
-                player:setCharVar('[LD]CustomQuestXWeekly')
+                player:setCharVar('[LD]CustomQuestXWeekly',0)
             else
                 player:setCharVar('[LD]CustomQuestTotalWeekly',0)
                 player:setCharVar('[LD]CustomQuestTimeWeekly', NextConquestTally())
-                player:setCharVar('[LD]CustomQuestXWeekly')
+                player:setCharVar('[LD]CustomQuestXWeekly',0)
             end
         end
 
@@ -1078,11 +1097,11 @@ function checkQuestTimer(player)
                  player:setCharVar('[LD]CustomQuestTotalMonthly',0)
                  player:setCharVar('[LD]CustomQuestTimeMonthly', tonumber(os.date('%m')))
                  player:printToPlayer(string.format('You quest has expired, please select a new quest.'), 0, 'Quest NPC')
-                 player:setCharVar('[LD]CustomQuestXMonthly')
+                 player:setCharVar('[LD]CustomQuestXMonthly',0)
              else
                  player:setCharVar('[LD]CustomQuestTotalMonthly',0)
                  player:setCharVar('[LD]CustomQuestTimeMonthly', tonumber(os.date('%m')))
-                 player:setCharVar('[LD]CustomQuestXMonthly')
+                 player:setCharVar('[LD]CustomQuestXMonthly',0)
              end
         end           
 end
@@ -1498,10 +1517,15 @@ local function createMainMenu(player, page)
                    player:printToPlayer('You do not currently have an active quest!', 0, 'Quest NPC')
                 end
             elseif menu == 'Completed Quests' then --
-                   player:printToPlayer(string.format('Your have completed:'), 0, 'Quest NPC')
-                   player:printToPlayer(string.format('Daily Quests [%s]', player:getCharVar('[LD]CustomQuestTotalDaily')), 0, 'Quest Results')
-                   player:printToPlayer(string.format('Weekly Quests [%s]', player:getCharVar('[LD]CustomQuestTotalWeekly')), 0, 'Quest Results')
-                   player:printToPlayer(string.format('Monthly Quests [%s]', player:getCharVar('[LD]CustomQuestTotalMonthly')), 0, 'Quest Results')
+                player:printToPlayer(string.format('Your have completed:'), 0, 'Quest NPC')
+                player:printToPlayer(string.format('Daily Quests [%s]', player:getCharVar('[LD]CustomQuestTotalDaily')), 0, 'Quest Results')
+                player:printToPlayer(string.format('Weekly Quests [%s]', player:getCharVar('[LD]CustomQuestTotalWeekly')), 0, 'Quest Results')
+                player:printToPlayer(string.format('Monthly Quests [%s]', player:getCharVar('[LD]CustomQuestTotalMonthly')), 0, 'Quest Results')
+                player:printToPlayer(string.format('Quests Canceled Daily [%s]', player:getCharVar('[LD]CustomQuestXDaily')), 0, 'Quest Results')
+                player:printToPlayer(string.format('Quests Canceled Weekly [%s]', player:getCharVar('[LD]CustomQuestXWeekly')), 0, 'Quest Results')
+                player:printToPlayer(string.format('Quests Canceled Monthly [%s]', player:getCharVar('[LD]CustomQuestXMonthly')), 0, 'Quest Results')
+                player:printToPlayer(string.format('Total Quests Completed [%s]', player:getCharVar('[LD]CustomQuestTotal')), 0, 'Quest Results')
+                player:printToPlayer('Note: Quests Canceled and Daily / Weekly / Monthly Quest counts will reset after each time reset, Quest Total will not reset!', 0, 'Quest Results')
             end
         end
         })
