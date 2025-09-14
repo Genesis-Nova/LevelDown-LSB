@@ -389,64 +389,7 @@ UPDATE mob_spawn_points SET pos_x = -203.108,  pos_y = -0.0529,  pos_z = 171.341
 UPDATE mob_spawn_points SET pos_x = -599.2849, pos_y = -4.000,   pos_z = 119.4738,  pos_rot = 255 WHERE mobid = 16806271;
 UPDATE mob_spawn_points SET pos_x = -240.2201, pos_y = -4.000,   pos_z = -81.0189,  pos_rot = 182 WHERE mobid = 16806280;
 -- add in mobs
-INSERT INTO mob_spawn_points VALUES (17285607,'Woodland_Mender','Woodland Mender',64,43.7292,0,116.6937,158); -- no pool id 5034
--- add coffers to item_usable table
-INSERT INTO item_usable VALUES (6403,'tolbas_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6358,'muuts_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6319,'abyssdivers_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6320,'intuilas_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6322,'orcfeltraps_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6325,'strixs_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6327,'arkes_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6328,'largantuas_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6329,'beists_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6354,'vedrfolnirs_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6356,'tiyanaks_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6360,'vosos_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6361,'mephitass_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6362,'cocas_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6363,'ayapecs_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6365,'azraels_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6404,'hidhaeggs_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6383,'bakunawas_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6387,'mhuufyas_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6389,'vidmapires_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6480,'thubans_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6481,'saramas_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6482,'shedus_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6483,'glazemanes_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6485,'bambroxs_coffer',1,1,55,5,0,0,0,0);
-INSERT INTO item_usable VALUES (6312,'hugemaw_harolds_coffer',1,1,55,5,0,0,0,0); -- hugemaw_harolds_coffer
-INSERT INTO item_usable VALUES (6313,'bounding_belindas_coffer',1,1,55,5,0,0,0,0); -- bounding_belindas_coffer
-INSERT INTO item_usable VALUES (6314,'prickly_pitrivs_coffer',1,1,55,5,0,0,0,0); -- prickly_pitrivs_coffer
-INSERT INTO item_usable VALUES (6315,'ironhorn_baldurnos_coffer',1,1,55,5,0,0,0,0); -- ironhorn_baldurnos_coffer
-INSERT INTO item_usable VALUES (6316,'sleepy_mabels_coffer',1,1,55,5,0,0,0,0); -- sleepy_mabels_coffer
-INSERT INTO item_usable VALUES (6317,'valkurm_imperators_coffer',1,1,55,5,0,0,0,0); -- valkurm_imperators_coffer
-INSERT INTO item_usable VALUES (6318,'serpopard_ninlils_coffer',1,1,55,5,0,0,0,0); -- serpopard_ninlils_coffer
-INSERT INTO item_usable VALUES (6321,'emperor_arthros_coffer',1,1,55,5,0,0,0,0); -- emperor_arthros_coffer
-INSERT INTO item_usable VALUES (6323,'lumber_jills_coffer',1,1,55,5,0,0,0,0); -- lumber_jills_coffer
-INSERT INTO item_usable VALUES (6324,'joyous_greens_coffer',1,1,55,5,0,0,0,0); -- joyous_greens_coffer
-INSERT INTO item_usable VALUES (6326,'warblade_beaks_coffer',1,1,55,5,0,0,0,0); -- warblade_beaks_coffer
-INSERT INTO item_usable VALUES (6330,'jester_malatrixs_coffer',1,1,55,5,0,0,0,0); -- jester_malatrixs_coffer
-INSERT INTO item_usable VALUES (6331,'catrot_velozs_coffer',1,1,55,5,0,0,0,0); -- catrot_velozs_coffer
-INSERT INTO item_usable VALUES (6332,'woodland_menders_coffer',1,1,55,5,0,0,0,0); -- woodland_menders_coffer
-INSERT INTO item_usable VALUES (6350,'sybaritic_samanthas_coffer',1,1,55,5,0,0,0,0); -- sybaritic_samanthas_coffer
-INSERT INTO item_usable VALUES (6351,'keeper_of_heiligtums_coffer',1,1,55,5,0,0,0,0); -- keeper_of_heiligtums_coffer
-INSERT INTO item_usable VALUES (6352,'douma_weapons_coffer',1,1,55,5,0,0,0,0); -- douma_weapons_coffer
-INSERT INTO item_usable VALUES (6353,'king_uropygids_coffer',1,1,55,5,0,0,0,0); -- king_uropygids_coffer
-INSERT INTO item_usable VALUES (6357,'immanibugards_coffer',1,1,55,5,0,0,0,0); -- immanibugards_coffer
-INSERT INTO item_usable VALUES (6359,'camahuetos_coffer',1,1,55,5,0,0,0,0); -- camahuetos_coffer
-INSERT INTO item_usable VALUES (6364,'specter_worms_coffer',1,1,55,5,0,0,0,0); -- specter_worms_coffer
-INSERT INTO item_usable VALUES (6366,'borealis_shadows_coffer',1,1,55,5,0,0,0,0); -- borealis_shadows_coffer
-INSERT INTO item_usable VALUES (6405,'sovereign_behemoths_coffer',1,1,55,5,0,0,0,0); -- sovereign_behemoths_coffer
-INSERT INTO item_usable VALUES (6382,'garbage_gels_coffer',1,1,55,5,0,0,0,0); -- garbage_gels_coffer
-INSERT INTO item_usable VALUES (6384,'azure-toothed_clawberrys_coffer',1,1,55,5,0,0,0,0); -- azure-toothed_clawberrys_coffer
-INSERT INTO item_usable VALUES (6385,'vermillion_fishflys_coffer',1,1,55,5,0,0,0,0); -- vermillion_fishflys_coffer
-INSERT INTO item_usable VALUES (6386,'volatile_clusters_coffer',1,1,55,5,0,0,0,0); -- volatile_clusters_coffer
-INSERT INTO item_usable VALUES (6388,'grand_grenades_coffer',1,1,55,5,0,0,0,0); -- grand_grenades_coffer
-INSERT INTO item_usable VALUES (6390,'centurio_xx-is_coffer',1,1,55,5,0,0,0,0); -- centurio_xx-is_coffer
-INSERT INTO item_usable VALUES (6479,'tumult_curators_coffer',1,1,55,5,0,0,0,0); -- tumult_curators_coffer
-INSERT INTO item_usable VALUES (6484,'carousing_celines_coffer',1,1,55,5,0,0,0,0); -- carousing_celines_coffer
+INSERT INTO mob_spawn_points VALUES (17285607,0,'Woodland_Mender','Woodland Mender',64,43.7292,0,116.6937,158); -- no pool id 5034
 
 UPDATE mob_groups SET poolid = 4124 WHERE name = 'Valkurm_Imperator';
 UPDATE mob_groups SET poolid = 5277 WHERE name = 'Sleepy_Mabel';

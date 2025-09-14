@@ -23,26 +23,6 @@ INSERT INTO `item_basic` VALUES (23873,0,'hebenus_top','hebenus_top',1,63552,0,1
 INSERT INTO `item_basic` VALUES (23871,0,'hebenus_gilet','hebenus_gilet',1,63552,0,1,0);
 INSERT INTO `item_basic` VALUES (23872,0,'hebenus_boxers','hebenus_boxers',1,63552,0,1,0);
 INSERT INTO `item_basic` VALUES (23874,0,'hebenus_shorts','hebenus_shorts',1,63552,0,1,0);
-INSERT INTO `item_equipment` VALUES (23822,'diamond_somen',1,0,4194303,485,0,0,16,0,0,0); -- head 16
-INSERT INTO `item_equipment` VALUES (23823,'diamond_haramaki',1,0,4194303,485,0,0,32,0,0,0); -- body 32
-INSERT INTO `item_equipment` VALUES (23824,'diamond_kote',1,0,4194303,485,0,0,64,0,0,0); -- hands 64
-INSERT INTO `item_equipment` VALUES (23825,'diamond_hizayori',1,0,4194303,485,0,0,128,0,0,0); -- legs 128
-INSERT INTO `item_equipment` VALUES (23826,'diamond_sune-ate',1,0,4194303,485,0,0,256,0,0,0); -- feat 256
-INSERT INTO `item_equipment` VALUES (23817,'jadeite_visor',1,0,4194303,484,0,0,16,0,0,0); -- head
-INSERT INTO `item_equipment` VALUES (23818,'jadeite_cuirie',1,0,4194303,484,0,0,32,0,0,0); -- body
-INSERT INTO `item_equipment` VALUES (23819,'jadeite_gloves',1,0,4194303,484,0,0,64,0,0,0); -- hands
-INSERT INTO `item_equipment` VALUES (23820,'jadeite_chausses',1,0,4194303,484,0,0,128,0,0,0); -- legs
-INSERT INTO `item_equipment` VALUES (23821,'jadeite_jambeaux',1,0,4194303,484,0,0,256,0,0,0); -- feat
-INSERT INTO `item_equipment` VALUES (23832,'ruby_coronal',1,0,4194303,487,0,0,16,0,0,0); -- head
-INSERT INTO `item_equipment` VALUES (23833,'ruby_robe',1,0,4194303,487,0,0,32,0,0,0); -- body
-INSERT INTO `item_equipment` VALUES (23834,'ruby_cuffs',1,0,4194303,487,0,0,64,0,0,0); -- hands
-INSERT INTO `item_equipment` VALUES (23835,'ruby_slops',1,0,4194303,487,0,0,128,0,0,0); -- legs
-INSERT INTO `item_equipment` VALUES (23836,'ruby_pigaches',1,0,4194303,487,0,0,256,0,0,0); -- feat
-INSERT INTO `item_equipment` VALUES (23812,'sapphire mask',1,0,4194303,483,0,0,16,0,0,0); -- head
-INSERT INTO `item_equipment` VALUES (23813,'sapphire platemail',1,0,4194303,483,0,0,32,0,0,0); -- body
-INSERT INTO `item_equipment` VALUES (23814,'sapphire gaunlets',1,0,4194303,483,0,0,65,0,0,0); -- hands
-INSERT INTO `item_equipment` VALUES (23815,'sapphire trousers',1,0,4194303,483,0,0,128,0,0,0); -- legs
-INSERT INTO `item_equipment` VALUES (23816,'sapphire leggings',1,0,4194303,483,0,0,256,0,0,0); -- feat
 INSERT INTO `item_equipment` VALUES (20593,'hedron_dagger',1,0,4194303,775,0,0,1,0,0,0);
 INSERT INTO `item_equipment` VALUES (21571,'ethereal_dagger',1,0,4194303,929,0,0,1,0,0,0);
 INSERT INTO `item_equipment` VALUES (21520,'ethereal_fists',1,0,4194303,473,0,0,1,0,0,0);
@@ -79,7 +59,6 @@ INSERT INTO `item_weapon` VALUES (21911,'ethereal_katana',9,0,0,0,0,2,1,227,1,0)
 INSERT INTO `item_weapon` VALUES (22053,'ethereal_club',11,0,0,0,0,3,1,288,1,0);
 INSERT INTO `item_weapon` VALUES (21873,'ethereal_spear',8,0,0,0,0,1,1,480,1,0);
 INSERT INTO `item_weapon` VALUES (22165,'ethereal_gun',26,0,0,0,0,1,1,600,1,0);
-INSERT INTO `item_usable` VALUES (6311,'decimating_bullet_pouch',1,1,55,0,0,0,0,0);
 
 -- Fix animators so you can equip oils
 UPDATE item_weapon SET subskill = 10 WHERE itemId = 22260;
@@ -91,3 +70,24 @@ UPDATE item_equipment SET rslot = 448 and ilevel = 119 WHERE itemId = 26963; -- 
 UPDATE item_equipment SET rslot = 448 WHERE itemId = 26954; -- Behemoth Suit
 UPDATE item_equipment SET rslot = 448 WHERE itemId = 26955; -- Behemoth Suit +1
 UPDATE item_equipment SET rslot = 448 WHERE itemId = 25756; -- Wyrmkind Suit
+
+UPDATE item_equipment SET name = 'diamond_somen', level = 1, ilevel = 0, jobs = 4194303, MId = 485, shieldSize = 0, scriptType = 0, slot = 16, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23822;
+UPDATE item_equipment SET name = 'diamond_haramaki', level = 1, ilevel = 0, jobs = 4194303, MId = 485, shieldSize = 0, scriptType = 0, slot = 32, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23823;
+UPDATE item_equipment SET name = 'diamond_kote', level = 1, ilevel = 0, jobs = 4194303, MId = 485, shieldSize = 0, scriptType = 0, slot = 64, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23824;
+UPDATE item_equipment SET name = 'diamond_hizayori', level = 1, ilevel = 0, jobs = 4194303, MId = 485, shieldSize = 0, scriptType = 0, slot = 128, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23825;
+UPDATE item_equipment SET name = 'diamond_sune-ate', level = 1, ilevel = 0, jobs = 4194303, MId = 485, shieldSize = 0, scriptType = 0, slot = 256, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23826;
+UPDATE item_equipment SET name = 'jadeite_visor', level = 1, ilevel = 0, jobs = 4194303, MId = 484, shieldSize = 0, scriptType = 0, slot = 16, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23817;
+UPDATE item_equipment SET name = 'jadeite_cuirie', level = 1, ilevel = 0, jobs = 4194303, MId = 484, shieldSize = 0, scriptType = 0, slot = 32, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23818;
+UPDATE item_equipment SET name = 'jadeite_gloves', level = 1, ilevel = 0, jobs = 4194303, MId = 484, shieldSize = 0, scriptType = 0, slot = 64, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23819;
+UPDATE item_equipment SET name = 'jadeite_chausses', level = 1, ilevel = 0, jobs = 4194303, MId = 484, shieldSize = 0, scriptType = 0, slot = 128, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23820;
+UPDATE item_equipment SET name = 'jadeite_jambeaux', level = 1, ilevel = 0, jobs = 4194303, MId = 484, shieldSize = 0, scriptType = 0, slot = 256, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23821;
+UPDATE item_equipment SET name = 'ruby_coronal', level = 1, ilevel = 0, jobs = 4194303, MId = 487, shieldSize = 0, scriptType = 0, slot = 16, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23832;
+UPDATE item_equipment SET name = 'ruby_robe', level = 1, ilevel = 0, jobs = 4194303, MId = 487, shieldSize = 0, scriptType = 0, slot = 32, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23833;
+UPDATE item_equipment SET name = 'ruby_cuffs', level = 1, ilevel = 0, jobs = 4194303, MId = 487, shieldSize = 0, scriptType = 0, slot = 64, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23834;
+UPDATE item_equipment SET name = 'ruby_slops', level = 1, ilevel = 0, jobs = 4194303, MId = 487, shieldSize = 0, scriptType = 0, slot = 128, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23835;
+UPDATE item_equipment SET name = 'ruby_pigaches', level = 1, ilevel = 0, jobs = 4194303, MId = 487, shieldSize = 0, scriptType = 0, slot = 256, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23836;
+UPDATE item_equipment SET name = 'sapphire_mask', level = 1, ilevel = 0, jobs = 4194303, MId = 483, shieldSize = 0, scriptType = 0, slot = 16, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23812;
+UPDATE item_equipment SET name = 'sapphire_platemail', level = 1, ilevel = 0, jobs = 4194303, MId = 483, shieldSize = 0, scriptType = 0, slot = 32, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23813;
+UPDATE item_equipment SET name = 'sapphire_gaunlets', level = 1, ilevel = 0, jobs = 4194303, MId = 483, shieldSize = 0, scriptType = 0, slot = 64, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23814;
+UPDATE item_equipment SET name = 'sapphire_trousers', level = 1, ilevel = 0, jobs = 4194303, MId = 483, shieldSize = 0, scriptType = 0, slot = 128, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23815;
+UPDATE item_equipment SET name = 'sapphire_leggings', level = 1, ilevel = 0, jobs = 4194303, MId = 483, shieldSize = 0, scriptType = 0, slot = 256, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23816;

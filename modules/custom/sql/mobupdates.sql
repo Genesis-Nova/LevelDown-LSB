@@ -619,10 +619,6 @@ INSERT INTO mob_skill_lists VALUES('Sarameya', 314, 1079); -- howl
 
 UPDATE mob_pools SET entityFlags = 1159 WHERE poolid = 1159 AND name = 'Ironclad_Executioner';
 
--- mob skills for Ovni
-INSERT INTO mob_skills VALUES(1374,1026,'torrential_torment',1,0.0,20.0,2000,1500,4,0,0,0,0,0,0); -- torrential_torment
-INSERT INTO mob_skills VALUES(1377,1029,'flourescene',0,0.0,7.0,2000,1500,1,0,0,0,0,0,0); -- flourescene
-
 -- add skills into Ovni list
 INSERT INTO mob_skill_lists VALUES('torrential_torment', 824, 1374); -- torrential torment
 INSERT INTO mob_skill_lists VALUES('flourescene', 824, 1377); -- flourescene - boost
