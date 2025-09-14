@@ -419,3 +419,38 @@ INSERT INTO `mob_skill_lists` VALUES ('TRUST_Mumor_II',1130,4108); -- Eternal Va
 INSERT INTO `mob_skill_lists` VALUES ('TRUST_Mumor_II',1130,4110); -- Shining Epilogue 
 INSERT INTO `mob_skill_lists` VALUES ('TRUST_Mumor_II',1130,2904); -- Final Eternal Heart
 UPDATE mob_pools SET spellList = 424 WHERE poolid = 5946 AND name = 'mumor';
+-- Jersey - TRUST_king_of_hearts
+INSERT INTO `mob_skill_lists` VALUES ('TRUST_King_of_Hearts',1104,3250); -- Double Down
+INSERT INTO `mob_skill_lists` VALUES ('TRUST_King_of_Hearts',1104,3251); -- Bludgeon
+INSERT INTO `mob_skill_lists` VALUES ('TRUST_King_of_Hearts',1104,3252); -- Deal Out
+
+-- Jersey - TRUST_prishe
+UPDATE mob_pools SET mJob = 20, sJob = 5 WHERE poolid = 5913 AND name = 'prishe';
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,99,41,255);  -- sandstorm (41~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,113,42,255); -- rainstorm (42~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,114,43,255); -- windstorm (43~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,115,44,255); -- firestorm (44~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,116,45,255); -- hailstorm (45~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,117,46,255); -- thunderstorm (46~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,118,47,255); -- voidstorm (47~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,119,48,255); -- aurorastorm (48~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,278,18,255); -- geohelix (18~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,279,20,255); -- hydrohelix (20~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,280,22,255); -- anemohelix (22~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,281,24,255); -- pyrohelix (24~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,282,26,255); -- cryohelix (26~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,283,28,255); -- ionohelix (28~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,284,30,255); -- noctohelix (30~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,285,32,255); -- luminohelix (32~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,53,32,255); -- blink (32~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,54,32,255); -- stoneskin (32~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,55,32,255); -- aquaveil (32~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,106,41,255);-- PHALANX (41~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,287,32,255); -- KLIMAFORM MACC+ (32~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,495,32,255); -- ADLOQUIUM (32~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,109,41,255); -- REFRESH (32~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,108,21,255);-- REGEN (21~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,110,44,255);-- REGEN_II (44~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,111,66,255);-- REGEN_III (66~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,477,86,255);-- REGEN_IV (86~255)
+INSERT INTO `mob_spell_lists` VALUES ('TRUST_Prishe',325,504,99,255);-- REGEN_V (1~255)

@@ -18,7 +18,7 @@ entity.onMobSpawn = function(mob)
     xi.voidwalker.onMobSpawn(mob)
 
     if mob:getLocalVar('[VoidWalker]PopedAt') == 0 then
-        mob:despawn()
+        DespawnMob(mob:getID())
         return
     end
 

@@ -6481,3 +6481,98 @@ INSERT INTO `item_mods` VALUES (23603, 384, 500); --vitiation tights +3 -- HASTE
 INSERT INTO `item_mods` VALUES (26969,161,-300); -- DMGPHYS
 -- Terpander
 INSERT INTO `item_mods` VALUES (21407,453,1); -- add additional song
+-- SU2 Weapons---------------------------------- 
+-- Beryllium Arrow
+INSERT INTO `item_mods` VALUES (21295,26,12); -- RACC: 12
+-- Beryllium Kris
+INSERT INTO `item_mods` VALUES (21556,355,24); -- ADDS_WEAPONSKILL: SHARK BITE
+INSERT INTO `item_mods` VALUES (21556,9,7);  -- DEX: 7
+INSERT INTO `item_mods` VALUES (21556,11,7);  -- AGI: 7
+INSERT INTO `item_mods` VALUES (21556,25,47);   -- ACC: 47
+INSERT INTO `item_mods` VALUES (21556,68,27);   -- EVA: 27
+INSERT INTO `item_mods` VALUES (21556,48,15);   -- WSACC: 15
+-- Beryllium Kris +1
+INSERT INTO `item_mods` VALUES (21557,355,24); -- ADDS_WEAPONSKILL: SHARK BITE
+INSERT INTO `item_mods` VALUES (21557,9,12);  -- DEX: 12
+INSERT INTO `item_mods` VALUES (21557,11,12);  -- AGI: 12
+INSERT INTO `item_mods` VALUES (21557,25,52);   -- ACC: 52
+INSERT INTO `item_mods` VALUES (21557,68,27);   -- EVA: 27
+INSERT INTO `item_mods` VALUES (21557,48,20);   -- WSACC: 20
+-- Beryllium Pick
+INSERT INTO `item_mods` VALUES (21708,355,71); -- ADDS_WEAPONSKILL: MISTRAL AXE
+INSERT INTO `item_mods` VALUES (21708,8,10);  -- STR: 10
+INSERT INTO `item_mods` VALUES (21708,25,27);   -- ACC: 27
+INSERT INTO `item_mods` VALUES (21708,48,15);   -- WSACC: 15
+-- Beryllium Pick +1
+INSERT INTO `item_mods` VALUES (21709,355,71); -- ADDS_WEAPONSKILL: MISTRAL AXE
+INSERT INTO `item_mods` VALUES (21709,8,15);  -- STR: 15
+INSERT INTO `item_mods` VALUES (21709,25,32);   -- ACC: 32
+INSERT INTO `item_mods` VALUES (21709,48,20);   -- WSACC: 20
+-- Blurred Bow +1
+INSERT INTO `item_mods` VALUES (21218,841,7); -- WSD: 7%
+-- Blurred Claws
+UPDATE item_weapon SET subskill = 28 WHERE itemId = 20525;
+-- Blurred Claws +1
+UPDATE item_weapon SET subskill = 28 WHERE itemId = 20526;
+-- Blurred Knife
+UPDATE item_weapon SET ilvl_macc = 188 WHERE itemId = 20601;
+-- Blurred Knife +1
+UPDATE item_weapon SET ilvl_macc = 188 WHERE itemId = 20602;
+-- Enriching Sword
+UPDATE item_weapon SET ilvl_macc = 201 WHERE itemId = 21606;
+-- Enriching Sword +1
+UPDATE item_weapon SET ilvl_macc = 201 WHERE itemId = 21607;
+-- Hepatizon Axe
+INSERT INTO `item_mods` VALUES (21765,355,87); -- ADDS_WEAPONSKILL: FULL BREAK
+-- Hepatizon Axe +1
+INSERT INTO `item_mods` VALUES (21766,355,87); -- ADDS_WEAPONSKILL: FULL BREAK
+-- Hepatizon Baghnakhs
+UPDATE item_weapon SET subskill = 28 WHERE itemId = 21511;
+INSERT INTO `item_mods` VALUES (21511,355,8); -- ADDS_WEAPONSKILL: DRAGON KICK
+-- Hepatizon Baghnakhs +1
+UPDATE item_weapon SET subskill = 28 WHERE itemId = 21512;
+INSERT INTO `item_mods` VALUES (21512,355,8); -- ADDS_WEAPONSKILL: DRAGON KICK
+-- Hepatizon Rapier
+INSERT INTO `item_mods` VALUES (21610,355,41); -- ADDS_WEAPONSKILL: MISTRAL AXE
+INSERT INTO `item_mods` VALUES (21610,8,3);  -- STR: 3
+INSERT INTO `item_mods` VALUES (21610,13,3);  -- MND: 3
+INSERT INTO `item_mods` VALUES (21610,25,17);   -- ACC: 17
+INSERT INTO `item_mods` VALUES (21610,28,14);  -- MATT: 14
+INSERT INTO `item_mods` VALUES (21610,311,108);  -- MAGIC_DAMAGE: 108
+INSERT INTO `item_mods` VALUES (21610,48,15);   -- WSACC: 15
+-- Hepatizon Rapier +1
+INSERT INTO `item_mods` VALUES (21611,355,41); -- ADDS_WEAPONSKILL: MISTRAL AXE
+INSERT INTO `item_mods` VALUES (21611,8,8);  -- STR: 8
+INSERT INTO `item_mods` VALUES (21611,13,8);  -- MND: 8
+INSERT INTO `item_mods` VALUES (21611,25,22);   -- ACC: 22
+INSERT INTO `item_mods` VALUES (21611,28,14);  -- MATT: 14
+INSERT INTO `item_mods` VALUES (21611,311,108);  -- MAGIC_DAMAGE: 108
+INSERT INTO `item_mods` VALUES (21611,48,20);   -- WSACC: 20
+-- Hepatizon Sapara +1
+INSERT INTO `item_mods` VALUES (21615,48,20);   -- WSACC: 20
+-- Jolt Counter
+UPDATE item_weapon SET subskill = 28 WHERE itemId = 21506;
+-- Jolt Counter +1
+UPDATE item_weapon SET subskill = 28 WHERE itemId = 215067;
+-- Malfeasance
+INSERT INTO `item_mods` VALUES (20754,23,40);  -- ATT: 40
+INSERT INTO `item_mods` VALUES (20754,39,15);  -- DARK_MAB: 15
+INSERT INTO `item_mods` VALUES (20754,343,20);  -- ENSPELL_DMG: 20
+-- Malfeasance +1
+INSERT INTO `item_mods` VALUES (20755,23,41);  -- ATT: 41
+INSERT INTO `item_mods` VALUES (20755,39,16);  -- DARK_MAB: 16
+INSERT INTO `item_mods` VALUES (20755,343,21);  -- ENSPELL_DMG: 21
+-- Sancus Sachet
+DELETE FROM `item_mods` WHERE itemId = 21394;
+INSERT INTO `item_mods` VALUES (21394,541,6); -- BP_II DELAY: 6
+INSERT INTO `item_mods` VALUES (21394,126,10);   -- BP_DAMAGE : 10
+INSERT INTO `item_mods` VALUES (21394,1040,20); -- AVATAR_LVL_BONUS: 20
+-- Sancus Sachet +1
+DELETE FROM `item_mods` WHERE itemId = 21395;
+INSERT INTO `item_mods` VALUES (21395,541,7); -- BP_II DELAY: 7
+INSERT INTO `item_mods` VALUES (21395,126,15);   -- BP_DAMAGE : 15
+INSERT INTO `item_mods` VALUES (21395,1040,20); -- AVATAR_LVL_BONUS: 20
+-- Was
+INSERT INTO `item_mods` VALUES (22076,126,20);   -- BP_DAMAGE : 20
+-- Was +1
+INSERT INTO `item_mods` VALUES (22077,126,25);   -- BP_DAMAGE : 25

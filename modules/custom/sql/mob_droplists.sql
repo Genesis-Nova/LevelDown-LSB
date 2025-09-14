@@ -1196,15 +1196,15 @@ INSERT INTO mob_droplist VALUES(4121,1,2,200,23710,50); -- Volte Beret / Supreme
 INSERT INTO mob_droplist VALUES(4121,1,2,200,23711,50); -- Volte Tiara / Supreme Aspid
 INSERT INTO mob_droplist VALUES(4121,1,2,200,23712,50); -- Volte Salade / Supreme Aspid
 INSERT INTO mob_droplist VALUES(4121,1,2,200,23713,50); -- Volte Cap / Supreme Aspid
-INSERT INTO mob_droplist VALUES(4122,0,0,1000,8739,333); -- Wyrm Blood / Supreme Bahamut
-INSERT INTO mob_droplist VALUES(4122,0,0,1000,9893,333); -- Wyrm Ash / Supreme Bahamut
-INSERT INTO mob_droplist VALUES(4122,0,0,1000,9251,333); -- Khoma Thread / Supreme Bahamut
-INSERT INTO mob_droplist VALUES(4122,1,1,500,20706,125); -- Vampirism / Supreme Bahamut
-INSERT INTO mob_droplist VALUES(4122,1,1,500,22281,125); -- Knobkierrie / Supreme Bahamut
-INSERT INTO mob_droplist VALUES(4122,1,2,200,23722,50); -- Volte Brais / Supreme Bahamut
-INSERT INTO mob_droplist VALUES(4122,1,2,200,23723,50); -- Volte Tights / Supreme Bahamut
-INSERT INTO mob_droplist VALUES(4122,1,2,200,23724,50); -- Volte Brayettes / Supreme Bahamut
-INSERT INTO mob_droplist VALUES(4122,1,2,200,23725,50); -- Volte Hose / Supreme Bahamut
+INSERT INTO mob_droplist VALUES(4122,0,0,1000,8739,333); -- Wyrm Blood / Supreme Chaos
+INSERT INTO mob_droplist VALUES(4122,0,0,1000,9893,333); -- Wyrm Ash / Supreme Chaos
+INSERT INTO mob_droplist VALUES(4122,0,0,1000,9251,333); -- Khoma Thread / Supreme Chaos
+INSERT INTO mob_droplist VALUES(4122,1,1,500,20706,125); -- Vampirism / Supreme Chaos
+INSERT INTO mob_droplist VALUES(4122,1,1,500,22281,125); -- Knobkierrie / Supreme Chaos
+INSERT INTO mob_droplist VALUES(4122,1,2,200,23722,50); -- Volte Brais / Supreme Chaos
+INSERT INTO mob_droplist VALUES(4122,1,2,200,23723,50); -- Volte Tights / Supreme Chaos
+INSERT INTO mob_droplist VALUES(4122,1,2,200,23724,50); -- Volte Brayettes / Supreme Chaos
+INSERT INTO mob_droplist VALUES(4122,1,2,200,23725,50); -- Volte Hose / Supreme Chaos
 INSERT INTO mob_droplist VALUES(4123,0,0,1000,6367,1000); -- codex_of_etchings / Asb
 INSERT INTO mob_droplist VALUES(4123,1,1,250,6367,500); -- codex_of_etchings / Asb
 INSERT INTO mob_droplist VALUES(4123,1,2,500,3509,333); -- plate_of_heavy_metal / Asb
