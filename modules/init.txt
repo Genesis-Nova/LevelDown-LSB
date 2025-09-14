@@ -36,7 +36,6 @@
 #
 # Live example:
 custom/sql/
-custom/cpp/custom_cpp/
 custom/commands/
 custom/lua/hangout/
 custom/lua/npcs/
