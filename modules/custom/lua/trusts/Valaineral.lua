@@ -72,7 +72,7 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
     mob:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, xi.effect.REPRISAL }, { ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.REPRISAL })          -- Uses Defender when SENTINEL wears
     
     -- MP recovery
-    mob:addGambit(ai.t.SELF, ai.c.MPP_LT, 50, ai.r.JA, ai.s.SPECIFIC, xi.ja.CHIVALRY) 
+    mob:addGambit(ai.t.SELF, { ai.c.MPP_LT, 50 }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.CHIVALRY })
 
 		--Enmity Transfer Listener
 		mob:addListener('ABILITY_USE', 'VAL_ABILITY_USE', function(user, target, ability, action)

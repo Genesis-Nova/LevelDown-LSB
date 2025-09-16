@@ -71,11 +71,11 @@ UPDATE item_equipment SET rslot = 448 WHERE itemId = 26954; -- Behemoth Suit
 UPDATE item_equipment SET rslot = 448 WHERE itemId = 26955; -- Behemoth Suit +1
 UPDATE item_equipment SET rslot = 448 WHERE itemId = 25756; -- Wyrmkind Suit
 
-UPDATE item_equipment SET name = 'diamond_somen', level = 1, ilevel = 0, jobs = 4194303, MId = 485, shieldSize = 0, scriptType = 0, slot = 16, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23822;
-UPDATE item_equipment SET name = 'diamond_haramaki', level = 1, ilevel = 0, jobs = 4194303, MId = 485, shieldSize = 0, scriptType = 0, slot = 32, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23823;
-UPDATE item_equipment SET name = 'diamond_kote', level = 1, ilevel = 0, jobs = 4194303, MId = 485, shieldSize = 0, scriptType = 0, slot = 64, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23824;
-UPDATE item_equipment SET name = 'diamond_hizayori', level = 1, ilevel = 0, jobs = 4194303, MId = 485, shieldSize = 0, scriptType = 0, slot = 128, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23825;
-UPDATE item_equipment SET name = 'diamond_sune-ate', level = 1, ilevel = 0, jobs = 4194303, MId = 485, shieldSize = 0, scriptType = 0, slot = 256, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23826;
+INSERT INTO `item_equipment` VALUES (23822,'diamond_somen',1,0,4194303,485,0,0,16,0,0,0); -- head 16
+INSERT INTO `item_equipment` VALUES (23823,'diamond_haramaki',1,0,4194303,485,0,0,32,0,0,0); -- body 32
+INSERT INTO `item_equipment` VALUES (23824,'diamond_kote',1,0,4194303,485,0,0,64,0,0,0); -- hands 64
+INSERT INTO `item_equipment` VALUES (23825,'diamond_hizayori',1,0,4194303,485,0,0,128,0,0,0); -- legs 128
+INSERT INTO `item_equipment` VALUES (23826,'diamond_sune-ate',1,0,4194303,485,0,0,256,0,0,0); -- feat 256
 UPDATE item_equipment SET name = 'jadeite_visor', level = 1, ilevel = 0, jobs = 4194303, MId = 484, shieldSize = 0, scriptType = 0, slot = 16, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23817;
 UPDATE item_equipment SET name = 'jadeite_cuirie', level = 1, ilevel = 0, jobs = 4194303, MId = 484, shieldSize = 0, scriptType = 0, slot = 32, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23818;
 UPDATE item_equipment SET name = 'jadeite_gloves', level = 1, ilevel = 0, jobs = 4194303, MId = 484, shieldSize = 0, scriptType = 0, slot = 64, rslot = 0, rslotlook = 0, su_level = 0 WHERE itemId = 23819;

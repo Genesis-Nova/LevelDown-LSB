@@ -434,15 +434,13 @@ local function spawnSeaMonsters(player, spawnCount, waveCount, waveWinBonus, lev
     -- print(string.format("[SEA MONSTER EVENT] Generated new confrontation ID: %d.", confrontationID))
 
     -- Determine participants: check for party with trusts first, then alliance, then solo player
-    local participants
-    if player:getPartyWithTrusts() and #player:getPartyWithTrusts() > 0 then
-        -- If player is in a party with trusts, use that list
-        participants = player:getPartyWithTrusts()
-        -- print(string.format("[SEA MONSTER EVENT] Player %s is in a party with trusts. %d participants detected.", player:getName(), #participants))
+    local leader = GetPlayerByID(player:getLeaderID())
+    local participants = 0
+
+    if leader:checkSoloPartyAlliance() == 2 then
+        participants = leader:getAlliance()
     else
-        -- Otherwise, use their alliance or just the player if solo
-        participants = player:getAlliance() or { player }
-        -- print(string.format("[SEA MONSTER EVENT] Player %s is solo or in alliance. %d participants detected.", player:getName(), #participants))
+        participants = leader:getPartyWithTrusts()
     end
 
     -- Calculate confrontation duration based on number of waves

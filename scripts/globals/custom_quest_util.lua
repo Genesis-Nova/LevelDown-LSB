@@ -596,7 +596,7 @@ local customQuestId =
     [620] = {'Craft Woodworking Rose Harp',17355,1,1},
     [621] = {'Craft Woodworking Oak Pole',17098,1,1},
     [622] = {'Craft Woodworking Kaman',17156,1,1},
-    [623] = {'Craft Woodworking Fay Staff',18602,1,1},
+    [623] = {'Craft Woodworking Fay Staff',18602,1,1}, -- Cannot actually sign, need to change item
     [624] = {'Craft Woodworking Fay Crozier',18601,1,1},
     [625] = {'Craft Woodworking Lightning Bow',17240,1,1},
     [626] = {'Craft Woodworking Mahogany Staff',17092,1,1},
@@ -1793,29 +1793,26 @@ xi.custom_quest.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill
 ----------------------------------------------
 -- LS quest to Kill NM's
 ----------------------------------------------
-    if player and
-       mob:isNM() then 
-       if questId >= 135 and
-          questId <= 283 then
-                if player:checkDifficulty(mob) >= 3 then -- Decent Challenge +
-                     if questCount < 1 then
-                        if mob:getName() == customQuestId[questId][1]:sub(6) then
-                           player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
-                           player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
-                           player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3]),8)
-                        end
-                     end
+    if player then
+        if questId >= 135 and
+            questId <= 283 then
+                if questCount < 1 then
+                    if mob:getName() == customQuestId[questId][1]:sub(6) then
+                        player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                        player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
+                        player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3]),8)
+                    end
                 end
 ----------------------------------------------
 -- LS quest to Kill NM Hunt NM's
 ----------------------------------------------
-       elseif questId >= 284 and
-              questId <= 583 then
+        elseif questId >= 284 and
+            questId <= 583 then
                 if questCount < 1 then
                     if mob:getName():sub(5) == customQuestId[questId][1]:sub(6) then
-                       player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
-                       player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
-                       player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3]),8)
+                        player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                        player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
+                        player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3]),8)
                     end
                 end
        end
@@ -1824,6 +1821,10 @@ xi.custom_quest.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill
 end
 
 xi.custom_quest.onMobDespawn = function(mob)
+
+end
+
+xi.custom_quest.onMobDeath = function(mob, player, optParams)
 
 end
 
@@ -1853,4 +1854,46 @@ xi.custom_quest.getQuestInfo = function(player) -- for use in player command
     player:printToPlayer(string.format('Quests Canceled Monthly [%s]', player:getCharVar('[LD]CustomQuestXMonthly')), 0, 'Quest Results')
     player:printToPlayer(string.format('Total Quests Completed [%s]', player:getCharVar('[LD]CustomQuestTotal')), 0, 'Quest Results')
     player:printToPlayer('Note: Quests Canceled and Daily / Weekly / Monthly Quest counts will reset after each time reset, Quest Total will not reset!', 0, 'Quest Results')
+end
+
+xi.custom_quest.completeCurrentQuest = function(player) -- for use of GM Command
+    local questVar = player:getCharVar('[LD]CustomQuest')
+    local questParams = tostring(questVar)
+    local questType = tonumber(questParams:sub(1,1))
+    local questLimit = tonumber(questParams:sub(2,2))
+    local questId = tonumber(questParams:sub(3,5))
+    local questCount = tonumber(questParams:sub(6,8))
+    local questTotalCount = customQuestId[questId][3]
+    local difference = questTotalCount - questCount
+
+    if questVar > 0 then
+        player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') + difference)
+        player:printToPlayer(string.format('Level Down %s Quest Completed!',customQuestType[questType][1]),8)
+        player:printToPlayer(string.format('%s', customQuestType[questType][1]), 0, 'Quest Type')
+        player:printToPlayer(string.format('%s', customQuestId[questId][1]), 0, 'Quest Name')
+        player:printToPlayer(string.format('%s of %s', customQuestId[questId][3],customQuestId[questId][3]), 0, 'Quest Progress')
+        completeCustomQuest(player)
+    else
+        return
+    end
+end
+
+xi.custom_quest.setCurrentQuest = function(player, questId) -- for use of GM Command
+    local questVar = player:getCharVar('[LD]CustomQuest')
+    local dailyQuest =  15000000
+    local weeklyQuest = 22000000
+    local monthlyQuest = 31000000
+    local questIdCalc = questId * 1000
+   
+    if questId >= 90 and questId <= 94 then -- monthly
+        player:setCharVar('[LD]CustomQuest', monthlyQuest + questIdCalc)
+    elseif questId >= 100 and questId <= 583 then -- Weekly
+        player:setCharVar('[LD]CustomQuest', weeklyQuest + questIdCalc)
+    elseif questId >= 95 and questId <= 99 then -- daily
+        player:setCharVar('[LD]CustomQuest', dailyQuest + questIdCalc)
+    elseif questId >= 584 and questId <= 925 then -- daily
+        player:setCharVar('[LD]CustomQuest', dailyQuest + questIdCalc)
+    elseif questId == 89 then -- daily
+        player:setCharVar('[LD]CustomQuest', dailyQuest + questIdCalc)
+    end
 end

@@ -13,32 +13,29 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
+    local leader = GetPlayerByID(player:getLeaderID())
 
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
         end
     end
-
     if rand <= 25 and
         spawnSupreme then
 
-        local alliance = player:getAlliance() -- not capturing trusts in this situation, they are not getting confrontation.
-        local party = player:getPartyWithTrusts()
+        local alliance = player:getAlliance()
         local killerClaim = optParams.isKiller
         local partyAllianceCheck = 0
 
-        if player:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = player:getAlliance()
+        if leader:checkSoloPartyAlliance() == 2 then
+            partyAllianceCheck = leader:getAlliance()
         else
-            partyAllianceCheck = player:getPartyWithTrusts()
+            partyAllianceCheck = leader:getPartyWithTrusts()
         end
 
         for _, member in pairs(partyAllianceCheck) do
-            if killerClaim then
                 member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
                 member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
-            end
         end
 
         local zoneOrInstanceObj = player:getZone()
@@ -379,13 +376,13 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
+    local leader = GetPlayerByID(player:getLeaderID())
 
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
         end
     end
-
     if rand <= 45 and
         spawnSupreme then
 
@@ -393,17 +390,15 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
         local killerClaim = optParams.isKiller
         local partyAllianceCheck = 0
 
-        if player:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = player:getAlliance()
+        if leader:checkSoloPartyAlliance() == 2 then
+            partyAllianceCheck = leader:getAlliance()
         else
-            partyAllianceCheck = player:getPartyWithTrusts()
+            partyAllianceCheck = leader:getPartyWithTrusts()
         end
 
         for _, member in pairs(partyAllianceCheck) do
-            if killerClaim then
                 member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
                 member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
-            end
         end
 
         local zoneOrInstanceObj = player:getZone()
@@ -743,13 +738,13 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
+    local leader = GetPlayerByID(player:getLeaderID())
 
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
         end
     end
-
     if rand <= 25 and
         spawnSupreme then
 
@@ -757,17 +752,15 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
         local killerClaim = optParams.isKiller
         local partyAllianceCheck = 0
 
-        if player:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = player:getAlliance()
+        if leader:checkSoloPartyAlliance() == 2 then
+            partyAllianceCheck = leader:getAlliance()
         else
-            partyAllianceCheck = player:getPartyWithTrusts()
+            partyAllianceCheck = leader:getPartyWithTrusts()
         end
 
         for _, member in pairs(partyAllianceCheck) do
-            if killerClaim then
                 member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
                 member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
-            end
         end
 
         local zoneOrInstanceObj = player:getZone()
@@ -1091,13 +1084,13 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
+    local leader = GetPlayerByID(player:getLeaderID())
 
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
         end
     end
-
     if rand <= 45 and
         spawnSupreme then
 
@@ -1105,17 +1098,15 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
         local killerClaim = optParams.isKiller
         local partyAllianceCheck = 0
 
-        if player:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = player:getAlliance()
+        if leader:checkSoloPartyAlliance() == 2 then
+            partyAllianceCheck = leader:getAlliance()
         else
-            partyAllianceCheck = player:getPartyWithTrusts()
+            partyAllianceCheck = leader:getPartyWithTrusts()
         end
 
         for _, member in pairs(partyAllianceCheck) do
-            if killerClaim then
                 member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
                 member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
-            end
         end
 
         local zoneOrInstanceObj = player:getZone()
@@ -1438,13 +1429,13 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
+    local leader = GetPlayerByID(player:getLeaderID())
 
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
         end
     end
-
     if rand <= 25 and
         spawnSupreme then
 
@@ -1452,17 +1443,15 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
         local killerClaim = optParams.isKiller
         local partyAllianceCheck = 0
 
-        if player:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = player:getAlliance()
+        if leader:checkSoloPartyAlliance() == 2 then
+            partyAllianceCheck = leader:getAlliance()
         else
-            partyAllianceCheck = player:getPartyWithTrusts()
+            partyAllianceCheck = leader:getPartyWithTrusts()
         end
 
         for _, member in pairs(partyAllianceCheck) do
-            if killerClaim then
                 member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
                 member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
-            end
         end
 
         local zoneOrInstanceObj = player:getZone()
@@ -1783,13 +1772,13 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
+    local leader = GetPlayerByID(player:getLeaderID())
 
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
         end
     end
-
     if rand <= 45 and
         spawnSupreme then
 
@@ -1797,17 +1786,15 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
         local killerClaim = optParams.isKiller
         local partyAllianceCheck = 0
 
-        if player:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = player:getAlliance()
+        if leader:checkSoloPartyAlliance() == 2 then
+            partyAllianceCheck = leader:getAlliance()
         else
-            partyAllianceCheck = player:getPartyWithTrusts()
+            partyAllianceCheck = leader:getPartyWithTrusts()
         end
 
         for _, member in pairs(partyAllianceCheck) do
-            if killerClaim then
                 member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
                 member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
-            end
         end
 
       local zoneOrInstanceObj = player:getZone()
@@ -2152,22 +2139,24 @@ page1 =
                 local zone = player:getZone()
                 local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
                 local spawnSupreme = true
+                local leader = GetPlayerByID(player:getLeaderID())
 
                 for _, mob in pairs(filteredEntities) do
                     if mob:isAlive() then
                         spawnSupreme = false
                     end
                 end
-
                 if spawnSupreme then
+        
 
                     local alliance = player:getAlliance()
+                    local killerClaim = optParams.isKiller
                     local partyAllianceCheck = 0
 
-                    if player:checkSoloPartyAlliance() == 2 then
-                        partyAllianceCheck = player:getAlliance()
+                    if leader:checkSoloPartyAlliance() == 2 then
+                        partyAllianceCheck = leader:getAlliance()
                     else
-                        partyAllianceCheck = player:getPartyWithTrusts()
+                        partyAllianceCheck = leader:getPartyWithTrusts()
                     end
 
                     for _, member in pairs(partyAllianceCheck) do

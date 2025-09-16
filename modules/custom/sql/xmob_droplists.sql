@@ -1392,10 +1392,6 @@ UPDATE mob_groups SET dropid = 4115 WHERE name = 'Lancelord_Gaheel_HTBF';
 UPDATE mob_groups SET dropid = 4116 WHERE name = 'Tenzen_HTBF';
 UPDATE mob_groups SET dropid = 4117 WHERE name = 'Ultima_HTBF';
 UPDATE mob_groups SET dropid = 4118 WHERE name = 'Ironclad_Executioner' AND groupid = 46;
--- 4119 = Supreme Behemoth
--- 4120 = Supreme Fafnir
--- 4121 = Supreme Aspid
--- 4122 = Supreme Bahamut
 UPDATE mob_groups SET dropid = 4123 WHERE name = 'Asb' AND groupid = 11525;
 UPDATE mob_groups SET dropid = 4124 WHERE name = 'Pil' AND groupid = 11526;
 UPDATE mob_groups SET dropid = 4125 WHERE name = 'Rukh' AND groupid = 11527;
@@ -1403,3 +1399,8 @@ UPDATE mob_groups SET dropid = 4126 WHERE name = 'Sarbaz' AND groupid = 11528;
 UPDATE mob_groups SET dropid = 4127 WHERE name = 'Shah' AND groupid = 11529;
 UPDATE mob_groups SET dropid = 4128 WHERE name = 'Wazir' AND groupid = 11530;
 UPDATE mob_groups SET dropid = 4129 WHERE name = 'Provenance_Watcher' AND groupid = 11531;
+-- 4119 = Supreme Behemoth
+-- 4120 = Supreme Fafnir
+-- 4121 = Supreme Aspid
+-- 4122 = Supreme Bahamut
+
