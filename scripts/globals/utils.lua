@@ -1283,7 +1283,7 @@ function utils.defaultIfNil(inputValue, defaultValue)
     if inputValue == nil then
         local info = debug.getinfo(2, 'Sl')
         local callerInfo = debug.getinfo(3, 'Sl') -- one level up
-        local blahInfo = debug.getinfo(4, 'Sl')
+        local originalInfo = debug.getinfo(4, 'Sl')
 
         print(string.format(
             'nil value encountered at %s:%i, defaulting to %s',
@@ -1293,7 +1293,7 @@ function utils.defaultIfNil(inputValue, defaultValue)
         if callerInfo then
             print(string.format(
                 'Called by: %s:%i %s %i',
-                callerInfo.source, callerInfo.currentline, blahInfo.source, blahInfo.currentline
+                callerInfo.source, callerInfo.currentline, originalInfo.source, originalInfo.currentline
             ))
         end
 

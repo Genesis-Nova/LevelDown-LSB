@@ -157,8 +157,13 @@ local function applyRoll(caster, target, inAbility, action, total, isDoubleup, c
 
     -- Apply Additional Phantom Roll+ Buff
     local phantomBase = corsairRollMods[abilityId][2] -- Base increment buff
-    local phantomMult = caster:getMaxGearMod(xi.mod.PHANTOM_ROLL)
-    effectpower       = effectpower + (phantomBase * phantomMult)
+    local phantomMult = 1
+
+    if caster:isPC() then 
+        phantomMult = caster:getMaxGearMod(xi.mod.PHANTOM_ROLL)
+    end
+
+        effectpower       = effectpower + (phantomBase * phantomMult)
 
     -- Effect Power varies depending on COR level (Main vs Sub)
     local actorLevel  = utils.getActiveJobLevel(caster, xi.job.COR)

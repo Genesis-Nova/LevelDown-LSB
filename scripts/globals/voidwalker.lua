@@ -229,14 +229,6 @@ xi.voidwalker.npcOnTrigger = function(player, npc)
     if xi.settings.main.ENABLE_VOIDWALKER ~= 1 then
         return
     end
-    local vwKeyItems = {1253,1254,1255,1256,1257,1258,1259,1260,1590}
-    local silent = true
-          if player:getCharVar('[VW]AssaiDialog') == 0 then
-             for i = 1, #vwKeyItems do
-                 player:delKeyItem(vwKeyItems[i], silent)
-            end
-                 player:setCharVar('[VW]AssaiDialog', 1)
-         end
 
     local currentKIS = getCurrentKIsBitsFromPlayer(player)
     player:startEvent(10120, currentKIS)
@@ -631,9 +623,6 @@ xi.voidwalker.onHealing = function(player)
         not zones[zoneId].mob.VOIDWALKER
     then
         return
-    end
-    if player:getCharVar('[VW]AssaiDialog') ~= 1 then
-       return
     end
 
     local mobs       = getMobsFromAbyssites(zoneId, abyssites)

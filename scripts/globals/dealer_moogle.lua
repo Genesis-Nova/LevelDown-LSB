@@ -3462,12 +3462,24 @@ xi.dealerMoogle.onEventFinish = function(player, csid, option, npc)
         idx > 0 and
         keyItems == 0
     then
+
         local items = getItemSelection(player, itemList, idx, idxAlt1, idxAlt2)
 
+        if player:hasKeyItem(keyItemRequired) and
+            items ~= nil then
+            for i = 1, #items do
+                npcUtil.giveItem(player, items[i])
+            end
+
+            player:delKeyItem(keyItemRequired)
+        end
+
+        --[[
         if npcUtil.giveItem(player, items) then
             player:delKeyItem(keyItemRequired)
-        else
+         else
             -- TODO: CS Messaging that getting the item has failed
         end
+        ]]--
     end
 end
