@@ -3,7 +3,6 @@
 -----------------------------------
 require('scripts/globals/npc_util')
 require('scripts/globals/quests')
-require('scripts/globals/utils')
 require('scripts/globals/extravaganza')
 -----------------------------------
 xi = xi or {}
@@ -832,7 +831,7 @@ xi.abyssea.getNewYellowWeakness = function(mob)
         chosenDay = xi.day.FIRESDAY
     end
 
-    local element = xi.combat.element.getDayElement(chosenDay)
+    local element = xi.data.element.getDayElement(chosenDay)
 
     return yellowWeakness[element][math.random(1, #yellowWeakness[element])] -- Choose an specific spell the mob is weak to.
 end
