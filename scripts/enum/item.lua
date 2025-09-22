@@ -3551,6 +3551,7 @@ xi.item =
     SHEET_OF_PROMATHIAN_TUNES           = 6347,
     SHEET_OF_ADOULINIAN_TUNES           = 6348,
     STINGER_BULLET_POUCH                = 6355,
+    CODEX_OF_ETCHINGS                   = 6367,
     GEOMANCER_DIE                       = 6368,
     RUNE_FENCER_DIE                     = 6369,
     FRAYED_SACK_OF_SPLENDOR             = 6370,

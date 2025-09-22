@@ -631,3 +631,33 @@ UPDATE mob_spawn_points SET pos_x = -825.7000, pos_y = -9.1779, pos_z = -388.507
 
 UPDATE mob_pools SET modelid = 0x0000100100000000000000000000000000000000  WHERE name = 'Raker_Bee';
 UPDATE mob_pools SET modelid = 0x0000980100000000000000000000000000000000 WHERE name = 'Rummager_Beetle';
+-- Zone 289 Escha RuAun lottery NMs
+UPDATE mob_groups SET HP = 145000 WHERE name = 'Warder_of_Temperance' AND zoneid = 289;
+UPDATE mob_groups SET HP = 145000 WHERE name = 'Warder_of_Faith' AND zoneid = 289;
+UPDATE mob_groups SET HP = 145000 WHERE name = 'Warder_of_Justice' AND zoneid = 289;
+UPDATE mob_groups SET HP = 145000 WHERE name = 'Warder_of_Hope' AND zoneid = 289;
+UPDATE mob_groups SET HP = 145000 WHERE name = 'Warder_of_Prudence' AND zoneid = 289;
+UPDATE mob_groups SET HP = 145000 WHERE name = 'Warder_of_Love' AND zoneid = 289;
+UPDATE mob_groups SET HP = 145000, minLevel = 124, maxLevel = 125 WHERE name = 'Warder_of_Fortitude' AND zoneid = 289;
+UPDATE mob_groups SET HP = 145000 WHERE name = 'Warder_of_Dignity' AND zoneid = 289;
+UPDATE mob_groups SET HP = 145000 WHERE name = 'Warder_of_Loyalty' AND zoneid = 289;
+UPDATE mob_groups SET HP = 145000 WHERE name = 'Warder_of_Mercy' AND zoneid = 289;
+-- Zone 291 Reisenjima lottery NMs
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Chapuli' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Mosquito' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Mantis' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Beetle' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Luckybug' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Lucani' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Porxie' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Cyhiraeth' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Tiger' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Naraka' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_panopt' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Poroggo' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Chigoe' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Hippogryph' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Faaz' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Gefyrst' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Ungeweder' AND zoneid = 291;
+UPDATE mob_groups SET HP = 155000 WHERE name = 'Heavenly_Veela' AND zoneid = 291;
