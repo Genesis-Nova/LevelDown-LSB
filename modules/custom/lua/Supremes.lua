@@ -13,7 +13,6 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
-    local leader = GetPlayerByID(player:getLeaderID())
 
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
@@ -23,19 +22,26 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
     if rand <= 25 and
         spawnSupreme then
 
-        local alliance = player:getAlliance()
-        local killerClaim = optParams.isKiller
-        local partyAllianceCheck = 0
-
-        if leader:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = leader:getAlliance()
-        else
-            partyAllianceCheck = leader:getPartyWithTrusts()
+        local leader = GetPlayerByID(player:getLeaderID())
+        if leader == nil then
+            return
         end
 
-        for _, member in pairs(partyAllianceCheck) do
-                member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+        local alliancePartyCheck = {}
+
+        if leader:checkSoloPartyAlliance() == 2 then
+            alliancePartyCheck = leader:getAlliance()
+        else
+            alliancePartyCheck = leader:getPartyWithTrusts()
+        end
+
+        if type(alliancePartyCheck) == "table" then
+            for _, member in pairs(alliancePartyCheck) do
+                if member:getZoneID() == 127 then
+                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+                end
+            end
         end
 
         local zoneOrInstanceObj = player:getZone()
@@ -188,7 +194,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                    { xi.mod.PIERCE_SDT, xi.day.WATERSDAY     },
                    { xi.mod.IMPACT_SDT, xi.day.WINDSDAY      },
                    { xi.mod.HTH_SDT,    xi.day.ICEDAY        },
-                   { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGSDAY },
+                   { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGDAY  },
                    { xi.mod.PIERCE_SDT, xi.day.LIGHTSDAY     },
                    { xi.mod.IMPACT_SDT, xi.day.DARKSDAY      },
                }
@@ -310,42 +316,45 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                 target:useMobAbility(710) -- use charm on sleep - this does not proc against lullaby
             end
         end,
-        ---------------------------------------------------------------------------
-        -----------onMobDeath
-        ---------------------------------------------------------------------------
-        onMobDeath = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
+                        ---------------------------------------------------------------------------
+                        -----------onMobDeath
+                        ---------------------------------------------------------------------------
+                        onMobDeath = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
+                        ---------------------------------------------------------------------------
+                        -----------onMobDespawn
+                        ---------------------------------------------------------------------------
+                        onMobDespawn = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 0, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
-        ---------------------------------------------------------------------------
-        -----------onMobDespawn
-        ---------------------------------------------------------------------------
-        onMobDespawn = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
-
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
-
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
         mixins =
@@ -376,8 +385,6 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
-    local leader = GetPlayerByID(player:getLeaderID())
-
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
@@ -386,19 +393,26 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
     if rand <= 45 and
         spawnSupreme then
 
-        local alliance = player:getAlliance()
-        local killerClaim = optParams.isKiller
-        local partyAllianceCheck = 0
-
-        if leader:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = leader:getAlliance()
-        else
-            partyAllianceCheck = leader:getPartyWithTrusts()
+        local leader = GetPlayerByID(player:getLeaderID())
+        if leader == nil then
+            return
         end
 
-        for _, member in pairs(partyAllianceCheck) do
-                member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+        local alliancePartyCheck = {}
+
+        if leader:checkSoloPartyAlliance() == 2 then
+            alliancePartyCheck = leader:getAlliance()
+        else
+            alliancePartyCheck = leader:getPartyWithTrusts()
+        end
+
+        if type(alliancePartyCheck) == "table" then
+            for _, member in pairs(alliancePartyCheck) do
+                if member:getZoneID() == 127 then
+                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+                end
+            end
         end
 
         local zoneOrInstanceObj = player:getZone()
@@ -551,7 +565,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                    { xi.mod.PIERCE_SDT, xi.day.WATERSDAY     },
                    { xi.mod.IMPACT_SDT, xi.day.WINDSDAY      },
                    { xi.mod.HTH_SDT,    xi.day.ICEDAY        },
-                   { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGSDAY },
+                   { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGDAY  },
                    { xi.mod.PIERCE_SDT, xi.day.LIGHTSDAY     },
                    { xi.mod.IMPACT_SDT, xi.day.DARKSDAY      },
                }
@@ -673,42 +687,45 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                 target:useMobAbility(710) -- use charm on sleep - this does not proc against lullaby
             end
         end,
-        ---------------------------------------------------------------------------
-        -----------onMobDeath
-        ---------------------------------------------------------------------------
-        onMobDeath = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
+                        ---------------------------------------------------------------------------
+                        -----------onMobDeath
+                        ---------------------------------------------------------------------------
+                        onMobDeath = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
+                        ---------------------------------------------------------------------------
+                        -----------onMobDespawn
+                        ---------------------------------------------------------------------------
+                        onMobDespawn = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 0, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
-        ---------------------------------------------------------------------------
-        -----------onMobDespawn
-        ---------------------------------------------------------------------------
-        onMobDespawn = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
-
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
-
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
         mixins =
@@ -738,8 +755,6 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
-    local leader = GetPlayerByID(player:getLeaderID())
-
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
@@ -748,19 +763,26 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
     if rand <= 25 and
         spawnSupreme then
 
-        local alliance = player:getAlliance()
-        local killerClaim = optParams.isKiller
-        local partyAllianceCheck = 0
-
-        if leader:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = leader:getAlliance()
-        else
-            partyAllianceCheck = leader:getPartyWithTrusts()
+        local leader = GetPlayerByID(player:getLeaderID())
+        if leader == nil then
+            return
         end
 
-        for _, member in pairs(partyAllianceCheck) do
-                member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+        local alliancePartyCheck = {}
+
+        if leader:checkSoloPartyAlliance() == 2 then
+            alliancePartyCheck = leader:getAlliance()
+        else
+            alliancePartyCheck = leader:getPartyWithTrusts()
+        end
+
+        if type(alliancePartyCheck) == "table" then
+            for _, member in pairs(alliancePartyCheck) do
+                if member:getZoneID() == 154 then
+                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+                end
+            end
         end
 
         local zoneOrInstanceObj = player:getZone()
@@ -905,7 +927,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
         {
             { xi.mod.HTH_SDT,    xi.day.DARKSDAY      },
             { xi.mod.SLASH_SDT,  xi.day.LIGHTSDAY     },
-            { xi.mod.PIERCE_SDT, xi.day.LIGHTNINGSDAY },
+            { xi.mod.PIERCE_SDT, xi.day.LIGHTNINGDAY  },
             { xi.mod.IMPACT_SDT, xi.day.ICEDAY        },
             { xi.mod.HTH_SDT,    xi.day.WINDSDAY      },
             { xi.mod.SLASH_SDT,  xi.day.WATERSDAY     },
@@ -948,12 +970,12 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
         if mob:getHPP() <= 50 and
            mob:getLocalVar('Adds') == 1 then
            local daerID = zones[xi.zone.DRAGONS_AERY]
-               GetMobByID(behID.mob.FAFNIR):spawn()
-               GetMobByID(behID.mob.FAFNIR):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(behID.mob.FAFNIR):updateClaim(target)
-               GetMobByID(behID.mob.NIDHOGG):spawn()
-               GetMobByID(behID.mob.NIDHOGG):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(behID.mob.NIDHOGG):updateClaim(target)
+               GetMobByID(daerID.mob.FAFNIR):spawn()
+               GetMobByID(daerID.mob.FAFNIR):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+               GetMobByID(daerID.mob.FAFNIR):updateClaim(target)
+               GetMobByID(daerID.mob.NIDHOGG):spawn()
+               GetMobByID(daerID.mob.NIDHOGG):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+               GetMobByID(daerID.mob.NIDHOGG):updateClaim(target)
            mob:setLocalVar('Adds', 2)
            mob:setLocalVar('AddsTimer', os.time())
         end
@@ -1018,42 +1040,45 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
                target:useMobAbility(690) -- use hundred fist on sleep - this does not proc against lullaby
             end
         end,
-        ---------------------------------------------------------------------------
-        -----------onMobDeath
-        ---------------------------------------------------------------------------
-        onMobDeath = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
+                        ---------------------------------------------------------------------------
+                        -----------onMobDeath
+                        ---------------------------------------------------------------------------
+                        onMobDeath = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
+                        ---------------------------------------------------------------------------
+                        -----------onMobDespawn
+                        ---------------------------------------------------------------------------
+                        onMobDespawn = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 1, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
-        ---------------------------------------------------------------------------
-        -----------onMobDespawn
-        ---------------------------------------------------------------------------
-        onMobDespawn = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
-
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
-
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
         mixins =
@@ -1084,8 +1109,6 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
-    local leader = GetPlayerByID(player:getLeaderID())
-
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
@@ -1094,19 +1117,26 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
     if rand <= 45 and
         spawnSupreme then
 
-        local alliance = player:getAlliance()
-        local killerClaim = optParams.isKiller
-        local partyAllianceCheck = 0
-
-        if leader:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = leader:getAlliance()
-        else
-            partyAllianceCheck = leader:getPartyWithTrusts()
+        local leader = GetPlayerByID(player:getLeaderID())
+        if leader == nil then
+            return
         end
 
-        for _, member in pairs(partyAllianceCheck) do
-                member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+        local alliancePartyCheck = {}
+
+        if leader:checkSoloPartyAlliance() == 2 then
+            alliancePartyCheck = leader:getAlliance()
+        else
+            alliancePartyCheck = leader:getPartyWithTrusts()
+        end
+
+        if type(alliancePartyCheck) == "table" then
+            for _, member in pairs(alliancePartyCheck) do
+                if member:getZoneID() == 154 then
+                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+                end
+            end
         end
 
         local zoneOrInstanceObj = player:getZone()
@@ -1250,7 +1280,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
         {
             { xi.mod.HTH_SDT,    xi.day.DARKSDAY      },
             { xi.mod.SLASH_SDT,  xi.day.LIGHTSDAY     },
-            { xi.mod.PIERCE_SDT, xi.day.LIGHTNINGSDAY },
+            { xi.mod.PIERCE_SDT, xi.day.LIGHTNINGDAY  },
             { xi.mod.IMPACT_SDT, xi.day.ICEDAY        },
             { xi.mod.HTH_SDT,    xi.day.WINDSDAY      },
             { xi.mod.SLASH_SDT,  xi.day.WATERSDAY     },
@@ -1293,12 +1323,12 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
         if mob:getHPP() <= 50 and
            mob:getLocalVar('Adds') == 1 then
            local daerID = zones[xi.zone.DRAGONS_AERY]
-               GetMobByID(behID.mob.FAFNIR):spawn()
-               GetMobByID(behID.mob.FAFNIR):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(behID.mob.FAFNIR):updateClaim(target)
-               GetMobByID(behID.mob.NIDHOGG):spawn()
-               GetMobByID(behID.mob.NIDHOGG):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(behID.mob.NIDHOGG):updateClaim(target)
+               GetMobByID(daerID.mob.FAFNIR):spawn()
+               GetMobByID(daerID.mob.FAFNIR):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+               GetMobByID(daerID.mob.FAFNIR):updateClaim(target)
+               GetMobByID(daerID.mob.NIDHOGG):spawn()
+               GetMobByID(daerID.mob.NIDHOGG):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+               GetMobByID(daerID.mob.NIDHOGG):updateClaim(target)
            mob:setLocalVar('Adds', 2)
            mob:setLocalVar('AddsTimer', os.time())
         end
@@ -1363,42 +1393,45 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
                target:useMobAbility(690) -- use hundred fist on sleep - this does not proc against lullaby
             end
         end,
-        ---------------------------------------------------------------------------
-        -----------onMobDeath
-        ---------------------------------------------------------------------------
-        onMobDeath = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
+                        ---------------------------------------------------------------------------
+                        -----------onMobDeath
+                        ---------------------------------------------------------------------------
+                        onMobDeath = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
+                        ---------------------------------------------------------------------------
+                        -----------onMobDespawn
+                        ---------------------------------------------------------------------------
+                        onMobDespawn = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 1, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
-        ---------------------------------------------------------------------------
-        -----------onMobDespawn
-        ---------------------------------------------------------------------------
-        onMobDespawn = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
-
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
-
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
         mixins =
@@ -1429,8 +1462,6 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
-    local leader = GetPlayerByID(player:getLeaderID())
-
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
@@ -1439,19 +1470,26 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
     if rand <= 25 and
         spawnSupreme then
 
-        local alliance = player:getAlliance()
-        local killerClaim = optParams.isKiller
-        local partyAllianceCheck = 0
-
-        if leader:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = leader:getAlliance()
-        else
-            partyAllianceCheck = leader:getPartyWithTrusts()
+        local leader = GetPlayerByID(player:getLeaderID())
+        if leader == nil then
+            return
         end
 
-        for _, member in pairs(partyAllianceCheck) do
-                member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+        local alliancePartyCheck = {}
+
+        if leader:checkSoloPartyAlliance() == 2 then
+            alliancePartyCheck = leader:getAlliance()
+        else
+            alliancePartyCheck = leader:getPartyWithTrusts()
+        end
+
+        if type(alliancePartyCheck) == "table" then
+            for _, member in pairs(alliancePartyCheck) do
+                if member:getZoneID() == 128 then
+                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+                end
+            end
         end
 
         local zoneOrInstanceObj = player:getZone()
@@ -1597,7 +1635,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
             { xi.mod.PIERCE_SDT, xi.day.ICEDAY        },
             { xi.mod.IMPACT_SDT, xi.day.DARKSDAY      },
             { xi.mod.HTH_SDT,    xi.day.LIGHTSDAY     },
-            { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGSDAY },
+            { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGDAY  },
             { xi.mod.PIERCE_SDT, xi.day.WINDSDAY      },
             { xi.mod.IMPACT_SDT, xi.day.EARTHSDAY     },
         }
@@ -1637,12 +1675,12 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
         if mob:getHPP() <= 50 and
            mob:getLocalVar('Adds') == 1 then
            local vosID = zones[xi.zone.VALLEY_OF_SORROWS]
-               GetMobByID(behID.mob.ADAMANTOISE):spawn()
-               GetMobByID(behID.mob.ADAMANTOISE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(behID.mob.ADAMANTOISE):updateClaim(target)
-               GetMobByID(behID.mob.ASPIDOCHELONE):spawn()
-               GetMobByID(behID.mob.ASPIDOCHELONE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(behID.mob.ASPIDOCHELONE):updateClaim(target)
+               GetMobByID(vosID.mob.ADAMANTOISE):spawn()
+               GetMobByID(vosID.mob.ADAMANTOISE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+               GetMobByID(vosID.mob.ADAMANTOISE):updateClaim(target)
+               GetMobByID(vosID.mob.ASPIDOCHELONE):spawn()
+               GetMobByID(vosID.mob.ASPIDOCHELONE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+               GetMobByID(vosID.mob.ASPIDOCHELONE):updateClaim(target)
            mob:setLocalVar('Adds', 2)
            mob:setLocalVar('AddsTimer', os.time())
         end
@@ -1706,42 +1744,45 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
                target:useMobAbility(690) -- use hundred fist on sleep - this does not proc against lullaby
             end
         end,
-        ---------------------------------------------------------------------------
-        -----------onMobDeath
-        ---------------------------------------------------------------------------
-        onMobDeath = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
+                        ---------------------------------------------------------------------------
+                        -----------onMobDeath
+                        ---------------------------------------------------------------------------
+                        onMobDeath = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
+                        ---------------------------------------------------------------------------
+                        -----------onMobDespawn
+                        ---------------------------------------------------------------------------
+                        onMobDespawn = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
-        ---------------------------------------------------------------------------
-        -----------onMobDespawn
-        ---------------------------------------------------------------------------
-        onMobDespawn = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
-
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
-
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
         mixins =
@@ -1772,8 +1813,6 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
     local zone = mob:getZone()
     local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
     local spawnSupreme = true
-    local leader = GetPlayerByID(player:getLeaderID())
-
     for _, mob in pairs(filteredEntities) do
         if mob:isAlive() then
             spawnSupreme = false
@@ -1782,19 +1821,26 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
     if rand <= 45 and
         spawnSupreme then
 
-        local alliance = player:getAlliance()
-        local killerClaim = optParams.isKiller
-        local partyAllianceCheck = 0
-
-        if leader:checkSoloPartyAlliance() == 2 then
-            partyAllianceCheck = leader:getAlliance()
-        else
-            partyAllianceCheck = leader:getPartyWithTrusts()
+        local leader = GetPlayerByID(player:getLeaderID())
+        if leader == nil then
+            return
         end
 
-        for _, member in pairs(partyAllianceCheck) do
-                member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+        local alliancePartyCheck = {}
+
+        if leader:checkSoloPartyAlliance() == 2 then
+            alliancePartyCheck = leader:getAlliance()
+        else
+            alliancePartyCheck = leader:getPartyWithTrusts()
+        end
+
+        if type(alliancePartyCheck) == "table" then
+            for _, member in pairs(alliancePartyCheck) do
+                if member:getZoneID() == 128 then
+                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+                end
+            end
         end
 
       local zoneOrInstanceObj = player:getZone()
@@ -1945,7 +1991,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
             { xi.mod.PIERCE_SDT, xi.day.ICEDAY        },
             { xi.mod.IMPACT_SDT, xi.day.DARKSDAY      },
             { xi.mod.HTH_SDT,    xi.day.LIGHTSDAY     },
-            { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGSDAY },
+            { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGDAY  },
             { xi.mod.PIERCE_SDT, xi.day.WINDSDAY      },
             { xi.mod.IMPACT_SDT, xi.day.EARTHSDAY     },
         }
@@ -1985,12 +2031,12 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
         if mob:getHPP() <= 50 and
            mob:getLocalVar('Adds') == 1 then
            local vosID = zones[xi.zone.VALLEY_OF_SORROWS]
-               GetMobByID(behID.mob.ADAMANTOISE):spawn()
-               GetMobByID(behID.mob.ADAMANTOISE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(behID.mob.ADAMANTOISE):updateClaim(target)
-               GetMobByID(behID.mob.ASPIDOCHELONE):spawn()
-               GetMobByID(behID.mob.ASPIDOCHELONE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(behID.mob.ASPIDOCHELONE):updateClaim(target)
+               GetMobByID(vosID.mob.ADAMANTOISE):spawn()
+               GetMobByID(vosID.mob.ADAMANTOISE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+               GetMobByID(vosID.mob.ADAMANTOISE):updateClaim(target)
+               GetMobByID(vosID.mob.ASPIDOCHELONE):spawn()
+               GetMobByID(vosID.mob.ASPIDOCHELONE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+               GetMobByID(vosID.mob.ASPIDOCHELONE):updateClaim(target)
            mob:setLocalVar('Adds', 2)
            mob:setLocalVar('AddsTimer', os.time())
         end
@@ -2054,42 +2100,45 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
                target:useMobAbility(690) -- use hundred fist on sleep - this does not proc against lullaby
             end
         end,
-        ---------------------------------------------------------------------------
-        -----------onMobDeath
-        ---------------------------------------------------------------------------
-        onMobDeath = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
+                        ---------------------------------------------------------------------------
+                        -----------onMobDeath
+                        ---------------------------------------------------------------------------
+                        onMobDeath = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
+                        ---------------------------------------------------------------------------
+                        -----------onMobDespawn
+                        ---------------------------------------------------------------------------
+                        onMobDespawn = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
+                            end
 
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
-        ---------------------------------------------------------------------------
-        -----------onMobDespawn
-        ---------------------------------------------------------------------------
-        onMobDespawn = function(mob, playerArg, optParams)
-            local alliance = player:getAlliance()
-            local partyAllianceCheck = 0
-
-            if player:checkSoloPartyAlliance() == 2 then
-                partyAllianceCheck = player:getAlliance()
-            else
-                partyAllianceCheck = player:getPartyWithTrusts()
-            end
-
-            for _, member in pairs(partyAllianceCheck) do
-                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
-                member:delStatusEffect(xi.effect.CONFRONTATION)
-            end
-        end,
+                            for _, member in pairs(partyAllianceCheck) do
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+                        end,
         releaseIdOnDisappear = true,
         -- You can apply mixins like you would with regular mobs. mixinOptions aren't supported yet.
         mixins =
@@ -2139,7 +2188,6 @@ page1 =
                 local zone = player:getZone()
                 local filteredEntities = zone:queryEntitiesByName('DE_Supreme.*')
                 local spawnSupreme = true
-                local leader = GetPlayerByID(player:getLeaderID())
 
                 for _, mob in pairs(filteredEntities) do
                     if mob:isAlive() then
@@ -2149,19 +2197,26 @@ page1 =
                 if spawnSupreme then
         
 
-                    local alliance = player:getAlliance()
-                    local killerClaim = optParams.isKiller
-                    local partyAllianceCheck = 0
-
-                    if leader:checkSoloPartyAlliance() == 2 then
-                        partyAllianceCheck = leader:getAlliance()
-                    else
-                        partyAllianceCheck = leader:getPartyWithTrusts()
+                    local leader = GetPlayerByID(player:getLeaderID())
+                    if leader == nil then
+                        return
                     end
 
-                    for _, member in pairs(partyAllianceCheck) do
-                            member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                            member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+                    local alliancePartyCheck = {}
+
+                    if leader:checkSoloPartyAlliance() == 2 then
+                        alliancePartyCheck = leader:getAlliance()
+                    else
+                        alliancePartyCheck = leader:getPartyWithTrusts()
+                    end
+
+                    if type(alliancePartyCheck) == "table" then
+                        for _, member in pairs(alliancePartyCheck) do
+                            if member:getZoneID() == 216 then
+                                member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                                member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+                            end
+                        end
                     end
 
                     local zoneOrInstanceObj = player:getZone()
@@ -2189,8 +2244,9 @@ page1 =
                         onMobSpawn = function(mob)
                             mob:setLocalVar('[rage]timer', 900) -- 3600 = 60 minutes
                             mob:setLocalVar('BSanctusUse', 1)
-                            mob:addMod(xi.mod.MAIN_DMG_RATING, 150)
+                            mob:addMod(xi.mod.MAIN_DMG_RATING, 145)
                             mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
+                            --[[
                             mob:addMod(xi.mod.MP, 9500)
                             mob:addMod(xi.mod.STR, 400) 
                             mob:addMod(xi.mod.VIT, 400) 
@@ -2224,6 +2280,7 @@ page1 =
                             mob:setMod(xi.mod.POISONRES, 100) 
                             mob:setMod(xi.mod.PARALYZERES, 100) 
                             mob:setMod(xi.mod.LULLABYRES, 0) 
+                            ]]--
                             mob:setMod(xi.mod.FASTCAST, 75) 
                             mob:addStatusEffect(xi.effect.DREAD_SPIKES, 100, 0, 0)
                             mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
@@ -2328,7 +2385,7 @@ page1 =
                                 { xi.mod.PIERCE_SDT, xi.day.ICEDAY        },
                                 { xi.mod.IMPACT_SDT, xi.day.DARKSDAY      },
                                 { xi.mod.HTH_SDT,    xi.day.LIGHTSDAY     },
-                                { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGSDAY },
+                                { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGDAY  },
                                 { xi.mod.PIERCE_SDT, xi.day.WINDSDAY      },
                                 { xi.mod.IMPACT_SDT, xi.day.EARTHSDAY     },
                             }
@@ -2428,37 +2485,40 @@ page1 =
                         ---------------------------------------------------------------------------
                         -----------onMobDeath
                         ---------------------------------------------------------------------------
-                        onMobDeath = function(mob, playerArg, optParams)
-                            local alliance = player:getAlliance()
-                            local partyAllianceCheck = 0
-
-                            if player:checkSoloPartyAlliance() == 2 then
-                                partyAllianceCheck = player:getAlliance()
-                            else
-                                partyAllianceCheck = player:getPartyWithTrusts()
+                        onMobDeath = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
                             end
 
                             for _, member in pairs(partyAllianceCheck) do
-                                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
-                                member:delStatusEffect(xi.effect.CONFRONTATION)
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
                             end
                         end,
                         ---------------------------------------------------------------------------
                         -----------onMobDespawn
                         ---------------------------------------------------------------------------
-                        onMobDespawn = function(mob, playerArg, optParams)
-                            local alliance = player:getAlliance()
-                            local partyAllianceCheck = 0
-
-                            if player:checkSoloPartyAlliance() == 2 then
-                                partyAllianceCheck = player:getAlliance()
-                            else
-                                partyAllianceCheck = player:getPartyWithTrusts()
+                        onMobDespawn = function(mob, player, optParams)
+                            local partyAllianceCheck = {}
+                            if player then
+                                if player:checkSoloPartyAlliance() == 2 then
+                                    partyAllianceCheck = player:getAlliance()
+                                else
+                                    partyAllianceCheck = player:getPartyWithTrusts()
+                                end
                             end
 
                             for _, member in pairs(partyAllianceCheck) do
-                                member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
-                                member:delStatusEffect(xi.effect.CONFRONTATION)
+                                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
                             end
                         end,
 
@@ -2518,17 +2578,6 @@ m:addOverride('xi.zones.Misareaux_Coast.Zone.onInitialize',function(zone)
         end,
     })
 end)
-
---[[
-Spawnpoint Mis Coast -160.0604 -15.6770 632.2044 rotation 23
-Chaos model look = 0x00004b0e00000000000000000000000000000000
-target:setAnimationSub(1) & 2 for sheilds
-m:addOverride('xi.zones.Misareaux_Coast.Zone.onInitialize',function(zone)
-    super(zone)
-
-end)
-]]--
-
 
 return m
 
