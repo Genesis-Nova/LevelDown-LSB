@@ -596,12 +596,12 @@ local customQuestId =
     [620] = {'Craft Woodworking Rose Harp',17355,1,1},
     [621] = {'Craft Woodworking Oak Pole',17098,1,1},
     [622] = {'Craft Woodworking Kaman',17156,1,1},
-    [623] = {'Craft Woodworking Fay Staff',18602,1,1}, -- Cannot actually sign, need to change item
-    [624] = {'Craft Woodworking Fay Crozier',18601,1,1},
+    [623] = {'Craft Woodworking Qi Staff',18611,1,1},
+    [624] = {'Craft Woodworking Mythril Lance',16847,1,1},
     [625] = {'Craft Woodworking Lightning Bow',17240,1,1},
     [626] = {'Craft Woodworking Mahogany Staff',17092,1,1},
     [627] = {'Craft Woodworking Ebony Wand',17054,1,1},
-    [628] = {'Craft Woodworking Fay Lance',19303,1,1},
+    [628] = {'Craft Woodworking Cermet Lance',16849,1,1},
     [629] = {'Craft Woodworking Revenging Staff',17561,1,1},
     [630] = {'Craft Woodworking Mahogany Pole',17099,1,1},
     [631] = {'Craft Woodworking Rapid Bow',17157,1,1},
@@ -650,7 +650,7 @@ local customQuestId =
     [674] = {'Craft Smithing Darksteel Sollerets',12939,1,1},
     [675] = {'Craft Smithing Darksteel Baselard',16457,1,1},
     [676] = {'Craft Smithing Darksteel Mufflers',12683,1,1},
-    [677] = {'Craft Smithing Fane Baselard',19115,1,1},
+    [677] = {'Craft Smithing Darksteel Kukri',16476,1,1},
     [678] = {'Craft Smithing Nodowa',13111,1,1},
     [679] = {'Craft Smithing Bascinet',12427,1,1},
     [680] = {'Craft Smithing Darksteel Katars',16400,1,1},
@@ -672,7 +672,7 @@ local customQuestId =
     [696] = {'Craft GoldSmithing Bastokan Subligar',14259,1,1},
     [697] = {'Craft GoldSmithing Silver Earring',13327,1,1},
     [698] = {'Craft GoldSmithing Bastokan Harness',14338,1,1},
-    [699] = {'Craft GoldSmithing San dOrian Sword',17678,1,1},
+    [699] = {'Craft GoldSmithing Brass Hammer',17043,1,1},
     [700] = {'Craft GoldSmithing Silver Hairpin',12495,1,1},
     [701] = {'Craft GoldSmithing Bastokan Circlet',13899,1,1},
     [702] = {'Craft GoldSmithing Brass Mask',12433,1,1},
@@ -904,16 +904,16 @@ local customQuestId =
 
 local tierRewards = -- Rewards can be changed from month to month
 {
-    [1] = { 8729 }, -- tier 1 rewards 25 completed missions Kupon I-AF109 - Rem Tales - 8729
-    [2] = { 3441 }, -- tier 2 rewards 50 completed missions Kupon A-E+2 - empy +2 set - 3441
-    [3] = { 3442 }, -- tier 3 rewards 75 completed missions Kupon I-Seal - Emp Seals - 3442
-    [4] = { 9170 }, -- tier 4 rewards 100 compelted missions Kupon I-AF119 - omen seals - 9170
-    [5] = { 8794 }, -- tier 5 rewards 125 compelted missions Kupon I-Mat - Reforged mats +1 / +2 - 8794
-    [6] = { 9239 }, -- tier 6 rewards 150 compelted missions Ambuscade chit: footgear - 9239
-    [7] = { 9237 }, -- tier 7 rewards 175 compelted missions Ambuscade chit: handgear - 9237
-    [8] = { 9235 }, -- tier 8 rewards 200 compelted missions Ambuscade chit: headgear - 9235
-    [9] = { 9238 }, -- tier 9 rewards 225 compelted missions Ambuscade chit: leggear - 9238
-    [10] = { 9236 }, -- tier 10 rewards 250 compelted missions Ambuscade chit: bodygear - 9236
+    [1] = { xi.item.MOG_KUPON_I_AF109 }, -- tier 1 rewards 25 completed missions Kupon I-AF109 - Rem Tales - 8729
+    [2] = { xi.item.MOG_KUPON_A_E2 }, -- tier 2 rewards 50 completed missions Kupon A-E+2 - empy +2 set - 3441
+    [3] = { xi.item.MOG_KUPON_I_SEAL }, -- tier 3 rewards 75 completed missions Kupon I-Seal - Emp Seals - 3442
+    [4] = { xi.item.MOG_KUPON_I_AF119 }, -- tier 4 rewards 100 compelted missions Kupon I-AF119 - omen seals - 9170
+    [5] = { xi.item.MOG_KUPON_I_MAT }, -- tier 5 rewards 125 compelted missions Kupon I-Mat - Reforged mats +1 / +2 - 8794
+    [6] = { xi.item.AMBUSCADE_CHIT_FOOTGEAR }, -- tier 6 rewards 150 compelted missions Ambuscade chit: footgear - 9942
+    [7] = { xi.item.AMBUSCADE_CHIT_HANDGEAR }, -- tier 7 rewards 175 compelted missions Ambuscade chit: handgear - 9940
+    [8] = { xi.item.AMBUSCADE_CHIT_HEADGEAR }, -- tier 8 rewards 200 compelted missions Ambuscade chit: headgear - 9938
+    [9] = { xi.item.AMBUSCADE_CHIT_LEGGEAR }, -- tier 9 rewards 225 compelted missions Ambuscade chit: leggear - 9941
+    [10] = { xi.item.AMBUSCADE_CHIT_BODYGEAR }, -- tier 10 rewards 250 compelted missions Ambuscade chit: bodygear - 9939
 }
 -- Character variables - [LD]CustomQuest 15584050  1 = quest type, 5 = quest limit(shouldnt be used here), 584 = quest id, 050 = quest objective Count
 -- Character variables - [LD]CustomQuestTotalDaily
@@ -1305,7 +1305,7 @@ local function createWeeklySubQuestMenu(player, page)
 end
 
 local function createDailySubQuestMenu(player, page)
-    local mainDSQMenu     = {'Crafting', 'Helm', 'Digging', 'JobPoints'} 
+    local mainDSQMenu     = {'Crafting', 'Helm', 'Digging', 'JobPoints'}
 
     local linesPerPage = 6
     page = page or 1
@@ -1436,7 +1436,7 @@ local function createQuestMenu(player, page)
 end
 
 local function createCancelQuestMenu(player, page)
-    local mainYNCQMenu     = {'Yes', 'No'} 
+    local mainYNCQMenu     = {'Yes', 'No'}
     local linesPerPage = 5
     page = page or 1
     local startIndex = (page - 1) * linesPerPage + 1
@@ -1480,7 +1480,7 @@ local function createCancelQuestMenu(player, page)
 end
 
 local function createMainMenu(player, page)
-    local mainMenu     = {'Nothing for now!', 'Select Quest', 'Cancel Quest', 'Current Quest', 'Completed Quests'} 
+    local mainMenu = {'Nothing for now!', 'Select Quest', 'Cancel Quest', 'Current Quest', 'Completed Quests'}
 
     local linesPerPage = 5
     page = page or 1
@@ -1499,7 +1499,7 @@ local function createMainMenu(player, page)
                 local questId = tonumber(questParams:sub(3,5))
                 local questCount = tonumber(questParams:sub(6,8))
             if menu == 'Select Quest' then --
-               createQuestMenu(player, page) 
+               createQuestMenu(player, page)
             elseif menu == 'Cancel Quest' then --
                    if questVar > 0 then
                       player:printToPlayer(string.format('Canceling a quest will decrease your quest total limit.'), 0, 'Quest NPC')
@@ -1557,10 +1557,7 @@ end
 xi.custom_quest.onTrade = function(player, npc, trade)
     local questVar = player:getCharVar('[LD]CustomQuest')
     local questParams = tostring(questVar)
-    local questType = tonumber(questParams:sub(1,1))
-    local questLimit tonumber(questParams:sub(2,2))
     local questId = tonumber(questParams:sub(3,5))
-    local questCount = tonumber(questParams:sub(6,8))
 ----------------------------------------------
 -- LD quest signed crafting item
 ----------------------------------------------
@@ -1576,7 +1573,7 @@ xi.custom_quest.onTrade = function(player, npc, trade)
               end
             end
          else
-               player:printToPlayer(string.format('You quest has expired, please select a new quest.'), 0, 'Quest NPC')            
+               player:printToPlayer(string.format('You quest has expired, please select a new quest.'), 0, 'Quest NPC')
          end
     end
 end
@@ -1590,10 +1587,7 @@ order of operation -
 ]]--
     local questVar = player:getCharVar('[LD]CustomQuest')
     local questParams = tostring(questVar)
-    local questType = tonumber(questParams:sub(1,1))
-    local questLimit tonumber(questParams:sub(2,2))
     local questId = tonumber(questParams:sub(3,5))
-    local questCount = tonumber(questParams:sub(6,8))
         if questId ~= nil then -- Original check to see if they have a quest active
            checkQuestTimer(player) -- check to see if quest has expired
              if questId > 0 then -- check to see if quest is still active again
@@ -1604,7 +1598,7 @@ order of operation -
                 checkQuestTimer(player)
                 player:timer(500, function()
                     -- Delay menu to allow congradulations animation to play
-                       createMainMenu(player, page)
+                       createMainMenu(player, 1)
                 end)
 end
 
@@ -1636,7 +1630,6 @@ xi.custom_quest.helmAdjustment = function(player, helmType) -- added to global h
     local questVar = player:getCharVar('[LD]CustomQuest')
     local questParams = tostring(questVar)
     local questType = tonumber(questParams:sub(1,1))
-    local questLimit tonumber(questParams:sub(2,2))
     local questId = tonumber(questParams:sub(3,5))
     local questCount = tonumber(questParams:sub(6,8))
         if helmType == xi.helmType.LOGGING then
@@ -1682,7 +1675,6 @@ xi.custom_quest.chocoboDigAdjustment = function(player) -- added to global choco
     local questVar = player:getCharVar('[LD]CustomQuest')
     local questParams = tostring(questVar)
     local questType = tonumber(questParams:sub(1,1))
-    local questLimit tonumber(questParams:sub(2,2))
     local questId = tonumber(questParams:sub(3,5))
     local questCount = tonumber(questParams:sub(6,8))
            if questId == 95 then
