@@ -55,33 +55,158 @@ namespace mobutils
 
     uint16 GetWeaponDamage(CMobEntity* PMob, uint16 slot)
     {
-        uint16 lvl    = PMob->GetMLevel();
-        int8   bonus  = 2;
-        uint16 damage = 0;
+        // https://docs.google.com/spreadsheets/d/1YBoveP-weMdidrirY-vPDzHyxbEI2ryECINlfCnFkLI/edit?pli=1&gid=1743955268#gid=1743955268
+        // Basic base damage formulas for reference:
+        // Normal Mobs(Non H2H): (Level * Multiplier) + Offset
+        // Normal MNK mobs     : (Level * Multiplier(Default: 1.0000)) + Offset (Auto attacks get a penalty multiplier)
+        // "Special" MNK mobs  : (Level + Offset) * Multiplier(1.6667) (Auto attacks get a penalty multiplier)
+
+        auto   mobZoneId      = PMob->getZone();
+        uint16 mobLvl         = PMob->GetMLevel();
+        int8   offset         = 0;
+        int8   rangedOffset   = 0;
+        float  multiplier     = PMob->m_dmgMult / 100.0f;
+        int32  damage         = mobLvl;
+        int16  damageModifers = 0;
+
+        // Zones from base game/expansions have different base offsets, multipliers, etc.
+        REGION_TYPE regionID = PMob->loc.zone->GetRegionID();
+
+        switch (regionID)
+        {
+            // Vanilla, ROTZ, COP Regions
+            case REGION_TYPE::RONFAURE:
+            case REGION_TYPE::ZULKHEIM:
+            case REGION_TYPE::NORVALLEN:
+            case REGION_TYPE::GUSTABERG:
+            case REGION_TYPE::DERFLAND:
+            case REGION_TYPE::SARUTABARUTA:
+            case REGION_TYPE::KOLSHUSHU:
+            case REGION_TYPE::ARAGONEU:
+            case REGION_TYPE::FAUREGANDI:
+            case REGION_TYPE::VALDEAUNIA:
+            case REGION_TYPE::QUFIMISLAND:
+            case REGION_TYPE::LITELOR:
+            case REGION_TYPE::KUZOTZ:
+            case REGION_TYPE::VOLLBOW:
+            case REGION_TYPE::ELSHIMO_LOWLANDS:
+            case REGION_TYPE::ELSHIMO_UPLANDS:
+            case REGION_TYPE::TULIA:
+            case REGION_TYPE::MOVALPOLOS:
+            case REGION_TYPE::TAVNAZIA:
+            case REGION_TYPE::SANDORIA:
+            case REGION_TYPE::BASTOK:
+            case REGION_TYPE::WINDURST:
+            case REGION_TYPE::JEUNO:
+            case REGION_TYPE::DYNAMIS:
+            case REGION_TYPE::TAVNAZIAN_MARQ:
+            case REGION_TYPE::PROMYVION:
+            case REGION_TYPE::LUMORIA:
+            case REGION_TYPE::LIMBUS:
+                offset       = 2;
+                rangedOffset = 5;
+                break;
+            // TOAU Regions
+            case REGION_TYPE::WEST_AHT_URHGAN:
+            case REGION_TYPE::MAMOOL_JA_SAVAGE:
+            case REGION_TYPE::HALVUNG:
+            case REGION_TYPE::ARRAPAGO:
+            case REGION_TYPE::ALZADAAL:
+                offset       = 10;
+                rangedOffset = 12;
+                break;
+
+            // WOTG Regions
+            case REGION_TYPE::RONFAURE_FRONT:
+            case REGION_TYPE::NORVALLEN_FRONT:
+            case REGION_TYPE::GUSTABERG_FRONT:
+            case REGION_TYPE::DERFLAND_FRONT:
+            case REGION_TYPE::SARUTA_FRONT:
+            case REGION_TYPE::ARAGONEAU_FRONT:
+            case REGION_TYPE::FAUREGANDI_FRONT:
+            case REGION_TYPE::VALDEAUNIA_FRONT:
+                offset       = 11;
+                rangedOffset = 13;
+                break;
+
+            // Other
+            case REGION_TYPE::ABYSSEA:
+            case REGION_TYPE::THE_THRESHOLD:
+            case REGION_TYPE::ABDHALJS: // TODO: Need data for ABDHALJS zones.
+                offset       = 11;
+                rangedOffset = 13;
+                break;
+
+            // SOA Regions
+            case REGION_TYPE::ADOULIN_ISLANDS:
+            case REGION_TYPE::EAST_ULBUKA:
+                offset       = 11; // TODO: Need more data for Lvl 100+ mobs.
+                rangedOffset = 13;
+                break;
+
+            // Default Fallback
+            default:
+                offset       = 2;
+                rangedOffset = 5;
+                break;
+        }
+
+        offset += PMob->getMobMod(MOBMOD_DAMAGE_OFFSET);
 
         if (slot == SLOT_RANGED)
         {
-            bonus = 5;
+            offset = rangedOffset;
+            offset += PMob->getMobMod(MOBMOD_RANGED_DAMAGE_OFFSET);
         }
 
-        if (lvl == 1)
+        // Normal mobs in beginner zones have the offset lowered by 1.
+        // Excluded NMs for now for things like Voidwatch Mobs.
+        if (mobZoneId != 0 && PMob->m_Type != MOBTYPE_NOTORIOUS && (mobZoneId == ZONE_WEST_RONFAURE || mobZoneId == ZONE_EAST_RONFAURE || mobZoneId == ZONE_NORTH_GUSTABERG || mobZoneId == ZONE_SOUTH_GUSTABERG || mobZoneId == ZONE_WEST_SARUTABARUTA || mobZoneId == ZONE_EAST_SARUTABARUTA))
         {
-            bonus = 0;
+            offset -= 1;
         }
 
-        damage = lvl + bonus;
+        // Clamp to 0 for edge cases that might cause the offset go negative.
+        if (offset < 0)
+        {
+            offset = 0;
+        }
 
-        damage = (uint16)(damage * PMob->m_dmgMult / 100.0f);
-
+        // Add this mod to increase a mobs damage by a base amount
         if (PMob->getMobMod(MOBMOD_WEAPON_BONUS) != 0)
         {
-            damage = (uint16)(damage + PMob->getMobMod(MOBMOD_WEAPON_BONUS)); // Add this mod to increase a mobs damage by a base amount
+            damageModifers = PMob->getMobMod(MOBMOD_WEAPON_BONUS);
         }
 
-        return damage;
+        // Add damage mods to the appropriate slot's base damage if the mob has them.
+        if (slot == SLOT_MAIN)
+        {
+            damageModifers += PMob->getMod(Mod::MAIN_DMG_RATING);
+        }
+        else if (slot == SLOT_SUB)
+        {
+            damageModifers += PMob->getMod(Mod::SUB_DMG_RATING);
+        }
+        else if (slot == SLOT_RANGED)
+        {
+            damageModifers += PMob->getMod(Mod::RANGED_DMG_RATING);
+        }
+
+        damage += damageModifers;
+
+        if (PMob->getMobMod(MOBMOD_BASE_DAMAGE_MULTIPLIER) != 0)
+        {
+            multiplier = PMob->getMobMod(MOBMOD_BASE_DAMAGE_MULTIPLIER) / 100.0f;
+        }
+
+        damage = damage * multiplier + offset;
+
+        damage = std::clamp<int32>(damage, 1, 65535);
+
+        return static_cast<uint16>(damage);
     }
 
-    // Gest base skill rankings for ACC/ATT/EVA/MEVA
+    // Get base skill rankings for ACC/ATT/EVA/MEVA
     uint16 GetBaseSkill(CMobEntity* PMob, uint8 rank)
     {
         int8 mlvl = PMob->GetMLevel();
@@ -490,14 +615,14 @@ namespace mobutils
                 sjHP = std::ceil((sjJobScale * (std::max((mLvlScale - 1), 0)) + (0.5 + 0.5 * sjScaleXHP) * (std::max(mLvlScale - 10, 0)) + std::max(mLvlScale - 30, 0) + std::max(mLvlScale - 50, 0) + std::max(mLvlScale - 70, 0)) / 2);
 
                 // Orcs 5% more hp
-                if ((PMob->m_Family == 189) || (PMob->m_Family == 190) || (PMob->m_Family == 334) || (PMob->m_Family == 407))
+                if ((PMob->m_Family == 189) || (PMob->m_Family == 190))
                 {
                     mobHP = (baseMobHP + sjHP) * 1.05;
                 }
                 // Quadavs 5% less hp
-                else if ((PMob->m_Family == 200) || (PMob->m_Family == 201) || (PMob->m_Family == 202) || (PMob->m_Family == 337) || (PMob->m_Family == 397) || (PMob->m_Family == 408))
+                else if (PMob->m_Family == 202)
                 {
-                    mobHP = (baseMobHP + sjHP) * .95;
+                    mobHP = (baseMobHP + sjHP) * 0.95;
                 }
                 // Manticore family has 50% more HP
                 else if (PMob->m_Family == 179)
@@ -914,9 +1039,9 @@ namespace mobutils
                 }
                 break;
             case JOB_RNG:
-                if ((PMob->m_Family >= 126 && PMob->m_Family <= 130) || PMob->m_Family == 328) // Gigas
+                if (PMob->m_Family == 126) // Gigas
                 {
-                    PMob->defaultMobMod(MOBMOD_SPECIAL_SKILL, 658); // catapult only used while at range
+                    PMob->defaultMobMod(MOBMOD_SPECIAL_SKILL, 658); // Catapult only used while at range
                 }
                 else if (PMob->m_Family == 246) // Trolls
                 {
@@ -1251,51 +1376,7 @@ namespace mobutils
         PMob->defaultMobMod(MOBMOD_SOUND_RANGE, (int16)CMobEntity::sound_range);
         PMob->defaultMobMod(MOBMOD_MAGIC_RANGE, (int16)CMobEntity::magic_range);
 
-        // Killer Effect
-        switch (PMob->m_EcoSystem)
-        {
-            case ECOSYSTEM::AMORPH:
-                PMob->addModifier(Mod::BIRD_KILLER, 5);
-                break;
-            case ECOSYSTEM::AQUAN:
-                PMob->addModifier(Mod::AMORPH_KILLER, 5);
-                break;
-            case ECOSYSTEM::ARCANA:
-                PMob->addModifier(Mod::UNDEAD_KILLER, 5);
-                break;
-            case ECOSYSTEM::BEAST:
-                PMob->addModifier(Mod::LIZARD_KILLER, 5);
-                break;
-            case ECOSYSTEM::BIRD:
-                PMob->addModifier(Mod::AQUAN_KILLER, 5);
-                break;
-            case ECOSYSTEM::DEMON:
-                PMob->addModifier(Mod::DRAGON_KILLER, 5);
-                break;
-            case ECOSYSTEM::DRAGON:
-                PMob->addModifier(Mod::DEMON_KILLER, 5);
-                break;
-            case ECOSYSTEM::LIZARD:
-                PMob->addModifier(Mod::VERMIN_KILLER, 5);
-                break;
-            case ECOSYSTEM::LUMINION:
-                PMob->addModifier(Mod::LUMINIAN_KILLER, 5);
-                break;
-            case ECOSYSTEM::LUMINIAN:
-                PMob->addModifier(Mod::LUMINION_KILLER, 5);
-                break;
-            case ECOSYSTEM::PLANTOID:
-                PMob->addModifier(Mod::BEAST_KILLER, 5);
-                break;
-            case ECOSYSTEM::UNDEAD:
-                PMob->addModifier(Mod::ARCANA_KILLER, 5);
-                break;
-            case ECOSYSTEM::VERMIN:
-                PMob->addModifier(Mod::PLANTOID_KILLER, 5);
-                break;
-            default:
-                break;
-        }
+        battleutils::addEcosystemKillerEffects(PMob);
 
         if (PMob->m_maxLevel == 0 && PMob->m_minLevel == 0)
         {
@@ -1324,7 +1405,7 @@ namespace mobutils
         {
             ModsList_t* familyMods = GetMobFamilyMods(rset->get<uint16>("familyid"), true);
 
-            auto* mod = new CModifier(static_cast<Mod>(rset->get<uint16>("modid")));
+            auto* mod = new CModifier(rset->get<Mod>("modid"));
             mod->setModAmount(rset->get<int16>("value"));
 
             if (rset->get<bool>("is_mob_mod"))
@@ -1345,7 +1426,7 @@ namespace mobutils
             const auto  pool     = rset->get<uint16>("poolid");
             ModsList_t* poolMods = GetMobPoolMods(pool, true);
 
-            const auto id = static_cast<Mod>(rset->get<uint16>("modid"));
+            const auto id = rset->get<Mod>("modid");
 
             auto* mod = new CModifier(id);
             mod->setModAmount(rset->get<int16>("value"));
@@ -1573,7 +1654,7 @@ namespace mobutils
             PMob->packetName.insert(0, rset->get<std::string>("packet_name"));
 
             PMob->m_RespawnTime = std::chrono::seconds(rset->get<uint32>("respawntime"));
-            PMob->m_SpawnType   = static_cast<SPAWNTYPE>(rset->get<uint8>("spawntype"));
+            PMob->m_SpawnType   = rset->get<SPAWNTYPE>("spawntype");
             PMob->m_DropID      = rset->get<uint32>("dropid");
 
             PMob->HPmodifier = rset->get<uint32>("HP");
@@ -1598,8 +1679,8 @@ namespace mobutils
             PMob->m_Behavior    = rset->get<uint16>("behavior");
             PMob->m_Link        = rset->get<uint8>("links");
             PMob->m_Type        = rset->get<uint8>("mobType");
-            PMob->m_Immunity    = static_cast<IMMUNITY>(rset->get<uint32>("immunity"));
-            PMob->m_EcoSystem   = static_cast<ECOSYSTEM>(rset->get<uint8>("ecosystemID"));
+            PMob->m_Immunity    = rset->get<IMMUNITY>("immunity");
+            PMob->m_EcoSystem   = rset->get<ECOSYSTEM>("ecosystemID");
             PMob->m_ModelRadius = rset->get<float>("mobradius");
 
             PMob->baseSpeed      = rset->get<uint8>("speed"); // Overwrites baseentity.cpp's defined baseSpeed
@@ -1670,7 +1751,7 @@ namespace mobutils
 
             PMob->m_Pool = rset->get<uint32>("poolid");
 
-            PMob->allegiance      = static_cast<ALLEGIANCE_TYPE>(rset->get<uint8>("allegiance"));
+            PMob->allegiance      = rset->get<ALLEGIANCE_TYPE>("allegiance");
             PMob->namevis         = rset->get<uint8>("namevis");
             PMob->m_Aggro         = rset->get<bool>("aggro");
             PMob->m_MobSkillList  = rset->get<uint16>("skill_list_id");
@@ -1743,7 +1824,7 @@ namespace mobutils
             PMob->packetName.insert(0, rset->get<std::string>("packet_name"));
 
             PMob->m_RespawnTime = std::chrono::seconds(rset->get<uint32>("respawntime"));
-            PMob->m_SpawnType   = static_cast<SPAWNTYPE>(rset->get<uint8>("spawntype"));
+            PMob->m_SpawnType   = rset->get<SPAWNTYPE>("spawntype");
             PMob->m_DropID      = rset->get<uint32>("dropid");
 
             PMob->HPmodifier = rset->get<uint32>("HP");
@@ -1768,8 +1849,8 @@ namespace mobutils
             PMob->m_Behavior    = rset->get<uint16>("behavior");
             PMob->m_Link        = rset->get<uint8>("links");
             PMob->m_Type        = rset->get<uint8>("mobType");
-            PMob->m_Immunity    = static_cast<IMMUNITY>(rset->get<uint32>("immunity"));
-            PMob->m_EcoSystem   = static_cast<ECOSYSTEM>(rset->get<uint8>("ecosystemID"));
+            PMob->m_Immunity    = rset->get<IMMUNITY>("immunity");
+            PMob->m_EcoSystem   = rset->get<ECOSYSTEM>("ecosystemID");
             PMob->m_ModelRadius = rset->get<float>("mobradius");
 
             PMob->baseSpeed      = rset->get<uint8>("speed"); // Overwrites baseentity.cpp's defined baseSpeed
@@ -1828,7 +1909,7 @@ namespace mobutils
 
             PMob->m_Pool = rset->get<uint32>("poolid");
 
-            PMob->allegiance      = static_cast<ALLEGIANCE_TYPE>(rset->get<uint8>("allegiance"));
+            PMob->allegiance      = rset->get<ALLEGIANCE_TYPE>("allegiance");
             PMob->namevis         = rset->get<uint8>("namevis");
             PMob->m_Aggro         = rset->get<bool>("aggro");
             PMob->m_MobSkillList  = rset->get<uint16>("skill_list_id");

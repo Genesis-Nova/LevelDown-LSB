@@ -24,13 +24,13 @@
 #include <cstring>
 
 #include "packets/char_status.h"
-#include "packets/chat_message.h"
-#include "packets/inventory_assign.h"
-#include "packets/inventory_finish.h"
-#include "packets/inventory_item.h"
-#include "packets/linkshell_equip.h"
-#include "packets/message_standard.h"
-#include "packets/message_system.h"
+#include "packets/s2c/0x009_message.h"
+#include "packets/s2c/0x017_chat_std.h"
+#include "packets/s2c/0x01d_item_same.h"
+#include "packets/s2c/0x01f_item_list.h"
+#include "packets/s2c/0x020_item_attr.h"
+#include "packets/s2c/0x053_systemmes.h"
+#include "packets/s2c/0x0e0_group_comlink.h"
 
 #include "conquest_system.h"
 #include "ipc_client.h"
@@ -38,9 +38,10 @@
 #include "items/item_linkshell.h"
 #include "linkshell.h"
 
+#include "enums/item_lockflg.h"
 #include "items.h"
 #include "packets/c2s/0x0e2_set_lsmsg.h"
-#include "packets/linkshell_message.h"
+#include "packets/s2c/0x0cc_linkshell_message.h"
 #include "utils/charutils.h"
 #include "utils/itemutils.h"
 #include "utils/jailutils.h"
@@ -230,15 +231,15 @@ void CLinkshell::ChangeMemberRank(const std::string& MemberName, const uint8 req
                                          m_id, static_cast<uint8>(PItemLinkshell->GetLSType()), PMember->id);
                     }
 
-                    PMember->pushPacket<CInventoryAssignPacket>(PItemLinkshell, INV_NORMAL);
-                    PMember->pushPacket<CLinkshellEquipPacket>(PMember, lsID);
-                    PMember->pushPacket<CInventoryItemPacket>(PItemLinkshell, LocationID, SlotID);
+                    PMember->pushPacket<GP_SERV_COMMAND_ITEM_LIST>(PItemLinkshell, ItemLockFlg::Normal);
+                    PMember->pushPacket<GP_SERV_COMMAND_GROUP_COMLINK>(PMember, lsID);
+                    PMember->pushPacket<GP_SERV_COMMAND_ITEM_ATTR>(PItemLinkshell, static_cast<CONTAINER_ID>(LocationID), SlotID);
                 }
 
                 charutils::SaveCharStats(PMember);
                 charutils::SaveCharEquip(PMember);
 
-                PMember->pushPacket<CInventoryFinishPacket>();
+                PMember->pushPacket<GP_SERV_COMMAND_ITEM_SAME>();
                 PMember->pushPacket<CCharStatusPacket>(PMember);
                 return;
             }
@@ -280,8 +281,8 @@ void CLinkshell::RemoveMemberByName(const std::string& MemberName, uint8 request
                     PMember->updatemask |= UPDATE_HP;
                 }
 
-                PMember->pushPacket<CInventoryAssignPacket>(PItemLinkshell, INV_NORMAL);
-                PMember->pushPacket<CLinkshellEquipPacket>(PMember, lsNum);
+                PMember->pushPacket<GP_SERV_COMMAND_ITEM_LIST>(PItemLinkshell, ItemLockFlg::Normal);
+                PMember->pushPacket<GP_SERV_COMMAND_GROUP_COMLINK>(PMember, lsNum);
             }
 
             for (uint8 LocationID = 0; LocationID < CONTAINER_ID::MAX_CONTAINER_ID; ++LocationID)
@@ -301,7 +302,7 @@ void CLinkshell::RemoveMemberByName(const std::string& MemberName, uint8 request
                                 db::preparedStmt("UPDATE char_inventory SET extra = ? WHERE charid = ? AND location = ? AND slot = ? LIMIT 1",
                                                  newPItemLinkshell->m_extra, PMember->id, LocationID, SlotID);
 
-                                PMember->pushPacket<CInventoryItemPacket>(newPItemLinkshell, LocationID, SlotID);
+                                PMember->pushPacket<GP_SERV_COMMAND_ITEM_ATTR>(newPItemLinkshell, static_cast<CONTAINER_ID>(LocationID), SlotID);
                             }
                         }
                     }
@@ -311,15 +312,15 @@ void CLinkshell::RemoveMemberByName(const std::string& MemberName, uint8 request
             charutils::SaveCharStats(PMember);
             charutils::SaveCharEquip(PMember);
 
-            PMember->pushPacket<CInventoryFinishPacket>();
+            PMember->pushPacket<GP_SERV_COMMAND_ITEM_SAME>();
             PMember->pushPacket<CCharStatusPacket>(PMember);
             if (breakLinkshell)
             {
-                PMember->pushPacket<CMessageStandardPacket>(MsgStd::LinkshellNoLongerExists);
+                PMember->pushPacket<GP_SERV_COMMAND_MESSAGE>(MsgStd::LinkshellNoLongerExists);
             }
             else
             {
-                PMember->pushPacket<CMessageStandardPacket>(MsgStd::LinkshellKicked);
+                PMember->pushPacket<GP_SERV_COMMAND_MESSAGE>(MsgStd::LinkshellKicked);
             }
 
             return;
@@ -351,11 +352,11 @@ void CLinkshell::PushPacket(uint32 senderID, const std::unique_ptr<CBasicPacket>
             auto newPacket = packet->copy();
             if (member->PLinkshell2 == this)
             {
-                if (newPacket->getType() == CChatMessagePacket::id)
+                if (newPacket->getType() == static_cast<uint16_t>(PacketS2C::GP_SERV_COMMAND_CHAT_STD))
                 {
                     newPacket->ref<uint8>(0x04) = MESSAGE_LINKSHELL2;
                 }
-                else if (newPacket->getType() == CLinkshellMessagePacket::id)
+                else if (newPacket->getType() == static_cast<uint16_t>(PacketS2C::GP_SERV_COMMAND_LINKSHELL_MESSAGE))
                 {
                     newPacket->ref<uint8>(0x05) |= 0x40;
                 }
@@ -375,7 +376,7 @@ void CLinkshell::PushLinkshellMessage(CCharEntity* PChar, LinkshellSlot slot)
         const auto messageTime = rset->getOrDefault<uint32>("messagetime", 0);
         if (!message.empty())
         {
-            PChar->pushPacket<CLinkshellMessagePacket>(poster, message, m_name, messageTime, slot);
+            PChar->pushPacket<GP_SERV_COMMAND_LINKSHELL_MESSAGE>(poster, message, m_name, messageTime, slot);
         }
         // TODO: No message sends a 0xCC packet that prints "No linkshell message set."
     }
@@ -393,7 +394,7 @@ namespace linkshell
             const auto linkshellid = rset->get<uint32>("linkshellid");
             const auto color       = rset->get<uint16>("color");
             const auto name        = rset->get<std::string>("name");
-            const auto postrights  = static_cast<GP_CLI_COMMAND_SET_LSMSG_WRITELEVEL>(rset->get<uint8>("postrights"));
+            const auto postrights  = rset->get<GP_CLI_COMMAND_SET_LSMSG_WRITELEVEL>("postrights");
 
             auto PLinkshell = std::make_unique<CLinkshell>(linkshellid);
 

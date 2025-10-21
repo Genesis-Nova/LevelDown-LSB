@@ -40,8 +40,6 @@ When a status effect is gained twice on a player. It can do one or more of the f
 #include "ai/ai_container.h"
 #include "ai/states/inactive_state.h"
 
-#include "packets/message_basic.h"
-
 #include "enmity_container.h"
 #include "entities/automatonentity.h"
 #include "entities/battleentity.h"
@@ -52,7 +50,9 @@ When a status effect is gained twice on a player. It can do one or more of the f
 #include "notoriety_container.h"
 #include "status_effect_container.h"
 
+#include "enums/msg_std.h"
 #include "map_engine.h"
+#include "packets/s2c/0x029_battle_message.h"
 #include "utils/battleutils.h"
 #include "utils/charutils.h"
 #include "utils/itemutils.h"
@@ -125,10 +125,10 @@ namespace effects
             EffectsParams[EffectID].Name       = rset->get<std::string>("name");
             EffectsParams[EffectID].Flag       = rset->get<uint32>("flags");
             EffectsParams[EffectID].Type       = rset->get<uint16>("type");
-            EffectsParams[EffectID].NegativeId = static_cast<EFFECT>(rset->get<uint16>("negative_id"));
-            EffectsParams[EffectID].Overwrite  = static_cast<EFFECTOVERWRITE>(rset->get<uint8>("overwrite"));
-            EffectsParams[EffectID].BlockId    = static_cast<EFFECT>(rset->get<uint16>("block_id"));
-            EffectsParams[EffectID].RemoveId   = static_cast<EFFECT>(rset->get<uint16>("remove_id"));
+            EffectsParams[EffectID].NegativeId = rset->get<EFFECT>("negative_id");
+            EffectsParams[EffectID].Overwrite  = rset->get<EFFECTOVERWRITE>("overwrite");
+            EffectsParams[EffectID].BlockId    = rset->get<EFFECT>("block_id");
+            EffectsParams[EffectID].RemoveId   = rset->get<EFFECT>("remove_id");
 
             EffectsParams[EffectID].Element     = rset->get<uint16>("element");
             EffectsParams[EffectID].MinDuration = std::chrono::seconds(rset->get<uint32>("min_duration"));
@@ -625,7 +625,7 @@ void CStatusEffectContainer::RemoveStatusEffect(CStatusEffect* PStatusEffect, Ef
             {
                 if (notice != EffectNotice::Silent && !(PStatusEffect->HasEffectFlag(EFFECTFLAG_NO_LOSS_MESSAGE)))
                 {
-                    PChar->pushPacket<CMessageBasicPacket>(PChar, PChar, PStatusEffect->GetIcon(), 0, MsgStd::EffectWearsOff);
+                    PChar->pushPacket<GP_SERV_COMMAND_BATTLE_MESSAGE>(PChar, PChar, PStatusEffect->GetIcon(), 0, MsgStd::EffectWearsOff);
                 }
             }
 
@@ -638,7 +638,7 @@ void CStatusEffectContainer::RemoveStatusEffect(CStatusEffect* PStatusEffect, Ef
         {
             if (notice != EffectNotice::Silent && PStatusEffect->GetIcon() != 0 && (!(PStatusEffect->HasEffectFlag(EFFECTFLAG_NO_LOSS_MESSAGE))) && !m_POwner->isDead())
             {
-                m_POwner->loc.zone->PushPacket(m_POwner, CHAR_INRANGE, std::make_unique<CMessageBasicPacket>(m_POwner, m_POwner, PStatusEffect->GetIcon(), 0, MsgStd::EffectWearsOff));
+                m_POwner->loc.zone->PushPacket(m_POwner, CHAR_INRANGE, std::make_unique<GP_SERV_COMMAND_BATTLE_MESSAGE>(m_POwner, m_POwner, PStatusEffect->GetIcon(), 0, MsgStd::EffectWearsOff));
             }
         }
     }
@@ -1679,7 +1679,7 @@ void CStatusEffectContainer::LoadStatusEffects()
     {
         const auto      flags    = rset->get<uint32>("flags");
         timer::duration duration = std::chrono::seconds(rset->get<uint32>("duration"));
-        const auto      effectID = static_cast<EFFECT>(rset->get<uint32>("effectid"));
+        const auto      effectID = rset->get<EFFECT>("effectid");
 
         if (flags & EFFECTFLAG_OFFLINE_TICK)
         {
@@ -2193,9 +2193,12 @@ void CStatusEffectContainer::TickRegen(timer::time_point tick)
             m_POwner->addTP(regain);
         }
 
-        if (m_POwner->PPet && ((CPetEntity*)(m_POwner->PPet))->getPetType() == PET_TYPE::AUTOMATON)
+        if (m_POwner->PPet)
         {
-            ((CAutomatonEntity*)(m_POwner->PPet))->burdenTick();
+            if (auto* PAutomaton = dynamic_cast<CAutomatonEntity*>(m_POwner->PPet))
+            {
+                PAutomaton->burdenTick();
+            }
         }
     }
 }

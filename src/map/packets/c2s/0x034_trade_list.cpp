@@ -23,9 +23,10 @@
 
 #include "common/async.h"
 #include "entities/charentity.h"
+#include "enums/msg_std.h"
 #include "items/item_linkshell.h"
-#include "packets/trade_item.h"
-#include "packets/trade_update.h"
+#include "packets/s2c/0x023_item_trade_list.h"
+#include "packets/s2c/0x025_item_trade_mylist.h"
 #include "universal_container.h"
 
 namespace
@@ -118,7 +119,7 @@ void GP_CLI_COMMAND_TRADE_LIST::process(MapSession* PSession, CCharEntity* PChar
         if ((!PItemLinkshell1 && !PItemLinkshell2) || ((!PItemLinkshell1 || PItemLinkshell1->GetLSID() != PItemLinkshell->GetLSID()) &&
                                                        (!PItemLinkshell2 || PItemLinkshell2->GetLSID() != PItemLinkshell->GetLSID())))
         {
-            PChar->pushPacket<CMessageStandardPacket>(MsgStd::LinkshellEquipBeforeUsing);
+            PChar->pushPacket<GP_SERV_COMMAND_MESSAGE>(MsgStd::LinkshellEquipBeforeUsing);
             PItem->setReserve(0);
             PChar->UContainer->SetItem(TradeIndex, nullptr);
         }
@@ -141,10 +142,10 @@ void GP_CLI_COMMAND_TRADE_LIST::process(MapSession* PSession, CCharEntity* PChar
     auditTrade(PChar, PTarget, PItem, ItemNum);
 
     ShowDebug("GP_CLI_COMMAND_TRADE_LIST: %s->%s trade pushing packet to %s", PChar->getName(), PTarget->getName(), PChar->getName());
-    PChar->pushPacket<CTradeItemPacket>(PItem, TradeIndex);
+    PChar->pushPacket<GP_SERV_COMMAND_ITEM_TRADE_MYLIST>(PItem, TradeIndex);
 
     ShowDebug("GP_CLI_COMMAND_TRADE_LIST: %s->%s trade pushing packet to %s", PChar->getName(), PTarget->getName(), PTarget->getName());
-    PTarget->pushPacket<CTradeUpdatePacket>(PItem, TradeIndex);
+    PTarget->pushPacket<GP_SERV_COMMAND_ITEM_TRADE_LIST>(PItem, TradeIndex);
 
     PChar->UContainer->UnLock();
     PTarget->UContainer->UnLock();

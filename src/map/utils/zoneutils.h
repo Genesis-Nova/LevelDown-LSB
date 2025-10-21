@@ -32,8 +32,24 @@ class CNpcEntity;
 
 namespace zoneutils
 {
+    namespace detail
+    {
+        struct LazyLoadState
+        {
+            bool               enabled{ false };
+            bool               asyncMode{ false };
+            std::set<uint16>   managedZones{};
+            std::queue<uint16> loadQueue{};
+        };
+    } // namespace detail
+
     void LoadZones(const std::vector<uint16>& zoneIds);
     void LoadZoneList(IPP mapIPP);
+    void Initialize(IPP mapIPP, bool lazyLoading, bool asyncMode);
+    void ProcessLoadQueue();
+    auto IsLazyLoadingEnabled() -> bool;
+    auto IsZoneReady(uint16 zoneId) -> bool;
+    auto GetManagedZones() -> std::vector<std::pair<uint16, std::string>>;
     void FreeZoneList();
     void InitializeWeather();
     void TOTDChange(vanadiel_time::TOTD TOTD);
@@ -42,7 +58,7 @@ namespace zoneutils
     auto GetCurrentRegion(uint16 zoneId) -> REGION_TYPE;
     auto GetCurrentContinent(uint16 zoneId) -> CONTINENT_TYPE;
 
-    auto GetWeatherElement(WEATHER weather) -> int;
+    auto GetWeatherElement(Weather weather) -> int;
 
     auto GetZone(uint16 zoneId) -> CZone*;
     auto GetTrigger(uint16 targId, uint16 zoneId) -> CNpcEntity*;

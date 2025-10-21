@@ -31,10 +31,8 @@
 #include <cstring>
 #include <unordered_map>
 
-#include "packets/char_health.h"
 #include "packets/char_status.h"
-#include "packets/inventory_finish.h"
-#include "packets/message_basic.h"
+#include "packets/s2c/0x01d_item_same.h"
 
 #include "lua/luautils.h"
 
@@ -51,6 +49,8 @@
 #include "entities/mobentity.h"
 #include "entities/petentity.h"
 #include "entities/trustentity.h"
+#include "enums/msg_std.h"
+#include "enums/weather.h"
 #include "item_container.h"
 #include "items.h"
 #include "items/item_weapon.h"
@@ -62,11 +62,12 @@
 #include "modifier.h"
 #include "navmesh.h"
 #include "notoriety_container.h"
-#include "packets/char_abilities.h"
-#include "packets/char_recast.h"
-#include "packets/lock_on.h"
 #include "packets/pet_sync.h"
-#include "packets/position.h"
+#include "packets/s2c/0x029_battle_message.h"
+#include "packets/s2c/0x058_assist.h"
+#include "packets/s2c/0x05b_wpos.h"
+#include "packets/s2c/0x0ac_command_data.h"
+#include "packets/s2c/0x119_abil_recast.h"
 #include "party.h"
 #include "petskill.h"
 #include "recast_container.h"
@@ -647,21 +648,21 @@ namespace battleutils
         }
 
         // matching day 10% bonus, matching weather 10% or 25% for double weather
-        float   dBonus  = 1.0;
-        float   resist  = 1.0;
-        uint32  WeekDay = static_cast<uint8>(vanadiel_time::get_weekday());
-        WEATHER weather = GetWeather(PAttacker, false);
+        float  dBonus  = 1.0;
+        float  resist  = 1.0;
+        uint32 WeekDay = static_cast<uint8>(vanadiel_time::get_weekday());
+        auto   weather = GetWeather(PAttacker, false);
 
         DAYTYPE strongDay[8]           = { FIRESDAY, ICEDAY, WINDSDAY, EARTHSDAY, LIGHTNINGDAY, WATERSDAY, LIGHTSDAY, DARKSDAY };
         DAYTYPE weakDay[8]             = { WATERSDAY, FIRESDAY, ICEDAY, WINDSDAY, EARTHSDAY, LIGHTNINGDAY, DARKSDAY, LIGHTSDAY };
-        WEATHER strongWeatherSingle[8] = { WEATHER_HOT_SPELL, WEATHER_SNOW, WEATHER_WIND, WEATHER_DUST_STORM,
-                                           WEATHER_THUNDER, WEATHER_RAIN, WEATHER_AURORAS, WEATHER_GLOOM };
-        WEATHER strongWeatherDouble[8] = { WEATHER_HEAT_WAVE, WEATHER_BLIZZARDS, WEATHER_GALES, WEATHER_SAND_STORM,
-                                           WEATHER_THUNDERSTORMS, WEATHER_SQUALL, WEATHER_STELLAR_GLARE, WEATHER_DARKNESS };
-        WEATHER weakWeatherSingle[8]   = { WEATHER_RAIN, WEATHER_HOT_SPELL, WEATHER_SNOW, WEATHER_WIND,
-                                           WEATHER_DUST_STORM, WEATHER_THUNDER, WEATHER_GLOOM, WEATHER_AURORAS };
-        WEATHER weakWeatherDouble[8]   = { WEATHER_SQUALL, WEATHER_HEAT_WAVE, WEATHER_BLIZZARDS, WEATHER_GALES,
-                                           WEATHER_SAND_STORM, WEATHER_THUNDERSTORMS, WEATHER_DARKNESS, WEATHER_STELLAR_GLARE };
+        Weather strongWeatherSingle[8] = { Weather::HotSpell, Weather::Snow, Weather::Wind, Weather::DustStorm,
+                                           Weather::Thunder, Weather::Rain, Weather::Auroras, Weather::Gloom };
+        Weather strongWeatherDouble[8] = { Weather::HeatWave, Weather::Blizzards, Weather::Gales, Weather::SandStorm,
+                                           Weather::Thunderstorms, Weather::Squall, Weather::StellarGlare, Weather::Darkness };
+        Weather weakWeatherSingle[8]   = { Weather::Rain, Weather::HotSpell, Weather::Snow, Weather::Wind,
+                                           Weather::DustStorm, Weather::Thunder, Weather::Gloom, Weather::Auroras };
+        Weather weakWeatherDouble[8]   = { Weather::Squall, Weather::HeatWave, Weather::Blizzards, Weather::Gales,
+                                           Weather::SandStorm, Weather::Thunderstorms, Weather::Darkness, Weather::StellarGlare };
         uint32  obi[8]                 = { 15435, 15436, 15437, 15438, 15439, 15440, 15441, 15442 };
         Mod     resistarray[8]         = { Mod::FIRE_MEVA, Mod::ICE_MEVA, Mod::WIND_MEVA, Mod::EARTH_MEVA,
                                            Mod::THUNDER_MEVA, Mod::WATER_MEVA, Mod::LIGHT_MEVA, Mod::DARK_MEVA };
@@ -2647,7 +2648,7 @@ namespace battleutils
      *                                                                       *
      ************************************************************************/
 
-    int32 TakeSpellDamage(CBattleEntity* PDefender, CBattleEntity* PAttacker, CSpell* PSpell, int32 damage, ATTACK_TYPE attackType, DAMAGE_TYPE damageType)
+    void TakeSpellDamage(CBattleEntity* PDefender, CBattleEntity* PAttacker, CSpell* PSpell, int32 damage, ATTACK_TYPE attackType, DAMAGE_TYPE damageType)
     {
         // Scarlet Delirium: Updates status effect power with damage bonus
         battleutils::HandleScarletDelirium(PDefender, damage);
@@ -2673,8 +2674,6 @@ namespace battleutils
                 PDefender->addTP(tpGainFunc(damage, PAttacker, PDefender));
             }
         }
-
-        return damage;
     }
 
     /************************************************************************
@@ -3859,7 +3858,9 @@ namespace battleutils
     }
 
     // This whole thing need re-evaluated
-    int16 GetSkillchainMinimumResistance(SKILLCHAIN_ELEMENT element, CBattleEntity* PDefender, ELEMENT* appliedEle)
+    // TODO: move skillchains to lua
+    // This is horrible...
+    int16 GetSkillchainMinimumResistance(SKILLCHAIN_ELEMENT element, CBattleEntity* PDefender, ELEMENT& appliedEle)
     {
         static const Mod resistances[][4] = {
             { Mod::NONE, Mod::NONE, Mod::NONE, Mod::NONE },        // SC_NONE
@@ -3881,6 +3882,48 @@ namespace battleutils
             { Mod::ICE_SDT, Mod::EARTH_SDT, Mod::WATER_SDT, Mod::DARK_SDT },    // SC_DARKNESS
             { Mod::FIRE_SDT, Mod::WIND_SDT, Mod::THUNDER_SDT, Mod::LIGHT_SDT }, // SC_LIGHT
             { Mod::ICE_SDT, Mod::EARTH_SDT, Mod::WATER_SDT, Mod::DARK_SDT },    // SC_DARKNESS_II
+        };
+
+        auto resRankToAbsorbMod = [](const Mod resistanceRank) -> Mod
+        {
+            switch (resistanceRank)
+            {
+                case Mod::FIRE_RES_RANK:
+                    return Mod::FIRE_ABSORB;
+                case Mod::ICE_RES_RANK:
+                    return Mod::ICE_ABSORB;
+                case Mod::WIND_RES_RANK:
+                    return Mod::WIND_ABSORB;
+                case Mod::EARTH_RES_RANK:
+                    return Mod::EARTH_ABSORB;
+                case Mod::THUNDER_RES_RANK:
+                    return Mod::LTNG_ABSORB;
+                case Mod::WATER_RES_RANK:
+                    return Mod::WATER_ABSORB;
+                case Mod::LIGHT_RES_RANK:
+                    return Mod::LIGHT_ABSORB;
+                case Mod::DARK_RES_RANK:
+                    return Mod::DARK_ABSORB;
+                default:
+                    return Mod::NONE;
+            }
+        };
+
+        auto getAbsorbElementOrDefault = [&](const Mod resRanks[4], const Mod fallback) -> Mod
+        {
+            for (int i = 0; i < 4; ++i)
+            {
+                if (resRanks[i] == Mod::NONE)
+                {
+                    continue;
+                }
+
+                if (PDefender->getMod(resRankToAbsorbMod(resRanks[i])) > 0)
+                {
+                    return resRanks[i];
+                }
+            }
+            return fallback;
         };
 
         Mod defMod = Mod::NONE;
@@ -3943,31 +3986,33 @@ namespace battleutils
                 break;
         }
 
+        defMod = getAbsorbElementOrDefault(resistances[element], defMod);
+
         switch (defMod)
         {
-            case Mod::FIRE_SDT:
-                *appliedEle = ELEMENT_FIRE;
+            case Mod::FIRE_RES_RANK:
+                appliedEle = ELEMENT_FIRE;
                 break;
-            case Mod::ICE_SDT:
-                *appliedEle = ELEMENT_ICE;
+            case Mod::ICE_RES_RANK:
+                appliedEle = ELEMENT_ICE;
                 break;
-            case Mod::WIND_SDT:
-                *appliedEle = ELEMENT_WIND;
+            case Mod::WIND_RES_RANK:
+                appliedEle = ELEMENT_WIND;
                 break;
-            case Mod::EARTH_SDT:
-                *appliedEle = ELEMENT_EARTH;
+            case Mod::EARTH_RES_RANK:
+                appliedEle = ELEMENT_EARTH;
                 break;
-            case Mod::THUNDER_SDT:
-                *appliedEle = ELEMENT_THUNDER;
+            case Mod::THUNDER_RES_RANK:
+                appliedEle = ELEMENT_THUNDER;
                 break;
-            case Mod::WATER_SDT:
-                *appliedEle = ELEMENT_WATER;
+            case Mod::WATER_RES_RANK:
+                appliedEle = ELEMENT_WATER;
                 break;
-            case Mod::LIGHT_SDT:
-                *appliedEle = ELEMENT_LIGHT;
+            case Mod::LIGHT_RES_RANK:
+                appliedEle = ELEMENT_LIGHT;
                 break;
-            case Mod::DARK_SDT:
-                *appliedEle = ELEMENT_DARK;
+            case Mod::DARK_RES_RANK:
+                appliedEle = ELEMENT_DARK;
                 break;
             default:
                 break;
@@ -4040,7 +4085,7 @@ namespace battleutils
         uint16             chainLevel = PEffect->GetTier();
         uint16             chainCount = PEffect->GetSubPower();
         ELEMENT            appliedEle = ELEMENT_NONE;
-        int16              resistance = GetSkillchainMinimumResistance(skillchain, PDefender, &appliedEle);
+        int16              resistance = GetSkillchainMinimumResistance(skillchain, PDefender, appliedEle);
 
         if (chainLevel <= 0 || chainLevel > 4 || chainCount <= 0 || chainCount > 5)
         {
@@ -4055,28 +4100,30 @@ namespace battleutils
         //            TODO:     × (1 + Day/Weather bonuses)
         //            TODO:     × (1 + Staff Affinity)
 
-        const auto closingDamage      = (double)(abs(lastSkillDamage));
+        const auto closingDamage      = static_cast<float>(abs(lastSkillDamage));
         const auto skillchainLevel    = g_SkillChainDamageModifiers[chainLevel][chainCount] / 1000.0f;
-        const auto skillchainBonus    = (100 + PAttacker->getMod(Mod::SKILLCHAINBONUS)) / 100.0f;
-        const auto skillchainDmgBonus = (10000 + PAttacker->getMod(Mod::SKILLCHAINDMG)) / 10000.0f;
+        const auto skillchainBonus    = (100.0f + PAttacker->getMod(Mod::SKILLCHAINBONUS)) / 100.0f;
+        const auto skillchainDmgBonus = (10000.0f + PAttacker->getMod(Mod::SKILLCHAINDMG)) / 10000.0f;
         const auto dayWeatherBonus    = 1.0f; // TODO: Implement day/weather bonuses
         const auto staffAffinity      = 1.0f; // TODO: Implement staff affinity
 
-        auto damage = (int32)floor(closingDamage * skillchainLevel * skillchainBonus * skillchainDmgBonus * dayWeatherBonus * staffAffinity);
+        int32 damage = std::floor(closingDamage * skillchainLevel * skillchainBonus * skillchainDmgBonus * dayWeatherBonus * staffAffinity);
 
         auto* PChar = dynamic_cast<CCharEntity*>(PAttacker);
         if (PChar && PChar->StatusEffectContainer->HasStatusEffect(EFFECT_INNIN) && behind(PChar->loc.p, PDefender->loc.p, 64))
         {
-            damage = (int32)(damage * (1.0f + PChar->PMeritPoints->GetMeritValue(MERIT_INNIN_EFFECT, PChar) / 100.0f));
+            damage = std::floor(static_cast<float>(damage) * (1.0f + PChar->PMeritPoints->GetMeritValue(MERIT_INNIN_EFFECT, PChar) / 100.0f));
         }
 
         if (PDefender->getMod(Mod::SENGIKORI_SC_DMG_DEBUFF) > 0)
         {
-            damage = static_cast<int32>(damage * (1.0f + PDefender->getMod(Mod::SENGIKORI_SC_DMG_DEBUFF) / 100.0f));
+            damage = std::floor(static_cast<float>(damage) * (1.0f + PDefender->getMod(Mod::SENGIKORI_SC_DMG_DEBUFF) / 100.0f));
             PDefender->setModifier(Mod::SENGIKORI_SC_DMG_DEBUFF, 0); // Consume the effect
         }
 
-        damage = damage * (10000 - resistance) / 10000;
+        float damageReductionMult = (10000.0f - static_cast<float>(resistance)) / 10000.0f;
+
+        damage = std::floor(static_cast<float>(damage) * damageReductionMult);
         damage = MagicDmgTaken(PDefender, damage, appliedEle);
         if (damage > 0)
         {
@@ -4110,7 +4157,7 @@ namespace battleutils
 
             case TYPE_MOB:
             {
-                ((CMobEntity*)PDefender)->PEnmityContainer->UpdateEnmityFromDamage(taChar ? taChar : PAttacker, (uint16)damage);
+                static_cast<CMobEntity*>(PDefender)->PEnmityContainer->UpdateEnmityFromDamage(taChar ? taChar : PAttacker, std::abs(damage)); // assume negative damage (healing) deals the same enmity as dealing damage
             }
             break;
             default:
@@ -4266,7 +4313,7 @@ namespace battleutils
             {
                 // Futae Takes 2 of Your Tools
                 charutils::UpdateItem(PChar, LOC_INVENTORY, SlotID, -2);
-                PChar->pushPacket<CInventoryFinishPacket>();
+                PChar->pushPacket<GP_SERV_COMMAND_ITEM_SAME>();
             }
             else
             {
@@ -4282,7 +4329,7 @@ namespace battleutils
                 if (ConsumeTool && xirand::GetRandomNumber(100) > chance)
                 {
                     charutils::UpdateItem(PChar, LOC_INVENTORY, SlotID, -1);
-                    PChar->pushPacket<CInventoryFinishPacket>();
+                    PChar->pushPacket<GP_SERV_COMMAND_ITEM_SAME>();
                 }
             }
         }
@@ -4695,7 +4742,7 @@ namespace battleutils
             {
                 charutils::BuildingCharAbilityTable(PChar);
                 std::memset(&PChar->m_PetCommands, 0, sizeof(PChar->m_PetCommands));
-                PChar->pushPacket<CCharAbilitiesPacket>(PChar);
+                PChar->pushPacket<GP_SERV_COMMAND_COMMAND_DATA>(PChar);
                 PChar->pushPacket<CCharStatusPacket>(PChar);
                 PChar->pushPacket<CPetSyncPacket>(PChar);
             }
@@ -5328,13 +5375,14 @@ namespace battleutils
         if (effectScarDel && effectScarDel->GetPower() == 0)
         {
             // Damage to Max HP Ratio
-            int8 bonus    = std::floor(((damage * 100) / PDefender->GetMaxHP()) / 2);
-            int8 jpValue  = effectScarDel->GetSubPower();
-            auto duration = 90s + std::chrono::seconds(jpValue);
+            float  hppRatio = std::clamp<float>(static_cast<float>(damage) / static_cast<float>(PDefender->GetMaxHP()) / 2.0f, 0.0f, 0.5f);
+            uint16 power    = std::floor(hppRatio * 1000);
+            uint16 jpValue  = effectScarDel->GetSubPower();
+            auto   duration = 90s + std::chrono::seconds(jpValue);
 
             // Convert status effect from "Absorb damage" mode to "Provide damage bonus" mode
             PDefender->StatusEffectContainer->DelStatusEffectSilent(EFFECT_SCARLET_DELIRIUM);
-            PDefender->StatusEffectContainer->AddStatusEffect(new CStatusEffect(EFFECT_SCARLET_DELIRIUM_1, EFFECT_SCARLET_DELIRIUM_1, bonus, 0s, duration), EffectNotice::Silent);
+            PDefender->StatusEffectContainer->AddStatusEffect(new CStatusEffect(EFFECT_SCARLET_DELIRIUM_1, EFFECT_SCARLET_DELIRIUM_1, power, 0s, duration), EffectNotice::Silent);
         }
     }
 
@@ -5386,13 +5434,13 @@ namespace battleutils
                 if (EntityToLockon != nullptr)
                 {
                     // lock on to the new target!
-                    PChar->pushPacket<CLockOnPacket>(PChar, EntityToLockon);
+                    PChar->pushPacket<GP_SERV_COMMAND_ASSIST>(PChar, EntityToLockon);
                 }
             }
             else if (EntityToAssist->GetBattleTargetID() != 0)
             {
                 // lock on to the new target!
-                PChar->pushPacket<CLockOnPacket>(PChar, EntityToAssist->GetBattleTarget());
+                PChar->pushPacket<GP_SERV_COMMAND_ASSIST>(PChar, EntityToAssist->GetBattleTarget());
             }
         }
     }
@@ -5486,68 +5534,68 @@ namespace battleutils
         }
     }
 
-    WEATHER GetWeather(CBattleEntity* PEntity, bool ignoreScholar)
+    auto GetWeather(CBattleEntity* PEntity, bool ignoreScholar) -> Weather
     {
         if (PEntity == nullptr || zoneutils::GetZone(PEntity->getZone()) == nullptr)
         {
-            return WEATHER_NONE;
+            return Weather::None;
         }
 
         return GetWeather(PEntity, ignoreScholar, zoneutils::GetZone(PEntity->getZone())->GetWeather());
     }
 
-    WEATHER GetWeather(CBattleEntity* PEntity, bool ignoreScholar, uint16 zoneWeather)
+    auto GetWeather(CBattleEntity* PEntity, bool ignoreScholar, Weather zoneWeather) -> Weather
     {
         if (PEntity == nullptr)
         {
-            return WEATHER_NONE;
+            return Weather::None;
         }
 
-        WEATHER scholarSpell = WEATHER_NONE;
+        auto scholarSpell = Weather::None;
 
         if (!ignoreScholar) // Do not need to check for status effects if we're ignoring scholar spells
         {
             if (PEntity->StatusEffectContainer->HasStatusEffect(EFFECT_FIRESTORM))
             {
-                scholarSpell = WEATHER_HOT_SPELL;
+                scholarSpell = Weather::HotSpell;
             }
             if (PEntity->StatusEffectContainer->HasStatusEffect(EFFECT_RAINSTORM))
             {
-                scholarSpell = WEATHER_RAIN;
+                scholarSpell = Weather::Rain;
             }
             if (PEntity->StatusEffectContainer->HasStatusEffect(EFFECT_SANDSTORM))
             {
-                scholarSpell = WEATHER_DUST_STORM;
+                scholarSpell = Weather::DustStorm;
             }
             if (PEntity->StatusEffectContainer->HasStatusEffect(EFFECT_WINDSTORM))
             {
-                scholarSpell = WEATHER_WIND;
+                scholarSpell = Weather::Wind;
             }
             if (PEntity->StatusEffectContainer->HasStatusEffect(EFFECT_HAILSTORM))
             {
-                scholarSpell = WEATHER_SNOW;
+                scholarSpell = Weather::Snow;
             }
             if (PEntity->StatusEffectContainer->HasStatusEffect(EFFECT_THUNDERSTORM))
             {
-                scholarSpell = WEATHER_THUNDER;
+                scholarSpell = Weather::Thunder;
             }
             if (PEntity->StatusEffectContainer->HasStatusEffect(EFFECT_AURORASTORM))
             {
-                scholarSpell = WEATHER_AURORAS;
+                scholarSpell = Weather::Auroras;
             }
             if (PEntity->StatusEffectContainer->HasStatusEffect(EFFECT_VOIDSTORM))
             {
-                scholarSpell = WEATHER_GLOOM;
+                scholarSpell = Weather::Gloom;
             }
         }
 
-        if (ignoreScholar || scholarSpell == WEATHER_NONE || zoneWeather == (scholarSpell + 1))
+        if (ignoreScholar || scholarSpell == Weather::None || static_cast<uint16_t>(zoneWeather) == (static_cast<uint16_t>(scholarSpell) + 1))
         { // Strong weather overwrites scholar spell weak weather
-            return (WEATHER)zoneWeather;
+            return zoneWeather;
         }
         else if (scholarSpell == zoneWeather)
         {
-            return (WEATHER)(zoneWeather + 1); // Storm spells stack with weather
+            return static_cast<Weather>(static_cast<uint16_t>(zoneWeather) + 1); // Storm spells stack with weather
         }
         else
         {
@@ -5555,7 +5603,7 @@ namespace battleutils
         }
     }
 
-    bool WeatherMatchesElement(WEATHER weather, uint8 element)
+    auto WeatherMatchesElement(const Weather weather, const uint8 element) -> bool
     {
         switch (element)
         {
@@ -5565,8 +5613,8 @@ namespace battleutils
             case ELEMENT_FIRE:
                 switch (weather)
                 {
-                    case WEATHER_HOT_SPELL:
-                    case WEATHER_HEAT_WAVE:
+                    case Weather::HotSpell:
+                    case Weather::HeatWave:
                         return true;
                         break;
                     default:
@@ -5576,8 +5624,8 @@ namespace battleutils
             case ELEMENT_ICE:
                 switch (weather)
                 {
-                    case WEATHER_SNOW:
-                    case WEATHER_BLIZZARDS:
+                    case Weather::Snow:
+                    case Weather::Blizzards:
                         return true;
                         break;
                     default:
@@ -5587,8 +5635,8 @@ namespace battleutils
             case ELEMENT_WIND:
                 switch (weather)
                 {
-                    case WEATHER_WIND:
-                    case WEATHER_GALES:
+                    case Weather::Wind:
+                    case Weather::Gales:
                         return true;
                         break;
                     default:
@@ -5598,8 +5646,8 @@ namespace battleutils
             case ELEMENT_EARTH:
                 switch (weather)
                 {
-                    case WEATHER_DUST_STORM:
-                    case WEATHER_SAND_STORM:
+                    case Weather::DustStorm:
+                    case Weather::SandStorm:
                         return true;
                         break;
                     default:
@@ -5609,8 +5657,8 @@ namespace battleutils
             case ELEMENT_THUNDER:
                 switch (weather)
                 {
-                    case WEATHER_THUNDER:
-                    case WEATHER_THUNDERSTORMS:
+                    case Weather::Thunder:
+                    case Weather::Thunderstorms:
                         return true;
                         break;
                     default:
@@ -5620,8 +5668,8 @@ namespace battleutils
             case ELEMENT_WATER:
                 switch (weather)
                 {
-                    case WEATHER_RAIN:
-                    case WEATHER_SQUALL:
+                    case Weather::Rain:
+                    case Weather::Squall:
                         return true;
                         break;
                     default:
@@ -5631,8 +5679,8 @@ namespace battleutils
             case ELEMENT_LIGHT:
                 switch (weather)
                 {
-                    case WEATHER_AURORAS:
-                    case WEATHER_STELLAR_GLARE:
+                    case Weather::Auroras:
+                    case Weather::StellarGlare:
                         return true;
                         break;
                     default:
@@ -5642,8 +5690,8 @@ namespace battleutils
             case ELEMENT_DARK:
                 switch (weather)
                 {
-                    case WEATHER_GLOOM:
-                    case WEATHER_DARKNESS:
+                    case Weather::Gloom:
+                    case Weather::Darkness:
                         return true;
                         break;
                     default:
@@ -5699,8 +5747,8 @@ namespace battleutils
             else
             {
                 // draw in!
-                PTarget->loc.zone->PushPacket(PTarget, CHAR_INRANGE_SELF, std::make_unique<CPositionPacket>(PTarget, nearEntity));
-                PTarget->loc.zone->PushPacket(PTarget, CHAR_INRANGE_SELF, std::make_unique<CMessageBasicPacket>(PTarget, PTarget, 0, 0, 232));
+                PTarget->loc.zone->PushPacket(PTarget, CHAR_INRANGE_SELF, std::make_unique<GP_SERV_COMMAND_WPOS>(PTarget, nearEntity));
+                PTarget->loc.zone->PushPacket(PTarget, CHAR_INRANGE_SELF, std::make_unique<GP_SERV_COMMAND_BATTLE_MESSAGE>(PTarget, PTarget, 0, 0, static_cast<MSGBASIC_ID>(232)));
             }
         }
     }
@@ -5868,7 +5916,7 @@ namespace battleutils
                     if (auto PCharTarget = dynamic_cast<CCharEntity*>(PTarget))
                     {
                         // Update target's recast state: caster's will be handled in CCharEntity::OnAbility.
-                        PCharTarget->pushPacket<CCharRecastPacket>(PCharTarget);
+                        PCharTarget->pushPacket<GP_SERV_COMMAND_ABIL_RECAST>(PCharTarget);
                     }
                 }
                 return true;
@@ -5899,7 +5947,7 @@ namespace battleutils
                 if (auto PCharTarget = dynamic_cast<CCharEntity*>(PTarget))
                 {
                     // Update target's recast state: caster's will be handled in CCharEntity::OnAbility.
-                    PCharTarget->pushPacket<CCharRecastPacket>(PCharTarget);
+                    PCharTarget->pushPacket<GP_SERV_COMMAND_ABIL_RECAST>(PCharTarget);
                 }
             }
 
@@ -6372,6 +6420,39 @@ namespace battleutils
         return std::clamp<int16>(cost, 0, 9999);
     }
 
+    bool CanAffordSpell(CBattleEntity* PEntity, CSpell* PSpell, uint8 flags)
+    {
+        if (PEntity == nullptr)
+        {
+            return false;
+        }
+
+        // Check if entity bypasses MP costs
+        if (PEntity->StatusEffectContainer->HasStatusEffect(EFFECT_MANAFONT) ||
+            (flags & MAGICFLAGS_IGNORE_MP))
+        {
+            return true;
+        }
+
+        // Special handling for mobs with NO_SPELL_COST modifier
+        if (auto PMob = dynamic_cast<CMobEntity*>(PEntity))
+        {
+            if (PMob->getMobMod(MOBMOD_NO_SPELL_COST) > 0)
+            {
+                return true;
+            }
+        }
+
+        // Check if spell has MP cost and if entity has enough MP
+        if (PSpell->hasMPCost())
+        {
+            uint16 spellCost = CalculateSpellCost(PEntity, PSpell);
+            return PEntity->health.mp >= spellCost;
+        }
+
+        return true; // No MP cost required
+    }
+
     timer::duration CalculateSpellRecastTime(CBattleEntity* PEntity, CSpell* PSpell)
     {
         if (PSpell == nullptr)
@@ -6618,13 +6699,13 @@ namespace battleutils
                 charutils::UnequipItem(PChar, SLOT_AMMO);
                 PChar->RequestPersist(CHAR_PERSIST::EQUIP);
                 charutils::UpdateItem(PChar, loc, slot, -quantity);
-                PChar->pushPacket<CInventoryFinishPacket>();
+                PChar->pushPacket<GP_SERV_COMMAND_ITEM_SAME>();
                 return true;
             }
             else
             {
                 charutils::UpdateItem(PChar, PChar->equipLoc[SLOT_AMMO], PChar->equip[SLOT_AMMO], -quantity);
-                PChar->pushPacket<CInventoryFinishPacket>();
+                PChar->pushPacket<GP_SERV_COMMAND_ITEM_SAME>();
                 return false;
             }
         }
@@ -6903,5 +6984,54 @@ namespace battleutils
             }
         }
         return 1.0;
+    }
+
+    void addEcosystemKillerEffects(CBattleEntity* PBattleEntity)
+    {
+        // Killer Effect
+        switch (PBattleEntity->m_EcoSystem)
+        {
+            case ECOSYSTEM::AMORPH:
+                PBattleEntity->addModifier(Mod::BIRD_KILLER, 5);
+                break;
+            case ECOSYSTEM::AQUAN:
+                PBattleEntity->addModifier(Mod::AMORPH_KILLER, 5);
+                break;
+            case ECOSYSTEM::ARCANA:
+                PBattleEntity->addModifier(Mod::UNDEAD_KILLER, 5);
+                break;
+            case ECOSYSTEM::BEAST:
+                PBattleEntity->addModifier(Mod::LIZARD_KILLER, 5);
+                break;
+            case ECOSYSTEM::BIRD:
+                PBattleEntity->addModifier(Mod::AQUAN_KILLER, 5);
+                break;
+            case ECOSYSTEM::DEMON:
+                PBattleEntity->addModifier(Mod::DRAGON_KILLER, 5);
+                break;
+            case ECOSYSTEM::DRAGON:
+                PBattleEntity->addModifier(Mod::DEMON_KILLER, 5);
+                break;
+            case ECOSYSTEM::LIZARD:
+                PBattleEntity->addModifier(Mod::VERMIN_KILLER, 5);
+                break;
+            case ECOSYSTEM::LUMINION:
+                PBattleEntity->addModifier(Mod::LUMINIAN_KILLER, 5);
+                break;
+            case ECOSYSTEM::LUMINIAN:
+                PBattleEntity->addModifier(Mod::LUMINION_KILLER, 5);
+                break;
+            case ECOSYSTEM::PLANTOID:
+                PBattleEntity->addModifier(Mod::BEAST_KILLER, 5);
+                break;
+            case ECOSYSTEM::UNDEAD:
+                PBattleEntity->addModifier(Mod::ARCANA_KILLER, 5);
+                break;
+            case ECOSYSTEM::VERMIN:
+                PBattleEntity->addModifier(Mod::PLANTOID_KILLER, 5);
+                break;
+            default:
+                break;
+        }
     }
 }; // namespace battleutils

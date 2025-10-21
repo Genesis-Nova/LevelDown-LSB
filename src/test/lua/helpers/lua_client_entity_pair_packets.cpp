@@ -21,33 +21,31 @@
 
 #include "lua/helpers/lua_client_entity_pair_packets.h"
 
+#include "ai/ai_container.h"
 #include "common/logging.h"
 #include "common/lua.h"
+#include "enums/packet_c2s.h"
 #include "lua/lua_client_entity_pair.h"
 #include "lua/lua_simulation.h"
 #include "lua/sol_bindings.h"
 #include "map/packet_system.h"
 #include "map/packets/c2s/0x00a_login.h"
+#include "packets/c2s/0x011_zone_transition.h"
 #include "test_char.h"
 #include "test_common.h"
 #include "utils/charutils.h"
+#include "utils/zoneutils.h"
 
 CLuaClientEntityPairPackets::CLuaClientEntityPairPackets(CLuaClientEntityPair* parent)
 : parent_(parent)
 {
 }
 
-auto CLuaClientEntityPairPackets::createPacket(uint16 packetType) -> std::unique_ptr<CBasicPacket>
+auto CLuaClientEntityPairPackets::createPacket(PacketC2S packetType) -> std::unique_ptr<CBasicPacket>
 {
-    if (packetType >= 512)
-    {
-        ShowErrorFmt("Packet type has too big value: {}", packetType);
-        return nullptr;
-    }
-
     auto packet = std::make_unique<CBasicPacket>();
-    packet->setType(packetType);
-    packet->setSize(PacketSize[packetType]);
+    packet->setType(static_cast<uint16_t>(packetType));
+    packet->setSize(PacketSize[static_cast<uint16_t>(packetType)]);
     packet->setSequence(sequenceNum_++);
 
     return packet;
@@ -56,8 +54,8 @@ auto CLuaClientEntityPairPackets::createPacket(uint16 packetType) -> std::unique
 void CLuaClientEntityPairPackets::sendBasicPacket(CBasicPacket& packet) const
 {
     const auto testChar = parent_->testChar();
-    DebugTestFmt("Sending C2S Packet 0x{:03X}", packet.ref<uint8>(0x00));
-    PacketParser[packet.ref<uint8>(0x00)](testChar->session(), testChar->entity(), packet);
+    DebugTestFmt("C2S 0x{:03X} {}", packet.getType(), magic_enum::enum_name(static_cast<PacketC2S>(packet.getType())));
+    PacketParser[packet.getType()](testChar->session(), testChar->entity(), packet);
 }
 
 /************************************************************************
@@ -67,7 +65,7 @@ void CLuaClientEntityPairPackets::sendBasicPacket(CBasicPacket& packet) const
  *  Notes   : Takes packet ID, FFI struct pointer, and struct size
  ************************************************************************/
 
-void CLuaClientEntityPairPackets::send(const uint16 packetId, const sol::object& ffiData, const size_t ffiSize)
+void CLuaClientEntityPairPackets::send(const PacketC2S packetId, const sol::object& ffiData, const size_t ffiSize)
 {
     // Get the raw pointer from FFI cdata using lua_topointer
     lua_State* L        = ffiData.lua_state();
@@ -83,7 +81,7 @@ void CLuaClientEntityPairPackets::send(const uint16 packetId, const sol::object&
 
     const size_t packetSize = ffiSize;
     const auto   packet     = std::make_unique<CBasicPacket>();
-    packet->setType(packetId);
+    packet->setType(static_cast<uint16_t>(packetId));
     packet->setSize(packetSize);
     packet->setSequence(sequenceNum_++);
 
@@ -110,25 +108,30 @@ void CLuaClientEntityPairPackets::send(const uint16 packetId, const sol::object&
 void CLuaClientEntityPairPackets::sendZonePackets()
 {
     const auto testChar = parent_->testChar();
-    testChar->clearPackets();
-
-    ShowInfoFmt("Reloading character {} for zone change", testChar->charId());
-    testChar->setEntity(charutils::LoadChar(testChar->charId()));
-    testChar->setBlowfish(BLOWFISH_PENDING_ZONE);
 
     // IMPORTANT: Both TestChar and CLuaClientEntityPair wrapper need to be updated
     // TestChar holds the actual CCharEntity, while parent_ is the Lua wrapper
     // that also needs its internal pointer updated to the newly loaded entity
+    testChar->setBlowfish(BLOWFISH_PENDING_ZONE);
+    testChar->setEntity(charutils::LoadChar(testChar->charId()));
     parent_->setEntity(testChar->entity());
 
-    const auto loginPacket = createPacket(0x0A);
+    // Send LOGIN packet to begin zone-in sequence
+    const auto loginPacket = createPacket(PacketC2S::GP_CLI_COMMAND_LOGIN);
     auto*      login       = loginPacket->as<GP_CLI_COMMAND_LOGIN>();
     login->UniqueNo        = testChar->charId();
-
     sendBasicPacket(*loginPacket);
 
-    // We have to tick once for the player to be spawned
-    parent_->simulation()->skipTime(3);
+    // Send ZONE_TRANSITION packet to complete zone-in sequence
+    const auto transitionPacket = createPacket(PacketC2S::GP_CLI_COMMAND_ZONE_TRANSITION);
+    auto*      transition       = transitionPacket->as<GP_CLI_COMMAND_ZONE_TRANSITION>();
+    transition->unknown00       = 2;
+    transition->unknown01       = 0;
+    sendBasicPacket(*transitionPacket);
+
+    // Execute AfterZoneIn logic
+    parent_->simulation()->skipTime(4);
+    testChar->entity()->PAI->checkQueueImmediately();
 }
 
 /************************************************************************

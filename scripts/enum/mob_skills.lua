@@ -44,6 +44,16 @@ xi.mobSkill =
 
     VELOCIOUS_BLADE          =  347, -- Mammet-800
 
+    HEAVY_BLOW               =  357,
+    HEAVY_WHISK              =  358,
+    BIONIC_BOOST             =  359,
+    FLYING_HIP_PRESS         =  360,
+    EARTH_SHOCK              =  361,
+
+    SMITE_OF_FURY            =  396,
+    FLURRY_OF_RAGE           =  397,
+    WHISPERS_OF_IRE          =  398,
+
     RANGED_ATTACK_2          =  412,
 
     SCISSION_THRUST          =  419, -- Mammet-800
@@ -65,19 +75,33 @@ xi.mobSkill =
     TRANSMOGRIFICATION       =  487, -- Mammet-800
 
     SELF_DESTRUCT            =  511,
+    SMITE_OF_RAGE            =  513,
+    WHIRL_OF_RAGE            =  514,
 
     DANSE_MACABRE            =  533,
 
     PANZERFAUST              =  536,
+    TYPHOON                  =  539,
 
     TREMOROUS_TREAD          =  540, -- Mammet-800
 
+    BLOW                     =  581,
+    BLANK_GAZE              =   586,
+
     VULTURE_3                =  626,
 
+    FINAL_METEOR             =  634, -- Final Meteor Chlevnik
+
+    CRYSTAL_RAIN             =  678,
+    CRYSTAL_WEAPON_FIRE      =  679, -- Zipacna Weapon Start
+    CRYSTAL_WEAPON_WATER     =  682, -- Zipacna Weapon End
+
+    MIGHTY_STRIKES_1         =  688,
     BENEDICTION_1            =  689, -- Season's Greetings KSNM 30 (Gilagoge Tlugvi)
     HUNDRED_FISTS_1          =  690, -- Season's Greetings KSNM 30 (Goga Tlugvi)
 
     BLOOD_WEAPON_1           =  695,
+    SOUL_VOICE_1             =  696,
 
     CHARM                    =  710,
 
@@ -134,6 +158,13 @@ xi.mobSkill =
     JUDGMENT_BOLT_2          =  918, -- Confirmed usage: Untargetable avatar astral flow. (Ex. Kirin) (Ramuh model avatar)
     SEARING_LIGHT_2          =  919, -- Confirmed usage: Untargetable avatar astral flow. (Ex. Kirin, Crimson-toothed Pawberry) (Carbuncle model avatar)
 
+    TRION_RED_LOTUS_BLADE    =  968, -- Trion Red Lotus Blade
+    TRION_FLAT_BLADE         =  969, -- Trion Flat Blade
+    TRION_SAVAGE_BLADE       =  970, -- Trion Savage Blade
+
+    AJIDO_WARP_OUT           =  977, -- Windurst 9-2 Ajido teleport
+    AJIDO_WARP_IN            =  978, -- Windurst 9-2 Ajido teleport
+
     PHASE_SHIFT_1_EXOPLATES  =  993,
 
     PHASE_SHIFT_2_EXOPLATES  =  997,
@@ -167,6 +198,8 @@ xi.mobSkill =
     RANGED_ATTACK_12         = 1212,
     RANGED_ATTACK_13         = 1213,
     RANGED_ATTACK_14         = 1214,
+
+    COUNTERSTANCE            = 1331, -- The Waughroon Kid
 
     MANTLE_PIERCE            = 1349,
 
@@ -220,6 +253,8 @@ xi.mobSkill =
     LAVA_SPIT                = 1785,
     GATES_OF_HADES           = 1790,
 
+    VAMPIRIC_ROOT            = 1793,
+
     XENOGLOSSIA              = 1823, -- Unique entry.
 
     SANDBLAST_2              = 1841,
@@ -266,7 +301,16 @@ xi.mobSkill =
 
     QUEASYSHROOM_2           = 2232,
 
+    DI_HORN_ATTACK           = 2329,
+    DI_BITE_ATTACK           = 2330,
+    DI_KICK_ATTACK           = 2331,
+    DI_TRAMPLE               = 2332,
+    DI_GLOW                  = 2333,
+    WRATH_OF_ZEUS            = 2334,
+    LIGHTNING_SPEAR          = 2335,
+    ACHERON_KICK             = 2336,
     DAMSEL_MEMENTO           = 2337,
+    RAMPANT_STANCE           = 2338,
 
     OPPRESSIVE_GLARE         = 2392,
 

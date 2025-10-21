@@ -34,19 +34,17 @@
 
 #include "lua/luautils.h"
 
-#include "packets/char_abilities.h"
-#include "packets/char_appearance.h"
-#include "packets/char_job_extra.h"
-#include "packets/char_jobs.h"
-#include "packets/char_stats.h"
-#include "packets/monipulator1.h"
-#include "packets/monipulator2.h"
+#include "packets/s2c/0x01b_job_info.h"
+#include "packets/s2c/0x051_grap_list.h"
+#include "packets/s2c/0x061_clistatus.h"
+#include "packets/s2c/0x0ac_command_data.h"
 
 #include "utils/charutils.h"
 #include "utils/zoneutils.h"
 
 #include "packets/c2s/0x01a_action.h"
 #include "packets/c2s/0x102_extended_job.h"
+#include "packets/s2c/0x063_miscdata_monstrosity.h"
 #include "status_effect.h"
 #include "status_effect_container.h"
 
@@ -113,8 +111,8 @@ void monstrosity::LoadStaticData()
                     .monstrosityId          = rset->get<uint8>("monstrosity_id"),
                     .monstrositySpeciesCode = monstrositySpeciesCode,
                     .name                   = rset->get<std::string>("name"),
-                    .mjob                   = static_cast<JOBTYPE>(rset->get<uint8>("mjob")),
-                    .sjob                   = static_cast<JOBTYPE>(rset->get<uint8>("sjob")),
+                    .mjob                   = rset->get<JOBTYPE>("mjob"),
+                    .sjob                   = rset->get<JOBTYPE>("sjob"),
                     .size                   = rset->get<uint8>("size"),
                     .look                   = rset->get<uint16>("look"),
                 };
@@ -145,7 +143,7 @@ void monstrosity::LoadStaticData()
         {
             while (rset->next())
             {
-                const auto mod = static_cast<Mod>(rset->get<uint16>("modId"));
+                const auto mod = rset->get<Mod>("modId");
                 const auto val = rset->get<int16>("value");
                 entry.mods.emplace_back(mod, val);
             }
@@ -372,14 +370,13 @@ void monstrosity::SendFullMonstrosityUpdate(CCharEntity* PChar)
 
     luautils::OnMonstrosityUpdate(PChar);
 
-    PChar->pushPacket<CMonipulatorPacket1>(PChar);
-    PChar->pushPacket<CMonipulatorPacket2>(PChar);
-    PChar->pushPacket<CCharJobsPacket>(PChar);
-    PChar->pushPacket<CCharJobExtraPacket>(PChar, true);
-    PChar->pushPacket<CCharJobExtraPacket>(PChar, false);
-    PChar->pushPacket<CCharAppearancePacket>(PChar);
-    PChar->pushPacket<CCharStatsPacket>(PChar);
-    PChar->pushPacket<CCharAbilitiesPacket>(PChar);
+    PChar->pushPacket<GP_SERV_COMMAND_MISCDATA::MONSTROSITY1>(PChar);
+    PChar->pushPacket<GP_SERV_COMMAND_MISCDATA::MONSTROSITY2>(PChar);
+    PChar->pushPacket<GP_SERV_COMMAND_JOB_INFO>(PChar);
+    charutils::SendExtendedJobPackets(PChar);
+    PChar->pushPacket<GP_SERV_COMMAND_GRAP_LIST>(PChar);
+    PChar->pushPacket<GP_SERV_COMMAND_CLISTATUS>(PChar);
+    PChar->pushPacket<GP_SERV_COMMAND_COMMAND_DATA>(PChar);
 
     PChar->updatemask |= UPDATE_LOOK;
 }
@@ -599,7 +596,8 @@ void monstrosity::HandleDeathMenu(CCharEntity* PChar, const GP_CLI_COMMAND_ACTIO
 
         // Restart this zone with Gestation effect
         PChar->loc.destination = PChar->loc.zone->GetID();
-        charutils::SendToZone(PChar, PChar->loc.destination);
+
+        PChar->requestedZoneChange = true;
     }
 }
 

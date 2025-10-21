@@ -30,6 +30,7 @@
 #include "conquest_system.h"
 #include "entities/mobentity.h"
 #include "entities/npcentity.h"
+#include "enums/weather.h"
 #include "items/item_weapon.h"
 #include "lua/luautils.h"
 #include "map_networking.h"
@@ -49,6 +50,8 @@ CNpcEntity*              g_PTrigger;  // trigger to start events
 
 namespace zoneutils
 {
+    detail::LazyLoadState lazyLoad;
+
     /************************************************************************
      *                                                                       *
      *  Reaction zones to change the time of day                             *
@@ -83,11 +86,11 @@ namespace zoneutils
             {
                 if (!PZone->m_WeatherVector.empty())
                 {
-                    PZone->SetWeather(static_cast<WEATHER>(PZone->m_WeatherVector.at(0).common));
+                    PZone->SetWeather(static_cast<Weather>(PZone->m_WeatherVector.at(0).common));
                 }
                 else
                 {
-                    PZone->SetWeather(WEATHER_NONE); // If not weather data found, initialize with WEATHER_NONE
+                    PZone->SetWeather(Weather::None); // If not weather data found, initialize with WEATHER_NONE
                 }
             }
         }
@@ -342,7 +345,7 @@ namespace zoneutils
                             PNpc->animationsub = rset->get<uint8>("animationsub");
 
                             PNpc->namevis = rset->get<uint8>("namevis");
-                            PNpc->status  = static_cast<STATUS_TYPE>(rset->get<uint8>("status"));
+                            PNpc->status  = rset->get<STATUS_TYPE>("status");
                             PNpc->m_flags = rset->get<uint32>("entityFlags");
 
                             db::extractFromBlob(rset, "look", PNpc->look);
@@ -404,6 +407,19 @@ namespace zoneutils
 
                 auto* PZone = g_PZoneList[zoneId];
 
+                // Load spawnsets
+                const auto spawnSetQuery = "SELECT spawnsetid, maxspawns FROM mob_spawn_sets WHERE zoneid = ?";
+                const auto spawnSetResult = db::preparedStmt(spawnSetQuery, zoneId);
+                if (spawnSetResult && spawnSetResult->rowsCount())
+                {
+                    while (spawnSetResult->next())
+                    {
+                        auto maxSpawns    = spawnSetResult->get<uint32>("maxspawns");
+                        auto spawnGroupID = spawnSetResult->get<uint32>("spawnsetid");
+                        GetZone(zoneId)->m_spawnGroups.insert(std::make_pair(spawnGroupID, new spawnGroup(maxSpawns, zoneId, spawnGroupID)));
+                    }
+                }
+
                 const auto query = "SELECT mobname, packet_name, mobid, pos_rot, pos_x, pos_y, pos_z, "
                     "respawntime, spawntype, dropid, mob_groups.HP, mob_groups.MP, minLevel, maxLevel, "
                     "modelid, mJob, sJob, cmbSkill, cmbDmgMult, cmbDelay, behavior, links, mobType, immunity, "
@@ -452,7 +468,7 @@ namespace zoneutils
                             PMob->loc.p                 = PMob->m_SpawnPoint;
 
                             PMob->m_RespawnTime = std::chrono::seconds(rset->get<uint32>("respawntime"));
-                            PMob->m_SpawnType   = static_cast<SPAWNTYPE>(rset->get<uint8>("spawntype"));
+                            PMob->m_SpawnType   = rset->get<SPAWNTYPE>("spawntype");
                             PMob->m_DropID      = rset->get<uint32>("dropid");
 
                             PMob->HPmodifier = rset->get<uint32>("HP");
@@ -478,9 +494,9 @@ namespace zoneutils
 
                             PMob->m_Behavior    = rset->get<uint16>("behavior");
                             PMob->m_Link        = rset->get<uint32>("links");
-                            PMob->m_Type        = static_cast<MOBTYPE>(rset->get<uint32>("mobType"));
+                            PMob->m_Type        = rset->get<MOBTYPE>("mobType");
                             PMob->m_Immunity    = rset->get<uint32>("immunity");
-                            PMob->m_EcoSystem   = static_cast<ECOSYSTEM>(rset->get<uint32>("ecosystemID"));
+                            PMob->m_EcoSystem   = rset->get<ECOSYSTEM>("ecosystemID");
                             PMob->m_ModelRadius = rset->get<float>("mobradius");
 
                             PMob->baseSpeed      = rset->get<uint8>("speed");
@@ -568,7 +584,7 @@ namespace zoneutils
 
                             PMob->m_Pool = rset->get<uint32>("poolid");
 
-                            PMob->allegiance = static_cast<ALLEGIANCE_TYPE>(rset->get<uint8>("allegiance"));
+                            PMob->allegiance = rset->get<ALLEGIANCE_TYPE>("allegiance");
                             PMob->namevis    = rset->get<uint8>("namevis");
                             PMob->m_Aggro    = rset->get<bool>("aggro");
 
@@ -587,6 +603,7 @@ namespace zoneutils
                             {
                                 if (!GetZone(zoneId)->m_spawnGroups.contains(spawnGroupID))
                                 {
+                                    ShowErrorFmt("Error: Spawn group {} doesn't exist in zone ID {}", spawnGroupID, zoneId);
                                     GetZone(zoneId)->m_spawnGroups.insert(std::make_pair(spawnGroupID, new spawnGroup(rset->get<uint32>("maxspawns"), zoneId, spawnGroupID)));
                                 }
                                 auto* spawnGroup = GetZone(zoneId)->m_spawnGroups.at(spawnGroupID).get();
@@ -628,54 +645,6 @@ namespace zoneutils
                             mobutils::InitializeMob(PMob);
 
                             PZone->InsertMOB(PMob);
-                        }
-                    }
-                }
-
-                // attach pets to mobs
-                const auto petQuery = "SELECT mob_groups.zoneid, mob_mobid, pet_offset "
-                    "FROM mob_pets "
-                    "LEFT JOIN mob_spawn_points ON mob_pets.mob_mobid = mob_spawn_points.mobid "
-                    "LEFT JOIN mob_groups ON mob_spawn_points.groupid = mob_groups.groupid "
-                    "INNER JOIN zone_settings ON mob_groups.zoneid = zone_settings.zoneid "
-                    "WHERE mob_groups.zoneid = ((mobid >> 12) & 0xFFF) "
-                    "AND mob_groups.zoneid = ?";
-
-                const auto rset2 = db::preparedStmt(petQuery, zoneId);
-                if (rset2 && rset2->rowsCount())
-                {
-                    while (rset2->next())
-                    {
-                        const uint16 ZoneID  = rset2->get<uint16>("zoneid");
-                        uint32 masterid      = rset2->get<uint32>("mob_mobid");
-                        uint32 petid         = masterid + rset2->get<uint32>("pet_offset");
-
-                        auto*  PMaster = static_cast<CMobEntity*>(GetZone(ZoneID)->GetEntity(masterid & 0x0FFF, TYPE_MOB));
-                        auto*  PPet    = static_cast<CMobEntity*>(GetZone(ZoneID)->GetEntity(petid & 0x0FFF, TYPE_MOB));
-
-                        if (PMaster == nullptr)
-                        {
-                            ShowError("zoneutils::loadMOBList PMaster is nullptr. masterid: %d. Make sure x,y,z are not zeros, and that all entities are entered in the "
-                                    "database!",
-                                    masterid);
-                        }
-                        else if (PPet == nullptr)
-                        {
-                            ShowError("zoneutils::loadMOBList PPet is nullptr. petid: %d. Make sure x,y,z are not zeros!", petid);
-                        }
-                        else if (masterid == petid)
-                        {
-                            ShowError("zoneutils::loadMOBList Master and Pet are the same entity: %d", masterid);
-                        }
-                        else
-                        {
-                            // pet is always spawned by master
-                            PPet->m_AllowRespawn = false;
-                            PPet->m_SpawnType    = SPAWNTYPE_SCRIPTED;
-                            PPet->SetDespawnTime(0s);
-
-                            PMaster->PPet = PPet;
-                            PPet->PMaster = PMaster;
                         }
                     }
                 }
@@ -760,7 +729,7 @@ namespace zoneutils
         const auto rset = db::preparedStmt(query, ZoneID);
         if (rset && rset->rowsCount() && rset->next())
         {
-            const auto zoneType    = static_cast<ZONE_TYPE>(rset->get<uint16>("zonetype"));
+            const auto zoneType    = rset->get<ZONE_TYPE>("zonetype");
             const auto restriction = rset->get<uint8>("restriction");
 
             if (zoneType & ZONE_TYPE::INSTANCED)
@@ -885,6 +854,97 @@ namespace zoneutils
 
         LoadZones(zoneIds);
         luautils::InitInteractionGlobal();
+    }
+
+    // Initialize zone loading: immediate (load all now) or lazy (load on-demand)
+    void Initialize(const IPP mapIPP, bool lazyLoading, bool asyncMode)
+    {
+        if (!lazyLoading)
+        {
+            LoadZoneList(mapIPP);
+            return;
+        }
+
+        lazyLoad.enabled   = true;
+        lazyLoad.asyncMode = asyncMode;
+
+        auto zones            = GetZonesAssignedToThisProcess(mapIPP);
+        lazyLoad.managedZones = std::set(zones.begin(), zones.end());
+
+        luautils::InitInteractionGlobal();
+    }
+
+    void ProcessLoadQueue()
+    {
+        TracyZoneScoped;
+
+        if (!lazyLoad.loadQueue.empty())
+        {
+            auto zoneId = lazyLoad.loadQueue.front();
+            lazyLoad.loadQueue.pop();
+            LoadZones({ zoneId });
+        }
+    }
+
+    auto IsLazyLoadingEnabled() -> bool
+    {
+        return lazyLoad.enabled;
+    }
+
+    // Returns all zones managed by this process (ID and name)
+    // - Lazy mode: queries database for zone names
+    // - Immediate mode: uses already-loaded zone objects
+    auto GetManagedZones() -> std::vector<std::pair<uint16, std::string>>
+    {
+        std::vector<std::pair<uint16, std::string>> result;
+
+        // Lazy loading enabled: fetch from database
+        if (!lazyLoad.managedZones.empty())
+        {
+            const auto query = fmt::format("SELECT zoneid, name FROM zone_settings WHERE zoneid IN ({})",
+                                           fmt::join(lazyLoad.managedZones, ","));
+            const auto rset  = db::query(query);
+            FOR_DB_MULTIPLE_RESULTS(rset)
+            {
+                result.emplace_back(rset->get<uint16>("zoneid"), rset->get<std::string>("name"));
+            }
+        }
+        // Lazy loading disabled: use loaded zone objects
+        else
+        {
+            for (const auto& [zoneId, zone] : g_PZoneList)
+            {
+                result.emplace_back(zoneId, zone->getName());
+            }
+        }
+
+        return result;
+    }
+
+    auto IsZoneReady(uint16 zoneId) -> bool
+    {
+        // Zone already loaded, or lazy loading disabled (all zones loaded at startup)
+        if (GetZone(zoneId) || !lazyLoad.enabled)
+        {
+            return true;
+        }
+
+        // Zone not managed by this process - caller will handle cross-process
+        if (!lazyLoad.managedZones.contains(zoneId))
+        {
+            return true;
+        }
+
+        // Sync mode: load now
+        if (!lazyLoad.asyncMode)
+        {
+            LoadZones({ zoneId });
+            return true;
+        }
+
+        // Async mode: queue and tell caller to wait
+        lazyLoad.loadQueue.push(zoneId);
+        return false;
     }
 
     /************************************************************************
@@ -1195,9 +1255,9 @@ namespace zoneutils
         return GetCurrentRegion(zoneId) != REGION_TYPE::UNKNOWN ? CONTINENT_TYPE::THE_MIDDLE_LANDS : CONTINENT_TYPE::OTHER_AREAS;
     }
 
-    auto GetWeatherElement(const WEATHER weather) -> int
+    auto GetWeatherElement(const Weather weather) -> int
     {
-        if (weather >= MAX_WEATHER_ID)
+        if (!magic_enum::enum_contains<Weather>(weather))
         {
             ShowWarning("zoneutils::GetWeatherElement() - Invalid weather passed to function.");
             return 0;
@@ -1228,7 +1288,7 @@ namespace zoneutils
             8, // WEATHER_GLOOM
             8, // WEATHER_DARKNESS
         };
-        return Element[weather];
+        return Element[static_cast<uint16_t>(weather)];
     }
 
     /************************************************************************

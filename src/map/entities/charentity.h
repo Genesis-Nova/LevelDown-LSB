@@ -40,6 +40,7 @@
 
 #include "automatonentity.h"
 #include "battleentity.h"
+#include "packets/s2c/base.h"
 #include "petentity.h"
 
 #include "utils/fishingutils.h"
@@ -292,6 +293,7 @@ public:
 
     uint8 visibleGmLevel;        // See GmLevel of flags0_t
     bool  wallhackEnabled;       // GM walk through walls
+    bool  isFrozenFlagged;       // Player Freeze flag.
     bool  isSettingBazaarPrices; // Is setting bazaar prices (temporarily hide bazaar)
     bool  isLinkDead;            // Player is d/cing
 
@@ -441,7 +443,8 @@ public:
     void pushPacket(Args&&... args)
     {
         // TODO: This could hook into pooling of packet objects, etc.
-        pushPacket(std::make_unique<T>(std::forward<Args>(args)...));
+        auto packet = std::make_unique<T>(std::forward<Args>(args)...);
+        pushPacket(std::move(packet));
     }
 
     void   pushPacket(std::unique_ptr<CBasicPacket>&&);                                   // Push packet to packet list

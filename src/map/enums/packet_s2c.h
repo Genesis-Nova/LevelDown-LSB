@@ -21,6 +21,8 @@
 
 #pragma once
 
+#include <magic_enum/magic_enum.hpp>
+
 // Server-to-Client packet IDs
 // https://github.com/atom0s/XiPackets/tree/main/world/server
 // Note: Some packets are not explicitly named in XiPackets and have been given tentative names.
@@ -47,7 +49,7 @@ enum class PacketS2C : uint16_t
     GP_SERV_COMMAND_ITEM_TRADE_RES    = 0x022,
     GP_SERV_COMMAND_ITEM_TRADE_LIST   = 0x023,
     GP_SERV_COMMAND_ITEM_TRADE_MYLIST = 0x025,
-    GP_SERV_COMMAND_SUBCONTAINER      = 0x026,
+    GP_SERV_COMMAND_ITEM_SUBCONTAINER = 0x026,
     GP_SERV_COMMAND_TALKNUMWORK2      = 0x027,
     GP_SERV_COMMAND_BATTLE2           = 0x028,
     GP_SERV_COMMAND_BATTLE_MESSAGE    = 0x029,
@@ -106,7 +108,7 @@ enum class PacketS2C : uint16_t
     GP_SERV_COMMAND_CHOCOBO_RACING    = 0x069,
     GP_SERV_COMMAND_COMBINE_ANS       = 0x06F,
     GP_SERV_COMMAND_COMBINE_INF       = 0x070,
-    GP_SERV_COMMAND_REGIONAL_CONTROL  = 0x071,
+    GP_SERV_COMMAND_INFLUENCE         = 0x071,
     GP_SERV_COMMAND_UNKNOWN_072       = 0x072,
     GP_SERV_COMMAND_UNKNOWN_073       = 0x073,
     GP_SERV_COMMAND_UNKNOWN_074       = 0x074,
@@ -165,13 +167,20 @@ enum class PacketS2C : uint16_t
     GP_SERV_COMMAND_UNITY             = 0x110,
     GP_SERV_COMMAND_ROE_ACTIVELOG     = 0x111,
     GP_SERV_COMMAND_ROE_LOG           = 0x112,
-    GP_SERV_COMMAND_CURRENCIES1       = 0x113,
+    GP_SERV_COMMAND_CURRENCIES_1      = 0x113,
     GP_SERV_COMMAND_FISH              = 0x115,
     GP_SERV_COMMAND_EQUIPSET_VALID    = 0x116,
     GP_SERV_COMMAND_EQUIPSET_RES      = 0x117,
-    GP_SERV_COMMAND_CURRENCIES2       = 0x118,
+    GP_SERV_COMMAND_CURRENCIES_2      = 0x118,
     GP_SERV_COMMAND_ABIL_RECAST       = 0x119,
-    GP_SERV_COMMAND_EMOTELIST         = 0x11A,
+    GP_SERV_COMMAND_EMOTE_LIST        = 0x11A,
     GP_SERV_COMMAND_PARTYREQ          = 0x11D,
     GP_SERV_COMMAND_JUMP              = 0x11E,
+};
+
+template <>
+struct magic_enum::customize::enum_range<PacketS2C>
+{
+    static constexpr int min = 0;
+    static constexpr int max = 300;
 };

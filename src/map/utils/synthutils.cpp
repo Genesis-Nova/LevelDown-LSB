@@ -29,15 +29,11 @@
 
 #include "entities/battleentity.h"
 
-#include "packets/char_skills.h"
 #include "packets/char_status.h"
-#include "packets/inventory_assign.h"
-#include "packets/inventory_finish.h"
-#include "packets/inventory_item.h"
-#include "packets/message_basic.h"
-#include "packets/synth_animation.h"
-#include "packets/synth_message.h"
-#include "packets/synth_result.h"
+#include "packets/s2c/0x01d_item_same.h"
+#include "packets/s2c/0x01f_item_list.h"
+#include "packets/s2c/0x020_item_attr.h"
+#include "packets/s2c/0x062_clistatus2.h"
 
 #include "item_container.h"
 #include "items.h"
@@ -45,44 +41,58 @@
 #include "trade_container.h"
 
 #include "charutils.h"
+#include "enums/item_lockflg.h"
 #include "enums/key_items.h"
+#include "enums/synthesis_effect.h"
+#include "enums/synthesis_result.h"
 #include "itemutils.h"
+#include "packets/s2c/0x029_battle_message.h"
+#include "packets/s2c/0x030_effect.h"
+#include "packets/s2c/0x06f_combine_ans.h"
+#include "packets/s2c/0x070_combine_inf.h"
 #include "zone.h"
 #include "zoneutils.h"
+
+// TODO: This largely overlaps with SYNTHESIS_RESULT and could be simplified.
+#define RESULT_SUCCESS 0x00
+#define RESULT_FAIL    0x01
+#define RESULT_HQ      0x02
+#define RESULT_HQ2     0x03
+#define RESULT_HQ3     0x04
 
 namespace synthutils
 {
     struct SynthRecipe
     {
-        uint32  ID;
-        uint8   Desynth;
-        KeyItem RequiredKeyItem;
-        uint8   Wood;
-        uint8   Smith;
-        uint8   Gold;
-        uint8   Cloth;
-        uint8   Leather;
-        uint8   Bone;
-        uint8   Alchemy;
-        uint8   Cook;
-        uint16  Crystal;
-        uint16  HQCrystal;
-        uint16  Ingredient1;
-        uint16  Ingredient2;
-        uint16  Ingredient3;
-        uint16  Ingredient4;
-        uint16  Ingredient5;
-        uint16  Ingredient6;
-        uint16  Ingredient7;
-        uint16  Ingredient8;
-        uint16  Result;
-        uint16  ResultHQ1;
-        uint16  ResultHQ2;
-        uint16  ResultHQ3;
-        uint8   ResultQty;
-        uint8   ResultHQ1Qty;
-        uint8   ResultHQ2Qty;
-        uint8   ResultHQ3Qty;
+        uint32  ID{};
+        uint8   Desynth{};
+        KeyItem RequiredKeyItem{};
+        uint8   Wood{};
+        uint8   Smith{};
+        uint8   Gold{};
+        uint8   Cloth{};
+        uint8   Leather{};
+        uint8   Bone{};
+        uint8   Alchemy{};
+        uint8   Cook{};
+        uint16  Crystal{};
+        uint16  HQCrystal{};
+        uint16  Ingredient1{};
+        uint16  Ingredient2{};
+        uint16  Ingredient3{};
+        uint16  Ingredient4{};
+        uint16  Ingredient5{};
+        uint16  Ingredient6{};
+        uint16  Ingredient7{};
+        uint16  Ingredient8{};
+        uint16  Result{};
+        uint16  ResultHQ1{};
+        uint16  ResultHQ2{};
+        uint16  ResultHQ3{};
+        uint8   ResultQty{};
+        uint8   ResultHQ1Qty{};
+        uint8   ResultHQ2Qty{};
+        uint8   ResultHQ3Qty{};
 
         std::string ResultName;
         std::string ContentTag;
@@ -247,7 +257,7 @@ namespace synthutils
             const auto recipe = SynthRecipe{
                 .ID              = rset->get<uint32>("ID"),
                 .Desynth         = rset->get<uint8>("Desynth"),
-                .RequiredKeyItem = static_cast<KeyItem>(rset->get<uint16>("KeyItem")),
+                .RequiredKeyItem = rset->get<KeyItem>("KeyItem"),
                 .Wood            = rset->get<uint8>("Wood"),
                 .Smith           = rset->get<uint8>("Smith"),
                 .Gold            = rset->get<uint8>("Gold"),
@@ -314,7 +324,7 @@ namespace synthutils
 
             if (!luautils::IsContentEnabled(recipe.ContentTag))
             {
-                PChar->pushPacket<CSynthMessagePacket>(PChar, SYNTH_BADRECIPE);
+                PChar->pushPacket<GP_SERV_COMMAND_COMBINE_ANS>(PChar, SynthesisResult::CancelBadRecipe);
                 return false;
             }
 
@@ -338,7 +348,7 @@ namespace synthutils
 
                     if (currentSkill < (skillValue * 10 - 150)) // Check player skill against recipe level. Range must be 14 or less.
                     {
-                        PChar->pushPacket<CSynthMessagePacket>(PChar, SYNTH_NOSKILL);
+                        PChar->pushPacket<GP_SERV_COMMAND_COMBINE_ANS>(PChar, SynthesisResult::CancelSkillTooLow);
                         return false;
                     }
                 }
@@ -347,7 +357,7 @@ namespace synthutils
         }
 
         // Otherwise, fall through to failure
-        PChar->pushPacket<CSynthMessagePacket>(PChar, SYNTH_BADRECIPE);
+        PChar->pushPacket<GP_SERV_COMMAND_COMBINE_ANS>(PChar, SynthesisResult::CancelBadRecipe);
         return false;
     }
 
@@ -579,11 +589,11 @@ namespace synthutils
                 case 3: // 1 in 4
                     chanceHQ = 25.0f;
                     break;
-                case 2: // 1 in 20
-                    chanceHQ = 5.0f;
+                case 2: // 1 in 16
+                    chanceHQ = 6.25f;
                     break;
-                case 1: // 1 in 100
-                    chanceHQ = 1.0f;
+                case 1: // 1 in 64
+                    chanceHQ = 1.5625f;
                     break;
                 default: // No chance
                     chanceHQ = 0.0f;
@@ -843,7 +853,7 @@ namespace synthutils
 
             // Skill Up addition:
             PChar->RealSkills.skill[skillID] += skillUpAmount;
-            PChar->pushPacket<CMessageBasicPacket>(PChar, PChar, skillID, skillUpAmount, 38);
+            PChar->pushPacket<GP_SERV_COMMAND_BATTLE_MESSAGE>(PChar, PChar, skillID, skillUpAmount, static_cast<MSGBASIC_ID>(38));
 
             if ((charSkill / 10) < (charSkill + skillUpAmount) / 10)
             {
@@ -854,8 +864,8 @@ namespace synthutils
                     PChar->WorkingSkills.skill[skillID] |= 0x8000; // blue capped text
                 }
 
-                PChar->pushPacket<CCharSkillsPacket>(PChar);
-                PChar->pushPacket<CMessageBasicPacket>(PChar, PChar, skillID, (charSkill + skillUpAmount) / 10, 53);
+                PChar->pushPacket<GP_SERV_COMMAND_CLISTATUS2>(PChar);
+                PChar->pushPacket<GP_SERV_COMMAND_BATTLE_MESSAGE>(PChar, PChar, skillID, (charSkill + skillUpAmount) / 10, static_cast<MSGBASIC_ID>(53));
             }
 
             charutils::SaveCharSkills(PChar, skillID);
@@ -864,13 +874,13 @@ namespace synthutils
             if (skillCumulation > settings::get<uint16>("map.CRAFT_SPECIALIZATION_POINTS"))
             {
                 PChar->RealSkills.skill[skillHighest] -= skillUpAmount;
-                PChar->pushPacket<CMessageBasicPacket>(PChar, PChar, skillHighest, skillUpAmount, 310);
+                PChar->pushPacket<GP_SERV_COMMAND_BATTLE_MESSAGE>(PChar, PChar, skillHighest, skillUpAmount, static_cast<MSGBASIC_ID>(310));
 
                 if ((PChar->RealSkills.skill[skillHighest] + skillUpAmount) / 10 > (PChar->RealSkills.skill[skillHighest]) / 10)
                 {
                     PChar->WorkingSkills.skill[skillHighest] -= 0x20;
-                    PChar->pushPacket<CCharSkillsPacket>(PChar);
-                    PChar->pushPacket<CMessageBasicPacket>(PChar, PChar, skillHighest, (PChar->RealSkills.skill[skillHighest] - skillUpAmount) / 10, 53);
+                    PChar->pushPacket<GP_SERV_COMMAND_CLISTATUS2>(PChar);
+                    PChar->pushPacket<GP_SERV_COMMAND_BATTLE_MESSAGE>(PChar, PChar, skillHighest, (PChar->RealSkills.skill[skillHighest] - skillUpAmount) / 10, static_cast<MSGBASIC_ID>(53));
                 }
 
                 charutils::SaveCharSkills(PChar, skillHighest);
@@ -946,7 +956,7 @@ namespace synthutils
                     }
                     else
                     {
-                        PChar->pushPacket<CInventoryAssignPacket>(PItem, INV_NORMAL);
+                        PChar->pushPacket<GP_SERV_COMMAND_ITEM_LIST>(PItem, ItemLockFlg::Normal);
                     }
                 }
                 invSlotID = nextSlotID;
@@ -984,10 +994,10 @@ namespace synthutils
             currentZone != ZONE_49 &&
             currentZone < MAX_ZONEID)
         {
-            PChar->loc.zone->PushPacket(PChar, CHAR_INRANGE, std::make_unique<CSynthResultMessagePacket>(PChar, SYNTH_FAIL));
+            PChar->loc.zone->PushPacket(PChar, CHAR_INRANGE, std::make_unique<GP_SERV_COMMAND_COMBINE_INF>(PChar, SynthesisResult::Failed));
         }
 
-        PChar->pushPacket<CSynthMessagePacket>(PChar, SYNTH_FAIL, 29695);
+        PChar->pushPacket<GP_SERV_COMMAND_COMBINE_ANS>(PChar, SynthesisResult::Failed, 29695);
     }
 
     /**************************************************************************
@@ -1034,7 +1044,7 @@ namespace synthutils
                     }
                     else
                     {
-                        PChar->pushPacket<CInventoryAssignPacket>(PItem, INV_NORMAL);
+                        PChar->pushPacket<GP_SERV_COMMAND_ITEM_LIST>(PItem, ItemLockFlg::Normal);
                     }
                 }
                 invSlotID = nextSlotID;
@@ -1056,10 +1066,10 @@ namespace synthutils
             currentZone != ZONE_49 &&
             currentZone < MAX_ZONEID)
         {
-            PChar->loc.zone->PushPacket(PChar, CHAR_INRANGE, std::make_unique<CSynthResultMessagePacket>(PChar, SYNTH_FAIL_CRITICAL));
+            PChar->loc.zone->PushPacket(PChar, CHAR_INRANGE, std::make_unique<GP_SERV_COMMAND_COMBINE_INF>(PChar, SynthesisResult::InterruptedCritical));
         }
 
-        PChar->pushPacket<CSynthMessagePacket>(PChar, SYNTH_FAIL_CRITICAL, 29695);
+        PChar->pushPacket<GP_SERV_COMMAND_COMBINE_ANS>(PChar, SynthesisResult::InterruptedCritical, 29695);
     }
 
     /*********************************************************************
@@ -1081,64 +1091,64 @@ namespace synthutils
         }
 
         // Set animation and element based on crystal element.
-        uint16 effect  = 0;
-        uint8  element = 0;
+        auto  effect  = SynthesisEffect::None;
+        uint8 element = 0;
 
         switch (PChar->CraftContainer->getItemID(0))
         {
             case FIRE_CRYSTAL:
             case INFERNO_CRYSTAL:
             case PYRE_CRYSTAL:
-                effect  = EFFECT_FIRESYNTH;
+                effect  = SynthesisEffect::Fire;
                 element = ELEMENT_FIRE;
                 break;
 
             case ICE_CRYSTAL:
             case GLACIER_CRYSTAL:
             case FROST_CRYSTAL:
-                effect  = EFFECT_ICESYNTH;
+                effect  = SynthesisEffect::Ice;
                 element = ELEMENT_ICE;
                 break;
 
             case WIND_CRYSTAL:
             case CYCLONE_CRYSTAL:
             case VORTEX_CRYSTAL:
-                effect  = EFFECT_WINDSYNTH;
+                effect  = SynthesisEffect::Wind;
                 element = ELEMENT_WIND;
                 break;
 
             case EARTH_CRYSTAL:
             case TERRA_CRYSTAL:
             case GEO_CRYSTAL:
-                effect  = EFFECT_EARTHSYNTH;
+                effect  = SynthesisEffect::Earth;
                 element = ELEMENT_EARTH;
                 break;
 
             case LIGHTNING_CRYSTAL:
             case PLASMA_CRYSTAL:
             case BOLT_CRYSTAL:
-                effect  = EFFECT_LIGHTNINGSYNTH;
+                effect  = SynthesisEffect::Lightning;
                 element = ELEMENT_LIGHTNING;
                 break;
 
             case WATER_CRYSTAL:
             case TORRENT_CRYSTAL:
             case FLUID_CRYSTAL:
-                effect  = EFFECT_WATERSYNTH;
+                effect  = SynthesisEffect::Water;
                 element = ELEMENT_WATER;
                 break;
 
             case LIGHT_CRYSTAL:
             case AURORA_CRYSTAL:
             case GLIMMER_CRYSTAL:
-                effect  = EFFECT_LIGHTSYNTH;
+                effect  = SynthesisEffect::Light;
                 element = ELEMENT_LIGHT;
                 break;
 
             case DARK_CRYSTAL:
             case TWILIGHT_CRYSTAL:
             case SHADOW_CRYSTAL:
-                effect  = EFFECT_DARKSYNTH;
+                effect  = SynthesisEffect::Dark;
                 element = ELEMENT_DARK;
                 break;
         }
@@ -1181,7 +1191,7 @@ namespace synthutils
                 if (CItem* PCraftItem = PChar->getStorage(LOC_INVENTORY)->GetItem(invSlotID); PCraftItem != nullptr)
                 {
                     PCraftItem->setSubType(ITEM_LOCKED);
-                    PChar->pushPacket<CInventoryAssignPacket>(PCraftItem, INV_NOSELECT);
+                    PChar->pushPacket<GP_SERV_COMMAND_ITEM_LIST>(PCraftItem, ItemLockFlg::NoSelect);
                 }
             }
         }
@@ -1203,7 +1213,7 @@ namespace synthutils
         PChar->pushPacket<CCharStatusPacket>(PChar);
         PChar->startSynth(static_cast<SKILLTYPE>(skillType));
 
-        PChar->loc.zone->PushPacket(PChar, CHAR_INRANGE_SELF, std::make_unique<CSynthAnimationPacket>(PChar, effect, result));
+        PChar->loc.zone->PushPacket(PChar, CHAR_INRANGE_SELF, std::make_unique<GP_SERV_COMMAND_EFFECT>(PChar, effect, result));
 
         return 0;
     }
@@ -1274,16 +1284,16 @@ namespace synthutils
                     db::preparedStmt("UPDATE char_inventory SET signature = ? WHERE charid = ? AND location = 0 AND slot = ? LIMIT 1",
                                      PChar->name, PChar->id, invSlotID);
                 }
-                PChar->pushPacket<CInventoryItemPacket>(PItem, LOC_INVENTORY, invSlotID);
+                PChar->pushPacket<GP_SERV_COMMAND_ITEM_ATTR>(PItem, LOC_INVENTORY, invSlotID);
             }
 
-            PChar->pushPacket<CInventoryFinishPacket>();
+            PChar->pushPacket<GP_SERV_COMMAND_ITEM_SAME>();
 
             // Use appropiate message (Regular or desynthesis)
-            const auto message = PChar->CraftContainer->getCraftType() == CRAFT_DESYNTHESIS ? SYNTH_SUCCESS_DESYNTH : SYNTH_SUCCESS;
+            const auto message = PChar->CraftContainer->getCraftType() == CRAFT_DESYNTHESIS ? SynthesisResult::SuccessDesynth : SynthesisResult::Success;
 
-            PChar->loc.zone->PushPacket(PChar, CHAR_INRANGE, std::make_unique<CSynthResultMessagePacket>(PChar, message, itemID, quantity));
-            PChar->pushPacket<CSynthMessagePacket>(PChar, message, itemID, quantity);
+            PChar->loc.zone->PushPacket(PChar, CHAR_INRANGE, std::make_unique<GP_SERV_COMMAND_COMBINE_INF>(PChar, message, itemID, quantity));
+            PChar->pushPacket<GP_SERV_COMMAND_COMBINE_ANS>(PChar, message, itemID, quantity);
 
             // Calculate what craft this recipe "belongs" to based on highest skill required
             uint32 skillType    = 0;

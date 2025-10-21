@@ -21,6 +21,7 @@
 
 #include "lua_simulation.h"
 #include "common/vana_time.h"
+#include "enums/packet_c2s.h"
 #include "enums/tick_type.h"
 #include "helpers/lua_client_entity_pair_packets.h"
 #include "in_memory_sink.h"
@@ -69,29 +70,24 @@ CLuaSimulation::CLuaSimulation(MapEngine* _mapServer, const std::shared_ptr<InMe
 {
 }
 
-/************************************************************************
- *  Function: loadZone()
- *  Purpose : Force load of zones.
- *  Example : sim:loadZone(xi.zone.RABAO, xi.zone.MHAURA)
- *  Notes   : Only required when events teleport to zones that are not currently loaded.
- ************************************************************************/
-
-void CLuaSimulation::loadZone(sol::variadic_args va) const
+void CLuaSimulation::cleanClients(std::optional<ClientScope> scope)
 {
-    std::vector<uint16> zoneIds;
-    for (auto&& zoneId : va)
+    if (!scope.has_value())
     {
-        auto zoneIdNum = zoneId.as<uint16>();
-        ShowInfoFmt("Loading zone ID: {}", zoneIdNum);
-        zoneIds.push_back(zoneIdNum);
+        // No scope specified - clean all clients
+        clients_.clear();
     }
-
-    zoneutils::LoadZones(zoneIds);
-}
-
-void CLuaSimulation::cleanClients()
-{
-    clients_.clear();
+    else
+    {
+        // Clean only clients with matching scope
+        // clang-format off
+        auto [first, last] = std::ranges::remove_if(clients_, [scope](const ClientInfo& info)
+        {
+             return info.scope == scope.value();
+        });
+        // clang-format on
+        clients_.erase(first, last);
+    }
 }
 
 /************************************************************************
@@ -103,6 +99,8 @@ void CLuaSimulation::cleanClients()
 
 void CLuaSimulation::tickEntity(CLuaBaseEntity& entity) const
 {
+    TracyZoneScoped;
+
     DebugTestFmt("Ticking entity: {} (ID: {})", entity.getName(), entity.GetBaseEntity()->id);
     entity.GetBaseEntity()->PAI->Tick(timer::now());
 }
@@ -117,6 +115,8 @@ void CLuaSimulation::tickEntity(CLuaBaseEntity& entity) const
 
 void CLuaSimulation::skipTime(uint32 seconds) const
 {
+    TracyZoneScoped;
+
     ShowInfoFmt("Skipping {} seconds", seconds);
 
     // Advance time by the requested amount
@@ -246,9 +246,11 @@ void CLuaSimulation::seed() const
 // Moves all clients session clock and process pending packets
 void CLuaSimulation::processClientUpdates() const
 {
-    for (auto&& client : clients_)
+    TracyZoneScoped;
+
+    for (auto&& info : clients_)
     {
-        client->tick();
+        info.client->tick();
     }
 }
 
@@ -263,6 +265,43 @@ void CLuaSimulation::processClientUpdates() const
 
 void CLuaSimulation::tick(const std::optional<TickType> boundary) const
 {
+    TracyZoneScoped;
+
+    if (boundary)
+    {
+        switch (*boundary)
+        {
+            case TickType::ZoneTick:
+                TracyZoneCString("Zone Tick");
+                break;
+            case TickType::TimeServer:
+                TracyZoneCString("Time Server Tick");
+                break;
+            case TickType::EffectTick:
+                TracyZoneCString("Effect Tick");
+                break;
+            case TickType::TriggerAreas:
+                TracyZoneCString("Trigger Areas Tick");
+                break;
+            case TickType::JSTHourly:
+                TracyZoneCString("JST Hourly Tick");
+                break;
+            case TickType::JSTDaily:
+                TracyZoneCString("JST Daily Tick");
+                break;
+            case TickType::VanadielHourly:
+                TracyZoneCString("Vanadiel Hourly Tick");
+                break;
+            case TickType::VanadielDaily:
+                TracyZoneCString("Vanadiel Daily Tick");
+                break;
+        }
+    }
+    else
+    {
+        TracyZoneCString("Zone Tick");
+    }
+
     // Timer clock may be offset, so calculate Earth/Vana time instead of directly using those clocks.
     const auto timerAdjustedUtcTime = timer::to_utc();
     const auto adjustedVanaTime     = vanadiel_time::from_earth_time(timerAdjustedUtcTime);
@@ -283,7 +322,7 @@ void CLuaSimulation::tick(const std::optional<TickType> boundary) const
             const auto timePoint = timer::now() + 1ms;
             for (auto* PZone : g_PZoneList | std::views::values)
             {
-                if (PZone->GetEntity(1024)) // Only tick zones with players
+                if (!PZone->GetZoneEntities()->CharListEmpty()) // Only tick zones with players
                 {
                     PZone->ZoneServer(timePoint);
                 }
@@ -297,7 +336,7 @@ void CLuaSimulation::tick(const std::optional<TickType> boundary) const
             const auto timePoint = timer::now() + 1ms;
             for (auto* PZone : g_PZoneList | std::views::values)
             {
-                if (PZone->GetEntity(1024))
+                if (!PZone->GetZoneEntities()->CharListEmpty())
                 {
                     // CheckTriggerAreas _only_ adds a trigger area to the player list.
                     // ZoneServer processes the actual events.
@@ -333,7 +372,10 @@ void CLuaSimulation::tick(const std::optional<TickType> boundary) const
             const auto timePoint = timer::now();
             for (auto* PZone : g_PZoneList | std::views::values)
             {
-                PZone->GetZoneEntities()->ZoneServer(timePoint);
+                if (!PZone->GetZoneEntities()->CharListEmpty())
+                {
+                    PZone->GetZoneEntities()->ZoneServer(timePoint);
+                }
             }
         }
         break;
@@ -383,6 +425,8 @@ void CLuaSimulation::tick(const std::optional<TickType> boundary) const
 
 auto CLuaSimulation::spawnPlayer(sol::optional<sol::table> params) -> CLuaClientEntityPair*
 {
+    TracyZoneScoped;
+
     uint16               zoneId = ZONE_GM_HOME;
     sol::optional<uint8> job;
     sol::optional<uint8> level;
@@ -400,8 +444,6 @@ auto CLuaSimulation::spawnPlayer(sol::optional<sol::table> params) -> CLuaClient
 
     ShowInfoFmt("Spawning player in zone: {}", zoneId);
 
-    // Load the zone
-    zoneutils::LoadZones({ zoneId });
     auto testChar = TestChar::create(zoneId);
 
     if (!testChar)
@@ -435,15 +477,17 @@ auto CLuaSimulation::spawnPlayer(sol::optional<sol::table> params) -> CLuaClient
         db::preparedStmt("UPDATE chars SET playtime = 60 WHERE charid = ?", testChar->charId());
     }
 
-    testChar->setEntity(charutils::LoadChar(testChar->charId()));
-    auto* player = clients_.emplace_back(std::make_unique<CLuaClientEntityPair>(std::move(testChar), this, engine_)).get();
+    // Create client wrapper and track setup context
+    ClientInfo info{
+        .client = std::make_unique<CLuaClientEntityPair>(std::move(testChar), this, engine_),
+        .scope  = inSetupContext_ ? ClientScope::Suite : ClientScope::TestCase
+    };
+    clients_.push_back(std::move(info));
 
-    // Send login packet
-    const auto packet = player->packets().createPacket(0x0A);
-    auto*      login  = packet->as<GP_CLI_COMMAND_LOGIN>();
-    login->UniqueNo   = player->getID();
-    player->packets().sendBasicPacket(*packet);
-    skipTime(3); // ZoningIn localvar is cleared up after 2500ms
+    auto* player = clients_.back().client.get();
+
+    // Complete zone-in sequence
+    player->packets().sendZonePackets();
 
     if (job.has_value())
     {
@@ -458,6 +502,11 @@ auto CLuaSimulation::spawnPlayer(sol::optional<sol::table> params) -> CLuaClient
     return player;
 }
 
+void CLuaSimulation::setSetupContext(const bool inSetup)
+{
+    inSetupContext_ = inSetup;
+}
+
 void CLuaSimulation::Register()
 {
     SOL_USERTYPE("CSimulation", CLuaSimulation);
@@ -468,7 +517,6 @@ void CLuaSimulation::Register()
     SOL_REGISTER("setVanaDay", CLuaSimulation::setVanaDay);
     SOL_REGISTER("skipToNextVanaDay", CLuaSimulation::skipToNextVanaDay);
     SOL_REGISTER("setRegionOwner", CLuaSimulation::setRegionOwner);
-    SOL_REGISTER("loadZone", CLuaSimulation::loadZone);
     SOL_REGISTER("setSeed", CLuaSimulation::setSeed);
     SOL_REGISTER("seed", CLuaSimulation::seed);
     SOL_REGISTER("spawnPlayer", CLuaSimulation::spawnPlayer);

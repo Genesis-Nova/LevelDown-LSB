@@ -21,7 +21,7 @@
 #include "job_points.h"
 
 #include "map_engine.h"
-#include "packets/char_spells.h"
+#include "packets/s2c/0x0aa_magic_data.h"
 #include "spell.h"
 #include "utils/charutils.h"
 
@@ -124,7 +124,7 @@ uint16 CJobPoints::GetJobPoints()
 
 uint16 CJobPoints::GetJobPointsByJob(uint8 jobID) const
 {
-    const auto rset = db::preparedStmt("SELECT job_points FROM char_job_points WHERE charid=? AND jobid=?", m_PChar->id, jobID);
+    const auto rset = db::preparedStmt("SELECT job_points FROM char_job_points WHERE charid=? AND jobid=? LIMIT 1", m_PChar->id, jobID);
     FOR_DB_SINGLE_RESULT(rset)
     {
         return rset->get<uint16>("job_points");
@@ -516,7 +516,7 @@ namespace jobpointutils
 
         if (sendUpdate)
         {
-            PChar->pushPacket<CCharSpellsPacket>(PChar);
+            PChar->pushPacket<GP_SERV_COMMAND_MAGIC_DATA>(PChar);
         }
     }
 } // namespace jobpointutils

@@ -50,10 +50,10 @@
 #include "ai/states/ability_state.h"
 
 #include "mob_modifier.h"
-#include "packets/char_abilities.h"
 #include "packets/char_status.h"
 #include "packets/entity_update.h"
 #include "packets/pet_sync.h"
+#include "packets/s2c/0x0ac_command_data.h"
 
 std::vector<Pet_t*> g_PPetList;
 
@@ -113,7 +113,7 @@ namespace petutils
             Pet->maxLevel  = rset->get<uint8>("maxLevel");
             Pet->time      = std::chrono::seconds(rset->get<uint32>("time"));
             Pet->radius    = rset->get<uint8>("mobradius");
-            Pet->EcoSystem = static_cast<ECOSYSTEM>(rset->get<uint8>("ecosystemID"));
+            Pet->EcoSystem = rset->get<ECOSYSTEM>("ecosystemID");
             Pet->m_Family  = rset->get<uint16>("familyid");
             Pet->mJob      = rset->get<uint8>("mJob");
             Pet->sJob      = rset->get<uint8>("sJob");
@@ -178,7 +178,7 @@ namespace petutils
             Pet->cmbDelay       = rset->get<uint16>("cmbDelay");
             Pet->name_prefix    = rset->get<uint8>("name_prefix");
             Pet->m_MobSkillList = rset->get<uint16>("skill_list_id");
-            Pet->m_dmgType      = static_cast<DAMAGE_TYPE>(rset->get<uint16>("damageType"));
+            Pet->m_dmgType      = rset->get<DAMAGE_TYPE>("damageType");
 
             g_PPetList.emplace_back(Pet);
         }
@@ -1424,7 +1424,7 @@ namespace petutils
         charutils::BuildingCharAbilityTable(PChar);
         PChar->PPet = nullptr;
         PChar->pushPacket<CCharStatusPacket>(PChar);
-        PChar->pushPacket<CCharAbilitiesPacket>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_COMMAND_DATA>(PChar);
         PChar->pushPacket<CPetSyncPacket>(PChar);
     }
 
@@ -1861,6 +1861,12 @@ namespace petutils
         PPet->status        = STATUS_TYPE::NORMAL;
         PPet->m_ModelRadius = PPetData->radius;
         PPet->m_EcoSystem   = PPetData->EcoSystem;
+
+        if (PPet->getPetType() == PET_TYPE::WYVERN || PPet->getPetType() == PET_TYPE::JUG_PET)
+        {
+            battleutils::addEcosystemKillerEffects(PPet);
+        }
+
         // set the damage type of the pet
         static_cast<CItemWeapon*>(PPet->m_Weapons[SLOT_MAIN])->setDmgType(PPetData->m_dmgType);
 
@@ -1910,7 +1916,7 @@ namespace petutils
             Inspired by TiberonKalkaz's approach in ASB.
             https://github.com/AirSkyBoat/AirSkyBoat/pull/3134/files#diff-dea0a7c8d005d1e7507dcb2370aff3a46df84ab53d87ba50beeab376c3082621
         */
-        CBattleEntity* tandemPartner;
+        CBattleEntity* tandemPartner = nullptr;
         if (PAttacker->objtype == TYPE_PC)
         {
             if (PAttacker->PPet == nullptr)

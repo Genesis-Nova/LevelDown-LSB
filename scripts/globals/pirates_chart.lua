@@ -298,6 +298,7 @@ xi.piratesChart.onMobSpawn = function(mob)
     mob:setMobMod(xi.mobMod.NO_DROPS, 1)
     mob:setMobMod(xi.mobMod.GIL_MAX, -1)
     mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 60)
+    mob:setMobMod(xi.mobMod.BASE_DAMAGE_MULTIPLIER, 100)
 end
 
 xi.piratesChart.onMobFight = function(mob, target)
@@ -307,6 +308,10 @@ xi.piratesChart.onMobFight = function(mob, target)
     then
         mob:useMobAbility(xi.mobSkill.HUNDRED_FISTS_1)
         mob:setLocalVar('usedTwoHour', 1)
+    end
+
+    if GetSystemTime() > mob:getLocalVar('snareTimeLimit') then
+        mob:setMobMod(xi.mobMod.BASE_DAMAGE_MULTIPLIER, 100)
     end
 end
 
@@ -342,6 +347,39 @@ xi.piratesChart.onItemCheck = function(target, item, param, caster)
     return xi.msg.basic.CANNOT_ON_THAT_TARG
 end
 
+local pChartLoot =
+{
+    {
+        { itemId = xi.item.CORAL_FRAGMENT,           weight = xi.loot.weight.VERY_LOW  }, --  4.3%
+        { itemId = xi.item.DRILL_CALAMARY,           weight = xi.loot.weight.NORMAL    }, -- 21.7%
+        { itemId = xi.item.DWARF_PUGIL,              weight = xi.loot.weight.LOW       }, -- 13.0%
+        { itemId = xi.item.HIGH_QUALITY_PUGIL_SCALE, weight = xi.loot.weight.VERY_LOW  }, --  4.3%
+        { itemId = xi.item.ONZ_OF_SALINATOR,         weight = xi.loot.weight.LOW       }, -- 13.0%
+        { itemId = xi.item.SHALL_SHELL,              weight = xi.loot.weight.VERY_HIGH }, -- 43.5%
+        { itemId = xi.item.ZEBRA_EEL,                weight = xi.loot.weight.LOW       }, -- 13.0%
+    },
+
+    {
+        { itemId = xi.item.ARROWWOOD_LOG,   weight = xi.loot.weight.HIGH     }, -- 21.2%
+        { itemId = xi.item.CORAL_BUTTERFLY, weight = xi.loot.weight.NORMAL   }, -- 15.2%
+        { itemId = xi.item.CORAL_FRAGMENT,  weight = xi.loot.weight.VERY_LOW }, --  3.0%
+        { itemId = xi.item.DRILL_CALAMARY,  weight = xi.loot.weight.NORMAL   }, -- 15.2%
+        { itemId = xi.item.DWARF_PUGIL,     weight = xi.loot.weight.NORMAL   }, -- 15.2%
+        { itemId = xi.item.NEBIMONITE,      weight = xi.loot.weight.LOW      }, --  9.1%
+        { itemId = xi.item.SHALL_SHELL,     weight = xi.loot.weight.HIGH     }, -- 21.2%
+    },
+
+    {
+        { itemId = xi.item.FUSCINA,          weight = xi.loot.weight.NORMAL        }, -- 80.6%
+        { itemId = xi.item.MERCURIAL_KRIS,   weight = xi.loot.weight.EXTREMELY_LOW }, --  3.2%
+        { itemId = xi.item.PIECE_OF_OXBLOOD, weight = xi.loot.weight.VERY_LOW      }, -- 16.1%
+    },
+
+    {
+        { itemId = xi.item.ALBATROSS_RING, weight = 1000 }, -- 100%
+    },
+}
+
 xi.piratesChart.barnacledBoxOnTrigger = function(player, npc)
     local qm4 = GetNPCByID(valkID.npc.PIRATE_CHART_QM)
 
@@ -360,7 +398,10 @@ xi.piratesChart.barnacledBoxOnTrigger = function(player, npc)
         npc:entityAnimationPacket(xi.animationString.OPEN_CRATE_GLOW)
         npc:setLocalVar(xi.animationString.OPEN_CRATE_GLOW, 1)
 
-        -- TODO: rewards
+        local rewards = utils.selectFromLootGroups(player, pChartLoot)
+        for _, entry in ipairs(rewards) do
+            player:addTreasure(entry.itemId, npc)
+        end
 
         npc:timer(15000, function(npcArg)
             npcArg:entityAnimationPacket(xi.animationString.STATUS_DISAPPEAR)

@@ -22,12 +22,13 @@
 #include "0x0fc_myroom_plant_add.h"
 
 #include "entities/charentity.h"
+#include "enums/msg_std.h"
 #include "items.h"
 #include "items/item_flowerpot.h"
 #include "packets/char_status.h"
-#include "packets/furniture_interact.h"
-#include "packets/inventory_finish.h"
-#include "packets/inventory_item.h"
+#include "packets/s2c/0x01d_item_same.h"
+#include "packets/s2c/0x020_item_attr.h"
+#include "packets/s2c/0x0fa_myroom_operation.h"
 #include "utils/charutils.h"
 #include "utils/gardenutils.h"
 
@@ -73,7 +74,7 @@ void GP_CLI_COMMAND_MYROOM_PLANT_ADD::process(MapSession* PSession, CCharEntity*
     if (CItemFlowerpot::getPlantFromSeed(MyroomAddItemNo) != FLOWERPOT_PLANT_NONE)
     {
         // Planting a seed in the flowerpot
-        PChar->pushPacket<CMessageStandardPacket>(MyroomAddItemNo, MsgStd::MooglePlantsSeeds);
+        PChar->pushPacket<GP_SERV_COMMAND_MESSAGE>(MyroomAddItemNo, MsgStd::MooglePlantsSeeds);
         PPotItem->cleanPot();
         PPotItem->setPlant(CItemFlowerpot::getPlantFromSeed(MyroomAddItemNo));
         PPotItem->setPlantTimestamp(earth_time::vanadiel_timestamp());
@@ -84,7 +85,7 @@ void GP_CLI_COMMAND_MYROOM_PLANT_ADD::process(MapSession* PSession, CCharEntity*
     else if (MyroomAddItemNo >= FIRE_CRYSTAL && MyroomAddItemNo <= DARK_CLUSTER)
     {
         // Feeding the plant a crystal
-        PChar->pushPacket<CMessageStandardPacket>(MyroomAddItemNo, MsgStd::MoogleUsesItemOnPLant);
+        PChar->pushPacket<GP_SERV_COMMAND_MESSAGE>(MyroomAddItemNo, MsgStd::MoogleUsesItemOnPLant);
         if (PPotItem->getStage() == FLOWERPOT_STAGE_FIRST_SPROUTS_CRYSTAL)
         {
             PPotItem->setFirstCrystalFeed(CItemFlowerpot::getElementFromItem(MyroomAddItemNo));
@@ -107,11 +108,11 @@ void GP_CLI_COMMAND_MYROOM_PLANT_ADD::process(MapSession* PSession, CCharEntity*
         db::preparedStmt("UPDATE char_inventory SET extra = ? WHERE charid = ? AND location = ? AND slot = ? LIMIT 1",
                          PPotItem->m_extra, PChar->id, PPotItem->getLocationID(), PPotItem->getSlotID());
 
-        PChar->pushPacket<CFurnitureInteractPacket>(PPotItem, MyroomPlantCategory, MyroomPlantItemIndex);
+        PChar->pushPacket<GP_SERV_COMMAND_MYROOM_OPERATION>(PPotItem, static_cast<CONTAINER_ID>(MyroomPlantCategory), MyroomPlantItemIndex);
 
-        PChar->pushPacket<CInventoryItemPacket>(PPotItem, MyroomPlantCategory, MyroomPlantItemIndex);
+        PChar->pushPacket<GP_SERV_COMMAND_ITEM_ATTR>(PPotItem, static_cast<CONTAINER_ID>(MyroomPlantCategory), MyroomPlantItemIndex);
 
         charutils::UpdateItem(PChar, MyroomAddCategory, MyroomAddItemIndex, -1);
-        PChar->pushPacket<CInventoryFinishPacket>();
+        PChar->pushPacket<GP_SERV_COMMAND_ITEM_SAME>();
     }
 }

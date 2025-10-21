@@ -126,6 +126,7 @@ xi.additionalEffect.procType =
     ABSORB_STATUS = 11,
     SELF_BUFF     = 12,
     DEATH         = 13,
+    NM_SPECIFIC   = 14,
 }
 
 -- TODO: add resistance check for params.element
@@ -397,6 +398,89 @@ xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HPMPTP_DRAIN] = f
     }
 
     return xi.additionalEffect.procFunctions[drainFuncs[drainRoll]](attacker, defender, item, params)
+end
+
+-- NM-specific additional effects configuration table
+-- Options: requiredItem, specialAction, customSubEffect, customMsgID, customMsgParam
+-- Add new entries here: ['NM_Name'] = { requiredItem = xi.item.ITEM_ID, specialAction = function() }
+xi.additionalEffect.nmSpecificConfigs = {
+    ['Brigandish_Blade'] = {
+        requiredItem = xi.item.BUCCANEERS_KNIFE,
+        specialAction = function(defender)
+            -- If Brigandish Blade has damage immunity (at 1% HP), remove it
+            if defender:getMod(xi.mod.UDMGPHYS) == -10000 then
+                -- Remove all damage immunities
+                defender:setMod(xi.mod.UDMGPHYS, 0)
+                defender:setMod(xi.mod.UDMGRANGE, 0)
+                defender:setMod(xi.mod.UDMGMAGIC, 0)
+                defender:setMod(xi.mod.UDMGBREATH, 0)
+
+                defender:setLocalVar('killable', 1)
+                defender:setUnkillable(false)
+            end
+        end,
+    },
+    ['Seiryu'] = {
+        requiredItem = xi.item.ZEPHYR,
+        specialAction = function(defender)
+            defender:setMobMod(xi.mobMod.ADD_EFFECT, 0)
+        end,
+    },
+    ['Genbu'] = {
+        requiredItem = xi.item.ANTARCTIC_WIND,
+        specialAction = function(defender)
+            defender:setMobMod(xi.mobMod.ADD_EFFECT, 0)
+        end,
+    },
+    ['Suzaku'] = {
+        requiredItem = xi.item.ARCTIC_WIND,
+        specialAction = function(defender)
+            defender:setMobMod(xi.mobMod.ADD_EFFECT, 0)
+        end,
+    },
+    ['Byakko'] = {
+        requiredItem = xi.item.EAST_WIND,
+        specialAction = function(defender)
+            defender:setMobMod(xi.mobMod.ADD_EFFECT, 0)
+        end,
+    },
+}
+
+-- NM_SPECIFIC additional effect trigger
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.NM_SPECIFIC] = function(attacker, defender, item, params)
+    local subEffect = params.subEffect
+    local msgID     = 0
+    local msgParam  = 0
+    local defenderName = defender:getName()
+
+    local config = xi.additionalEffect.nmSpecificConfigs[defenderName]
+    if
+        config and
+        (config.requiredItem == item:getID() or
+        config.requiredItem == xi.item.NONE)
+    then
+        -- Calculate damage
+        local damage = xi.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
+        msgID = xi.msg.basic.ADD_EFFECT_DMG
+        msgParam = damage
+
+        -- Execute special action if configured
+        if config.specialAction then
+            config.specialAction(defender)
+        end
+
+        subEffect = config.customSubEffect or subEffect
+        msgID = config.customMsgID or msgID
+        msgParam = config.customMsgParam or msgParam
+    else
+        if defender and item then
+            defender:setLocalVar('aeFromItemId', item:getID())
+        end
+
+        return 0, 0, 0
+    end
+
+    return subEffect, msgID, msgParam
 end
 
 -- paralyze on hit, fire damage on hit, etc.

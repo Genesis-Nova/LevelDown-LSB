@@ -22,15 +22,17 @@
 #include "roe.h"
 
 #include "common/timer.h"
+#include "enums/chat_message_type.h"
 #include "lua/luautils.h"
 #include "map_engine.h"
-#include "packets/chat_message.h"
+#include "packets/s2c/0x017_chat_std.h"
+#include "packets/s2c/0x029_battle_message.h"
 #include "utils/charutils.h"
 #include "utils/zoneutils.h"
 
-#include "packets/char_spells.h"
-#include "packets/roe_questlog.h"
-#include "packets/roe_update.h"
+#include "packets/s2c/0x0aa_magic_data.h"
+#include "packets/s2c/0x111_roe_activelog.h"
+#include "packets/s2c/0x112_roe_log.h"
 
 #define ROE_CACHETIME 15s
 
@@ -254,7 +256,7 @@ namespace roeutils
 
         for (int i = 0; i < 4; i++)
         {
-            PChar->pushPacket<CRoeQuestLogPacket>(PChar, i);
+            PChar->pushPacket<GP_SERV_COMMAND_ROE_LOG>(PChar, i);
         }
 
         charutils::SaveEminenceData(PChar);
@@ -300,7 +302,7 @@ namespace roeutils
         if (!roeutils::RoeSystem.ImplementedRecords.test(recordID))
         {
             std::string message = "The record #" + std::to_string(recordID) + " is not implemented at this time.";
-            PChar->pushPacket<CChatMessagePacket>(PChar, MESSAGE_NS_SAY, message, "RoE System");
+            PChar->pushPacket<GP_SERV_COMMAND_CHAT_STD>(PChar, MESSAGE_NS_SAY, message, "RoE System");
             return false;
         }
 
@@ -313,8 +315,8 @@ namespace roeutils
                 PChar->m_eminenceLog.active[i] = recordID;
                 PChar->m_eminenceCache.activemap.set(recordID);
 
-                PChar->pushPacket<CRoeUpdatePacket>(PChar);
-                PChar->pushPacket<CMessageBasicPacket>(PChar, PChar, recordID, 0, MSGBASIC_ROE_START);
+                PChar->pushPacket<GP_SERV_COMMAND_ROE_ACTIVELOG>(PChar);
+                PChar->pushPacket<GP_SERV_COMMAND_BATTLE_MESSAGE>(PChar, PChar, recordID, 0, MSGBASIC_ROE_START);
                 charutils::SaveEminenceData(PChar);
                 return true;
             }
@@ -342,7 +344,7 @@ namespace roeutils
                     std::swap(PChar->m_eminenceLog.active[j], PChar->m_eminenceLog.active[j + 1]);
                     std::swap(PChar->m_eminenceLog.progress[j], PChar->m_eminenceLog.progress[j + 1]);
                 }
-                PChar->pushPacket<CRoeUpdatePacket>(PChar);
+                PChar->pushPacket<GP_SERV_COMMAND_ROE_ACTIVELOG>(PChar);
                 charutils::SaveEminenceData(PChar);
                 return true;
             }
@@ -382,7 +384,7 @@ namespace roeutils
                 }
 
                 PChar->m_eminenceLog.progress[i] = progress;
-                PChar->pushPacket<CRoeUpdatePacket>(PChar);
+                PChar->pushPacket<GP_SERV_COMMAND_ROE_ACTIVELOG>(PChar);
                 SaveEminenceDataNice(PChar);
                 return true;
             }
@@ -403,7 +405,7 @@ namespace roeutils
 
         if (sendUpdate)
         {
-            PChar->pushPacket<CCharSpellsPacket>(PChar);
+            PChar->pushPacket<GP_SERV_COMMAND_MAGIC_DATA>(PChar);
         }
     }
 
@@ -505,11 +507,11 @@ namespace roeutils
         auto timedRecordID              = GetActiveTimedRecord();
         PChar->m_eminenceLog.active[30] = timedRecordID;
         PChar->m_eminenceCache.activemap.set(timedRecordID);
-        PChar->pushPacket<CRoeUpdatePacket>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_ROE_ACTIVELOG>(PChar);
 
         if (timedRecordID)
         {
-            PChar->pushPacket<CMessageBasicPacket>(PChar, PChar, timedRecordID, 0, MSGBASIC_ROE_TIMED);
+            PChar->pushPacket<GP_SERV_COMMAND_BATTLE_MESSAGE>(PChar, PChar, timedRecordID, 0, MSGBASIC_ROE_TIMED);
             SetEminenceRecordCompletion(PChar, timedRecordID, false);
         }
     }
@@ -525,7 +527,7 @@ namespace roeutils
                 PChar->m_eminenceLog.progress[i] = 0;
             }
         }
-        PChar->pushPacket<CRoeUpdatePacket>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_ROE_ACTIVELOG>(PChar);
 
         // Set completion for daily records to 0
         for (auto record : RoeSystem.DailyRecordIDs)
@@ -547,7 +549,7 @@ namespace roeutils
 
         for (int i = 0; i < 4; i++)
         {
-            PChar->pushPacket<CRoeQuestLogPacket>(PChar, i);
+            PChar->pushPacket<GP_SERV_COMMAND_ROE_LOG>(PChar, i);
         }
     }
 
@@ -603,7 +605,7 @@ namespace roeutils
                 PChar->m_eminenceLog.progress[i] = 0;
             }
         }
-        PChar->pushPacket<CRoeUpdatePacket>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_ROE_ACTIVELOG>(PChar);
 
         // Set completion for daily records to 0
         for (auto record : RoeSystem.WeeklyRecordIDs)
@@ -626,7 +628,7 @@ namespace roeutils
 
         for (int i = 0; i < 4; i++)
         {
-            PChar->pushPacket<CRoeQuestLogPacket>(PChar, i);
+            PChar->pushPacket<GP_SERV_COMMAND_ROE_LOG>(PChar, i);
         }
     }
 

@@ -38,7 +38,7 @@ enum MOBMODIFIER : int
     MOBMOD_GA_CHANCE              = 7,  // % chance to use -ga spell
     MOBMOD_HEAL_CHANCE            = 8,  // % chance to use heal
     MOBMOD_HP_HEAL_CHANCE         = 9,  // can cast cures below this HP %
-    MOBMOD_SUBLINK                = 10, // sub link group
+    MOBMOD_SUBLINK                = 10, // Sub link group. Enables mobs from different families to link if they share a SUBLINK value.
     MOBMOD_LINK_RADIUS            = 11, // link radius
     MOBMOD_SEES_THROUGH_ILLUSION  = 12, // Mob can see through the Illusion effect that grants effects similar to Sneak & Invisible without this mod and allows aggro (see Viscious Liquid in mamook)
     MOBMOD_SEVERE_SPELL_CHANCE    = 13, // % chance to use a severe spell like death or impact
@@ -114,6 +114,11 @@ enum MOBMODIFIER : int
     MOBMOD_CLAIM_TYPE             = 83, // Changes the claim behavior of the mob. See ClaimType enum.
     MOBMOD_NO_SPELL_COST          = 84, // Mob does not use MP when casting spells
     MOBMOD_ASTRAL_PET_OFFSET      = 85, // If non-zero, defines the offset from main mob's ID for astral flow (if zero, will assume offset of 2)
+    MOBMOD_BASE_DAMAGE_MULTIPLIER = 86, // Multiplies the mob's base damage. Example: 150 = x1.5
+    MOBMOD_DAMAGE_OFFSET          = 87, // Adds or subtracts the mob's base damage offset.
+    MOBMOD_RANGED_DAMAGE_OFFSET   = 88, // Adds or subtracts the mob's ranged base damage offset.
+    AVATAR_PETID                  = 89, // A value from xi.petId to select model/ability from when owner uses astral flow
+    AVATAR_ASTRAL_DELAY           = 90, // Number of milliseconds to delay AF after avatar spawn
 };
 
 #endif
