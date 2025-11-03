@@ -38,9 +38,6 @@
 
 #include "packets/char_status.h"
 #include "packets/char_sync.h"
-#include "packets/conquest_map.h"
-#include "packets/objective_utility.h"
-#include "packets/quest_mission_log.h"
 #include "packets/s2c/0x009_message.h"
 #include "packets/s2c/0x00b_logout.h"
 #include "packets/s2c/0x01b_job_info.h"
@@ -99,16 +96,23 @@
 #include "zoneutils.h"
 
 #include "enums/key_items.h"
+#include "enums/quest_log.h"
 #include "items/item_furnishing.h"
 #include "items/item_linkshell.h"
 #include "packets/s2c/0x029_battle_message.h"
 #include "packets/s2c/0x044_extended_job_blu.h"
 #include "packets/s2c/0x044_extended_job_mon.h"
 #include "packets/s2c/0x044_extended_job_pup.h"
+#include "packets/s2c/0x056_mission.h"
+#include "packets/s2c/0x056_mission_other.h"
+#include "packets/s2c/0x056_mission_tvr.h"
+#include "packets/s2c/0x05e_conquest.h"
 #include "packets/s2c/0x063_miscdata_job_points.h"
 #include "packets/s2c/0x063_miscdata_merits.h"
 #include "packets/s2c/0x063_miscdata_monstrosity.h"
 #include "packets/s2c/0x063_miscdata_unity.h"
+#include "packets/s2c/0x075_battlefield.h"
+#include "packets/s2c/0x0df_group_attr.h"
 #include "packets/s2c/0x110_unity.h"
 #include "packets/s2c/0x111_roe_activelog.h"
 #include "packets/s2c/0x112_roe_log.h"
@@ -406,6 +410,7 @@ namespace charutils
                                "nation, "
                                "pos_zone, "
                                "pos_prevzone, "
+                               "pos_prevzonelineid, "
                                "pos_rot, "
                                "pos_x, "
                                "pos_y, "
@@ -448,15 +453,17 @@ namespace charutils
             PChar->targid = 0x400;
             PChar->SetName(rset->get<std::string>("charname").c_str());
 
-            PChar->loc.destination = rset->get<uint16>("pos_zone");
-            PChar->loc.prevzone    = rset->get<uint16>("pos_prevzone");
-            PChar->loc.p.rotation  = rset->get<uint8>("pos_rot");
-            PChar->loc.p.x         = rset->get<float>("pos_x");
-            PChar->loc.p.y         = rset->get<float>("pos_y");
-            PChar->loc.p.z         = rset->get<float>("pos_z");
-            PChar->m_moghouseID    = rset->get<uint32>("moghouse");
-            PChar->loc.boundary    = rset->get<uint16>("boundary");
-            PChar->accid           = rset->get<uint32>("accid");
+            PChar->loc.destination  = rset->get<uint16>("pos_zone");
+            PChar->loc.prevzone     = rset->get<uint16>("pos_prevzone");
+            PChar->m_PrevZonelineID = rset->get<uint32>("pos_prevzonelineid");
+
+            PChar->loc.p.rotation = rset->get<uint8>("pos_rot");
+            PChar->loc.p.x        = rset->get<float>("pos_x");
+            PChar->loc.p.y        = rset->get<float>("pos_y");
+            PChar->loc.p.z        = rset->get<float>("pos_z");
+            PChar->m_moghouseID   = rset->get<uint32>("moghouse");
+            PChar->loc.boundary   = rset->get<uint16>("boundary");
+            PChar->accid          = rset->get<uint32>("accid");
 
             PChar->profile.home_point.destination = rset->get<uint16>("home_zone");
             PChar->profile.home_point.p.rotation  = rset->get<uint8>("home_rot");
@@ -1200,35 +1207,162 @@ namespace charutils
 
     void SendQuestMissionLog(CCharEntity* PChar)
     {
-        // Quests (Current + Completed):
-        // --------------------------------
-        for (int8 areaID = 0; areaID <= QUESTS_COALITION; areaID++)
+        // Actual verified retail order.
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Sandoria);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Bastok);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Windurst);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Jeuno);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::OtherAreas);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Outlands);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::AhtUrghan);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::CrystalWar);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Sandoria);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Bastok);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Windurst);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Jeuno);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::OtherAreas);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Outlands);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::AhtUrghan);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::CrystalWar);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, MissionComplete::Nations);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, MissionComplete::ToAU_WoTG);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, MissionComplete::Campaign1);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, MissionComplete::Campaign2);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Abyssea);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Abyssea);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Adoulin);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Adoulin);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Coalition);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Coalition);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::MISSION>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_MISSION::TVR>(PChar);
+    }
+
+    void SendPartialMissionLog(CCharEntity* PChar, const MissionLog log, const bool completed)
+    {
+        switch (log)
         {
-            PChar->pushPacket<CQuestMissionLogPacket>(PChar, areaID, LOG_QUEST_CURRENT);
-            PChar->pushPacket<CQuestMissionLogPacket>(PChar, areaID, LOG_QUEST_COMPLETE);
+            case MissionLog::Sandoria:
+            case MissionLog::Bastok:
+            case MissionLog::Windurst:
+            case MissionLog::Zilart:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, MissionComplete::Nations)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::MISSION>(PChar);
+                break;
+            }
+            case MissionLog::ToAU:
+            case MissionLog::WoTG:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, MissionComplete::ToAU_WoTG)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::AhtUrghan);
+                break;
+            }
+            case MissionLog::Assault:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::AhtUrghan)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::AhtUrghan);
+                break;
+            }
+            case MissionLog::Campaign:
+            {
+                if (completed)
+                {
+                    PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, MissionComplete::Campaign1);
+                    PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, MissionComplete::Campaign2);
+                }
+                else
+                {
+                    // Not a typo...
+                    PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::AhtUrghan);
+                }
+                break;
+            }
+            case MissionLog::CoP:
+            case MissionLog::ACP:
+            case MissionLog::AMK:
+            case MissionLog::ASA:
+            case MissionLog::SoA:
+            case MissionLog::RoV:
+            {
+                // These expansions store both completed and in-progress in the same structure
+                PChar->pushPacket<GP_SERV_COMMAND_MISSION::MISSION>(PChar);
+                break;
+            }
         }
+    }
 
-        // Completed Missions:
-        // --------------------------------
-        // Completed missions for Nation + Zilart Missions are all sent in single packet
-        PChar->pushPacket<CQuestMissionLogPacket>(PChar, MISSION_ZILART, LOG_MISSION_COMPLETE);
-
-        // Completed missions for TOAU and WOTG are sent in the same packet
-        PChar->pushPacket<CQuestMissionLogPacket>(PChar, MISSION_TOAU, LOG_MISSION_COMPLETE);
-
-        // Completed Assaults were sent in the same packet as completed TOAU quests
-
-        // Completed Campaign Operations
-        PChar->pushPacket<CQuestMissionLogPacket>(PChar, MISSION_CAMPAIGN, LOG_MISSION_COMPLETE);
-        PChar->pushPacket<CQuestMissionLogPacket>(PChar, MISSION_CAMPAIGN, LOG_CAMPAIGN_TWO);
-
-        // Current Missions:
-        // --------------------------------
-        // Current TOAU, Assault, WOTG, and Campaign mission were sent in the same packet as current TOAU quests
-
-        // Current Nation, Zilart, COP, Add-On, SOA, and ROV missions are all sent in a shared, single packet.
-        // So sending this packet updates multiple Mission logs at once.
-        PChar->pushPacket<CQuestMissionLogPacket>(PChar, MISSION_ZILART, LOG_MISSION_CURRENT);
+    void SendPartialQuestLog(CCharEntity* PChar, const QuestLog log, const bool completed)
+    {
+        switch (log)
+        {
+            case QuestLog::Sandoria:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Sandoria)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Sandoria);
+                break;
+            }
+            case QuestLog::Bastok:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Bastok)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Bastok);
+                break;
+            }
+            case QuestLog::Windurst:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Windurst)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Windurst);
+                break;
+            }
+            case QuestLog::Jeuno:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Jeuno)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Jeuno);
+                break;
+            }
+            case QuestLog::OtherAreas:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::OtherAreas)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::OtherAreas);
+                break;
+            }
+            case QuestLog::Outlands:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Outlands)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Outlands);
+                break;
+            }
+            case QuestLog::AhtUrghan:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::AhtUrghan)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::AhtUrghan);
+                break;
+            }
+            case QuestLog::CrystalWar:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::CrystalWar)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::CrystalWar);
+                break;
+            }
+            case QuestLog::Abyssea:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Abyssea)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Abyssea);
+                break;
+            }
+            case QuestLog::Adoulin:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Adoulin)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Adoulin);
+                break;
+            }
+            case QuestLog::Coalition:
+            {
+                completed ? PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestComplete::Coalition)
+                          : PChar->pushPacket<GP_SERV_COMMAND_MISSION::OTHER>(PChar, QuestOffer::Coalition);
+                break;
+            }
+        }
     }
 
     void SendRecordsOfEminenceLog(CCharEntity* PChar)
@@ -1459,6 +1593,18 @@ namespace charutils
         }
     }
 
+    // Server sends a specific set of packets when certain player information change.
+    void SendLocalPlayerPackets(CCharEntity* PChar)
+    {
+        PChar->pushPacket<GP_SERV_COMMAND_GROUP_ATTR>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_CLISTATUS>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_CLISTATUS2>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_ABIL_RECAST>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_MISCDATA::MERITS>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_MISCDATA::MONSTROSITY1>(PChar);
+        PChar->pushPacket<GP_SERV_COMMAND_MISCDATA::JOB_POINTS>(PChar);
+    }
+
     /************************************************************************
      *                                                                       *
      *  Add a new item to the character in the selected container            *
@@ -1667,7 +1813,7 @@ namespace charutils
                 {
                     PItemContainer->InsertItem(nullptr, SlotID);
 
-                    PChar->pushPacket<GP_SERV_COMMAND_ITEM_ATTR>(nullptr, static_cast<CONTAINER_ID>(LocationID), SlotID);
+                    PChar->pushPacket<GP_SERV_COMMAND_ITEM_ATTR>(nullptr, static_cast<CONTAINER_ID>(LocationID), SlotID, PItemContainer->GetItem(NewSlotID));
                     PChar->pushPacket<GP_SERV_COMMAND_ITEM_ATTR>(PItemContainer->GetItem(NewSlotID), static_cast<CONTAINER_ID>(LocationID), NewSlotID);
                     return NewSlotID;
                 }
@@ -5330,7 +5476,7 @@ namespace charutils
             if (PChar->StatusEffectContainer->HasStatusEffect(EFFECT_SANCTION) && (region >= REGION_TYPE::WEST_AHT_URHGAN && region <= REGION_TYPE::ALZADAAL))
             {
                 charutils::AddPoints(PChar, "imperial_standing", (int32)(exp * 0.1f));
-                PChar->pushPacket<CConquestPacket>(PChar);
+                PChar->pushPacket<GP_SERV_COMMAND_CONQUEST>(PChar);
             }
 
             // Cruor Drops in Abyssea zones.
@@ -5702,6 +5848,17 @@ namespace charutils
                          "WHERE charid = ? "
                          "LIMIT 1",
                          PChar->m_ZonesVisitedList, PChar->id);
+    }
+
+    void SavePrevZoneLineID(CCharEntity* PChar, uint32 ZoneLineID)
+    {
+        TracyZoneScoped;
+
+        db::preparedStmt("UPDATE chars "
+                         "SET pos_prevzonelineid = ? "
+                         "WHERE charid = ? "
+                         "LIMIT 1",
+                         ZoneLineID, PChar->id);
     }
 
     void SaveCharEquip(CCharEntity* PChar)
@@ -7182,7 +7339,7 @@ namespace charutils
 
     void SendTimerPacket(CCharEntity* PChar, uint32 seconds)
     {
-        PChar->pushPacket<CObjectiveUtilityPacket>(seconds);
+        PChar->pushPacket<GP_SERV_COMMAND_BATTLEFIELD>(seconds);
     }
 
     void SendTimerPacket(CCharEntity* PChar, timer::duration dur)
@@ -7193,7 +7350,7 @@ namespace charutils
 
     void SendClearTimerPacket(CCharEntity* PChar)
     {
-        PChar->pushPacket<CObjectiveUtilityPacket>();
+        PChar->pushPacket<GP_SERV_COMMAND_BATTLEFIELD>();
     }
 
     earth_time::time_point getTraverserEpoch(CCharEntity* PChar)

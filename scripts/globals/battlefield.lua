@@ -991,7 +991,10 @@ function Battlefield:onBattlefieldInitialize(battlefield)
     end
 
     for mobId, path in pairs(self.paths) do
-        GetMobByID(mobId):pathThrough(path, xi.path.flag.PATROL)
+        local mEntity = GetMobByID(mobId)
+        if mEntity then
+            mEntity:pathThrough(path, xi.path.flag.PATROL)
+        end
     end
 
     self:setupBattlefield(battlefield)
@@ -1478,9 +1481,11 @@ function BattlefieldQuest:new(data)
     local obj = Battlefield:new(data)
     setmetatable(obj, self)
 
-    obj.questArea  = data.questArea
-    obj.quest      = data.quest
-    obj.canLoseExp = data.canLoseExp or false
+    obj.questArea     = data.questArea
+    obj.quest         = data.quest
+    obj.canLoseExp    = data.canLoseExp or false
+    obj.requiredVar   = data.requiredVar
+    obj.requiredValue = data.requiredValue
 
     return obj
 end

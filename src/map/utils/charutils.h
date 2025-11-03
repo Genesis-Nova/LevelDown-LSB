@@ -27,6 +27,8 @@
 #include "items/item_equipment.h"
 #include "zone.h"
 
+enum class MissionLog : uint8_t;
+enum class QuestLog : uint8_t;
 enum class KeyItem : uint16_t;
 class CPetEntity;
 class CMobEntity;
@@ -72,11 +74,14 @@ namespace charutils
     void LoadEquip(CCharEntity* PChar);
 
     void SendQuestMissionLog(CCharEntity* PChar);
+    void SendPartialMissionLog(CCharEntity* PChar, MissionLog log, bool completed);
+    void SendPartialQuestLog(CCharEntity* PChar, QuestLog log, bool completed);
     void SendRecordsOfEminenceLog(CCharEntity* PChar);
     void SendKeyItems(CCharEntity* PChar);
     void SendInventory(CCharEntity* PChar);
     void SendUnityPackets(CCharEntity* PChar);
     void SendExtendedJobPackets(CCharEntity* PChar);
+    void SendLocalPlayerPackets(CCharEntity* PChar);
 
     void CalculateStats(CCharEntity* PChar);
     void UpdateSubJob(CCharEntity* PChar);
@@ -194,24 +199,25 @@ namespace charutils
     void SaveCharInventoryCapacity(CCharEntity* PChar); // save Character inventory capacity
     void SaveSpell(CCharEntity* PChar, uint16 spellID); // save learned spells
     void DeleteSpell(CCharEntity* PChar, uint16 spellID);
-    void SaveLearnedAbilities(CCharEntity* PChar);                // save learned abilities (e.g., corsair rolls)
-    void SaveTitles(CCharEntity* PChar);                          // save character's titles
-    void SaveCharStats(CCharEntity* PChar);                       // save flags, current values of character stats (jobs/HP/MP/etc.)
-    void SaveCharGMLevel(CCharEntity* PChar);                     // save the character's gm level
-    void SaveMentorFlag(CCharEntity* PChar);                      // save the character's mentor flag
-    void SaveJobMasterDisplay(CCharEntity* PChar);                // Save the character's job master display status
-    void SavePlayerSettings(CCharEntity* PChar);                  // save the character's settings
-    void SaveChatFilterFlags(CCharEntity* PChar);                 // save the character's chat filters
-    void SaveLanguages(CCharEntity* PChar);                       // save the character's language preference
-    void SaveCharNation(CCharEntity* PChar);                      // save the character's nation of allegiance
-    void SaveCampaignAllegiance(const CCharEntity* PChar);        // save the character's campaign allegiance
-    void SaveCharMoghancement(const CCharEntity* PChar);          // save the character's current moghancement
-    void SaveCharSkills(const CCharEntity* PChar, uint8 skillID); // save the character's skills
-    void SaveTeleport(CCharEntity* PChar, TELEPORT_TYPE type);    // save the character's teleports (homepoints, outposts, maws, etc)
-    void SaveDeathTime(CCharEntity* PChar);                       // save when this character last died
-    void SavePlayTime(CCharEntity* PChar);                        // save this character's total play time
-    void SaveLastLogout(const CCharEntity* PChar);                // save the last logout time of this character
-    bool hasMogLockerAccess(const CCharEntity* PChar);            // true if have access, false otherwise
+    void SaveLearnedAbilities(CCharEntity* PChar);                  // save learned abilities (e.g., corsair rolls)
+    void SaveTitles(CCharEntity* PChar);                            // save character's titles
+    void SaveCharStats(CCharEntity* PChar);                         // save flags, current values of character stats (jobs/HP/MP/etc.)
+    void SaveCharGMLevel(CCharEntity* PChar);                       // save the character's gm level
+    void SaveMentorFlag(CCharEntity* PChar);                        // save the character's mentor flag
+    void SaveJobMasterDisplay(CCharEntity* PChar);                  // Save the character's job master display status
+    void SavePlayerSettings(CCharEntity* PChar);                    // save the character's settings
+    void SaveChatFilterFlags(CCharEntity* PChar);                   // save the character's chat filters
+    void SaveLanguages(CCharEntity* PChar);                         // save the character's language preference
+    void SaveCharNation(CCharEntity* PChar);                        // save the character's nation of allegiance
+    void SaveCampaignAllegiance(const CCharEntity* PChar);          // save the character's campaign allegiance
+    void SaveCharMoghancement(const CCharEntity* PChar);            // save the character's current moghancement
+    void SaveCharSkills(const CCharEntity* PChar, uint8 skillID);   // save the character's skills
+    void SaveTeleport(CCharEntity* PChar, TELEPORT_TYPE type);      // save the character's teleports (homepoints, outposts, maws, etc)
+    void SaveDeathTime(CCharEntity* PChar);                         // save when this character last died
+    void SavePlayTime(CCharEntity* PChar);                          // save this character's total play time
+    void SaveLastLogout(const CCharEntity* PChar);                  // save the last logout time of this character
+    void SavePrevZoneLineID(CCharEntity* PChar, uint32 ZoneLineID); // save the last zoneline the player crossed.
+    bool hasMogLockerAccess(const CCharEntity* PChar);              // true if have access, false otherwise
 
     uint8 getQuestStatus(CCharEntity* PChar, uint8 log, uint8 quest); // Get Quest status (used in FishingUtils.cpp, allows to fish quest specific mobs, like PLD AF NM)
 
