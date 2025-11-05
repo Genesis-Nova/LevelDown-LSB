@@ -926,7 +926,11 @@ uint16 CBattleEntity::ATT(SLOTTYPE slot)
     float strMultiplier = 0.5;
 
     // https://www.bg-wiki.com/ffxi/Strength
-    if (weapon && weapon->isTwoHanded()) // 2-handed weapon
+    if (objtype != TYPE_PC)
+    {
+        strMultiplier = 0.5;
+    }
+    else if (weapon && weapon->isTwoHanded()) // 2-handed weapon
     {
         strMultiplier = 1.0;
     }
