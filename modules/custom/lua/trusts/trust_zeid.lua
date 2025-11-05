@@ -5,7 +5,7 @@ require('modules/module_utils')
 require('scripts/globals/trust')
 require("scripts/globals/gambits")
 require("scripts/globals/magic")
-require("scripts/globals/utils")
+require("scripts/utils/utils") -- file dir changed
 require("scripts/globals/weaponskills")
 -----------------------------------
 local m = Module:new('trust_zeid')

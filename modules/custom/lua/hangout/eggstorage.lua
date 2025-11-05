@@ -73,7 +73,7 @@ local function createMainMenu(player, page)
         local egg = eggs[i]
         local balance = player:getCharVar(egg.var)
         table.insert(options, {
-            string.format('%s (You have: %d)', egg.name, balance),
+            string.format('%s (%d)', egg.name, balance),
             function(player)
             end
         })

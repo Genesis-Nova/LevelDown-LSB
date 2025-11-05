@@ -4,7 +4,8 @@
 require('modules/module_utils')
 require('scripts/globals/mobs')
 require('scripts/globals/player')
-require('scripts/enum/job_names')
+require('scripts/globals/npc_util')
+require("scripts/enum/job")
 -----------------------------------
 local m = Module:new('af_level_reward')
 

@@ -10,7 +10,8 @@ commandObj.cmdprops =
     parameters = 'i'
 }
 
-local buffOn = function(player)    local power        = 50
+local buffOn = function(player)
+    local power        = 50
     local regainPower  = 25
     local refreshPower = 10
     local regenPower   = 10
@@ -132,6 +133,20 @@ local buffOff = function(player)
     end
 end
 
+local buffOnCap = function(player)
+    player:addStatusEffect(xi.effect.COMMITMENT, 200, 0, 0, 0, 30000)
+    player:setCharVar('BuffLvl', player:getMainLvl())
+    player:setCharVar('BuffJob', player:getMainJob())
+    player:setCharVar('Buff', 2)
+end
+
+local buffOffCap = function(player)
+    player:setCharVar('Buff', 0)
+    player:setCharVar('BuffLvl', 0)
+    player:setCharVar('BuffJob', 0)
+    player:delStatusEffect(xi.effect.COMMITMENT)
+end
+
 commandObj.onTrigger = function(player)
     local state = player:getCharVar('Buff')
 
@@ -150,20 +165,24 @@ commandObj.onTrigger = function(player)
         return
     end
 
-    if player:getMainLvl() == 99 then
-        player:printToPlayer('Buff cannot be used at level 99.')
-        return
-    end
-
-    if state == 0 and -- add dedication and buffs for below 99
-        player:getMainLvl() <= 98 then
-            buffOn(player)
-            player:setCharVar('Buff', 1)
-            player:printToPlayer('Buff enabled.')
-    elseif state == 1 then
-        buffOff(player)
-        player:setCharVar('Buff',0)
-        player:printToPlayer('Buff disabled.')
+            if state == 0 and -- add only commitment for lvl 99 
+               player:getMainLvl() == 99 then
+                if player:hasStatusEffect(xi.effect.COMMITMENT) then
+                   return
+                   else
+                   buffOnCap(player)
+                   player:printToPlayer('Buff enabled.')
+                end
+            elseif state == 0 and -- add dedication and buffs for below 99
+                   player:getMainLvl() <= 98 then
+                   buffOn(player)
+                   player:printToPlayer('Buff enabled.')
+            elseif state == 1 then -- remove buff from below 99
+                   buffOff(player)
+                   player:printToPlayer('Buff disabled.')
+            elseif state == 2 then -- remove buff from 99
+                   buffOffCap(player)
+                   player:printToPlayer('Buff disabled.')
     end
 end
 

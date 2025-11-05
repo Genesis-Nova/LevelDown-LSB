@@ -1056,6 +1056,41 @@ local EGtrade =
 [61] = { trade = {1497, 1508, 1506, 1507, 1496, 1488, 1508, 15508}, reward = 15508, aug1 = 132, aug1MAX =  4}, --JUSTIAU justice torque
 [62] = { trade = {1499, 1502, 1509, 1492, 1507, 1488, 1508, 15514}, reward = 15514, aug1 = 144, aug1MAX =  4}, --LOVETAU love torque
 [63] = { trade = {1503, 1505, 1491, 1492, 1488, 15510, {1508, 2}},  reward = 15510, aug1 =  80, aug1MAX =  4}, --PRUDEAU prudence torque
+-- new trades Oct 22 2025
+[64] = { trade = {1488, 1494, 1502, 1496, 1492, {1489, 2}},  				reward = 'daily_tally'}, --AGOBBIE 500 Daily Tally Points
+--[65] = { trade = {1495, 1500, 1505, 1498, {1488, 2}, {1499, 2}},  	reward = 'current_hallamrks'}, --HALLMARK 500 Hallamrks
+--[66] = { trade = {1500, 1495, 1508, 1507, 1492, 1505, {1501, 2}},  	reward = 'DH_totalpoints'}, --NMHUNTER 250 Bad Havok Points
+[67] = { trade = {1489, 1499, 1501, 1494, {1505, 2}, {1488, 2}}, 	reward = 15807, aug1 =  53,	aug1MAX =  11}, --BALRARNG Balrahn's Ring (15807): Spell Interruption -12 AugID:53
+[68] = { trade = {1508, 1499, 1507, 1495, 1488, 1505, 1501, 1494}, 	reward = 15808, aug1 = 145, aug1MAX =  	4}, --ULTHARNG Ulthalam's Ring (15808): Counter +5 AugID:145
+[69] = { trade = {1497, 1499, 1513, 1505, 1501, 1494, {1488, 2}},  	reward = 15809, aug1 =  40, aug1MAX =  	8}, --JALZARNG Jalzahn's Ring (15809): Enmity -9 AugID:40
+[70] = { trade = {1489, 1499, 1501, 15807, {1488, 2}, {1505, 2}}, 	reward = 15807, aug1 =  53, aug1MAX =  11}, --BALRARN Balrahn's Ring (15807): Spell Interruption -12 AugID:53
+[71] = { trade = {1508, 1499, 1507, 1495, 1488, 1505, 1501, 15808}, reward = 15808, aug1 = 145, aug1MAX =  	4}, --ULTHARN Ulthalam's Ring (15808): Counter +5 AugID:145
+[72] = { trade = {1497, 1499, 1513, 1505, 1501, 15809, {1488, 2}},  reward = 15809, aug1 =  40, aug1MAX =  	8}, --JALZARN Jalzahn's Ring (15809): Enmity -9 AugID:40
+-- Divine might earrings
+[73] = { trade = {1506, 1508, 1492, 1505, {1503, 2}, {1488, 2}}, 	reward = 14739, aug1 =  299, aug1MAX =  4}, --SUPPAEAR Suppanomimi (14739) = Blue Magic skill +5 (AugID: 299)
+[74] = { trade = {1489, 1512, 1492, 1505, {1506, 2}, {1488, 2}}, 	reward = 14741, aug1 =  896, aug1MAX =  4}, --ABYSSEAR Abyssal Earring (14741) = Sword Enahncing Dmg+5 (AugID: 896)
+[75] = { trade = {1489, 1505, 1506, 1507, {1492, 2}, {1488, 2}}, 	reward = 14742, aug1 =  330, aug1MAX =  4}, --BEASTEAR Beastly Earring (14742) = Waltz Pot+5 (AugID: 330)
+[76] = { trade = {1489, 1508, 1506, 1495, 1496, 1492, 1488, 1505}, 	reward = 14743, aug1 = 1472, aug1MAX =  4}, --BUSHIEAR Bushinomimi (14743) = Parry Rate +5% (AugID: 1472)
+[77] = { trade = {1501, 1496, 1494, 1495, 1507, 1492, 1488, 1505}, 	reward = 14740, aug1 =  363, aug1MAX =  4}, --NIGHTEAR Knight's Earring (14740) = Chance of Block Succes +5 (AugID: 363)
+[78] = { trade = {1506, 1508, 1492, 14739, {1503, 2}, {1488, 2}}, 	reward = 14739, aug1 =  299, aug1MAX =  4}, --SUPPAEA Suppanomimi (14739) = Blue Magic skill +5 (AugID: 299)
+[79] = { trade = {1489, 1512, 1492, 14741, {1506, 2}, {1488, 2}}, 	reward = 14741, aug1 =  896, aug1MAX =  4}, --ABYSSEA Abyssal Earring (14741) = Sword Enahncing Dmg+5 (AugID: 896)
+[80] = { trade = {1489, 1506, 1507, 14742, {1492, 2}, {1488, 2}},  	reward = 14742, aug1 =  330, aug1MAX =  4}, --BEASTEA Beastly Earring (14742) = Waltz Pot+5 (AugID: 330)
+[81] = { trade = {1489, 1508, 1506, 1495, 1496, 1492, 1488, 14743}, reward = 14743, aug1 = 1472, aug1MAX =  4}, --BUSHIEA Bushinomimi (14743) = Parry Rate +5% (AugID: 1472)
+[82] = { trade = {1501, 1496, 1494, 1495, 1507, 1492, 1488, 14740}, reward = 14740, aug1 =  363, aug1MAX =  4}, --NIGHTEA Knight's Earring (14740) = Chance of Block Succes +5 (AugID: 363)
+[83] = { trade = {1488, 1506, 1488, 1501, 1491}, 							reward = 13095, aug1 =    0, aug1MAX =  0}, --ASAND Sand Charm (13095) Quest item droped via Pirate Ship Encounter
+-- Coborns adds
+--[84] = { trade = {1490, {1505, 2}, {1488, 2}, 1493, {1507, 2}, 1500, 1506, 1492}, reward = 28586}, --CRAFTMASTER Craftmaster Ring
+--[85] = { trade = {1502, {1505, 2}, 1509, {1488, 2}, {1496, 2}, 1499, 1501, 1494}, reward = 27591}, --ORVAAAIL Orvail Ring
+--[86] = { trade = {1488, {1505, 2}, 1507, 1493, 1496, 1490, 1492, 1506}, 		  reward = 28587}, --ARTFICERS Artificer's Ring
+-- Mats
+--[87]  = { trade = {1491, {1488, 3}, {1505, 2}, 1498, 1500, 1507}, 			  reward = 9062}, --DAARKMATR Dark Matter
+--[88]  = { trade = {{1488, 2}, 1491, {1492, 2}, 1493, 1496, 1506, 1510, 1507}, reward = 9007}, --AADEFISWET Defiant Sweat
+--[89]  = { trade = {{1488, 2}, 1500,  1490,  1499, 1495, 1502, 1505, 1501}, 	  reward = 9005}, --AMACLHORN Macuil Horn
+--[90]  = { trade = {{1507, 2}, {1488, 2}, 1505, 1490, 1495, 1496}, 		  	  reward = 9064}, --TARTCHAI Tartarian Chain
+--[91]  = { trade = {1488, 1503, {1499, 2}, 1509, 1491, 1492, 1493, 1500},	  reward = 9002}, --APLVDEFLM Plovid Effluvium
+--[92]  = { trade = {1488, 1507, 1495, 1502, 1508, 1490, 1505, 1512}, 		  reward = 4074}, --ATHOUCRY Thought Crystal
+--[93]  = { trade = {1488, 1495, 1502, 1503, 1492, 1490, 1505, 1512}, 		  reward = 4075}, --AHOPECRY Hope crystal
+--[94]  = { trade = {1488, 1493, 1508, {1499, 2}, 1490, 1505, 1512, 1506}, 	  reward = 4076}, --AFULLCRYS Fullfiment crystal
 
 }
         local tradedCombo = 0
@@ -1076,7 +1111,7 @@ local EGtrade =
             if tradedCombo == 29 then
                player:tradeComplete()
                player:addCurrency('login_points', 1500)
-               player:printToPlayer('Congratulations, you have obtained 1500 LogIn Points!.', 0, 'General')
+               player:printToPlayer('Congratulations, you have obtained 1500 LogIn Points!.', 0, 'General') 
             elseif tradedCombo == 34 then
                player:tradeComplete()
                player:setCharVar('[GMEvent]freefc', player:getCharVar('[GMEvent]freefc') +1)
@@ -1089,6 +1124,18 @@ local EGtrade =
                player:tradeComplete()
                player:addCurrency('spark_of_eminence', 25000)
                player:printToPlayer('Congratulations, you have obtained 25,000 Sparks!.', 0, 'General')
+			elseif tradedCombo == 64 then
+               player:tradeComplete()
+               player:addCurrency('daily_tally', 500)
+               player:printToPlayer('Congratulations, you have obtained 1,000 Daily Tally Points!.', 0, 'General')
+			elseif tradedCombo == 65 then
+               player:tradeComplete()
+               player:addCurrency('current_hallmarks', 500)
+               player:printToPlayer('Congratulations, you have obtained 500 Hallamrk Points!.', 0, 'General')
+			elseif tradedCombo == 66 then
+               player:tradeComplete()
+               player:setCharVar('DH_totalpoints', player:getCharVar('DH_totalpoints' +250))
+               player:printToPlayer('Congratulations, you have obtained 250 NM Hunt Points!.', 0, 'General')
             elseif tradedCombo == 31 then
                player:tradeComplete()
                player:addCurrency('unity_accolades', 10000)

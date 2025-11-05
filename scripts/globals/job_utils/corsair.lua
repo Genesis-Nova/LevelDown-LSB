@@ -3,6 +3,7 @@
 -----------------------------------
 require('scripts/globals/ability')
 require('scripts/globals/jobpoints')
+--require('scripts/globals/utils')
 -----------------------------------
 xi = xi or {}
 xi.job_utils = xi.job_utils or {}
@@ -156,13 +157,13 @@ local function applyRoll(caster, target, inAbility, action, total, isDoubleup, c
 
     -- Apply Additional Phantom Roll+ Buff
     local phantomBase = corsairRollMods[abilityId][2] -- Base increment buff
-    local phantomMult = 1
+    local phantomMult = caster:getMaxGearMod(xi.mod.PHANTOM_ROLL)
 
-    if caster:isPC() then 
-        phantomMult = caster:getMaxGearMod(xi.mod.PHANTOM_ROLL)
-    end
-
+    if caster:isPC() then
         effectpower       = effectpower + (phantomBase * phantomMult)
+    else
+        effectpower       = effectpower + phantomBase
+    end
 
     -- Effect Power varies depending on COR level (Main vs Sub)
     local actorLevel  = utils.getActiveJobLevel(caster, xi.job.COR)

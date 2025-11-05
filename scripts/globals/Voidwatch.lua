@@ -2,7 +2,7 @@
 -- Void Watch Global -- updated 4/27/2024 due to march 2024 retail id shift
 -----------------------------------
 require('scripts/globals/npc_util')
-require('scripts/globals/utils')
+require('scripts/utils/utils') --file dir changed
 require('scripts/globals/player')
 -----------------------------------
 xi = xi or {}

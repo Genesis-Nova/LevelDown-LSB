@@ -5,8 +5,15 @@
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    target:addMod(xi.mod.ENSPELL, xi.element.THUNDER)
-    target:addMod(xi.mod.ENSPELL_DMG, effect:getPower())
+	local basePower = effect:getPower()
+
+	 -- Triple En-spell damage if Composure is active and self-cast
+	if target:hasStatusEffect(xi.effect.COMPOSURE) then
+		basePower = basePower * 4.5
+	end
+
+	target:addMod(xi.mod.ENSPELL, xi.element.THUNDER) -- or STONE, AERO, etc.
+	target:addMod(xi.mod.ENSPELL_DMG, basePower)
 end
 
 effectObject.onEffectTick = function(target, effect)

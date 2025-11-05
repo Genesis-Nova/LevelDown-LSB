@@ -36,7 +36,7 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
     -- https://forum.square-enix.com/ffxi/threads/49425-Dec-10-2015-%28JST%29-Version-Update?p=567979&viewfull=1#post567979
     -- The attribute "Enhanced Magic Accuracy" has been added.
   if mob:getMaster():getMainLvl() == 99 then 
-  local power = mob:getMainLvl() * 1.1
+  local power = mob:getMainLvl() * 3
     mob:addMod(xi.mod.MACC, power)
     mob:addMod(xi.mod.MATT, power)
     mob:addStatusEffect(xi.effect.MAX_MP_BOOST, power, 0, 0)

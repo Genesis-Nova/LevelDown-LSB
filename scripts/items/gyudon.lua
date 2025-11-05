@@ -4,8 +4,8 @@
 -- Food Effect: 30Min, All Races
 -----------------------------------
 -- Enmity -5
--- Double Attack % 5
--- Weapon Skill Damage % 5
+-- Double Attack +5
+-- Weapon Skill Damage (All Hits) +5
 -----------------------------------
 ---@type TItemFood
 local itemObject = {}
@@ -14,7 +14,7 @@ itemObject.onItemCheck = function(target, item, param, caster)
     return xi.itemUtils.foodOnItemCheck(target, xi.foodType.BASIC)
 end
 
-itemObject.onItemUse = function(target, user, item, action)
+itemObject.onItemUse = function(target, user, item)
     target:addStatusEffect(xi.effect.FOOD, 0, 0, 1800, 0, 0, 0, xi.effectSourceType.FOOD, item:getID(), user:getID())
 end
 

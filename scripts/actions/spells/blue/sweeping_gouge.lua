@@ -21,7 +21,7 @@ end
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
     params.ecosystem = xi.ecosystem.BEASTMEN
-    params.tpmod = xi.spells.blue.tpMod.ACC
+    params.tpmod = TPMOD_ACC
     params.bonusacc = 0
     if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
         params.bonusacc = 70
@@ -31,28 +31,30 @@ spellObject.onSpellCast = function(caster, target, spell)
 
     params.attackType = xi.attackType.PHYSICAL
     params.damageType = xi.damageType.BLUNT
-    params.scattr = xi.skillchainType.IMPACTION
-    params.attribute = xi.mod.VIT
     params.scattr = xi.skillchainType.LIGHT
     params.scattr2 = xi.skillchainType.FRAGMENTATION
+	params.attribute = xi.mod.VIT
     params.numhits = 1
-    params.multiplier = 2.0
-    params.tp150 = 1.78
-    params.tp300 = 2.0
-    params.azuretp = 1.78
+    params.multiplier = 6.33
+    params.tp150 = 3.78
+    params.tp300 = 4.0
+	params.tp350 = 4.25
+    params.azuretp = 4.78
     params.duppercap = 99
-    params.str_wsc = 0.25
+    params.str_wsc = 0.75
     params.dex_wsc = 0.0
     params.vit_wsc = 0.0
     params.agi_wsc = 0.0
     params.int_wsc = 0.0
-    params.mnd_wsc = 0.25
+    params.mnd_wsc = 0.75
     params.chr_wsc = 0.0
+	
+  -- Handle status effects. effect, power, tik, duration
+    local effectTable =
+    {
+        [1] = { xi.effect.DEFENSE_DOWN,30, 0, 90 },
+    }
 
-    params.effect = xi.effect.DEFENSE_DOWN
-    local power = 10
-    local tick = 0
-    local duration = 90
     if caster:getTP() >= 1500 and caster:getTP() < 3000 then
           duration = 112
     elseif caster:getTP() == 3000 then
@@ -62,8 +64,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     end
 
     local damage = xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
-    xi.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
-
+		xi.spells.blue.applyBlueAdditionalEffect(caster, target, params, effectTable)
     return damage
 end
 

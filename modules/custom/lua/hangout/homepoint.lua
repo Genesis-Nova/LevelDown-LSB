@@ -382,7 +382,7 @@ page2 = -- too many to fit on one
         end,
     },
     {
-        'Next page.',
+        'Next',
         function(player)
          menu = {
                 title = 'Teleport to which region?',
@@ -462,18 +462,7 @@ page3 =
         end,
     },
     {
-        'Next page.',
-        function(player)
-         menu = {
-                title = 'Teleport to which region?',
-                options = {},
-                 }
-             menu.options = page4
-            delaySendMenu(player)          
-        end,
-    },
-    {
-        'Previous page.',
+        'Prev',
         function(player)
          menu = {
                 title = 'Teleport to which region?',
@@ -481,6 +470,17 @@ page3 =
                  }
              menu.options = page2
             delaySendMenu(player)        
+        end,
+    },
+	{
+        'Next',
+        function(player)
+         menu = {
+                title = 'Teleport to which region?',
+                options = {},
+                 }
+             menu.options = page4
+            delaySendMenu(player)          
         end,
     },
 }
@@ -553,18 +553,7 @@ page4 =
         end,
     },
     {
-        'Next page.',
-        function(player)
-         menu = {
-                title = 'Teleport to which region?',
-                options = {},
-                 }
-             menu.options = page5
-            delaySendMenu(player)          
-        end,
-    },
-    {
-        'Previous page.',
+        'Prev',
         function(player)
          menu = {
                 title = 'Teleport to which region?',
@@ -572,6 +561,17 @@ page4 =
                  }
              menu.options = page3
             delaySendMenu(player)        
+        end,
+    },
+	{
+        'Next',
+        function(player)
+         menu = {
+                title = 'Teleport to which region?',
+                options = {},
+                 }
+             menu.options = page5
+            delaySendMenu(player)          
         end,
     },
 }
@@ -644,18 +644,7 @@ page5 =
         end,
     },
     {
-        'Next page.',
-        function(player)
-         menu = {
-                title = 'Teleport to which region?',
-                options = {},
-                 }
-             menu.options = page6
-            delaySendMenu(player)          
-        end,
-    },
-    {
-        'Previous page.',
+        'Prev',
         function(player)
          menu = {
                 title = 'Teleport to which region?',
@@ -663,6 +652,17 @@ page5 =
                  }
              menu.options = page4
             delaySendMenu(player)        
+        end,
+    },
+	{
+        'Next',
+        function(player)
+         menu = {
+                title = 'Teleport to which region?',
+                options = {},
+                 }
+             menu.options = page6
+            delaySendMenu(player)          
         end,
     },
 }
@@ -724,18 +724,7 @@ page6 =
         end,
     },
     {
-        'Next page.',
-        function(player)
-         menu = {
-                title = 'Teleport to which region?',
-                options = {},
-                 }
-             menu.options = page7
-            delaySendMenu(player)          
-        end,
-    },
-    {
-        'Previous page.',
+        'Prev',
         function(player)
          menu = {
                 title = 'Teleport to which region?',
@@ -743,6 +732,17 @@ page6 =
                  }
              menu.options = page5
             delaySendMenu(player)        
+        end,
+    },
+	{
+        'Next',
+        function(player)
+         menu = {
+                title = 'Teleport to which region?',
+                options = {},
+                 }
+             menu.options = page7
+            delaySendMenu(player)          
         end,
     },
 }
@@ -793,7 +793,7 @@ page7 =
         end,
     },
     {
-        'Previous page.',
+        'Prev',
         function(player)
          menu = {
                 title = 'Teleport to which region?',

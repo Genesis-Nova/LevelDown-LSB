@@ -2,7 +2,7 @@
 -- Unity Wanted Battles Global
 -----------------------------------
 require('scripts/globals/npc_util')
-require('scripts/globals/utils')
+require('scripts/utils/utils') -- file dir changed
 require('scripts/globals/player')
 -----------------------------------
 

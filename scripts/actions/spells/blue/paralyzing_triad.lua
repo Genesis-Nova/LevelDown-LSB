@@ -23,13 +23,23 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.ecosystem = xi.ecosystem.ELEMENTAL
     params.tpmod = TPMOD_ACC
     params.tpmod = TPMOD_ATT
+	params.bonusacc = 0
+    if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusacc = 70
+    elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
+        params.bonusacc = math.floor(caster:getTP() / 50)
+    end
+	
     params.attackType = xi.attackType.PHYSICAL
     params.damageType = xi.damageType.SLASHING
     params.scattr = xi.skillchainType.GRAVITATION
     params.attribute = xi.mod.INT
     params.numhits = 3
-    params.multiplier = 3
-    params.tMultiplier = 1.25
+    params.multiplier = 3.0
+    params.tp150 = 3.25
+    params.tp300 = 3.5
+    params.tp350 = 3.6
+    params.azuretp = 4.53125
     params.duppercap = 19
     params.str_wsc = 0.7
     params.dex_wsc = 0.7
@@ -38,15 +48,17 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.int_wsc = 0.0
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
-
-    params.addedEffect = xi.effect.PARALYSIS
-    local power = 2500
-    local tick = 0
-    local duration = 60
-
-    xi.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
-
-    return xi.spells.blue.useMagicalSpell(caster, target, spell, params)
+	params.ignorefstrcap = true
+	
+	  -- Handle status effects. effect, power, tik, duration
+    local effectTable =
+    {
+        [1] = { xi.effect.PARALYSIS,2500, 0, 60 },
+    }
+   
+	local damage   = xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
+		xi.spells.blue.applyBlueAdditionalEffect(caster, target, params, effectTable)
+    return damage
 end
 
 return spellObject

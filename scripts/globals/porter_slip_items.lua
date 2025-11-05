@@ -2748,7 +2748,6 @@ local slipItems =
         xi.item.AKITU_SHIRT,
         xi.item.CRAB_CAP,
         xi.item.CRAB_CAP_P1,
-        xi.item.HALITUS_HELM,
         xi.item.SEIKA_UCHIWA,
         xi.item.SEIKA_UCHIWA_P1,
         xi.item.KAKAI_CAP,
@@ -2836,6 +2835,7 @@ local slipItems =
         xi.item.BYAKKO_MASQUE,
         xi.item.GRUDGE,
         xi.item.MODEL_SYNERGY_FURNACE,
+		xi.item.MODEL_SYNERGY_FURNACE_II, --TEST
         xi.item.MITHKABOB_SHIRT,
         xi.item.MUTSUNOKAMI,
         xi.item.MUTSUNOKAMI_P1,
@@ -2869,6 +2869,52 @@ local slipItems =
         xi.item.FELINE_HAGOITA,
         xi.item.FELINE_HAGOITA_P1,
         xi.item.BESIGILED_TABLE,
+		xi.item.ARK_SHIELD, --TEST
+		xi.item.MOOGLE_SHIRT,
+		xi.item.KORRIGAN_MALLET,
+		xi.item.ADENIUM_MALLET,
+		xi.item.CITRULLUS_MALLET,
+		xi.item.POROGGO_CASSOCK, --TEST
+		xi.item.POROGGO_CASSOCK_P1, --TEST
+		xi.item.LYCOPODIUM_MALLET,
+		xi.item.SUMMER_UCHIWA,
+		xi.item.COLIBRI_BED, --TEST
+		xi.item.MORBOL_APRON,
+		xi.item.DENIM_PANTS, --TEST
+		xi.item.DENIM_PANTS_P1, --TEST
+		xi.item.PAINTING_OF_BLUEBLADE_FELL, --TEST
+		xi.item.VAQUERO_HAT, --TEST
+		xi.item.KAGAMI_MOCHI, --TEST
+		xi.item.KNIT_CAP,
+		xi.item.KNIT_CAP_P1,
+		xi.item.PRISMATIC_CHEST, --TEST
+		xi.item.AGEIST, --TEST
+		xi.item.REGIS, --TEST
+		xi.item.POISON_AXE, --TEST
+		xi.item.POISON_AXE_P1, --TEST
+		xi.item.MAGICIANS_ROD, --TEST
+		xi.item.MAGICIANS_ROD_P1, --TEST
+		xi.item.AUCUBA_CROWN, --TEST
+		xi.item.IRATSUGO_HAPPI, --TEST
+		xi.item.IRATSUME_HAPPI, --TEST
+		xi.item.YAGYU_SHORTBLADE, --TEST
+		xi.item.YAGYU_SHORTBLADE_P1, --TEST
+		xi.item.ERUDITES_STAFF, --TEST
+		xi.item.ERUDITES_STAFF_P1, --TEST
+		xi.item.YULE_TALISMAN, --TEST
+		xi.item.MACANA, --TEST
+		xi.item.PAIR_OF_LIZARD_FANGS, --TEST
+		xi.item.PAIR_OF_LIZARD_FANGS_P1, --TEST
+		xi.item.ESOTERIC_ATHAME, --TEST
+		xi.item.EYRE_CAP, --TEST
+		xi.item.DISPATCHERS_AXE, --TEST
+		xi.item.HEBENUS_GILET,
+		xi.item.HEBENUS_BOXERS,
+		xi.item.HEBENUS_TOP,
+		xi.item.HEBENUS_SHORTS,
+		xi.item.KYUKOTO, --TEST
+		xi.item.PAIR_OF_DHALMEL_TROUSERS, --TEST
+		xi.item.TAJAWWUL, --TEST
     },
 
     [xi.item.MOOGLE_STORAGE_SLIP_23] =

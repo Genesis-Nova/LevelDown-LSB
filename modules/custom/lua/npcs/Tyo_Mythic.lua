@@ -238,20 +238,20 @@ page1 =
          end
     },
     {
-        'Check Alexandrite Balance!',
+        'Check Alex. Balance!',
          function(player)
                local storedalex = player:getCharVar('Alexandrite')
-               player:printToPlayer(string.format('You current Alexandrite Balance is %s alexandrites. ',storedalex), 0, 'Tyo') 
+               player:printToPlayer(string.format('You current Alex. Balance is %s alexandrites. ',storedalex), 0, 'Tyo') 
          end
     },
     {
-        'Retrieve stored Alexandrite!',
+        'Retrieve stored Alex.!',
         function(player)
-               player:printToPlayer('Please trade me gil in the amount of alexandrite you wish to withdraw', 0, 'Tyo')                      
+               player:printToPlayer('Please trade me gil in the amount of alex. you wish to withdraw', 0, 'Tyo')                      
         end,
     },
     {
-        'Next Page!',
+        'Next',
         function(player)
                     menu.options = page4
                     delaySendMenu(player)                 
@@ -261,7 +261,7 @@ page1 =
 page4 =
 {
     {
-        'Retrieve Upgraded Mythical!',
+        'Retrieve Upgraded Mythic!',
          function(player)
                  local MythUpgrade = player:getCharVar('MytWupgrade')
                  if MythUpgrade >= 1 then
@@ -349,7 +349,7 @@ page3 =
         end,
     },
     {
-        'Next Page!',
+        'Next',
         function(player)
                     menu.options = page5
                     delaySendMenu(player)                 
@@ -398,14 +398,14 @@ page5 =
         end,
     },
     {
-        'Next Page!',
+        'Next',
         function(player)
                     menu.options = page6
                     delaySendMenu(player)                 
         end,
     },
     {
-        'Previous Page!',
+        'Prev',
         function(player)
                     menu.options = page3
                     delaySendMenu(player)                 
@@ -431,7 +431,7 @@ page6 =
         end,
     },
     {
-        'Previous Page!',
+        'Prev',
         function(player)
                     menu.options = page5
                     delaySendMenu(player)                 

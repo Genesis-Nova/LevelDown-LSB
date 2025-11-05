@@ -24,7 +24,7 @@ INSERT INTO mob_droplist VALUES(2508, 0, 1, 100, 18852, 333); -- add Octave club
 INSERT INTO mob_droplist VALUES(2418, 0, 1, 100, 19163, 333); -- add Nightfall to Tinnin
 INSERT INTO mob_droplist VALUES(2162, 0, 1, 100, 19163, 333); -- add Nightfall to Sarameya
 INSERT INTO mob_droplist VALUES(2508, 0, 1, 100, 19163, 334); -- add Nightfall to Tyger
-UPDATE mob_droplist SET itemRate = 350 WHERE dropId = 193 and itemRate = 20; -- Flask Of Romaeve Spring Water drop rate correction - Aura Pots
+UPDATE mob_droplist SET itemRate = 500 WHERE dropId = 193 and itemRate = 20; -- Flask Of Romaeve Spring Water drop rate correction - Aura Pots
 INSERT INTO mob_droplist VALUES(2820,1,1,1000,4064,250); -- Rem tale 1 / NMs Mother Globe
 INSERT INTO mob_droplist VALUES(2820,1,1,1000,4069,250); -- Rem tale 6 / NMs Mother Globe
 INSERT INTO mob_droplist VALUES(2820,1,2,1000,844,250); -- Phoenix Feather / NMs Mother Globe
@@ -320,10 +320,6 @@ INSERT INTO mob_droplist VALUES(4000,1,3,500,11632,55); -- Karka Ring Void Walke
 INSERT INTO mob_droplist VALUES(4000,1,3,500,11629,55); -- Zilant Ring Void Walker Tier 1 Yildegan, Orcus, Blobdingnag, Krabkatoa, Dawon, Lord Ruthven, Verthandi
 INSERT INTO mob_droplist VALUES(4000,1,3,500,11633,55); -- Galdr Ring Void Walker Tier 1 Yildegan, Orcus, Blobdingnag, Krabkatoa, Dawon, Lord Ruthven, Verthandi
 INSERT INTO mob_droplist VALUES(4000,1,3,500,19248,55); -- Lucky Coin Void Walker Tier 1 Yildegan, Orcus, Blobdingnag, Krabkatoa, Dawon, Lord Ruthven, Verthandi
-INSERT INTO mob_droplist VALUES(4001,0,0,1000,9281,250); -- P. War card / Krabkatoa Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4001,0,0,1000,9282,250); -- P. Mnk card / Krabkatoa Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4001,0,0,1000,9283,250); -- P. Whm card / Krabkatoa Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4001,0,0,1000,9299,250); -- P. Dnc card / Krabkatoa Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4001,1,1,750,9281,187); -- P. War card / Krabkatoa Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4001,1,1,750,9282,187); -- P. Mnk card / Krabkatoa Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4001,1,1,750,9283,187); -- P. Whm card / Krabkatoa Void Walker Tier 3 
@@ -336,14 +332,11 @@ INSERT INTO mob_droplist VALUES(4001,1,3,250,9281,62); -- P. War card / Krabkato
 INSERT INTO mob_droplist VALUES(4001,1,3,250,9282,62); -- P. Mnk card / Krabkatoa Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4001,1,3,250,9283,62); -- P. Whm card / Krabkatoa Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4001,1,3,250,9299,62); -- P. Dnc card / Krabkatoa Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4001,1,4,50,9281,12); -- P. War card / Krabkatoa Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4001,1,4,50,9282,12); -- P. Mnk card / Krabkatoa Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4001,1,4,50,9283,12); -- P. Whm card / Krabkatoa Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4001,1,4,50,9299,12); -- P. Dnc card / Krabkatoa Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4002,0,0,1000,9284,250); -- P. Blm card / Blobdingnag Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4002,0,0,1000,9285,250); -- P. Rdm card / Blobdingnag Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4002,0,0,1000,9286,250); -- P. Thf card / Blobdingnag Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4002,0,0,1000,9300,250); -- P. Sch card / Blobdingnag Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4001,1,4,150,9281,37); -- P. War card / Krabkatoa Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4001,1,4,150,9282,37); -- P. Mnk card / Krabkatoa Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4001,1,4,150,9283,37); -- P. Whm card / Krabkatoa Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4001,1,4,150,9299,37); -- P. Dnc card / Krabkatoa Void Walker Tier 3 
+
 INSERT INTO mob_droplist VALUES(4002,1,1,750,9284,187); -- P. Blm card / Blobdingnag Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4002,1,1,750,9285,187); -- P. Rdm card / Blobdingnag Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4002,1,1,750,9286,187); -- P. Thf card / Blobdingnag Void Walker Tier 3 
@@ -356,14 +349,11 @@ INSERT INTO mob_droplist VALUES(4002,1,3,250,9284,62); -- P. Blm card / Blobding
 INSERT INTO mob_droplist VALUES(4002,1,3,250,9285,62); -- P. Rdm card / Blobdingnag Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4002,1,3,250,9286,62); -- P. Thf card / Blobdingnag Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4002,1,3,250,9300,62); -- P. Sch card / Blobdingnag Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4002,1,4,50,9284,12); -- P. Blm card / Blobdingnag Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4002,1,4,50,9285,12); -- P. Rdm card / Blobdingnag Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4002,1,4,50,9286,12); -- P. Thf card / Blobdingnag Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4002,1,4,50,9300,12); -- P. Sch card / Blobdingnag Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4003,0,0,1000,9287,250); -- P. Pld card / Orcus Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4003,0,0,1000,9288,250); -- P. Drk card / Orcus Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4003,0,0,1000,9289,250); -- P. Bst card / Orcus Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4003,0,0,1000,9301,250); -- P. Geo card / Orcus Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4002,1,4,150,9284,37); -- P. Blm card / Blobdingnag Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4002,1,4,150,9285,37); -- P. Rdm card / Blobdingnag Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4002,1,4,150,9286,37); -- P. Thf card / Blobdingnag Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4002,1,4,150,9300,37); -- P. Sch card / Blobdingnag Void Walker Tier 3 
+
 INSERT INTO mob_droplist VALUES(4003,1,1,750,9287,187); -- P. Pld card / Orcus Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4003,1,1,750,9288,187); -- P. Drk card / Orcus Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4003,1,1,750,9289,187); -- P. Bst card / Orcus Void Walker Tier 3 
@@ -376,14 +366,11 @@ INSERT INTO mob_droplist VALUES(4003,1,3,250,9287,62); -- P. Pld card / Orcus Vo
 INSERT INTO mob_droplist VALUES(4003,1,3,250,9288,62); -- P. Drk card / Orcus Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4003,1,3,250,9289,62); -- P. Bst card / Orcus Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4003,1,3,250,9301,62); -- P. Geo card / Orcus Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4003,1,4,50,9287,12); -- P. Pld card / Orcus Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4003,1,4,50,9288,12); -- P. Drk card / Orcus Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4003,1,4,50,9289,12); -- P. Bst card / Orcus Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4003,1,4,50,9301,12); -- P. Geo card / Orcus Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4004,0,0,1000,9290,250); -- P. Brd card / Verthandi Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4004,0,0,1000,9291,250); -- P. Rng card / Verthandi Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4004,0,0,1000,9292,250); -- P. Sam card / Verthandi Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4004,0,0,1000,9302,250); -- P. Run card / Verthandi Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4003,1,4,150,9287,37); -- P. Pld card / Orcus Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4003,1,4,150,9288,37); -- P. Drk card / Orcus Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4003,1,4,150,9289,37); -- P. Bst card / Orcus Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4003,1,4,150,9301,37); -- P. Geo card / Orcus Void Walker Tier 3 
+
 INSERT INTO mob_droplist VALUES(4004,1,1,750,9290,187); -- P. Brd card / Verthandi Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4004,1,1,750,9291,187); -- P. Rng card / Verthandi Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4004,1,1,750,9292,187); -- P. Sam card / Verthandi Void Walker Tier 3 
@@ -396,13 +383,11 @@ INSERT INTO mob_droplist VALUES(4004,1,3,250,9290,62); -- P. Brd card / Verthand
 INSERT INTO mob_droplist VALUES(4004,1,3,250,9291,62); -- P. Rng card / Verthandi Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4004,1,3,250,9292,62); -- P. Sam card / Verthandi Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4004,1,3,250,9302,62); -- P. Run card / Verthandi Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4004,1,4,50,9290,12); -- P. Brd card / Verthandi Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4004,1,4,50,9291,12); -- P. Rng card / Verthandi Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4004,1,4,50,9292,12); -- P. Sam card / Verthandi Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4004,1,4,50,9302,12); -- P. Run card / Verthandi Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4005,0,0,1000,9293,250); -- P. Nin card / Dawon Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4005,0,0,1000,9294,250); -- P. Drg card / Dawon Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4005,0,0,1000,9295,250); -- P. Smn card / Dawon Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4004,1,4,150,9290,37); -- P. Brd card / Verthandi Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4004,1,4,150,9291,37); -- P. Rng card / Verthandi Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4004,1,4,150,9292,37); -- P. Sam card / Verthandi Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4004,1,4,150,9302,37); -- P. Run card / Verthandi Void Walker Tier 3 
+
 INSERT INTO mob_droplist VALUES(4005,1,1,750,9293,250); -- P. Nin card / Dawon Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4005,1,1,750,9294,250); -- P. Drg card / Dawon Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4005,1,1,750,9295,250); -- P. Smn card / Dawon Void Walker Tier 3 
@@ -412,24 +397,25 @@ INSERT INTO mob_droplist VALUES(4005,1,2,500,9295,166); -- P. Smn card / Dawon V
 INSERT INTO mob_droplist VALUES(4005,1,3,250,9293,83); -- P. Nin card / Dawon Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4005,1,3,250,9294,83); -- P. Drg card / Dawon Void Walker Tier 3 
 INSERT INTO mob_droplist VALUES(4005,1,3,250,9295,83); -- P. Smn card / Dawon Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4005,1,4,50,9293,16); -- P. Nin card / Dawon Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4005,1,4,50,9294,16); -- P. Drg card / Dawon Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4005,1,4,50,9295,16); -- P. Smn card / Dawon Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4006,1,1,400,26722,133); -- SU1 Gefechtschaller Head / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,1,400,26726,133); -- SU1 Revealer's Crown Head / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,1,400,26724,133); -- SU1 Sombra Tiara Head / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,2,300,26881,100); -- SU1 Gefechtbrust Body / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,2,300,26885,100); -- SU1 Revealer's Tunic Body / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,2,300,26883,100); -- SU1 Sombra Harness Body / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,3,400,27987,133); -- SU1 Gefechthentzes Hands / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,3,400,27991,133); -- SU1 Revealer's Mitts Hands / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,3,400,27989,133); -- SU1 Sombra Mittens Hands / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,4,400,27224,133); -- SU1 Gefechtdiechlings Legs / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,4,400,27228,133); -- SU1 Revealer's Pants Legs / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,4,400,27226,133); -- SU1 Sombra Tights Legs / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,5,400,27396,133); -- SU1 Gefechtschuhs Feet / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,5,400,27400,133); -- SU1 Revealer's Pumps Feet / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,5,400,27398,133); -- SU1 Sombra Leggings Feet / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4005,1,4,150,9293,50); -- P. Nin card / Dawon Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4005,1,4,150,9294,50); -- P. Drg card / Dawon Void Walker Tier 3 
+INSERT INTO mob_droplist VALUES(4005,1,4,150,9295,50); -- P. Smn card / Dawon Void Walker Tier 3 
+
+INSERT INTO mob_droplist VALUES(4006,1,1,300,26723,100); -- SU1 Wildheitschaller Head / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,1,300,26727,100); -- SU1 Revealer's Crown Head +1/ Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,1,300,26725,100); -- SU1 Sombra Tiara +1 Head / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,2,300,26882,100); -- SU1 Wildheitbrust Body / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,2,300,26886,100); -- SU1 Revealer's Tunic Body +1/ Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,2,300,26884,100); -- SU1 Sombra Harness +1 Body / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,3,300,27988,100); -- SU1 Wildheithentzes Hands / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,3,300,27992,100); -- SU1 Revealer's Mitts Hands +1/ Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,3,300,27989,100); -- SU1 Sombra Mittens Hands / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,4,300,27225,100); -- SU1 Wildheitdiechlings Legs / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,4,300,27229,100); -- SU1 Revealer's Pants Legs +1/ Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,4,300,27227,100); -- SU1 Sombra Tights Legs +1 / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,5,300,27397,100); -- SU1 Wildheitschuhs Feet / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,5,300,27401,100); -- SU1 Revealer's Pumps Feet +1 / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,5,300,27399,100); -- SU1 Sombra Leggings Feet +1 / Yildegan Void Walker Tier 4
 INSERT INTO mob_droplist VALUES(4006,1,6,150,22021,3); -- SU2 Weapons Ames / Yildegan Void Walker Tier 4
 INSERT INTO mob_droplist VALUES(4006,1,6,150,21456,3); -- SU2 Weapons Animator P / Yildegan Void Walker Tier 4
 INSERT INTO mob_droplist VALUES(4006,1,6,150,21458,3); -- SU2 Weapons Animator P II / Yildegan Void Walker Tier 4
@@ -486,9 +472,6 @@ INSERT INTO mob_droplist VALUES(4006,1,8,20,8754,1); -- SU3 Mats Cehuetzi Pelt /
 INSERT INTO mob_droplist VALUES(4006,1,8,20,9004,1); -- SU3 Mats Macuil Plating / Yildegan Void Walker Tier 4
 INSERT INTO mob_droplist VALUES(4006,1,8,20,8752,1); -- SU3 Mats Cehuetzi Claw / Yildegan Void Walker Tier 4
 INSERT INTO mob_droplist VALUES(4006,1,8,20,3981,1); -- SU3 Mats Bztavian Wing / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4007,0,0,1000,9296,250); -- P. Blu card / Lord Ruthven Void Walker Tier 3 
-INSERT INTO mob_droplist VALUES(4007,0,0,1000,9297,250); -- P. Cor card / Lord Ruthven Void Walker Tier 3
-INSERT INTO mob_droplist VALUES(4007,0,0,1000,9298,250); -- P. Pup card / Lord Ruthven Void Walker Tier 3
 INSERT INTO mob_droplist VALUES(4007,1,1,750,9296,250); -- P. Blu card / Lord Ruthven Void Walker Tier 3
 INSERT INTO mob_droplist VALUES(4007,1,1,750,9297,250); -- P. Cor card / Lord Ruthven Void Walker Tier 3
 INSERT INTO mob_droplist VALUES(4007,1,1,750,9298,250); -- P. Pup card / Lord Ruthven Void Walker Tier 3
@@ -498,9 +481,9 @@ INSERT INTO mob_droplist VALUES(4007,1,2,500,9298,166); -- P. Pup card / Lord Ru
 INSERT INTO mob_droplist VALUES(4007,1,3,250,9296,83); -- P. Blu card / Lord Ruthven Void Walker Tier 3
 INSERT INTO mob_droplist VALUES(4007,1,3,250,9297,83); -- P. Cor card / Lord Ruthven Void Walker Tier 3
 INSERT INTO mob_droplist VALUES(4007,1,3,250,9298,83); -- P. Pup card / Lord Ruthven Void Walker Tier 3
-INSERT INTO mob_droplist VALUES(4007,1,4,50,9296,16); -- P. Blu card / Lord Ruthven Void Walker Tier 3
-INSERT INTO mob_droplist VALUES(4007,1,4,50,9297,16); -- P. Cor card / Lord Ruthven Void Walker Tier 3
-INSERT INTO mob_droplist VALUES(4007,1,4,50,9298,16); -- P. Pup card / Lord Ruthven Void Walker Tier 3
+INSERT INTO mob_droplist VALUES(4007,1,4,150,9296,50); -- P. Blu card / Lord Ruthven Void Walker Tier 3
+INSERT INTO mob_droplist VALUES(4007,1,4,150,9297,50); -- P. Cor card / Lord Ruthven Void Walker Tier 3
+INSERT INTO mob_droplist VALUES(4007,1,4,150,9298,50); -- P. Pup card / Lord Ruthven Void Walker Tier 3
 INSERT INTO mob_droplist VALUES(4008,0,0,1000,9084,1000); -- Eschalixir / Escha Zitah NM Abyssdiver Beist Emperor_Arthro Eschan_Jewelweed Hugemaw_Harold Immanibugard Jester_Malatrix Keeper_of_Heiligtum Muut Prickly_Pitriv Serpopard_Ninlil Voso
 INSERT INTO mob_droplist VALUES(4008,0,0,1000,9085,500); -- Eschalixir +1 / Escha Zitah NM Abyssdiver Beist Emperor_Arthro Eschan_Jewelweed Hugemaw_Harold Immanibugard Jester_Malatrix Keeper_of_Heiligtum Muut Prickly_Pitriv Serpopard_Ninlil Voso
 INSERT INTO mob_droplist VALUES(4008,0,0,1000,10953,111); -- bone. torque / Escha Zitah NM Abyssdiver Beist Emperor_Arthro Eschan_Jewelweed Hugemaw_Harold Immanibugard Jester_Malatrix Keeper_of_Heiligtum Muut Prickly_Pitriv Serpopard_Ninlil Voso
@@ -1392,6 +1375,10 @@ UPDATE mob_groups SET dropid = 4115 WHERE name = 'Lancelord_Gaheel_HTBF';
 UPDATE mob_groups SET dropid = 4116 WHERE name = 'Tenzen_HTBF';
 UPDATE mob_groups SET dropid = 4117 WHERE name = 'Ultima_HTBF';
 UPDATE mob_groups SET dropid = 4118 WHERE name = 'Ironclad_Executioner' AND groupid = 46;
+-- 4119 = Supreme Behemoth
+-- 4120 = Supreme Fafnir
+-- 4121 = Supreme Aspid
+-- 4122 = Supreme Bahamut
 UPDATE mob_groups SET dropid = 4123 WHERE name = 'Asb' AND groupid = 11525;
 UPDATE mob_groups SET dropid = 4124 WHERE name = 'Pil' AND groupid = 11526;
 UPDATE mob_groups SET dropid = 4125 WHERE name = 'Rukh' AND groupid = 11527;
@@ -1399,8 +1386,3 @@ UPDATE mob_groups SET dropid = 4126 WHERE name = 'Sarbaz' AND groupid = 11528;
 UPDATE mob_groups SET dropid = 4127 WHERE name = 'Shah' AND groupid = 11529;
 UPDATE mob_groups SET dropid = 4128 WHERE name = 'Wazir' AND groupid = 11530;
 UPDATE mob_groups SET dropid = 4129 WHERE name = 'Provenance_Watcher' AND groupid = 11531;
--- 4119 = Supreme Behemoth
--- 4120 = Supreme Fafnir
--- 4121 = Supreme Aspid
--- 4122 = Supreme Bahamut
-

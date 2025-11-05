@@ -9,6 +9,7 @@ zones[xi.zone.MHAURA] =
     {
         ASSIST_CHANNEL                = 6380, -- You will be able to use the Assist Channel until #/#/# at #:# (JST).
         ITEM_CANNOT_BE_OBTAINED       = 6385, -- You cannot obtain the <item>. Come back after sorting your inventory.
+        FREEUP_INV_SPACE              = 6390, -- You must free at least {0} space{0:pluralSelect}[/s] before trading any items.<7F31>
         ITEM_OBTAINED                 = 6391, -- Obtained: <item>.
         GIL_OBTAINED                  = 6392, -- Obtained <number> gil.
         KEYITEM_OBTAINED              = 6394, -- Obtained key item: <keyitem>.

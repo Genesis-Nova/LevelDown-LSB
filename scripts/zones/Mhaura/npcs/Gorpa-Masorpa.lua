@@ -45,6 +45,11 @@ local ambuscadeTrade =
         [12] = { trade = { xi.item.AMBUSCADE_CHIT_LEGGEAR_P1 } },
         [13] = { trade = { xi.item.AMBUSCADE_CHIT_FOOTGEAR_P1 } },
         [14] = { trade = { xi.item.AMBUSCADE_CHIT_RING } },
+        [15] = { trade = { xi.item.AMBUSCADE_VOUCHER_HEAD } },
+        [16] = { trade = { xi.item.AMBUSCADE_VOUCHER_BODY } },
+        [17] = { trade = { xi.item.AMBUSCADE_VOUCHER_HANDS } },
+        [18] = { trade = { xi.item.AMBUSCADE_VOUCHER_LEGS } },
+        [19] = { trade = { xi.item.AMBUSCADE_VOUCHER_FEET } },
     },
     [393] = -- csid
     {
@@ -199,7 +204,7 @@ local ambuscadeTrade =
         [149] = { trade = { xi.item.TOKKO_BOW, { xi.item.ABDHALJS_NUGGETS, 5 } }, reward = xi.item.AJJA_BOW },
         [150] = { trade = { xi.item.AJJA_BOW, { xi.item.ABDHALJS_GEM, 5 } }, reward = xi.item.ELETTA_BOW },
         [151] = { trade = { xi.item.ELETTA_BOW, { xi.item.ABDHALJS_ANIMA, 5 } }, reward = xi.item.KAJA_BOW },
-        [152] = { trade = { xi.item.KAJA_BOW, { xi.item.CHUNK_OF_ABDHALJS_MATTER, 5 } }, reward = xi.item.MIZUKAGE_NO_YUMI },
+        [152] = { trade = { xi.item.KAJA_BOW, { xi.item.CHUNK_OF_ABDHALJS_MATTER, 5 } }, reward = xi.item.ULLR },
         [153] = { trade = { xi.item.TOKKO_GRIP, { xi.item.ABDHALJS_NUGGETS, 5 } }, reward = xi.item.AJJA_GRIP },
         [154] = { trade = { xi.item.AJJA_GRIP, { xi.item.ABDHALJS_GEM, 5 } }, reward = xi.item.ELETTA_GRIP },
         [155] = { trade = { xi.item.ELETTA_GRIP, { xi.item.ABDHALJS_ANIMA, 5 } }, reward = xi.item.KAJA_GRIP },
@@ -413,44 +418,48 @@ entity.onTrade = function(player, npc, trade)
     local tradedItemP3 = 0
     local pulseItem = 0
 
-    for i = 1, #pulseTrades do -- Determine if trade has a Pulse Weapon
-        if npcUtil.tradeHas(trade, pulseTrades[i]) then
-            pulseItem = pulseTrades[i]
-        end
-    end
-
-    if pulseItem ~= 0 then -- rebuild table inserting pulse item to kaja weapons
-        for i, items in ipairs(ambuscadeTrade[393]) do 
-            if items.trade[2][1] == xi.item.CHUNK_OF_ABDHALJS_MATTER then
-                items.trade[3] = pulseItem
-            end
-        end
-    end
-
-    if npcUtil.tradeHas(trade, xi.item.CHUNK_OF_ABDHALJS_MATTER) and -- ensure the trade for final stage contains a pulse weapon and abd matter
-        pulseItem == 0 then
+    if player:getFreeSlotsCount() < 1 then
+        player:messageSpecial(zones[xi.zone.MHAURA].CANNOT_OFREEUP_INV_SPACEBTAIN_INV_FULL,1)
         return
     end
-
-    for i, itemsTraded in pairs(ambuscadeTrade[390]) do -- voucher / chit trade 
-        if npcUtil.tradeHasExactly(trade, itemsTraded.trade) then
-            csid = 390
-            tradedItemP1 = itemsTraded.trade[1]
-            player:setCharVar('Gorpa-MasorpaTrade', 1)
+        for i = 1, #pulseTrades do -- Determine if trade has a Pulse Weapon
+            if npcUtil.tradeHas(trade, pulseTrades[i]) then
+                pulseItem = pulseTrades[i]
+            end
         end
-    end
 
-    for i, itemsTraded in pairs(ambuscadeTrade[393]) do -- armor weapon upgrade trade
-        if npcUtil.tradeHasExactly(trade, itemsTraded.trade) then
-            csid = 393
-            tradedItemP1 = itemsTraded.trade[2][1]
-            tradedItemP2 = itemsTraded.reward
-            tradedItemP3 = itemsTraded.trade[1] -- this is for pulse weapon upgrades
-            player:setCharVar('Gorpa-MasorpaTrade', 1)
+        if pulseItem ~= 0 then -- rebuild table inserting pulse item to kaja weapons
+            for i, items in ipairs(ambuscadeTrade[393]) do
+                if items.trade[2][1] == xi.item.CHUNK_OF_ABDHALJS_MATTER then
+                    items.trade[3] = pulseItem
+                end
+            end
         end
-    end
 
-    player:startEvent(csid, tradedItemP1, tradedItemP2, tradedItemP3)
+        if npcUtil.tradeHas(trade, xi.item.CHUNK_OF_ABDHALJS_MATTER) and -- ensure the trade for final stage contains a pulse weapon and abd matter
+            pulseItem == 0 then
+            return
+        end
+
+        for i, itemsTraded in pairs(ambuscadeTrade[390]) do -- voucher / chit trade
+            if npcUtil.tradeHasExactly(trade, itemsTraded.trade) then
+                csid = 390
+                tradedItemP1 = itemsTraded.trade[1]
+                player:setCharVar('Gorpa-MasorpaTrade', 1)
+            end
+        end
+
+        for i, itemsTraded in pairs(ambuscadeTrade[393]) do -- armor weapon upgrade trade
+            if npcUtil.tradeHasExactly(trade, itemsTraded.trade) then
+                csid = 393
+                tradedItemP1 = itemsTraded.trade[2][1]
+                tradedItemP2 = itemsTraded.reward
+                tradedItemP3 = itemsTraded.trade[1] -- this is for pulse weapon upgrades
+                player:setCharVar('Gorpa-MasorpaTrade', 1)
+            end
+        end
+
+        player:startEvent(csid, tradedItemP1, tradedItemP2, tradedItemP3)
 end
 
 
@@ -678,18 +687,26 @@ entity.onEventUpdate = function(player, csid, option, npc)
         elseif alternativeOption == 6 then -- Option 1, 2, 3 sub option 6 Hallmarks
             local hallmarkRewards = hallmarkRewards[itemPage][itemSelected] -- hallmarkRewards table of rewards
                 if player:getCurrency('current_hallmarks') >= hallmarkRewards.minimumHallmarksNeeded * amountEntered then -- items already received will not show up in dialog once parameters are set correctly
-                    player:delCurrency('current_hallmarks', hallmarkRewards.minimumHallmarksNeeded * amountEntered)
-                    npcUtil.giveItem(player, { { hallmarkRewards.item, amountEntered } })
-                    addPurchaseAmountHallmark(player, hallmarkRewards, amountEntered)
-                    player:updateEvent(player:getCurrency('current_hallmarks')) -- had to use getCurrency() so it would pull the updated currency
+                    if npcUtil.giveItem(player, { { hallmarkRewards.item, amountEntered } }) then
+                        player:delCurrency('current_hallmarks', hallmarkRewards.minimumHallmarksNeeded * amountEntered)
+                        addPurchaseAmountHallmark(player, hallmarkRewards, amountEntered)
+                        player:updateEvent(player:getCurrency('current_hallmarks')) -- had to use getCurrency() so it would pull the updated currency
+                    else
+                        player:messageSpecial(zones[xi.zone.MHAURA].ITEM_CANNOT_BE_OBTAINED, hallmarkRewards.item )
+                    return
+                    end
                 end
 
         elseif alternativeOption == 7 then -- Option 5 sub option 7 Total Hallmarks
             local totalHallMarkReward = totalHallmarkRewards[itemPage][itemSelected] -- totalHallmarkRewards table of rewards
                 if total_hallmarks >= totalHallMarkReward.totalHallmarksNeeded then -- items alread received will not show up in dialog once parameters are set correctly
-                    npcUtil.giveItem(player, { { totalHallMarkReward.item, totalHallMarkReward.quantity } })
-                    player:setCharVar('[AmbusTH]ItemsObtained', utils.mask.setBit(player:getCharVar('[AmbusTH]ItemsObtained'), totalHallMarkReward.bitIndex -1, true))
-                    player:updateEvent(player:getCharVar('[AmbusTH]ItemsObtained'), totalHallMarkReward.quantity)
+                    if npcUtil.giveItem(player, { { totalHallMarkReward.item, totalHallMarkReward.quantity } }) then
+                        player:setCharVar('[AmbusTH]ItemsObtained', utils.mask.setBit(player:getCharVar('[AmbusTH]ItemsObtained'), totalHallMarkReward.bitIndex -1, true))
+                        player:updateEvent(player:getCharVar('[AmbusTH]ItemsObtained'), totalHallMarkReward.quantity)
+                    else
+                        player:messageSpecial(zones[xi.zone.MHAURA].ITEM_CANNOT_BE_OBTAINED, totalHallMarkReward.item )
+                    return
+                    end
                 end
 
         -- Present Gallantry menu
@@ -812,10 +829,14 @@ entity.onEventUpdate = function(player, csid, option, npc)
         elseif alternativeOption == 10 then -- Option 8, 9 sub option 10 Gallantry
             local gallantryRewards = gallantryRewards[itemPage][itemSelected] -- gallantryRewards table of rewards
                 if player:getCurrency('gallantry') >= gallantryRewards.minimumHallmarksNeeded * amountEntered then -- items alread received will not show up in dialog once parameters are set correctly
-                    player:delCurrency('gallantry', gallantryRewards.minimumHallmarksNeeded * amountEntered)
-                    npcUtil.giveItem(player, { { gallantryRewards.item, amountEntered } })
-                    addPurchaseAmountGallantry(player, gallantryRewards, amountEntered)
-                    player:updateEvent(player:getCurrency('gallantry')) -- had to use getCurrency() so it would pull the updated currency
+                    if npcUtil.giveItem(player, { { gallantryRewards.item, amountEntered } }) then
+                        player:delCurrency('gallantry', gallantryRewards.minimumHallmarksNeeded * amountEntered)
+                        addPurchaseAmountGallantry(player, gallantryRewards, amountEntered)
+                        player:updateEvent(player:getCurrency('gallantry')) -- had to use getCurrency() so it would pull the updated currency
+                    else
+                        player:messageSpecial(zones[xi.zone.MHAURA].ITEM_CANNOT_BE_OBTAINED, gallantryRewards.item )
+                    return
+                    end
                 end
         -- Update player
         else

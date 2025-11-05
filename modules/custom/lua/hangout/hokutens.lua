@@ -42,7 +42,7 @@ page1 =
 page2 =
 {
     {
-        'Nothing for now!',
+        'Nothing',
          function(player)
          end
     },
@@ -71,7 +71,7 @@ page2 =
          end
     },
     {
-        'Next Page!',
+        'Next',
         function(player)
          menu.options = page3
          delaySendMenu(player)   
@@ -94,7 +94,7 @@ page3 =
          end
     },
     {
-        'Previous Page!',
+        'Prev',
         function(player)
          menu.options = page2
          delaySendMenu(player)   

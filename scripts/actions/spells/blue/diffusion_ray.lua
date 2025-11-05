@@ -21,16 +21,20 @@ spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
     params.ecosystem = xi.ecosystem.ARCHAICMACHINE
     params.tpmod = TPMOD_DAMAGE
+	 if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusacc = 70
+    elseif caster:hasStatusEffect(xi.effect.BURST_AFFINITY) then
+        params.bonusacc = math.floor(caster:getTP() / 50)
+    end
+	
     params.attackType = xi.attackType.MAGICAL
     params.damageType = xi.damageType.LIGHT
     params.attribute = xi.mod.MND
     params.diff = 0
-    params.bonus = 50 
+    params.bonus = 50
     params.numhits = 1
-    params.tmultiplier = 2
-    params.tp150 = 1.5
-    params.tp300 = 1.5
-    params.azuretp = 1.5
+	params.multiplier = 5.5
+    params.tMultiplier = 3
     params.duppercap = 49
     params.str_wsc = 0.0
     params.dex_wsc = 0.0
@@ -41,7 +45,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.chr_wsc = 0.0
 
 
-        damage = xi.spells.blue.applySpellDamage(caster, target, spell, damage, params)
+    local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
 
 
     return damage

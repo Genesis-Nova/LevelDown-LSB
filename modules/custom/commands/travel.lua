@@ -33,6 +33,7 @@ local zoneList =
     { 0x14, 0x1E, xi.zone.MHAURA},
     { 0x14, 0x09, xi.zone.NORG},
     { 0x14, 0x29, xi.zone.KAZHAM},
+    { 0x14, 0x8F, xi.zone.TAVNAZIAN_SAFEHOLD},
     { 0x14, 0xBB, xi.zone.AL_ZAHBI},
     { 0x14, 0xBC, xi.zone.AHT_URHGAN_WHITEGATE},
     { 0x14, 0xBF, xi.zone.NASHMAU},

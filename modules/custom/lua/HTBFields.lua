@@ -78,7 +78,6 @@ ensureTable('xi.actions.mobskills.bowels_of_agony')
 require("modules/module_utils")
 require("scripts/globals/npc_util")
 require("scripts/globals/battlefield")
-require("scripts/globals/bcnm")
 require("scripts/globals/mobskills")
 -----------------------------------
 

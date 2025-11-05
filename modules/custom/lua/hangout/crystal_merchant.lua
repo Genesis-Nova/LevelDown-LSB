@@ -3,7 +3,7 @@
 -----------------------------------
 require("modules/module_utils")
 require("scripts/globals/npc_util")
-require("scripts/globals/utils")
+require("scripts/utils/utils") -- file dir changed
 require("scripts/globals/missions")
 require("modules/module_utils")
 require("scripts/zones/Mog_Garden/Zone")

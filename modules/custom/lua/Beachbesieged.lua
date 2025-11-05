@@ -5,13 +5,13 @@
 -- Required modules for script functionality
 require("modules/module_utils")
 require("scripts/globals/npc_util")
-require("scripts/globals/utils")
+require("scripts/utils/utils") -- file dir changed
 
 -- Localization table for all messages
 local messages = {
     -- System messages for errors/warnings
     SpawnAreaNotDefined = "Error: Spawn area not defined for this zone.",
-    ConfrontationActive = "There's no time to chit-chat! There are monsters about!",
+    ConfrontationActive = "There's no time to chat! There are monsters about!",
     InventoryFull = "Make space in your inventory first!",
     NotEnoughPoints = "Not enough points! Kill more sea monsters and come back and talk! ",
     NotEnoughJobPoints = "You don't have enough Job Points! Requires %d job points.",
@@ -29,7 +29,7 @@ local messages = {
 }
 
 -- Configuration for confrontation timers and sequential claiming
-local BASE_TIME_PER_WAVE = 180 -- seconds per wave for each wave timer (used for mob despawn in a wave)
+local BASE_TIME_PER_WAVE = 240 -- seconds per wave for each wave timer (used for mob despawn in a wave)
 local INITIAL_CLAIM_DELAY_SECONDS = 30 -- Initial delay in seconds before the first mob is claimed
 local DELAY_BETWEEN_CLAIMS_SECONDS = 25 -- Delay in seconds between subsequent mob claims
 local POST_LOSS_CONFRONTATION_DURATION_SECONDS = 3 -- Time in seconds after an explicit wave loss for the confrontation effect to fully wear off
@@ -81,13 +81,18 @@ local possibleMobs = {
     { groupId = 15,  groupZoneId = 58,  name = "Sea Monster", look =  353 }, -- Blue/White Sea Monk
     { groupId = 8,   groupZoneId = 217, name = "Sea Monster", look =  352 }, -- Orange Sea Monk (Jasconius)
     { groupId = 8,   groupZoneId = 3,   name = "Sea Monster", look = 1361 }, -- Urganite
-	{ groupId = 50,  groupZoneId = 4,   name = "Sea Monster", look = 2223 }, -- Slobbering Ruszor
+	{ groupId = 9,   groupZoneId = 265, name = "Sea Monster", look = 2560 }, -- Urganite
+	{ groupId = 14,  groupZoneId = 267, name = "Sea Monster", look = 2223 }, -- Slobbering Ruszor
 }
 
 local possibleBosses = {
-    { groupId = 3, groupZoneId = 211,  name = "Abyssal Serpent", look = 795 }, -- Leviathan Prime, lvl 85 | 25k HP @ base
-    { groupId = 63, groupZoneId = 79, name = "Chasm Wretch",   look = 1664 }, -- Experimental_Lamia, lvl 115 | 85k HP @ base
-    { groupId = 62, groupZoneId = 79, name = "Brinefather",    look = 1776 }, -- Mahjlaef_the_Paintorn, lvl 115 | 85k HP @ base
+    { groupId = 14, groupZoneId = 170,  name = "Abyssal Serpent", 	look = '00001b0300000000000000000000000000000000' }, -- Leviathan_Prime_HTBF, lvl 100 | 50k HP @ base
+    { groupId = 90, groupZoneId = 54,   name = "Pactbound Ghoul", 	look = '0600c50600000000000000000000000000000000' }, --  -- 510k @ 600%
+    { groupId = 63, groupZoneId = 79,   name = "Chasm Wretch",   	look = '0000800600000000000000000000000000000000' }, -- Experimental_Lamia, lvl 115 | 85k HP @ base - 590k @ 600% HPP
+    { groupId = 62, groupZoneId = 79,   name = "Brinefather",    	look = '0000f00600000000000000000000000000000000' }, -- Mahjlaef_the_Paintorn, lvl 115 | 85k HP @ base - 590k @ 600% HPP
+--    { groupId = 50,  groupZoneId = 112, name = "Abyssal Slug", 		look = '0000400100000000000000000000000000000000' }, --  HP too high
+--	  { groupId = 69,  groupZoneId = 51, name = "Testing", look = 1863 }, -- Gulool_Ja_Ja -- 491k @ 600% -- missing animation
+--	  { groupId = 53,  groupZoneId = 118, name = "Globulus Prime", look = 2060 }, -- Botulus Rex -- 1M @ 600% -- missing animation?
 }
 
 -- Define spawn areas for each zone
@@ -138,7 +143,7 @@ end
 
 local function applyMobStats(mob, isBoss, difficultyMultiplier)
     if isBoss then
-        mob:addMod(xi.mod.HPP, 600)
+        mob:addMod(xi.mod.HPP, 400)
         mob:addMod(xi.mod.DEF, 200)
         mob:addMod(xi.mod.ACC, 500)
         mob:addMod(xi.mod.MEVA, 400)
@@ -148,9 +153,10 @@ local function applyMobStats(mob, isBoss, difficultyMultiplier)
         end
         -- print(string.format("[SEA MONSTER EVENT] Applied BOSS stats to mob %s (ID:%d).", mob:getName(), mob:getID()))
     else
-        mob:addMod(xi.mod.HPP, 200 * difficultyMultiplier)
-        mob:addMod(xi.mod.DEF, 35 * difficultyMultiplier)
-        mob:addMod(xi.mod.ACC, 250 * difficultyMultiplier)
+        mob:addMod(xi.mod.HPP, 175 * difficultyMultiplier)
+        mob:addMod(xi.mod.DEF, 15 * difficultyMultiplier)
+        mob:addMod(xi.mod.ACC, 150 * difficultyMultiplier)
+		mob:setMobMod(xi.mobMod.TP_USE_CHANCE, 500) -- set TP use at 50% chance
         for _, stat in ipairs({xi.mod.STR, xi.mod.VIT, xi.mod.INT, xi.mod.MND, xi.mod.CHR, xi.mod.AGI, xi.mod.DEX}) do
             mob:addMod(stat, 10 * difficultyMultiplier)
         end
@@ -266,6 +272,8 @@ xi.confrontation.check = function(lookupKey)
             end
         end
         if didLose then
+            -- Despawn any remaining mobs only if it was a loss.
+            -- This correctly handles the mobs that remained when didLoseExplicitly was set.
             xi.confrontation.despawnMobs(mobs)
         end
         -- Cancel any pending wave timers too
@@ -433,15 +441,18 @@ local function spawnSeaMonsters(player, spawnCount, waveCount, waveWinBonus, lev
     local confrontationID = math.random(1, 1000000) -- Unique ID for this confrontation
     -- print(string.format("[SEA MONSTER EVENT] Generated new confrontation ID: %d.", confrontationID))
 
-    -- Determine participants: check for party with trusts first, then alliance, then solo player
-    local leader = GetPlayerByID(player:getLeaderID())
-    local participants = 0
+	-- Determine participants: check for party with trusts first, then alliance, then solo player
+	local partyAllianceCheck = player:checkSoloPartyAlliance()
 
-    if leader:checkSoloPartyAlliance() == 2 then
-        participants = leader:getAlliance()
-    else
-        participants = leader:getPartyWithTrusts()
-    end
+	-- Determine participants based on the new check
+	local participants
+	if partyAllianceCheck == 2 then
+		-- Use their alliance if the check returns 2
+		participants = player:getAlliance()
+	else
+		-- Otherwise, use their party with trusts
+		participants = player:getPartyWithTrusts()
+	end
 
     -- Calculate confrontation duration based on number of waves
     local confrontationDuration = waveCount * BASE_TIME_PER_WAVE
@@ -518,26 +529,17 @@ local function spawnSeaMonsters(player, spawnCount, waveCount, waveWinBonus, lev
         currentConfrontation.waveDespawnTimerId = currentConfrontation.npc:timer(BASE_TIME_PER_WAVE * 1000, function() -- Timer in ms
             local confr = xi.confrontation.lookup[confrontationID]
             if confr and confr.currentWave == waveNumber and #confr.mobIds > 0 then
-                -- print(string.format("[SEA MONSTER EVENT] Wave %d timer expired for confrontation %d. Remaining mobs: %d. Despawning them.", waveNumber, confrontationID, #confr.mobIds))
-                -- Wave timer expired and mobs are still alive
-                for _, mobID in ipairs(confr.mobIds) do
-                    local mob = GetMobByID(mobID)
-                    if mob and mob:isSpawned() and mob:isAlive() then
-                        DespawnMob(mob:getID())
-                        -- print(string.format("[SEA MONSTER EVENT] Despawned mob %s (ID:%d) due to wave timer expiration.", mob:getName(), mob:getID()))
-                    end
-                end
-                confr.mobIds = {} -- Clear mob list for this wave
-
-                -- If the wave timer expires and there are still mobs, it's a loss for this wave
-                -- print(string.format("[SEA MONSTER EVENT] Wave timer expired for confrontation %d with mobs remaining. Setting as explicit loss.", confrontationID))
+                -- FIX: Explicitly mark as loss and call check. We must NOT manually despawn mobs or clear the mob list here.
+                -- Rely on xi.confrontation.check (which uses the didLose flag) to handle cleanup and despawn.
+                -- If we manually despawn/clear here, the final check sees validMobCount=0 and incorrectly triggers a Win.
+                
+                -- print(string.format("[SEA MONSTER EVENT] Wave %d timer expired for confrontation %d with mobs remaining. Setting as explicit loss.", waveNumber, confrontationID))
                 confr.didLoseExplicitly = true -- Set flag to indicate loss due to timer expiration
                 
-                -- Force the overall confrontation time limit to expire soon
+                -- Force the overall confrontation time limit to expire soon (just in case the flag check fails)
                 confr.timeLimit = os.time() + POST_LOSS_CONFRONTATION_DURATION_SECONDS
-                -- print(string.format("[SEA MONSTER EVENT] Shortened confrontation %d timeLimit to %d seconds after explicit loss.", confrontationID, POST_LOSS_CONFRONTATION_DURATION_SECONDS))
 
-                -- Trigger a check to see if the overall confrontation should end
+                -- Trigger a check to see if the overall confrontation should end (which will see didLoseExplicitly=true)
                 xi.confrontation.check(confrontationID)
             end
         end)
@@ -554,6 +556,7 @@ local function spawnSeaMonsters(player, spawnCount, waveCount, waveWinBonus, lev
                 look = mobData.look,
                 groupId = mobData.groupId,
                 groupZoneId = mobData.groupZoneId,
+                releaseIdOnDisappear = true, -- prevent zone from running out of DE IDs when event is run for long periods
                 -- Removed x, y, z, rotation, and spawn = true from here. These will be set by mob:setSpawn() and mob:spawn().
 
                 onMobSpawn = function(spawned_mob)
@@ -697,7 +700,7 @@ SMbattleSelectorPage1 = {
             -- print(string.format("[SEA MONSTER EVENT] Denied start: Confrontation already active in zone %d for player %s.", zoneID, player:getName()))
             return
         end
-        spawnSeaMonsters(player, 5, 3, 3, 135, 3, GetNPCByID(player:getCharVar("CurrentNPCID")), 12)
+        spawnSeaMonsters(player, 5, 3, 3, 125, 3, GetNPCByID(player:getCharVar("CurrentNPCID")), 12)
     end },
     { 'Typhoon (5 waves)', function(player)
         -- print(string.format("[SEA MONSTER EVENT] Player %s selected 'Typhoon (5 waves)'.", player:getName()))
@@ -707,7 +710,7 @@ SMbattleSelectorPage1 = {
             -- print(string.format("[SEA MONSTER EVENT] Denied start: Confrontation already active in zone %d for player %s.", zoneID, player:getName()))
             return
         end
-        spawnSeaMonsters(player, 5, 5, 5, 135, 3, GetNPCByID(player:getCharVar("CurrentNPCID")), 19)
+        spawnSeaMonsters(player, 5, 5, 5, 125, 3, GetNPCByID(player:getCharVar("CurrentNPCID")), 19)
     end },
     { 'Next Page', function(player)
         -- print(string.format("[SEA MONSTER EVENT] Player %s selected 'Next Page' from battle selector.", player:getName()))
@@ -735,7 +738,7 @@ SMbattleSelectorPage2 = {
             -- print(string.format("[SEA MONSTER EVENT] Denied start: Confrontation already active in zone %d for player %s.", zoneID, player:getName()))
             return
         end
-        spawnSeaMonsters(player, 5, 7, 8, 135, 3, GetNPCByID(player:getCharVar("CurrentNPCID")), 24)
+        spawnSeaMonsters(player, 5, 7, 8, 125, 3, GetNPCByID(player:getCharVar("CurrentNPCID")), 24)
     end },
     { 'Coral Cataclysm (10 waves)', function(player)
         -- print(string.format("[SEA MONSTER EVENT] Player %s selected 'Coral Cataclysm (10 waves)'.", player:getName()))
@@ -745,7 +748,7 @@ SMbattleSelectorPage2 = {
             -- print(string.format("[SEA MONSTER EVENT] Denied start: Confrontation already active in zone %d for player %s.", zoneID, player:getName()))
             return
         end
-        spawnSeaMonsters(player, 5, 10, 12, 135, 3, GetNPCByID(player:getCharVar("CurrentNPCID")), 32)
+        spawnSeaMonsters(player, 5, 10, 12, 125, 3, GetNPCByID(player:getCharVar("CurrentNPCID")), 32)
     end },
     { 'Back', function(player)
         -- print(string.format("[SEA MONSTER EVENT] Player %s selected 'Back' from page 3 (battle selector).", player:getName()))
@@ -1017,9 +1020,14 @@ SMRewardsPage4 = {
             -- print(string.format("[SEA MONSTER EVENT] Player %s not enough points for %s. Has %d, Needs %d.", player:getName(), rewardOptions[12].name, pts, rewardOptions[12].cost))
         end
     end },
-    { 'Back to Start', function(player)
-        -- print(string.format("[SEA MONSTER EVENT] Player %s selected 'Back to Start' from rewards (page 4).", player:getName()))
-        menu.options = SMRewardsPage1 -- Leads back to Rewards 1
+    { 'Next Page', function(player)
+        -- print(string.format("[SEA MONSTER EVENT] Player %s selected 'Next Page' from rewards (page 4).", player:getName()))
+        menu.options = SMRewardsPage5 -- Leads to the new page 8 (Rewards 5)
+        delaySendMenu(player)
+    end },
+    { 'Back', function(player)
+        -- print(string.format("[SEA MONSTER EVENT] Player %s selected 'Back' from rewards (page 4).", player:getName()))
+        menu.options = SMRewardsPage3 -- Leads back to Rewards 3
         delaySendMenu(player)
     end },
     { 'Main Menu', function(player)

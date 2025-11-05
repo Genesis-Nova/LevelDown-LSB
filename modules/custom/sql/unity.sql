@@ -1,236 +1,424 @@
 -- add unity mods as perm mods
--- INSERT INTO `item_mods` VALUES (21164,374,10);
--- INSERT INTO `item_mods` VALUES (21165,374,10);
--- INSERT INTO `item_mods` VALUES (28429,12,7);
--- INSERT INTO `item_mods` VALUES (28430,12,7);
-INSERT INTO `item_mods` VALUES (26714,24,15);
-INSERT INTO `item_mods` VALUES (26715,24,15);
-INSERT INTO `item_mods` VALUES (26942,25,15);
--- INSERT INTO `item_mods` VALUES (26943,25,15);
-INSERT INTO `item_mods` VALUES (20851,288,5);
-INSERT INTO `item_mods` VALUES (20852,288,5);
-INSERT INTO `item_mods` VALUES (27638,2,120);
-INSERT INTO `item_mods` VALUES (27639,2,120);
-INSERT INTO `item_mods` VALUES (26786,2,80);
-INSERT INTO `item_mods` VALUES (26787,2,80);
-INSERT INTO `item_mods` VALUES (20606,73,5);
-INSERT INTO `item_mods` VALUES (20607,73,5);
-INSERT INTO `item_mods` VALUES (22266,288,3);
-INSERT INTO `item_mods` VALUES (22267,288,3);
-INSERT INTO `item_mods` VALUES (27560,27,9);
-INSERT INTO `item_mods` VALUES (27560,370,3);
-INSERT INTO `item_mods` VALUES (27560,369,1);
-INSERT INTO `item_mods` VALUES (27561,27,9);
-INSERT INTO `item_mods` VALUES (27561,370,4);
-INSERT INTO `item_mods` VALUES (27561,369,1);
-INSERT INTO `item_mods` VALUES (28486,46,25);
-INSERT INTO `item_mods` VALUES (28486,38,25);
-INSERT INTO `item_mods` VALUES (28487,46,25);
-INSERT INTO `item_mods` VALUES (28487,38,25);
-INSERT INTO `item_mods` VALUES (28135,369,2);
-INSERT INTO `item_mods` VALUES (28134,369,1);
-INSERT INTO `item_mods` VALUES (27106,369,1);
-INSERT INTO `item_mods` VALUES (27107,369,2);
-INSERT INTO `item_mods` VALUES (28136,288,3);
-INSERT INTO `item_mods` VALUES (28137,288,3);
-INSERT INTO `item_mods` VALUES (27619,296,5);
--- INSERT INTO `item_mods` VALUES (27620,296,5);
-INSERT INTO `item_mods` VALUES (27517,68,15);
-INSERT INTO `item_mods` VALUES (27518,68,15);
-INSERT INTO `item_mods` VALUES (20853,2,120);
-INSERT INTO `item_mods` VALUES (20854,2,120);
--- INSERT INTO `item_mods` VALUES (25601,2,80);
--- INSERT INTO `item_mods` VALUES (25602,2,80);
-INSERT INTO `item_mods` VALUES (20806,14,10);
-INSERT INTO `item_mods` VALUES (20807,370,3);
-INSERT INTO `item_mods` VALUES (10770,27,5);
-INSERT INTO `item_mods` VALUES (10771,27,5);
-INSERT INTO `item_mods` VALUES (28352,14,12);
-INSERT INTO `item_mods` VALUES (28353,14,12);
-INSERT INTO `item_mods` VALUES (25680,30,20);
-INSERT INTO `item_mods` VALUES (25681,30,20);
-INSERT INTO `item_mods` VALUES (20696,25,20);
-INSERT INTO `item_mods` VALUES (20697,25,20);
-INSERT INTO `item_mods` VALUES (20507,288,5);
-INSERT INTO `item_mods` VALUES (20508,288,5);
-INSERT INTO `item_mods` VALUES (22057,369,1);
-INSERT INTO `item_mods` VALUES (22058,369,2);
-INSERT INTO `item_mods` VALUES (27640,25,15);
-INSERT INTO `item_mods` VALUES (27641,25,15);
-INSERT INTO `item_mods` VALUES (20709,170,3);
-INSERT INTO `item_mods` VALUES (20708,170,3);
-INSERT INTO `item_mods` VALUES (27543,25,5);
-INSERT INTO `item_mods` VALUES (27542,25,5);
-INSERT INTO `item_mods` VALUES (20521,25,20);
-INSERT INTO `item_mods` VALUES (20522,25,20);
-INSERT INTO `item_mods` VALUES (26870,25,20);
-INSERT INTO `item_mods` VALUES (26871,25,20);
-
--- INSERT INTO `item_mods` VALUES (27636,5,50);
--- INSERT INTO `item_mods` VALUES (27637,5,50);
-INSERT INTO `item_mods` VALUES (27609,13,5);
-INSERT INTO `item_mods` VALUES (27610,13,5);
-INSERT INTO `item_mods` VALUES (20527,10,15);
-INSERT INTO `item_mods` VALUES (20528,10,15);
-INSERT INTO `item_mods` VALUES (20681,25,15);
-INSERT INTO `item_mods` VALUES (20682,25,15);
-INSERT INTO `item_mods` VALUES (26401,25,20);
-INSERT INTO `item_mods` VALUES (26402,25,20);
-INSERT INTO `item_mods` VALUES (20942,165,5);
-INSERT INTO `item_mods` VALUES (20943,165,5);
-INSERT INTO `item_mods` VALUES (10768,2,35);
-INSERT INTO `item_mods` VALUES (10769,2,35);
-INSERT INTO `item_mods` VALUES (21343,12,6);
-INSERT INTO `item_mods` VALUES (21344,12,6);
-INSERT INTO `item_mods` VALUES (27602,9,7);
-INSERT INTO `item_mods` VALUES (27601,9,7);
-INSERT INTO `item_mods` VALUES (21748,25,30);
-INSERT INTO `item_mods` VALUES (21749,25,30);
-INSERT INTO `item_mods` VALUES (28490,161,-4);
-INSERT INTO `item_mods` VALUES (28491,161,-4);
-INSERT INTO `item_mods` VALUES (26784,5,50);
--- INSERT INTO `item_mods` VALUES (26785,5,50);
-INSERT INTO `item_mods` VALUES (26872,73,5);
--- INSERT INTO `item_mods` VALUES (26873,73,5);
--- INSERT INTO `item_mods` VALUES (27410,68,20);
--- INSERT INTO `item_mods` VALUES (27409,68,20);
--- INSERT INTO `item_mods` VALUES (27407,27,-7);
-INSERT INTO `item_mods` VALUES (27408,27,-7);
-INSERT INTO `item_mods` VALUES (22120,24,30);
-INSERT INTO `item_mods` VALUES (22121,24,30);
--- INSERT INTO `item_mods` VALUES (26710,9,7);
--- INSERT INTO `item_mods` VALUES (26710,11,7);
-INSERT INTO `item_mods` VALUES (26709,9,33);
-INSERT INTO `item_mods` VALUES (26709,11,33);
-INSERT INTO `item_mods` VALUES (20608,11,15);
-INSERT INTO `item_mods` VALUES (20609,11,15);
--- INSERT INTO `item_mods` VALUES (28275,68,10);
--- INSERT INTO `item_mods` VALUES (28276,68,10);
--- INSERT INTO `item_mods` VALUES (27051,23,15);
--- INSERT INTO `item_mods` VALUES (27050,23,15);
-INSERT INTO `item_mods` VALUES (28412,73,5);
-INSERT INTO `item_mods` VALUES (28413,73,5);
-INSERT INTO `item_mods` VALUES (21702,12,20);
-INSERT INTO `item_mods` VALUES (21703,12,20);
-INSERT INTO `item_mods` VALUES (21034,8,20);
-INSERT INTO `item_mods` VALUES (21035,8,20);
-INSERT INTO `item_mods` VALUES (20580,359,7);
-INSERT INTO `item_mods` VALUES (20581,359,7);
--- INSERT INTO `item_mods` VALUES (27108,5,50);
--- INSERT INTO `item_mods` VALUES (27109,5,50);
-INSERT INTO `item_mods` VALUES (25635,27,14);
-INSERT INTO `item_mods` VALUES (25636,27,14);
-INSERT INTO `item_mods` VALUES (26001,1,15);
-INSERT INTO `item_mods` VALUES (26002,1,15);
-INSERT INTO `item_mods` VALUES (21090,9,10);
-INSERT INTO `item_mods` VALUES (21091,9,10);
-INSERT INTO `item_mods` VALUES (26896,170,6);
-INSERT INTO `item_mods` VALUES (26897,170,6);
-INSERT INTO `item_mods` VALUES (28481,288,3);
-INSERT INTO `item_mods` VALUES (28482,288,3);
--- INSERT INTO `item_mods` VALUES (27993,2,60);
--- INSERT INTO `item_mods` VALUES (27994,2,60);
-INSERT INTO `item_mods` VALUES (21099,23,15);
-INSERT INTO `item_mods` VALUES (21100,23,15);
-INSERT INTO `item_mods` VALUES (21483,24,25);
-INSERT INTO `item_mods` VALUES (21484,24,25);
-INSERT INTO `item_mods` VALUES (21159,12,15);
-INSERT INTO `item_mods` VALUES (21160,12,15);
-INSERT INTO `item_mods` VALUES (20799,27,-7);
-INSERT INTO `item_mods` VALUES (20800,27,-7);
-INSERT INTO `item_mods` VALUES (21222,26,20);
-INSERT INTO `item_mods` VALUES (21222,370,2);
-INSERT INTO `item_mods` VALUES (21223,26,20);
-INSERT INTO `item_mods` VALUES (21223,370,3);
-INSERT INTO `item_mods` VALUES (27558,27,7);
-INSERT INTO `item_mods` VALUES (27559,27,7);
-INSERT INTO `item_mods` VALUES (27563,30,5);
-INSERT INTO `item_mods` VALUES (27562,30,5);
-INSERT INTO `item_mods` VALUES (21688,302,5);
-INSERT INTO `item_mods` VALUES (21689,302,5);
-INSERT INTO `item_mods` VALUES (21029,8,7);
-INSERT INTO `item_mods` VALUES (21030,8,7);
-INSERT INTO `item_mods` VALUES (28484,374,4);
--- INSERT INTO `item_mods` VALUES (28485,374,4);
-INSERT INTO `item_mods` VALUES (21695,8,20);
-INSERT INTO `item_mods` VALUES (21696,8,20);
-INSERT INTO `item_mods` VALUES (25710,27,8);
-INSERT INTO `item_mods` VALUES (25709,27,8);
-INSERT INTO `item_mods` VALUES (27548,25,10);
-INSERT INTO `item_mods` VALUES (27549,25,10);
-INSERT INTO `item_mods` VALUES (21219,26,20);
--- INSERT INTO `item_mods` VALUES (21220,26,20);
-INSERT INTO `item_mods` VALUES (20804,27,-7);
-INSERT INTO `item_mods` VALUES (20805,27,-7);
-INSERT INTO `item_mods` VALUES (21805,28,25);
-INSERT INTO `item_mods` VALUES (21806,28,25);
-INSERT INTO `item_mods` VALUES (21162,25,20);
-INSERT INTO `item_mods` VALUES (21162,370,2);
-INSERT INTO `item_mods` VALUES (21163,25,20);
-INSERT INTO `item_mods` VALUES (21163,370,3);
-INSERT INTO `item_mods` VALUES (20613,12,15);
-INSERT INTO `item_mods` VALUES (20614,12,15);
-INSERT INTO `item_mods` VALUES (20980,288,3);
-INSERT INTO `item_mods` VALUES (20981,288,3);
-INSERT INTO `item_mods` VALUES (21416,2,35);
-INSERT INTO `item_mods` VALUES (21417,2,35);
--- INSERT INTO `item_mods` VALUES (28273,170,3);
--- INSERT INTO `item_mods` VALUES (28274,170,3);
-INSERT INTO `item_mods` VALUES (21418,23,15);
--- INSERT INTO `item_mods` VALUES (21419,23,15);
-INSERT INTO `item_mods` VALUES (26869,170,6);
-INSERT INTO `item_mods` VALUES (26868,170,6);
-INSERT INTO `item_mods` VALUES (28427,23,15);
-INSERT INTO `item_mods` VALUES (28428,23,15);
-INSERT INTO `item_mods` VALUES (20611,8,7);
-INSERT INTO `item_mods` VALUES (20612,8,7);
-INSERT INTO `item_mods` VALUES (22255,8,5);
-INSERT INTO `item_mods` VALUES (22254,8,5);
-INSERT INTO `item_mods` VALUES (21075,296,11);
-INSERT INTO `item_mods` VALUES (21076,296,11);
-INSERT INTO `item_mods` VALUES (27995,289,7);
-INSERT INTO `item_mods` VALUES (27996,289,7);
-INSERT INTO `item_mods` VALUES (28423,71,7);
-INSERT INTO `item_mods` VALUES (28424,71,7);
-INSERT INTO `item_mods` VALUES (26731,8,8);
--- INSERT INTO `item_mods` VALUES (26732,8,8);
-INSERT INTO `item_mods` VALUES (20987,289,6);
-INSERT INTO `item_mods` VALUES (20988,289,6);
-INSERT INTO `item_mods` VALUES (20679,170,6);
-INSERT INTO `item_mods` VALUES (20680,170,6);
-INSERT INTO `item_mods` VALUES (27148,73,8);
-INSERT INTO `item_mods` VALUES (27149,73,8);
-INSERT INTO `item_mods` VALUES (25855,73,8);
-INSERT INTO `item_mods` VALUES (25856,73,8);
-INSERT INTO `item_mods` VALUES (25733,73,9);
-INSERT INTO `item_mods` VALUES (25732,73,9);
-INSERT INTO `item_mods` VALUES (25923,73,8);
-INSERT INTO `item_mods` VALUES (25924,73,8);
-INSERT INTO `item_mods` VALUES (20603,11,15);
--- INSERT INTO `item_mods` VALUES (20604,11,15);
-INSERT INTO `item_mods` VALUES (20898,288,3);
-INSERT INTO `item_mods` VALUES (20899,288,3);
-INSERT INTO `item_mods` VALUES (27508,25,5);
-INSERT INTO `item_mods` VALUES (27509,25,5);
-INSERT INTO `item_mods` VALUES (21690,374,10);
-INSERT INTO `item_mods` VALUES (21691,374,10);
-INSERT INTO `item_mods` VALUES (26021,369,2);
-INSERT INTO `item_mods` VALUES (26022,369,3);
-INSERT INTO `item_mods` VALUES (27504,27,8);
-INSERT INTO `item_mods` VALUES (27505,27,8);
-INSERT INTO `item_mods` VALUES (21349,9,5);
--- INSERT INTO `item_mods` VALUES (21350,9,5);
--- INSERT INTO `item_mods` VALUES (27230,288,5);
-INSERT INTO `item_mods` VALUES (27231,288,5);
-INSERT INTO `item_mods` VALUES (27532,8,5);
-INSERT INTO `item_mods` VALUES (27533,8,5);
-
--- pet mods
-INSERT INTO `item_mods_pet` VALUES (20806,370,2,2);
-INSERT INTO `item_mods_pet` VALUES (20807,14,10,2);
-INSERT INTO `item_mods_pet` VALUES (26887,992,30,0);
-INSERT INTO `item_mods_pet` VALUES (26888,992,30,0);
-
+-- Ababinili
+REPLACE INTO `item_mods` VALUES (21164,374,33);
+REPLACE INTO `item_mods` VALUES (21165,374,34);
+-- Acuity Belt
+REPLACE INTO `item_mods` VALUES (28429,12,12);
+REPLACE INTO `item_mods` VALUES (28430,12,13);
+-- Adorned Helm
+REPLACE INTO `item_mods` VALUES (26714,24,15);
+REPLACE INTO `item_mods` VALUES (26715,24,15);
+-- Agony Jerkin
+REPLACE INTO `item_mods` VALUES (26942,25,15);
+REPLACE INTO `item_mods` VALUES (26943,25,15);
+-- Aizkora
+REPLACE INTO `item_mods` VALUES (20851,288,5);
+REPLACE INTO `item_mods` VALUES (20852,288,5);
+-- Ajax
+REPLACE INTO `item_mods` VALUES (27638,2,120);
+REPLACE INTO `item_mods` VALUES (27639,2,120);
+-- Alhazen Hat 
+REPLACE INTO `item_mods` VALUES (26786,2,80);
+REPLACE INTO `item_mods` VALUES (26787,2,80);
+-- Anathema Harpe  
+REPLACE INTO `item_mods` VALUES (20606,73,5);
+REPLACE INTO `item_mods` VALUES (20607,73,5);
+-- Antitail
+REPLACE INTO `item_mods` VALUES (22266,288,3);
+REPLACE INTO `item_mods` VALUES (22267,288,3);
+-- Apeile Ring  
+REPLACE INTO `item_mods` VALUES (27560,27,9);
+REPLACE INTO `item_mods` VALUES (27560,370,3);
+REPLACE INTO `item_mods` VALUES (27560,369,1);
+REPLACE INTO `item_mods` VALUES (27561,27,9);
+REPLACE INTO `item_mods` VALUES (27561,370,4);
+REPLACE INTO `item_mods` VALUES (27561,369,1);
+-- Arete Del Luna
+REPLACE INTO `item_mods` VALUES (28486,21,25);
+REPLACE INTO `item_mods` VALUES (28487,21,25);
+-- Assid. Pants
+REPLACE INTO `item_mods` VALUES (28134,369,1);
+REPLACE INTO `item_mods` VALUES (28135,369,2);
+-- Asteria Mitts
+REPLACE INTO `item_mods` VALUES (27106,369,1);
+REPLACE INTO `item_mods` VALUES (27107,369,2);
+-- Augury Cuisses
+REPLACE INTO `item_mods` VALUES (28136,288,3);
+REPLACE INTO `item_mods` VALUES (28137,288,3);
+-- Aurist's Cape
+REPLACE INTO `item_mods` VALUES (27619,296,5);
+REPLACE INTO `item_mods` VALUES (27620,296,5);
+-- Bathy Choker
+REPLACE INTO `item_mods` VALUES (27517,68,15);
+REPLACE INTO `item_mods` VALUES (27518,68,15);
+-- Beheader
+REPLACE INTO `item_mods` VALUES (20853,2,120);
+REPLACE INTO `item_mods` VALUES (20854,2,120);
+-- Blistering Sallet
+REPLACE INTO `item_mods` VALUES (25601,2,118);
+REPLACE INTO `item_mods` VALUES (25602,2,118);
+-- Buramgh
+REPLACE INTO `item_mods` VALUES (20806,14,10);
+REPLACE INTO `item_mods_pet` VALUES (20806,370,2,0);
+REPLACE INTO `item_mods` VALUES (20807,14,10);
+REPLACE INTO `item_mods_pet` VALUES (20807,370,3, 0);
+-- Cacoethic Ring
+REPLACE INTO `item_mods` VALUES (10770,27,5);
+REPLACE INTO `item_mods` VALUES (10771,27,5);
+-- Canto Necklace 
+REPLACE INTO `item_mods` VALUES (28352,14,12);
+REPLACE INTO `item_mods` VALUES (28353,14,12);
+-- Cohort Cloak  
+REPLACE INTO `item_mods` VALUES (25680,30,20);
+REPLACE INTO `item_mods` VALUES (25681,30,20);
+-- Combuster
+REPLACE INTO `item_mods` VALUES (20696,25,20);
+REPLACE INTO `item_mods` VALUES (20697,25,20);
+-- Comeuppances 
+REPLACE INTO `item_mods` VALUES (20507,288,5);
+REPLACE INTO `item_mods` VALUES (20508,288,5);
+-- Contemplator 
+REPLACE INTO `item_mods` VALUES (22057,369,1);
+REPLACE INTO `item_mods` VALUES (22058,369,2);
+-- Deliverance 
+REPLACE INTO `item_mods` VALUES (27640,25,15);
+REPLACE INTO `item_mods` VALUES (27641,25,15);
+-- Demers. Degen
+REPLACE INTO `item_mods` VALUES (20708,170,3);
+REPLACE INTO `item_mods` VALUES (20709,170,3);
+-- Domin. Earring
+REPLACE INTO `item_mods` VALUES (27542,25,5);
+REPLACE INTO `item_mods` VALUES (27543,25,5);
+-- Emeici 
+REPLACE INTO `item_mods` VALUES (20521,25,20);
+REPLACE INTO `item_mods` VALUES (20522,25,20);
+-- Emet Harness
+REPLACE INTO `item_mods` VALUES (26870,25,20);
+REPLACE INTO `item_mods` VALUES (26871,25,20);
+-- Evalach 
+REPLACE INTO `item_mods` VALUES (27636,5,79);
+REPLACE INTO `item_mods` VALUES (27637,5,79);
+-- Fi Follet Cape
+REPLACE INTO `item_mods` VALUES (27609,13,5);
+REPLACE INTO `item_mods` VALUES (27610,13,5);
+-- Fists Of Fury
+REPLACE INTO `item_mods` VALUES (20527,10,15);
+REPLACE INTO `item_mods` VALUES (20528,10,15);
+-- Flyssa
+REPLACE INTO `item_mods` VALUES (20681,25,35);
+REPLACE INTO `item_mods` VALUES (20682,25,36);
+-- Forfend 
+REPLACE INTO `item_mods` VALUES (26401,25,20);
+REPLACE INTO `item_mods` VALUES (26402,25,20);
+-- Gae Derg
+REPLACE INTO `item_mods` VALUES (20942,165,5);
+REPLACE INTO `item_mods` VALUES (20943,165,5);
+-- Gelatinous Ring
+REPLACE INTO `item_mods` VALUES (10768,2,35);
+REPLACE INTO `item_mods` VALUES (10769,2,35);
+-- Ghastly Tathlum
+REPLACE INTO `item_mods` VALUES (21343,12,6);
+REPLACE INTO `item_mods` VALUES (21344,12,6);
+-- Ground. Mantle
+REPLACE INTO `item_mods` VALUES (27601,9,7);
+REPLACE INTO `item_mods` VALUES (27602,9,7);
+-- Habilitator
+REPLACE INTO `item_mods` VALUES (21748,25,30);
+REPLACE INTO `item_mods` VALUES (21749,25,30);
+-- Handler's Earring
+REPLACE INTO `item_mods` VALUES (28490,10,5);
+REPLACE INTO `item_mods_pet` VALUES (28490,161,-300,0);
+REPLACE INTO `item_mods` VALUES (28491,10,5);
+REPLACE INTO `item_mods_pet` VALUES (28491,161,-400,0);
+-- Hike Khat
+REPLACE INTO `item_mods` VALUES (26784,5,86);
+REPLACE INTO `item_mods` VALUES (26785,5,86);
+-- Hime Domaru 
+REPLACE INTO `item_mods` VALUES (26872,73,14);
+REPLACE INTO `item_mods` VALUES (26873,73,14);
+-- Hippo. Socks
+REPLACE INTO `item_mods` VALUES (27409,68,127);
+REPLACE INTO `item_mods` VALUES (27410,68,127);
+-- Hygieia Clogs
+REPLACE INTO `item_mods` VALUES (27407,27,-7);
+REPLACE INTO `item_mods` VALUES (27408,27,-7);
+-- Imati 
+REPLACE INTO `item_mods` VALUES (22120,24,30);
+REPLACE INTO `item_mods` VALUES (22121,24,30);
+-- Imp. Wing Hair.
+REPLACE INTO `item_mods` VALUES (26709,9,33);
+REPLACE INTO `item_mods` VALUES (26709,11,33);
+REPLACE INTO `item_mods` VALUES (26710,9,34);
+REPLACE INTO `item_mods` VALUES (26710,11,34);
+-- Jugo Kukri
+REPLACE INTO `item_mods` VALUES (20608,11,15);
+REPLACE INTO `item_mods` VALUES (20609,11,15);
+-- Jute Boots
+REPLACE INTO `item_mods` VALUES (28275,68,117);
+REPLACE INTO `item_mods` VALUES (28276,68,117);
+-- Kachi. Kote
+REPLACE INTO `item_mods` VALUES (27050,23,35);
+REPLACE INTO `item_mods` VALUES (27051,23,36);
+-- Kentarch Belt
+REPLACE INTO `item_mods` VALUES (28412,73,5);
+REPLACE INTO `item_mods` VALUES (28413,73,5);
+-- Kladenets
+REPLACE INTO `item_mods` VALUES (21702,12,20);
+REPLACE INTO `item_mods` VALUES (21703,12,20);
+-- Kunimune 
+REPLACE INTO `item_mods` VALUES (21034,8,20);
+REPLACE INTO `item_mods` VALUES (21035,8,20);
+-- Kustawi 
+REPLACE INTO `item_mods` VALUES (20580,359,7);
+REPLACE INTO `item_mods` VALUES (20581,359,7);
+-- Lamassu Mitts
+REPLACE INTO `item_mods` VALUES (27108,5,94);
+REPLACE INTO `item_mods` VALUES (27109,5,94);
+-- Loess Barbuta
+REPLACE INTO `item_mods` VALUES (25635,27,14);
+REPLACE INTO `item_mods` VALUES (25636,27,14);
+-- Loricate Torque
+REPLACE INTO `item_mods` VALUES (26001,1,15);
+REPLACE INTO `item_mods` VALUES (26002,1,15);
+-- Loxotic Mace
+REPLACE INTO `item_mods` VALUES (21090,9,10);
+REPLACE INTO `item_mods` VALUES (21091,9,10);
+-- Lugra Cloak
+REPLACE INTO `item_mods` VALUES (26896,170,6);
+REPLACE INTO `item_mods` VALUES (26897,170,6);
+-- Lugra Earring
+REPLACE INTO `item_mods` VALUES (28481,288,3);
+REPLACE INTO `item_mods` VALUES (28482,288,3);
+-- Macabre Gaunt.
+REPLACE INTO `item_mods` VALUES (27993,2,89);
+REPLACE INTO `item_mods` VALUES (27994,2,89);
+-- Magesmasher
+REPLACE INTO `item_mods` VALUES (21099,23,25);
+REPLACE INTO `item_mods` VALUES (21100,23,26);
+-- Malison
+REPLACE INTO `item_mods` VALUES (21483,24,25);
+REPLACE INTO `item_mods` VALUES (21484,24,25);
+-- Marin Staff
+REPLACE INTO `item_mods` VALUES (21159,12,27);
+REPLACE INTO `item_mods` VALUES (21160,12,27);
+-- Mdomo Axe
+REPLACE INTO `item_mods` VALUES (20799,27,-7);
+REPLACE INTO `item_mods` VALUES (20800,27,-7);
+-- Mengado 
+REPLACE INTO `item_mods` VALUES (21222,26,47);
+REPLACE INTO `item_mods` VALUES (21222,370,2);
+REPLACE INTO `item_mods` VALUES (21223,26,47);
+REPLACE INTO `item_mods` VALUES (21223,370,3);
+-- Mephitas's Ring
+REPLACE INTO `item_mods` VALUES (27558,27,7);
+REPLACE INTO `item_mods` VALUES (27559,27,7);
+-- Metamor. Ring
+REPLACE INTO `item_mods` VALUES (27562,30,5);
+REPLACE INTO `item_mods` VALUES (27563,30,5);
+-- Montante 
+REPLACE INTO `item_mods` VALUES (21688,302,5);
+REPLACE INTO `item_mods` VALUES (21689,302,5);
+-- Norifusa 
+REPLACE INTO `item_mods` VALUES (21029,8,7);
+REPLACE INTO `item_mods` VALUES (21030,8,7);
+-- Nourish. Earring
+REPLACE INTO `item_mods` VALUES (28484,374,6);
+REPLACE INTO `item_mods` VALUES (28485,374,7);
+-- Nullis
+REPLACE INTO `item_mods` VALUES (21695,8,20);
+REPLACE INTO `item_mods` VALUES (21696,8,20);
+-- Obviat. Cuirass
+REPLACE INTO `item_mods` VALUES (25709,27,8);
+REPLACE INTO `item_mods` VALUES (25710,27,8);
+-- Odnowa Earring
+REPLACE INTO `item_mods` VALUES (27548,25,10);
+REPLACE INTO `item_mods` VALUES (27549,25,10);
+-- Paloma Bow
+REPLACE INTO `item_mods` VALUES (21219,26,20);
+REPLACE INTO `item_mods` VALUES (21220,26,20);
+-- Perun 
+REPLACE INTO `item_mods` VALUES (20804,27,-7);
+REPLACE INTO `item_mods` VALUES (20805,27,-7);
+-- Pixquizpan  
+REPLACE INTO `item_mods` VALUES (21805,28,25);
+REPLACE INTO `item_mods` VALUES (21806,28,25);
+--Pouwhenua 
+REPLACE INTO `item_mods` VALUES (21162,25,28);
+REPLACE INTO `item_mods` VALUES (21162,370,2);
+REPLACE INTO `item_mods` VALUES (21163,25,28);
+REPLACE INTO `item_mods` VALUES (21163,370,3);
+-- Pukulatmuj 
+REPLACE INTO `item_mods` VALUES (20613,12,15);
+REPLACE INTO `item_mods` VALUES (20614,12,15);
+-- Raicho 
+REPLACE INTO `item_mods` VALUES (20980,288,3);
+REPLACE INTO `item_mods` VALUES (20981,288,3);
+-- Refined Grip
+REPLACE INTO `item_mods` VALUES (21416,2,35);
+REPLACE INTO `item_mods` VALUES (21417,2,35);
+-- Regal Pumps
+REPLACE INTO `item_mods` VALUES (28273,170,6);
+REPLACE INTO `item_mods` VALUES (28274,170,7);
+-- Rigorous Grip
+REPLACE INTO `item_mods` VALUES (21418,23,15);
+REPLACE INTO `item_mods` VALUES (21419,23,15);
+-- Ros. Jaseran
+REPLACE INTO `item_mods` VALUES (26868,170,6);
+REPLACE INTO `item_mods` VALUES (26869,170,6);
+-- Sailfi Belt
+REPLACE INTO `item_mods` VALUES (28427,23,15);
+REPLACE INTO `item_mods` VALUES (28428,23,15);
+-- Sangarius 
+REPLACE INTO `item_mods` VALUES (20611,8,7);
+REPLACE INTO `item_mods` VALUES (20612,8,7);
+-- Seeth. Bomblet
+REPLACE INTO `item_mods` VALUES (22254,8,5);
+REPLACE INTO `item_mods` VALUES (22255,8,5);
+-- Septoptic 
+REPLACE INTO `item_mods` VALUES (21075,296,11);
+REPLACE INTO `item_mods` VALUES (21076,296,11);
+-- Shigure Tekko
+REPLACE INTO `item_mods` VALUES (27995,289,7);
+REPLACE INTO `item_mods` VALUES (27996,289,7);
+-- Shinjutsu-no-Obi
+REPLACE INTO `item_mods` VALUES (28423,71,7);
+REPLACE INTO `item_mods` VALUES (28424,71,7);
+-- Stinger Helm
+REPLACE INTO `item_mods` VALUES (26731,8,33);
+REPLACE INTO `item_mods` VALUES (26732,8,33);
+-- Tancho 
+REPLACE INTO `item_mods` VALUES (20987,289,6);
+REPLACE INTO `item_mods` VALUES (20988,289,6);
+-- Tanmogayi 
+REPLACE INTO `item_mods` VALUES (20679,170,6);
+REPLACE INTO `item_mods` VALUES (20680,170,6);
+-- Tatena. Gote
+REPLACE INTO `item_mods` VALUES (27148,73,8);
+REPLACE INTO `item_mods` VALUES (27149,73,8);
+-- Tatena. Haidate
+REPLACE INTO `item_mods` VALUES (25855,73,8);
+REPLACE INTO `item_mods` VALUES (25856,73,8);
+-- Tatena. Harama.
+REPLACE INTO `item_mods` VALUES (25732,73,9);
+REPLACE INTO `item_mods` VALUES (25733,73,9);
+-- Tatena. Sune.
+REPLACE INTO `item_mods` VALUES (25923,73,8);
+REPLACE INTO `item_mods` VALUES (25924,73,8);
+-- Ternion Dagger
+REPLACE INTO `item_mods` VALUES (20603,11,15);
+REPLACE INTO `item_mods` VALUES (20604,11,15);
+-- Triska Scythe
+REPLACE INTO `item_mods` VALUES (20898,288,3);
+REPLACE INTO `item_mods` VALUES (20899,288,3);
+-- Unmoving Collar
+REPLACE INTO `item_mods` VALUES (27508,25,5);
+REPLACE INTO `item_mods` VALUES (27509,25,5);
+-- Ushenzi 
+REPLACE INTO `item_mods` VALUES (21690,374,10);
+REPLACE INTO `item_mods` VALUES (21691,374,10);
+-- Vim Torque
+REPLACE INTO `item_mods` VALUES (26021,369,2);
+REPLACE INTO `item_mods` VALUES (26022,369,3);
+-- Warder's Charm
+REPLACE INTO `item_mods` VALUES (27504,27,8);
+REPLACE INTO `item_mods` VALUES (27505,27,8);
+-- Wingcutter 
+REPLACE INTO `item_mods` VALUES (21349,9,5);
+REPLACE INTO `item_mods` VALUES (21350,9,5);
+-- Zoar Subligar
+REPLACE INTO `item_mods` VALUES (27230,288,5);
+REPLACE INTO `item_mods` VALUES (27231,288,5);
+-- Zwazo Earring
+REPLACE INTO `item_mods` VALUES (27532,8,5);
+REPLACE INTO `item_mods` VALUES (27533,8,5);
+-- Shomonjijoe
+REPLACE INTO `item_mods_pet` VALUES (26887,992,30,1);
+REPLACE INTO `item_mods_pet` VALUES (26888,992,30,1);
+-- MOVE_SPEED_CHEER 
+-- Paean Boots
+REPLACE INTO `item_mods` VALUES (10635,1087,8);  -- MOVE_SPEED_CHEER: 12
+-- Iaso Boots
+REPLACE INTO `item_mods` VALUES (10640,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Areion Boots
+REPLACE INTO `item_mods` VALUES (10647,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Areion Boots +1
+REPLACE INTO `item_mods` VALUES (10648,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Aoidos Cothurnes +2
+REPLACE INTO `item_mods` VALUES (11153,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Aoidos Cothurnes +1
+REPLACE INTO `item_mods` VALUES (11253,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Hermes Sandals
+REPLACE INTO `item_mods` VALUES (11379,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Hermes Sandals +1
+REPLACE INTO `item_mods` VALUES (11380,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Tandava Crackows
+REPLACE INTO `item_mods` VALUES (11430,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Danzo Sune-Ate
+REPLACE INTO `item_mods` VALUES (12997,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Strider Boots
+REPLACE INTO `item_mods` VALUES (14080,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Crimson Cuisses
+REPLACE INTO `item_mods` VALUES (14280,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Blood Cuisses
+REPLACE INTO `item_mods` VALUES (14281,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Heralds Gaiters
+REPLACE INTO `item_mods` VALUES (15322,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Skadis Jambeaux
+REPLACE INTO `item_mods` VALUES (15715,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Trotter Boots
+REPLACE INTO `item_mods` VALUES (15736,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Chocobo Knife
+REPLACE INTO `item_mods` VALUES (21569,1087,18);    -- MOVE_SPEED_CHEER: 18
+-- Pillagers Poulaines +2
+REPLACE INTO `item_mods` VALUES (23313,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Orion Socks +2
+REPLACE INTO `item_mods` VALUES (23318,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Geomancy Sandals +2
+REPLACE INTO `item_mods` VALUES (23329,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Fili Cothurnes +2
+REPLACE INTO `item_mods` VALUES (23362,1087,18);   -- MOVE_SPEED_CHEER: 18
+-- Pillagers Poulaines +3
+REPLACE INTO `item_mods` VALUES (23648,1087,18);   -- MOVE_SPEED_CHEER: 18
+-- Orion Socks +3
+REPLACE INTO `item_mods` VALUES (23653,1087,18);   -- MOVE_SPEED_CHEER: 18
+-- Geomancy Sandals +3
+REPLACE INTO `item_mods` VALUES (23664,1087,18);   -- MOVE_SPEED_CHEER: 18
+-- Kupo Suit
+REPLACE INTO `item_mods` VALUES (25726,1087,18);   -- MOVE_SPEED_CHEER: 18
+-- Shneddick Ring +1
+REPLACE INTO `item_mods` VALUES (26202,1087,18);  -- MOVE_SPEED_CHEER: 18
+-- Carmine Cuisses
+REPLACE INTO `item_mods` VALUES (27206,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Carmine Cuisses +1
+REPLACE INTO `item_mods` VALUES (27207,1087,18);   -- MOVE_SPEED_CHEER: 18
+-- Track Pants +1
+REPLACE INTO `item_mods` VALUES (27326,1087,8);  -- MOVE_SPEED_CHEER: 12
+-- Fili Cothurnes
+REPLACE INTO `item_mods` VALUES (27429,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Fili Cothurnes +1
+REPLACE INTO `item_mods` VALUES (27430,1087,18);   -- MOVE_SPEED_CHEER: 18
+-- Criers Gaiters
+REPLACE INTO `item_mods` VALUES (27456,1087,12);  -- MOVE_SPEED_CHEER: 12
+-- Shneddick Ring
+REPLACE INTO `item_mods` VALUES (27590,1087,18);  -- MOVE_SPEED_CHEER: 18
+-- Skadis Jambeaux +1
+REPLACE INTO `item_mods` VALUES (28209,1087,18);  -- MOVE_SPEED_CHEER: 18
+-- Pillagers Poulaines
+REPLACE INTO `item_mods` VALUES (28228,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Orion Socks
+REPLACE INTO `item_mods` VALUES (28233,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Pillagers Poulaines +1
+REPLACE INTO `item_mods` VALUES (28249,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Orion Socks +1
+REPLACE INTO `item_mods` VALUES (28254,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Geomancy Sandals +1
+REPLACE INTO `item_mods` VALUES (28265,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Jute Boots
+REPLACE INTO `item_mods` VALUES (28275,1087,12);   -- MOVE_SPEED_CHEER: 12
+-- Jute Boots +1
+REPLACE INTO `item_mods` VALUES (28276,1087,18);   -- MOVE_SPEED_CHEER: 18
+-- Geomancy Sandals
+REPLACE INTO `item_mods` VALUES (28346,1087,12);   -- MOVE_SPEED_CHEER: 12
 
 -- UPDATE EXISTING Ethereal Junctions **** updated 4/28/2024 due to march retail id shift
 UPDATE npc_list SET name = 0x457468657265616c5f4a756e6374696f6e, polutils_name = 'Ethereal Junction', flag = 32769, speed = 50, speedsub = 50, animation = 0, animationsub = 5, namevis = 116, status = 0, entityFlags = 3, look = 0x00008f0900000000000000000000000000000000, name_prefix = 0 WHERE npcid = 17649908;

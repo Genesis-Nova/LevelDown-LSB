@@ -1,7 +1,7 @@
 -----------------------------------
 -- Paragon Global player buff
 -----------------------------------
-require('scripts/globals/utils')
+ require('scripts/utils/utils') -- file dir changed
 -----------------------------------
 xi = xi or {}
 xi.paragon = xi.paragon or {}

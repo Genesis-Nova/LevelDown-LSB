@@ -198,7 +198,7 @@ function progressiveLevelUp(mob, target)
         local amt = math.floor(mob:getStat(i) * 1.25)
         mob:addMod(i, amt)
     end
-
+    mob:printToArea(string.format('%s has Leveled Up', mob:getName()), xi.msg.channel.SYSTEM_3)
     mob:injectActionPacket(mob:getID(),4,5000,0,0,185,10,1)
     mob:addHP(mob:getHP() * .25)
     mob:setMP(mob:getMaxMP())

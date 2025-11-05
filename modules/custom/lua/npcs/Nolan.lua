@@ -365,7 +365,7 @@ local tradeTablePathB =
 [159] = { trade = { 21156,{ 9086, 6}}, base = 21156, aug1 =  55, aug1MAX = 2, aug2 =  517, aug2MAX =  9, aug3 =  35, aug3MAX = 24, aug4 = 0, aug4MAX = 0 },--Nibiru Staff
 [160] = { trade = { 20801,{ 9086, 6}}, base = 20801, aug1 =  23, aug1MAX = 14, aug2 =  25, aug2MAX =  14, aug3 =  142, aug3MAX = 4, aug4 = 0, aug4MAX = 0 },--Nibiru Tabar
 [161] = { trade = { 21031,{ 9086, 6}}, base = 21031, aug1 =  25, aug1MAX = 14, aug2 =  195, aug2MAX =  6, aug3 =  143, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Sensui
-[162] = { trade = { 20979,{ 9086, 6}}, base = 20979, aug1 =  740, aug1MAX = 14, aug2 =  512, aug2MAX =  14, aug3 =  23, aug3MAX = 9, aug4 = 0, aug4MAX = 0 },--Aizushintogo
+[162] = { trade = { 20979,{ 9086, 6}}, base = 20979, aug1 =  740, aug1MAX = 14, aug2 =  512, aug2MAX =  14, aug3 =  23, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Aizushintogo
 [163] = { trade = { 21150,{ 9086, 6}}, base = 21150, aug1 =  517, aug1MAX = 19, aug2 =  35, aug2MAX =  19, aug3 =  329, aug3MAX = 9, aug4 = 0, aug4MAX = 0 },--Akademos
 [164] = { trade = { 21698,{ 9086, 6}}, base = 21698, aug1 =  740, aug1MAX = 29, aug2 =  23, aug2MAX =  19, aug3 =  25, aug3MAX = 19, aug4 = 0, aug4MAX = 0 },--Bidenhander
 [165] = { trade = { 21482,{ 9086, 6}}, base = 21482, aug1 =  746, aug1MAX = 14, aug2 =  515, aug2MAX =  14, aug3 =  27, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Compensator
@@ -739,28 +739,28 @@ local tradeTablePathD =
 [159] = { trade = { 21156,{ 9086, 6}}, base = 21156, aug1 =  106, aug1MAX = 19, aug2 =  107, aug2MAX =  19, aug3 =  123, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Nibiru Staff
 [160] = { trade = { 20801,{ 9086, 6}}, base = 20801, aug1 =  518, aug1MAX = 14, aug2 =  111, aug2MAX =  2, aug3 =  123, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Nibiru Tabar
 [161] = { trade = { 21031,{ 9086, 6}}, base = 21031, aug1 =  31, aug1MAX = 19, aug2 =  37, aug2MAX =  19, aug3 =  54, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Sensui
-[162] = { trade = { 20979,{ 9086, 6}}, base = 20979, aug1 =  740, aug1MAX = 16, aug2 =  23, aug2MAX =  14, aug3 =  35, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Aizushintogo
-[163] = { trade = { 21150,{ 9086, 6}}, base = 21150, aug1 =  35, aug1MAX = 19, aug2 =  290, aug2MAX =  14, aug3 =  740, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Akademos
-[164] = { trade = { 21698,{ 9086, 6}}, base = 21698, aug1 =  740, aug1MAX = 31, aug2 =  142, aug2MAX =  6, aug3 =  746, aug3MAX = 6, aug4 = 0, aug4MAX = 0 },--Bidenhander
-[165] = { trade = { 21482,{ 9086, 6}}, base = 21482, aug1 =  746, aug1MAX = 14, aug2 =  29, aug2MAX =  14, aug3 =  740, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Compensator
-[166] = { trade = { 20892,{ 9086, 6}}, base = 20892, aug1 =  740, aug1MAX = 31, aug2 =  11, aug2MAX =  15, aug3 =  35, aug3MAX = 19, aug4 = 0, aug4MAX = 0 },--Deathbane
-[167] = { trade = { 20702,{ 9086, 6}}, base = 20702, aug1 =  35, aug1MAX = 14, aug2 =  133, aug2MAX =  19, aug3 =  740, aug3MAX = 0, aug4 = 0, aug4MAX = 0 },--Emissary
-[168] = { trade = { 20597,{ 9086, 6}}, base = 20597, aug1 =  740, aug1MAX = 16, aug2 =  31, aug2MAX =  14, aug3 =  1792, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Enchufla
-[169] = { trade = { 21149,{ 9086, 6}}, base = 21149, aug1 =  1792, aug1MAX = 14, aug2 =  107, aug2MAX =  24, aug3 =  740, aug3MAX = 3, aug4 = 0, aug4MAX = 0 },--Espiritus
-[170] = { trade = { 20519,{ 9086, 6}}, base = 20519, aug1 =  740, aug1MAX = 16, aug2 =  3, aug2MAX =  15, aug3 =  515, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Hammerfists
-[171] = { trade = { 21027,{ 9086, 6}}, base = 21027, aug1 =  515, aug1MAX = 19, aug2 =  27, aug2MAX =  24, aug3 =  740, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Ichigohitofuri
-[172] = { trade = { 20845,{ 9086, 6}}, base = 20845, aug1 =  740, aug1MAX = 31, aug2 =  512, aug2MAX =  14, aug3 =  299, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Instigator
-[173] = { trade = { 20701,{ 9086, 6}}, base = 20701, aug1 =  299, aug1MAX = 14, aug2 =  35, aug2MAX =  14, aug3 =  35, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Iris
-[174] = { trade = { 20599,{ 9086, 6}}, base = 20599, aug1 =  35, aug1MAX = 14, aug2 =  297, aug2MAX =  9, aug3 =  35, aug3MAX = 9, aug4 = 0, aug4MAX = 0 },--Kali
-[175] = { trade = { 21151,{ 9086, 6}}, base = 21151, aug1 =  35, aug1MAX = 24, aug2 =  294, aug2MAX =  14, aug3 =  107, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Lathi
-[176] = { trade = { 20520,{ 9086, 6}}, base = 20520, aug1 =  107, aug1MAX = 24, aug2 =  106, aug2MAX =  24, aug3 =  740, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Midnights
-[177] = { trade = { 20700,{ 9086, 6}}, base = 20700, aug1 =  740, aug1MAX = 16, aug2 =  512, aug2MAX =  14, aug3 =  289, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Nixxer
-[178] = { trade = { 21084,{ 9086, 6}}, base = 21084, aug1 =  289, aug1MAX = 14, aug2 =  329, aug2MAX =  9, aug3 =  740, aug3MAX = 6, aug4 = 0, aug4MAX = 0 },--Queller Rod
-[179] = { trade = { 20937,{ 9086, 6}}, base = 20937, aug1 =  740, aug1MAX = 31, aug2 =  25, aug2MAX =  19, aug3 =  144, aug3MAX = 4, aug4 = 0, aug4MAX = 0 },--Rhomphaia
-[180] = { trade = { 20598,{ 9086, 6}}, base = 20598, aug1 =  144, aug1MAX = 1, aug2 =  146, aug2MAX =  4, aug3 =  740, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Shijo
-[181] = { trade = { 20797,{ 9086, 6}}, base = 20797, aug1 =  740, aug1MAX = 14, aug2 =  101, aug2MAX =  14, aug3 =  35, aug3MAX = 1, aug4 = 0, aug4MAX = 0 },--Skullrender
-[182] = { trade = { 21085,{ 9086, 6}}, base = 21085, aug1 =  35, aug1MAX = 19, aug2 =  112, aug2MAX =  3, aug3 =  746, aug3MAX = 4, aug4 = 0, aug4MAX = 0 },--Solstice
-[183] = { trade = { 21215,{ 9086, 6}}, base = 21215, aug1 =  746, aug1MAX = 14, aug2 =  29, aug2MAX =  14, aug3 =  0, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Vijaya Bow
+[162] = { trade = { 20979,{ 9086, 6}}, base = 20979, aug1 =  740, aug1MAX = 16, aug2 =  23, aug2MAX =  14, aug3 =  27, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Aizushintogo
+[163] = { trade = { 21150,{ 9086, 6}}, base = 21150, aug1 =  35, aug1MAX = 19, aug2 =  113, aug2MAX =  14, aug3 =  114, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Akademos
+[164] = { trade = { 21698,{ 9086, 6}}, base = 21698, aug1 =  740, aug1MAX = 31, aug2 =  142, aug2MAX =  6, aug3 =  39, aug3MAX = 6, aug4 = 0, aug4MAX = 0 },--Bidenhander
+[165] = { trade = { 21482,{ 9086, 6}}, base = 21482, aug1 =  746, aug1MAX = 14, aug2 =  29, aug2MAX =  14, aug3 =  133, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Compensator
+[166] = { trade = { 20892,{ 9086, 6}}, base = 20892, aug1 =  740, aug1MAX = 31, aug2 =  11, aug2MAX =  15, aug3 =  512, aug3MAX = 19, aug4 = 0, aug4MAX = 0 },--Deathbane
+[167] = { trade = { 20702,{ 9086, 6}}, base = 20702, aug1 =  35, aug1MAX = 14, aug2 =  133, aug2MAX =  19, aug3 =  138, aug3MAX = 1, aug4 = 0, aug4MAX = 0 },--Emissary
+[168] = { trade = { 20597,{ 9086, 6}}, base = 20597, aug1 =  740, aug1MAX = 16, aug2 =  31, aug2MAX =  14, aug3 =  37, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Enchufla
+[169] = { trade = { 21149,{ 9086, 6}}, base = 21149, aug1 =  1792, aug1MAX = 14, aug2 =  107, aug2MAX =  24, aug3 =  123, aug3MAX = 3, aug4 = 0, aug4MAX = 0 },--Espiritus
+[170] = { trade = { 20519,{ 9086, 6}}, base = 20519, aug1 =  740, aug1MAX = 16, aug2 =  3, aug2MAX =  15, aug3 =  514, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Hammerfists
+[171] = { trade = { 21027,{ 9086, 6}}, base = 21027, aug1 =  515, aug1MAX = 19, aug2 =  27, aug2MAX =  24, aug3 =  212, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Ichigohitofuri
+[172] = { trade = { 20845,{ 9086, 6}}, base = 20845, aug1 =  740, aug1MAX = 31, aug2 =  512, aug2MAX =  14, aug3 =  514, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Instigator
+[173] = { trade = { 20701,{ 9086, 6}}, base = 20701, aug1 =  299, aug1MAX = 14, aug2 =  35, aug2MAX =  14, aug3 =  133, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Iris
+[174] = { trade = { 20599,{ 9086, 6}}, base = 20599, aug1 =  35, aug1MAX = 14, aug2 =  120, aug2MAX =  9, aug3 =  121, aug3MAX = 9, aug4 = 0, aug4MAX = 0 },--Kali
+[175] = { trade = { 21151,{ 9086, 6}}, base = 21151, aug1 =  35, aug1MAX = 19, aug2 =  114, aug2MAX =  14, aug3 =  116, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Lathi
+[176] = { trade = { 20520,{ 9086, 6}}, base = 20520, aug1 =  107, aug1MAX = 24, aug2 =  106, aug2MAX =  24, aug3 =  112, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Midnights
+[177] = { trade = { 20700,{ 9086, 6}}, base = 20700, aug1 =  740, aug1MAX = 16, aug2 =  512, aug2MAX =  14, aug3 =  514, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Nixxer
+[178] = { trade = { 21084,{ 9086, 6}}, base = 21084, aug1 =  289, aug1MAX = 14, aug2 =  329, aug2MAX =  9, aug3 =  323, aug3MAX = 6, aug4 = 0, aug4MAX = 0 },--Queller Rod
+[179] = { trade = { 20937,{ 9086, 6}}, base = 20937, aug1 =  740, aug1MAX = 31, aug2 =  25, aug2MAX =  19, aug3 =  40, aug3MAX = 4, aug4 = 0, aug4MAX = 0 },--Rhomphaia
+[180] = { trade = { 20598,{ 9086, 6}}, base = 20598, aug1 =  144, aug1MAX = 1, aug2 =  146, aug2MAX =  4, aug3 =  513, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Shijo
+[181] = { trade = { 20797,{ 9086, 6}}, base = 20797, aug1 =  740, aug1MAX = 14, aug2 =  101, aug2MAX =  14, aug3 =  110, aug3MAX = 1, aug4 = 0, aug4MAX = 0 },--Skullrender
+[182] = { trade = { 21085,{ 9086, 6}}, base = 21085, aug1 =  35, aug1MAX = 19, aug2 =  112, aug2MAX =  3, aug3 =  140, aug3MAX = 4, aug4 = 0, aug4MAX = 0 },--Solstice
+[183] = { trade = { 21215,{ 9086, 6}}, base = 21215, aug1 =  746, aug1MAX = 14, aug2 =  29, aug2MAX =  14, aug3 =  41, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Vijaya Bow
 }
 
 local AlixerExch =

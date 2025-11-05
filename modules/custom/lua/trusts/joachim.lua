@@ -46,12 +46,12 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
         local act      = mobArg:getCurrentAction()
 
         if
-            act == xi.act.MOBABILITY_START or
-            act == xi.act.MOBABILITY_USING or
-            act == xi.act.MOBABILITY_FINISH or
-            act == xi.act.MAGIC_START or
-            act == xi.act.MAGIC_CASTING or
-            act == xi.act.MAGIC_START
+            act == xi.action.MOBABILITY_START or
+            act == xi.action.MOBABILITY_USING or
+            act == xi.action.MOBABILITY_FINISH or
+            act == xi.action.MAGIC_START or
+            act == xi.action.MAGIC_CASTING or
+            act == xi.action.MAGIC_START
         then
             isBusy = true
         end

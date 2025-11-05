@@ -49,6 +49,10 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
         target:wakeUp()
         target:updateEnmityFromDamage(mob, dmg)
     end
+	
+	 if dmg > 3750 then
+        dmg = math.random (1000,3750)
+    end
 
     target:takeDamage(dmg, mob, xi.attackType.BREATH, xi.damageType.ELEMENTAL)
     return dmg

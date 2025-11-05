@@ -10,6 +10,34 @@
 -- adjust for 75 job points ---> merit points ( player:getMeritCount() , player:setMerits(##) ) ** remove any NM that doesnt exist in 75
 ----------------------------------------------------
 require('scripts/globals/helm')
+
+-- Fallback for getMidnight() after LSB time helper changes.
+-- This variant returns the NEXT midnight in Japan Standard Time (UTC+09:00),
+-- regardless of the server's local timezone or DST. It is guarded so it won't
+-- override a project-provided implementation if one exists.
+if getMidnight == nil then
+    function getMidnight()
+        local now = os.time()
+
+        local utc_now_tbl = os.date('!*t', now)
+        local utc_now_epoch = os.time(utc_now_tbl)
+        local local_offset = os.difftime(now, utc_now_epoch)
+
+        local jst_delta = -local_offset + 9 * 3600
+        local now_jst_epoch = now + jst_delta
+
+        local jst_tbl = os.date('*t', now_jst_epoch)
+        jst_tbl.hour, jst_tbl.min, jst_tbl.sec = 0, 0, 0
+        local today_jst_midnight_localized = os.time(jst_tbl) 
+
+        local today_jst_midnight_epoch = today_jst_midnight_localized - jst_delta
+
+        if now >= today_jst_midnight_epoch then
+            return today_jst_midnight_epoch + 86400
+        end
+        return today_jst_midnight_epoch
+    end
+end
 ----------------------------------------------------
 
 xi = xi or {}

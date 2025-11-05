@@ -27,37 +27,37 @@ end
 
 menu =
 {
-    title = 'Where would you like to go?',
+    title = 'Destination?',
     options = {},
 }
 
 page1 =
 {
     {
-        'No where!',
+        'EXIT',
         function(player)
         end
     },
     {
-        'Lvl 1-14  East Ronfaure', -- - Page 1 RoE
+        'East Ronfaure (1-14)', -- - Page 1 RoE
         function(playerArg)
             playerArg:setPos(86.4610, -59.6994, 241.4913, 29, xi.zone.EAST_RONFAURE)
         end,
     },
     {
-        'Lvl 1-14  South Gustaberg', -- - Page 1 RoE
+        'South Gustaberg (1-14)', -- - Page 1 RoE
         function(playerArg)
             playerArg:setPos(548.8903, -0.7633, -316.1219, 60, xi.zone.SOUTH_GUSTABERG)
         end,
     },
     {
-        'Lvl 1-14  West Sarutabaruta', -- - Page 1 RoE
+        'West Sarutabaruta  (1-14)', -- - Page 1 RoE
         function(playerArg)
             playerArg:setPos(150.0148, -0.3757, -316.7338, 135, xi.zone.WEST_SARUTABARUTA)
         end,
     },
     {
-        'Next Page',
+        'Next',
         function(playerArg)
             menu.options = page2
             delaySendMenu(playerArg)
@@ -68,32 +68,32 @@ page1 =
 page2 =
 {
     {
-        'Lvl 14-21 Valkurm Dunes', -- - Page 1 RoE
+        'Valkurm Dunes (14-21)', -- - Page 1 RoE
         function(playerArg)
             playerArg:setPos(135.2247, -7.4763, 96.4053, 33, xi.zone.VALKURM_DUNES)
         end,
     },
     {
-        'Lvl 21-35 Qufim Island', -- - Page 2 RoE
+        'Qufim Island (21-35)', -- - Page 2 RoE
         function(playerArg)
             playerArg:setPos(-258.3347, -20.0000, 300.8070, 238, xi.zone.QUFIM_ISLAND)
         end,
     },
     {
-        'Lvl 35-55 Crawlers Nest', -- - Page 1 / 4 RoE
+        'Crawlers Nest (35-55)', -- - Page 1 / 4 RoE
         function(playerArg)
             playerArg:setPos(354.3741, -32.2071, -22.5341, 175, xi.zone.CRAWLERS_NEST)
         end,
     },
     {
-        'Previous Page',
+        'Previous',
         function(playerArg)
             menu.options = page1
             delaySendMenu(playerArg)
         end,
     },
     {
-        'Next Page',
+        'Next',
         function(playerArg)
             menu.options = page3
             delaySendMenu(playerArg)
@@ -104,32 +104,32 @@ page2 =
 page3 = 
 {
     {
-        'Lvl 55-66 Cape Teriggan', --  - Page 1 RoE
+        'Cape Teriggan (55-66)', --  - Page 1 RoE
         function(playerArg)
             playerArg:setPos(-187.5810, 8.0470, -73.6966, 210, xi.zone.CAPE_TERIGGAN)
         end,
     },
     {
-        'Lvl 55-65 Wajaom Woodlands', --  - Page 1 RoE
+        'Wajaom Woodlands (55-65)', --  - Page 1 RoE
         function(playerArg)
             playerArg:setPos(-200.1854, -10.0000, 91.8009, 53, xi.zone.WAJAOM_WOODLANDS)
         end,
     },
    {
-        'Lvl 55-69 The Boyahda Tree', -- - Page 1 RoE
+        'The Boyahda Tree (55-69)', -- - Page 1 RoE
         function(playerArg)
             playerArg:setPos(339.7918, 8.6358, -69.4237, 181, xi.zone.THE_BOYAHDA_TREE)
         end,
     },
     {
-        'Previous Page',
+        'Previous',
         function(playerArg)
             menu.options = page2
             delaySendMenu(playerArg)
         end,
     },
     {
-        'Next Page',
+        'Next',
         function(playerArg)
             menu.options = page4
             delaySendMenu(playerArg)
@@ -139,32 +139,32 @@ page3 =
 page4 = 
 {
    {
-        'Lvl 68-76 RuAun Gardens', -- - Page 1 RoE
+        'RuAun Gardens (68-76)', -- - Page 1 RoE
         function(playerArg)
             playerArg:setPos(-0.6167, -44.0130, -165.7867, 185, xi.zone.RUAUN_GARDENS)
         end,
     },
    {
-        'Lvl 68-80 Misareaux Coast', -- - Page 1 RoE
+        'Misareaux Coast (68-80)', -- - Page 1 RoE
         function(playerArg)
             playerArg:setPos(-44.6588, -32.3265, 274.5248, 230, xi.zone.MISAREAUX_COAST)
         end,
     },
    {
-        'Lvl 70-82 The Shrine of RuAvitau', -- - 
+        'The Shrine of RuAvitau (70-82)', -- - 
         function(playerArg)
             playerArg:setPos(4.7311, -15.5148, -2.4892, 68, xi.zone.THE_SHRINE_OF_RUAVITAU)
         end,
     },
     {
-        'Previous Page',
+        'Previous',
         function(playerArg)
             menu.options = page3
             delaySendMenu(playerArg)
         end,
     },
     {
-        'Next Page',
+        'Next',
         function(playerArg)
             menu.options = page9
             delaySendMenu(playerArg)
@@ -174,32 +174,32 @@ page4 =
 page9 =
 {
    {
-        'Lvl 73-82 The Shrine of RuAvitau', -- - Pa
+        'The Shrine of RuAvitau (73-82)', -- - Pa
         function(playerArg)
             playerArg:setPos(740.4669, -99.6000, -655.9205, 230, xi.zone.THE_SHRINE_OF_RUAVITAU)
         end,
     },
   {
-        'Lvl 80-90 Dangruf Wadi', -- - Page 8 RoE
+        'Dangruf Wadi (80-90)', -- - Page 8 RoE
         function(playerArg)
             playerArg:setPos(-16.6683, -0.2101, -0.0809, 146, xi.zone.DANGRUF_WADI)
         end,
     },
    {
-        'Lvl 80-90 Mount Zhayolm', -- - Page 8 RoE
+        'Mount Zhayolm (80-90)', -- - Page 8 RoE
         function(playerArg)
             playerArg:setPos(-580.4277, -23.6067, -34.7014, 64, xi.zone.MOUNT_ZHAYOLM)
         end,
     },
     {
-        'Previous Page',
+        'Previous',
         function(playerArg)
             menu.options = page4
             delaySendMenu(playerArg)
         end,
     },
     {
-        'Next Page',
+        'Next',
         function(playerArg)
             menu.options = page10
             delaySendMenu(playerArg)
@@ -210,32 +210,32 @@ page9 =
 page10 =
 {
    {
-        'Lvl 82-96 Crawlers Nest', -- - 
+        'Crawlers Nest (82-96)', -- - 
         function(playerArg)
             playerArg:setPos(12.6418, -0.3837, -299.6174, 16, xi.zone.CRAWLERS_NEST)
         end,
     },
    {
-        'Lvl 85-95 Garlaige Citadel', -- - Page 8 RoE
+        'Garlaige Citadel (85-95)', -- - Page 8 RoE
         function(playerArg)
             playerArg:setPos(-378.7412, -5.9991, 361.1081, 62, xi.zone.GARLAIGE_CITADEL)
         end,
     },
     {
-        'Lvl 90-99 Gustav Tunnel', --  - Page 8 RoE
+        'Gustav Tunnel (90-99)', --  - Page 8 RoE
         function(playerArg)
             playerArg:setPos(-60.2877, -10.6451, -135.5146, 195, xi.zone.GUSTAV_TUNNEL)
         end,
     },
     {
-        'Previous Page',
+        'Previous',
         function(playerArg)
             menu.options = page9
             delaySendMenu(playerArg)
         end,
     },
     {
-        'Next Page',
+        'Next',
         function(playerArg)
             menu.options = page11
             delaySendMenu(playerArg)
@@ -246,19 +246,19 @@ page10 =
 page11 =
 {
     {
-        'Lvl 90-99 Ceizak Battlegrounds', 
+        'Ceizak Battlegrounds (90-99)', 
         function(playerArg)
             playerArg:setPos(329.6800, 0.3515, 126.9239, 72, xi.zone.CEIZAK_BATTLEGROUNDS)
         end,
     },
 	{
-        'Lvl 93-99 Morimar Basalt Mines',
+        'Morimar Basalt Mines (93-99)',
         function(playerArg)
             playerArg:setPos(-128.0082, -33.4823, 294.7052, 67, xi.zone.MORIMAR_BASALT_FIELDS)
         end,
     },
     {
-        'Previous Page',
+        'Previous',
         function(playerArg)
             menu.options = page10
             delaySendMenu(playerArg)
@@ -269,7 +269,7 @@ page11 =
 page5 =
 {
     {
-        'No where!',
+        'EXIT',
         function(player)
         end
     },
@@ -280,25 +280,25 @@ page5 =
         end,
     },
     {
-        'Bhaflau Thickets - Lower Camp', 
+        'Bhaflau Thickets - Lower', 
         function(playerArg)
             playerArg:setPos(-574.0469, -8.2500, 40.2076, 63, xi.zone.BHAFLAU_THICKETS)
         end,
     },
 	    {
-        'Bhaflau Thickets - Upper Camp', 
+        'Bhaflau Thickets - Upper', 
         function(playerArg)
             playerArg:setPos(-493.5, -16, -76.4994, 129, xi.zone.BHAFLAU_THICKETS)
         end,
     },
     {
-        'DHO Gate Camp 1', 
+        'DHO Gate 1', 
         function(playerArg)
             playerArg:setPos(-41.7247, 0.0000, -58.5082, 54, xi.zone.DHO_GATES)
         end,
     },
     {
-        'Next Page',
+        'Next',
         function(playerArg)
             menu.options = page6
             delaySendMenu(playerArg)
@@ -308,32 +308,32 @@ page5 =
  page6 = 
 {
     {
-        'MOH Gate Camp 1', 
+        'MOH Gate 1', 
         function(playerArg)
             playerArg:setPos(391.1106, 30.0812, -10.6432, 74, xi.zone.MOH_GATES)
         end,
     }, 
    {
-        'SIH Gate Camp 1', 
+        'SIH Gate 1', 
         function(playerArg)
             playerArg:setPos(-21.8246, 0.0151, -228.8976, 195, xi.zone.SIH_GATES)
         end,
     },
    {
-        'SIH Gate Camp 2',
+        'SIH Gate 2',
         function(playerArg)
             playerArg:setPos(94.2589, 0.0572, -262.3954, 20, xi.zone.SIH_GATES) ----------
         end,
     },
     {
-        'Previous Page',
+        'Previous',
         function(playerArg)
             menu.options = page5
             delaySendMenu(playerArg)
         end,
     },
     {
-        'Next Page',
+        'Next',
         function(playerArg)
             menu.options = page7
             delaySendMenu(playerArg)
@@ -343,7 +343,7 @@ page5 =
  page7 = 
 {
     {
-        'SIH Gate Camp 3', 
+        'SIH Gate 3', 
         function(playerArg)
             playerArg:setPos(-1.1026, 0.0000, -259.4783, 6, xi.zone.SIH_GATES)
         end,
@@ -355,26 +355,26 @@ page5 =
         end,
     },
    {
-        'Bibiki Bay - Camp 1',
+        'Bibiki Bay 1',
         function(playerArg)
             playerArg:setPos(150.4, -28.2, 414.6331, 196, xi.zone.BIBIKI_BAY)
         end,
     },
 	{
-        'Bibiki Bay - Camp 2 - Crabs',
+        'Bibiki Bay 2',
         function(playerArg)
             playerArg:setPos(196.56, -20, 274.2421, 66, xi.zone.BIBIKI_BAY)
         end,
     },
     {
-        'Previous Page',
+        'Previous',
         function(playerArg)
             menu.options = page6
             delaySendMenu(playerArg)
         end,
     },
     {
-        'Next Page',
+        'Next',
         function(playerArg)
             menu.options = page8
             delaySendMenu(playerArg)
@@ -384,19 +384,19 @@ page5 =
  page8 = 
 {
     {
-        'Escha Zitah Camp 1', 
+        'Escha Zitah 1', 
         function(playerArg)
             playerArg:setPos(-323.7006, 0.0000, 361.2220, 190, xi.zone.ESCHA_ZITAH)
         end,
     }, 
    {
-        'Escha Zitah Camp 2', 
+        'Escha Zitah 2', 
         function(playerArg)
             playerArg:setPos(526.1202, 2.4993, -179.8479, 6, xi.zone.ESCHA_ZITAH)
         end,
     },
 	{
-        'Gustav Tunnel - Worms/Turtles',
+        'Gustav Tunnel',
         function(playerArg)
             playerArg:setPos(-26, -9.6, 131.5421, 241, xi.zone.GUSTAV_TUNNEL)
         end,
@@ -408,7 +408,7 @@ page5 =
         end,
     },	
     {
-        'Previous Page',
+        'Previous',
         function(playerArg)
             menu.options = page7
             delaySendMenu(playerArg)

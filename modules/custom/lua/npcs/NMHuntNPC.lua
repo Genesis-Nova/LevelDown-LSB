@@ -91,7 +91,7 @@ page1 =
         end,
     },
     {
-        'List of Rewards for Tier Completion!',
+        'Rewards for Tier Completion!',
          function(player)
                player:printToPlayer('By defeating notorious monsters you will unlock tiered rewards', 0, 'Draider')
                player:printToPlayer('based on total number or NMs killed. ', 0, 'Draider')
@@ -107,7 +107,7 @@ page1 =
          end
     },
     {
-        'Check Rusty Coin Balance!',
+        'Rusty Coin Balance!',
          function(player)
                local storedRC = player:getCharVar('StoredRC')
                player:printToPlayer(string.format('You current Rusty Coin Balance is %s. ',storedRC), 0, 'Draider') 
@@ -120,7 +120,7 @@ page1 =
         end,
     },
     {
-        'Next Page!',
+        'Next',
         function(player)
                     menu.options = page2
                     delaySendMenu(player)                 
@@ -130,7 +130,7 @@ page1 =
 page2 =
 {
     {
-        'Shop Trusts 50 Coins',
+        'Shop Trusts 50 RC',
          function(player)
         local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
            if totalkillc >= 50 then
@@ -148,7 +148,7 @@ page2 =
          end,
     },
     {
-        'Shop Style Lock Weapons 100 Coins',
+        'Shop StyleLock Weap 100 RC',
         function(player)
         local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
            if totalkillc >= 100 then
@@ -166,7 +166,7 @@ page2 =
         end,
     },
     {
-        'Shop Style Lock Armor 250 Coins',
+        'Shop StyleLock Armor 250 RC',
         function(player)
         local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
            if totalkillc >= 150 then
@@ -201,14 +201,14 @@ page2 =
         end,
     },
     {
-        'Back!',
+        'Back',
         function(player)
                     menu.options = page1
                     delaySendMenu(player)                 
         end,
     },
     {
-        'Next Page!',
+        'Next',
         function(player)
                     menu.options = page3
                     delaySendMenu(player)                 
@@ -218,7 +218,7 @@ page2 =
 page3 =
 {
     {
-        'JSE Ambuscade Cape 750 Coins',
+        'JSE Ambuscade Cape 750 RC',
          function(player)
         local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
           if totalkillc >= 200 then 
@@ -236,7 +236,7 @@ page3 =
          end,
     },
     {
-        'JSE Reive/Incursion Cape 1000 Coins',
+        'JSE Reive/Incursion Cape 1000 RC',
         function(player)
         local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
           if totalkillc >= 250 then
@@ -254,7 +254,7 @@ page3 =
         end,
     },
     {
-        'JSE Neck 1500 Coins',
+        'JSE Neck 1500 RC',
         function(player)
         local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
           if totalkillc >= 300 then
@@ -339,7 +339,7 @@ page11 = -- free relic
          end
     },
         {
-        'Next Page',
+        'Next',
          function(player)
             menu.options = page12
             delaySendMenu(player)
@@ -397,14 +397,14 @@ page12 = -- free relic
          end
     },
             {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page11
            delaySendMenu(player)
          end
     },
          {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page13
            delaySendMenu(player)
@@ -446,7 +446,7 @@ page13 = -- free relic
          end
     },
          {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page12
            delaySendMenu(player)
@@ -522,14 +522,14 @@ page7 = --  JSE Ambuscade Cape
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page3
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page15
            delaySendMenu(player)
@@ -603,14 +603,14 @@ page15 = --  JSE Ambuscade capes
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page7
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page16
            delaySendMenu(player)
@@ -660,14 +660,14 @@ page16 = --  JSE Ambuscade capes
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page15
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page17
            delaySendMenu(player)
@@ -717,14 +717,14 @@ page17 = --  JSE Ambuscade capes
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page16
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page42
            delaySendMenu(player)
@@ -750,7 +750,7 @@ page42 = --  JSE Ambuscade capes
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page17
            delaySendMenu(player)
@@ -827,14 +827,14 @@ page8 = --  Jse Reive / Incursion Cape 8,18,19,20,
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page3
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page18
            delaySendMenu(player)
@@ -909,14 +909,14 @@ page18 = --  Jse Reive / Incursion Cape
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page8
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page19
            delaySendMenu(player)
@@ -966,14 +966,14 @@ page19 = --  Jse Reive / Incursion Cape
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page18
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page20
            delaySendMenu(player)
@@ -1023,14 +1023,14 @@ page20 = --  Jse Reive / Incursion Cape
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page19
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page41
            delaySendMenu(player)
@@ -1056,7 +1056,7 @@ page41 = --  Jse Reive / Incursion Cape
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page20
            delaySendMenu(player)
@@ -1133,14 +1133,14 @@ page9 = --  JSE Neck
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page3
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page22
            delaySendMenu(player)
@@ -1214,14 +1214,14 @@ page22 = -- JSE Neck
          end
     },
      {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page9
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page23
            delaySendMenu(player)
@@ -1271,14 +1271,14 @@ page23 =  -- JSE Neck
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page22
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page24
            delaySendMenu(player)
@@ -1328,14 +1328,14 @@ page24 =  -- JSE Neck
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page23
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page40
            delaySendMenu(player)
@@ -1361,7 +1361,7 @@ page40 = -- JSE Neck
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page24
            delaySendMenu(player)
@@ -1398,7 +1398,7 @@ page25 = --  JSE Neck
 page4 = --  Trusts page 1
 {
     {
-        'Cipher Of Halver',
+        'Halver',
          function(player)
            player:setLocalVar('NMSTrust', 10158)
            menu.options = page36
@@ -1406,7 +1406,7 @@ page4 = --  Trusts page 1
          end
     },
     {
-        'Cipher Of Semih',
+        'Semih',
          function(player)
            player:setLocalVar('NMSTrust', 10157)
            menu.options = page36
@@ -1414,7 +1414,7 @@ page4 = --  Trusts page 1
          end
     },
     {
-        'Cipher Of Lion II',
+        'Lion II',
          function(player)
            player:setLocalVar('NMSTrust', 10159)
            menu.options = page36
@@ -1422,7 +1422,7 @@ page4 = --  Trusts page 1
          end
     },
     {
-        'Cipher Of Zeid II',
+        'Zeid II',
          function(player)
            player:setLocalVar('NMSTrust', 10160)
            menu.options = page36
@@ -1430,7 +1430,7 @@ page4 = --  Trusts page 1
          end
     },
     {
-        'Cipher Of Tenzen II',
+        'Tenzen II',
          function(player)
            player:setLocalVar('NMSTrust', 10167)
            menu.options = page36
@@ -1438,14 +1438,14 @@ page4 = --  Trusts page 1
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page2
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page26
            delaySendMenu(player)
@@ -1476,7 +1476,7 @@ page4 = --  Trusts page 1
 page26 = -- Trusts page 2
 {
     {
-        'Cipher Of Prishe II',
+        'Prishe II',
          function(player)
            player:setLocalVar('NMSTrust', 10168)
            menu.options = page36
@@ -1484,7 +1484,7 @@ page26 = -- Trusts page 2
          end
     },
    {
-        'Cipher Of Nashmeira II',
+        'Nashmeira II',
          function(player)
            player:setLocalVar('NMSTrust', 10170)
            menu.options = page36
@@ -1492,7 +1492,7 @@ page26 = -- Trusts page 2
          end
     },
     {
-        'Cipher Of Lilisette II',
+        'Lilisette II',
          function(player)
            player:setLocalVar('NMSTrust', 10171)
            menu.options = page36
@@ -1500,7 +1500,7 @@ page26 = -- Trusts page 2
          end
     },
     {
-        'Cipher Of Arciela II',
+        'Arciela II',
          function(player)
            player:setLocalVar('NMSTrustSpell', 1017)
            menu.options = page36
@@ -1508,14 +1508,14 @@ page26 = -- Trusts page 2
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page4
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page27
            delaySendMenu(player)
@@ -1525,7 +1525,7 @@ page26 = -- Trusts page 2
 page27 = -- Trusts page 3
 {
     {
-        'Cipher Of Balamor',
+        'Balamor',
          function(player)
            player:setLocalVar('NMSTrust', 10172)
            menu.options = page36
@@ -1533,7 +1533,7 @@ page27 = -- Trusts page 3
          end
     },
     {
-        'Cipher Of Selh teus',
+        'Selh teus',
          function(player)
            player:setLocalVar('NMSTrust', 10173)
            menu.options = page36
@@ -1541,7 +1541,7 @@ page27 = -- Trusts page 3
          end
     },
     {
-        'Cipher Of Iroha',
+        'Iroha',
          function(player)
            player:setLocalVar('NMSTrust', 10185)
            menu.options = page36
@@ -1549,7 +1549,7 @@ page27 = -- Trusts page 3
          end
     },
     {
-        'Cipher Of Iroha II',
+        'Iroha II',
          function(player)
            player:setLocalVar('NMSTrust', 10186)
            menu.options = page36
@@ -1557,7 +1557,7 @@ page27 = -- Trusts page 3
          end
     },
     {
-        'Cipher Of Ark EV',
+        'Ark EV',
          function(player)
            player:setLocalVar('NMSTrust', 10191)
            menu.options = page36
@@ -1565,14 +1565,14 @@ page27 = -- Trusts page 3
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page26
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page28
            delaySendMenu(player)
@@ -1582,7 +1582,7 @@ page27 = -- Trusts page 3
 page28 = -- Trusts page 4
 {
     {
-        'Cipher Of Ark HM',
+        'Ark HM',
          function(player)
            player:setLocalVar('NMSTrust', 10188)
            menu.options = page36
@@ -1590,7 +1590,7 @@ page28 = -- Trusts page 4
          end
     },
     {
-        'Cipher Of Ark GK',
+        'Ark GK',
          function(player)
            player:setLocalVar('NMSTrust', 10192)
            menu.options = page36
@@ -1598,7 +1598,7 @@ page28 = -- Trusts page 4
          end
     },
     {
-        'Cipher Of Ark MR',
+        'Ark MR',
          function(player)
            player:setLocalVar('NMSTrust', 10190)
            menu.options = page36
@@ -1606,7 +1606,7 @@ page28 = -- Trusts page 4
          end
     },
     {
-        'Cipher Of Ark TT',
+        'Ark TT',
          function(player)
            player:setLocalVar('NMSTrust', 10189)
            menu.options = page36
@@ -1614,14 +1614,14 @@ page28 = -- Trusts page 4
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page27
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page66
            delaySendMenu(player)
@@ -1632,7 +1632,7 @@ page28 = -- Trusts page 4
 page66 =
 {
     {
-        'Cipher Of Kupofried',
+        'Kupofried',
          function(player)
            player:setLocalVar('NMSTrust', 10162)
            menu.options = page36
@@ -1640,7 +1640,7 @@ page66 =
          end
     },
     {
-        'Cipher Of Lilisette',
+        'Lilisette',
          function(player)
            player:setLocalVar('NMSTrust', 10137)
            menu.options = page36
@@ -1648,7 +1648,7 @@ page66 =
          end
     },
     {
-        'Spell: Trust Prishe',
+        'Spell: Prishe',
          function(player)
            player:setLocalVar('NMSTrustSpell', 913)
            menu.options = page36
@@ -1656,7 +1656,7 @@ page66 =
          end
     },
     {
-        'Spell: Trust Shikaree Z',
+        'Spell: Shikaree Z',
          function(player)
            player:setLocalVar('NMSTrustSpell', 915)
            menu.options = page36
@@ -1664,14 +1664,14 @@ page66 =
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page28
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page67
            delaySendMenu(player)
@@ -1681,7 +1681,7 @@ page66 =
 page67 =
 {
     {
-        'Spell: Trust Cherukiki',
+        'Spell: Cherukiki',
          function(player)
            player:setLocalVar('NMSTrustSpell', 916)
            menu.options = page36
@@ -1697,7 +1697,7 @@ page67 =
          end
     },
     {
-        'Spell: Trust Ulima',
+        'Spell: Ulima',
          function(player)
            player:setLocalVar('NMSTrustSpell', 914)
            menu.options = page36
@@ -1705,7 +1705,7 @@ page67 =
          end
     },
     {
-        'Spell: Trust Arciela',
+        'Spell: Arciela',
          function(player)
            player:setLocalVar('NMSTrustSpell', 965)
            menu.options = page36
@@ -1713,7 +1713,7 @@ page67 =
          end
     },
     {
-        'Spell: Trust Ingrid',
+        'Spell: Ingrid',
          function(player)
            player:setLocalVar('NMSTrustSpell', 921)
            menu.options = page36
@@ -1721,7 +1721,7 @@ page67 =
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page66
            delaySendMenu(player)
@@ -1809,14 +1809,14 @@ page5 = --  Style Lock Weapons page 1
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page2
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page29
            delaySendMenu(player)
@@ -1898,14 +1898,14 @@ page29 = -- Style Lock Weapons page 2
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page5
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page30
            delaySendMenu(player)
@@ -1931,7 +1931,7 @@ page30 = -- Style Lock Weapons page 3
          end
     },
     {
-        'Ethereal Great Axe',
+        'Ethereal G. Axe',
          function(player)
            player:setLocalVar('NMStyleW', 21771)
            menu.options = page37
@@ -1955,14 +1955,14 @@ page30 = -- Style Lock Weapons page 3
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page29
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page31
            delaySendMenu(player)
@@ -2012,14 +2012,14 @@ page31 = -- Style Lock Weapons page 4
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page30
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page32
            delaySendMenu(player)
@@ -2069,14 +2069,14 @@ page32 = -- Style Lock Weapons page 5
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page31
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page39
            delaySendMenu(player)
@@ -2102,7 +2102,7 @@ page39 = -- Style Lock Weapons Page 6
          end
     },
     {
-        'Mizukage-No-Naginata',
+        'Mizukage-No-Nagi.',
          function(player)
            player:setLocalVar('NMStyleW', 21862)
            menu.options = page37
@@ -2126,7 +2126,7 @@ page39 = -- Style Lock Weapons Page 6
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page32
            delaySendMenu(player)
@@ -2204,14 +2204,14 @@ page6 = --  Style lock Armor page 1
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page2
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page33
            delaySendMenu(player)
@@ -2284,14 +2284,14 @@ page33 = --Style Lock Armor page 2
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page6
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page34
            delaySendMenu(player)
@@ -2341,14 +2341,14 @@ page34 = --Style Lock Armor page 3
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page33
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page35
            delaySendMenu(player)
@@ -2398,7 +2398,7 @@ page35 = --Style Lock Armor page 4
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page34
            delaySendMenu(player)
@@ -2496,7 +2496,7 @@ page43 =
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page44
            delaySendMenu(player)
@@ -2542,7 +2542,7 @@ page44 =
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page43
            delaySendMenu(player)
@@ -2681,7 +2681,7 @@ page47 =
 page48 =
 {
     {
-        'Abyssal Set NQ',
+        'Abyssal Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 26676)
            player:setLocalVar('NMTRewThreeb', 26852)
@@ -2693,7 +2693,7 @@ page48 =
          end
     },
     {
-        'Arean Set NQ',
+        'Arean Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 25611)
            player:setLocalVar('NMTRewThreeb', 25684)
@@ -2705,7 +2705,7 @@ page48 =
          end
     },
     {
-        'Bushin Set NQ',
+        'Bushin Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 26670)
            player:setLocalVar('NMTRewThreeb', 26846)
@@ -2717,7 +2717,7 @@ page48 =
          end
     },
     {
-        'Cronian Set NQ',
+        'Cronian Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 25609)
            player:setLocalVar('NMTRewThreeb', 25682)
@@ -2729,7 +2729,7 @@ page48 =
          end
     },
     {
-        'Cyllenian Set NQ',
+        'Cyllenian Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 25617)
            player:setLocalVar('NMTRewThreeb', 25690)
@@ -2741,7 +2741,7 @@ page48 =
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page49
            delaySendMenu(player)
@@ -2751,7 +2751,7 @@ page48 =
 page49 =
 {
     {
-        'Grove Set NQ',
+        'Grove Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 26674)
            player:setLocalVar('NMTRewThreeb', 26850)
@@ -2763,7 +2763,7 @@ page49 =
          end
     },
     {
-        'Jovian Set NQ',
+        'Jovian Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 25613)
            player:setLocalVar('NMTRewThreeb', 25686)
@@ -2775,7 +2775,7 @@ page49 =
          end
     },
     {
-        'Shinryu Set NQ',
+        'Shinryu Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 26678)
            player:setLocalVar('NMTRewThreeb', 26854)
@@ -2787,7 +2787,7 @@ page49 =
          end
     },
     {
-        'Triton Set NQ',
+        'Triton Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 26668)
            player:setLocalVar('NMTRewThreeb', 26844)
@@ -2799,7 +2799,7 @@ page49 =
          end
     },
     {
-        'Vale Set NQ',
+        'Vale Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 26672)
            player:setLocalVar('NMTRewThreeb', 26848)
@@ -2811,14 +2811,14 @@ page49 =
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page48
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page50
            delaySendMenu(player)
@@ -2828,7 +2828,7 @@ page49 =
 page50 =
 {
     {
-        'Venerian Set NQ',
+        'Venerian Set',
          function(player)
            player:setLocalVar('NMTRewThreea', 25615)
            player:setLocalVar('NMTRewThreeb', 25688)
@@ -2840,7 +2840,7 @@ page50 =
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page49
            delaySendMenu(player)
@@ -2923,7 +2923,7 @@ page52 =
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page53
            delaySendMenu(player)
@@ -2973,14 +2973,14 @@ page53 =
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page52
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page54
            delaySendMenu(player)
@@ -2990,7 +2990,7 @@ page53 =
 page54 =
 {
     {
-        'Weatherspoon Ring +1',
+        'Weathersp. Ring +1',
          function(player)
            player:setLocalVar('NMTRewFour', 26194)
            menu.options = page55
@@ -3006,7 +3006,7 @@ page54 =
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page53
            delaySendMenu(player)
@@ -3082,7 +3082,7 @@ page56 =
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page57
            delaySendMenu(player)
@@ -3132,7 +3132,7 @@ page57 =
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page56
            delaySendMenu(player)
@@ -3208,7 +3208,7 @@ page59 =
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page60
            delaySendMenu(player)
@@ -3258,14 +3258,14 @@ page60 =
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page59
            delaySendMenu(player)
          end
     },
     {
-         'Next Page',
+         'Next',
          function(player)
            menu.options = page61
            delaySendMenu(player)
@@ -3307,7 +3307,7 @@ page61 =
          end
     },
     {
-        'Previous Page',
+        'Prev',
          function(player)
            menu.options = page60
            delaySendMenu(player)
@@ -3350,7 +3350,7 @@ page64 =
          end
     },
     {
-        'Tier Reward Menu',
+        'Tier Prize Menu',
          function(player)
            menu.options = page65
            delaySendMenu(player)
@@ -3360,7 +3360,7 @@ page64 =
 page65 =
 {
     {
-        'Tier 1 Rewards',
+        'Tier 1 Prize',
          function(player)
          local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
             if player:getCharVar('NMTRewOneComp') == 1 then
@@ -3376,7 +3376,7 @@ page65 =
          end
     },
     {
-        'Tier 2 Rewards',
+        'Tier 2 Prize',
          function(player)
          local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
              if player:getCharVar('NMTRewTwoComp') == 1 then
@@ -3392,7 +3392,7 @@ page65 =
          end
     },
     {
-        'Tier 3 Rewards',
+        'Tier 3 Prize',
          function(player)
          local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
              if player:getCharVar('NMTRewThreeComp') == 1 then
@@ -3408,7 +3408,7 @@ page65 =
          end
     },
     {
-        'Tier 4 Rewards',
+        'Tier 4 Prize',
          function(player)
          local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
              if player:getCharVar('NMTRewFourComp') == 1 then
@@ -3424,7 +3424,7 @@ page65 =
          end
     },
     {
-        'Tier 5 Rewards',
+        'Tier 5 Prize',
          function(player)
          local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
              if player:getCharVar('NMTRewFiveComp') == 1 then
@@ -3440,7 +3440,7 @@ page65 =
          end
     },
     {
-        'Tier 6 Rewards',
+        'Tier 6 Prize',
          function(player)
          local totalkillc = player:getCharVar('[NMHunt]TOneKills') + player:getCharVar('[NMHunt]TTwoKills') + player:getCharVar('[NMHunt]TThreeKills') + player:getCharVar('[NMHunt]TFourKills') + player:getCharVar('[NMHunt]TFiveKills') + player:getCharVar('[NMHunt]TSixKills')
              if player:getCharVar('NMTRewSixComp') == 1 then
@@ -3456,7 +3456,7 @@ page65 =
          end
     },
     {
-        'Previous Page!',
+        'Prev',
          function(player)
            menu.options = page64
            delaySendMenu(player)

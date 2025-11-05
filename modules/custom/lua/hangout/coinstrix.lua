@@ -89,7 +89,7 @@ local function withdrawMainMenu(player, page, trade)
     end
     if endIndex < #withdrawMenu then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 withdrawMainMenu(player, page + 1)
             end
@@ -252,7 +252,7 @@ local function upgradeMainMenu(player, page)
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 upgradeMainMenu(player, page - 1)
             end
@@ -260,7 +260,7 @@ local function upgradeMainMenu(player, page)
     end
     if endIndex < #upgradeMenu then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 upgradeMainMenu(player, page + 1)
             end
@@ -427,7 +427,7 @@ local function downgradeMainMenu(player, page)
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 downgradeMainMenu(player, page - 1)
             end
@@ -435,7 +435,7 @@ local function downgradeMainMenu(player, page)
     end
     if endIndex < #downgradeMenu then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 downgradeMainMenu(player, page + 1)
             end
@@ -745,7 +745,7 @@ local function convertMainMenu(player, page)
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 convertMainMenu(player, page - 1)
             end
@@ -753,7 +753,7 @@ local function convertMainMenu(player, page)
     end
     if endIndex < #convertMenu then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 convertMainMenu(player, page + 1)
             end
@@ -885,7 +885,7 @@ local function exchangeMainMenu(player, page)
 end
 
 local function createMainMenu(player, page)
-    local mainMenu     = {'Nothing for now!', 'Current Balance', 'Upgrade Currency', 'Downgrade Currency', 'Convert Currency', 'Exchange Currency'} 
+    local mainMenu     = {'Nothing!', 'Current Balance', 'Upgrade Cur', 'Downgrade Cur', 'Convert Cur', 'Exchange Cur'} 
     local linesPerPage = 5
     page = page or 1
     local startIndex = (page - 1) * linesPerPage + 1
@@ -897,7 +897,7 @@ local function createMainMenu(player, page)
         table.insert(options, {
             string.format('%s', menus),
             function(player)
-            if menus == 'Nothing for now!' then
+            if menus == 'Nothing!' then
                return
             elseif menus == 'Current Balance' then -- completed
                    player:printToPlayer('Your Current balance of stored Dynamis Currency is:',  xi.msg.channel.SYSTEM_3)
@@ -919,7 +919,7 @@ local function createMainMenu(player, page)
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 createMainMenu(player, page - 1)
             end
@@ -927,7 +927,7 @@ local function createMainMenu(player, page)
     end
     if endIndex < #mainMenu then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 createMainMenu(player, page + 1)
             end

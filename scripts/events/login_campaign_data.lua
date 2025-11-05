@@ -28,19 +28,19 @@ local prizes =
             6377, -- imperial chair set
             6378, -- decorative chair set
             6379, -- ornate stool set
-            ]]--
+            
             --- Month 2 ---------------------------------------------
 
             6380, -- refined chair set
             6408, -- portable container
             6409, -- ephramadian throne
-            --[[
+            --]]
             --- Month 3 ---------------------------------------------
             6410, -- shadow throne
             6411, -- chocobo chair
             6412, -- leaf bench
             6413, -- astral cube
-            ]]--
+            
         },
     },
 
@@ -64,7 +64,7 @@ local prizes =
             10069, -- ♪goobbue
             10070, -- ♪raaz
             10129, -- cipher of d. shantottos alter ego
-             ]]--
+             
             --- Month 2 ---------------------------------------------
 
             10134, -- cipher of star sibyls alter ego
@@ -76,7 +76,7 @@ local prizes =
             10074, -- ♪doll
             10075, -- ♪red raptor
             10076, -- ♪golden bomb
-            --[[
+            ]]--
             --- Month 3 ---------------------------------------------
             10179, -- cipher of teodors alter ego
             10183, -- cipher of darrcuilns alter ego
@@ -85,7 +85,7 @@ local prizes =
             10079, -- ♪iron giant
             10080, -- ♪byakko
             10082, -- ♪ixion
-            ]]--
+            
         },
     },
 
@@ -107,7 +107,7 @@ local prizes =
             10053, -- ♪bomb
             10054, -- ♪ram
             10150, -- cipher of lhes alter ego
-            ]]--
+            
             --- Month 2 ---------------------------------------------
 
             10151, -- cipher of mayakovs alter ego
@@ -119,7 +119,7 @@ local prizes =
             10058, -- ♪beetle
             10059, -- ♪moogle
             10060, -- ♪magic pot
-            --[[
+            ]]--
             --- Month 3 ---------------------------------------------
             10161, -- cipher of rongeloutss alter ego
             10166, -- cipher of robel-akbels alter ego
@@ -129,7 +129,7 @@ local prizes =
             10063, -- ♪xzomit
             10064, -- ♪hippogryph
             10083, -- ♪phuabo
-            ]]--
+            
         },
     },
 
@@ -155,7 +155,7 @@ local prizes =
             27468, -- Starlet Boots
             25715, -- Korrigan Suite
             25639, -- Korrigan Masque
-            ]]--            
+                      
             --- Month 2 ---------------------------------------------
 
             25658, -- Wyrm. Masque +1
@@ -165,7 +165,7 @@ local prizes =
             27111, -- Agent Cuffs
             27296, -- Agent Pants
             27467, -- Agent Boots
-            --[[
+            ]]--
             --- Month 3 ---------------------------------------------
             1854, -- deed of moderation
             1851, -- deed of placidity
@@ -174,7 +174,7 @@ local prizes =
             26955, -- behemoth suit +1
             10250, -- moogle suit
             10429, -- moogle masque
-            ]]--
+            
         },
     },
 
@@ -199,7 +199,7 @@ local prizes =
             11854, -- Novennial Dress
             10431, -- decennial tiara
             10252, -- decennial dress
-            ]]--                    
+                                
             --- Month 2 ---------------------------------------------
 
             20668, -- Fire Tongue
@@ -208,9 +208,9 @@ local prizes =
             10430, -- Decennial Crown
             10251, -- Decennial Coat
             11853, -- Novennial Coat
-            11956, -- Novennial Hose
+            11953, -- Novennial Hose
             10593, -- Decennial tights
-            --[[
+            ]]--
             --- Month 3 ---------------------------------------------
             1850, -- first virtue
             1853, -- second virtue
@@ -219,7 +219,7 @@ local prizes =
             20665, -- kamlanauts sword
             11355, -- Dinner Jacket
             16378, -- Dinner Hose
-            ]]--
+            
         },
     },
 
@@ -243,7 +243,7 @@ local prizes =
             3339, -- Honey Wine
             3341, -- Beastly Shank
             3343, -- Blue Pond Water
-            ]]--            
+                      
             --- Month 2 ---------------------------------------------
 
             1419, -- Spring Stone
@@ -254,12 +254,12 @@ local prizes =
             1422, -- Gem of the West
             1424, -- Gem of the North
             1420, -- Gem of the South
-            --[[
+            ]]--
             --- Month 3 ---------------------------------------------
             1848, -- fourth virtue
             1847, -- fifth virtue
             1849, -- sixth virtue
-            ]]--
+            
         },
     },
 
@@ -288,19 +288,19 @@ local prizes =
             15543, -- rajas ring
             15544, -- sattva ring
             15545, -- tamas ring
-            ]]--            
+                       
             --- Month 2 ---------------------------------------------
 
             15807, -- balrahns ring
             15808, -- ulthalams ring
             15809, -- jalzahns ring
-            --[[
+            ]]--
             --- Month 3 ---------------------------------------------
             15962, -- static earring
             15963, -- magnetic earring
             15964, -- hollow earring
             15965, -- ethereal earring
-            ]]--
+            
         },
     },
 
@@ -321,7 +321,7 @@ local prizes =
             28419, -- hachirin-no-obi
             18852, -- octave club
             25679, -- white rarab cap +1
-             ]]--                       
+                                   
             --- Month 2 ---------------------------------------------
 
             8722, -- Hepatizon Ingot
@@ -329,14 +329,14 @@ local prizes =
             10120, -- cipher of lehkos alter ego
             19163, -- nightfall
             28450, -- chaac belt
-            --[[
+            ]]--
             --- Month 3 ---------------------------------------------
             8726, -- Exalted Lumber
             8728, -- Sif's Macrame
             27510, -- fotia gorget
             28420, -- fotia belt
             27585, -- gorney ring
-            ]]--
+            
         },
     },
 }

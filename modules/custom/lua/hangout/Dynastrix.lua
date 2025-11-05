@@ -156,7 +156,7 @@ local withdrawMenu = {}
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 withdrawMainMenu(player, page - 1)
             end
@@ -164,7 +164,7 @@ local withdrawMenu = {}
     end
     if endIndex < #withdrawMenu then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 withdrawMainMenu(player, page + 1)
             end
@@ -206,7 +206,7 @@ local function abcExchange(player, page)
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 abcExchange(player, page - 1)
             end
@@ -214,7 +214,7 @@ local function abcExchange(player, page)
     end
     if endIndex < #abcExchangeMenu then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 abcExchange(player, page + 1)
             end
@@ -355,7 +355,7 @@ local limbusExchangeMainMenu = {}
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 limbusExchangeMain(player, page - 1)
             end
@@ -363,7 +363,7 @@ local limbusExchangeMainMenu = {}
     end
     if endIndex < #limbusExchangeMainMenu then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 limbusExchangeMain(player, page + 1)
             end
@@ -403,7 +403,7 @@ local limbusExchangeMenu = {}
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 limbusExchange(player, page - 1)
             end
@@ -411,7 +411,7 @@ local limbusExchangeMenu = {}
     end
     if endIndex < #limbusExchangeMenu then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 limbusExchange(player, page + 1)
             end
@@ -425,7 +425,7 @@ local limbusExchangeMenu = {}
 end
 
 local function createMainMenu(player, page)
-    local mainMenu     = {'Nothing for now!', 'Current Balance', 'Exchange Items', 'ABC Exchange'} 
+    local mainMenu     = {'Nothing!', 'Current Balance', 'Exchange Items', 'ABC Exchange'} 
 
     local linesPerPage = 5
     page = page or 1
@@ -450,7 +450,7 @@ local function createMainMenu(player, page)
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 createMainMenu(player, page - 1)
             end
@@ -458,7 +458,7 @@ local function createMainMenu(player, page)
     end
     if endIndex < #mainMenu then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 createMainMenu(player, page + 1)
             end

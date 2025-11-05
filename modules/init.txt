@@ -69,9 +69,8 @@ custom/lua/three_mage_door_open.lua
 custom/lua/remove_limbus_lockout.lua
 custom/lua/Adoulin_blockage.lua
 custom/lua/persist_nm_time_of_deaths.lua
-custom/lua/conquest_regional_npcs_always_up.lua
 custom/lua/Provenance_Mobs.lua
-
-
+custom/lua/CampaignBattle.lua
+custom/lua/playerpcarddrops.lua
 
 
