@@ -9,6 +9,8 @@ UPDATE mob_groups SET spawntype = 0, respawntime = 600, HP = 78000, minLevel = 1
 UPDATE mob_groups SET spawntype = 0, respawntime = 600, HP = 78000, minLevel = 110, maxLevel = 110 WHERE name = 'Mysticmaker_Profblix' AND spawntype = 128;
 --                    Morbolger 
 UPDATE mob_groups SET spawntype = 0, respawntime = 3600, HP = 78000, minLevel = 110, maxLevel = 110 WHERE name = 'Morbolger' AND spawntype = 128;
+-- Orcus
+UPDATE mob_pools SET aggro = 0, true_detection = 0 WHERE poolid = 7010;
 --						Mob Pools settings		
 UPDATE mob_pools SET aggro = 1 WHERE name = "Apex_Eft";
 UPDATE mob_pools SET aggro = 1 WHERE name = "Apex_Toad";
