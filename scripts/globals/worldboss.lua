@@ -28,6 +28,92 @@ require('scripts/globals/worldboss/de_putraxia')
 xi = xi or {}
 xi.worldboss = xi.worldboss or {}
 -----------------------------------
+
+xi.worldboss.mob =
+    {
+    [ 1] = { name = 'Bahamut',      groupId = 11505, groupZoneId =  29, look = '0x00001b0500000000000000000000000000000000', wbMobFile = xi.worldboss.bahamut}, --
+    [ 2] = { name = 'Aminon',       groupId = 11505, groupZoneId = 275, look = '0x0000850A00000000000000000000000000000000', wbMobFile = xi.worldboss.aminon}, --
+    [ 3] = { name = 'Chaos',        groupId = 11506, groupZoneId = 278, look = '0x0000FF0D00000000000000000000000000000000', wbMobFile = xi.worldboss.chaos}, --
+    [ 4] = { name = 'Putraxia',     groupId = 11524, groupZoneId = 275, look = '0x00003D0A00000000000000000000000000000000', wbMobFile = xi.worldboss.putraxia}, --
+    [ 5] = { name = 'Uptala',       groupId = 11514, groupZoneId = 177, look = '0x0000390800000000000000000000000000000000', wbMobFile = xi.worldboss.uptala}, --
+    [ 6] = { name = 'Odin',         groupId = 11518, groupZoneId =  78, look = '0x0000250700000000000000000000000000000000', wbMobFile = xi.worldboss.odin}, --
+    [ 7] = { name = 'Hades',        groupId = 11508, groupZoneId = 277, look = '0x0000710a00000000000000000000000000000000', wbMobFile = xi.worldboss.hades}, --
+    [ 8] = { name = 'Pil',          groupId = 11509, groupZoneId = 222, look = '0x0000360800000000000000000000000000000000', wbMobFile = xi.worldboss.pil}, --
+    [ 9] = { name = 'Crom Dubh',    groupId = 11510, groupZoneId = 291, look = '0x00002e0a00000000000000000000000000000000', wbMobFile = xi.worldboss.crom_dubh}, --
+    [10] = { name = 'Kholomodumo',  groupId = 11511, groupZoneId =  82, look = '0x0000950100000000000000000000000000000000', wbMobFile = xi.worldboss.kholomodumo}, --
+    [11] = { name = 'Kalasutrax',   groupId = 11512, groupZoneId =  96, look = '0x0000110800000000000000000000000000000000', wbMobFile = xi.worldboss.kalasutrax}, --
+    [12] = { name = 'Ildebrann',    groupId = 11513, groupZoneId = 205, look = '0x0000600200000000000000000000000000000000', wbMobFile = xi.worldboss.ildebrann}, --
+    [13] = { name = 'Quetzalcoatl', groupId = 11515, groupZoneId = 291, look = '0x0000630200000000000000000000000000000000', wbMobFile = xi.worldboss.quetzalcoatl}, --
+    [14] = { name = 'Agathos',      groupId = 11516, groupZoneId =  91, look = '0x0000570900000000000000000000000000000000', wbMobFile = xi.worldboss.agathos}, --
+    [15] = { name = 'Oryx',         groupId = 11517, groupZoneId = 291, look = '0x0000b20800000000000000000000000000000000', wbMobFile = xi.worldboss.oryx}, --
+    [16] = { name = 'Metus',        groupId = 11519, groupZoneId =  36, look = '0x00007b0b00000000000000000000000000000000', wbMobFile = xi.worldboss.metus}, --
+    [17] = { name = 'Darkness',     groupId = 11520, groupZoneId = 293, look = '0x00007e0b00000000000000000000000000000000', wbMobFile = xi.worldboss.darkness}, --
+    [18] = { name = 'Lady Lilith',  groupId = 11521, groupZoneId = 182, look = '0x00008d0800000000000000000000000000000000', wbMobFile = xi.worldboss.lady_lilith}, --
+    [19] = { name = 'Ig-Alima',     groupId = 11522, groupZoneId = 103, look = '0x00000b0800000000000000000000000000000000', wbMobFile = xi.worldboss.ig_alima}, --
+    [20] = { name = 'Hahava',       groupId = 11523, groupZoneId = 190, look = '0x00003f0800000000000000000000000000000000', wbMobFile = xi.worldboss.hahava}, --
+    }
+
+xi.worldboss.spawnMob = function(mob)
+    local wbRandom = math.random(1,20)
+    for wbIndex, wbMob in pairs(xi.worldboss.mob) do
+      if wbRandom == wbIndex then
+          local deMob = wbMob.wbMobFile
+          deMob(mob) -- xi.worldboss.xxxxxxx(mob)
+      end
+    end
+end
+
+xi.worldboss.spawnAnnouncement = function(mob)
+   -- Annoucement to everyone in every zone of his spawn and location
+   local namez = nil
+   for mobIndex, mobName in pairs(xi.worldboss.mob) do
+       if GetServerVariable('[WorldBossSpawn]'..mobName.name) > 0 then
+          namez = mobName.name
+       end
+   end
+      for i = 1, 299 do
+          local zonex = GetZone(i):getPlayers()
+                for _, member in pairs(zonex) do
+                       member:printToPlayer('----------------WORLD BOSS ANNOUCEMENT----------------',xi.msg.channel.SYSTEM_3)
+                       member:printToPlayer(string.format('%s has been spotted in %s, Please help vanqish this evil demon!', namez, mob:getZoneName()),xi.msg.channel.SYSTEM_3)
+                end
+      end
+end
+xi.worldboss.despawnAnnouncement = function(mob)
+   -- Annoucement to everyone in every zone of WB has despawned
+     if mob:getHP() > 1 then
+       local namez = nil
+       for mobIndex, mobName in pairs(xi.worldboss.mob) do
+           if GetServerVariable('[WorldBossSpawn]'..mobName.name) > 0 then
+              namez = mobName.name
+           end
+       end
+          for i = 1, 299 do
+              local zonex = GetZone(i):getPlayers()
+                    for _, member in pairs(zonex) do
+                           member:printToPlayer('----------------WORLD BOSS ANNOUCEMENT----------------',xi.msg.channel.SYSTEM_3)
+                           member:printToPlayer(string.format('%s has vanished back to the depths in which they came from!', namez, mob:getZoneName()),xi.msg.channel.SYSTEM_3)
+                    end
+          end
+     end
+end
+xi.worldboss.deathAnnouncement = function(mob)
+   -- Annoucement to everyone in every zone of WB has been killed
+   local namez = nil
+   for mobIndex, mobName in pairs(xi.worldboss.mob) do
+       if GetServerVariable('[WorldBossSpawn]'..mobName.name) > 0 then
+          namez = mobName.name
+       end
+   end
+      for i = 1, 299 do
+          local zonex = GetZone(i):getPlayers()
+                for _, member in pairs(zonex) do
+                       member:printToPlayer('----------------WORLD BOSS ANNOUCEMENT----------------',xi.msg.channel.SYSTEM_3)
+                       member:printToPlayer(string.format('%s has been defeated, Thank you for vanquishing this foe, Peace has been restored to the land!', namez, mob:getZoneName()),xi.msg.channel.SYSTEM_3)
+                end
+      end
+end
+
 -- create command to tell if world boss is up, or maybe a npc so players can check if up and location
 xi.worldboss.onGameHour = function(zone)
   local bossNames = {'Bahamut','Ig-Alima','Kalasutrax','Uptala','Ildebrann','Pil','Agathos','Hahava','Kholomodumo','Quetzalcoatl','Crom Dubh', 
@@ -47,7 +133,7 @@ xi.worldboss.onGameHour = function(zone)
         end
       end 
     if GetServerVariable('[WorldBossTimer]') <= os.time() then
-       xi.worldboss.spawnMob(mob)
+       xi.worldboss.spawnMob()
     end
 end
 function worldbossGiveImmunity(mob)
@@ -58,7 +144,7 @@ function worldbossGiveImmunity(mob)
             { xi.mod.PIERCE_SDT, xi.day.WATERSDAY,     xi.damageType.WATER,   xi.mod.WATER_ABSORB},
             { xi.mod.IMPACT_SDT, xi.day.WINDSDAY,      xi.damageType.WIND,    xi.mod.WIND_ABSORB},
             { xi.mod.HTH_SDT,    xi.day.ICEDAY,        xi.damageType.ICE,     xi.mod.ICE_ABSORB},
-            { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGSDAY, xi.damageType.THUNDER, xi.mod.LTNG_ABSORB},
+            { xi.mod.SLASH_SDT,  xi.day.LIGHTNINGDAY, xi.damageType.THUNDER, xi.mod.LTNG_ABSORB},
             { xi.mod.PIERCE_SDT, xi.day.LIGHTSDAY,     xi.damageType.LIGHT,   xi.mod.LIGHT_ABSORB},
             { xi.mod.IMPACT_SDT, xi.day.DARKSDAY,      xi.damageType.DARK,    xi.mod.DARK_ABSORB},
         }
@@ -315,118 +401,39 @@ function worldBossResetJA(target)
                 {
                   210,211,212,214,223,233,265,342
                 },
-            [xi.job.GEO] =
-                {
-                  343,345,346,347,348,349,350,351,352,353,354,355,377,386
-                },
-            [xi.job.RUN] =
-                {
-                  356,357, 367,370,374,375,376,378,379,380,383
-                },
-        }
-
-       local mjob = player:getMainJob()
-       local sjob = player:getSubJob()
-           for i = 1, #resetJAList[mjob] do
-               local mAbility = GetAbility(resetJAList[mjob][i])
-                     if player:hasJobAbility(resetJAList[mjob][i]) then
-                        player:addRecast(xi.recast.ABILITY, mAbility:getRecastID(), mAbility:getRecast())
-                     end
-            end
-           for i = 1, #resetJAList[sjob] do
-               local sAbility  = GetAbility(resetJAList[sjob][i])
-                     if player:hasJobAbility(resetJAList[sjob][i]) then
-                        player:addRecast(xi.recast.ABILITY, sAbility:getRecastID(), sAbility:getRecast())
-                     end
-            end
-end
-
-xi.worldboss.mob =
-    {
-    [ 1] = { name = 'Bahamut',      groupId = 11505, groupZoneId =  29, look = '0x00001b0500000000000000000000000000000000', wbMobFile = xi.worldboss.bahamut}, -- 
-    [ 2] = { name = 'Aminon',       groupId = 11505, groupZoneId = 275, look = '0x0000850A00000000000000000000000000000000', wbMobFile = xi.worldboss.aminon}, -- 
-    [ 3] = { name = 'Chaos',        groupId = 11506, groupZoneId = 278, look = '0x0000FF0D00000000000000000000000000000000', wbMobFile = xi.worldboss.chaos}, -- 
-    [ 4] = { name = 'Putraxia',     groupId = 11524, groupZoneId = 275, look = '0x00003D0A00000000000000000000000000000000', wbMobFile = xi.worldboss.putraxia}, -- 
-    [ 5] = { name = 'Uptala',       groupId = 11514, groupZoneId = 177, look = '0x0000390800000000000000000000000000000000', wbMobFile = xi.worldboss.uptala}, -- 
-    [ 6] = { name = 'Odin',         groupId = 11518, groupZoneId =  78, look = '0x0000250700000000000000000000000000000000', wbMobFile = xi.worldboss.odin}, -- 
-    [ 7] = { name = 'Hades',        groupId = 11508, groupZoneId = 277, look = '0x0000710a00000000000000000000000000000000', wbMobFile = xi.worldboss.hades}, -- 
-    [ 8] = { name = 'Pil',          groupId = 11509, groupZoneId = 222, look = '0x0000360800000000000000000000000000000000', wbMobFile = xi.worldboss.pil}, -- 
-    [ 9] = { name = 'Crom Dubh',    groupId = 11510, groupZoneId = 291, look = '0x00002e0a00000000000000000000000000000000', wbMobFile = xi.worldboss.crom_dubh}, -- 
-    [10] = { name = 'Kholomodumo',  groupId = 11511, groupZoneId =  82, look = '0x0000950100000000000000000000000000000000', wbMobFile = xi.worldboss.kholomodumo}, -- 
-    [11] = { name = 'Kalasutrax',   groupId = 11512, groupZoneId =  96, look = '0x0000110800000000000000000000000000000000', wbMobFile = xi.worldboss.kalasutrax}, -- 
-    [12] = { name = 'Ildebrann',    groupId = 11513, groupZoneId = 205, look = '0x0000600200000000000000000000000000000000', wbMobFile = xi.worldboss.ildebrann}, -- 
-    [13] = { name = 'Quetzalcoatl', groupId = 11515, groupZoneId = 291, look = '0x0000630200000000000000000000000000000000', wbMobFile = xi.worldboss.quetzalcoatl}, -- 
-    [14] = { name = 'Agathos',      groupId = 11516, groupZoneId =  91, look = '0x0000570900000000000000000000000000000000', wbMobFile = xi.worldboss.agathos}, -- 
-    [15] = { name = 'Oryx',         groupId = 11517, groupZoneId = 291, look = '0x0000b20800000000000000000000000000000000', wbMobFile = xi.worldboss.oryx}, -- 
-    [16] = { name = 'Metus',        groupId = 11519, groupZoneId =  36, look = '0x00007b0b00000000000000000000000000000000', wbMobFile = xi.worldboss.metus}, -- 
-    [17] = { name = 'Darkness',     groupId = 11520, groupZoneId = 293, look = '0x00007e0b00000000000000000000000000000000', wbMobFile = xi.worldboss.darkness}, -- 
-    [18] = { name = 'Lady Lilith',  groupId = 11521, groupZoneId = 182, look = '0x00008d0800000000000000000000000000000000', wbMobFile = xi.worldboss.lady_lilith}, -- 
-    [19] = { name = 'Ig-Alima',     groupId = 11522, groupZoneId = 103, look = '0x00000b0800000000000000000000000000000000', wbMobFile = xi.worldboss.ig_alima}, -- 
-    [20] = { name = 'Hahava',       groupId = 11523, groupZoneId = 190, look = '0x00003f0800000000000000000000000000000000', wbMobFile = xi.worldboss.hahava}, -- 
+        [xi.job.GEO] =
+            {
+                343,345,346,347,348,349,350,351,352,353,354,355,377,386
+            },
+        [xi.job.RUN] =
+            {
+                356,357, 367,370,374,375,376,378,379,380,383
+            },
     }
 
-xi.worldboss.spawnMob = function(mob)
-    local wbRandom = math.random(1,20)
-    for wbIndex, wbMob in pairs(xi.worldboss.mob) do
-      if wbRandom == wbIndex then
-          local deMob = wbMob.wbMobFile
-          deMob(mob) -- xi.worldboss.xxxxxxx(mob)
-      end
+    local mjob = target:getMainJob()
+    local sjob = target:getSubJob()
+
+    if resetJAList[mjob] then
+        for i = 1, #resetJAList[mjob] do
+            local abilityId = resetJAList[mjob][i]
+            local mAbility = GetAbility(abilityId)
+            if mAbility and target:hasJobAbility(abilityId) then
+                target:addRecast(xi.recast.ABILITY, mAbility:getRecastID(), mAbility:getRecast())
+            end
+        end
+    end
+
+    if resetJAList[sjob] then
+        for i = 1, #resetJAList[sjob] do
+            local abilityId = resetJAList[sjob][i]
+            local sAbility = GetAbility(abilityId)
+            if sAbility and target:hasJobAbility(abilityId) then
+                target:addRecast(xi.recast.ABILITY, sAbility:getRecastID(), sAbility:getRecast())
+            end
+        end
     end
 end
-
-xi.worldboss.spawnAnnouncement = function(mob)
-   -- Annoucement to everyone in every zone of his spawn and location
-   local namez = 0
-   for mobIndex, mobName in pairs(xi.worldboss.mob) do
-       if GetServerVariable('[WorldBossSpawn]'..mobName.name) > 0 then
-          namez = mobName.name
-       end
-   end
-      for i = 1, 299 do
-          local zonex = GetZone(i):getPlayers()
-                for _, member in pairs(zonex) do
-                       member:printToPlayer('----------------WORLD BOSS ANNOUCEMENT----------------',xi.msg.channel.SYSTEM_3)
-                       member:printToPlayer(string.format('%s has been spotted in %s, Please help vanqish this evil demon!', namez, mob:getZoneName()),xi.msg.channel.SYSTEM_3)
-                end
-      end
-end
-xi.worldboss.despawnAnnouncement = function(mob)
-   -- Annoucement to everyone in every zone of WB has despawned
-     if mob:getHP() > 1 then
-       local namez = 0
-       for mobIndex, mobName in pairs(xi.worldboss.mob) do
-           if GetServerVariable('[WorldBossSpawn]'..mobName.name) > 0 then
-              namez = mobName.name
-           end
-       end
-          for i = 1, 299 do
-              local zonex = GetZone(i):getPlayers()
-                    for _, member in pairs(zonex) do
-                           member:printToPlayer('----------------WORLD BOSS ANNOUCEMENT----------------',xi.msg.channel.SYSTEM_3)
-                           member:printToPlayer(string.format('%s has vanished back to the depths in which they came from!', namez, mob:getZoneName()),xi.msg.channel.SYSTEM_3)
-                    end
-          end
-     end
-end
-xi.worldboss.deathAnnouncement = function(mob)
-   -- Annoucement to everyone in every zone of WB has been killed
-   local namez = 0
-   for mobIndex, mobName in pairs(xi.worldboss.mob) do
-       if GetServerVariable('[WorldBossSpawn]'..mobName.name) > 0 then
-          namez = mobName.name
-       end
-   end
-      for i = 1, 299 do
-          local zonex = GetZone(i):getPlayers()
-                for _, member in pairs(zonex) do
-                       member:printToPlayer('----------------WORLD BOSS ANNOUCEMENT----------------',xi.msg.channel.SYSTEM_3)
-                       member:printToPlayer(string.format('%s has been defeated, Thank you for vanquishing this foe, Peace has been restored to the land!', namez, mob:getZoneName()),xi.msg.channel.SYSTEM_3)
-                end
-      end
-end
-
-
 
 
 

@@ -2196,7 +2196,6 @@ page1 =
                 end
                 if spawnSupreme then
         
-
                     local leader = GetPlayerByID(player:getLeaderID())
                     if leader == nil then
                         return
@@ -2212,7 +2211,7 @@ page1 =
 
                     if type(alliancePartyCheck) == "table" then
                         for _, member in pairs(alliancePartyCheck) do
-                            if member:getZoneID() == 216 then
+                            if member:getZoneID() == 25 then
                                 member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
                                 member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                             end
@@ -2232,10 +2231,10 @@ page1 =
                         objtype = xi.objType.MOB,
                         name = 'Supreme Bahamut',
                         look = '0x00004b0e00000000000000000000000000000000',
-                        x = -160.0604,
-                        y = -15.6770,
-                        z = 632.2044,
-                        rotation = 23,
+                        x = -156.9923,
+                        y = -15.6044,
+                        z = 631.3160,
+                        rotation = 13,
                         groupId = 11506,
                         groupZoneId = 299,
                         ---------------------------------------------------------------------------
