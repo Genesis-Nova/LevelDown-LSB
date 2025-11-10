@@ -1036,13 +1036,12 @@ function completeCustomQuest(player)
                 player:printToPlayer(string.format('Congratulations! you have completed your %s Quest - %s',customQuestType[questType][1], customQuestId[questId][1]), 0, 'Quest NPC')
                 player:setCharVar('[LD]CustomQuestTotalDaily', player:getCharVar('[LD]CustomQuestTotalDaily') + 1)
                 player:setCharVar('[LD]CustomQuestTotal', player:getCharVar('[LD]CustomQuestTotal') +1)
+                randomReward(player)
                 player:setCharVar('[LD]CustomQuest',0)
-
                 player:addCurrency('domain_points', 10)
                 player:printToPlayer(string.format('%s was awarded %i %s, for a total of %i.', player:getName(), 10, 'Domain Points', player:getCurrency('domain_points')),xi.msg.channel.SYSTEM_3)
 
                 totalCompletedReward(player)
-                randomReward(player)
             end
         elseif questCount >= customQuestId[questId][3] then
             player:printToPlayer(string.format('Congratulations! you have completed your %s Quest - %s',customQuestType[questType][1], customQuestId[questId][1]), 0, 'Quest NPC')
@@ -1050,33 +1049,27 @@ function completeCustomQuest(player)
                 if questType == 1 then
                     player:setCharVar('[LD]CustomQuestTotalDaily', player:getCharVar('[LD]CustomQuestTotalDaily') + 1)
                     player:setCharVar('[LD]CustomQuestTotal', player:getCharVar('[LD]CustomQuestTotal') +1 )
+                    randomReward(player)
                     player:setCharVar('[LD]CustomQuest',0)
-
                     player:addCurrency('domain_points', 10)
                     player:printToPlayer(string.format('%s was awarded %i %s, for a total of %i.', player:getName(), 10, 'Domain Points', player:getCurrency('domain_points')),xi.msg.channel.SYSTEM_3)
-
                     totalCompletedReward(player)
-                    randomReward(player)
                 elseif questType == 2 then
                     player:setCharVar('[LD]CustomQuestTotalWeekly', player:getCharVar('[LD]CustomQuestTotalWeekly') + 1)
                     player:setCharVar('[LD]CustomQuestTotal', player:getCharVar('[LD]CustomQuestTotal') +1)
+                    randomReward(player)
                     player:setCharVar('[LD]CustomQuest',0)
-
                     player:addCurrency('current_hallmarks', 500)
                     player:printToPlayer(string.format('%s was awarded %i %s, for a total of %i.', player:getName(), 500, 'Hallmarks', player:getCurrency('current_hallmarks')),xi.msg.channel.SYSTEM_3)
-
                     totalCompletedReward(player)
-                    randomReward(player)
                 elseif questType == 3 then
                     player:setCharVar('[LD]CustomQuestTotalMonthly', player:getCharVar('[LD]CustomQuestTotalMonthly') + 1)
                     player:setCharVar('[LD]CustomQuestTotal', player:getCharVar('[LD]CustomQuestTotal') +1)
+                    randomReward(player)
                     player:setCharVar('[LD]CustomQuest',0)
-
                     player:addCurrency('gallantry', 2000)
                     player:printToPlayer(string.format('%s was awarded %i %s, for a total of %i.', player:getName(), 2000, 'Gallantry', player:getCurrency('gallantry')),xi.msg.channel.SYSTEM_3)
-
                     totalCompletedReward(player)
-                    randomReward(player)
                 end
         end
     end
@@ -1155,7 +1148,7 @@ local function delaySendMenu(player, menuToSend)
 end
 
 local function createAcceptQuestMenu(player, page)
-    local mainYNQMenu     = {'Yes', 'No'} 
+    local mainYNQMenu     = {'Yes', 'No'}
     local linesPerPage = 5
     page = page or 1
     local startIndex = (page - 1) * linesPerPage + 1
@@ -1855,6 +1848,7 @@ xi.custom_quest.getQuestInfo = function(player) -- for use in player command
     local questLimit = tonumber(questParams:sub(2,2))
     local questId = tonumber(questParams:sub(3,5))
     local questCount = tonumber(questParams:sub(6,8))
+    local itemId = customQuestId[questId][2]
 
     if questVar > 0 then
         player:printToPlayer(string.format('Your current quest is:'), 0, 'Quest NPC')
@@ -1874,6 +1868,40 @@ xi.custom_quest.getQuestInfo = function(player) -- for use in player command
     player:printToPlayer(string.format('Quests Canceled Monthly [%s]', player:getCharVar('[LD]CustomQuestXMonthly')), 0, 'Quest Results')
     player:printToPlayer(string.format('Total Quests Completed [%s]', player:getCharVar('[LD]CustomQuestTotal')), 0, 'Quest Results')
     player:printToPlayer('Note: Quests Canceled and Daily / Weekly / Monthly Quest counts will reset after each time reset, Quest Total will not reset!', 0, 'Quest Results')
+
+    if questId >= 584 and questId <= 925 then
+        for _, recipe in ipairs(xi.custCrafting) do
+            if recipe.item == itemId then
+                local ingredientsText = {}
+
+                for _, recipeItem in ipairs(recipe.ingredients) do
+                    if recipeItem ~= nil and recipeItem ~= 0 then
+                        local id
+                        local count = 1
+
+                        if type(recipeItem) == "table" then
+                            id = recipeItem[1]
+                            count = recipeItem[2] or 1
+                        else
+                            id = recipeItem
+                        end
+
+                        local name = GetItemByID(id):getName()
+                        table.insert(ingredientsText, string.format("%s x%d", name, count))
+                    end
+                end
+                local recipeItem = GetItemByID(recipe.item):getName()
+                player:printToPlayer(string.format("*******************Crafting Recipe***********************"), 0, "Quest NPC")
+                player:printToPlayer(string.format("%s", recipeItem), 0, "Item")
+
+                for _, line in ipairs(ingredientsText) do
+                    player:printToPlayer(line, 0, "Ingredients")
+                end
+
+                return
+            end
+        end
+    end
 end
 
 xi.custom_quest.completeCurrentQuest = function(player) -- for use of GM Command

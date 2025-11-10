@@ -70,7 +70,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                 mob:setMobLevel(130)
                 mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
                 mob:addMod(xi.mod.MAIN_DMG_RATING, 150)
-                mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
+                mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
                 mob:addMod(xi.mod.MP, 9500)
                 mob:addMod(xi.mod.STR, 400) 
                 mob:addMod(xi.mod.VIT, 400) 
@@ -302,10 +302,10 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
             local curhp = target:getHP()
             local absorb = target:getLocalVar('magical')
 
-            if spellElement == xi.combat.element.getDayElement(dayOfWeek) and
+            if spellElement == xi.data.element.getDayElement(dayOfWeek) and
                (caster:isPC() or caster:isPet() or caster:isTrust()) then
                target:setHP(curhp + absorb) -- absorb spells
-               caster:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
+               target:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
             end
 
             if spell:getID() == 23 or spell:getID() == 24 or spell:getID() == 25 then
@@ -352,6 +352,17 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+
+                            local behID = zones[xi.zone.BEHEMOTHS_DOMINION]
+                            if behID and behID.mob then
+                                if GetMobByID(behID.mob.BEHEMOTH):isAlive() then
+                                    DespawnMob(behID.mob.BEHEMOTH)
+                                end
+
+                                if GetMobByID(behID.mob.KING_BEHEMOTH):isAlive() then
+                                    DespawnMob(behID.mob.KING_BEHEMOTH)
                                 end
                             end
                         end,
@@ -441,7 +452,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                 mob:setMobLevel(130)
                 mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
                 mob:addMod(xi.mod.MAIN_DMG_RATING, 150)
-                mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
+                mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
                 mob:addMod(xi.mod.MP, 9500)
                 mob:addMod(xi.mod.STR, 400) 
                 mob:addMod(xi.mod.VIT, 400) 
@@ -673,10 +684,10 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
             local curhp = target:getHP()
             local absorb = target:getLocalVar('magical')
 
-            if spellElement == xi.combat.element.getDayElement(dayOfWeek) and
+            if spellElement == xi.data.element.getDayElement(dayOfWeek) and
                (caster:isPC() or caster:isPet() or caster:isTrust()) then
                target:setHP(curhp + absorb) -- absorb spells
-               caster:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
+               target:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
             end
 
             if spell:getID() == 23 or spell:getID() == 24 or spell:getID() == 25 then
@@ -723,6 +734,17 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+
+                            local behID = zones[xi.zone.BEHEMOTHS_DOMINION]
+                            if behID and behID.mob then
+                                if GetMobByID(behID.mob.BEHEMOTH):isAlive() then
+                                    DespawnMob(behID.mob.BEHEMOTH)
+                                end
+
+                                if GetMobByID(behID.mob.KING_BEHEMOTH):isAlive() then
+                                    DespawnMob(behID.mob.KING_BEHEMOTH)
                                 end
                             end
                         end,
@@ -810,33 +832,33 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
         mob:setLocalVar('[rage]timer', 900) -- 3600 = 60 minutes
         mob:setMobLevel(130)
         mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
-        mob:addMod(xi.mod.MAIN_DMG_RATING, 150)
-        mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
+        mob:addMod(xi.mod.MAIN_DMG_RATING, 100)
+        mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
         mob:addMod(xi.mod.MP, 9500)
-        mob:addMod(xi.mod.STR, 400) 
-        mob:addMod(xi.mod.VIT, 400) 
-        mob:addMod(xi.mod.INT, 400) 
-        mob:addMod(xi.mod.MND, 400) 
-        mob:addMod(xi.mod.CHR, 400) 
-        mob:addMod(xi.mod.AGI, 400) 
-        mob:addMod(xi.mod.DEX, 400) 
-        mob:addMod(xi.mod.DEF, 400) 
-        mob:addMod(xi.mod.RATT, 475) 
-        mob:addMod(xi.mod.ACC, 750) 
-        mob:addMod(xi.mod.ATT, 550) 
-        mob:addMod(xi.mod.MATT, 250)
-        mob:addMod(xi.mod.MACC, 750) 
-        mob:addMod(xi.mod.MEVA, 500) 
-        mob:addMod(xi.mod.MDEF, 500)
-        mob:setMod(xi.mod.EVA, 400)
+        mob:addMod(xi.mod.STR, 200)
+        mob:addMod(xi.mod.VIT, 200)
+        mob:addMod(xi.mod.INT, 200)
+        mob:addMod(xi.mod.MND, 200)
+        mob:addMod(xi.mod.CHR, 200)
+        mob:addMod(xi.mod.AGI, 200)
+        mob:addMod(xi.mod.DEX, 200)
+        mob:addMod(xi.mod.DEF, 200)
+        mob:addMod(xi.mod.RATT, 275)
+        mob:addMod(xi.mod.ACC, 350)
+        mob:addMod(xi.mod.ATT, 250)
+        mob:addMod(xi.mod.MATT, 150)
+        mob:addMod(xi.mod.MACC, 350)
+        mob:addMod(xi.mod.MEVA, 200)
+        mob:addMod(xi.mod.MDEF, 200)
+        mob:setMod(xi.mod.EVA, 200)
         mob:setMod(xi.mod.EARTH_SDT, 128)
-        mob:setMod(xi.mod.DARK_SDT, 250)
-        mob:setMod(xi.mod.LIGHT_SDT, 200)
-        mob:setMod(xi.mod.ICE_SDT, 200)
-        mob:setMod(xi.mod.FIRE_SDT, 200)
-        mob:setMod(xi.mod.WATER_SDT, 200)
-        mob:setMod(xi.mod.THUNDER_SDT, 200)
-        mob:setMod(xi.mod.WIND_SDT, 200)
+        mob:setMod(xi.mod.DARK_SDT, 150)
+        mob:setMod(xi.mod.LIGHT_SDT, 100)
+        mob:setMod(xi.mod.ICE_SDT, 100)
+        mob:setMod(xi.mod.FIRE_SDT, 100)
+        mob:setMod(xi.mod.WATER_SDT, 100)
+        mob:setMod(xi.mod.THUNDER_SDT, 100)
+        mob:setMod(xi.mod.WIND_SDT, 100)
         mob:setMod(xi.mod.SILENCERES, 100) 
         mob:setMod(xi.mod.STUNRES, 10) 
         mob:setMod(xi.mod.BINDRES, 100) 
@@ -1028,10 +1050,10 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
             local spellElement = spell:getElement()
             local curhp = target:getHP()
             local absorb = target:getLocalVar('magical')
-            if spellElement == xi.combat.element.getDayElement(dayOfWeek) and
+            if spellElement == xi.data.element.getDayElement(dayOfWeek) and
                  (caster:isPC() or caster:isPet() or caster:isTrust()) then
                  target:setHP(curhp + absorb) -- absorb spells
-                 caster:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
+                 target:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
               end
             if spell:getID() == 23 or spell:getID() == 24 or spell:getID() == 25 then
                target:useMobAbility(695) -- use blood weapon on dia
@@ -1076,6 +1098,17 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+
+                            local daerID = zones[xi.zone.DRAGONS_AERY]
+                            if daerID and daerID.mob then
+                                if GetMobByID(daerID.mob.FAFNIR):isAlive() then
+                                    DespawnMob(daerID.mob.FAFNIR)
+                                end
+
+                                if GetMobByID(daerID.mob.NIDHOGG):isAlive() then
+                                    DespawnMob(daerID.mob.NIDHOGG)
                                 end
                             end
                         end,
@@ -1163,33 +1196,33 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
         mob:setLocalVar('[rage]timer', 900) -- 3600 = 60 minutes
         mob:setMobLevel(130)
         mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
-        mob:addMod(xi.mod.MAIN_DMG_RATING, 150)
-        mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
+        mob:addMod(xi.mod.MAIN_DMG_RATING, 100)
+        mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
         mob:addMod(xi.mod.MP, 9500)
-        mob:addMod(xi.mod.STR, 400) 
-        mob:addMod(xi.mod.VIT, 400) 
-        mob:addMod(xi.mod.INT, 400) 
-        mob:addMod(xi.mod.MND, 400) 
-        mob:addMod(xi.mod.CHR, 400) 
-        mob:addMod(xi.mod.AGI, 400) 
-        mob:addMod(xi.mod.DEX, 400) 
-        mob:addMod(xi.mod.DEF, 400) 
-        mob:addMod(xi.mod.RATT, 475) 
-        mob:addMod(xi.mod.ACC, 750) 
-        mob:addMod(xi.mod.ATT, 550) 
-        mob:addMod(xi.mod.MATT, 250)
-        mob:addMod(xi.mod.MACC, 750) 
-        mob:addMod(xi.mod.MEVA, 500) 
-        mob:addMod(xi.mod.MDEF, 500)
-        mob:setMod(xi.mod.EVA, 400)
+        mob:addMod(xi.mod.STR, 200)
+        mob:addMod(xi.mod.VIT, 200)
+        mob:addMod(xi.mod.INT, 200)
+        mob:addMod(xi.mod.MND, 200)
+        mob:addMod(xi.mod.CHR, 200)
+        mob:addMod(xi.mod.AGI, 200)
+        mob:addMod(xi.mod.DEX, 200)
+        mob:addMod(xi.mod.DEF, 200)
+        mob:addMod(xi.mod.RATT, 275)
+        mob:addMod(xi.mod.ACC, 350)
+        mob:addMod(xi.mod.ATT, 250)
+        mob:addMod(xi.mod.MATT, 150)
+        mob:addMod(xi.mod.MACC, 350)
+        mob:addMod(xi.mod.MEVA, 200)
+        mob:addMod(xi.mod.MDEF, 200)
+        mob:setMod(xi.mod.EVA, 200)
         mob:setMod(xi.mod.EARTH_SDT, 128)
-        mob:setMod(xi.mod.DARK_SDT, 250)
-        mob:setMod(xi.mod.LIGHT_SDT, 200)
-        mob:setMod(xi.mod.ICE_SDT, 200)
-        mob:setMod(xi.mod.FIRE_SDT, 200)
-        mob:setMod(xi.mod.WATER_SDT, 200)
-        mob:setMod(xi.mod.THUNDER_SDT, 200)
-        mob:setMod(xi.mod.WIND_SDT, 200)
+        mob:setMod(xi.mod.DARK_SDT, 150)
+        mob:setMod(xi.mod.LIGHT_SDT, 100)
+        mob:setMod(xi.mod.ICE_SDT, 100)
+        mob:setMod(xi.mod.FIRE_SDT, 100)
+        mob:setMod(xi.mod.WATER_SDT, 100)
+        mob:setMod(xi.mod.THUNDER_SDT, 100)
+        mob:setMod(xi.mod.WIND_SDT, 100)
         mob:setMod(xi.mod.SILENCERES, 100) 
         mob:setMod(xi.mod.STUNRES, 10) 
         mob:setMod(xi.mod.BINDRES, 100) 
@@ -1381,10 +1414,10 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
             local spellElement = spell:getElement()
             local curhp = target:getHP()
             local absorb = target:getLocalVar('magical')
-            if spellElement == xi.combat.element.getDayElement(dayOfWeek) and
+            if spellElement == xi.data.element.getDayElement(dayOfWeek) and
                  (caster:isPC() or caster:isPet() or caster:isTrust()) then
                  target:setHP(curhp + absorb) -- absorb spells
-                 caster:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
+                 target:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
               end
             if spell:getID() == 23 or spell:getID() == 24 or spell:getID() == 25 then
                target:useMobAbility(695) -- use blood weapon on dia
@@ -1429,6 +1462,17 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+
+                            local daerID = zones[xi.zone.DRAGONS_AERY]
+                            if daerID and daerID.mob then
+                                if GetMobByID(daerID.mob.FAFNIR):isAlive() then
+                                    DespawnMob(daerID.mob.FAFNIR)
+                                end
+
+                                if GetMobByID(daerID.mob.NIDHOGG):isAlive() then
+                                    DespawnMob(daerID.mob.NIDHOGG)
                                 end
                             end
                         end,
@@ -1516,7 +1560,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
         mob:setLocalVar('[rage]timer', 900) -- 3600 = 60 minutes
         mob:setMobLevel(130)
         mob:addMod(xi.mod.MAIN_DMG_RATING, 150)
-        mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
+        mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
         mob:addMod(xi.mod.MP, 9500)
         mob:addMod(xi.mod.STR, 400) 
         mob:addMod(xi.mod.VIT, 400) 
@@ -1732,10 +1776,10 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
             local spellElement = spell:getElement()
             local curhp = target:getHP()
             local absorb = target:getLocalVar('magical')
-            if spellElement == xi.combat.element.getDayElement(dayOfWeek) and
+            if spellElement == xi.data.element.getDayElement(dayOfWeek) and
                  (caster:isPC() or caster:isPet() or caster:isTrust()) then
                  target:setHP(curhp + absorb) -- absorb spells
-                 caster:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
+                 target:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
               end
             if spell:getID() == 23 or spell:getID() == 24 or spell:getID() == 25 then
                target:useMobAbility(695) -- use blood weapon on dia
@@ -1780,6 +1824,17 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+
+                            local vosID = zones[xi.zone.VALLEY_OF_SORROWS]
+                            if vosID and vosID.mob then
+                                if GetMobByID(vosID.mob.ADAMANTOISE):isAlive() then
+                                    DespawnMob(vosID.mob.ADAMANTOISE)
+                                end
+
+                                if GetMobByID(vosID.mob.ASPIDOCHELONE):isAlive() then
+                                    DespawnMob(vosID.mob.ASPIDOCHELONE)
                                 end
                             end
                         end,
@@ -1868,7 +1923,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
         mob:setMobLevel(130)
         mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
         mob:addMod(xi.mod.MAIN_DMG_RATING, 150)
-        mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
+        mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
         mob:addMod(xi.mod.MP, 9500)
         mob:addMod(xi.mod.STR, 400) 
         mob:addMod(xi.mod.VIT, 400) 
@@ -2088,10 +2143,10 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
             local spellElement = spell:getElement()
             local curhp = target:getHP()
             local absorb = target:getLocalVar('magical')
-            if spellElement == xi.combat.element.getDayElement(dayOfWeek) and
+            if spellElement == xi.data.element.getDayElement(dayOfWeek) and
                  (caster:isPC() or caster:isPet() or caster:isTrust()) then
                  target:setHP(curhp + absorb) -- absorb spells
-                 caster:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
+                 target:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
               end
             if spell:getID() == 23 or spell:getID() == 24 or spell:getID() == 25 then
                target:useMobAbility(695) -- use blood weapon on dia
@@ -2136,6 +2191,17 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
+                                end
+                            end
+
+                            local vosID = zones[xi.zone.VALLEY_OF_SORROWS]
+                            if vosID and vosID.mob then
+                                if GetMobByID(vosID.mob.ADAMANTOISE):isAlive() then
+                                    DespawnMob(vosID.mob.ADAMANTOISE)
+                                end
+
+                                if GetMobByID(vosID.mob.ASPIDOCHELONE):isAlive() then
+                                    DespawnMob(vosID.mob.ASPIDOCHELONE)
                                 end
                             end
                         end,
@@ -2244,42 +2310,7 @@ page1 =
                             mob:setLocalVar('[rage]timer', 900) -- 3600 = 60 minutes
                             mob:setLocalVar('BSanctusUse', 1)
                             mob:addMod(xi.mod.MAIN_DMG_RATING, 145)
-                            mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 600)
-                            --[[
-                            mob:addMod(xi.mod.MP, 9500)
-                            mob:addMod(xi.mod.STR, 400) 
-                            mob:addMod(xi.mod.VIT, 400) 
-                            mob:addMod(xi.mod.INT, 400) 
-                            mob:addMod(xi.mod.MND, 400) 
-                            mob:addMod(xi.mod.CHR, 400) 
-                            mob:addMod(xi.mod.AGI, 400) 
-                            mob:addMod(xi.mod.DEX, 400) 
-                            mob:addMod(xi.mod.DEF, 400) 
-                            mob:addMod(xi.mod.RATT, 475) 
-                            mob:addMod(xi.mod.ACC, 750) 
-                            mob:addMod(xi.mod.ATT, 550) 
-                            mob:addMod(xi.mod.MATT, 250)
-                            mob:addMod(xi.mod.MACC, 750) 
-                            mob:addMod(xi.mod.MEVA, 500) 
-                            mob:addMod(xi.mod.MDEF, 500)
-                            mob:setMod(xi.mod.EVA, 400)
-                            mob:setMod(xi.mod.EARTH_SDT, 128)
-                            mob:setMod(xi.mod.DARK_SDT, 250)
-                            mob:setMod(xi.mod.LIGHT_SDT, 200)
-                            mob:setMod(xi.mod.ICE_SDT, 200)
-                            mob:setMod(xi.mod.FIRE_SDT, 200)
-                            mob:setMod(xi.mod.WATER_SDT, 200)
-                            mob:setMod(xi.mod.THUNDER_SDT, 200)
-                            mob:setMod(xi.mod.WIND_SDT, 200)
-                            mob:setMod(xi.mod.SILENCERES, 100) 
-                            mob:setMod(xi.mod.STUNRES, 1000) 
-                            mob:setMod(xi.mod.BINDRES, 100) 
-                            mob:setMod(xi.mod.GRAVITYRES, 100) 
-                            mob:setMod(xi.mod.SLEEPRES, 100) 
-                            mob:setMod(xi.mod.POISONRES, 100) 
-                            mob:setMod(xi.mod.PARALYZERES, 100) 
-                            mob:setMod(xi.mod.LULLABYRES, 0) 
-                            ]]--
+                            mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
                             mob:setMod(xi.mod.FASTCAST, 75) 
                             mob:addStatusEffect(xi.effect.DREAD_SPIKES, 100, 0, 0)
                             mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
@@ -2459,10 +2490,10 @@ page1 =
                             local curhp = target:getHP()
                             local absorb = target:getLocalVar('magical')
 
-                            if spellElement == xi.combat.element.getDayElement(dayOfWeek) and
+                            if spellElement == xi.data.element.getDayElement(dayOfWeek) and
                                 (caster:isPC() or caster:isPet() or caster:isTrust()) then
                                 target:setHP(curhp + absorb) -- absorb spells
-                                caster:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
+                                target:messageBasic(xi.msg.basic.RECOVERS_HP, 0, absorb)
                             end
 
                             if spell:getID() == 23 or spell:getID() == 24 or spell:getID() == 25 then

@@ -98,14 +98,17 @@ commandObj.onTrigger = function(player)
 
     local npc = zoneOrInstanceObj:insertDynamicEntity({
         objtype = xi.objType.NPC,
-        name = '3400', --..i,
-        look = 2785, -- + i,
-                
+        name = "\x3F\x0E", --..i,
+       -- look = "0x01001D05A3104621A330A34046515A6100702180", -- + i,
+        look = '0x01001D0749104920BA30BA40BA5033631D700000',
+                -- 17293826 pumpkin
         --      0x0000000B00000000000000000000000000000000
         x = player:getXPos(), -- + i + 5,
         y = player:getYPos(),
         z = player:getZPos(),
         rotation = player:getRotPos(),
+        entityFlags = 133,
+        namevis     = 128,
 
         onTrade = function(player, npc, trade)
             xi.custom_quest.onTrade(player, npc, trade)
@@ -114,38 +117,52 @@ commandObj.onTrigger = function(player)
             xi.custom_quest.onTrigger(player, npc)
         end,
         releaseIdOnDisappear = true,
+
     })
+
     utils.unused(npc)
+
 end
  -- end
 return commandObj
 
 
---[[
+--[[ MID's
                 00 00 16 09
                 00 00 00 0B 
                 05 00 03 02 00000000000000000000000000000000
+                01 00 1D 02 4B 10 B7 20 B7 30 4B 40 B7 50 2E 63 2E 73 00 00
         look = '01 00 05 03 77 10 67 20 68 30 66 40 68 50 00 60 00 70 00 00',
-                 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |                                              
-        Index/Type  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |                                                   
-                       |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |                                             
-                    hair  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |                                            
-                       race  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |                                              
-                          head  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |                                               
-                             head  |  |  |  |  |  |  |  |  |  |  |  |  |  |                                          
-                                Body  |  |  |  |  |  |  |  |  |  |  |  |  |                                           
-                                   body  |  |  |  |  |  |  |  |  |  |  |  |                                                 
-                                     hands  |  |  |  |  |  |  |  |  |  |  |                                             
+                 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+        Index/Type  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+                       |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+                    hair  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+                       race  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+                          head  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+                             head  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+                                Body  |  |  |  |  |  |  |  |  |  |  |  |  |
+                                   body  |  |  |  |  |  |  |  |  |  |  |  |
+                                     hands  |  |  |  |  |  |  |  |  |  |  |
                                         hands  |  |  |  |  |  |  |  |  |  |
                                             legs  |  |  |  |  |  |  |  |  |
-                                               legs  |  |  |  |  |  |  |  |                                       
-                                                  feet  |  |  |  |  |  |  |                              
-                                                     feet  |  |  |  |  |  |                            
-                                                      weapon  |  |  |  |  |                          
-                                                                 |  |  |  |                        
-                                                                    |  |  |                   
-                                                                       |  |               
-                                                                          |              
-                                                                                      
-                                                                                      
+                                               legs  |  |  |  |  |  |  |  |
+                                                  feet  |  |  |  |  |  |  |
+                                                     feet  |  |  |  |  |  |
+                                                 main weapon  |  |  |  |  |
+                                                    main weapon  |  |  |  |
+                                                        sub weapon  |  |  |
+                                                           sub weapon  |  |
+                                                                          |
+
+0x 01 00 1D 07 84 11 59 20 43 30 59 40 43 50 FF 62 38 73 00 00
+
+
+ elvan      01 00 1D 03 4B 10 B7 20 B7 30 4B 40 B7 50 2E 63 3C 72 00 00 (572 = 23C)
+  elvan      0x 01 00 1D 03 8411 4D20 4D30 4940 4950 3C62 3873 0000
+ galka      01 00 1D 08 4B 10 B7 20 B7 30 4B 40 B7 50 2E 63 32 72 00 00 (562 = 232)
+  galka      0x01001D088411 4F20 4130 4140 4150 326238730000
+ taru       01 00 1D 05 4B 10 B7 20 B7 30 4B 40 B7 50 2E 63 20 72 00 00 (544 = 220)
+  taru       0x01001D058411 4720 4730 4B40 4B50 206238730000
+
+ 2ff = 767 mid = ff62 main or ff72 offhand
 ]]--

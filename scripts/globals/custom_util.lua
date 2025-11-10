@@ -105,22 +105,34 @@ xi.customutil.resetJobAbility = function(player)
                   356,357, 367,370,374,375,376,378,379,380,383
                 },
         }
+    local mjob = player and player:getMainJob()
+    local sjob = player and player:getSubJob()
 
-       local mjob = player:getMainJob()
-       local sjob = player:getSubJob()
-           for i = 1, #resetJAList[mjob] do
-               local mAbility = GetAbility(resetJAList[mjob][i])
-                     if player:hasJobAbility(resetJAList[mjob][i]) then
+    if player and resetJAList then
+        if mjob and resetJAList[mjob] then
+            for i = 1, #resetJAList[mjob] do
+                local abilityId = resetJAList[mjob][i]
+                if abilityId then
+                    local mAbility = GetAbility(abilityId)
+                    if mAbility then
                         player:addRecast(xi.recast.ABILITY, mAbility:getRecastID(), mAbility:getRecast())
-                     end
+                    end
+                end
             end
-           for i = 1, #resetJAList[sjob] do
-               local sAbility  = GetAbility(resetJAList[sjob][i])
-                     if player:hasJobAbility(resetJAList[sjob][i]) then
-                        player:addRecast(xi.recast.ABILITY, sAbility:getRecastID(), sAbility:getRecast())
-                     end
-            end
+        end
 
+        if sjob and resetJAList[sjob] then
+            for i = 1, #resetJAList[sjob] do
+                local abilityId = resetJAList[sjob][i]
+                if abilityId then
+                    local sAbility = GetAbility(abilityId)
+                    if sAbility then
+                        player:addRecast(xi.recast.ABILITY, sAbility:getRecastID(), sAbility:getRecast())
+                    end
+                end
+            end
+        end
+    end
 end
 
 xi.customutil.levelAdjustmentMods = function(mob)
