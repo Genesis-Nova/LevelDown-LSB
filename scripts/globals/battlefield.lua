@@ -1283,7 +1283,7 @@ end
 function Battlefield:handleOpenArmouryCrate(player, npc)
     npcUtil.openCrate(npc, function()
         local battlefield = player:getBattlefield()
-        self:handleLootRolls(battlefield, self.loot, npc)
+        self:handleLootRolls(battlefield, self.loot, npc, player:getMod(xi.mod.MOGHANCEMENT_GIL_BONUS_P))
         battlefield:setStatus(xi.battlefield.status.WON)
         battlefield:setLocalVar('cutsceneTimer', self.delayToExit)
 
@@ -1291,7 +1291,7 @@ function Battlefield:handleOpenArmouryCrate(player, npc)
     end)
 end
 
-function Battlefield:handleLootRolls(battlefield, lootTable, npc)
+function Battlefield:handleLootRolls(battlefield, lootTable, npc, gilBonusMod)
     local players = battlefield:getPlayers()
     local firstPlayer = players[1]
 
@@ -1300,10 +1300,11 @@ function Battlefield:handleLootRolls(battlefield, lootTable, npc)
         if entry.itemId ~= xi.item.GIL then
             firstPlayer:addTreasure(entry.itemId, npc)
         else
-            local gilPerPlayer = entry.amount / #players
+            local gilBonusPct  = (100 + gilBonusMod) / 100
+            local gilPerPlayer = entry.amount * gilBonusPct / #players
 
             for _, player in ipairs(players) do
-                npcUtil.giveCurrency(player, 'gil', gilPerPlayer)
+                npcUtil.giveCurrency(player, 'gil', gilPerPlayer, true)
             end
         end
     end
