@@ -776,18 +776,22 @@ xi.abyssea.giveNMDrops = function(mob, player, ID)
     local normalDrops = xi.abyssea.mob[mob:getName()]['Normal']
     local playerClaimed = GetPlayerByID(mob:getLocalVar('[ClaimedBy]'))
 
-    local partyMembers = playerClaimed:getParty()
-    for _, member in pairs(partyMembers) do 
-        for _, keyItemId in pairs(normalDrops) do
-            if
-            -- playerClaimed and
-                xi.abyssea.canGiveNMKI(mob, 100) -- changed from 20 to 100
-            then
-           -- npcUtil.giveKeyItem(playerClaimed, keyItemId, ID.text.PLAYER_KEYITEM_OBTAINED)
-              npcUtil.giveKeyItem(member, keyItemId, ID.text.PLAYER_KEYITEM_OBTAINED)
-           end
+    for _, keyItemId in pairs(normalDrops) do
+        if
+            playerClaimed and
+            xi.abyssea.canGiveNMKI(mob, 20)
+        then
+            local ally = playerClaimed:getAlliance()
+
+            for _, member in ipairs(ally) do
+                if not member:hasKeyItem(keyItemId) and xi.abyssea.canGiveNMKI(mob, 10) then
+                    npcUtil.giveKeyItem(member, keyItemId, ID.text.PLAYER_KEYITEM_OBTAINED)
+                end
+            end
+
         end
-    end 
+    end
+
     for _, keyItemId in pairs(atmaDrops) do
         if playerClaimed then
             local ally = playerClaimed:getAlliance()
@@ -864,8 +868,8 @@ xi.abyssea.procMonster = function(mob, player, triggerType)
         if triggerType == xi.abyssea.triggerType.RED then
             if mob:getLocalVar('[AbysseaRedProc]') == 0 then
                 mob:setLocalVar('[AbysseaRedProc]', 1)
-           -- else
-              --  mob:setLocalVar('[AbysseaRedProc]', 0) -- allow only to proc once
+            else
+                mob:setLocalVar('[AbysseaRedProc]', 0)
             end
 
             mob:weaknessTrigger(2)
@@ -873,8 +877,8 @@ xi.abyssea.procMonster = function(mob, player, triggerType)
         elseif triggerType == xi.abyssea.triggerType.YELLOW then
             if mob:getLocalVar('[AbysseaYellowProc]') == 0 then
                 mob:setLocalVar('[AbysseaYellowProc]', 1)
-          --  else
-          --      mob:setLocalVar('[AbysseaYellowProc]', 0) -- allow only to proc once
+            else
+                mob:setLocalVar('[AbysseaYellowProc]', 0)
             end
 
             mob:weaknessTrigger(1)
@@ -882,8 +886,8 @@ xi.abyssea.procMonster = function(mob, player, triggerType)
         elseif triggerType == xi.abyssea.triggerType.BLUE then
             if mob:getLocalVar('[AbysseaBlueProc]') == 0 then
                 mob:setLocalVar('[AbysseaBlueProc]', 1)
-          --  else
-          --      mob:setLocalVar('[AbysseaBlueProc]', 0) -- allow only to proc once
+            else
+                mob:setLocalVar('[AbysseaBlueProc]', 0)
             end
 
             mob:weaknessTrigger(0)

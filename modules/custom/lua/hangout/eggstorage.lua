@@ -82,7 +82,7 @@ local function createMainMenu(player, page)
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 createMainMenu(player, page - 1)
             end
@@ -90,7 +90,7 @@ local function createMainMenu(player, page)
     end
     if endIndex < #eggs then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 createMainMenu(player, page + 1)
             end
@@ -113,7 +113,7 @@ local function createTradeMenu(player, page, trade)
         local egg = eggs[i]
         local balance = player:getCharVar(egg.var)
         table.insert(options, {
-            string.format('%s (You have: %d)', egg.name, balance),
+            string.format('%s (%d)', egg.name, balance),
             function(player)
                 player:setLocalVar('SelectedEgg', egg.id)
                 local selectedEggId = player:getLocalVar('SelectedEgg')
@@ -132,7 +132,7 @@ local function createTradeMenu(player, page, trade)
     -- Pagination options
     if page > 1 then
         table.insert(options, {
-            'Previous Page',
+            'Prev',
             function(player)
                 createTradeMenu(player, page - 1, trade)
             end
@@ -140,7 +140,7 @@ local function createTradeMenu(player, page, trade)
     end
     if endIndex < #eggs then
         table.insert(options, {
-            'Next Page',
+            'Next',
             function(player)
                 createTradeMenu(player, page + 1,trade)
             end

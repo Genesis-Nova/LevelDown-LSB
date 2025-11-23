@@ -466,3 +466,16 @@ INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 131, 37, 255); 
 INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 132, 57, 255); -- shellra_iii
 INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 133, 68, 255); -- shellra_iv
 INSERT INTO mob_spell_lists VALUES('TRUST_Ferreous_Coffin', 356, 134, 75, 255); -- shellra_v
+
+-- Bart
+INSERT INTO `mob_spell_lists` (`spell_list_name`, `spell_list_id`, `spell_id`, `min_level`, `max_level`) VALUES ('TRUST_Ygnas', 411, 53, 19, 255);
+INSERT INTO `mob_spell_lists` (`spell_list_name`, `spell_list_id`, `spell_id`, `min_level`, `max_level`) VALUES ('TRUST_Ygnas', 411, 54, 28, 255);
+INSERT INTO `mob_spell_lists` (`spell_list_name`, `spell_list_id`, `spell_id`, `min_level`, `max_level`) VALUES ('TRUST_Ygnas', 411, 7, 6, 255);
+INSERT INTO `mob_spell_lists` (`spell_list_name`, `spell_list_id`, `spell_id`, `min_level`, `max_level`) VALUES ('TRUST_Ygnas', 411, 8, 11, 255);
+INSERT INTO `mob_spell_lists` (`spell_list_name`, `spell_list_id`, `spell_id`, `min_level`, `max_level`) VALUES ('TRUST_Ygnas', 411, 9, 21, 255);
+INSERT INTO `mob_spell_lists` (`spell_list_name`, `spell_list_id`, `spell_id`, `min_level`, `max_level`) VALUES ('TRUST_Ygnas', 411, 10, 41, 255);
+INSERT INTO `mob_spell_lists` (`spell_list_name`, `spell_list_id`, `spell_id`, `min_level`, `max_level`) VALUES ('TRUST_Ygnas', 411, 11, 61, 255);
+INSERT INTO `mob_skill_lists` (`skill_list_name`, `skill_list_id`, `mob_skill_id`) VALUES ('TRUST_Ygnas', 1113, 2979);
+INSERT INTO `mob_skill_lists` (`skill_list_name`, `skill_list_id`, `mob_skill_id`) VALUES ('TRUST_Ygnas', 1113, 2980);
+INSERT INTO `mob_skill_lists` (`skill_list_name`, `skill_list_id`, `mob_skill_id`) VALUES ('TRUST_Ygnas', 1113, 2981);
+INSERT INTO `mob_skill_lists` (`skill_list_name`, `skill_list_id`, `mob_skill_id`) VALUES ('TRUST_Ygnas', 1113, 2982);

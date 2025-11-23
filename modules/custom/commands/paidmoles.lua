@@ -172,25 +172,25 @@ menu.options =
 
                         onMobFight = function(mob, target)
                             mob:addListener('TAKE_DAMAGE', 'MOLE_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
-                                if damage > 0 then
-                                    if attacker:isPC() then
-                                        for i = xi.slot.MAIN, xi.slot.BACK do
-                                            attacker:unequipItem(i)
-                                        end
+                                if attacker:isPC() then
+                                    if damage > 0 then
+                                            for i = xi.slot.MAIN, xi.slot.BACK do
+                                                attacker:unequipItem(i)
+                                            end
                                     end
-                                end
-                                if attackType == xi.attackType.PHYSICAL and
-                                   (damageType == xi.damageType.NONE or damageType == xi.damageType.HTH) then
-                                    attacker:setTP(0)
-                                    local rand = math.random(1, 20)
-                                    local randz = math.random(1, 240)
-                                    if attacker:isPC() then
-                                        if rand == 5 then
-                                            npcUtil.giveItem(attacker, { { xi.item.GIL, math.random(100, 1000) } })
-                                        end
-                                        for k, v in pairs(drops) do
-                                            if randz == k then
-                                                npcUtil.giveItem(attacker, { { v.reward, 1 } })
+                                    if attackType == xi.attackType.PHYSICAL and
+                                    (damageType == xi.damageType.NONE or damageType == xi.damageType.HTH) then
+                                        attacker:setTP(0)
+                                        local rand = math.random(1, 20)
+                                        local randz = math.random(1, 240)
+                                        if attacker:isPC() then
+                                            if rand == 5 then
+                                                npcUtil.giveItem(attacker, { { xi.item.GIL, math.random(100, 1000) } })
+                                            end
+                                            for k, v in pairs(drops) do
+                                                if randz == k then
+                                                    npcUtil.giveItem(attacker, { { v.reward, 1 } })
+                                                end
                                             end
                                         end
                                     end

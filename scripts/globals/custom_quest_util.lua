@@ -1848,7 +1848,11 @@ xi.custom_quest.getQuestInfo = function(player) -- for use in player command
     local questLimit = tonumber(questParams:sub(2,2))
     local questId = tonumber(questParams:sub(3,5))
     local questCount = tonumber(questParams:sub(6,8))
-    local itemId = customQuestId[questId][2]
+    local itemId = 0
+
+    if questVar > 0 then
+        itemId = customQuestId[questId][2]
+    end
 
     if questVar > 0 then
         player:printToPlayer(string.format('Your current quest is:'), 0, 'Quest NPC')
@@ -1857,6 +1861,7 @@ xi.custom_quest.getQuestInfo = function(player) -- for use in player command
         player:printToPlayer(string.format('%s of %s', questCount,customQuestId[questId][3]), 0, 'Quest Progress')
     else
         player:printToPlayer('You do not currently have an active quest!', 0, 'Quest NPC')
+        return
     end
 
     player:printToPlayer(string.format('Your have completed:'), 0, 'Quest NPC')
