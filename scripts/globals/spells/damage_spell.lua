@@ -1240,6 +1240,7 @@ xi.spells.damage.useDamageSpell = function(caster, target, spell)
     finalDamage = utils.clamp(utils.handlePhalanx(target, finalDamage), 0, 99999)
     finalDamage = utils.clamp(utils.handleOneForAll(target, finalDamage), 0, 99999)
     finalDamage = utils.clamp(utils.handleStoneskin(target, finalDamage), -99999, 99999)
+    finalDamage = utils.clamp(utils.magicBarrier(target, finalDamage), 0, 99999)
 
     -- Handle final adjustments. Most are located in core. TODO: Decide if we want core handling this.
     -- Check if the mob has a damage cap
