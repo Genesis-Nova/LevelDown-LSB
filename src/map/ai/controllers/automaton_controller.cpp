@@ -30,6 +30,7 @@
 #include "enmity_container.h"
 #include "entities/trustentity.h"
 #include "lua/luautils.h"
+#include "mob_spell_container.h"
 #include "mobskill.h"
 #include "recast_container.h"
 #include "status_effect_container.h"
@@ -268,8 +269,9 @@ bool CAutomatonController::TryShieldBash()
 
 bool CAutomatonController::TrySpellcast(const CurrentManeuvers& maneuvers)
 {
+    // Apparently the automaton has nothing in its spell list, so CanCastSpells must ignore spell lists and recasts?
     if (!PAutomaton->PMaster || m_magicCooldown == 0s ||
-        m_Tick <= m_LastMagicTime + (m_magicCooldown - std::chrono::seconds(PAutomaton->getMod(Mod::AUTO_MAGIC_DELAY))) || !CanCastSpells())
+        m_Tick <= m_LastMagicTime + (m_magicCooldown - std::chrono::seconds(PAutomaton->getMod(Mod::AUTO_MAGIC_DELAY))) || !CanCastSpells(IgnoreRecastsAndCosts::Yes))
     {
         return false;
     }
@@ -1610,10 +1612,15 @@ bool CAutomatonController::TryAttachment()
     return false;
 }
 
-bool CAutomatonController::CanCastSpells()
+bool CAutomatonController::CanCastSpells(IgnoreRecastsAndCosts ignoreRecastsAndCosts)
 {
     // Check for spell blockers e.g. silence
     if (PAutomaton->StatusEffectContainer->HasStatusEffect({ EFFECT_SILENCE, EFFECT_MUTE }))
+    {
+        return false;
+    }
+
+    if (!ignoreRecastsAndCosts && !PAutomaton->SpellContainer->IsAnySpellAvailable())
     {
         return false;
     }
@@ -1624,7 +1631,7 @@ bool CAutomatonController::CanCastSpells()
 
 bool CAutomatonController::Cast(uint16 targid, SpellID spellid)
 {
-    if (!automaton::CanUseSpell(PAutomaton, spellid) || PAutomaton->PRecastContainer->HasRecast(RECAST_MAGIC, static_cast<uint16>(spellid), 0s))
+    if (!automaton::CanUseSpell(PAutomaton, spellid) || PAutomaton->PRecastContainer->HasRecast(RECAST_MAGIC, static_cast<Recast>(spellid), 0s))
     {
         return false;
     }
@@ -1634,7 +1641,7 @@ bool CAutomatonController::Cast(uint16 targid, SpellID spellid)
 
 bool CAutomatonController::MobSkill(uint16 targid, uint16 wsid, std::optional<timer::duration> castTimeOverride)
 {
-    if (PAutomaton->PRecastContainer->HasRecast(RECAST_ABILITY, wsid, 0s))
+    if (PAutomaton->PRecastContainer->HasRecast(RECAST_ABILITY, static_cast<Recast>(wsid), 0s))
     {
         return false;
     }

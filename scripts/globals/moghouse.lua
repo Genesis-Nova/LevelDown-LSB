@@ -134,8 +134,8 @@ local moghouseZoneLines =
     [1634954618] = 1, -- (257) EASTERN_ADOULIN
 }
 
-xi.moghouse.isInMogHouseInHomeNation = function(player)
-    if not player:isInMogHouse() then
+xi.moghouse.inMogHouseInHomeNation = function(player)
+    if not player:inMogHouse() then
         return false
     end
 
@@ -241,7 +241,7 @@ end
 
 xi.moghouse.onMoghouseZoneEvent = function(player, prevZone)
     -- Handle players zoning in their Mog House
-    if player:isInMogHouse() then
+    if player:inMogHouse() then
         return xi.moghouse.onMoghouseZoneIn(player, prevZone)
     end
 
@@ -252,9 +252,10 @@ xi.moghouse.onMoghouseZoneEvent = function(player, prevZone)
         player:getZPos() == 0
     then
 
-        local zoneId = player:getZoneID()
-        local prevZoneLineID = player:getPreviousZoneLineID()
-        local moghouseEntrance = moghouseZoneLines[prevZoneLineID] or 1
+        local zoneId                                = player:getZoneID()
+        local prevZoneId                            = player:getPreviousZone()
+        local prevZoneLineID                        = player:getPreviousZoneLineID()
+        local moghouseEntrance                      = zoneId == prevZoneId and moghouseZoneLines[prevZoneLineID] or 1
         local x, y, z, r, randomizedAxis, randomMax = unpack(xi.moghouse.exits[zoneId][moghouseEntrance])
         local randomOffset                          = math.random(-randomMax * 1000, randomMax * 1000) -- offset -/+ from center point
         local offsetValue                           = randomOffset / 1000 -- 0.000 - N.N00 variance
@@ -310,7 +311,7 @@ xi.moghouse.onMoghouseZoneIn = function(player, prevZone)
     -- Reset: !exec player:setMoghouseFlag(0)
     -- Complete quests: !exec player:setMoghouseFlag(7)
     if
-        xi.moghouse.isInMogHouseInHomeNation(player) and
+        xi.moghouse.inMogHouseInHomeNation(player) and
         growingFlowers and
         aLadysHeart and
         flowerChild and
@@ -331,7 +332,7 @@ xi.moghouse.onMoghouseZoneIn = function(player, prevZone)
 end
 
 xi.moghouse.moogleTrade = function(player, npc, trade)
-    if player:isInMogHouse() then
+    if player:inMogHouse() then
         local numBronze = trade:getItemQty(xi.item.IMPERIAL_BRONZE_PIECE)
 
         if numBronze > 0 then
@@ -363,7 +364,7 @@ xi.moghouse.moogleTrade = function(player, npc, trade)
 end
 
 xi.moghouse.moogleTrigger = function(player, npc)
-    if player:isInMogHouse() then
+    if player:inMogHouse() then
         local lockerTs = xi.moghouse.getMogLockerExpiryTimestamp(player)
 
         if lockerTs ~= nil then

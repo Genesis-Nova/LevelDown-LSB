@@ -263,6 +263,14 @@ enum class Mod
     LIGHT_ABSORB      = 465, // Occasionally absorbs light elemental damage.
     DARK_ABSORB       = 466, // Occasionally absorbs dark elemental damage.
 
+    // Action-type power multipliers
+    POWER_MULTIPLIER_BASIC_ATTACK = 1173, // Base 100. Multiplies the power/damage of the action like so: power * (1 + mod / 100)
+    POWER_MULTIPLIER_BASIC_RANGED = 1174, // Base 100. Multiplies the power/damage of the action like so: power * (1 + mod / 100)
+    POWER_MULTIPLIER_SPELL        = 1175, // Base 100. Multiplies the power/damage of the action like so: power * (1 + mod / 100)
+    POWER_MULTIPLIER_WEAPONSKILL  = 1176, // Base 100. Multiplies the power/damage of the action like so: power * (1 + mod / 100)
+    POWER_MULTIPLIER_JOB_ABILITY  = 1177, // Base 100. Multiplies the power/damage of the action like so: power * (1 + mod / 100)
+    POWER_MULTIPLIER_MOBSKILL     = 1178, // Base 100. Multiplies the power/damage of the action like so: power * (1 + mod / 100)
+
     // Crit Damage / Delay
     CRITHITRATE              = 165,  // Raises chance to crit
     CRITHITRATE_ONLY_WEP     = 141,  // Raises chance to crit (but only for attacks with the specific weapon that has the mod)
@@ -288,6 +296,7 @@ enum class Mod
     SPELLINTERRUPT        = 168, // % Spell Interruption Rate
 
     // Movement speed modifiers in use order.
+    // See CBattleEntity::UpdateSpeed
     MOUNT_MOVE                = 972,  // % Mount Movement Speed
     MOVE_SPEED_STACKABLE      = 75,   // Additive modifier. Applied before multipliers. Gear movement speed penalties.
     MOVE_SPEED_WEIGHT_PENALTY = 77,   // Multiplicative modifier. For Gravity and curse.
@@ -608,6 +617,7 @@ enum class Mod
     NINJUTSU_DURATION    = 1000,
     ENHANCES_SANGE       = 1091, // 1 = +1 attack for Daken during Sange per Sange merit (i.e. 20 with 5 merits = +100 attack during Sange)
     ENHANCES_FUTAE       = 1148, // Adds to the +50% bonus damage to elemental ninjutsu provided by Futae (percent)
+    UTSUSEMI_AOE         = 1179, // "Utsusemi" effect extends to an area
 
     // Dragoon
     ANCIENT_CIRCLE_DURATION    = 859,  // Ancient Circle extended duration in seconds
@@ -631,13 +641,16 @@ enum class Mod
     ENHANCES_STRAFE            = 282,  // Strafe merit augment, +50 TP gained per merit level on breath use.
     ENHANCES_SPIRIT_LINK       = 281,  // Adds erase/-na to Spirit Link
 
-    // Summoner
-    AVATAR_PERPETUATION       = 371,  // stores base cost of current avatar
-    WEATHER_REDUCTION         = 372,  // stores perpetuation reduction depending on weather
-    DAY_REDUCTION             = 373,  // stores perpetuation reduction depending on day
-    DAY_PERPETUATION_HALF     = 1170, // if > 0, halves perpetuation cost if summon matches day element (Caller's Bracers +1)
-    WEATHER_PERPETUATION_HALF = 1171, // if > 0, halves perpetuation cost if summon matches weather element (Beckoner's Bracers)
-    PERPETUATION_REDUCTION    = 346,  // stores the MP/tick reduction from gear
+    // Summoner: Perpetuation costs.
+    AVATAR_PERPETUATION         = 371,  // stores base cost of current avatar
+    WEATHER_REDUCTION           = 372,  // stores perpetuation reduction depending on weather
+    DAY_REDUCTION               = 373,  // stores perpetuation reduction depending on day
+    PERPETUATION_REDUCTION      = 346,  // stores the MP/tick reduction from gear
+    HALF_PERPETUATION_CARBUNCLE = 356,  // if > 0, halves perpetuation cost if summon is Carbuncle (Carby Mitts, Asteria Mitts +1)
+    HALF_PERPETUATION_DAY       = 1170, // if > 0, halves perpetuation cost if summon matches day element (Caller's Bracers +1)
+    HALF_PERPETUATION_WEATHER   = 1171, // if > 0, halves perpetuation cost if summon matches weather element (Beckoner's Bracers)
+
+    // Summoner: Others.
     BP_DELAY                  = 357,  // stores blood pact delay reduction
     ENHANCES_ELEMENTAL_SIPHON = 540,  // Bonus Base MP added to Elemental Siphon skill.
     BP_DELAY_II               = 541,  // Blood Pact Delay Reduction II
@@ -891,17 +904,19 @@ enum class Mod
 
     ABSORB_DMG_TO_MP = 516, // Unlike PLD gear mod, works on all damage types (Ethereal Earring)
 
-    ITEM_ADDEFFECT_LVADJUST = 278, // level correction factor to use, if any
-    ITEM_ADDEFFECT_PLACEHLD = 279, // placeholder, want to keep these together and 99% sure we'll use this
-    ITEM_ADDEFFECT_DSTAT    = 280, // value = attacker modifier to use as bonus dmg (mnd, int, etc)
-    ITEM_ADDEFFECT_TYPE     = 431, // see procType table in scripts\globals\additional_effects.lua
-    ITEM_SUBEFFECT          = 499, // Animation ID of Spikes and Additional Effects
-    ITEM_ADDEFFECT_DMG      = 500, // Damage of an items Additional Effect or Spikes
-    ITEM_ADDEFFECT_CHANCE   = 501, // Chance of an items Additional Effect or Spikes
-    ITEM_ADDEFFECT_ELEMENT  = 950, // Element of the Additional Effect or Spikes, for resist purposes
-    ITEM_ADDEFFECT_STATUS   = 951, // Status Effect ID to try to apply via Additional Effect or Spikes
-    ITEM_ADDEFFECT_POWER    = 952, // Base Power for effect in MOD_ITEM_ADDEFFECT_STATUS. Must be used for debuffs/buffs.
-    ITEM_ADDEFFECT_DURATION = 953, // Base Duration for effect in MOD_ITEM_ADDEFFECT_STATUS
+    ITEM_ADDEFFECT_LVADJUST = 278,  // level correction factor to use, if any
+    ITEM_ADDEFFECT_PLACEHLD = 279,  // placeholder, want to keep these together and 99% sure we'll use this
+    ITEM_ADDEFFECT_DSTAT    = 280,  // value = attacker modifier to use as bonus dmg (mnd, int, etc)
+    ITEM_ADDEFFECT_TYPE     = 431,  // see procType table in scripts\globals\additional_effects.lua
+    ITEM_SUBEFFECT          = 499,  // Animation ID of Spikes and Additional Effects
+    ITEM_ADDEFFECT_DMG      = 500,  // Damage of an items Additional Effect or Spikes
+    ITEM_ADDEFFECT_CHANCE   = 501,  // Chance of an items Additional Effect or Spikes
+    ITEM_ADDEFFECT_ELEMENT  = 950,  // Element of the Additional Effect or Spikes, for resist purposes
+    ITEM_ADDEFFECT_STATUS   = 951,  // Status Effect ID to try to apply via Additional Effect or Spikes
+    ITEM_ADDEFFECT_POWER    = 952,  // Base Power for effect in MOD_ITEM_ADDEFFECT_STATUS. Must be used for debuffs/buffs.
+    ITEM_ADDEFFECT_DURATION = 953,  // Base Duration for effect in MOD_ITEM_ADDEFFECT_STATUS
+    ITEM_ADDEFFECT_PRIORITY = 1180, // Set to 1 to check add effect anyway even if enspells etc have already occured
+    ITEM_ADDEFFECT_SCRIPTED = 1181, // Set to 1 to run item script directly instead of through scripts\globals\additional_effects.lua
 
     GOV_CLEARS = 496, // 4% bonus per Grounds of Valor Page clear
 
@@ -1113,14 +1128,14 @@ enum class Mod
 
     MOGHANCEMENT_GIL_BONUS_P = 1158, // Kill shot gil bonus (yes, really)
 
+    KNOCKBACK_REDUCTION = 1172, // Reduces distance knocked +? gear. See Knockback enum.
+
     // IF YOU ADD ANY NEW MODIFIER HERE, ADD IT IN scripts/enum/mod.lua ASWELL!
 
     // The spares take care of finding the next ID to use so long as we don't forget to list IDs that have been freed up by refactoring.
     // 570 through 825 used by WS DMG mods these are not spares.
     //
-    // SPARE IDs:
-    //   356
-    //   1172 and onward
+    // SPARE IDs: 1182 and onward
 };
 
 // temporary workaround for using enum class as unordered_map key until compilers support it
