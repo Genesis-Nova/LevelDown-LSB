@@ -187,6 +187,7 @@ xi.helm.onTrade = function(player, npc, trade, helmType, csid, func)
         -- success! reward item and decrement number of remaining uses on the point
         if itemID ~= 0 then
             player:addItem(itemID)
+            xi.custom_quest.helmAdjustment(player, helmType)
 
             local uses = (npc:getLocalVar('uses') - 1) % 4
             npc:setLocalVar('uses', uses)

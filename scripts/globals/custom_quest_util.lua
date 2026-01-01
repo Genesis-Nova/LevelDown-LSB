@@ -1,8 +1,8 @@
 ----------------------------------------------------
 -- Set up
 -- add to global mobs.lua line 14 - xi.custom_quest.onMobDeathEx(mob, player, isKiller, isWeaponSkillKill)
--- add to global chocobo_digging.lua line 2257,  xi.custom_quest.chocoboDigAdjustment(player) ** around the -- local function handleItemObtained(player, text, itemId) area
--- add to global helm.lua line 1564, xi.custom_quest.helmAdjustment(player, helmType) ** around the -- success! reward item and decrement number of remaining uses on the point area of the code
+-- add to global globals\hobbies\chocobo_digging\logic line 281,  xi.custom_quest.chocoboDigAdjustment(player) ** around the -- local function handleItemObtained(player, text, itemId) area
+-- add to global globals\hobbies\helm\logic line 190, xi.custom_quest.helmAdjustment(player, helmType) ** around the -- success! reward item and decrement number of remaining uses on the point area of the code
 -- add to any NPC, xi.custom_quest.onTrade(player, npc, trade)
 -- add to same NPC, xi.custom_quest.onTrigger(player, npc)
 -- settings/main DIG_FATIGUE needs to be adjusted to the correct amount you want the fatigue at
@@ -964,10 +964,16 @@ function totalCompletedReward(player) -- need to add into script and test
 
     for _, rewardTier in pairs(accomplishments) do
         if totalCompleted == rewardTier[2] then
-            npcUtil.giveItem(player, tierRewards[rewardTier[1]])
-                if totalCompleted == 250 then
-                    player:setCharVar('[LD]CustomQuestTotal', 0)
-                end
+            if player:getFreeSlotsCount() < 1 then
+                player:printToPlayer('Your inventory is full and the item has been sent to your delivery box!',xi.msg.channel.SYSTEM_3)
+                SendItemToDeliveryBox(player:getName(),  tierRewards[rewardTier[1]], 1,'QuestReward')
+            else
+                npcUtil.giveItem(player, tierRewards[rewardTier[1]])
+            end
+
+            if totalCompleted == 250 then
+                player:setCharVar('[LD]CustomQuestTotal', 0)
+            end
             return
         end
     end           

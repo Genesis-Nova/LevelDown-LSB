@@ -278,6 +278,7 @@ local function handleItemObtained(player, text, itemId)
         -- Make sure we have enough room for the item.
         if player:addItem(itemId) then
             player:messageSpecial(text.ITEM_OBTAINED, itemId)
+            xi.custom_quest.chocoboDigAdjustment(player)
         else
             player:messageSpecial(text.DIG_THROW_AWAY, itemId)
         end
