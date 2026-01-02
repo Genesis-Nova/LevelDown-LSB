@@ -42,7 +42,7 @@ INSERT INTO mob_spell_lists VALUES ('Garuda_Prime_HTBF', 508,  80, 65, 255); -- 
 INSERT INTO mob_spell_lists VALUES ('Garuda_Prime_HTBF', 508, 102, 65, 255); -- Enaero
 INSERT INTO mob_spell_lists VALUES ('Garuda_Prime_HTBF', 508, 157, 65, 255); -- Aero IV
 INSERT INTO mob_spell_lists VALUES ('Garuda_Prime_HTBF', 508, 158, 65, 255); -- Aero V
-INSERT INTO mob_pools VALUES (40000, 'Garuda_Prime_HTBF', 'Garuda_Prime', 324, 0x00001c0300000000000000000000000000000000, 1, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 508, 0, 0, 37, 37);  
+INSERT INTO mob_pools VALUES (40000, 'Garuda_Prime_HTBF', 'Garuda_Prime', 324, 0x00001c0300000000000000000000000000000000, 1, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 508, 0, 0, 37, 37,1,24);
 UPDATE mob_spawn_points SET pos_X =  503.4111, pos_y =   41.6648, pos_z = -366.8300,  pos_rot = 106 WHERE mobid = 17600540;
 UPDATE mob_spawn_points SET pos_X =   24.1289, pos_y =  -18.3276, pos_z =   32.7717,  pos_rot = 101 WHERE mobid = 17600541;
 UPDATE mob_spawn_points SET pos_X = -375.3079, pos_y =  -78.4023, pos_z =  512.9899,  pos_rot =  97 WHERE mobid = 17600542;
@@ -56,7 +56,7 @@ INSERT INTO mob_spell_lists VALUES ('Ramuh_Prime_HTBF', 509,  80, 65, 255); -- P
 INSERT INTO mob_spell_lists VALUES ('Ramuh_Prime_HTBF', 509, 104, 65, 255); -- Enthunder
 --INSERT INTO mob_spell_lists VALUES ('Ramuh_Prime_HTBF', 507, 167, 65, 255); -- Thunder IV
 INSERT INTO mob_spell_lists VALUES ('Ramuh_Prime_HTBF', 509, 168, 65, 255); -- Thunder V
-INSERT INTO mob_pools VALUES (40001, 'Ramuh_Prime_HTBF', 'Ramuh_Prime', 320, 0x00001e0300000000000000000000000000000000, 1, 4, 12, 240, 100, 0, 1, 1, 1, 18, 0, 0, 0, 3, 0, 0, 509, 0, 0, 43, 43);  
+INSERT INTO mob_pools VALUES (40001, 'Ramuh_Prime_HTBF', 'Ramuh_Prime', 320, 0x00001e0300000000000000000000000000000000, 1, 4, 12, 240, 100, 0, 1, 1, 1, 18, 0, 0, 0, 3, 0, 0, 509, 0, 0, 43, 43,1,24);
 UPDATE mob_spawn_points SET pos_X =  504.0446, pos_y =   41.7271, pos_z = -367.8477,  pos_rot =  97 WHERE mobid = 17604639;
 UPDATE mob_spawn_points SET pos_X =   23.0873, pos_y =  -18.2112, pos_z =   31.6858,  pos_rot =  97 WHERE mobid = 17604640;
 UPDATE mob_spawn_points SET pos_X = -375.9910, pos_y =  -78.3179, pos_z =  512.7903,  pos_rot =  89 WHERE mobid = 17604641;
@@ -70,7 +70,7 @@ INSERT INTO mob_spell_lists VALUES ('Shiva_Prime_HTBF', 510,  80, 65, 255); -- P
 INSERT INTO mob_spell_lists VALUES ('Shiva_Prime_HTBF', 510, 101, 65, 255); -- Enblizzard
 INSERT INTO mob_spell_lists VALUES ('Shiva_Prime_HTBF', 510, 152, 65, 255); -- Blizzard IV
 INSERT INTO mob_spell_lists VALUES ('Shiva_Prime_HTBF', 510, 153, 65, 255); -- Blizzard V
-INSERT INTO mob_pools VALUES (40002, 'Shiva_Prime_HTBF', 'Shiva_Prime', 319, 0x00001d0300000000000000000000000000000000, 1, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 510, 0, 0, 44, 44);  
+INSERT INTO mob_pools VALUES (40002, 'Shiva_Prime_HTBF', 'Shiva_Prime', 319, 0x00001d0300000000000000000000000000000000, 1, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 510, 0, 0, 44, 44,1,24);
 UPDATE mob_spawn_points SET pos_X =  504.8676,  pos_y =  41.5439,  pos_z = -366.713,  pos_rot = 102 WHERE mobid = 17608747;
 UPDATE mob_spawn_points SET pos_X =   23.9380,  pos_y = -18.2799,  pos_z =  32.3346,  pos_rot = 102 WHERE mobid = 17608748;
 UPDATE mob_spawn_points SET pos_X = -374.1309,  pos_y = -78.5339,  pos_z = 512.5617,  pos_rot =  96 WHERE mobid = 17608749;
@@ -84,7 +84,7 @@ INSERT INTO mob_spell_lists VALUES ('Leviathan_Prime_HTBF', 511,  80, 65, 255); 
 INSERT INTO mob_spell_lists VALUES ('Leviathan_Prime_HTBF', 511, 105, 65, 255); -- Enwater
 INSERT INTO mob_spell_lists VALUES ('Leviathan_Prime_HTBF', 511, 172, 65, 255); -- Water IV
 INSERT INTO mob_spell_lists VALUES ('Leviathan_Prime_HTBF', 511, 173, 65, 255); -- Water V
-INSERT INTO mob_pools VALUES (40003, 'Leviathan_Prime_HTBF', 'Leviathan_Prime', 323, 0x00001b0300000000000000000000000000000000, 1, 4, 8, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 511, 0, 0, 40, 40);  
+INSERT INTO mob_pools VALUES (40003, 'Leviathan_Prime_HTBF', 'Leviathan_Prime', 323, 0x00001b0300000000000000000000000000000000, 1, 4, 8, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 511, 0, 0, 40, 40,0,30);
 UPDATE mob_spawn_points SET pos_X =  505.3401, pos_y =   41.5271, pos_z = -367.2156,  pos_rot = 102 WHERE mobid = 17641497;
 UPDATE mob_spawn_points SET pos_X =   25.9310, pos_y =  -18.6385, pos_z =   33.1422,  pos_rot = 100 WHERE mobid = 17641498;
 UPDATE mob_spawn_points SET pos_X = -375.2288, pos_y =  -78.4145, pos_z =  513.0482,  pos_rot =  99 WHERE mobid = 17641499;
@@ -98,7 +98,7 @@ INSERT INTO mob_spell_lists VALUES ('Ifrit_Prime_HTBF', 512,  80, 65, 255); -- P
 INSERT INTO mob_spell_lists VALUES ('Ifrit_Prime_HTBF', 512, 100, 65, 255); -- Enfire
 INSERT INTO mob_spell_lists VALUES ('Ifrit_Prime_HTBF', 512, 147, 65, 255); -- fire IV
 INSERT INTO mob_spell_lists VALUES ('Ifrit_Prime_HTBF', 512, 148, 65, 255); -- fire V
-INSERT INTO mob_pools VALUES (40004, 'Ifrit_Prime_HTBF', 'Ifrit_Prime', 322, 0x0000190300000000000000000000000000000000, 1, 4, 5, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 512, 0, 0, 38, 38);  
+INSERT INTO mob_pools VALUES (40004, 'Ifrit_Prime_HTBF', 'Ifrit_Prime', 322, 0x0000190300000000000000000000000000000000, 1, 4, 5, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 512, 0, 0, 38, 38,1,35);
 UPDATE mob_spawn_points SET pos_X =  503.4712, pos_y =   41.7094, pos_z = -367.2797,  pos_rot =  97 WHERE mobid = 17625113;
 UPDATE mob_spawn_points SET pos_X =   23.6167, pos_y =  -18.3472, pos_z =   33.1332,  pos_rot = 103 WHERE mobid = 17625114;
 UPDATE mob_spawn_points SET pos_X = -375.8824, pos_y =  -78.3193, pos_z =  512.7032,  pos_rot = 103 WHERE mobid = 17625115;
@@ -112,14 +112,14 @@ INSERT INTO mob_spell_lists VALUES ('Titan_Prime_HTBF', 513,  80, 65, 255); -- P
 INSERT INTO mob_spell_lists VALUES ('Titan_Prime_HTBF', 513, 103, 65, 255); -- Enstone
 INSERT INTO mob_spell_lists VALUES ('Titan_Prime_HTBF', 513, 162, 65, 255); -- stone IV
 INSERT INTO mob_spell_lists VALUES ('Titan_Prime_HTBF', 513, 163, 65, 255); -- stone V
-INSERT INTO mob_pools VALUES (40005, 'Titan_Prime_HTBF', 'Titan_Prime', 321, 0x00001a0300000000000000000000000000000000, 4, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 513, 0, 0, 45, 45);  
+INSERT INTO mob_pools VALUES (40005, 'Titan_Prime_HTBF', 'Titan_Prime', 321, 0x00001a0300000000000000000000000000000000, 4, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 513, 0, 0, 45, 45,1,35);
 UPDATE mob_spawn_points SET pos_X =  503.7151, pos_y =   41.7203, pos_z = -367.5521,  pos_rot =  89 WHERE mobid = 17633308;
 UPDATE mob_spawn_points SET pos_X =   24.4596, pos_y =  -18.3895, pos_z =   33.1568,  pos_rot =  97 WHERE mobid = 17633309;
 UPDATE mob_spawn_points SET pos_X = -375.5651, pos_y =  -78.3770, pos_z =  513.0141,  pos_rot = 102 WHERE mobid = 17633310;
 UPDATE mob_groups SET poolid = 40005, HP = 115000, MP = 5000, minLevel = 100, maxLevel = 110 WHERE name = 'Titan_Prime_HTBF' AND groupid = 7;
 
 -- Fenrir Prim HTBF updated
-INSERT INTO mob_pools VALUES (40006, 'Fenrir_Prime_HTBF', 'Fenrir_Prime', 325, 0x0000180300000000000000000000000000000000, 8, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 0, 0, 0, 40001, 36);  
+INSERT INTO mob_pools VALUES (40006, 'Fenrir_Prime_HTBF', 'Fenrir_Prime', 325, 0x0000180300000000000000000000000000000000, 8, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 0, 0, 0, 40001, 36,1,12);
 UPDATE mob_spawn_points SET mobname = 'Fenrir_Prime_HTBF', pos_X =  339.4457, pos_y =   47.5105, pos_z = -341.6085,  pos_rot =  64 WHERE mobid = 17473651;
 UPDATE mob_spawn_points SET mobname = 'Fenrir_Prime_HTBF', pos_X =  -59.9329, pos_y =    9.4368, pos_z =   59.3577,  pos_rot =  64 WHERE mobid = 17473652;
 UPDATE mob_spawn_points SET mobname = 'Fenrir_Prime_HTBF', pos_X = -380.1290, pos_y =  -52.5273, pos_z =  418.5986,  pos_rot =  64 WHERE mobid = 17473653;
@@ -134,7 +134,7 @@ INSERT INTO mob_skill_lists VALUES ('Fenrir_Prime_HTBF', 40001, 837); -- eclipti
 -- INSERT INTO mob_skill_lists VALUES ('Fenrir_Prime_HTBF', 40001, 839); -- howling moon -  - removed from mob list so we can control how often he uses it
 
 -- Carbuncle Prim HTBF updated Carbuncle_Prime_HTBF
-INSERT INTO mob_pools VALUES (40007, 'Carbuncle_Prime_HTBF', 'Carbuncle_Prime', 34, 0x0000170300000000000000000000000000000000, 3, 4, 7, 240, 100, 0, 1, 1, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 34);  
+INSERT INTO mob_pools VALUES (40007, 'Carbuncle_Prime_HTBF', 'Carbuncle_Prime', 34, 0x0000170300000000000000000000000000000000, 3, 4, 7, 240, 100, 0, 1, 1, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 34,1,7);
 UPDATE mob_spawn_points SET mobname = 'Carbuncle_Prime_HTBF', groupid = 32, pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64 WHERE mobid = 17473562;
 UPDATE mob_spawn_points SET mobname = 'Carbuncle_Prime_HTBF', groupid = 32, pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 17473573;
 UPDATE mob_spawn_points SET mobname = 'Carbuncle_Prime_HTBF', groupid = 32, pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 17473584;
@@ -165,7 +165,7 @@ UPDATE mob_spawn_points SET mobname = 'Leviathan_Prime_HTBF', pos_X =  -59.7994,
 UPDATE mob_spawn_points SET mobname = 'Leviathan_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 17473590;
 
 -- Diablos Prim HTBF updated
-INSERT INTO mob_pools VALUES (40008, 'Diabolos_Prime_HTBF', 'Diabolos_Prime', 35, 0x0000790400000000000000000000000000000000, 4, 5, 12, 240, 100, 0, 1, 1, 0, 18, 0, 0, 0, 0, 0, 0, 515, 0, 0, 40002, 35);  
+INSERT INTO mob_pools VALUES (40008, 'Diabolos_Prime_HTBF', 'Diabolos_Prime', 35, 0x0000790400000000000000000000000000000000, 4, 5, 12, 240, 100, 0, 1, 1, 0, 18, 0, 0, 0, 0, 0, 0, 515, 0, 0, 40002, 35,2,13);
 UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X =  -240.0419, pos_y =   -32.0000, pos_z = 291.0711,  pos_rot =  69 WHERE mobid = 16818226;
 UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 16818227;
 UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 16818228;
@@ -191,14 +191,14 @@ INSERT INTO mob_spell_lists VALUES('Diabolos_Prime_HTBF', 515, 274, 1, 255); -- 
 INSERT INTO mob_spell_lists VALUES('Diabolos_Prime_HTBF', 515, 260, 1, 255); -- dispel
 INSERT INTO mob_spell_lists VALUES('Diabolos_Prime_HTBF', 515, 252, 1, 255); -- stun
 -- Ark Angel HTBF HTBF updates
-INSERT INTO `mob_pools` VALUES (40009,'Ark_Angel_EV_HTBF','Ark_Angel_EV',352,0x0000110300000000000000000000000000000000,7,3,3,240,125,0,1,1,1,18,0,32,1595,1051,0,0,518,0,0,352,352);
-INSERT INTO `mob_pools` VALUES (40010,'Ark_Angel_GK_HTBF','Ark_Angel_GK',353,0x0000140300000000000000000000000000000000,12,14,10,240,125,0,1,1,1,18,0,32,693,1179,0,0,0,0,0,353,353);
-INSERT INTO `mob_pools` VALUES (40011,'Ark_Angel_HM_HTBF','Ark_Angel_HM',354,0x0000100300000000000000000000000000000000,1,13,3,240,125,0,1,1,1,18,0,32,3139,1179,0,0,517,0,0,354,354);
-INSERT INTO `mob_pools` VALUES (40012,'Ark_Angel_MR_HTBF','Ark_Angel_MR',355,0x0000120300000000000000000000000000000000,9,6,2,240,125,0,1,1,1,18,0,32,4504,1051,0,0,0,0,0,355,355);
-INSERT INTO `mob_pools` VALUES (40013,'Ark_Angel_TT_HTBF','Ark_Angel_TT',356,0x0000130300000000000000000000000000000000,4,8,7,240,125,2,1,1,1,18,0,32,1129,1179,0,0,516,0,0,356,356);
-INSERT INTO `mob_pools` VALUES (40014,'Ark_Angels_Mandragora','Ark_Angels_Mandragora',178,0x00002D0100000000000000000000000000000000,2,2,1,480,100,0,1,0,1,18,0,0,0,1667,8,0,0,0,0,178,178);
-INSERT INTO `mob_pools` VALUES (40015,'Ark_Angels_Tiger','Ark_Angels_Tiger',242,0x0000340100000000000000000000000000000000,1,1,7,240,100,0,1,0,1,18,0,0,0,1153,0,0,0,0,0,242,242);
-INSERT INTO `mob_pools` VALUES (40016,'Ark_Angels_Wyvern','Ark_Angels_Wyvern',193,0x00000C0300000000000000000000000000000000,14,1,7,200,100,0,1,0,1,18,0,0,0,1157,0,0,0,0,0,714,193);
+INSERT INTO `mob_pools` VALUES (40009,'Ark_Angel_EV_HTBF','Ark_Angel_EV',352,0x0000110300000000000000000000000000000000,7,3,3,240,125,0,1,1,1,18,0,32,1595,1051,0,0,518,0,0,352,352,1,16);
+INSERT INTO `mob_pools` VALUES (40010,'Ark_Angel_GK_HTBF','Ark_Angel_GK',353,0x0000140300000000000000000000000000000000,12,14,10,240,125,0,1,1,1,18,0,32,693,1179,0,0,0,0,0,353,353,1,15);
+INSERT INTO `mob_pools` VALUES (40011,'Ark_Angel_HM_HTBF','Ark_Angel_HM',354,0x0000100300000000000000000000000000000000,1,13,3,240,125,0,1,1,1,18,0,32,3139,1179,0,0,517,0,0,354,354,1,16);
+INSERT INTO `mob_pools` VALUES (40012,'Ark_Angel_MR_HTBF','Ark_Angel_MR',355,0x0000120300000000000000000000000000000000,9,6,2,240,125,0,1,1,1,18,0,32,4504,1051,0,0,0,0,0,355,355,1,15);
+INSERT INTO `mob_pools` VALUES (40013,'Ark_Angel_TT_HTBF','Ark_Angel_TT',356,0x0000130300000000000000000000000000000000,4,8,7,240,125,2,1,1,1,18,0,32,1129,1179,0,0,516,0,0,356,356,1,12);
+INSERT INTO `mob_pools` VALUES (40014,'Ark_Angels_Mandragora','Ark_Angels_Mandragora',178,0x00002D0100000000000000000000000000000000,2,2,1,480,100,0,1,0,1,18,0,0,0,1667,8,0,0,0,0,178,178,0,6);
+INSERT INTO `mob_pools` VALUES (40015,'Ark_Angels_Tiger','Ark_Angels_Tiger',242,0x0000340100000000000000000000000000000000,1,1,7,240,100,0,1,0,1,18,0,0,0,1153,0,0,0,0,0,242,242,0,25);
+INSERT INTO `mob_pools` VALUES (40016,'Ark_Angels_Wyvern','Ark_Angels_Wyvern',193,0x00000C0300000000000000000000000000000000,14,1,7,200,100,0,1,0,1,18,0,0,0,1157,0,0,0,0,0,714,193,0,8);
 INSERT INTO `mob_groups` VALUES (11500, 40009, 180, 'Ark_Angel_EV_HTBF',0,128,0,155000,9999,115,120,0);
 INSERT INTO `mob_groups` VALUES (11501, 40010, 180, 'Ark_Angel_GK_HTBF',0,128,0,155000,9999,115,120,0);
 INSERT INTO `mob_groups` VALUES (11502, 40011, 180, 'Ark_Angel_HM_HTBF',0,128,0,155000,9999,115,120,0);
@@ -410,8 +410,8 @@ UPDATE mob_spawn_points SET mobname = 'Kukki-Chebukki_HTBF'    WHERE mobid = 169
 UPDATE mob_spawn_points SET mobname = 'Cherukiki_HTBF'         WHERE mobid = 16908381;
 
 -- One to e Feared HBF
-INSERT INTO `mob_pools` VALUES (40018,'Omega_HTBF','Omega',54,0x0000350400000000000000000000000000000000,1,1,6,240,100,0,1,1,0,34,22528,32,7,1691,13,0,0,0,0,54,54);
-INSERT INTO `mob_pools` VALUES (40017,'Ultima_HTBF','Ultima',54,0x0000330400000000000000000000000000000000,1,1,6,240,100,0,1,1,0,34,22528,32,2635,1691,13,0,0,0,0,728,54);
+INSERT INTO `mob_pools` VALUES (40018,'Omega_HTBF','Omega',54,0x0000350400000000000000000000000000000000,1,1,6,240,100,0,1,1,0,34,22528,32,7,1691,13,0,0,0,0,54,54,1,15);
+INSERT INTO `mob_pools` VALUES (40017,'Ultima_HTBF','Ultima',54,0x0000330400000000000000000000000000000000,1,1,6,240,100,0,1,1,0,34,22528,32,2635,1691,13,0,0,0,0,728,54,1,15);
 UPDATE mob_groups SET poolid = 40017, HP = 155000,  MP = 9999, minLevel = 120, maxLevel = 125, name = 'Ultima_HTBF' WHERE groupid = 9 AND name = 'Ultima_HTBF'; 
 UPDATE mob_groups SET poolid = 40018,               HP = 155000,  MP = 9999, minLevel = 120, maxLevel = 125, name = 'Omega_HTBF' WHERE groupid = 8 AND name = 'Omega_HTBF'; 
 UPDATE mob_spawn_points SET mobname = 'Omega_HTBF', groupid = 8,          pos_x = -639.8127,  pos_y = -231.3477,  pos_z =  510.5845,  pos_rot = 191 WHERE mobid = 16908406; 

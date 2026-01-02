@@ -8359,3 +8359,9 @@ REPLACE INTO `item_mods` VALUES (25728, 31, 86); --zendik robe -- MEVA
 REPLACE INTO `item_mods` VALUES (25728, 68, 41); --zendik robe -- EVA
 REPLACE INTO `item_mods` VALUES (25728, 170, 13); --zendik robe -- FASTCAST
 REPLACE INTO `item_mods` VALUES (25728, 384, 400); --zendik robe -- HASTE_GEAR
+-- tempus fugit
+REPLACE INTO `item_mods` VALUES (25728, 1, 16); --tempus fugit -- DEF
+REPLACE INTO `item_mods` VALUES (26331, 384, 1400); --tempus fugit -- HASTE_GEAR
+-- tempus fugit +1
+REPLACE INTO `item_mods` VALUES (25728, 1, 17); --tempus fugit +1 -- DEF
+REPLACE INTO `item_mods` VALUES (26331, 384, 1500); --tempus fugit +1 -- HASTE_GEAR
