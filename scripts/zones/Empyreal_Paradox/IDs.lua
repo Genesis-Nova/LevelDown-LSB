@@ -29,13 +29,12 @@ zones[xi.zone.EMPYREAL_PARADOX] =
         PROMATHIA_TEXT                = 7722, -- Give thyself to the apathy within...
         AIR_WARPED_AND_DISTORTED      = 7820, -- The air before you appears warped and distorted...
     },
-    mob =
+	mob =
     {
-        KAMLANAUT = GetFirstID('Kamlanaut'),
-        PROMATHIA = GetFirstID('Promathia'),
-    },
-    npc =
-    {
+        KAMLANAUT         = GetFirstID('Kamlanaut'),
+        PROMATHIA         = GetFirstID('Promathia'),
+        PROMATHIA_HTBF    = GetFirstID('Promathia_htbf'),
+        PROMATHIA_HTBF_2  = GetFirstID('Promathia_htbf_2'),
     },
 }
 
