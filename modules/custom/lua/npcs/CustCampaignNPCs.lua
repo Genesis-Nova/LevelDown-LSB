@@ -28,17 +28,59 @@ require("scripts/globals/npc_util")
 ---@type Module
 local m = Module:new('CustCampaignNPCs')
 
--- Global declarations for menu pages (Used by both Campaign NPCs and the Time Portal)
-local menu = {} -- Main Menu Title structure for paginated transfers
-local TPlocationsPage1 = {}
-local TPlocationsPage2 = {}
-local TPlocationsPage3 = {}
-local TPlocationsPage4 = {}
-local TPlocationsPage5 = {}
-local TPlocationsPage6 = {}
+-- Global menu table for delayed sending
+local menu = {}
+
+-- The number of teleport locations to show per menu page.
+local TELEPORTS_PER_PAGE = 2
+
+-- The number of shop items to show per menu page.
+local ITEMS_PER_PAGE = 3
+
+-- Centralized table for all campaign teleport locations.
+local WarpLocations = {
+    { name = 'West Sarutabaruta [S]',    zone = xi.zone.WEST_SARUTABARUTA_S,    x = -19.5262, y = -13.0901, z = 307.3373, rot = 252, zoneid = 95 },
+    { name = 'East Ronfaure [S]',        zone = xi.zone.EAST_RONFAURE_S,        x = 320.8822, y = -30,      z = -120.46,  rot = 157, zoneid = 81 },
+    { name = 'North Gustaberg [S]',      zone = xi.zone.NORTH_GUSTABERG_S,      x = -543.2109,y = 41.9802,  z = 65.2432,  rot = 129, zoneid = 88 },
+    { name = 'Fort Karugo-Narugo [S]',   zone = xi.zone.FORT_KARUGO_NARUGO_S,   x = -97.4075, y = -79.0452, z = 0.9719,   rot = 127, zoneid = 96 },
+    { name = 'Jugner Forest [S]',        zone = xi.zone.JUGNER_FOREST_S,        x = 73.2172,  y = 0.2277,   z = -5.8201,  rot = 88,  zoneid = 82 },
+    { name = 'Grauberg [S]',             zone = xi.zone.GRAUBERG_S,             x = 302.18,   y = -48.9102, z = 100.70,   rot = 0,   zoneid = 89 },
+    { name = 'Meriphataud Mountains [S]',zone = xi.zone.MERIPHATAUD_MOUNTAINS_S,x = -307.4041,y = 18.0515,  z = 429.0015, rot = 253, zoneid = 97 },
+    { name = 'Pashhow Marshlands [S]',   zone = xi.zone.PASHHOW_MARSHLANDS_S,   x = 498.6725, y = 25.00,    z = 647.8894, rot = 93,  zoneid = 90 },
+    { name = 'Vunkerl Inlet [S]',        zone = xi.zone.VUNKERL_INLET_S,        x = -185.1144,y = -39.6465, z = -279.82,  rot = 125, zoneid = 83 },
+    { name = 'Sauromugue Champaign [S]', zone = xi.zone.SAUROMUGUE_CHAMPAIGN_S, x = -31.3777, y = 25.2828,  z = 219.4237, rot = 127, zoneid = 98 },
+    { name = 'Rolanberry Fields [S]',    zone = xi.zone.ROLANBERRY_FIELDS_S,    x = 233.8327, y = 8.1201,   z = 219.2024, rot = 254, zoneid = 91 },
+    { name = 'Batallia Downs [S]',       zone = xi.zone.BATALLIA_DOWNS_S,       x = 225.2325, y = 8.6223,   z = 49.7229,  rot = 72,  zoneid = 84 },
+    { name = 'Beaucedine Glacier [S]',   zone = xi.zone.BEAUCEDINE_GLACIER_S,   x = 71.5509,  y = -59.9720, z = -47.6743, rot = 3,   zoneid = 136 },
+    { name = 'Xarcabard [S]',            zone = xi.zone.XARCABARD_S,            x = 206.0252, y = -23.6727, z = -205.8567,rot = 168, zoneid = 137 },
+}
+
+-- Table of temporary items available for purchase during campaign battles.
+local CampaignTempItems = {
+    { name = "Body Boost",        cost = 30, id = xi.item.BOTTLE_OF_BODY_BOOST },
+    { name = "Mana Boost",        cost = 30, id = xi.item.BOTTLE_OF_MANA_BOOST },
+    { name = "Barbarian's Drink", cost = 30, id = xi.item.BOTTLE_OF_BARBARIANS_DRINK },
+    { name = "Oracle's Drink",    cost = 30, id = xi.item.BOTTLE_OF_ORACLES_DRINK },
+    { name = "Spy's Drink",       cost = 30, id = xi.item.BOTTLE_OF_SPYS_DRINK },
+    { name = "Fighter's Drink",   cost = 30, id = xi.item.BOTTLE_OF_FIGHTERS_DRINK },
+    { name = "Assassin's Drink",  cost = 30, id = xi.item.BOTTLE_OF_ASSASSINS_DRINK },
+    { name = "Sprinter's Drink",  cost = 30, id = xi.item.BOTTLE_OF_SPRINTERS_DRINK },
+    { name = "Gnostic's Drink",   cost = 30, id = xi.item.BOTTLE_OF_GNOSTICS_DRINK },
+    { name = "Shepherd's Drink",  cost = 30, id = xi.item.BOTTLE_OF_SHEPHERDS_DRINK },
+    { name = "Soldier's Drink",   cost = 45, id = xi.item.BOTTLE_OF_SOLDIERS_DRINK },
+    { name = "Monarch's Drink",   cost = 45, id = xi.item.BOTTLE_OF_MONARCHS_DRINK },
+    { name = "Champion's Drink",  cost = 45, id = xi.item.BOTTLE_OF_CHAMPIONS_DRINK },
+    { name = "Fanatic's Drink",   cost = 60, id = xi.item.BOTTLE_OF_FANATICS_DRINK },
+    { name = "Cleric's Drink",    cost = 60, id = xi.item.BOTTLE_OF_CLERICS_DRINK },
+    { name = "Fool's Drink",      cost = 60, id = xi.item.BOTTLE_OF_FOOLS_DRINK },
+    { name = "Vicar's Drink",     cost = 60, id = xi.item.BOTTLE_OF_VICARS_DRINK },
+}
 
 -- The status effect ID for Allied Tags.
 local ALLIED_TAGS_EFFECT_ID = xi.effect.ALLIED_TAGS
+
+-- The server variable that tracks the current battle state (0=Inactive, 1=Prep, 2=Active)
+local BATTLE_STATE_VAR = '[CampaignBattleHandler]BattleState'
 
 -- The duration of the Allied Tags status effect in seconds.
 local EFFECT_DURATION_SECONDS = 180 -- 3 minutes
@@ -76,7 +118,24 @@ local MESSAGES = {
     tpMenuTitle = 'Where are you going?',
     mainMenuTitle = 'What can I do for you?',
     -- NEW: Message if the current zone does not match the active battle zone
-    noOngoingBattle = "I can't do that, there is not an ongoing battle in this zone.",
+    menuOptionTeleport = "Teleportation",
+    menuOptionBuffs = "Receive Battle Buffs",
+    menuOptionItems = "Purchase Battle Supplies",
+    menuOptionExit = "No, thank you.",
+    -- Battle Portal Messages
+    noActiveBattlePortal = "No Teleport Available - No Active Battle",
+    battlePortalCoordError = "[ERROR] - To Teleport Coords Found",
+    insufficientSupplies = "Our battle supplies have been exhausted. We cannot provide any more items at this time.",
+    noOngoingBattle = "There is no battle taking place here at the moment.",
+    insufficientResources = "Our resources have dwindled. We cannot provide battle buffs until they have been restocked.",
+    -- NEW: Navigation options for dynamic teleport menu
+    itemShopTitle = "Battle Supplies",
+    insufficientNotes = "You do not have enough Allied Notes for that.",
+    purchaseComplete = "Thank you for your purchase.",
+    itemShopExit = "Exit",
+    navNext = "Next",
+    navPrev = "Prev",
+    navNowhere = "No where!",
 }
 
 -- A global function for delayed menu sending, which uses the global 'menu' table.
@@ -87,295 +146,125 @@ local function delaySendMenu(player)
     end)
 end
 
--- Teleport Locations Page 1 (Snipped for brevity - logic unchanged)
-TPlocationsPage1 =
-{
-    {
-        'No where!',
-        function(playerArg)
-            DebugPrint("Player chose 'No where!' (Page 1).")
-        end,
-    },
-    {
-        'West Sarutabaruta [S]',
-        function(playerArg)
-            DebugPrint("Warping player to West Sarutabaruta [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(-19.5262, -13.0901, 307.3373, 252, xi.zone.WEST_SARUTABARUTA_S)
-            end)
-        end,
-    },
-    {
-        'East Ronfaure [S]',
-        function(playerArg)
-            DebugPrint("Warping player to East Ronfaure [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(320.8822, -30, -120.46, 157, xi.zone.EAST_RONFAURE_S)
-            end)
-        end,
-    },
-    {
-        'North Gustaberg [S]',
-        function(playerArg)
-            DebugPrint("Warping player to North Gustaberg [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(-543.2109, 41.9802, 65.2432, 129, xi.zone.NORTH_GUSTABERG_S)
-            end)
-        end,
-    },
-    {
-        'Fort Karugo-Narugo [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Fort Karugo-Narugo [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(-97.4075, -79.0452, 0.9719, 127, xi.zone.FORT_KARUGO_NARUGO_S)
-            end)
-        end,
-    },
-    {
-        'Next',
-        function(playerArg)
-            DebugPrint("Player chose 'Next' (Page 1 to 2).")
-            menu.options = TPlocationsPage2
-            delaySendMenu(playerArg)
-        end,
-    },
-}
+--- Displays a menu for purchasing temporary campaign items.
+---@param player Player The player object.
+---@param npc Npc The NPC object.
+---@param page number The page number to display.
+local function showItemShopMenu(player, npc, page)
+    --- Handles the actual item purchase transaction and returns a status.
+    ---@param player Player
+    ---@param item table The item data from CampaignTempItems.
+    ---@return string "success" or "nofunds"
+    local function processItemPurchase(player, item)        
+        -- Check for available campaign supplies before checking player currency.
+        local campaignSupplies = tonumber(GetServerVariable("CampaignSupplies")) or 0
+        if campaignSupplies <= 0 then
+            DebugPrint("FAIL: Supply check. CampaignSupplies is 0 or less.")
+            return "nosupplies" -- New return status for depleted supplies
+        end
 
--- Teleport Locations Page 2
-TPlocationsPage2 =
-{
-    {
-        'No where!',
-        function(playerArg)
-            DebugPrint("Player chose 'No where!' (Page 2).")
-        end,
-    },
-    {
-        'Jugner Forest [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Jugner Forest [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(73.2172, 0.2277, -5.8201, 88, xi.zone.JUGNER_FOREST_S)
-            end)
-        end,
-    },
-    {
-        'Grauberg [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Grauberg [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(302.18,-48.9102, 100.70, 0, xi.zone.GRAUBERG_S)
-            end)
-        end,
-    },
-    {
-        'Meriphataud Mountains [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Meriphataud Mountains [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(-307.4041, 18.0515, 429.0015, 253, xi.zone.MERIPHATAUD_MOUNTAINS_S)
-            end)
-        end,
-    },
-    {
-        'Previous',
-        function(playerArg)
-            DebugPrint("Player chose 'Previous' (Page 2 to 1).")
-            menu.options = TPlocationsPage1
-            delaySendMenu(playerArg)
-        end,
-    },
-    {
-        'Next',
-        function(playerArg)
-            DebugPrint("Player chose 'Next' (Page 2 to 3).")
-            menu.options = TPlocationsPage3
-            delaySendMenu(playerArg)
-        end,
-    },
+        local currentNotes = player:getCurrency('allied_notes')
 
-}
+        if currentNotes < item.cost then
+            DebugPrint(string.format("FAIL: Currency check for %s. Needed %d, has %d.", item.name, item.cost, currentNotes))
+            return "nofunds"
+        end
 
-TPlocationsPage3 =
-{
-    {
-        'No where!',
-        function(playerArg)
-            DebugPrint("Player chose 'No where!' (Page 2).")
-        end,
-    },
-    {
-        'Pashhow Marshlands [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Pashhow Marshlands [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(498.6725, 25.00, 647.8894, 93, xi.zone.PASHHOW_MARSHLANDS_S)
-            end)
-        end,
-    },
-    {
-        'Vunkerl Inlet [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Vunkerl Inlet [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(-185.1144, -39.6465, -279.82, 125, xi.zone.VUNKERL_INLET_S)
-            end)
-        end,
-    },
-    {
-        'Previous',
-        function(playerArg)
-            DebugPrint("Player chose 'Previous' (Page 2 to 1).")
-            menu.options = TPlocationsPage2
-            delaySendMenu(playerArg)
-        end,
-    },
-    {
-        'Next',
-        function(playerArg)
-            DebugPrint("Player chose 'Next' (Page 2 to 3).")
-            menu.options = TPlocationsPage4
-            delaySendMenu(playerArg)
-        end,
-    },
+        -- All checks passed, execute the transaction
+        SetServerVariable("CampaignSupplies", campaignSupplies - 10) -- Decrement supplies
+        player:delCurrency('allied_notes', item.cost)
+        player:addTempItem(item.id, 1)
 
-}
+        DebugPrint(string.format("SUCCESS: Player %s purchased %s for %d notes.", player:getName(), item.name, item.cost))
+        return "success"
+    end
 
--- Teleport Locations Page 3
-TPlocationsPage4 =
-{
-    {
-        'No where!',
-        function(playerArg)
-            DebugPrint("Player chose 'No where!' (Page 3).")
-        end,
-    },
-    {
-        'Sauromugue Champaign [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Sauromugue Champaign [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(-31.3777, 25.2828, 219.4237, 127, xi.zone.SAUROMUGUE_CHAMPAIGN_S)
-            end)
-        end,
-    },
-    {
-        'Rolanberry Fields [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Rolanberry Fields [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(233.8327, 8.1201, 219.2024, 254, xi.zone.ROLANBERRY_FIELDS_S)
-            end)
-        end,
-    },
-    {
-        'Batallia Downs [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Batallia Downs [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(225.2325, 8.6223, 49.7229, 72, xi.zone.BATALLIA_DOWNS_S)
-            end)
-        end,
-    },
-    {
-        'Previous',
-        function(playerArg)
-            DebugPrint("Player chose 'Previous' (Page 3 to 2).")
-            menu.options = TPlocationsPage3
-            delaySendMenu(playerArg)
-        end,
-    },
-    {
-        'Next',
-        function(playerArg)
-            DebugPrint("Player chose 'Next' (Page 3 to 4).")
-            menu.options = TPlocationsPage5
-            delaySendMenu(playerArg)
-        end,
-    },
+    --- Processes the result of an item purchase attempt and shows the correct message/menu.
+    ---@param player Player
+    ---@param npc NPC
+    ---@param result string The result from processItemPurchase ("success" or "nofunds").
+    ---@param page number The current page of the shop menu to return to.
+    local function handleItemPurchaseResult(player, npc, result, page)
+        if result == "success" then
+            player:printToPlayer(MESSAGES.purchaseComplete, 0, npc:getPacketName())
+        elseif result == "nofunds" then
+            player:printToPlayer(MESSAGES.insufficientNotes, 0, npc:getPacketName())
+        elseif result == "nosupplies" then
+            player:printToPlayer(MESSAGES.insufficientSupplies, 0, npc:getPacketName())
+        end
 
-}
+        -- Always refresh the menu after displaying the result message.
+        player:timer(50, function(p_timed)
+            showItemShopMenu(p_timed, npc, page)
+        end)
+    end
 
--- Teleport Locations Page 4
-TPlocationsPage5 =
-{
-    {
-        'No where!',
-        function(playerArg)
-            DebugPrint("Player chose 'No where!' (Page 4).")
-        end,
-    },
-    {
-        'Beaucedine Glacier [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Beaucedine Glacier [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(71.5509, -59.9720, -47.6743, 3, xi.zone.BEAUCEDINE_GLACIER_S)
-            end)
-        end,
-    },
-    {
-        'Xarcabard [S]',
-        function(playerArg)
-            DebugPrint("Warping player to Xarcabard [S].")
-            -- Inject action packet for animation (replace animation ID as needed)
-            playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
-            -- Delay warp using a timer
-            playerArg:timer(1000, function()
-                playerArg:setPos(138.7753, -21.0384, -118.4290, 131, xi.zone.XARCABARD_S)
-            end)
-        end,
-    },
-    {
-        'Previous',
-        function(playerArg)
-            DebugPrint("Player chose 'Previous' (Page 4 to 3).")
-            menu.options = TPlocationsPage4
-            delaySendMenu(playerArg)
-        end,
-    },
-}
+    -- NEW: Filter items to show only those the player does not already have.
+    local availableItems = {}
+    for _, item in ipairs(CampaignTempItems) do
+        if not player:hasItem(item.id) then
+            table.insert(availableItems, item)
+        end
+    end
 
+    local alliedNotes = player:getCurrency('allied_notes')
+    local totalItems = #availableItems
+    local totalPages = math.ceil(totalItems / ITEMS_PER_PAGE)
+    local currentPage = math.max(1, math.min(page, totalPages))
+
+    local startIndex = (currentPage - 1) * ITEMS_PER_PAGE + 1
+    local endIndex = math.min(currentPage * ITEMS_PER_PAGE, totalItems)
+
+    local itemMenu = {
+        title = string.format("%s (Page %d/%d) (Notes: %d)", MESSAGES.itemShopTitle, currentPage, totalPages, alliedNotes),
+        options = {}
+    }
+
+    -- Add items to the menu
+    for i = startIndex, endIndex do
+        local item = availableItems[i]
+        local optionText = string.format("%s (%d)", item.name, item.cost)
+        table.insert(itemMenu.options, {
+            optionText,
+            function(p) handleItemPurchaseResult(p, npc, processItemPurchase(p, item), currentPage) end
+        })
+    end
+
+    -- Add navigation options
+    if currentPage > 1 then
+        table.insert(itemMenu.options, {
+            MESSAGES.navPrev,
+            function(playerArg)
+                DebugPrint("Player chose 'Previous' in item shop.")
+                showItemShopMenu(playerArg, npc, currentPage - 1)
+            end
+        })
+    end
+
+    if currentPage < totalPages then
+        table.insert(itemMenu.options, {
+            MESSAGES.navNext,
+            function(playerArg)
+                DebugPrint("Player chose 'Next' in item shop.")
+                showItemShopMenu(playerArg, npc, currentPage + 1)
+            end
+        })
+    end
+
+    -- Add an exit option
+    table.insert(itemMenu.options, {
+        MESSAGES.itemShopExit,
+        function(playerArg)
+            DebugPrint("Player exited item shop. Re-triggering NPC for main menu.")
+            -- Re-trigger the NPC to show the main menu again
+            npc:onTrigger(playerArg, npc)
+        end
+    })
+
+    player:timer(50, function(p)
+        p:customMenu(itemMenu)
+    end)
+end
 
 -- This function dynamically creates the required nested tables.
 local ensureTable = function(str)
@@ -392,6 +281,69 @@ end
 -- add the override function to them.
 for _, entry in ipairs(npcOverrides) do
     ensureTable(string.format("xi.zones.%s.npcs.%s", entry.zone, entry.name))
+end
+
+--- Dynamically generates and displays a paginated teleport menu.
+---@param player Player The player object.
+---@param page number The page number to display.
+local function showTeleportMenu(player, page)
+    local totalLocations = #WarpLocations
+    local totalPages = math.ceil(totalLocations / TELEPORTS_PER_PAGE)
+    local currentPage = math.max(1, math.min(page, totalPages))
+
+    local startIndex = (currentPage - 1) * TELEPORTS_PER_PAGE + 1
+    local endIndex = math.min(currentPage * TELEPORTS_PER_PAGE, totalLocations)
+
+    local tpMenu = {
+        title = string.format("%s (Page %d/%d)", MESSAGES.tpMenuTitle, currentPage, totalPages),
+        options = {}
+    }
+
+    -- Add "No where!" option to every page
+    table.insert(tpMenu.options, {
+        MESSAGES.navNowhere,
+        function(playerArg) DebugPrint("Player chose 'No where!'.") end
+    })
+
+    -- Add teleport locations for the current page
+    for i = startIndex, endIndex do
+        local loc = WarpLocations[i]
+        table.insert(tpMenu.options, {
+            loc.name,
+            function(playerArg)
+                DebugPrint(string.format("Warping player to %s.", loc.name))
+                playerArg:injectActionPacket(playerArg:getID(), 6, 643, 0, 0, 0, 10, 1)
+                playerArg:timer(1000, function()
+                    playerArg:setPos(loc.x, loc.y, loc.z, loc.rot, loc.zone)
+                end)
+            end
+        })
+    end
+
+    -- Add navigation options
+    if currentPage > 1 then
+        table.insert(tpMenu.options, {
+            MESSAGES.navPrev,
+            function(playerArg)
+                DebugPrint("Player chose 'Previous'.")
+                showTeleportMenu(playerArg, currentPage - 1)
+            end
+        })
+    end
+
+    if currentPage < totalPages then
+        table.insert(tpMenu.options, {
+            MESSAGES.navNext,
+            function(playerArg)
+                DebugPrint("Player chose 'Next'.")
+                showTeleportMenu(playerArg, currentPage + 1)
+            end
+        })
+    end
+
+    player:timer(50, function(p)
+        p:customMenu(tpMenu)
+    end)
 end
 
 -- Loop through each entry and apply the onTrigger override (Campaign Tags/TP Giver).
@@ -421,39 +373,70 @@ for _, entry in ipairs(npcOverrides) do
 
             -- 2. Add the Teleportation Option (Always available)
             table.insert(campaignMenu.options, {
-                'Teleportation',
+                MESSAGES.menuOptionTeleport,
                 function(playerArg)
                     DebugPrint("Player selected 'Teleportation'.")
-                    -- Start the TP sequence by setting the global menu context
-                    menu.title = MESSAGES.tpMenuTitle
-                    menu.options = TPlocationsPage1
-                    delaySendMenu(playerArg)
+                    -- Show the first page of the dynamic teleport menu.
+                    showTeleportMenu(playerArg, 1)
                 end
             })
+
+            -- 4. Add Battle Supplies Option (Only during active battle)
+            local battleState = tonumber(GetServerVariable(BATTLE_STATE_VAR)) or 0
+            local ongoingBattleZoneId = tonumber(GetServerVariable("CampaignBattleZone"))
+            local currentZoneId = player:getZone():getID()
+
+            if battleState == 2 and ongoingBattleZoneId == currentZoneId then
+                DebugPrint("Active battle in this zone. Adding 'Purchase Battle Supplies' option.")
+                table.insert(campaignMenu.options, {
+                    MESSAGES.menuOptionItems,
+                    function(playerArg)
+                        DebugPrint("Player selected 'Purchase Battle Supplies'.")
+                        showItemShopMenu(playerArg, npc, 1) -- Pass player, npc, and start on page 1
+                    end
+                })
+            else
+                DebugPrint(string.format("No active battle in this zone (State: %d, Zone: %s). Item shop option hidden.",
+                    battleState, tostring(ongoingBattleZoneId)))
+            end
 
             -- 3. Add Allied Tags Option (Different display based on status)
             if not player:hasStatusEffect(ALLIED_TAGS_EFFECT_ID) then
                 DebugPrint("Player does NOT have Allied Tags. Offering buffs.")
                 -- Player does NOT have the tags, offer to give them.
                 table.insert(campaignMenu.options, {
-                    'Receive Battle Buffs',
+                    MESSAGES.menuOptionBuffs,
                     function(playerArg)
+                        -- NEW: Check for sufficient campaign resources before proceeding.
+                        local campaignResources = tonumber(GetServerVariable("CampaignResources")) or 0
+                        DebugPrint(string.format("Resource Check: ServerVariable (CampaignResources) is %d.", campaignResources))
+                        if campaignResources < 10 then
+                            DebugPrint("Resource Check FAILED: Resources are below 10.")
+                            playerArg:printToPlayer(MESSAGES.insufficientResources, 0, npc:getPacketName())
+                            return -- Stop execution if resources are insufficient
+                        end
+
                         -- Get the server variable and convert it to a number for comparison
                         local ongoingBattleZoneId = tonumber(GetServerVariable("CampaignBattleZone"))
                         -- Get the current zone ID the player is in
                         local currentZoneId = playerArg:getZone():getID()
 
                         DebugPrint(string.format("Buff Check: ServerVariable (CampaignBattleZone) is %s. Current Zone ID is %d.",
-                            tostring(ongoingBattleZoneId), currentZoneId))
+                            tostring(ongoingBattleZoneId), currentZoneId) .. string.format(" Battle State is %d.", battleState))
 
                         -- Check if the server variable is set and if it matches the current zone ID
-                        if ongoingBattleZoneId == nil or ongoingBattleZoneId ~= currentZoneId then
+                        if battleState ~= 2 or ongoingBattleZoneId == nil or ongoingBattleZoneId ~= currentZoneId then
                             DebugPrint("Buff Check FAILED: Zone IDs do not match or Server Variable is not set.")
                             playerArg:printToPlayer(MESSAGES.noOngoingBattle, 0, npc:getPacketName())
                             return -- Stop execution if no battle is ongoing in this zone
                         end
 
                         DebugPrint("Buff Check PASSED. Applying battle buffs.")
+
+                        -- Deduct resources for the buffs
+                        SetServerVariable("CampaignResources", campaignResources - 10)
+                        DebugPrint(string.format("Deducted 10 resources for buffs. New total: %d", campaignResources - 10))
+
                         -- If the check passes, apply the buffs
                         --playerArg:addStatusEffect(ALLIED_TAGS_EFFECT_ID, 1, 3, EFFECT_DURATION_SECONDS) --makes it so you can't attack the mobs
                         playerArg:addStatusEffect(432, 1, 3, EFFECT_DURATION_SECONDS) -- Multistrikes
@@ -477,17 +460,18 @@ for _, entry in ipairs(npcOverrides) do
 
             -- 4. Add the Exit Option
             table.insert(campaignMenu.options, {
-                'No, thank you.',
+                MESSAGES.menuOptionExit,
                 function(playerArg)
                     DebugPrint("Player selected 'No, thank you.'")
                     playerArg:printToPlayer(MESSAGES.noChangeOfMind, 0, npc:getPacketName())
                 end
             })
 
-            -- Send the dynamically built campaign menu
-            player:customMenu(campaignMenu)
+            -- Assign the dynamically built menu to the global 'menu' table
+            menu = campaignMenu
 
-            -- We return true to indicate the trigger has been handled.
+            -- Use the delayed function to send the menu
+            delaySendMenu(player)
             return true
         end
 
@@ -512,21 +496,68 @@ m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
         objtype = xi.objType.NPC,
         name = 'Time Portal',
         look = 2421, -- 2421 for floating portal
-        x         = 386.6025,
-        y         = -0.2607,
-        z         = -578.0363,
+        x         = 317.9936,
+        y         = -0.8239,
+        z         = -583.3723,
         rotation = 125,
         widescan = 1,
         onTrigger = function(player, npc)
             DebugPrint(string.format("Time Portal Triggered by Player: %s (ID: %d). Starting TP menu.",
                 player:getName(), player:getID()))
             -- Ensure the title is correct before sending the paginated menu
-            menu.title = MESSAGES.tpMenuTitle
-            menu.options = TPlocationsPage1
-            delaySendMenu(player)
+            -- Show the first page of the new dynamic teleport menu.
+            showTeleportMenu(player, 1)
+        end,
+    })
+    DebugPrint("Time Portal2 dynamic entity inserted into Mog Garden.")
+        local camptpnpc2 = zone:insertDynamicEntity({
+        objtype = xi.objType.NPC,
+        name = 'Battle Portal',
+        look = '00003b0500000000000000000000000000000000', -- 2421 for floating portal
+        x         = 386.6025,
+        y         = -0.2607,
+        z         = -578.0363,
+        rotation = 125,
+        widescan = 1,
+        onTrigger = function(player, npc)
+            DebugPrint(string.format("Battle Portal Triggered by Player: %s (ID: %d). Checking for active battle.",
+                player:getName(), player:getID()))
+
+            -- Get the active battle zone ID from the server variable
+            local battleZoneId = tonumber(GetServerVariable("CampaignBattleZone")) or 0 -- The zone where the battle is.
+            -- NEW: Get the current battle state to ensure it's actually active.
+            local battleState = tonumber(GetServerVariable(BATTLE_STATE_VAR)) or 0 -- 0=Inactive, 1=Prep, 2=Active
+
+            -- Only teleport if a battle zone is set AND the battle state is Prep or Active.
+            if battleZoneId > 0 and battleState > 0 then
+                DebugPrint(string.format("Active battle found in Zone ID: %d. Attempting to teleport player.", battleZoneId))
+                
+                -- Find the matching location in the new WarpLocations table
+                local targetLocation = nil
+                for _, loc in ipairs(WarpLocations) do
+                    if loc.zoneid == battleZoneId then
+                        targetLocation = loc
+                        break
+                    end
+                end
+
+                if targetLocation then
+                    DebugPrint("Teleport function found. Executing warp.")
+                    player:injectActionPacket(player:getID(), 6, 643, 0, 0, 0, 10, 1)
+                    player:timer(1000, function() player:setPos(targetLocation.x, targetLocation.y, targetLocation.z, targetLocation.rot, targetLocation.zone) end)
+                else
+                    DebugPrint("ERROR: Battle zone ID " .. battleZoneId .. " has no matching teleport configuration.")
+                    player:printToPlayer(MESSAGES.battlePortalCoordError, 0, npc:getPacketName())
+                end
+            else
+                DebugPrint(string.format("No active battle found. Zone ID: %d, Battle State: %d.", battleZoneId, battleState))
+                player:printToPlayer(MESSAGES.noActiveBattlePortal, 0, npc:getPacketName())
+            end
         end,
     })
     DebugPrint("Time Portal dynamic entity inserted into Mog Garden.")
 end)
+
+
 
 return m

@@ -2,8 +2,23 @@
 require("modules/module_utils")
 require("scripts/globals/npc_util")
 
--- Global declarations for menu pages (Used by both Campaign NPCs and the Time Portal)
-local menu = {} -- Main Menu Title structure for paginated transfers
+-- Use PB_DemotionFlag to know if players need to lose medals
+-- =============================================================================
+-- SERVER VARIABLES
+-- [CampaignBattleHandler]BattleID  : Tracks the current global battle ID.
+-- CampaignResources                : Tracks global campaign resources.
+-- CampaignSupplies                 : Tracks global campaign supplies.
+--
+-- CHARACTER VARIABLES
+-- PB_DemotionFlag                  : Flag (1) if player is pending demotion due to inactivity.
+-- PB_LastEvalBattleID              : The Battle ID when the player was last evaluated/paid.
+-- PB_LastBattleID                  : The Battle ID of the last battle the player participated in.
+-- PB_TotalLifetimeScore            : The player's total accumulated campaign score.
+-- CampaignMSG                      : Setting (0=ON, 1=OFF) for campaign announcements.
+-- =============================================================================
+
+-- Global declarations for menu pages
+local menu = {} -- Main Menu Title structure
 
 -- CONFIGURATION TOGGLES
 local DEBUG_MODE = false -- Re-enabling debug to track transaction steps
@@ -21,42 +36,50 @@ if not m.logDebug then
     end
 end
 
+-- =============================================================================
+-- INACTIVITY AND DEMOTION CONFIGURATION
+-- =============================================================================
+local INACTIVITY_GRACE_PERIOD_BATTLES = 28 -- Approx. 2 IRL days (14 battles/day * 2)
+
+local DEMOTION_FLAG_VAR = 'PB_DemotionFlag' -- CharVar to prevent multiple demotions. (1 = Demoted)
+
+-- NEW: Cost in gil per missed battle for a player to reactivate their service record and avoid demotion.
+local REACTIVATION_COST_PER_BATTLE = 50000
+
+-- Server variable for the global battle ID
+local LAST_EVAL_BATTLE_ID_VAR = 'PB_LastEvalBattleID' -- CharVar to store the battle ID at time of evaluation.
+local PLAYER_LAST_BATTLE_ID_VAR = 'PB_LastBattleID' -- CharVar used by CampaignBattleHandler for inactivity checks.
+-- =============================================================================
+
+-- Resource Caps
+local MAX_CAMPAIGN_RESOURCES = 1000
+local MAX_CAMPAIGN_SUPPLIES = 1000
+
 -- The campaign medal Key Item IDs and their required lifetime scores, indexed by rank (1 to 20).
 local CAMPAIGN_RANKS = {
-    [1] = { ki_id = xi.ki.BRONZE_RIBBON_OF_SERVICE, threshold = 1000 },
-    [2] = { ki_id = xi.ki.BRONZE_STAR, threshold = 2000 },
-    [3] = { ki_id = xi.ki.COPPER_EMBLEM_OF_SERVICE, threshold = 3000 },
-    [4] = { ki_id = xi.ki.BRASS_WINGS_OF_SERVICE, threshold = 4000 },
-    [5] = { ki_id = xi.ki.STARLIGHT_MEDAL, threshold = 5000 },
-    [6] = { ki_id = xi.ki.BRASS_RIBBON_OF_SERVICE, threshold = 6000 },
-    [7] = { ki_id = xi.ki.STERLING_STAR, threshold = 7000 },
-    [8] = { ki_id = xi.ki.IRON_EMBLEM_OF_SERVICE, threshold = 8000 },
-    [9] = { ki_id = xi.ki.MYTHRIL_WINGS_OF_SERVICE, threshold = 9000 },
-    [10] = { ki_id = xi.ki.MOONLIGHT_MEDAL, threshold = 10000 },
-    [11] = { ki_id = xi.ki.ALLIED_RIBBON_OF_BRAVERY, threshold = 11000 },
-    [12] = { ki_id = xi.ki.MYTHRIL_STAR, threshold = 12000 },
-    [13] = { ki_id = xi.ki.HOLYKNIGHT_EMBLEM, threshold = 13000 },
-    [14] = { ki_id = xi.ki.WINGS_OF_INTEGRITY, threshold = 14000 },
-    [15] = { ki_id = xi.ki.DAWNLIGHT_MEDAL, threshold = 15000 },
-    [16] = { ki_id = xi.ki.ALLIED_RIBBON_OF_GLORY, threshold = 16000 },
-    [17] = { ki_id = xi.ki.GOLDEN_STAR, threshold = 17000 },
-    [18] = { ki_id = xi.ki.STEELKNIGHT_EMBLEM, threshold = 18000 },
-    [19] = { ki_id = xi.ki.WINGS_OF_HONOR, threshold = 19000 },
-    [20] = { ki_id = xi.ki.MEDAL_OF_ALTANA, threshold = 20000 },
+    [1] =  {     ki_id = xi.ki.BRONZE_RIBBON_OF_SERVICE,   threshold = 1000 },   -- ~5 battles from start
+    [2] =  {     ki_id = xi.ki.BRONZE_STAR,                threshold = 2000 },   -- ~5 battles from rank 1
+    [3] =  {     ki_id = xi.ki.COPPER_EMBLEM_OF_SERVICE,   threshold = 3200 },   -- ~6 battles from rank 2
+    [4] =  {     ki_id = xi.ki.BRASS_WINGS_OF_SERVICE,     threshold = 4600 },   -- ~7 battles from rank 3
+    [5] =  {     ki_id = xi.ki.STARLIGHT_MEDAL,            threshold = 6200 },   -- ~8 battles from rank 4
+    [6] =  {     ki_id = xi.ki.BRASS_RIBBON_OF_SERVICE,    threshold = 8000 },   -- ~9 battles from rank 5
+    [7] =  {     ki_id = xi.ki.STERLING_STAR,              threshold = 10000 },  -- ~10 battles from rank 6
+    [8] =  {     ki_id = xi.ki.IRON_EMBLEM_OF_SERVICE,     threshold = 12200 },  -- ~11 battles from rank 7
+    [9] =  {     ki_id = xi.ki.MYTHRIL_WINGS_OF_SERVICE,   threshold = 14600 },  -- ~12 battles from rank 8
+    [10] = {     ki_id = xi.ki.MOONLIGHT_MEDAL,             threshold = 17200 },  -- ~13 battles from rank 9
+    [11] = {     ki_id = xi.ki.ALLIED_RIBBON_OF_BRAVERY,    threshold = 20000, inactivity_penalty_percent = 0.0018 }, -- ~8 Days to demote
+    [12] = {     ki_id = xi.ki.MYTHRIL_STAR,                threshold = 23000, inactivity_penalty_percent = 0.0020 },
+    [13] = {     ki_id = xi.ki.STEELKNIGHT_EMBLEM,           threshold = 26200, inactivity_penalty_percent = 0.0022 },
+    [14] = {     ki_id = xi.ki.WINGS_OF_INTEGRITY,          threshold = 29600, inactivity_penalty_percent = 0.0024 },
+    [15] = {     ki_id = xi.ki.DAWNLIGHT_MEDAL,             threshold = 33200, inactivity_penalty_percent = 0.0026 },
+    [16] = {     ki_id = xi.ki.ALLIED_RIBBON_OF_GLORY,      threshold = 37000, inactivity_penalty_percent = 0.0028 },
+    [17] = {     ki_id = xi.ki.GOLDEN_STAR,                 threshold = 41000, inactivity_penalty_percent = 0.0030 },
+    [18] = {     ki_id = xi.ki.HOLYKNIGHT_EMBLEM,          threshold = 45000, inactivity_penalty_percent = 0.0032 },    
+    [19] = {     ki_id = xi.ki.WINGS_OF_HONOR,              threshold = 49000, inactivity_penalty_percent = 0.0034 },
+    [20] = {     ki_id = xi.ki.MEDAL_OF_ALTANA,             threshold = 53000, inactivity_penalty_percent = 0.0036 }, -- ~5 Days to demote
 }
 
--- New table for reward items. Structure: { name, item_id, cost_in_allied_notes }
-local CAMPAIGN_REWARDS = {
-    {"Shikkoku Head", 12126, 900000},
-    {"Shikkoku Togi", 12162, 900000},
-    {"Shikkoku Kote", 12198, 900000},
-    {"Shikkoku Legs", 12234, 900000},
-    {"Shikkoku Feet", 12270, 900000},
-}
-local ITEMS_PER_PAGE = 4
--- FIX: Changing the internal key to all lowercase based on user confirmation that '!delcurrency allied_notes' works.
-local CURRENCY_NAME = "allied_notes" 
-local TEXT_CURRENCY_NAME = "Allied Notes" -- This remains mixed case for display only.
+-- Removed CAMPAIGN_REWARDS and associated currency configuration
 
 -- Localized Player-Facing Text.
 local MESSAGES = {
@@ -65,10 +88,10 @@ local MESSAGES = {
     -- Main Menu
     menuTitle = "Do you require an evaluation?",
     menuOptionEvaluate = "Yes, please evaluate my service record.",
-    menuOptionRedeem = "Redeem Allied Notes",
-    menuOptionAnnouncements = "Campaign Message Settings", -- NEW
+    -- Removed menuOptionRedeem
+    menuOptionAnnouncements = "Campaign Message Settings", 
     menuOptionNo = "No, thank you.",
-    noChangeOfMind = "Understood. Come back when you are ready for a review.", -- Kept but no longer used in the 'No' option.
+    noChangeOfMind = "Understood. Come back when you are ready for a review.", 
     
     -- Evaluation Messages
     rankUpA = "%s! Your recent performance has been evaluated and the Allied War Council has deemed you worthy of a new medal!",
@@ -76,20 +99,24 @@ local MESSAGES = {
     noRankUp = "While the Allied War Council was pleased with your work, we determined that it did not warrant a new medal.",
     noRankUpPoints = "Your service record is satisfactory. You need %d more points to achieve the next medal rank.",
     maxRankAchieved = "Your service record is exemplary! You have achieved the highest rank possible for the Allied Forces.",
+    
+    -- Demotion Messages
+    demotionWarning = "However, your recent period of inactivity has been noted. A penalty has been applied to your service record.",
+    demotionMessage = "Due to this penalty, your rank has been adjusted. The Allied Council has recalled your %s.",
 
-    -- Rewards Messages
-    rewardsTitle = "Redeem your %s! (%d)",
-    noFunds = "You need %d %s to purchase the %s, but you only possess %d.",
-    inventoryFull = "Your inventory is full. Make room before attempting to purchase %s. Your %s were not deducted.",
-    purchaseSuccess = "Thank you for your service! You have exchanged %d %s for the %s.",
-    navNext = "Next",
-    navPrev = "Previous",
-    navBack = "Back",
+    -- NEW: Reactivation Messages
+    reactivationPrompt = " %d battles missed. Donate %d gil?",
+    reactivationSuccess = "Your contribution has been noted, and your service record is now up to date. Thank you, soldier.",
+    reactivationNoFunds = "You do not have sufficient gil for this contribution.",
+    reactivationUpToDate = "Your service record is already up to date. No contribution is necessary.",
 
-    -- Announcements Messages (NEW)
+    -- Removed Rewards Messages
+    
+    -- Announcements Messages
     announcementsTitle = "Do you want the messages?",
     announceOff = "Campaign messages are now OFF",
     announceOn = "Campaign messages are now ON",
+    navBack = "Back",
 }
 
 -- A global function for delayed menu sending.
@@ -102,20 +129,8 @@ end
 
 --- Retrieves the name of a Key Item using its ID.
 local function getMedalName(itemId)
-    local name = nil
-    
-    local success, result = pcall(function()
-        if _G.res and _G.res.items and _G.res.items.get then
-            local item = _G.res.items.get(itemId)
-            return item and item.name
-        end
-        return nil
-    end)
+    local name = GetKeyItemName(itemId)
 
-    if success and result then
-        name = result
-    end
-    
     if name then
         return name
     else
@@ -124,20 +139,171 @@ local function getMedalName(itemId)
     end
 end
 
+--- Gets the player's highest campaign rank based on the KIs they possess.
+---@param player Player The player to check.
+---@return number The player's rank (1-20), or 0 if they have no rank.
+local function getPlayerCampaignRank(player)
+    -- Iterate backwards from the highest rank to find the first medal they have.
+    for i = #CAMPAIGN_RANKS, 1, -1 do
+        local rankData = CAMPAIGN_RANKS[i]
+        if player:hasKeyItem(rankData.ki_id) then
+            return i -- Return the rank number
+        end
+    end
+    return 0 -- No rank found
+end
+
+--- Checks if a player's score has dropped below a medal threshold and removes the KI.
+---@param player Player The player to check.
+---@param currentScore number The player's new, potentially penalized score.
+---@return number|nil The ID of the key item that was removed, or nil if no demotion.
+local function checkForDemotion(player, currentScore)
+    local demotedMedalId = nil
+    -- Iterate backwards from the highest rank to find the first medal they have but no longer qualify for.
+    for i = #CAMPAIGN_RANKS, 1, -1 do
+        local rankData = CAMPAIGN_RANKS[i]
+        local medalId = rankData.ki_id
+        local requiredScore = rankData.threshold
+
+        if player:hasKeyItem(medalId) then
+            if currentScore < requiredScore then
+                -- They have this medal but their score is now too low.
+                player:delKeyItem(medalId)
+                demotedMedalId = medalId
+                m:logDebug("Demotion: Score %d is less than threshold %d for KI %d. Removing KI.", currentScore, requiredScore, medalId)
+                return demotedMedalId -- Return immediately after the first (highest) demotion
+            else
+                -- They have this medal and still qualify, so they can't be demoted further down.
+                break
+            end
+        end
+    end
+    return nil
+end
+
+local giveCampaignMedals -- Forward declaration
+
+---
+--- Handles the player's request to reactivate their service record by paying a fee.
+---@param player CPlayer
+---@param npc CNpc
+local function handleReactivation(player, npc)
+    local npcName = npc:getPacketName()
+    local playerLastBattleID = player:getCharVar(LAST_EVAL_BATTLE_ID_VAR) or 0
+    local currentBattleID = GetServerVariable('[CampaignBattleHandler]BattleID') or 0
+
+    local missedBattles = currentBattleID - playerLastBattleID
+ 
+    if missedBattles <= 0 then
+        -- Safety Check: If player is flagged but up to date (e.g. re-flagged due to desync), clear flag.
+        if player:getCharVar(DEMOTION_FLAG_VAR) == 1 then
+            player:setCharVar(DEMOTION_FLAG_VAR, 0)
+            player:setCharVar(PLAYER_LAST_BATTLE_ID_VAR, currentBattleID) -- Sync battle tracker
+            m:logDebug("Player %s was flagged but up to date. Cleared flag and synced PB_LastBattleID.", player:getName())
+        end
+        player:printToPlayer(MESSAGES.reactivationUpToDate, 0, npcName)
+        giveCampaignMedals(player, npc)
+        return
+    end
+
+    local totalCost = missedBattles * REACTIVATION_COST_PER_BATTLE
+
+    -- Create a confirmation menu
+    local confirmMenu = {
+        title = string.format(MESSAGES.reactivationPrompt, missedBattles, totalCost),
+        options = {
+            { "Yes, contribute.", function(p)
+                if p:getGil() < totalCost then
+                    p:printToPlayer(MESSAGES.reactivationNoFunds, 0, npcName)
+                    return
+                end
+
+                -- 1. Deduct Gil
+                p:delGil(totalCost)
+
+                -- 2. Update player's battle ID and clear demotion flag
+                p:setCharVar(LAST_EVAL_BATTLE_ID_VAR, currentBattleID)
+                p:setCharVar(PLAYER_LAST_BATTLE_ID_VAR, currentBattleID) -- Sync battle tracker to prevent immediate re-flagging
+                p:setCharVar(DEMOTION_FLAG_VAR, 0)
+                m:logDebug("Player %s reactivated. Set %s and %s to %d and cleared demotion flag.", p:getName(), LAST_EVAL_BATTLE_ID_VAR, PLAYER_LAST_BATTLE_ID_VAR, currentBattleID)
+
+                -- 3. Calculate and distribute donations
+                local resourceDonation, supplyDonation
+                if totalCost < 1000000 then
+                    resourceDonation = 1
+                    supplyDonation = 1
+                else
+                    local donationAmount = math.floor(totalCost / 2)
+                    resourceDonation = donationAmount
+                    supplyDonation = donationAmount
+                end
+
+                -- 4. Update server variables
+                local currentResources = tonumber(GetServerVariable("CampaignResources")) or 0
+                local currentSupplies = tonumber(GetServerVariable("CampaignSupplies")) or 0
+
+                local newResources = math.min(MAX_CAMPAIGN_RESOURCES, currentResources + resourceDonation)
+                local newSupplies = math.min(MAX_CAMPAIGN_SUPPLIES, currentSupplies + supplyDonation)
+
+                SetServerVariable("CampaignResources", newResources)
+                SetServerVariable("CampaignSupplies", newSupplies)
+
+                m:logDebug("Distributed %d to Resources and %d to Supplies.", resourceDonation, supplyDonation)
+
+                p:printToPlayer(MESSAGES.reactivationSuccess, 0, npcName)
+                giveCampaignMedals(p, npc)
+            end },
+            { "No, decline.", function(p)
+                -- Do nothing, just close the menu.
+            end }
+        }
+    }
+
+    -- Show the confirmation menu
+    player:timer(50, function(p)
+        p:customMenu(confirmMenu)
+    end)
+end
+
 --- Handles the logic for checking the player's lifetime score and granting medals.
 ---@param player Player
 ---@param npc NPC
-local function giveCampaignMedals(player, npc)
+giveCampaignMedals = function(player, npc)
     local playerName = player:getName()
     local npcName = npc:getPacketName()
     
     local currentScore = player:getCharVar('PB_TotalLifetimeScore') or 0
+    local originalScore = currentScore -- Keep a copy for logging
     local medalsAwarded = 0
     local highestNewMedalId = nil
     local nextMedalThreshold = 0
 
     m:logDebug("--- Campaign Medal Evaluation for %s START ---", playerName)
-    m:logDebug("Current PB_TotalLifetimeScore: %d", currentScore)
+    m:logDebug("Original PB_TotalLifetimeScore: %d", currentScore)
+
+    -- Store the current battle ID at the time of evaluation
+    local currentBattleID = GetServerVariable('[CampaignBattleHandler]BattleID') or 0
+    player:setCharVar(LAST_EVAL_BATTLE_ID_VAR, currentBattleID)
+    m:logDebug("Stored current Battle ID %d in %s.", currentBattleID, LAST_EVAL_BATTLE_ID_VAR)
+
+    -- === DEMOTION CHECK ===
+    local demotionFlag = player:getCharVar(DEMOTION_FLAG_VAR) or 0
+
+    if demotionFlag == 1 then
+        m:logDebug("Demotion flag is set for %s. Checking for medal removal.", playerName)
+        -- Check for demotion (KI removal)
+        local demotedMedalId = checkForDemotion(player, currentScore)
+        if demotedMedalId then
+            local demotedMedalName = getMedalName(demotedMedalId)
+            m:logDebug("Player demoted. Lost KI %d (%s).", demotedMedalId, demotedMedalName)
+            player:timer(1500, function(p)
+                p:printToPlayer(string.format(MESSAGES.demotionMessage, demotedMedalName), 0, npcName)
+            end)
+            -- The demotion flag will be cleared if the player ranks up later in this function.
+            -- If they don't rank up, the flag remains, preventing them from gaining points
+            -- until they are no longer flagged for demotion.
+        end
+    end
 
     -- Loop through the campaign ranks
     for rank, rankData in ipairs(CAMPAIGN_RANKS) do
@@ -152,6 +318,9 @@ local function giveCampaignMedals(player, npc)
             
             medalsAwarded = medalsAwarded + 1
             highestNewMedalId = medalId
+            -- Player ranked up, so clear the demotion flag
+            player:setCharVar(DEMOTION_FLAG_VAR, 0)
+            m:logDebug("Player ranked up. Clearing %s.", DEMOTION_FLAG_VAR)
         elseif currentScore < requiredScore then
             nextMedalThreshold = requiredScore 
             m:logDebug("Stopping search at Rank %d. Next medal threshold is %d.", rank, nextMedalThreshold)
@@ -195,7 +364,7 @@ local function giveCampaignMedals(player, npc)
             player:printToPlayer(MESSAGES.maxRankAchieved, 0, npcName)
         else
             local pointsNeeded = nextThreshold - currentScore
-            m:logDebug("No rank up. Points needed for next threshold (%d): %d", nextThreshold, pointsNeeded)
+            m:logDebug("No rank up. Original Score: %d. Current Score: %d. Points needed for next threshold (%d): %d", originalScore, currentScore, nextThreshold, pointsNeeded)
             
             player:printToPlayer(MESSAGES.noRankUp, 0, npcName)
             
@@ -206,175 +375,10 @@ local function giveCampaignMedals(player, npc)
     end
 end
 
---- Displays the paginated rewards menu.
---- NOTE: Made global to ensure visibility within delayed callbacks.
----@param player Player
----@param npc NPC
----@param page number The page number to display (1-indexed).
-function showRewardsMenu(player, npc, page)
-    m:logDebug("%s: Opening rewards menu (Page %d requested).", player:getName(), page)
-    
-    local totalItems = #CAMPAIGN_REWARDS
-    local totalPages = math.ceil(totalItems / ITEMS_PER_PAGE)
-    local currentPage = math.max(1, math.min(page, totalPages)) -- Clamp page number
-    
-    -- Calculate start and end indices for the current page
-    local startIndex = ((currentPage - 1) * ITEMS_PER_PAGE) + 1
-    local endIndex = math.min(currentPage * ITEMS_PER_PAGE, totalItems)
+-- Removed showRewardsMenu function
+-- Removed handleRewardPurchase function
 
-    -- Use getCurrency which is confirmed to work for reading the balance
-    local currentNotes = player:getCurrency(CURRENCY_NAME) or 0
-    
-    m:logDebug("Total Items: %d, Total Pages: %d. Showing items %d through %d on page %d. Player balance: %d.", totalItems, totalPages, startIndex, endIndex, currentPage, currentNotes)
-    
-    -- Construct the menu title with current balance
-    local rewardsMenu = {}
-    rewardsMenu.title = string.format(MESSAGES.rewardsTitle, TEXT_CURRENCY_NAME, currentNotes)
-    rewardsMenu.options = {}
-
-    -- 1. Add reward options for the current page (4 items max)
-    for i = startIndex, endIndex do
-        local itemData = CAMPAIGN_REWARDS[i]
-        local name, id, cost = itemData[1], itemData[2], itemData[3]
-        
-        -- Format the menu option as: [Item Name] (Cost pts)
-        local optionText = string.format("%s (%d)", name, cost)
-        
-        table.insert(rewardsMenu.options, {
-            optionText,
-            function(playerArg)
-                m:logDebug("%s selected item: %s (Cost: %d). Opening confirmation menu.", playerArg:getName(), name, cost)
-                -- Confirmation prompt before purchase
-                local confirmMenu = {}
-                confirmMenu.title = ("Are you sure?")
-                confirmMenu.options = {
-                    { "Yes, Buy It!", function(p) handleRewardPurchase(p, npc, id, cost, name, currentPage) end },
-                    { "No, Go Back.", function(p) 
-                        -- FIX: Use a timer when opening a new menu from a menu callback
-                        p:timer(50, function(p)
-                            showRewardsMenu(p, npc, currentPage) 
-                        end)
-                    end },
-                }
-                -- FIX: Use a timer when opening a new menu from a menu callback
-                playerArg:timer(50, function(p)
-                    p:customMenu(confirmMenu)
-                end)
-            end
-        })
-    end
-
-    -- 2. Add navigation options
-    
-    -- Previous Page
-    if currentPage > 1 then
-        m:logDebug("Adding 'Previous' navigation.")
-        table.insert(rewardsMenu.options, {
-            MESSAGES.navPrev,
-            function(playerArg)
-                m:logDebug("%s selected 'Previous'. Moving to page %d.", playerArg:getName(), currentPage - 1)
-                -- FIX: Use a timer when opening a new menu from a menu callback (pagination)
-                playerArg:timer(50, function(p)
-                    showRewardsMenu(p, npc, currentPage - 1)
-                end)
-            end
-        })
-    end
-    
-    -- Next Page
-    if currentPage < totalPages then
-        m:logDebug("Adding 'Next' navigation.")
-        table.insert(rewardsMenu.options, {
-            MESSAGES.navNext,
-            function(playerArg)
-                m:logDebug("%s selected 'Next'. Moving to page %d.", playerArg:getName(), currentPage + 1)
-                -- FIX: Use a timer when opening a new menu from a menu callback (pagination)
-                playerArg:timer(50, function(p)
-                    showRewardsMenu(p, npc, currentPage + 1)
-                end)
-            end
-        })
-    end
-    
-    -- Back to Main Menu (Always last option)
-    table.insert(rewardsMenu.options, {
-        MESSAGES.navBack,
-        function(playerArg)
-            m:logDebug("%s selected 'Back'. Returning to main menu.", playerArg:getName())
-            -- FIX: Send the main menu directly to avoid the CAIActionQueue crash from onTrigger inside a timer.
-            playerArg:timer(50, function(p)
-                -- Print greeting again for context, then display the main menu (which was populated in onTrigger)
-                p:printToPlayer(MESSAGES.greeting, 0, npc:getPacketName())
-                p:customMenu(menu)
-            end)
-        end
-    })
-
-    player:customMenu(rewardsMenu)
-end
-
---- Handles the transaction logic for purchasing a reward item.
---- NOTE: Made global to ensure visibility within delayed callbacks.
----@param player Player
----@param npc NPC
----@param itemID number
----@param cost number
----@param itemName string
----@param page number The page to return to after purchase attempt.
-function handleRewardPurchase(player, npc, itemID, cost, itemName, page)
-    -- Use getCurrency for custom currency
-    local currentNotes = player:getCurrency(CURRENCY_NAME) or 0
-
-    m:logDebug("%s: Starting purchase attempt for %s (ID:%d). Cost: %d %s. Current notes: %d", player:getName(), itemName, itemID, cost, TEXT_CURRENCY_NAME, currentNotes)
-
-    -- 1. Check Currency
-    if currentNotes < cost then
-        m:logDebug("FAIL: Currency check. Needed %d, has %d. Aborting purchase.", cost, currentNotes)
-        player:printToPlayer(string.format(MESSAGES.noFunds, cost, TEXT_CURRENCY_NAME, itemName, currentNotes), 0, npc:getPacketName())
-        -- Return to the rewards menu after a short delay
-        player:timer(1500, function(playerArg)
-            playerArg:timer(50, function(p)
-                showRewardsMenu(p, npc, page)
-            end)
-        end)
-        return
-    end
-    m:logDebug("PASS: Currency check successful.")
-
-    -- 2. Check Inventory Space (assuming a count of 1 for the item)
-    if player:getFreeSlotsCount() < 1 then
-        m:logDebug("FAIL: Inventory full (%d free slots). Aborting purchase.", player:getFreeSlotsCount())
-        player:printToPlayer(string.format(MESSAGES.inventoryFull, itemName, TEXT_CURRENCY_NAME), 0, npc:getPacketName())
-        player:timer(1500, function(playerArg)
-            playerArg:timer(50, function(p)
-                showRewardsMenu(p, npc, page)
-            end)
-        end)
-        return
-    end
-    m:logDebug("PASS: Inventory space available.")
-
-
-    -- 3. Execute Transaction
-    
-    -- FIX: Reverting to delCurrency, as the GM command proved it is the correct function 
-    -- when the currency key is the correct case (all lowercase).
-    player:delCurrency(CURRENCY_NAME, cost)
-
-    -- Give the item
-    npcUtil.giveItem(player, {{itemID, 1}}, { msg = false }) -- msg = false to handle our own success message
-
-    local newNotes = player:getCurrency(CURRENCY_NAME) or 0 -- Get the new balance after the successful deduction
-
-    m:logDebug("Transaction SUCCESS. %d %s deducted. New balance: %d. Item %s (ID:%d) given.", cost, CURRENCY_NAME, newNotes, itemName, itemID)
-
-    -- Success message
-    player:printToPlayer(string.format(MESSAGES.purchaseSuccess, cost, TEXT_CURRENCY_NAME, itemName), 0, npc:getPacketName())
-
-    -- We intentionally stop interaction here to ensure the item and notes are processed correctly.
-end
-
---- Handles the menu for setting Campaign Message preferences. (NEW)
+--- Handles the menu for setting Campaign Message preferences.
 ---@param player Player
 ---@param npc NPC
 local function handleAnnouncementsMenu(player, npc)
@@ -465,45 +469,42 @@ m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
             player:printToPlayer(MESSAGES.greeting, 0, npcName)
 
             -- Define the core menu options here.
-            menu.title = MESSAGES.menuTitle
-            menu.options = {
-                {
-                    MESSAGES.menuOptionEvaluate,
+            menu.title = MESSAGES.menuTitle 
+            menu.options = {} -- Start with an empty table
+ 
+            -- Check if player is flagged for demotion and add the reactivation option if so.
+            local demotionFlag = player:getCharVar(DEMOTION_FLAG_VAR) or 0
+            if demotionFlag == 1 then
+                table.insert(menu.options, {
+                    "Reactivate my service record.",
                     function(playerArg)
-                        m:logDebug("%s selected: Evaluate service record.", playerArg:getName())
-                        -- If 'Evaluate', proceed to evaluation logic
-                        giveCampaignMedals(playerArg, npc)
+                        m:logDebug("%s selected: Reactivate service record.", playerArg:getName())
+                        handleReactivation(playerArg, npc)
                     end
-                },
-                -- REWARDS OPTION
-                {
-                    MESSAGES.menuOptionRedeem,
-                    function(playerArg)
-                        m:logDebug("%s selected: Redeem Allied Notes. Moving to rewards page 1.", playerArg:getName())
-                        -- If 'Redeem', go to the first page of the rewards menu
-                        -- FIX: Use a timer when opening a new menu from a menu callback
-                        playerArg:timer(50, function(p)
-                            showRewardsMenu(p, npc, 1)
-                        end)
-                    end
-                },
-                -- NEW ANNOUNCEMENTS OPTION
-                {
-                    MESSAGES.menuOptionAnnouncements,
-                    function(playerArg)
-                        m:logDebug("%s selected: Campaign Message Settings.", playerArg:getName())
-                        handleAnnouncementsMenu(playerArg, npc)
-                    end
-                },
-                {
-                    MESSAGES.menuOptionNo,
-                    function(playerArg)
-                        m:logDebug("%s selected: Exit menu.", playerArg:getName())
-                        -- If 'No', simply close the menu without a message.
-                        -- Original: playerArg:printToPlayer(MESSAGES.noChangeOfMind, 0, npcName)
-                    end
-                }
-            }
+                })
+            end
+ 
+            -- Add the standard menu options
+            table.insert(menu.options, {
+                MESSAGES.menuOptionEvaluate,
+                function(playerArg)
+                    m:logDebug("%s selected: Evaluate service record.", playerArg:getName())
+                    giveCampaignMedals(playerArg, npc)
+                end
+            })
+            table.insert(menu.options, {
+                MESSAGES.menuOptionAnnouncements,
+                function(playerArg)
+                    m:logDebug("%s selected: Campaign Message Settings.", playerArg:getName())
+                    handleAnnouncementsMenu(playerArg, npc)
+                end
+            })
+            table.insert(menu.options, {
+                MESSAGES.menuOptionNo,
+                function(playerArg)
+                    m:logDebug("%s selected: Exit menu.", playerArg:getName())
+                end
+            })
             
             delaySendMenu(player)
             
