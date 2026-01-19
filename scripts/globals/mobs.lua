@@ -18,12 +18,12 @@ end
 -----------------------------------
 
 -- is a lottery NM already spawned or primed to pop?
-local function lotteryPrimed(phList)
+local function lotteryPrimed(phList, nmId)
     local nm
 
     for k, v in pairs(phList) do
         nm = GetMobByID(v)
-        if nm ~= nil and (nm:isSpawned() or nm:getRespawnTime() ~= 0) then
+        if v == nmId and nm ~= nil and (nm:isSpawned() or nm:getRespawnTime() ~= 0) then
             return true
         end
     end
@@ -151,7 +151,7 @@ xi.mob.phOnDespawn = function(ph, phNmId, chance, cooldown, params)
 
     if
         GetSystemTime() <= pop or
-        lotteryPrimed(phList) or
+        lotteryPrimed(phList, nmId) or
         math.random(1, 1000) > chance
     then
         return false
@@ -207,16 +207,6 @@ xi.mob.phOnDespawn = function(ph, phNmId, chance, cooldown, params)
 
     return true
 end
-
------------------------------------
--- Mob skills
------------------------------------
-xi.mob.skills =
-{
-    RECOIL_DIVE = 641,
-    CYTOKINESIS = 2514,
-    DISSOLVE = 2550,
-}
 
 -----------------------------------
 -- mob additional melee effects
@@ -300,16 +290,6 @@ local additionalEffects =
     {
         ele                = xi.element.ICE,
         sub                = xi.subEffect.ICE_DAMAGE,
-        msg                = xi.msg.basic.ADD_EFFECT_DMG,
-        negMsg             = xi.msg.basic.ADD_EFFECT_HEAL,
-        mod                = xi.mod.INT,
-        bonusAbilityParams = { bonusmab = 0, includemab = false },
-    },
-
-    [xi.mob.ae.ENDARK] =
-    {
-        ele                = xi.element.DARK,
-        sub                = xi.subEffect.DARKNESS_DAMAGE,
         msg                = xi.msg.basic.ADD_EFFECT_DMG,
         negMsg             = xi.msg.basic.ADD_EFFECT_HEAL,
         mod                = xi.mod.INT,
@@ -578,7 +558,7 @@ local additionalEffects =
     {
         chance      = 25,
         ele         = xi.element.DARK,
-        sub         = xi.subEffect.DISPEL,
+        sub         = xi.subEffect.DARKNESS_DAMAGE,
         msg         = xi.msg.basic.ADD_EFFECT_DISPEL,
         applyEffect = false,
         power       = 1,
@@ -588,7 +568,7 @@ local additionalEffects =
     {
         chance      = 10,
         ele         = xi.element.ICE,
-        sub         = xi.subEffect.DISPEL, -- TODO
+        sub         = xi.subEffect.DARKNESS_DAMAGE,
         msg         = xi.msg.basic.ADD_EFFECT_STATUS,
         applyEffect = true,
         eff         = xi.effect.BIND,

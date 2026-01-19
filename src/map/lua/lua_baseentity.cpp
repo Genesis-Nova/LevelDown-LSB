@@ -57,6 +57,7 @@
 #include "notoriety_container.h"
 #include "recast_container.h"
 #include "roe.h"
+#include "spawn_handler.h"
 #include "spell.h"
 #include "status_effect.h"
 #include "status_effect_container.h"
@@ -65,6 +66,7 @@
 #include "transport.h"
 #include "treasure_pool.h"
 #include "weapon_skill.h"
+#include "zone.h"
 
 #include "ai/ai_container.h"
 
@@ -78,7 +80,6 @@
 #include "ai/states/mobskill_state.h"
 #include "ai/states/petskill_state.h"
 #include "ai/states/range_state.h"
-#include "ai/states/respawn_state.h"
 #include "ai/states/weaponskill_state.h"
 
 #include "ai/controllers/mob_controller.h"
@@ -1685,10 +1686,6 @@ uint8 CLuaBaseEntity::getCurrentAction()
     if (m_PBaseEntity->PAI->IsStateStackEmpty())
     {
         action = 16; // For mobs, this means roaming
-    }
-    else if (m_PBaseEntity->PAI->IsCurrentState<CRespawnState>())
-    {
-        action = 0;
     }
     else if (m_PBaseEntity->PAI->IsCurrentState<CAttackState>())
     {
@@ -10099,7 +10096,7 @@ void CLuaBaseEntity::takeDamage(int32 damage, const sol::object& attacker, const
         // Diabolos NM/mob ability
         // "Damage will not wake you up from Nightmare, only Cure and Benediction (Benediction will also remove the Bio effect)."
         if (wakeUp == true &&
-            PDefender->StatusEffectContainer->GetStatusEffect(EFFECT_SLEEP)->GetTier() >= 5) // Tier 5 = Diabolos NM Nightmare
+            PDefender->StatusEffectContainer->GetStatusEffect(EFFECT_SLEEP)->GetTier() >= 11) // Tier 11 = Diabolos NM Nightmare
         {
             wakeUp = false;
         }
@@ -13362,6 +13359,27 @@ void CLuaBaseEntity::resetEnmity(CLuaBaseEntity* PEntity)
 }
 
 /************************************************************************
+ *  Function: setEnmityActive()
+ *  Purpose : Used to set enmity active or not
+ *  Example : mob:setEnmityActive(target, true)
+ *  Notes   : Used in certain mob special abilities which set enmity inactive
+ ************************************************************************/
+
+void CLuaBaseEntity::setEnmityActive(CLuaBaseEntity* PEntity, bool active)
+{
+    if (m_PBaseEntity->objtype != TYPE_MOB)
+    {
+        ShowWarning("Attempting to reset enmity for invalid entity type (%s).", m_PBaseEntity->getName());
+        return;
+    }
+
+    if (PEntity != nullptr && PEntity->GetBaseEntity()->objtype != TYPE_NPC)
+    {
+        static_cast<CMobEntity*>(m_PBaseEntity)->PEnmityContainer->SetActive(PEntity->m_PBaseEntity->id, active);
+    }
+}
+
+/************************************************************************
  *  Function: updateClaim()
  *  Purpose : Marks a Mob as claimed once popped by a Player
  *  Example : mob:updateClaim(player)
@@ -13406,7 +13424,14 @@ bool CLuaBaseEntity::hasClaim(CLuaBaseEntity* PTarget)
         return false;
     }
 
-    return battleutils::HasClaim(dynamic_cast<CBattleEntity*>(m_PBaseEntity), PBattleEntity);
+    auto* PTargetBattleEntity = dynamic_cast<CBattleEntity*>(PTarget->GetBaseEntity());
+    if (!PTargetBattleEntity)
+    {
+        ShowWarning("Attempting to check claim against invalid target entity type (%s).", PTarget->GetBaseEntity()->getName());
+        return false;
+    }
+
+    return battleutils::HasClaim(PBattleEntity, PTargetBattleEntity);
 }
 
 /************************************************************************
@@ -14153,6 +14178,11 @@ int16 CLuaBaseEntity::getMod(uint16 modID)
         return 0;
     }
 
+    if (modID == 0)
+    {
+        return 0;
+    }
+
     return static_cast<CBattleEntity*>(m_PBaseEntity)->getMod(static_cast<Mod>(modID));
 }
 
@@ -14171,6 +14201,11 @@ void CLuaBaseEntity::setMod(uint16 modID, int16 value)
         return;
     }
 
+    if (modID == 0)
+    {
+        return;
+    }
+
     static_cast<CBattleEntity*>(m_PBaseEntity)->setModifier(static_cast<Mod>(modID), value);
 }
 
@@ -14186,6 +14221,11 @@ void CLuaBaseEntity::delMod(uint16 modID, int16 value)
     if (m_PBaseEntity->objtype == TYPE_NPC)
     {
         ShowWarning("Invalid Entity (NPC: %s) calling function.", m_PBaseEntity->getName());
+        return;
+    }
+
+    if (modID == 0)
+    {
         return;
     }
 
@@ -17315,7 +17355,7 @@ uint32 CLuaBaseEntity::getRespawnTime()
         }
  ************************************************************************/
 
-void CLuaBaseEntity::setRespawnTime(uint32 seconds)
+void CLuaBaseEntity::setRespawnTime(const uint32 seconds) const
 {
     if (m_PBaseEntity->objtype != TYPE_MOB)
     {
@@ -17325,13 +17365,14 @@ void CLuaBaseEntity::setRespawnTime(uint32 seconds)
 
     auto* PMob = static_cast<CMobEntity*>(m_PBaseEntity);
 
-    PMob->m_RespawnTime = std::chrono::seconds(seconds);
-    if (PMob->PAI->IsCurrentState<CRespawnState>())
-    {
-        PMob->PAI->GetCurrentState()->ResetEntryTime();
-    }
-
+    PMob->m_RespawnTime  = std::chrono::seconds(seconds);
     PMob->m_AllowRespawn = true;
+
+    // If mob is not currently spawned, update its pending respawn time in SpawnHandler
+    if (!PMob->PAI->IsSpawned() && PMob->loc.zone != nullptr)
+    {
+        PMob->loc.zone->spawnHandler()->registerForRespawn(PMob, std::chrono::seconds(seconds));
+    }
 }
 
 /************************************************************************
@@ -20007,6 +20048,7 @@ void CLuaBaseEntity::Register()
     SOL_REGISTER("updateEnmityFromDamage", CLuaBaseEntity::updateEnmityFromDamage);
     SOL_REGISTER("updateEnmityFromCure", CLuaBaseEntity::updateEnmityFromCure);
     SOL_REGISTER("resetEnmity", CLuaBaseEntity::resetEnmity);
+    SOL_REGISTER("setEnmityActive", CLuaBaseEntity::setEnmityActive);
     SOL_REGISTER("updateClaim", CLuaBaseEntity::updateClaim);
     SOL_REGISTER("hasClaim", CLuaBaseEntity::hasClaim);
     SOL_REGISTER("hasEnmity", CLuaBaseEntity::hasEnmity);

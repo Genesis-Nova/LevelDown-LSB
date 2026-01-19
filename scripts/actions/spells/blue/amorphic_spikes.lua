@@ -1,7 +1,16 @@
 -----------------------------------
 -- Spell: Amorphic Spikes
--- Delivers a fivefold attack. damage varies with TP
-
+-- Delivers a fivefold attack. Danage varies with TP
+-- Spell cost: 79 MP
+-- Monster Type: AMORPH
+-- Spell Type: Physical (Piercing)
+-- Blue Magic Points: 4
+-- Stat Bonus: INT+5 MND+2
+-- Level: 98
+-- Casting Time: 0.5 seconds
+-- Recast Time: 58.25 seconds
+-- Skillchain Element(s): Gravitation/Transfixion
+-- Combos: Gilfinder / Treasure Hunter
 -----------------------------------
 ---@type TSpell
 local spellObject = {}
@@ -12,13 +21,13 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.AMORPHS
-    params.tpmod = xi.spells.blue.tpMod.DMG
-    params.bonus = 0
+    params.ecosystem = xi.ecosystem.AMORPH
+    params.tpmod     = xi.spells.blue.tpMod.ATTACK
+    params.bonusacc  = 0
     if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
-        params.bonus = caster:getMod(xi.mod.ATT) * .7
+        params.bonusacc = 70
     elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
-        params.bonus = caster:getMod(xi.mod.ATT) * .7
+        params.bonusacc = math.floor(caster:getTP() / 50)
     end
 
     params.attackType = xi.attackType.PHYSICAL
@@ -34,10 +43,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.azuretp = 0.625
     params.duppercap = 69
     params.str_wsc = 0.0
-    params.dex_wsc = 0.2
-    params.vit_wsc = 0.0
-    params.agi_wsc = 0.0
-    params.int_wsc = 0.2
+    params.int_wsc = 0.20
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 
