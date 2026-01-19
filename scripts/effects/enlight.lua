@@ -10,7 +10,7 @@ effectObject.onEffectGain = function(target, effect)
 
     -- Triple En-spell damage if Composure is active and self-cast
     if target:hasStatusEffect(xi.effect.COMPOSURE) then
-        basePower = basePower * 3.5
+        basePower = basePower * 3.3
     end
 
     target:addMod(xi.mod.ENSPELL, xi.element.LIGHT)

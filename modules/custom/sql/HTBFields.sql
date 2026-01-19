@@ -428,3 +428,7 @@ UPDATE mob_groups SET poolid = 5106 WHERE name = 'Promathia_htbf';
 -- INSERT INTO `mob_skills` VALUES (1980,1197,'boreas_mantle',0,7.0,2000,1500,1,4,0,0,0,0,0); -- phantom puk
 INSERT INTO `mob_skills` VALUES (3290,3034,'bowels_of_agony',0,0.0,7.0,2000,0,4,0,0,0,0,0,0); -- Bowels of Agony - Shadow Lord
 INSERT INTO `mob_skill_lists` VALUES ('ShadowLord', 225, 3290);
+-- Return to Delkfutt's Tower II HTBF
+UPDATE mob_groups SET HP = 200000,  MP = 9999, minLevel = 120, maxLevel = 125 WHERE name = 'Kamlanaut_HTBF' AND groupid = 16;
+UPDATE mob_groups SET HP = 20000,  MP = 9999, minLevel = 110, maxLevel = 115 WHERE name = 'Esoteric_Scrivening' AND groupid = 17;
+UPDATE mob_spawn_points SET mobname = 'Kamlanaut_HTBF' WHERE mobname = 'Kamlanaut' AND groupid = 16;

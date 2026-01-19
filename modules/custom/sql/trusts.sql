@@ -203,6 +203,7 @@ INSERT INTO `mob_spell_lists` VALUES ('TRUST_Maximilian',388,338,12,255);       
 INSERT INTO `mob_spell_lists` VALUES ('TRUST_Maximilian',388,339,37,255);       -- Utsusemi: Ni
 
 -- Mob Skills Mayakov
+UPDATE mob_pools SET sJob = 17 WHERE poolid = "5966" AND `name` = 'mayakov'; -- Subjob COR
 DELETE FROM mob_skill_lists WHERE skill_list_id = "1081";
 INSERT INTO `mob_skill_lists` VALUES ('TRUST_Mayakov',1081,41); -- Swift Blade
 INSERT INTO `mob_skill_lists` VALUES ('TRUST_Mayakov',1081,40);  -- Vorpal Blade

@@ -45,9 +45,9 @@ xi.custom_quest = custom_quest or {}
 
 local customQuestType =
 {
-    [1] = {'Daily',   5, 311},
-    [2] = {'Weekly',  4, 312},
-    [3] = {'Monthly', 2, 313},
+    [1] = {'Daily',   5, 311, '[LD]CustomQuestDaily'},
+    [2] = {'Weekly',  4, 312, '[LD]CustomQuestWeekly'},
+    [3] = {'Monthly', 2, 313, '[LD]CustomQuestMonthly'},
    -- [4] = {'Special', 1, 314},
 }
 --[[
@@ -1855,11 +1855,9 @@ xi.custom_quest.getQuestInfo = function(player) -- for use in player command
     local questId = tonumber(questParams:sub(3,5))
     local questCount = tonumber(questParams:sub(6,8))
     local itemId = 0
-
     if questVar > 0 then
         itemId = customQuestId[questId][2]
     end
-
     if questVar > 0 then
         player:printToPlayer(string.format('Your current quest is:'), 0, 'Quest NPC')
         player:printToPlayer(string.format('%s', customQuestType[questType][1]), 0, 'Quest Type')

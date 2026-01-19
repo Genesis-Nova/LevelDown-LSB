@@ -5,11 +5,12 @@
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    local basePower = effect:getPower()
+    local jpValue   = target:getJobPointLevel(xi.jp.COMPOSURE_EFFECT)
+	local basePower = effect:getPower() + jpValue
 
     -- ✅ Triple En-spell damage if Composure is active and self-cast
     if target:hasStatusEffect(xi.effect.COMPOSURE) then
-        basePower = basePower * 4.5
+        basePower = basePower * 4
     end
 
     target:addMod(xi.mod.ENSPELL, xi.element.ICE)

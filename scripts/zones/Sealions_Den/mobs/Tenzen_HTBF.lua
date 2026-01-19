@@ -99,9 +99,9 @@ entity.onMobFight = function(mob, target)
     local act    = mob:getCurrentAction()
 
     if
-        act == xi.act.MOBABILITY_START or
-        act == xi.act.MOBABILITY_USING or
-        act == xi.act.MOBABILITY_FINISH
+        act == xi.action.MOBABILITY_START or
+        act == xi.action.MOBABILITY_USING or
+        act == xi.action.MOBABILITY_FINISH
     then
         isBusy = true -- is set to true if Tenzen is in any stage of using a mobskill
     end

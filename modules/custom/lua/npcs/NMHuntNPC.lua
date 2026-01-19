@@ -765,19 +765,21 @@ page10 = --  JSE Ambuscade capes
          local amount = player:getCharVar('StoredRC')
          local JSEAC = player:getLocalVar('JSEACape')
                if player:hasItem(JSEAC) or
-               player:getFreeSlotsCount() < 1 then
-               player:printToPlayer('Please check your inventory and try again!')
+                player:getFreeSlotsCount() < 1 then
+                player:printToPlayer('Please check your inventory and try again!')
+                player:setLocalVar('JSEACape', 0)
                return
                else
-               npcUtil.giveItem(player, JSEAC)
-               player:setCharVar('StoredRC', amount - 750)
+                npcUtil.giveItem(player, JSEAC)
+                player:setCharVar('StoredRC', amount - 750)
                end
          end
     },
         {
         'No',
          function(player)
-
+            player:setLocalVar('JSEACape', 0)
+            return
          end
     },
 }
@@ -1071,19 +1073,22 @@ page21 = --  Jse Reive / Incursion Cape
          local amount = player:getCharVar('StoredRC')
          local JSERIC = player:getLocalVar('JSERICCape')
                if player:hasItem(JSERIC) or
-               player:getFreeSlotsCount() < 1 then
-               player:printToPlayer('Please check your inventory and try again!')
+                player:getFreeSlotsCount() < 1 then
+                player:printToPlayer('Please check your inventory and try again!')
+                player:setLocalVar('JSERICCape', 0)
                return
                else
-               npcUtil.giveItem(player, JSERIC)
-               player:setCharVar('StoredRC', amount - 1000)
+                npcUtil.giveItem(player, JSERIC)
+                player:setCharVar('StoredRC', amount - 1000)
+                player:setLocalVar('JSERICCape', 0)
                end
          end
     },
         {
         'No',
          function(player)
-
+            player:setLocalVar('JSERICCape', 0)
+            return
          end
     },
 }
@@ -1376,19 +1381,22 @@ page25 = --  JSE Neck
          local amount = player:getCharVar('StoredRC')
          local JSEN = player:getLocalVar('JSENeck')
                if player:hasItem(JSEN) or
-               player:getFreeSlotsCount() < 1 then
-               player:printToPlayer('Please check your inventory and try again!')
-               return
+                player:getFreeSlotsCount() < 1 then
+                player:printToPlayer('Please check your inventory and try again!')
+                player:setLocalVar('JSENeck', 0)
+                return
                else
-               npcUtil.giveItem(player, JSEN)
-               player:setCharVar('StoredRC', amount - 1500)
+                npcUtil.giveItem(player, JSEN)
+                player:setCharVar('StoredRC', amount - 1500)
+                player:setLocalVar('JSENeck', 0)
                end
          end
     },
         {
         'No',
          function(player)
-
+            player:setLocalVar('JSENeck', 0)
+            return
          end
     },
 }
@@ -1740,17 +1748,21 @@ page36 = -- Trusts yes or no
                   if player:hasItem(NMTr) or
                      player:getFreeSlotsCount() < 1 then
                      player:printToPlayer('Please check your inventory and try again!')
+                     player:setLocalVar('NMSTrust', 0)
                   return
                   else
                      npcUtil.giveItem(player, NMTr)
                      player:setCharVar('StoredRC', amount - 50)
+                     player:setLocalVar('NMSTrust', 0)
                   end
                elseif NMTrs > 0 then
                    if player:hasSpell(NMTrs) then
                       player:printToPlayer('You have already obtained that spell!')
+                      player:setLocalVar('NMSTrustSpell', 0)
                    return
                    else
                       player:addSpell(NMTrs)
+                      player:setLocalVar('NMSTrustSpell', 0)
                       player:setCharVar('StoredRC', amount - 50)
                    end
                 end
@@ -1759,7 +1771,8 @@ page36 = -- Trusts yes or no
         {
         'No',
          function(player)
-
+            player:setLocalVar('NMSTrustSpell', 0)
+            player:setLocalVar('NMSTrust', 0)
          end
     },
 }
@@ -2144,17 +2157,19 @@ page37 = -- Style Lock Weapons yes or no
                if player:hasItem(NMsw) or
                player:getFreeSlotsCount() < 1 then
                player:printToPlayer('Please check your inventory and try again!')
+               player:setLocalVar('NMStyleW', 0)
                return
                else
                npcUtil.giveItem(player, NMsw)
                player:setCharVar('StoredRC', amount - 100)
+               player:setLocalVar('NMStyleW', 0)
                end
          end
     },
         {
         'No',
          function(player)
-
+            player:setLocalVar('NMStyleW', 0)
          end
     },
 }
@@ -2416,17 +2431,19 @@ page38 = -- Style Lock Armor yes or no
                if player:hasItem(NMsa) or
                player:getFreeSlotsCount() < 1 then
                player:printToPlayer('Please check your inventory and try again!')
+               player:setLocalVar('NMStyleA', 0)
                return
                else
                npcUtil.giveItem(player, NMsa)
                player:setCharVar('StoredRC', amount - 250)
+               player:setLocalVar('NMStyleA', 0)
                end
          end
     },
         {
         'No',
          function(player)
-
+            player:setLocalVar('NMStyleA', 0)
          end
     },
 }
@@ -2873,7 +2890,11 @@ page51 =
         {
         'No',
          function(player)
-
+               player:setLocalVar('NMTRewThreea', 0)
+               player:setLocalVar('NMTRewThreeb', 0)
+               player:setLocalVar('NMTRewThreec', 0)
+               player:setLocalVar('NMTRewThreed', 0)
+               player:setLocalVar('NMTRewThreee', 0)
          end
     },
 }
@@ -3022,17 +3043,19 @@ page55 =
                if player:hasItem(NMtfour) or
                player:getFreeSlotsCount() < 1 then
                player:printToPlayer('Please check your inventory and try again!')
+               player:setLocalVar('NMTRewFour', 0)
                return
                else
                npcUtil.giveItem(player, NMtfour)
                player:setCharVar('NMTRewFourComp', 1)
+               player:setLocalVar('NMTRewFour', 0)
                end
          end
     },
         {
         'No',
          function(player)
-
+            player:setLocalVar('NMTRewFour', 0)
          end
     },
 }
@@ -3148,17 +3171,19 @@ page58 =
                if player:hasItem(NMtfive) or
                player:getFreeSlotsCount() < 1 then
                player:printToPlayer('Please check your inventory and try again!')
+               player:setLocalVar('NMTRewFive', 0)
                return
                else
                npcUtil.giveItem(player, NMtfive)
                player:setCharVar('NMTRewFiveComp', 1)
+               player:setLocalVar('NMTRewFive', 0)
                end
          end
     },
         {
         'No',
          function(player)
-
+            player:setLocalVar('NMTRewFive', 0)
          end
     },
 }
@@ -3326,17 +3351,19 @@ page63 =
                if player:hasItem(NMtsix) or
                player:getFreeSlotsCount() < 1 then
                player:printToPlayer('Please check your inventory and try again!')
+               player:setLocalVar('NMTRewSix', 0)
                return
                else
                npcUtil.giveItem(player, NMtsix)
                player:setCharVar('NMTRewSixComp', 1)
+               player:setLocalVar('NMTRewSix', 0)
                end
          end
     },
         {
         'No',
          function(player)
-
+            player:setLocalVar('NMTRewSix', 0)
          end
     },
 }

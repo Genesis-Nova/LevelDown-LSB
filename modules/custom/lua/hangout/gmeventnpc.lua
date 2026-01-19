@@ -1033,11 +1033,11 @@ local EGtrade =
 [38] = { trade = {1507, 1500, 1506, 1508, 15545, {1488, 3}},        reward = 15545, aug1 = 140, aug1MAX =  4}, --TAMASAU Tamas Ring
 [39] = { trade = {1503, 1505, 1507, 1496, 1508, 28498, {1488, 2}},  reward = 28498, aug1 = 339, aug1MAX =  9}, --PRATIAU Pratik earring
 [40] = { trade = {1488, 10295, {1498, 2},{1502, 2}, {1508, 2}},     reward = 10295, aug1 = 142, aug1MAX =  4}, --KOKOUAU Kokous earring
-[41] = { trade = {1499, 1492, 1500, 1503, 1502, 1488, 1508, 27538}, reward = 27538, aug1 =  80, aug1MAX =  4}, --LEMPOAU Lempo earring
+[41] = { trade = {1499, 1492, 1500, 1503, 1502, 1488, 1508, 27538}, reward = 27538, aug1 = 131, aug1MAX =  4}, --LEMPOAU Lempo earring
 [42] = { trade = {1507, 1495, 1505, 1488, 1508, 15965, {1492, 2}},  reward = 15965, aug1 =  49, aug1MAX =  4}, --ETHERAU Ethereal earring
 [43] = { trade = {1495, 1488, 1508, 15964, {1502, 2}, {1499, 2}},   reward = 15964, aug1 = 132, aug1MAX =  4}, --HOLLOAU Hollow Earring
 [44] = { trade = {1500, 1494, 1501, 1492, 1508, 15963, {1488, 2}},  reward = 15963, aug1 = 138, aug1MAX =  1}, --MAGNEAU Magnetic Earring
-[45] = { trade = {1506, 1496, 1508, 15962, {1507, 2}, {1488, 2}},   reward = 15962, aug1 =  80, aug1MAX =  4}, --STATIAU Static Earring
+[45] = { trade = {1506, 1496, 1508, 15962, {1507, 2}, {1488, 2}},   reward = 15962, aug1 = 131, aug1MAX =  4}, --STATIAU Static Earring
 [46] = { trade = {1501, 1497, 1506, 1508, 26219, {1488, 3}},        reward = 26219, aug1 = 323, aug1MAX =  9}, --NAJASAU Najis loop
 [47] = { trade = {1499, 1513, 1493, 15810, {1488, 2}, {1508, 2}},   reward = 15810, aug1 = 340, aug1MAX =  9}, --LUZAFAU Luzafs ring
 [48] = { trade = {1506, 1499, 1497, 1502, 1505, 1488, 1508, 10799}, reward = 10799, aug1 = 332, aug1MAX =  4}, --SLJORAU Sljor ring
@@ -1077,7 +1077,7 @@ local EGtrade =
 [80] = { trade = {1489, 1506, 1507, 14742, {1492, 2}, {1488, 2}},  	reward = 14742, aug1 =  330, aug1MAX =  4}, --BEASTEA Beastly Earring (14742) = Waltz Pot+5 (AugID: 330)
 [81] = { trade = {1489, 1508, 1506, 1495, 1496, 1492, 1488, 14743}, reward = 14743, aug1 = 1472, aug1MAX =  4}, --BUSHIEA Bushinomimi (14743) = Parry Rate +5% (AugID: 1472)
 [82] = { trade = {1501, 1496, 1494, 1495, 1507, 1492, 1488, 14740}, reward = 14740, aug1 =  363, aug1MAX =  4}, --NIGHTEA Knight's Earring (14740) = Chance of Block Succes +5 (AugID: 363)
-[83] = { trade = {1488, 1506, 1488, 1501, 1491}, 							reward = 13095, aug1 =    0, aug1MAX =  0}, --ASAND Sand Charm (13095) Quest item droped via Pirate Ship Encounter
+[83] = { trade = {1488, 1506, 1488, 1501, 1491}, 					reward = 13095, aug1 =    0, aug1MAX =  0}, --ASAND Sand Charm (13095) Quest item droped via Pirate Ship Encounter
 -- Coborns adds
 --[84] = { trade = {1490, {1505, 2}, {1488, 2}, 1493, {1507, 2}, 1500, 1506, 1492}, reward = 28586}, --CRAFTMASTER Craftmaster Ring
 --[85] = { trade = {1502, {1505, 2}, 1509, {1488, 2}, {1496, 2}, 1499, 1501, 1494}, reward = 27591}, --ORVAAAIL Orvail Ring
@@ -1127,7 +1127,7 @@ local EGtrade =
 			elseif tradedCombo == 64 then
                player:tradeComplete()
                player:addCurrency('daily_tally', 500)
-               player:printToPlayer('Congratulations, you have obtained 1,000 Daily Tally Points!.', 0, 'General')
+               player:printToPlayer('Congratulations, you have obtained 500 Daily Tally Points!.', 0, 'General')
 			elseif tradedCombo == 65 then
                player:tradeComplete()
                player:addCurrency('current_hallmarks', 500)

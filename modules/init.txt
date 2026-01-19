@@ -29,7 +29,7 @@
 # | 
 # | custom/cpp/custom_module.cpp
 # | custom/lua/claim_shield.lua
-# |
+# | custom/lua/reapplybuff.lua
 # ---------------------
 #
 # Will load only custom/cpp/custom_module.cpp and custom/lua/claim_shield.lua.
@@ -63,7 +63,6 @@ custom/lua/Alexan_drop.lua
 custom/lua/the_colosseum.lua
 custom/lua/NMHunt.lua
 custom/lua/add_stones.lua
-custom/lua/reapplybuff.lua
 custom/lua/Supremes.lua
 custom/lua/three_mage_door_open.lua
 custom/lua/remove_limbus_lockout.lua
@@ -72,5 +71,5 @@ custom/lua/persist_nm_time_of_deaths.lua
 custom/lua/Provenance_Mobs.lua
 custom/lua/CampaignBattle.lua
 custom/lua/playerpcarddrops.lua
-
+custom/lua/Login_campaign.lua
 
