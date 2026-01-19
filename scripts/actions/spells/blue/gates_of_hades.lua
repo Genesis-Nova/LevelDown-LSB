@@ -25,12 +25,18 @@ end
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
     params.ecosystem = xi.ecosystem.BEASTS
+	if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusacc = 70
+    elseif caster:hasStatusEffect(xi.effect.BURST_AFFINITY) then
+        params.bonusacc = math.floor(caster:getTP() / 50)
+    end
+	
     params.attackType = xi.attackType.MAGICAL
     params.damageType = xi.damageType.FIRE
     params.attribute = xi.mod.STR
     params.attribute = xi.mod.DEX
-    params.multiplier = 15.0
-    params.tMultiplier = 4.0
+    params.multiplier = 5.36
+    params.tMultiplier = 5.0
     params.tphitslanded = 1
     params.tp150 = 1.375
     params.tp300 = 2.0
@@ -43,14 +49,15 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
     params.ftpMod = { 1.0, 2.5, 5.0 }
-
-    params.addedEffect = xi.effect.BURN
-    local power = 10
-    local tick = 3
-    local duration = 90
+	
+	     -- Handle status effects. effect, power, tik, duration
+    local effectTable =
+    {
+        [1] = { xi.effect.BURN, 10, 3, 90 },
+    }
 
     local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
-    xi.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
+        xi.spells.blue.applyBlueAdditionalEffect(caster, target, params, effectTable)
 
     return damage
 end

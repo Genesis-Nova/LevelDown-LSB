@@ -1,39 +1,44 @@
 -----------------------------------
 -- Spell: Heavy Strike
--- Damage varies with TP
+-- Damage varies with TP.
 -- Spell cost: 32 MP
--- Monster Type: Arcana
+-- Monster Type: Golem
 -- Spell Type: Physical (Blunt)
--- Blue Magic Points: 3
--- Stat Bonus: STR+2
+-- Blue Magic Points: 2
+-- Stat Bonus: ST+2
 -- Level: 92
 -- Casting Time: 1 seconds
 -- Recast Time: 30 seconds
--- Skillchain Element(s): Fragmentation, Transfixion
+-- Skillchain Element(s): Fragmentation/Transfixion
 -- Combos: Double Attack, Triple Attack
 -----------------------------------
----@type TSpell
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
     return 0
 end
 
--- Need to implement Automatic crit
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.ARCANA
-    params.tpmod = xi.spells.blue.tpMod.ATTACK
+    params.ecosystem = xi.ecosystem.GOLEM
+    params.bonusacc = 0
+    if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusacc = 70
+    elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
+        params.bonusacc = math.floor(caster:getTP() / 50)
+    end
     params.attackType = xi.attackType.PHYSICAL
-    params.damageType = xi.damageType.HTH
+    params.damageType = xi.damageType.BLUNT
     params.scattr = xi.skillchainType.FRAGMENTATION
     params.scattr2 = xi.skillchainType.TRANSFIXION
     params.numhits = 1
-    params.multiplier = 2.5 -- Using https://wiki.ffo.jp/html/24367.html over bg-wiki for this
+    params.multiplier = 1.5
+	params.tmultiplier = 2.25
     params.tp150 = 3.5
     params.tp300 = 4.0
-    params.azuretp = 4.0 -- This is a guess as blue gartr doesn't have this info
-    params.duppercap = 75
+    params.tp350 = 5.0
+    params.azuretp = 6.5
+    params.duppercap = 99
     params.str_wsc = 0.5
     params.dex_wsc = 0.0
     params.vit_wsc = 0.0
@@ -41,8 +46,6 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.int_wsc = 0.0
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
-    params.bonusacc = -100
-    params.critchance = 100 -- TODO: this should cap to 100%
 
     return xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
 end

@@ -20,14 +20,20 @@ end
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
     params.ecosystem = xi.ecosystem.AMORPHS
+	if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusacc = 70
+    elseif caster:hasStatusEffect(xi.effect.BURST_AFFINITY) then
+        params.bonusacc = math.floor(caster:getTP() / 50)
+    end
+	
     params.attackType = xi.attackType.MAGICAL
     params.damageType = xi.damageType.WATER
     params.attribute = xi.mod.MND
-    params.multiplier = 4.5
+    params.multiplier = 2.25
     params.diff = 2
-    params.tMultiplier = 4.0
+    params.tMultiplier = 3.0
     params.tphitslanded = 1
-    params.duppercap = 99
+    params.duppercap = 69
     params.str_wsc = 0.2
     params.dex_wsc = 0.0
     params.vit_wsc = 0.0
@@ -36,13 +42,14 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.mnd_wsc = 0.2
     params.chr_wsc = 0.0
 
-    params.addedEffect = xi.effect.DROWN
-    local power = 65
-    local tick = 0
-    local duration = 180
+	    -- Handle status effects. effect, power, tik, duration
+    local effectTable =
+    {
+        [1] = { xi.effect.DROWN, 65, 0, 180 },
+    }
 
     local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
-    xi.spells.blue.useMagicalSpellAddedEffect(caster, target, spell, params, power, tick, duration)
+        xi.spells.blue.applyBlueAdditionalEffect(caster, target, params, effectTable)
 
     return damage
 end

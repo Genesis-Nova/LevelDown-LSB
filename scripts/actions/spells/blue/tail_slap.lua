@@ -22,6 +22,12 @@ end
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
     params.ecosystem  = xi.ecosystem.BEASTMEN
+	if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusacc = 70
+    elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
+        params.bonusacc = math.floor(caster:getTP() / 50)
+    end
+	
     params.tpmod      = xi.spells.blue.tpMod.ATTACK
     params.attackType = xi.attackType.PHYSICAL
     params.damageType = xi.damageType.HTH
@@ -34,9 +40,9 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.tp300      = 1.625
     params.azuretp    = 1.625
     params.duppercap  = 75
-    params.str_wsc    = 0.2
+    params.str_wsc    = 0.4
     params.dex_wsc    = 0.0
-    params.vit_wsc    = 0.5
+    params.vit_wsc    = 0.9
     params.agi_wsc    = 0.0
     params.int_wsc    = 0.0
     params.mnd_wsc    = 0.0

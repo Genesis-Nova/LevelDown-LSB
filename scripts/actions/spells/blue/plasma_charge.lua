@@ -9,7 +9,7 @@
 -- Level: 75
 -- Casting Time: 3 seconds
 -- Recast Time: 60 seconds
--- Duration: 60 seconds
+-- Duration: 60 seconds *wiki.ffo.jp: Damage increased to 15, Dur increased to 15 min
 -----------------------------------
 -- Combos: Auto Refresh
 -----------------------------------
@@ -21,8 +21,8 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local power = 5 -- 5 dmg
-    local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 60)
+    local power = 15 -- 15 dmg
+    local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 900)
 
     if not target:addStatusEffect(xi.effect.SHOCK_SPIKES, power, 0, duration) then
         spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)

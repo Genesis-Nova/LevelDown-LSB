@@ -20,27 +20,20 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
     end
 end
 spellObject.onSpellCast = function(caster, target, spell)
-    local params = {}
-    params.ecosystem = xi.ecosystem.DRAGON
-    params.attackType = xi.attackType.MAGICAL
-    params.skillType = xi.skill.BLUE_MAGIC
-    params.damageType = xi.damageType.DARK
-    params.effect = xi.effect.TERROR
-    local power = 10
-    local tick = 3
-    local duration = 5
-    local resistThreshold = 0.5
-    local resist = applyResistanceEffect(caster, target, spell, params)
-    local isGaze = false
-    local isConal = false
 
-    if target:isNM() then
-       if resist >= resistThreshold then
-          resistThreshold = 0
-       end
-    end
+	local params = {}
+    params.ecosystem      	= xi.ecosystem.DRAGON
+	params.skillType 		= xi.skill.BLUE_MAGIC
+	params.effect 			= xi.effect.TERROR
+    params.power 			= 10
+    params.tick 			= 3
+    params.duration 		= 15
+    params.resistThreshold 	= 0.50
+    params.isGaze 			= false
+    params.isConal 			= false
 
-         return xi.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
+    return xi.spells.blue.useEnfeeblingSpell(caster, target, spell, params)
+
 end
 
 return spellObject

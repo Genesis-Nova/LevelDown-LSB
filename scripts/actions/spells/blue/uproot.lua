@@ -67,17 +67,23 @@ local removables =
             }
     local params = {}
     params.ecosystem = xi.ecosystem.PLANOID
+	if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusacc = 70
+    elseif caster:hasStatusEffect(xi.effect.BURST_AFFINITY) then
+        params.bonusacc = math.floor(caster:getTP() / 50)
+    end
+	
     params.attackType = xi.attackType.MAGICAL
     params.damageType = xi.damageType.LIGHT
     params.attribute = xi.mod.VIT
-    params.multiplier = 1.36
-    params.tMultiplier = 1.7
+    params.multiplier = 4.36
+    params.tMultiplier = 4.7
     params.duppercap = 69
     params.str_wsc = 0.0
     params.dex_wsc = 0.0
     params.vit_wsc = 0.4
     params.agi_wsc = 0.0
-    params.int_wsc = 0.2
+    params.int_wsc = 0.0
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
 

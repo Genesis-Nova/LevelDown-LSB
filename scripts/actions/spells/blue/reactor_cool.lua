@@ -9,7 +9,7 @@
 -- Level: 74
 -- Casting Time: 3 seconds
 -- Recast Time: 60 seconds
--- Duration: 120 seconds (2 minutes)
+-- Duration: 180 seconds (3 minutes)  *wiki.ffo.jp: Damage increased to 15, Dur increased to 3 min
 -----------------------------------
 -- Combos: Magic Attack Bonus
 -----------------------------------
@@ -21,7 +21,7 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 120)
+    local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 180)
 
     -- Reactor Cool Will Overwrite Ice Spikes and Def Boost regardless of Power
     if
@@ -33,7 +33,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     end
 
     target:addStatusEffect(xi.effect.DEFENSE_BOOST, 12, 0, duration)
-    target:addStatusEffect(xi.effect.ICE_SPIKES, 5, 0, duration)
+    target:addStatusEffect(xi.effect.ICE_SPIKES, 15, 0, duration)
     spell:setMsg(xi.msg.basic.MAGIC_GAIN_EFFECT)
 
     return xi.effect.DEFENSE_BOOST

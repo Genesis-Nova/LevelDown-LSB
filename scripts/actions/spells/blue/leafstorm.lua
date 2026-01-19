@@ -21,20 +21,37 @@ end
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
     params.ecosystem = xi.ecosystem.treant
-    params.attackType = xi.attackType.AoE
-    params.damageType = xi.damageType.wind
-    params.diff = 0 -- no stat increases magic accuracy
-    params.skillType = xi.skill.BLUE_MAGIC
-    params.hpMod = 2
-    params.lvlMod = 1
-
-    local results = xi.spells.blue.useBreathSpell(caster, target, spell, params, true)
-    local damage = results[1]
-    local resist = results[2]
-
-    if resist >= 0.5 then
-        target:addStatusEffect(xi.effect.PARALYSIS, 15, 0, 60 * resist)
+	if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusacc = 70
+    elseif caster:hasStatusEffect(xi.effect.BURST_AFFINITY) then
+        params.bonusacc = math.floor(caster:getTP() / 50)
     end
+	
+	params.attackType = xi.attackType.MAGICAL
+    params.damageType = xi.damageType.WIND
+	params.attribute = xi.mod.STR
+    params.diff = 0
+    params.multiplier = 2.75
+    params.tMultiplier = 2
+    params.tphitslanded = 1
+    params.duppercap = 99
+    params.str_wsc = 0.3
+    params.dex_wsc = 0.0
+    params.vit_wsc = 0.0
+    params.agi_wsc = 0.0
+    params.int_wsc = 0.0
+    params.mnd_wsc = 0.0
+    params.chr_wsc = 0.0
+	params.resistThreshold 	= 0.50
+	
+	     -- Handle status effects. effect, power, tik, duration
+    local effectTable =
+    {
+        [1] = { xi.effect.PARALYSIS, 15, 0, 60 },
+    }
+
+    local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
+        xi.spells.blue.applyBlueAdditionalEffect(caster, target, params, effectTable)
 
     return damage
 end

@@ -22,6 +22,13 @@ end
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
     params.ecosystem = xi.ecosystem.VERMIN
+	params.tpmod = TPMOD_DEF
+    params.bonusdef = 0
+    if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusdef = 70
+    elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
+        params.bonusdef = math.floor(caster:getTP() / 50)
+    end
     params.tpmod = xi.spells.blue.tpMod.DAMAGE
     params.attackType = xi.attackType.PHYSICAL
     params.damageType = xi.damageType.BLUNT
@@ -30,7 +37,8 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.multiplier = 1.75
     params.tp150 = 2.125
     params.tp300 = 2.75
-    params.azuretp = 2.875
+	params.tp300 = 2.85
+    params.azuretp = 3.0
     params.duppercap = 75
     params.str_wsc = 0.5
     params.dex_wsc = 0.0

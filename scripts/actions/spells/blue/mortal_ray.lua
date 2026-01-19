@@ -17,21 +17,21 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
     return 0
 end
 
-spellObject.onSpellCast = function(caster, target, spell)
+spellObject.onSpellCast 	= function(caster, target, spell)
     local params = {}
-    params.ecosystem = xi.ecosystem.DRAGON
-    params.effect = xi.effect.DOOM
-    local power = 10
-    local tick = 3
-    local duration = 188 
-    local resistThreshold = 0.0
-    local isGaze = true
-    local isConal = false
+    params.ecosystem 		= xi.ecosystem.DRAGON
+    params.effect 			= xi.effect.DOOM
+    params.power 			= 10
+    params.tick 			= 3
+    params.duration 		= 188
+    params.resistThreshold 	= 0.00
+    params.isGaze 			= true
+    params.isConal 			= false
 
-    if target:isNM() then
+	if target:isNM() then
         skill:setMsg(xi.msg.basic.SKILL_MISS)
     else
-        return xi.spells.blue.useEnfeeblingSpell(caster, target, spell, params, power, tick, duration, resistThreshold, isGaze, isConal)
+		return xi.spells.blue.useEnfeeblingSpell(caster, target, spell, params)
     end
 end
 

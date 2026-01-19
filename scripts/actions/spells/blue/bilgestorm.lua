@@ -25,16 +25,34 @@ end
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
     params.ecosystem = xi.ecosystem.DEMON
+	params.tpmod = TPMOD_DAMAGE
+	 params.bonusatt = 0
+    if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusatt = 70
+    elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
+        params.bonusatt = math.floor(caster:getTP() / 50)
+    end
+	
     params.skillType = xi.skill.BLUE_MAGIC
+	 params.tpmod = TPMOD_DAMAGE
+	 params.bonusatt = 0
+    if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusatt = 70
+    elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
+        params.bonusatt = math.floor(caster:getTP() / 50)
+    end
+	
     params.attackType = xi.attackType.PHYSICAL
     params.damageType = xi.damageType.BLUNT
     params.scattr = xi.skillchainType.GRAVITATION
     params.scattr = xi.skillchainType.DARKNESS
     params.numhits = 1
-    params.multiplier = 1.78
-    params.tp150 = 1.78
-    params.tp300 = 1.78
-    params.azuretp = 1.78
+    params.multiplier = 6.78
+	params.tmultiplier = 5.0
+    params.tp150 = 4.78
+    params.tp300 = 4.78
+	params.tp350 = 5.25
+    params.azuretp = 6.78
     params.duppercap = 75
     params.str_wsc = 0.0
     params.dex_wsc = 0.0
@@ -43,23 +61,26 @@ spellObject.onSpellCast = function(caster, target, spell)
     params.int_wsc = 0.0
     params.mnd_wsc = 0.0
     params.chr_wsc = 0.0
+	
+	 local effectTable =
+    {
+        [1] = { xi.effect.DEFENSE_DOWN,  25, 0, duration },
+		[2] = { xi.effect.ATTACK_DOWN, 	 25, 0, duration },
+		[3] = { xi.effect.ACCURACY_DOWN, 10, 0, duration },
+	}
+    local fTP = caster:getTP()
+    local resistThreshold = 0
+    if fTP >= 2000 then 
+        duration = 60
+    elseif fTP == 3000 then
+        duration = 120
+        resistThreshold = 0.5
+        end
     local duration = 30
     local resistThreshold = 0.5
-    local resist = applyResistanceEffect(caster, target, spell, params)
-
-        local actionOne = target:addStatusEffect(xi.effect.DEFENSE_DOWN, 25, 0, duration * resist)
-        local actionTwo = target:addStatusEffect(xi.effect.ATTACK_DOWN, 25, 0, duration * resist)
-        local actionThree = target:addStatusEffect(xi.effect.ACCURACY_DOWN, 10, 0, duration * resist)
-            if not actionOne and not actionTwo and not actionThree then -- all statuses fail to apply
-               spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
-            elseif not actionOne and not actionTwo and actionThree  then -- the first 2 status fails to apply
-               returnEffect = xi.effect.ACCURACY_DOWN
-            elseif not actionOne and not actionThree and actionTwo then -- the 1 / 3 status fails to apply
-               returnEffect = xi.effect.ATTACK_DOWN
-            end
 
         local damage = xi.spells.blue.usePhysicalSpell(caster, target, spell, params)
-    xi.spells.blue.usePhysicalSpellAddedEffect(caster, target, spell, params, damage, power, tick, duration)
+    xi.spells.blue.applyBlueAdditionalEffect(caster, target, spell, params, damage, effectTable)
 
     return damage, returnEffect
 end

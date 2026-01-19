@@ -20,12 +20,18 @@ end
 spellObject.onSpellCast = function(caster, target, spell)
     local params = {}
     params.ecosystem = xi.ecosystem.ELEMENTALS
+	if caster:hasStatusEffect(xi.effect.AZURE_LORE) then
+        params.bonusacc = 70
+    elseif caster:hasStatusEffect(xi.effect.BURST_AFFINITY) then
+        params.bonusacc = math.floor(caster:getTP() / 50)
+    end
+	
     params.attackType = xi.attackType.MAGICAL
     params.damageType = xi.damageType.WIND
     params.attribute = xi.mod.AGI
-    params.multiplier = 1.36
-    params.tMultiplier = 1.5
-    params.duppercap = 69
+    params.multiplier = 4.36
+    params.tMultiplier = 4.5
+    params.duppercap = 99
     params.str_wsc = 0.0
     params.dex_wsc = 0.0
     params.vit_wsc = 0.0
