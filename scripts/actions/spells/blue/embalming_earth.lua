@@ -51,7 +51,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     local damage = xi.spells.blue.useMagicalSpell(caster, target, spell, params)
         xi.spells.blue.applyBlueAdditionalEffect(caster, target, params, effectTable)
 
-    return 
+    return damage
 end
 
 return spellObject
