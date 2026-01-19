@@ -109,21 +109,27 @@ player:printToPlayer(string.format('STR: [%i] DEX: [%i] VIT: [%i] AGI: [%i] MND:
 
 player:printToPlayer(string.format('ATT: [%i] ACC: [%i] R.ATT: [%i] R.ACC: [%i]', target:getStat(xi.mod.ATT), target:getMod(xi.mod.ACC), target:getMod(xi.mod.RATT), target:getMod(xi.mod.RACC)), xi.msg.channel.SYSTEM_3)
 
-player:printToPlayer(string.format('DEF: [%i] Magic DEF: [%i] EVA: [%i] Magic EAV: [%i]', target:getStat(xi.mod.DEF), target:getMod(xi.mod.MDEF), target:getStat(xi.mod.EVA), target:getMod(xi.mod.MEVA)), xi.msg.channel.SYSTEM_3)
+player:printToPlayer(string.format('DEF: [%i] Magic DEF: [%i] EVA: [%i] Magic EVA: [%i]', target:getStat(xi.mod.DEF), target:getMod(xi.mod.MDEF), target:getStat(xi.mod.EVA), target:getMod(xi.mod.MEVA)), xi.msg.channel.SYSTEM_3)
 
-player:printToPlayer(string.format('Dmg Taken: [%i%%] Magic DT: [%i%%] Magic DT II: [%i%%] Phy DT: [%i%%] Phy DT II: [%i%%]', target:getMod(xi.mod.DMG) * .01, target:getMod(xi.mod.DMGMAGIC) * .01, target:getMod(xi.mod.DMGMAGIC_II) * .01, target:getMod(xi.mod.DMGPHYS) * .01, target:getMod(xi.mod.DMGPHYS_II) * .01), xi.msg.channel.SYSTEM_3)
+player:printToPlayer(string.format('Dmg Taken: [%i%%] Magic DT: [%i%%] Magic DT II: [%i%%] Phy DT: [%i%%] Phy DT II: [%i%%] Breath DT: [%i%%]', target:getMod(xi.mod.DMG) * .01, target:getMod(xi.mod.DMGMAGIC) * .01, target:getMod(xi.mod.DMGMAGIC_II) * .01, target:getMod(xi.mod.DMGPHYS) * .01, target:getMod(xi.mod.DMGPHYS_II) * .01, target:getMod(xi.mod.DMGBREATH) * .01), xi.msg.channel.SYSTEM_3)
 
 player:printToPlayer(string.format('Magic ACC: [%i] Magic DMG: [%i] Magic Burst: [%i%%] Magic Att Bonus: [%i]', target:getMod(xi.mod.MACC), target:getMod(xi.mod.MAGIC_DAMAGE), target:getMod(xi.mod.MAGIC_BURST_BONUS_CAPPED), target:getMod(xi.mod.MATT)), xi.msg.channel.SYSTEM_3)
 
-player:printToPlayer(string.format('Haste Ability: [%i%%] Haste Magic: [%i%%] Haste Gear: [%i%%] Fast Cast: [%i%%]', target:getMod(xi.mod.HASTE_ABILITY) * .01, target:getMod(xi.mod.HASTE_MAGIC) * .01, target:getMod(xi.mod.HASTE_GEAR) * .01, target:getMod(xi.mod.FASTCAST)), xi.msg.channel.SYSTEM_3)
+player:printToPlayer(string.format('Refresh / Tick: [%i] Regen / Tick: [%i] Regain / Tick: [%i] Spell Intrp: [%i] Conserve MP: [%i]', target:getMod(xi.mod.REFRESH), target:getMod(xi.mod.REGEN), target:getMod(xi.mod.REGAIN), target:getMod(xi.mod.SPELLINTERRUPT), target:getMod(xi.mod.CONSERVE_MP)), xi.msg.channel.SYSTEM_3)
 
-player:printToPlayer(string.format('Subtle Blow: [%i%%] Subtle Blow II: [%i%%] Store TP: [%i] Dual Wield: [%i]', target:getMod(xi.mod.SUBTLE_BLOW) * .01, target:getMod(xi.mod.SUBTLE_BLOW_II) * .01, target:getMod(xi.mod.STORETP), target:getMod(xi.mod.DUAL_WIELD)), xi.msg.channel.SYSTEM_3)
+player:printToPlayer(string.format('Haste Ability: [%i%%] Haste Magic: [%i%%] Haste Gear: [%i%%] Fast Cast: [%i]', target:getMod(xi.mod.HASTE_ABILITY) * .01, target:getMod(xi.mod.HASTE_MAGIC) * .01, target:getMod(xi.mod.HASTE_GEAR) * .01, target:getMod(xi.mod.FASTCAST)), xi.msg.channel.SYSTEM_3)
 
-player:printToPlayer(string.format('Refresh / Tick: [%i] Regen / Tick: [%i] Regain / Tick: [%i]', target:getMod(xi.mod.REFRESH), target:getMod(xi.mod.REGEN), target:getMod(xi.mod.REGAIN)), xi.msg.channel.SYSTEM_3)
+player:printToPlayer(string.format('Quick Magic: [%i] Cure Potency: [%i%%] Cure Potency II: [%i%%] Cure Pot Recv: [%i%%] Waltz Potency: [%i%%]', target:getMod(xi.mod.QUICK_MAGIC), target:getMod(xi.mod.CURE_POTENCY), target:getMod(xi.mod.CURE_POTENCY_II), target:getMod(xi.mod.CURE_POTENCY_RCVD), target:getMod(xi.mod.WALTZ_POTENCY)), xi.msg.channel.SYSTEM_3)
 
-player:printToPlayer(string.format('Quick Magic: [%i%%] Cure Potency: [%i%%] Cure Ptency II: [%i%%]', target:getMod(xi.mod.QUICK_MAGIC) * .01, target:getMod(xi.mod.CURE_POTENCY) * .01, target:getMod(xi.mod.CURE_POTENCY_II) * .01), xi.msg.channel.SYSTEM_3)
+player:printToPlayer(string.format('Store TP: [%i] Dual Wield: [%i] Subtle Blow: [%i] Subtle Blow II: [%i] Counter: [%i] Parry Rate: [%i]', target:getMod(xi.mod.STORETP), target:getMod(xi.mod.DUAL_WIELD), target:getMod(xi.mod.SUBTLE_BLOW), target:getMod(xi.mod.SUBTLE_BLOW_II), target:getMod(xi.mod.COUNTER), target:getMod(xi.mod.INQUARTATA)), xi.msg.channel.SYSTEM_3)
 
-player:printToPlayer(string.format('Crit Hit Rate: [%i] Crit Hit DMG: [%i] Double Attack [%i] Triple Attack [%i] Quadruple Attack [%i]', target:getMod(xi.mod.CRITHITRATE), target:getMod(xi.mod.CRIT_DMG_INCREASE), target:getMod(xi.mod.DOUBLE_ATTACK), target:getMod(xi.mod.TRIPLE_ATTACK), target:getMod(xi.mod.QUAD_ATTACK)), xi.msg.channel.SYSTEM_3)
+player:printToPlayer(string.format('Shield Block Rate: [%i] Shield Mastery: [%i] Tactical Parry: [%i] Tactical Guard: [%i] Occult Accumen: [%i]', target:getMod(xi.mod.SHIELDBLOCKRATE), target:getMod(xi.mod.SHIELD_MASTERY_TP), target:getMod(xi.mod.TACTICAL_PARRY), target:getMod(xi.mod.TACTICAL_GUARD), target:getMod(xi.mod.OCCULT_ACUMEN)), xi.msg.channel.SYSTEM_3)
+
+player:printToPlayer(string.format('Crit Hit Rate: [%i] Crit Hit DMG: [%i] Double Attack: [%i] Triple Attack: [%i] Quadruple Attack: [%i]', target:getMod(xi.mod.CRITHITRATE), target:getMod(xi.mod.CRIT_DMG_INCREASE), target:getMod(xi.mod.DOUBLE_ATTACK), target:getMod(xi.mod.TRIPLE_ATTACK), target:getMod(xi.mod.QUAD_ATTACK)), xi.msg.channel.SYSTEM_3)
+
+player:printToPlayer(string.format('WS Dmg First Hit: [%i] WS Dmg All Hits: [%i] WS Acc: [%i] TP Bonus: [%i] Save TP: [%i]', target:getMod(xi.mod.ALL_WSDMG_FIRST_HIT), target:getMod(xi.mod.ALL_WSDMG_ALL_HITS), target:getMod(xi.mod.WSACC), target:getMod(xi.mod.TP_BONUS), target:getMod(xi.mod.SAVETP)), xi.msg.channel.SYSTEM_3)
+
+player:printToPlayer(string.format('Conserve TP: [%i] Skillchain Bonus: [%i] Skillchain Dmg: [%i]', target:getMod(xi.mod.CONSERVE_TP), target:getMod(xi.mod.SKILLCHAINBONUS), target:getMod(xi.mod.SKILLCHAINDMG)), xi.msg.channel.SYSTEM_3)
 
 player:printToPlayer(string.format('Your enmity against %s is ... CE = %u ... VE = %u', target:getName(), target:getCE(player), target:getVE(player)), xi.msg.channel.SYSTEM_3)
 

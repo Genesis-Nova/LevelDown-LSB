@@ -57,7 +57,7 @@ content.loot =
 
     {
         { itemId = xi.item.NONE,                            weight = 750 }, -- nothing
-        { itemId = xi.item.COPY_OF_REMS_TALE_CHAPTER_6,     weight =  250}, -- Rem Tale Ch 6 
+        { itemId = xi.item.COPY_OF_REMS_TALE_CHAPTER_6,     weight =  50}, -- Rem Tale Ch 6 
     },
 
     {
@@ -68,18 +68,18 @@ content.loot =
     },
 
     {
-        { itemId = xi.item.NONE,                    weight = 500 }, -- nothing
-        { itemId = xi.item.MESYOHI_SWORD,           weight = 100 }, -- Mes'yohi Sword
-        { itemId = xi.item.MESYOHI_ROD,             weight= 100 }, -- Mes'yohi Rod
-        { itemId = xi.item.SERAPHICALLER,           weight = 100 }, -- Seraphicaller
-        { itemId = xi.item.DIVINATOR,               weight = 100 }, -- Divinator
-        { itemId = xi.item.DIVINATOR_II,            weight = 100 }, -- Divinator II
+        { itemId = xi.item.NONE,                    weight = 50 }, -- nothing
+        { itemId = xi.item.MESYOHI_SWORD,           weight = 10 }, -- Mes'yohi Sword
+        { itemId = xi.item.MESYOHI_ROD,             weight = 10 }, -- Mes'yohi Rod
+        { itemId = xi.item.SERAPHICALLER,           weight = 10 }, -- Seraphicaller
+        { itemId = xi.item.DIVINATOR,               weight = 10 }, -- Divinator
+        { itemId = xi.item.DIVINATOR_II,            weight = 10 }, -- Divinator II
     },
 
     {
-        { itemId = xi.item.NONE,                weight = 250 }, -- nothing
-        { itemId = xi.item.MESYOHI_HAUBERGEON,  weight = 375 }, -- 
-        { itemId = xi.item.MESYOHI_SLACKS,      weight = 375 }, -- 
+        { itemId = xi.item.NONE,                weight = 50 }, -- nothing
+        { itemId = xi.item.MESYOHI_HAUBERGEON,  weight = 2 }, -- 
+        { itemId = xi.item.MESYOHI_SLACKS,      weight = 10 }, -- 
     },
 }
 
