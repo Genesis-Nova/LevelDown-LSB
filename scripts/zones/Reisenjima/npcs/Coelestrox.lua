@@ -218,16 +218,23 @@ entity.onEventFinish = function(player, csid, option, npc)
                     end
        elseif csid == 32 and
               option >= 1 and option <= 22 then
-              player:confirmTrade()
               for _, csidOption in pairs(returnCards) do
                      if option == csidOption[2] then
-                        npcUtil.giveItem(player, {{csidOption[1], returnAmount}})
-                        player:setCharVar('JCardExchange',0)
+                        if npcUtil.giveItem(player, {{csidOption[1], returnAmount}}) then
+                            player:confirmTrade()
+                            player:setCharVar('JCardExchange',0)
+                        end
+
+                        if player:getCharVar('JCardReturnedID') > 0 and
+                            npcUtil.giveItem(player, {{player:getCharVar('JCardReturnedID'), player:getCharVar('JCardReturned')}}, { silent = true }) then
+                                player:setCharVar('JCardReturned',0)
+                                player:setCharVar('JCardReturnedID',0)
+                        end
+
+                        return
                      end
               end
-                    npcUtil.giveItem(player, {{player:getCharVar('JCardReturnedID'), player:getCharVar('JCardReturned')}}, { silent = true })
-                    player:setCharVar('JCardReturned',0)
-                    player:setCharVar('JCardReturnedID',0)
+
        elseif csid == 32 and
               option == 0 or
               option > 22 then
