@@ -46,8 +46,6 @@ UPDATE mob_groups SET HP = 17000 WHERE name = "Locus_Camelopard";
 UPDATE mob_groups SET HP = 17000 WHERE name = "Locus_Hypnos_Eft";
 UPDATE mob_groups SET HP = 17000 WHERE name = "Locus_Ghost_Crab";
 --						Mob Family settings
-UPDATE mob_family_system SET mobradius = 3.0 WHERE familyID = 77;
-UPDATE mob_family_system SET mobradius = 3.0 WHERE familyID = 188;
 UPDATE mob_family_system SET detects = 3 WHERE familyID = 46;
 UPDATE mob_family_system SET detects = 3 WHERE familyID = 47;
 UPDATE mob_family_system SET detects = 3 WHERE familyID = 77;

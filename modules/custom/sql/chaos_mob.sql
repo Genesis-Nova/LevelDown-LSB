@@ -1,5 +1,5 @@
 -- supreme bahamut ( chaos )
-INSERT INTO mob_family_system VALUES (508, 'Chaos', 78, 'Supreme_Being', 18,'Unclassified', 6.0,40,120,90,5,5,5,5,5,5,5,5,5,5,5,3,1,0);
+INSERT INTO mob_family_system VALUES (508, 'Chaos', 78, 'Supreme_Being', 18,'Unclassified',40,120,90,5,5,5,5,5,5,5,5,5,5,5,3,1,0);
 INSERT INTO `mob_pools` VALUES (40019,'Chaos','Chaos',508,0x00004b0e00000000000000000000000000000000,4,8,7,240,100,1024,1,1,0,2,6198,32,100,157,0,0,1000,0,0,49990,449,2,54);
 INSERT INTO `mob_groups` VALUES (11506, 40019, 299, 'Chaos',0,128,0,1550000,9999,145,150,0);
 

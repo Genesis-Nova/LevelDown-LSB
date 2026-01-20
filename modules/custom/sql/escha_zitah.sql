@@ -26,19 +26,6 @@ UPDATE mob_spawn_points SET pos_X = 400.8694,  pos_y = -0.0000, pos_z = -635.893
 UPDATE mob_spawn_points SET pos_X = -364.7595, pos_y = -0.1233, pos_z = -434.251,   pos_rot = 31  WHERE mobid = 17957334; -- blaze wing
 UPDATE mob_spawn_points SET pos_X = -245.3619, pos_y = -0.4082, pos_z = 617.7747,   pos_rot = 16  WHERE mobid = 17957349; -- Wrathare
 UPDATE mob_spawn_points SET pos_X = -10.3273,  pos_y = -0.3153, pos_z = -158.021,   pos_rot = 20  WHERE mobid = 17957347; -- Pazuzu
--- add NM spawn points
--- INSERT INTO `nm_spawn_points` VALUES (17957278,0,-124.4,-0.268,34.275); -- Prickly_Pitriv
--- INSERT INTO `nm_spawn_points` VALUES (17957280,0,-19.01,0.475,80.188); -- Abyssdiver
--- INSERT INTO `nm_spawn_points` VALUES (17957294,0,-306.5,0.125,419.835); -- Beist
--- INSERT INTO `nm_spawn_points` VALUES (17956870,0,1,1,1); -- Emperor_Arthro
--- INSERT INTO `nm_spawn_points` VALUES (17957296,0,-143.2,0.285,-452.15); -- Eschan_Jewelweed
--- INSERT INTO `nm_spawn_points` VALUES (17957277,0,-357.5,0.238,14.435); -- Hugemaw_Harold
--- INSERT INTO `nm_spawn_points` VALUES (17957293,0,237.14,-1.708,-305.54); -- Immanibugard
--- INSERT INTO `nm_spawn_points` VALUES (17957292,0,-517.7,0.43,180.716); -- Jester_Malatrix
--- INSERT INTO `nm_spawn_points` VALUES (17957281,0,-36.69,-0.328,-350.24); -- Keeper_of_Heiligtum
--- INSERT INTO `nm_spawn_points` VALUES (17957282,0,-44.051,-0.341,-150.481); -- Muut
--- INSERT INTO `nm_spawn_points` VALUES (17957279,0,-493.9,0.18,231.925); -- Serpopard_Ninlil
--- INSERT INTO `nm_spawn_points` VALUES (17957291,0,-340.23,2.046,166.833); -- Voso
 -- Shockmaw
 INSERT INTO mob_skill_lists VALUES ('Shockmaw', 50001, 2869); -- deap sea dirge
 INSERT INTO mob_skill_lists VALUES ('Shockmaw', 50001, 2870); -- caudal capacitor
