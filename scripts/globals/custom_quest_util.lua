@@ -9,7 +9,6 @@
 -- add !custquest command to modules commands
 -- adjust for 75 job points ---> merit points ( player:getMeritCount() , player:setMerits(##) ) ** remove any NM that doesnt exist in 75
 ----------------------------------------------------
-require('scripts/globals/helm')
 
 -- Fallback for getMidnight() after LSB time helper changes.
 -- This variant returns the NEXT midnight in Japan Standard Time (UTC+09:00),

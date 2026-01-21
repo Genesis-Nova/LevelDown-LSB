@@ -432,3 +432,19 @@ INSERT INTO `mob_skill_lists` VALUES ('ShadowLord', 225, 3290);
 UPDATE mob_groups SET HP = 200000,  MP = 9999, minLevel = 120, maxLevel = 125 WHERE name = 'Kamlanaut_HTBF' AND groupid = 16;
 UPDATE mob_groups SET HP = 20000,  MP = 9999, minLevel = 110, maxLevel = 115 WHERE name = 'Esoteric_Scrivening' AND groupid = 17;
 UPDATE mob_spawn_points SET mobname = 'Kamlanaut_HTBF' WHERE mobname = 'Kamlanaut' AND groupid = 16;
+
+-- Dawn II HTBF
+--adds HP/MP and fixes modelid to phase 1
+UPDATE mob_groups SET HP = 80000,  MP = 9999, minLevel = 120, maxLevel = 125, poolid = 3205 WHERE name = 'Promathia_htbf' AND groupid = 7;
+--add Phase 2 Promathia
+INSERT INTO mob_groups (groupid, poolid, zoneid, name, respawntime, spawntype, dropid, HP, MP, minLevel, maxLevel, allegiance) VALUES (13, 5106, 36, 'Promathia_htbf_2', 0, 128, 0, 120000, 10000, 120, 125, 0);
+
+
+--Spawnpoints for both Promathia's
+--Spawnpoints for both Promathia's
+UPDATE mob_spawn_points SET mobid=16924691, mobname='Promathia_htbf', polutils_name='Promathia', groupid=7, pos_x=-520.000, pos_y=-120.000, pos_z=528.000, pos_rot=64 WHERE mobid=16924691;
+UPDATE mob_spawn_points SET mobid=16924692, mobname='Promathia_htbf_2', polutils_name='Promathia', groupid=13, pos_x=-520.000, pos_y=-120.000, pos_z=528.000, pos_rot=64 WHERE mobid=16924692;
+UPDATE mob_spawn_points SET mobid=16924693, mobname='Promathia_htbf', polutils_name='Promathia', groupid=7, pos_x=520.404, pos_y=0.000, pos_z=527.522, pos_rot=64 WHERE mobid=16924693;
+UPDATE mob_spawn_points SET mobid=16924694, mobname='Promathia_htbf_2', polutils_name='Promathia', groupid=13, pos_x=520.404, pos_y=0.000, pos_z=527.522, pos_rot=64 WHERE mobid=16924694;
+UPDATE mob_spawn_points SET mobid=16924695, mobname='Promathia_htbf', polutils_name='Promathia', groupid=7, pos_x=-519.557, pos_y=120.000, pos_z=-511.441, pos_rot=64 WHERE mobid=16924695;
+UPDATE mob_spawn_points SET mobid=16924696, mobname='Promathia_htbf_2', polutils_name='Promathia', groupid=13, pos_x=-519.557, pos_y=120.000, pos_z=-511.441, pos_rot=64 WHERE mobid=16924696;
