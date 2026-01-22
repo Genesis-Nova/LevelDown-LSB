@@ -199,11 +199,11 @@ INSERT INTO `mob_pools` VALUES (40013,'Ark_Angel_TT_HTBF','Ark_Angel_TT',356,0x0
 INSERT INTO `mob_pools` VALUES (40014,'Ark_Angels_Mandragora','Ark_Angels_Mandragora',178,0x00002D0100000000000000000000000000000000,2,2,1,480,100,0,1,0,1,18,0,0,0,1667,8,0,0,0,0,178,178,0,6);
 INSERT INTO `mob_pools` VALUES (40015,'Ark_Angels_Tiger','Ark_Angels_Tiger',242,0x0000340100000000000000000000000000000000,1,1,7,240,100,0,1,0,1,18,0,0,0,1153,0,0,0,0,0,242,242,0,25);
 INSERT INTO `mob_pools` VALUES (40016,'Ark_Angels_Wyvern','Ark_Angels_Wyvern',193,0x00000C0300000000000000000000000000000000,14,1,7,200,100,0,1,0,1,18,0,0,0,1157,0,0,0,0,0,714,193,0,8);
-INSERT INTO `mob_groups` VALUES (11500, 40009, 180, 'Ark_Angel_EV_HTBF',0,128,0,155000,9999,115,120,0);
-INSERT INTO `mob_groups` VALUES (11501, 40010, 180, 'Ark_Angel_GK_HTBF',0,128,0,155000,9999,115,120,0);
-INSERT INTO `mob_groups` VALUES (11502, 40011, 180, 'Ark_Angel_HM_HTBF',0,128,0,155000,9999,115,120,0);
-INSERT INTO `mob_groups` VALUES (11503, 40012, 180, 'Ark_Angel_MR_HTBF',0,128,0,155000,9999,115,120,0);
-INSERT INTO `mob_groups` VALUES (11504, 40013, 180, 'Ark_Angel_TT_HTBF',0,128,0,155000,9999,115,120,0);
+INSERT INTO `mob_groups` VALUES (11500, 40009, 180, 'Ark_Angel_EV_HTBF',0,128,0,155000,9999,115,120,0,NULL);
+INSERT INTO `mob_groups` VALUES (11501, 40010, 180, 'Ark_Angel_GK_HTBF',0,128,0,155000,9999,115,120,0,NULL);
+INSERT INTO `mob_groups` VALUES (11502, 40011, 180, 'Ark_Angel_HM_HTBF',0,128,0,155000,9999,115,120,0,NULL);
+INSERT INTO `mob_groups` VALUES (11503, 40012, 180, 'Ark_Angel_MR_HTBF',0,128,0,155000,9999,115,120,0,NULL);
+INSERT INTO `mob_groups` VALUES (11504, 40013, 180, 'Ark_Angel_TT_HTBF',0,128,0,155000,9999,115,120,0,NULL);
 UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33 WHERE mobid = 17514701;
 UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33 WHERE mobid = 17514702;
 UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33 WHERE mobid = 17514703;
@@ -437,7 +437,7 @@ UPDATE mob_spawn_points SET mobname = 'Kamlanaut_HTBF' WHERE mobname = 'Kamlanau
 --adds HP/MP and fixes modelid to phase 1
 UPDATE mob_groups SET HP = 80000,  MP = 9999, minLevel = 120, maxLevel = 125, poolid = 3205 WHERE name = 'Promathia_htbf' AND groupid = 7;
 --add Phase 2 Promathia
-INSERT INTO mob_groups (groupid, poolid, zoneid, name, respawntime, spawntype, dropid, HP, MP, minLevel, maxLevel, allegiance) VALUES (13, 5106, 36, 'Promathia_htbf_2', 0, 128, 0, 120000, 10000, 120, 125, 0);
+INSERT INTO mob_groups (groupid, poolid, zoneid, name, respawntime, spawntype, dropid, HP, MP, minLevel, maxLevel, allegiance, content_tag) VALUES (13, 5106, 36, 'Promathia_htbf_2', 0, 128, 0, 120000, 10000, 120, 125, 0,NULL);
 
 
 --Spawnpoints for both Promathia's

@@ -229,25 +229,25 @@ REPLACE INTO `mob_pools` VALUES (7118,'Locus_Soldier_Lugcrawler','Locus_Soldier_
 REPLACE INTO `mob_pools` VALUES (7119,'Locus_Worker_Lugcrawler','Locus_Worker_Lugcrawler',79,0x0000340E00000000000000000000000000000000,1,1,11,240,100,0,1,0,1,0,0,0,290,131,0,0,0,0,0,79,79,1,15);
 
 --Mob GROUPS
-REPLACE INTO `mob_groups` VALUES (122,7099,171,'Apex_Blazer_Elytra',300,0,0,0,0,134,136,0);
-REPLACE INTO `mob_groups` VALUES (123,7100,171,'Apex_Doom_Scorpion',300,0,0,0,0,135,137,0);
-REPLACE INTO `mob_groups` VALUES (124,7101,171,'Apex_Dragonfly',300,0,0,0,0,133,135,0);
-REPLACE INTO `mob_groups` VALUES (125,7102,171,'Apex_Fire_Elemental',300,0,0,0,0,131,133,0);
-REPLACE INTO `mob_groups` VALUES (126,7103,171,'Apex_Helm_Elytra',300,0,0,0,0,136,138,0);
-REPLACE INTO `mob_groups` VALUES (127,7104,171,'Apex_Hornfly',300,0,0,0,0,131,133,0);
-REPLACE INTO `mob_groups` VALUES (128,7105,171,'Apex_Lugcrawler',300,0,0,0,0,129,131,0);
-REPLACE INTO `mob_groups` VALUES (129,7106,171,'Apex_Lugcrawler_Hunter',300,0,0,0,0,137,139,0);
-REPLACE INTO `mob_groups` VALUES (130,7107,171,'Apex_Mycelar',300,0,0,0,0,136,138,0);
-REPLACE INTO `mob_groups` VALUES (131,7108,171,'Apex_Nest_Elytra',300,0,0,0,0,133,134,0);
-REPLACE INTO `mob_groups` VALUES (132,7109,171,'Apex_Rumble_Lugcrawler',300,0,0,0,0,136,138,0);
-REPLACE INTO `mob_groups` VALUES (133,7110,171,'Apex_Soldier_Lugcrawler',300,0,0,0,0,134,134,0);
-REPLACE INTO `mob_groups` VALUES (134,7111,171,'Apex_Water_Elemental',300,0,0,0,0,131,133,0);
-REPLACE INTO `mob_groups` VALUES (135,7112,171,'Apex_Worker_Lugcrawler',300,0,0,0,0,132,134,0);
-REPLACE INTO `mob_groups` VALUES (136,7113,171,'Locus_Blazer_Elytra',300,0,0,0,0,134,136,0);
-REPLACE INTO `mob_groups` VALUES (137,7114,171,'Locus_Dragonfly',300,0,0,0,0,133,135,0);
-REPLACE INTO `mob_groups` VALUES (138,7115,171,'Locus_Hornfly',300,0,0,0,0,131,133,0);
-REPLACE INTO `mob_groups` VALUES (139,7116,171,'Locus_Lugcrawler',300,0,0,0,0,129,131,0);
-REPLACE INTO `mob_groups` VALUES (140,7117,171,'Locus_Nest_Elytra',300,0,0,0,0,132,134,0);
-REPLACE INTO `mob_groups` VALUES (141,7118,171,'Locus_Soldier_Lugcrawler',300,0,0,0,0,135,136,0);
-REPLACE INTO `mob_groups` VALUES (142,7119,171,'Locus_Worker_Lugcrawler',300,0,0,0,0,132,134,0);
+REPLACE INTO `mob_groups` VALUES (122,7099,171,'Apex_Blazer_Elytra',300,0,0,0,0,134,136,0,NULL);
+REPLACE INTO `mob_groups` VALUES (123,7100,171,'Apex_Doom_Scorpion',300,0,0,0,0,135,137,0,NULL);
+REPLACE INTO `mob_groups` VALUES (124,7101,171,'Apex_Dragonfly',300,0,0,0,0,133,135,0,NULL);
+REPLACE INTO `mob_groups` VALUES (125,7102,171,'Apex_Fire_Elemental',300,0,0,0,0,131,133,0,NULL);
+REPLACE INTO `mob_groups` VALUES (126,7103,171,'Apex_Helm_Elytra',300,0,0,0,0,136,138,0,NULL);
+REPLACE INTO `mob_groups` VALUES (127,7104,171,'Apex_Hornfly',300,0,0,0,0,131,133,0,NULL);
+REPLACE INTO `mob_groups` VALUES (128,7105,171,'Apex_Lugcrawler',300,0,0,0,0,129,131,0,NULL);
+REPLACE INTO `mob_groups` VALUES (129,7106,171,'Apex_Lugcrawler_Hunter',300,0,0,0,0,137,139,0,NULL);
+REPLACE INTO `mob_groups` VALUES (130,7107,171,'Apex_Mycelar',300,0,0,0,0,136,138,0,NULL);
+REPLACE INTO `mob_groups` VALUES (131,7108,171,'Apex_Nest_Elytra',300,0,0,0,0,133,134,0,NULL);
+REPLACE INTO `mob_groups` VALUES (132,7109,171,'Apex_Rumble_Lugcrawler',300,0,0,0,0,136,138,0,NULL);
+REPLACE INTO `mob_groups` VALUES (133,7110,171,'Apex_Soldier_Lugcrawler',300,0,0,0,0,134,134,0,NULL);
+REPLACE INTO `mob_groups` VALUES (134,7111,171,'Apex_Water_Elemental',300,0,0,0,0,131,133,0,NULL);
+REPLACE INTO `mob_groups` VALUES (135,7112,171,'Apex_Worker_Lugcrawler',300,0,0,0,0,132,134,0,NULL);
+REPLACE INTO `mob_groups` VALUES (136,7113,171,'Locus_Blazer_Elytra',300,0,0,0,0,134,136,0,NULL);
+REPLACE INTO `mob_groups` VALUES (137,7114,171,'Locus_Dragonfly',300,0,0,0,0,133,135,0,NULL);
+REPLACE INTO `mob_groups` VALUES (138,7115,171,'Locus_Hornfly',300,0,0,0,0,131,133,0,NULL);
+REPLACE INTO `mob_groups` VALUES (139,7116,171,'Locus_Lugcrawler',300,0,0,0,0,129,131,0,NULL);
+REPLACE INTO `mob_groups` VALUES (140,7117,171,'Locus_Nest_Elytra',300,0,0,0,0,132,134,0,NULL);
+REPLACE INTO `mob_groups` VALUES (141,7118,171,'Locus_Soldier_Lugcrawler',300,0,0,0,0,135,136,0,NULL);
+REPLACE INTO `mob_groups` VALUES (142,7119,171,'Locus_Worker_Lugcrawler',300,0,0,0,0,132,134,0,NULL);
 
