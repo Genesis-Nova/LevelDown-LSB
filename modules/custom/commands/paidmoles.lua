@@ -99,19 +99,20 @@ commandObj.onTrigger = function(player)
     local now = os.time()
     local cooldown = 60 * 60
     local currentZoneID = player:getZoneID()
+    local isGM = player:getGMLevel() >= 1
 
     if restrictedZones[currentZoneID] then
         player:printToPlayer("You cannot use !paidmoles in this zone. Please go to an area where you can engage monsters normally.")
         return
     end
 
-    if lastUsed ~= 0 and now - lastUsed < cooldown then
+    if not isGM and lastUsed ~= 0 and now - lastUsed < cooldown then
         local remaining = cooldown - (now - lastUsed)
         player:printToPlayer(string.format("The Moles were recently summoned in this zone! Please wait %d more minute(s).", math.ceil(remaining / 60)))
         return
     end
 
-    if type(currentGil) ~= "number" or currentGil < cost then
+    if not isGM and (type(currentGil) ~= "number" or currentGil < cost) then
         player:printToPlayer(string.format("You need %i gil to summon the Moles. You only have %i gil.", cost, currentGil))
         return
     end
@@ -120,20 +121,30 @@ menu.title = 'You want to kill the moles?'
 menu.options =
     {
         {
-            string.format('Yes, summon the Moles! (%i Gil)', cost),
+            string.format('Yes, summon the Moles! (%s)', isGM and "Free" or string.format("%i Gil", cost)),
             function(playerArg)
-                if not playerArg:delGil(cost) then
-                    playerArg:printToPlayer("An error occurred while trying to deduct gil. Please try again.")
-                    return
+                local isGMArg = playerArg:getGMLevel() >= 1
+                if not isGMArg then
+                    if not playerArg:delGil(cost) then
+                        playerArg:printToPlayer("An error occurred while trying to deduct gil. Please try again.")
+                        return
+                    end
+                    playerArg:printToPlayer(string.format("You have paid %i gil to summon the Moles!", cost))
+                else
+                    playerArg:printToPlayer("GM Override: Summoning Moles for free.")
                 end
-
-                playerArg:printToPlayer(string.format("You have paid %i gil to summon the Moles!", cost))
                 zone:setLocalVar("PaidMolesLastUsed", os.time())
 
-                playerArg:printToArea(string.format('%s has paid the moles to appear, but they have stolen our eggs!', name), xi.msg.channel.SYSTEM_3, 0)
+                if isGMArg then
+                    playerArg:printToArea(string.format('%s has summoned the moles to appear, but they have stolen our eggs!', name), xi.msg.channel.SYSTEM_3, 0)
+                else
+                    playerArg:printToArea(string.format('%s has paid the moles to appear, but they have stolen our eggs!', name), xi.msg.channel.SYSTEM_3, 0)
+                end
                 playerArg:printToArea('Stop them, we have 10 minutes before they disappear back into the ground!', xi.msg.channel.SYSTEM_3, 0)
                 playerArg:printToArea(string.format('Remember to tip %s!', name), xi.msg.channel.SYSTEM_3, 0)
-                playerArg:printToArea('Be aware: there is a 60-minute cooldown to restart the event in this zone.', xi.msg.channel.SYSTEM_3, 0)
+                if not isGMArg then
+                    playerArg:printToArea('Be aware: there is a 60-minute cooldown to restart the event in this zone.', xi.msg.channel.SYSTEM_3, 0)
+                end
 
                 for i = 1, 10 do
                     local zoneOrInstanceObj = playerArg:getZone()
@@ -174,9 +185,16 @@ menu.options =
                             mob:addListener('TAKE_DAMAGE', 'MOLE_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
                                 if attacker:isPC() then
                                     if damage > 0 then
-                                            for i = xi.slot.MAIN, xi.slot.BACK do
-                                                attacker:unequipItem(i)
+                                        local encumbranceId = xi.effect.ENCUMBRANCE_I or xi.effect.ENCUMBRANCE or 176
+                                        if not attacker:hasStatusEffect(encumbranceId) then
+                                            local duration = mob:getLocalVar('MoleDespawn') - os.time()
+                                            if duration > 0 then
+                                                for i = 0, 15 do
+                                                    attacker:unequipItem(i)
+                                                end
+                                                attacker:addStatusEffect(encumbranceId, 65535, 0, duration)
                                             end
+                                        end
                                     end
                                     if attackType == xi.attackType.PHYSICAL and
                                     (damageType == xi.damageType.NONE or damageType == xi.damageType.HTH) then

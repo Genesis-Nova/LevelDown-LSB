@@ -54,7 +54,7 @@ INSERT INTO mob_skills VALUES (4381, 1142, 'seeping_dread', 1, 0.0, 20.0, 2000,1
 INSERT INTO mob_skills VALUES (4385, 2628, 'pellucid_surge', 0, 0.0, 10.0, 2000,1500, 4, 0, 0, 0, 0, 0, 0);
 INSERT INTO mob_skills VALUES (4383, 2626, 'luminous_surge', 0, 0.0, 10.0, 2000,1500, 4, 0, 0, 0, 0, 0, 0);
 INSERT INTO mob_skills VALUES (4378, 1139, 'landfall', 1, 0.0, 10.0, 2000,1500, 4, 0, 0, 7, 0, 0, 0);
-INSERT INTO mob_skills VALUES (4386, 2629, 'black_sanctus', 1, 0.0, 15.0, 2000,1500, 4, 0, 0, 0, 0, 0, 0);
+-- INSERT INTO mob_skills VALUES (4386, 2629, 'black_sanctus', 1, 0.0, 15.0, 2000,1500, 4, 0, 0, 0, 0, 0, 0); Causes the server to crash, need to look into to see if retail changed the animation id
 
 INSERT INTO mob_skill_lists VALUES ('[Supreme]Chaos', 49990, 4376); -- Overrun
 INSERT INTO mob_skill_lists VALUES ('[Supreme]Chaos', 49990, 4379); -- Swooping Assault
