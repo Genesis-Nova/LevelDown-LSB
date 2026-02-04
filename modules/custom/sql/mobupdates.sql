@@ -661,3 +661,6 @@ UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Faaz' AND zoneid = 291;
 UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Gefyrst' AND zoneid = 291;
 UPDATE mob_groups SET HP = 155000 WHERE name = 'Ascended_Ungeweder' AND zoneid = 291;
 UPDATE mob_groups SET HP = 155000 WHERE name = 'Heavenly_Veela' AND zoneid = 291;
+
+--Remove Death from Supreme Dragon
+DELETE FROM mob_spell_lists WHERE spell_list_id=292 AND spell_id=367;
