@@ -1,4 +1,3 @@
-INSERT INTO `exp_base` (`level`, `exp`) VALUES (100, 56000);
 INSERT INTO `exp_base` (`level`, `exp`) VALUES (101, 56500);
 INSERT INTO `exp_base` (`level`, `exp`) VALUES (102, 57000);
 INSERT INTO `exp_base` (`level`, `exp`) VALUES (103, 57500);
