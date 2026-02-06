@@ -373,8 +373,8 @@ auto LoadTrust(CCharEntity* PMaster, uint32 TrustID) -> CTrustEntity*
     PTrust->SetSJob(trustData->sJob);
 
     // assume level matches master
-    PTrust->SetMLevel(PMaster->GetMLevel());
-    PTrust->SetSLevel(std::floor(PMaster->GetMLevel() / 2));
+    PTrust->SetMLevel(PMaster->GetMLevel() + charutils::getItemLevelDifference(PMaster));
+    PTrust->SetSLevel(std::floor(PMaster->GetMLevel()));
 
     LoadTrustStatsAndSkills(PTrust);
 
