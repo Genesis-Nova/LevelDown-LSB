@@ -596,18 +596,35 @@ m:addOverride("xi.events.loginCampaign.onEventUpdate", function(player, csid, op
             price,
             loginPoints)
     else
-        if itemQuantity == 1 then
-            if npcUtil.giveItem(player, { { currentLoginCampaign[showItems - 2]["items"][itemSelected + 1], itemQuantity } }) then
-                player:delCurrency("login_points", currentLoginCampaign[showItems - 2]["price"] * itemQuantity)
-                player:updateEvent(
-                    currentLoginCampaign[showItems - 2]["items"][itemSelected + 1],
-                    player:getCurrency("login_points"), -- Login Points after purchase
-                    0, -- Unknown (most likely totalItemMask)
-                    currentLoginCampaign[showItems - 2]["price"],
-                    loginPoints) -- Login points before purchase
+        local price = currentLoginCampaign[showItems - 2]["price"]
+        local loginPointCost = price * itemQuantity
+
+        if loginPointCost > loginPoints then
+            return
+        end
+
+        local itemID = currentLoginCampaign[showItems - 2]["items"][itemSelected + 1]
+        local countAdded = 0
+
+        for i = 1, itemQuantity do
+            if player:addItem(itemID, 1) then
+                countAdded = countAdded + 1
+            else
+                break
             end
+        end
+
+        if countAdded > 0 then
+            player:delCurrency("login_points", price * countAdded)
+            player:messageSpecial(zones[player:getZoneID()].text.ITEM_OBTAINED, itemID, countAdded)
+            player:updateEvent(
+                itemID,
+                player:getCurrency("login_points"), -- Login Points after purchase
+                0, -- Unknown (most likely totalItemMask)
+                price,
+                loginPoints) -- Login points before purchase
         else
-            print(string.format("%s has attempted to purchase %s of item: %s from login campaign.", player, itemQuantity, currentLoginCampaign[showItems - 2]["items"][itemSelected + 1], itemQuantity))
+            player:messageSpecial(zones[player:getZoneID()].text.ITEM_CANNOT_BE_OBTAINED, itemID)
         end
     end
 end)
