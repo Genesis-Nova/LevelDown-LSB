@@ -6446,6 +6446,7 @@ xi.item =
 	BROKEN_LU_SHANGS_FISHING_ROD_P1     = 9091,
 	JAR_OF_GARBAGE_GELS_MUCUS           = 9092,
 	VIAL_OF_BAKUNAWAS_INK               = 9093,
+    CLAWBERRYS_COAT                     = 9094,
 	VERMILLION_FISHFLYS_WING            = 9095,
 	PINCH_OF_VOLATILE_CLUSTERS_ASH      = 9096,
 	MHUUFYAS_BEAK                       = 9097,
