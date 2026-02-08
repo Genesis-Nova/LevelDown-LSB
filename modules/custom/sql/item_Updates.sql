@@ -5,3 +5,6 @@ UPDATE item_basic SET stackSize = 99 WHERE itemid = 2882;
 UPDATE item_basic SET stackSize = 99 WHERE itemid = 2883;
 UPDATE item_basic SET stackSize = 99 WHERE itemid = 2884;
 UPDATE item_basic SET stackSize = 99 WHERE itemid = 2885;
+
+--Date_Shuriken Fix
+UPDATE `item_weapon` SET `subskill`=3, `ilvl_skill`=242 WHERE `itemId`=22292 AND name = 'date_shuriken';
