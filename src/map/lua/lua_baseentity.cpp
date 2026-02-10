@@ -1978,9 +1978,7 @@ bool CLuaBaseEntity::pathThrough(const sol::table& pointsTable, const sol::objec
         }
     }
 
-    CBattleEntity* PBattle = (CBattleEntity*)m_PBaseEntity;
-
-    return PBattle->PAI->PathFind->PathThrough(std::move(points), flags);
+    return m_PBaseEntity->PAI->PathFind->PathThrough(std::move(points), flags);
 }
 
 /************************************************************************
@@ -2009,17 +2007,16 @@ bool CLuaBaseEntity::isFollowingPath()
 
 void CLuaBaseEntity::clearPath(const sol::object& pauseObj)
 {
-    auto* PBattle = static_cast<CBattleEntity*>(m_PBaseEntity);
-    bool  pause   = pauseObj.is<bool>() ? pauseObj.as<bool>() : false;
+    bool pause = pauseObj.is<bool>() ? pauseObj.as<bool>() : false;
 
     // Stop onPath ticks for NPCs if this is true
     if (m_PBaseEntity->objtype == TYPE_NPC && pause)
     {
         m_PBaseEntity->SetLocalVar("pauseNPCPathing", 1);
     }
-    else if (PBattle->PAI->PathFind != nullptr)
+    else if (m_PBaseEntity->PAI->PathFind != nullptr)
     {
-        PBattle->PAI->PathFind->Clear();
+        m_PBaseEntity->PAI->PathFind->Clear();
     }
 }
 
@@ -3924,9 +3921,13 @@ uint16 CLuaBaseEntity::getEquipID(SLOTTYPE slot)
             return 0;
         }
 
-        CCharEntity* PChar = dynamic_cast<CCharEntity*>(m_PBaseEntity);
-        CItem*       PItem = PChar->getEquip(slot);
+        const auto* PChar = dynamic_cast<CCharEntity*>(m_PBaseEntity);
+        if (!PChar)
+        {
+            return 0;
+        }
 
+        const CItem* PItem = PChar->getEquip(slot);
         if (PItem && PItem->isType(ITEM_EQUIPMENT))
         {
             return PItem->getID();
@@ -4026,7 +4027,7 @@ uint32 CLuaBaseEntity::getItemCount(uint16 itemID)
 {
     if (m_PBaseEntity->objtype != TYPE_PC)
     {
-        return false;
+        return 0;
     }
 
     auto* PChar = static_cast<CCharEntity*>(m_PBaseEntity);
@@ -9961,7 +9962,7 @@ void CLuaBaseEntity::setHP(int32 value)
     // When setting the HP to 0 the entity "falls to the ground" so the last attacker needs to be cleared
     if (value == 0)
     {
-        PBattle->PLastAttacker = nullptr;
+        PBattle->lastAttackerId_.clean();
     }
 }
 
@@ -11007,6 +11008,36 @@ void CLuaBaseEntity::delSpell(uint16 spellID, const sol::optional<sol::table>& p
 }
 
 /************************************************************************
+ *  Function: getSetBlueSpells()
+ *  Purpose : Retrieves a players set BLU spell list (in the form of IDs)
+ *  Example : local spells = player:getSetBlueSpells()
+ *  Notes   :
+ ************************************************************************/
+
+auto CLuaBaseEntity::getSetBlueSpells() -> sol::table
+{
+    auto spellList = lua.create_table();
+
+    if (m_PBaseEntity->objtype != TYPE_PC)
+    {
+        ShowWarning("Invalid entity type calling getSetBlueSpells (%s).", m_PBaseEntity->getName());
+        return spellList;
+    }
+
+    auto* PChar = static_cast<CCharEntity*>(m_PBaseEntity);
+
+    for (auto spellId : PChar->m_SetBlueSpells)
+    {
+        if (spellId != 0)
+        {
+            spellList.add(spellId + 0x200); // 0x200 magic offset also in blueutils
+        }
+    }
+
+    return spellList;
+}
+
+/************************************************************************
  *  Function: recalculateSkillsTable()
  *  Purpose : Recalculates skill tables to get new values and calculations
  *  Example : target:recalculateSkillsTable()
@@ -11252,12 +11283,24 @@ uint8 CLuaBaseEntity::getPartySize(const sol::object& arg0)
 
 bool CLuaBaseEntity::hasPartyJob(uint8 job)
 {
-    if (static_cast<CCharEntity*>(m_PBaseEntity)->PParty != nullptr)
+    auto* PChar = dynamic_cast<CCharEntity*>(m_PBaseEntity);
+    if (!PChar)
     {
-        for (const auto& member : static_cast<CCharEntity*>(m_PBaseEntity)->PParty->members)
+        if (auto* PTrust = dynamic_cast<CTrustEntity*>(m_PBaseEntity))
         {
-            CCharEntity* PTarget = static_cast<CCharEntity*>(member);
+            PChar = dynamic_cast<CCharEntity*>(PTrust->PMaster);
+        }
+    }
 
+    if (!PChar || !PChar->PParty)
+    {
+        return false;
+    }
+
+    for (const auto& member : PChar->PParty->members)
+    {
+        if (auto* PTarget = dynamic_cast<CCharEntity*>(member))
+        {
             if (PTarget->GetMJob() == job)
             {
                 return true;
@@ -12919,7 +12962,7 @@ uint16 CLuaBaseEntity::getBaseWeaponDelay(uint16 slot)
     if (m_PBaseEntity->objtype != TYPE_PC)
     {
         ShowWarning("Invalid entity type calling function (%s).", m_PBaseEntity->getName());
-        return false;
+        return 0;
     }
     CCharEntity* PCharEntity = dynamic_cast<CCharEntity*>(m_PBaseEntity);
 
@@ -13266,26 +13309,26 @@ void CLuaBaseEntity::transferEnmity(CLuaBaseEntity* entity, uint8 percent, float
  *  Notes   : Used in most Weaponskills and damaging abilities scripts
  ************************************************************************/
 
-void CLuaBaseEntity::updateEnmityFromDamage(CLuaBaseEntity* PEntity, int32 damage)
+void CLuaBaseEntity::updateEnmityFromDamage(CLuaBaseEntity* PEntity, const int32 damage) const
 {
-    auto* PBaseMob = static_cast<CMobEntity*>(m_PBaseEntity);
-
     if (m_PBaseEntity->id == PEntity->getID())
     {
         ShowWarning(fmt::format("updateEnmityFromDamage(): Attempting to add enmity from damage to self ({}, {})!", PEntity->getName(), PEntity->getID()));
         return;
     }
 
+    auto* PBaseMob = dynamic_cast<CMobEntity*>(m_PBaseEntity);
+
     // This is a mob attacking a target and losing enmity from doing damage
-    if (m_PBaseEntity->objtype == TYPE_PC || m_PBaseEntity->objtype == TYPE_PET || (m_PBaseEntity->objtype == TYPE_MOB && PBaseMob->isCharmed))
+    if (m_PBaseEntity->objtype == TYPE_PC || m_PBaseEntity->objtype == TYPE_PET || (PBaseMob && PBaseMob->isCharmed))
     {
-        if (PEntity->GetBaseEntity() && PEntity->GetBaseEntity()->objtype == TYPE_MOB)
+        if (auto* PTargetMob = dynamic_cast<CMobEntity*>(PEntity->GetBaseEntity()))
         {
-            static_cast<CMobEntity*>(PEntity->GetBaseEntity())->PEnmityContainer->UpdateEnmityFromAttack(static_cast<CBattleEntity*>(m_PBaseEntity), damage);
+            PTargetMob->PEnmityContainer->UpdateEnmityFromAttack(static_cast<CBattleEntity*>(m_PBaseEntity), damage);
         }
     }
     // This is a mob being attacked and gaining enmity on the attacker
-    else if (m_PBaseEntity->objtype == TYPE_MOB)
+    else if (PBaseMob)
     {
         if (PEntity->GetBaseEntity() && damage > 0 && PEntity->GetBaseEntity()->objtype != TYPE_NPC)
         {
@@ -13527,7 +13570,7 @@ bool CLuaBaseEntity::addStatusEffect(sol::variadic_args va)
         auto effectIcon = va[0].as<uint16>();                      // The same
         auto power      = static_cast<uint16>(va[1].as<double>()); // Can come in as a lua_number, capture as double and truncate
         auto tick       = static_cast<uint32>(va[2].as<double>());
-        auto duration   = static_cast<uint32>(va[3].as<double>());
+        auto duration   = va[3].as<double>();
 
         // Optional
         auto subType         = va[4].is<uint32>() ? va[4].as<uint32>() : 0;
@@ -13541,7 +13584,7 @@ bool CLuaBaseEntity::addStatusEffect(sol::variadic_args va)
                                                    effectIcon,
                                                    power,
                                                    std::chrono::seconds(tick),
-                                                   std::chrono::seconds(duration),
+                                                   std::chrono::milliseconds(static_cast<uint64_t>(duration * 1000)),
                                                    subType,
                                                    subPower,
                                                    tier);
@@ -13598,7 +13641,7 @@ auto CLuaBaseEntity::addStatusEffectEx(sol::variadic_args va) -> bool
     auto effectIcon = va[1].as<uint16>();
     auto power      = static_cast<uint16>(va[2].as<double>()); // Can come in as a lua_number, capture as double and truncate
     auto tick       = static_cast<uint32>(va[3].as<double>());
-    auto duration   = static_cast<uint32>(va[4].as<double>());
+    auto duration   = va[4].as<double>();
 
     // Optional
     auto subType         = va[5].is<uint32>() ? va[5].as<uint32>() : 0;
@@ -13614,7 +13657,7 @@ auto CLuaBaseEntity::addStatusEffectEx(sol::variadic_args va) -> bool
                           effectIcon,
                           power,
                           std::chrono::seconds(tick),
-                          std::chrono::seconds(duration),
+                          std::chrono::milliseconds(static_cast<uint64_t>(duration * 1000)),
                           subType,
                           subPower,
                           tier,
@@ -14332,7 +14375,7 @@ bool CLuaBaseEntity::hasAllLatentsActive(uint8 slot)
 
 /************************************************************************
  *  Function: getMaxGearMod()
- *  Purpose : Returns the highest integer value of a specified Mod on all equiped items
+ *  Purpose : Returns the highest integer value of a specified Mod on all equipped items
  *  Example : local maxValue = player:getMaxGearMod(xi.mod.GEOMANCY_BONUS)
  *  Notes   :
  ************************************************************************/
@@ -14347,6 +14390,32 @@ int16 CLuaBaseEntity::getMaxGearMod(Mod modId)
     }
 
     return static_cast<CCharEntity*>(m_PBaseEntity)->getMaxGearMod(static_cast<Mod>(modId));
+}
+
+/************************************************************************
+ *  Function: getGearModFromSlot()
+ *  Purpose : Returns mod value from a specific item equipped
+ *  Example : local maxValue = player:getMaxGearMod(xi.mod.GEOMANCY_BONUS)
+ *  Notes   :
+ ************************************************************************/
+int16 CLuaBaseEntity::getGearModFromSlot(uint8 slot, Mod modId)
+{
+    if (m_PBaseEntity->objtype != TYPE_PC)
+    {
+        ShowWarning("Invalid Entity (Non-PC: %s) calling function getGearModFromSlot.", m_PBaseEntity->getName());
+
+        return 0;
+    }
+
+    auto*           PChar = static_cast<CCharEntity*>(m_PBaseEntity);
+    CItemEquipment* PItem = PChar->getEquip(static_cast<SLOTTYPE>(slot));
+
+    if (PItem)
+    {
+        return PItem->getModifier(modId);
+    }
+
+    return 0;
 }
 
 /************************************************************************
@@ -16019,6 +16088,28 @@ bool CLuaBaseEntity::isAvatar()
     {
         uint32 petID = static_cast<CPetEntity*>(m_PBaseEntity)->m_PetID;
         if ((petID >= PETID_CARBUNCLE && petID <= PETID_CAIT_SITH) || petID == PETID_SIREN)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/************************************************************************
+ *  Function: isJugPet()
+ *  Purpose : Returns true if entity is a BST jug pet.
+ *  Example : local isJugPet = pet:isJugPet()
+ *  Notes   :
+ ************************************************************************/
+
+auto CLuaBaseEntity::isJugPet() -> bool
+{
+    if (m_PBaseEntity->objtype == TYPE_PET)
+    {
+        uint32 petID = static_cast<CPetEntity*>(m_PBaseEntity)->m_PetID;
+        if ((petID >= PETID_SHEEP_FAMILIAR && petID <= PETID_TURBID_TOLOI) ||
+            (petID >= PETID_SWEET_CAROLINE && petID <= PETID_ENERGIZED_SEFINA))
         {
             return true;
         }
@@ -18433,6 +18524,10 @@ void CLuaBaseEntity::drawIn(const sol::variadic_args& va) const
     }
 
     const auto mobObj = dynamic_cast<CMobEntity*>(m_PBaseEntity);
+    if (!mobObj)
+    {
+        return;
+    }
 
     if (va.size() == 0)
     {
@@ -19934,6 +20029,7 @@ void CLuaBaseEntity::Register()
     SOL_REGISTER("hasSpell", CLuaBaseEntity::hasSpell);
     SOL_REGISTER("canLearnSpell", CLuaBaseEntity::canLearnSpell);
     SOL_REGISTER("delSpell", CLuaBaseEntity::delSpell);
+    SOL_REGISTER("getSetBlueSpells", CLuaBaseEntity::getSetBlueSpells);
 
     SOL_REGISTER("recalculateSkillsTable", CLuaBaseEntity::recalculateSkillsTable);
     SOL_REGISTER("recalculateAbilitiesTable", CLuaBaseEntity::recalculateAbilitiesTable);
@@ -20083,6 +20179,7 @@ void CLuaBaseEntity::Register()
     SOL_REGISTER("delMod", CLuaBaseEntity::delMod);
     SOL_REGISTER("printAllMods", CLuaBaseEntity::printAllMods);
     SOL_REGISTER("getMaxGearMod", CLuaBaseEntity::getMaxGearMod);
+    SOL_REGISTER("getGearModFromSlot", CLuaBaseEntity::getGearModFromSlot);
 
     SOL_REGISTER("addLatent", CLuaBaseEntity::addLatent);
     SOL_REGISTER("delLatent", CLuaBaseEntity::delLatent);
@@ -20160,6 +20257,7 @@ void CLuaBaseEntity::Register()
     SOL_REGISTER("getPetID", CLuaBaseEntity::getPetID);
     SOL_REGISTER("isAutomaton", CLuaBaseEntity::isAutomaton);
     SOL_REGISTER("isAvatar", CLuaBaseEntity::isAvatar);
+    SOL_REGISTER("isJugPet", CLuaBaseEntity::isJugPet);
     SOL_REGISTER("getPetElement", CLuaBaseEntity::getPetElement);
     SOL_REGISTER("setPet", CLuaBaseEntity::setPet);
     SOL_REGISTER("getMinimumPetLevel", CLuaBaseEntity::getMinimumPetLevel);

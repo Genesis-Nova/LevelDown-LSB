@@ -553,6 +553,7 @@ public:
     bool   hasSpell(uint16 spellID);
     uint32 canLearnSpell(uint16 spellID);
     void   delSpell(uint16 spellID, const sol::optional<sol::table>& paramTable);
+    auto   getSetBlueSpells() -> sol::table;
 
     void recalculateSkillsTable();
     void recalculateAbilitiesTable();
@@ -665,7 +666,7 @@ public:
     void  lowerEnmity(CLuaBaseEntity* PEntity, uint8 percent);
     void  updateEnmity(CLuaBaseEntity* PEntity);
     void  transferEnmity(CLuaBaseEntity* entity, uint8 percent, float range);
-    void  updateEnmityFromDamage(CLuaBaseEntity* PEntity, int32 damage); // Adds Enmity to player for specified mob for the damage specified
+    void  updateEnmityFromDamage(CLuaBaseEntity* PEntity, int32 damage) const; // Adds Enmity to player for specified mob for the damage specified
     void  updateEnmityFromCure(CLuaBaseEntity* PEntity, int32 amount, const sol::object& fixedCE, const sol::object& fixedVE);
     void  resetEnmity(CLuaBaseEntity* PEntity);
     void  setEnmityActive(CLuaBaseEntity* PEntity, bool active);
@@ -703,6 +704,7 @@ public:
     void  delMod(uint16 modID, int16 value);
     void  printAllMods();
     int16 getMaxGearMod(Mod modId);
+    int16 getGearModFromSlot(uint8 slot, Mod modId);
 
     void addLatent(uint16 condID, uint16 conditionValue, uint16 mID, int16 modValue);
     bool delLatent(uint16 condID, uint16 conditionValue, uint16 mID, int16 modValue);
@@ -787,6 +789,7 @@ public:
     uint32 getPetID();
     bool   isAutomaton();
     bool   isAvatar();
+    auto   isJugPet() -> bool;
     auto   getMaster() -> CBaseEntity*;
     uint8  getPetElement();
     void   setPet(const sol::object& petObj);

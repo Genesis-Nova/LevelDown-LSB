@@ -78,9 +78,18 @@ entity.spawnPoints =
 }
 
 entity.onMobInitialize = function(mob)
-    mob:setCarefulPathing(true)
     xi.mob.updateNMSpawnPoint(mob)
-    mob:setRespawnTime(3600) -- QoL 1 hr respawn
+
+    mob:addImmunity(xi.immunity.BIND)
+    mob:addImmunity(xi.immunity.BLIND)
+    mob:addImmunity(xi.immunity.DARK_SLEEP)
+    mob:addImmunity(xi.immunity.PLAGUE)
+    mob:addImmunity(xi.immunity.PETRIFY)
+    mob:addImmunity(xi.immunity.TERROR)
+    mob:setMobMod(xi.mobMod.AOE_HIT_ALL, 1)
+
+    mob:setCarefulPathing(true)
+    mob:setRespawnTime(math.random(144, 240) * 1800) -- 3 to 5 days in 30 minute windows
 end
 
 entity.onMobSpawn = function(mob)
@@ -102,12 +111,6 @@ entity.onMobSpawn = function(mob)
     mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 5)
     mob:setMobMod(xi.mobMod.SIGHT_RANGE, 30)
     mob:setMobMod(xi.mobMod.WEAPON_BONUS, 148) -- 245 total weapon damage
-    mob:addImmunity(xi.immunity.BIND)
-    mob:addImmunity(xi.immunity.BLIND)
-    mob:addImmunity(xi.immunity.DARK_SLEEP)
-    mob:addImmunity(xi.immunity.PLAGUE)
-    mob:addImmunity(xi.immunity.PETRIFY)
-    mob:addImmunity(xi.immunity.TERROR)
 end
 
 entity.onMobRoam = function(mob)
@@ -184,11 +187,11 @@ entity.onAdditionalEffect = function(mob, target, damage)
         chance         = 25,
         attackType     = xi.attackType.MAGICAL,
         magicalElement = xi.element.DARK,
-        basePower      = damage / 2,
+        basePower      = math.floor(damage / 2),
         actorStat      = xi.mod.INT,
     }
 
-    return xi.combat.action.executeAdditionalDamage(mob, target, pTable)
+    return xi.combat.action.executeAddEffectDamage(mob, target, pTable)
 end
 
 entity.onMobDisengage = function(mob)

@@ -47,7 +47,7 @@ entity.onMobFight = function(mob, target)
     end
 end
 
-entity.onMobMobskillChoose = function(mob, target)
+entity.onMobMobskillChoose = function(mob, target, skillId)
     local cueMove = mob:getLocalVar('CUE_MOVE')
     mob:setLocalVar('CUE_MOVE', 0)
 
@@ -60,19 +60,9 @@ entity.onMobMobskillChoose = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.BRIAREUS_FELLER)
-    local ID = zones[player:getZoneID()]
-    local party = player:getParty()
-     for _, member in pairs(party) do 
-        if member:getFreeSlotsCount() == 0 then
-            member:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED, 2929)
-        else
-            local obtained = member:addItem(2929, 1)
-            if obtained then
-               member:messageSpecial(ID.text.ITEM_OBTAINED, 2929)
-            end
-        end
-     end
+    if player then
+        player:addTitle(xi.title.BRIAREUS_FELLER)
+    end
 end
 
 return entity

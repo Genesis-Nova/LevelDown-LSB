@@ -74,6 +74,7 @@ entity.onMobInitialize = function(mob)
     mob:setMobMod(xi.mobMod.MUG_GIL, 2550) -- (https://ffxiclopedia.fandom.com/wiki/Simurgh)
     mob:addImmunity(xi.immunity.DARK_SLEEP)
     mob:addImmunity(xi.immunity.TERROR)
+    mob:setMobMod(xi.mobMod.ALWAYS_AGGRO, 1)
 end
 
 entity.onMobSpawn = function(mob)
@@ -98,7 +99,9 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onMobDeath = function(mob, player, optParams)
-    player:addTitle(xi.title.SIMURGH_POACHER)
+    if player then
+        player:addTitle(xi.title.SIMURGH_POACHER)
+    end
 end
 
 entity.onMobDespawn = function(mob)

@@ -137,17 +137,21 @@ auto CMobController::CheckLock(CBattleEntity* PTarget) const -> bool
     {
         if (PTarget->objtype == TYPE_PC)
         {
-            const CCharEntity* PChar = dynamic_cast<CCharEntity*>(PTarget);
-            if (PChar->m_Locked)
+            const auto* PChar = dynamic_cast<CCharEntity*>(PTarget);
+            if (PChar && PChar->m_Locked)
             {
                 return !CanPursueTarget(PTarget);
             }
         }
         else if (PTarget->objtype == TYPE_PET)
         {
-            const CPetEntity*  PPet  = dynamic_cast<CPetEntity*>(PTarget);
-            const CCharEntity* PChar = dynamic_cast<CCharEntity*>(PPet->PMaster);
+            const auto* PPet = dynamic_cast<CPetEntity*>(PTarget);
+            if (!PPet)
+            {
+                return false;
+            }
 
+            const auto* PChar = dynamic_cast<CCharEntity*>(PPet->PMaster);
             if (PChar == nullptr)
             {
                 return false;
@@ -345,61 +349,66 @@ auto CMobController::MobSkill(int listId) -> bool
 {
     TracyZoneScoped;
 
-    if (PTarget)
+    if (!PTarget)
     {
-        /* #TODO: mob 2 hours, etc */
-        if (!listId)
+        return false;
+    }
+
+    // Fetch skill list from mobmod if not set in database.
+    if (!listId)
+    {
+        listId = PMob->getMobMod(MOBMOD_SKILL_LIST);
+    }
+
+    auto skillList{ battleutils::GetMobSkillList(listId) };
+    if (skillList.empty())
+    {
+        return false;
+    }
+
+    std::shuffle(skillList.begin(), skillList.end(), xirand::rng());
+    CBattleEntity* PActionTarget{ nullptr };
+
+    uint16 chosenSkillId = 0;
+    for (const auto skillId : skillList)
+    {
+        auto* PMobSkill{ battleutils::GetMobSkill(skillId) };
+        if (!PMobSkill)
         {
-            listId = PMob->getMobMod(MOBMOD_SKILL_LIST);
+            ShowError("CMobController::MobSkill -> Mobskill with ID (%i) [called from skill-list ID (%i)] isn't properly defined in mob_skills.sql", skillId, listId);
+            continue;
         }
 
-        auto skillList{ battleutils::GetMobSkillList(listId) };
+        chosenSkillId = skillId;
+        break;
+    }
 
-        if (auto overrideSkill = luautils::OnMobMobskillChoose(PMob, PTarget); overrideSkill > 0)
+    if (auto overrideSkill = luautils::OnMobMobskillChoose(PMob, PTarget, chosenSkillId); overrideSkill > 0)
+    {
+        chosenSkillId = overrideSkill;
+    }
+
+    auto* PMobSkill{ battleutils::GetMobSkill(chosenSkillId) };
+
+    if (PMobSkill->getValidTargets() & TARGET_ENEMY) // enemy
+    {
+        PActionTarget = PTarget;
+    }
+    else if (PMobSkill->getValidTargets() & TARGET_SELF) // self
+    {
+        PActionTarget = PMob;
+    }
+
+    PActionTarget = luautils::OnMobSkillTarget(PActionTarget, PMob, PMobSkill);
+
+    std::optional<timer::duration> mobSkillReadyTime = luautils::OnMobSkillReadyTime(PActionTarget, PMob, PMobSkill);
+
+    if (PActionTarget && !PMobSkill->isAstralFlow() && luautils::OnMobSkillCheck(PActionTarget, PMob, PMobSkill) == 0) // A script says that the move in question is valid
+    {
+        const float currentDistance = distance(PMob->loc.p, PActionTarget->loc.p);
+        if (currentDistance <= PMobSkill->getDistance())
         {
-            skillList = { overrideSkill };
-        }
-
-        if (skillList.empty())
-        {
-            return false;
-        }
-
-        std::shuffle(skillList.begin(), skillList.end(), xirand::rng());
-        CBattleEntity* PActionTarget{ nullptr };
-
-        for (const auto skillid : skillList)
-        {
-            auto* PMobSkill{ battleutils::GetMobSkill(skillid) };
-            if (!PMobSkill)
-            {
-                continue;
-            }
-
-            if (PMobSkill->getValidTargets() & TARGET_ENEMY) // enemy
-            {
-                PActionTarget = PTarget;
-            }
-            else if (PMobSkill->getValidTargets() & TARGET_SELF) // self
-            {
-                PActionTarget = PMob;
-            }
-            else
-            {
-                continue;
-            }
-
-            PActionTarget = luautils::OnMobSkillTarget(PActionTarget, PMob, PMobSkill);
-
-            if (PActionTarget && !PMobSkill->isAstralFlow() && luautils::OnMobSkillCheck(PActionTarget, PMob, PMobSkill) == 0) // A script says that the move in question is valid
-            {
-                const float currentDistance = distance(PMob->loc.p, PActionTarget->loc.p);
-
-                if (currentDistance <= PMobSkill->getDistance())
-                {
-                    return MobSkill(PActionTarget->targid, PMobSkill->getID(), std::nullopt);
-                }
-            }
+            return MobSkill(PActionTarget->targid, PMobSkill->getID(), mobSkillReadyTime);
         }
     }
 
@@ -659,12 +668,16 @@ void CMobController::CastSpell(SpellID spellid)
 void CMobController::DoCombatTick(timer::time_point tick)
 {
     TracyZoneScopedC(0xFF0000);
-    if (PMob->m_OwnerID.targid != 0 && static_cast<CCharEntity*>(PMob->GetEntity(PMob->m_OwnerID.targid))->PClaimedMob != static_cast<CBattleEntity*>(PMob))
+    if (PMob->m_OwnerID.targid != 0)
     {
-        if (m_Tick >= m_DeclaimTime + 3s)
+        auto* POwner = dynamic_cast<CCharEntity*>(PMob->GetEntity(PMob->m_OwnerID.targid));
+        if (POwner && POwner->PClaimedMob != static_cast<CBattleEntity*>(PMob))
         {
-            PMob->m_OwnerID.clean();
-            PMob->updatemask |= UPDATE_STATUS;
+            if (m_Tick >= m_DeclaimTime + 3s)
+            {
+                PMob->m_OwnerID.clean();
+                PMob->updatemask |= UPDATE_STATUS;
+            }
         }
     }
 
@@ -732,15 +745,14 @@ void CMobController::DoCombatTick(timer::time_point tick)
 void CMobController::FaceTarget(const uint16 targid) const
 {
     TracyZoneScoped;
-    const CBaseEntity* targ = PTarget;
-    if (targid != 0 && ((targ && targid != targ->targid) || !targ))
+
+    const uint16 resolvedTargid = targid != 0 ? targid : PMob->GetBattleTargetID();
+    const auto*  maybeTarget    = PMob->GetEntity(resolvedTargid);
+    if (!(PMob->m_Behavior & BEHAVIOR_NO_TURN) && maybeTarget)
     {
-        targ = PMob->GetEntity(targid);
+        PMob->PAI->PathFind->LookAt(maybeTarget->loc.p);
     }
-    if (!(PMob->m_Behavior & BEHAVIOR_NO_TURN) && targ)
-    {
-        PMob->PAI->PathFind->LookAt(targ->loc.p);
-    }
+
     PMob->UpdateSpeed();
 }
 
