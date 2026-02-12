@@ -609,6 +609,7 @@ UPDATE mob_spawn_points SET minLevel = 127, maxLevel = 127 WHERE mobname = 'Keep
 UPDATE mob_spawn_points SET minLevel = 127, maxLevel = 127 WHERE mobname = 'Tiyanak';
 UPDATE mob_spawn_points SET minLevel = 127, maxLevel = 127 WHERE mobname = 'Voso';
 UPDATE mob_spawn_points SET minLevel = 127, maxLevel = 127 WHERE mobname = 'Warblade_Beak';
+UPDATE mob_spawn_points SET minLevel = 127, maxLevel = 127 WHERE mobname = 'Woodland_Mender';
 
 --						    128 HP 205000 - 125
 UPDATE mob_groups SET HP = 205000 WHERE name = 'Arke' AND zoneid = 120;

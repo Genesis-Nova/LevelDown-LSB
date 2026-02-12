@@ -577,7 +577,7 @@ UPDATE mob_spawn_points SET pos_x = -203.108,  pos_y = -0.0529,  pos_z = 171.341
 UPDATE mob_spawn_points SET pos_x = -599.2849, pos_y = -4.000,   pos_z = 119.4738,  pos_rot = 255 WHERE mobid = 16806271; -- Muut
 UPDATE mob_spawn_points SET pos_x = -240.2201, pos_y = -4.000,   pos_z = -81.0189,  pos_rot = 182 WHERE mobid = 16806280; -- Muut
 -- add in mobs
-INSERT INTO mob_spawn_points VALUES (17285607,0,'Woodland_Mender','Woodland Mender',64,43.7292,0,116.6937,158); -- no pool id 5034
+INSERT INTO mob_spawn_points VALUES (17285607,0,'Woodland_Mender','Woodland Mender',64,127,127,43.7292,0,116.6937,158); -- no pool id 5034
 
 UPDATE mob_groups SET poolid = 4124 WHERE name = 'Valkurm_Imperator';
 UPDATE mob_groups SET poolid = 5277 WHERE name = 'Sleepy_Mabel';
