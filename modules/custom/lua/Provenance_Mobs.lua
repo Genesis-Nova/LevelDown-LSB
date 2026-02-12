@@ -137,6 +137,8 @@ for _,  entry in pairs(provenanceMobs) do
             widescan  =  1,  
             groupId  =  entry[2],  
             groupZoneId  =  entry[3],
+            minLevel = 145,
+            maxLevel = 150,
 
             onMobSpawn  =  function(mob,   playerArg,   optParams)
                 mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   25)

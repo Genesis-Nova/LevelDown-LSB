@@ -442,6 +442,8 @@ m:addOverride(string.format('xi.zones.%s.Zone.onInitialize', entry[10]), functio
         widescan  =  1,  
         groupId  =  entry[2],  
         groupZoneId  =  entry[3],
+        minLevel = 1,
+        maxLevel = 20,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   15)
@@ -487,6 +489,8 @@ m:addOverride(string.format('xi.zones.%s.Zone.onInitialize', entry[10]), functio
         widescan  =  1,  
         groupId  =  entry[2],  
         groupZoneId  =  entry[3],
+        minLevel = 21,
+        maxLevel = 40,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   15)
@@ -532,6 +536,8 @@ m:addOverride(string.format('xi.zones.%s.Zone.onInitialize', entry[10]), functio
         widescan  =  1,  
         groupId  =  entry[2],  
         groupZoneId  =  entry[3],
+        minLevel = 41,
+        maxLevel = 60,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   15)
@@ -578,6 +584,8 @@ m:addOverride(string.format('xi.zones.%s.Zone.onInitialize', entry[10]), functio
         widescan  =  1,  
         groupId  =  entry[2],  
         groupZoneId  =  entry[3],
+        minLevel = 61,
+        maxLevel = 80,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   15)
@@ -629,6 +637,8 @@ m:addOverride(string.format('xi.zones.%s.Zone.onInitialize', entry[10]), functio
         widescan  =  1,  
         groupId  =  entry[2],  
         groupZoneId  =  entry[3],
+        minLevel = 81,
+        maxLevel = 100,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   15)
@@ -697,6 +707,8 @@ m:addOverride(string.format('xi.zones.%s.Zone.onInitialize', entry[10]), functio
         widescan  =  1,  
         groupId  =  entry[2],  
         groupZoneId  =  entry[3],
+        minLevel = 101,
+        maxLevel = 120,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   15)
