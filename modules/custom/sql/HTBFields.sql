@@ -43,10 +43,10 @@ INSERT INTO mob_spell_lists VALUES ('Garuda_Prime_HTBF', 508, 102, 65, 255); -- 
 INSERT INTO mob_spell_lists VALUES ('Garuda_Prime_HTBF', 508, 157, 65, 255); -- Aero IV
 INSERT INTO mob_spell_lists VALUES ('Garuda_Prime_HTBF', 508, 158, 65, 255); -- Aero V
 INSERT INTO mob_pools VALUES (40000, 'Garuda_Prime_HTBF', 'Garuda_Prime', 324, 0x00001c0300000000000000000000000000000000, 1, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 508, 0, 0, 37, 37,1,24);
-UPDATE mob_spawn_points SET pos_X =  503.4111, pos_y =   41.6648, pos_z = -366.8300,  pos_rot = 106 WHERE mobid = 17600540;
-UPDATE mob_spawn_points SET pos_X =   24.1289, pos_y =  -18.3276, pos_z =   32.7717,  pos_rot = 101 WHERE mobid = 17600541;
-UPDATE mob_spawn_points SET pos_X = -375.3079, pos_y =  -78.4023, pos_z =  512.9899,  pos_rot =  97 WHERE mobid = 17600542;
-UPDATE mob_groups SET poolid = 40000, HP = 115000, MP = 5000, minLevel = 100, maxLevel = 110 WHERE name = 'Garuda_Prime_HTBF' AND groupid = 7;
+UPDATE mob_spawn_points SET pos_X =  503.4111, pos_y =   41.6648, pos_z = -366.8300,  pos_rot = 106, minLevel = 100, maxLevel = 110 WHERE mobid = 17600540;
+UPDATE mob_spawn_points SET pos_X =   24.1289, pos_y =  -18.3276, pos_z =   32.7717,  pos_rot = 101, minLevel = 100, maxLevel = 110 WHERE mobid = 17600541;
+UPDATE mob_spawn_points SET pos_X = -375.3079, pos_y =  -78.4023, pos_z =  512.9899,  pos_rot =  97, minLevel = 100, maxLevel = 110 WHERE mobid = 17600542;
+UPDATE mob_groups SET poolid = 40000, HP = 115000, MP = 5000 WHERE name = 'Garuda_Prime_HTBF' AND groupid = 7;
 
 -- Ramuh Prim HTBF updated
 INSERT INTO mob_spell_lists VALUES ('Ramuh_Prime_HTBF', 509, 198, 65, 255); -- Thundega V
@@ -57,10 +57,10 @@ INSERT INTO mob_spell_lists VALUES ('Ramuh_Prime_HTBF', 509, 104, 65, 255); -- E
 --INSERT INTO mob_spell_lists VALUES ('Ramuh_Prime_HTBF', 507, 167, 65, 255); -- Thunder IV
 INSERT INTO mob_spell_lists VALUES ('Ramuh_Prime_HTBF', 509, 168, 65, 255); -- Thunder V
 INSERT INTO mob_pools VALUES (40001, 'Ramuh_Prime_HTBF', 'Ramuh_Prime', 320, 0x00001e0300000000000000000000000000000000, 1, 4, 12, 240, 100, 0, 1, 1, 1, 18, 0, 0, 0, 3, 0, 0, 509, 0, 0, 43, 43,1,24);
-UPDATE mob_spawn_points SET pos_X =  504.0446, pos_y =   41.7271, pos_z = -367.8477,  pos_rot =  97 WHERE mobid = 17604639;
-UPDATE mob_spawn_points SET pos_X =   23.0873, pos_y =  -18.2112, pos_z =   31.6858,  pos_rot =  97 WHERE mobid = 17604640;
-UPDATE mob_spawn_points SET pos_X = -375.9910, pos_y =  -78.3179, pos_z =  512.7903,  pos_rot =  89 WHERE mobid = 17604641;
-UPDATE mob_groups SET poolid = 40001, HP = 115000, MP = 5000, minLevel = 100, maxLevel = 110 WHERE name = 'Ramuh_Prime_HTBF' AND groupid = 8;
+UPDATE mob_spawn_points SET pos_X =  504.0446, pos_y =   41.7271, pos_z = -367.8477,  pos_rot =  97, minLevel = 100, maxLevel = 110 WHERE mobid = 17604639;
+UPDATE mob_spawn_points SET pos_X =   23.0873, pos_y =  -18.2112, pos_z =   31.6858,  pos_rot =  97, minLevel = 100, maxLevel = 110 WHERE mobid = 17604640;
+UPDATE mob_spawn_points SET pos_X = -375.9910, pos_y =  -78.3179, pos_z =  512.7903,  pos_rot =  89, minLevel = 100, maxLevel = 110 WHERE mobid = 17604641;
+UPDATE mob_groups SET poolid = 40001, HP = 115000, MP = 5000 WHERE name = 'Ramuh_Prime_HTBF' AND groupid = 8;
 
 -- Shiva Prim HTBF updated
 INSERT INTO mob_spell_lists VALUES ('Shiva_Prime_HTBF', 510, 183, 65, 255); -- Blizzaga V
@@ -71,10 +71,10 @@ INSERT INTO mob_spell_lists VALUES ('Shiva_Prime_HTBF', 510, 101, 65, 255); -- E
 INSERT INTO mob_spell_lists VALUES ('Shiva_Prime_HTBF', 510, 152, 65, 255); -- Blizzard IV
 INSERT INTO mob_spell_lists VALUES ('Shiva_Prime_HTBF', 510, 153, 65, 255); -- Blizzard V
 INSERT INTO mob_pools VALUES (40002, 'Shiva_Prime_HTBF', 'Shiva_Prime', 319, 0x00001d0300000000000000000000000000000000, 1, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 510, 0, 0, 44, 44,1,24);
-UPDATE mob_spawn_points SET pos_X =  504.8676,  pos_y =  41.5439,  pos_z = -366.713,  pos_rot = 102 WHERE mobid = 17608747;
-UPDATE mob_spawn_points SET pos_X =   23.9380,  pos_y = -18.2799,  pos_z =  32.3346,  pos_rot = 102 WHERE mobid = 17608748;
-UPDATE mob_spawn_points SET pos_X = -374.1309,  pos_y = -78.5339,  pos_z = 512.5617,  pos_rot =  96 WHERE mobid = 17608749;
-UPDATE mob_groups SET poolid = 40002, HP = 115000, MP = 5000, minLevel = 100, maxLevel = 110 WHERE name = 'Shiva_Prime_HTBF' AND groupid = 7;
+UPDATE mob_spawn_points SET pos_X =  504.8676,  pos_y =  41.5439,  pos_z = -366.713,  pos_rot = 102, minLevel = 100, maxLevel = 110 WHERE mobid = 17608747;
+UPDATE mob_spawn_points SET pos_X =   23.9380,  pos_y = -18.2799,  pos_z =  32.3346,  pos_rot = 102, minLevel = 100, maxLevel = 110 WHERE mobid = 17608748;
+UPDATE mob_spawn_points SET pos_X = -374.1309,  pos_y = -78.5339,  pos_z = 512.5617,  pos_rot =  96, minLevel = 100, maxLevel = 110 WHERE mobid = 17608749;
+UPDATE mob_groups SET poolid = 40002, HP = 115000, MP = 5000 WHERE name = 'Shiva_Prime_HTBF' AND groupid = 7;
 
 -- Leviathan Prim HTBF updated
 INSERT INTO mob_spell_lists VALUES ('Leviathan_Prime_HTBF', 511, 203, 65, 255); -- Waterga V
@@ -85,10 +85,10 @@ INSERT INTO mob_spell_lists VALUES ('Leviathan_Prime_HTBF', 511, 105, 65, 255); 
 INSERT INTO mob_spell_lists VALUES ('Leviathan_Prime_HTBF', 511, 172, 65, 255); -- Water IV
 INSERT INTO mob_spell_lists VALUES ('Leviathan_Prime_HTBF', 511, 173, 65, 255); -- Water V
 INSERT INTO mob_pools VALUES (40003, 'Leviathan_Prime_HTBF', 'Leviathan_Prime', 323, 0x00001b0300000000000000000000000000000000, 1, 4, 8, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 511, 0, 0, 40, 40,0,30);
-UPDATE mob_spawn_points SET pos_X =  505.3401, pos_y =   41.5271, pos_z = -367.2156,  pos_rot = 102 WHERE mobid = 17641497;
-UPDATE mob_spawn_points SET pos_X =   25.9310, pos_y =  -18.6385, pos_z =   33.1422,  pos_rot = 100 WHERE mobid = 17641498;
-UPDATE mob_spawn_points SET pos_X = -375.2288, pos_y =  -78.4145, pos_z =  513.0482,  pos_rot =  99 WHERE mobid = 17641499;
-UPDATE mob_groups SET poolid = 40003, HP = 115000, MP = 5000, minLevel = 100, maxLevel = 110 WHERE name = 'Leviathan_Prime_HTBF' AND groupid = 6;
+UPDATE mob_spawn_points SET pos_X =  505.3401, pos_y =   41.5271, pos_z = -367.2156,  pos_rot = 102, minLevel = 100, maxLevel = 110 WHERE mobid = 17641497;
+UPDATE mob_spawn_points SET pos_X =   25.9310, pos_y =  -18.6385, pos_z =   33.1422,  pos_rot = 100, minLevel = 100, maxLevel = 110 WHERE mobid = 17641498;
+UPDATE mob_spawn_points SET pos_X = -375.2288, pos_y =  -78.4145, pos_z =  513.0482,  pos_rot =  99, minLevel = 100, maxLevel = 110 WHERE mobid = 17641499;
+UPDATE mob_groups SET poolid = 40003, HP = 115000, MP = 5000 WHERE name = 'Leviathan_Prime_HTBF' AND groupid = 6;
 
 -- Ifrit Prim HTBF updated
 INSERT INTO mob_spell_lists VALUES ('Ifrit_Prime_HTBF', 512, 178, 65, 255); -- firaga V
@@ -99,10 +99,10 @@ INSERT INTO mob_spell_lists VALUES ('Ifrit_Prime_HTBF', 512, 100, 65, 255); -- E
 INSERT INTO mob_spell_lists VALUES ('Ifrit_Prime_HTBF', 512, 147, 65, 255); -- fire IV
 INSERT INTO mob_spell_lists VALUES ('Ifrit_Prime_HTBF', 512, 148, 65, 255); -- fire V
 INSERT INTO mob_pools VALUES (40004, 'Ifrit_Prime_HTBF', 'Ifrit_Prime', 322, 0x0000190300000000000000000000000000000000, 1, 4, 5, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 512, 0, 0, 38, 38,1,35);
-UPDATE mob_spawn_points SET pos_X =  503.4712, pos_y =   41.7094, pos_z = -367.2797,  pos_rot =  97 WHERE mobid = 17625113;
-UPDATE mob_spawn_points SET pos_X =   23.6167, pos_y =  -18.3472, pos_z =   33.1332,  pos_rot = 103 WHERE mobid = 17625114;
-UPDATE mob_spawn_points SET pos_X = -375.8824, pos_y =  -78.3193, pos_z =  512.7032,  pos_rot = 103 WHERE mobid = 17625115;
-UPDATE mob_groups SET poolid = 40004, HP = 115000, MP = 5000, minLevel = 100, maxLevel = 110 WHERE name = 'Ifrit_Prime_HTBF' AND groupid = 6;
+UPDATE mob_spawn_points SET pos_X =  503.4712, pos_y =   41.7094, pos_z = -367.2797,  pos_rot =  97, minLevel = 100, maxLevel = 110 WHERE mobid = 17625113;
+UPDATE mob_spawn_points SET pos_X =   23.6167, pos_y =  -18.3472, pos_z =   33.1332,  pos_rot = 103, minLevel = 100, maxLevel = 110 WHERE mobid = 17625114;
+UPDATE mob_spawn_points SET pos_X = -375.8824, pos_y =  -78.3193, pos_z =  512.7032,  pos_rot = 103, minLevel = 100, maxLevel = 110 WHERE mobid = 17625115;
+UPDATE mob_groups SET poolid = 40004, HP = 115000, MP = 5000 WHERE name = 'Ifrit_Prime_HTBF' AND groupid = 6;
 
 -- Titan Prim HTBF updated
 INSERT INTO mob_spell_lists VALUES ('Titan_Prime_HTBF', 513, 193, 65, 255); -- stonega V
@@ -113,17 +113,17 @@ INSERT INTO mob_spell_lists VALUES ('Titan_Prime_HTBF', 513, 103, 65, 255); -- E
 INSERT INTO mob_spell_lists VALUES ('Titan_Prime_HTBF', 513, 162, 65, 255); -- stone IV
 INSERT INTO mob_spell_lists VALUES ('Titan_Prime_HTBF', 513, 163, 65, 255); -- stone V
 INSERT INTO mob_pools VALUES (40005, 'Titan_Prime_HTBF', 'Titan_Prime', 321, 0x00001a0300000000000000000000000000000000, 4, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 513, 0, 0, 45, 45,1,35);
-UPDATE mob_spawn_points SET pos_X =  503.7151, pos_y =   41.7203, pos_z = -367.5521,  pos_rot =  89 WHERE mobid = 17633308;
-UPDATE mob_spawn_points SET pos_X =   24.4596, pos_y =  -18.3895, pos_z =   33.1568,  pos_rot =  97 WHERE mobid = 17633309;
-UPDATE mob_spawn_points SET pos_X = -375.5651, pos_y =  -78.3770, pos_z =  513.0141,  pos_rot = 102 WHERE mobid = 17633310;
-UPDATE mob_groups SET poolid = 40005, HP = 115000, MP = 5000, minLevel = 100, maxLevel = 110 WHERE name = 'Titan_Prime_HTBF' AND groupid = 7;
+UPDATE mob_spawn_points SET pos_X =  503.7151, pos_y =   41.7203, pos_z = -367.5521,  pos_rot =  89, minLevel = 100, maxLevel = 110 WHERE mobid = 17633308;
+UPDATE mob_spawn_points SET pos_X =   24.4596, pos_y =  -18.3895, pos_z =   33.1568,  pos_rot =  97, minLevel = 100, maxLevel = 110 WHERE mobid = 17633309;
+UPDATE mob_spawn_points SET pos_X = -375.5651, pos_y =  -78.3770, pos_z =  513.0141,  pos_rot = 102, minLevel = 100, maxLevel = 110 WHERE mobid = 17633310;
+UPDATE mob_groups SET poolid = 40005, HP = 115000, MP = 5000 WHERE name = 'Titan_Prime_HTBF' AND groupid = 7;
 
 -- Fenrir Prim HTBF updated
 INSERT INTO mob_pools VALUES (40006, 'Fenrir_Prime_HTBF', 'Fenrir_Prime', 325, 0x0000180300000000000000000000000000000000, 8, 4, 6, 240, 100, 0, 1, 1, 1, 18, 1, 0, 0, 3, 0, 0, 0, 0, 0, 40001, 36,1,12);
-UPDATE mob_spawn_points SET mobname = 'Fenrir_Prime_HTBF', pos_X =  339.4457, pos_y =   47.5105, pos_z = -341.6085,  pos_rot =  64 WHERE mobid = 17473651;
-UPDATE mob_spawn_points SET mobname = 'Fenrir_Prime_HTBF', pos_X =  -59.9329, pos_y =    9.4368, pos_z =   59.3577,  pos_rot =  64 WHERE mobid = 17473652;
-UPDATE mob_spawn_points SET mobname = 'Fenrir_Prime_HTBF', pos_X = -380.1290, pos_y =  -52.5273, pos_z =  418.5986,  pos_rot =  64 WHERE mobid = 17473653;
-UPDATE mob_groups SET poolid = 40006, HP = 155000, MP = 5000, minLevel = 110, maxLevel = 120 WHERE name = 'Fenrir_Prime_HTBF' AND groupid = 31;
+UPDATE mob_spawn_points SET mobname = 'Fenrir_Prime_HTBF', pos_X =  339.4457, pos_y =   47.5105, pos_z = -341.6085,  pos_rot =  64, minLevel = 110, maxLevel = 120 WHERE mobid = 17473651;
+UPDATE mob_spawn_points SET mobname = 'Fenrir_Prime_HTBF', pos_X =  -59.9329, pos_y =    9.4368, pos_z =   59.3577,  pos_rot =  64, minLevel = 110, maxLevel = 120 WHERE mobid = 17473652;
+UPDATE mob_spawn_points SET mobname = 'Fenrir_Prime_HTBF', pos_X = -380.1290, pos_y =  -52.5273, pos_z =  418.5986,  pos_rot =  64, minLevel = 110, maxLevel = 120 WHERE mobid = 17473653;
+UPDATE mob_groups SET poolid = 40006, HP = 155000, MP = 5000 WHERE name = 'Fenrir_Prime_HTBF' AND groupid = 31;
 INSERT INTO mob_skill_lists VALUES ('Fenrir_Prime_HTBF', 40001, 831); -- moonlit charge
 INSERT INTO mob_skill_lists VALUES ('Fenrir_Prime_HTBF', 40001, 832); -- crescent fang
 INSERT INTO mob_skill_lists VALUES ('Fenrir_Prime_HTBF', 40001, 833); -- lunar cry
@@ -135,41 +135,41 @@ INSERT INTO mob_skill_lists VALUES ('Fenrir_Prime_HTBF', 40001, 837); -- eclipti
 
 -- Carbuncle Prim HTBF updated Carbuncle_Prime_HTBF
 INSERT INTO mob_pools VALUES (40007, 'Carbuncle_Prime_HTBF', 'Carbuncle_Prime', 34, 0x0000170300000000000000000000000000000000, 3, 4, 7, 240, 100, 0, 1, 1, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 34,1,7);
-UPDATE mob_spawn_points SET mobname = 'Carbuncle_Prime_HTBF', groupid = 32, pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64 WHERE mobid = 17473562;
-UPDATE mob_spawn_points SET mobname = 'Carbuncle_Prime_HTBF', groupid = 32, pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 17473573;
-UPDATE mob_spawn_points SET mobname = 'Carbuncle_Prime_HTBF', groupid = 32, pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 17473584;
-UPDATE mob_groups SET poolid = 40007, HP = 155000, MP = 5000, minLevel = 110, maxLevel = 120 WHERE name = 'Carbuncle_Prime_HTBF' AND groupid = 32;
-UPDATE mob_groups SET HP = 50000, MP = 9999, minLevel = 95, maxLevel = 100, name = 'Ifrit_Prime_HTBF', poolid = 40004 WHERE name = 'Ifrit_Prime' AND groupid = 9;
-UPDATE mob_groups SET HP = 50000, MP = 9999, minLevel = 95, maxLevel = 100, name = 'Shiva_Prime_HTBF', poolid = 40002 WHERE name = 'Shiva_Prime' AND groupid = 10;
-UPDATE mob_groups SET HP = 50000, MP = 9999, minLevel = 95, maxLevel = 100, name = 'Garuda_Prime_HTBF', poolid = 40000 WHERE name = 'Garuda_Prime' AND groupid = 11;
-UPDATE mob_groups SET HP = 50000, MP = 9999, minLevel = 95, maxLevel = 100, name = 'Titan_Prime_HTBF', poolid = 40005 WHERE name = 'Titan_Prime' AND groupid = 12;
-UPDATE mob_groups SET HP = 50000, MP = 9999, minLevel = 95, maxLevel = 100, name = 'Ramuh_Prime_HTBF', poolid = 40001 WHERE name = 'Ramuh_Prime' AND groupid = 13;
-UPDATE mob_groups SET HP = 50000, MP = 9999, minLevel = 95, maxLevel = 100, name = 'Leviathan_Prime_HTBF', poolid = 40003 WHERE name = 'Leviathan_Prime' AND groupid = 14;
-UPDATE mob_spawn_points SET mobname = 'Ifrit_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64 WHERE mobid = 17473563;
-UPDATE mob_spawn_points SET mobname = 'Ifrit_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 17473574;
-UPDATE mob_spawn_points SET mobname = 'Ifrit_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 17473585;
-UPDATE mob_spawn_points SET mobname = 'Shiva_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64 WHERE mobid = 17473564;
-UPDATE mob_spawn_points SET mobname = 'Shiva_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 17473575;
-UPDATE mob_spawn_points SET mobname = 'Shiva_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 17473586;
-UPDATE mob_spawn_points SET mobname = 'Garuda_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64 WHERE mobid = 17473565;
-UPDATE mob_spawn_points SET mobname = 'Garuda_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 17473576;
-UPDATE mob_spawn_points SET mobname = 'Garuda_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 17473587;
-UPDATE mob_spawn_points SET mobname = 'Titan_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64 WHERE mobid = 17473566;
-UPDATE mob_spawn_points SET mobname = 'Titan_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 17473577;
-UPDATE mob_spawn_points SET mobname = 'Titan_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 17473588;
-UPDATE mob_spawn_points SET mobname = 'Ramuh_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64 WHERE mobid = 17473567;
-UPDATE mob_spawn_points SET mobname = 'Ramuh_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 17473578;
-UPDATE mob_spawn_points SET mobname = 'Ramuh_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 17473589;
-UPDATE mob_spawn_points SET mobname = 'Leviathan_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64 WHERE mobid = 17473568;
-UPDATE mob_spawn_points SET mobname = 'Leviathan_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 17473579;
-UPDATE mob_spawn_points SET mobname = 'Leviathan_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 17473590;
+UPDATE mob_spawn_points SET mobname = 'Carbuncle_Prime_HTBF', groupid = 32, pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64, minLevel = 110, maxLevel = 120 WHERE mobid = 17473562;
+UPDATE mob_spawn_points SET mobname = 'Carbuncle_Prime_HTBF', groupid = 32, pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64, minLevel = 110, maxLevel = 120 WHERE mobid = 17473573;
+UPDATE mob_spawn_points SET mobname = 'Carbuncle_Prime_HTBF', groupid = 32, pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64, minLevel = 110, maxLevel = 120 WHERE mobid = 17473584;
+UPDATE mob_groups SET poolid = 40007, HP = 155000, MP = 5000 WHERE name = 'Carbuncle_Prime_HTBF' AND groupid = 32;
+UPDATE mob_groups SET HP = 50000, MP = 9999, name = 'Ifrit_Prime_HTBF', poolid = 40004 WHERE name = 'Ifrit_Prime' AND groupid = 9;
+UPDATE mob_groups SET HP = 50000, MP = 9999, name = 'Shiva_Prime_HTBF', poolid = 40002 WHERE name = 'Shiva_Prime' AND groupid = 10;
+UPDATE mob_groups SET HP = 50000, MP = 9999, name = 'Garuda_Prime_HTBF', poolid = 40000 WHERE name = 'Garuda_Prime' AND groupid = 11;
+UPDATE mob_groups SET HP = 50000, MP = 9999, name = 'Titan_Prime_HTBF', poolid = 40005 WHERE name = 'Titan_Prime' AND groupid = 12;
+UPDATE mob_groups SET HP = 50000, MP = 9999, name = 'Ramuh_Prime_HTBF', poolid = 40001 WHERE name = 'Ramuh_Prime' AND groupid = 13;
+UPDATE mob_groups SET HP = 50000, MP = 9999, name = 'Leviathan_Prime_HTBF', poolid = 40003 WHERE name = 'Leviathan_Prime' AND groupid = 14;
+UPDATE mob_spawn_points SET mobname = 'Ifrit_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473563;
+UPDATE mob_spawn_points SET mobname = 'Ifrit_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473574;
+UPDATE mob_spawn_points SET mobname = 'Ifrit_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473585;
+UPDATE mob_spawn_points SET mobname = 'Shiva_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473564;
+UPDATE mob_spawn_points SET mobname = 'Shiva_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473575;
+UPDATE mob_spawn_points SET mobname = 'Shiva_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473586;
+UPDATE mob_spawn_points SET mobname = 'Garuda_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473565;
+UPDATE mob_spawn_points SET mobname = 'Garuda_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473576;
+UPDATE mob_spawn_points SET mobname = 'Garuda_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473587;
+UPDATE mob_spawn_points SET mobname = 'Titan_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473566;
+UPDATE mob_spawn_points SET mobname = 'Titan_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473577;
+UPDATE mob_spawn_points SET mobname = 'Titan_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473588;
+UPDATE mob_spawn_points SET mobname = 'Ramuh_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473567;
+UPDATE mob_spawn_points SET mobname = 'Ramuh_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473578;
+UPDATE mob_spawn_points SET mobname = 'Ramuh_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473589;
+UPDATE mob_spawn_points SET mobname = 'Leviathan_Prime_HTBF', pos_X =  339.6589, pos_y =   47.5315, pos_z = -342.1236,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473568;
+UPDATE mob_spawn_points SET mobname = 'Leviathan_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473579;
+UPDATE mob_spawn_points SET mobname = 'Leviathan_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64, minLevel = 95, maxLevel = 100 WHERE mobid = 17473590;
 
 -- Diablos Prim HTBF updated
 INSERT INTO mob_pools VALUES (40008, 'Diabolos_Prime_HTBF', 'Diabolos_Prime', 35, 0x0000790400000000000000000000000000000000, 4, 5, 12, 240, 100, 0, 1, 1, 0, 18, 0, 0, 0, 0, 0, 0, 515, 0, 0, 40002, 35,2,13);
-UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X =  -240.0419, pos_y =   -32.0000, pos_z = 291.0711,  pos_rot =  69 WHERE mobid = 16818226;
-UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64 WHERE mobid = 16818227;
-UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64 WHERE mobid = 16818228;
-UPDATE mob_groups SET poolid = 40008, dropid = 4109, HP = 155000, MP = 5000, minLevel = 110, maxLevel = 120 WHERE name = 'Diabolos_HTBF' AND groupid = 6;
+UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X =  -240.0419, pos_y =   -32.0000, pos_z = 291.0711,  pos_rot =  69, minLevel = 110, maxLevel = 120 WHERE mobid = 16818226;
+UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X =  -59.7994, pos_y =    9.4894, pos_z =   58.6598,  pos_rot =  64, minLevel = 110, maxLevel = 120 WHERE mobid = 16818227;
+UPDATE mob_spawn_points SET mobname = 'Diabolos_Prime_HTBF', pos_X = -380.2636, pos_y =  -52.5487, pos_z =  419.2726,  pos_rot =  64, minLevel = 110, maxLevel = 120 WHERE mobid = 16818228;
+UPDATE mob_groups SET poolid = 40008, dropid = 4109, HP = 155000, MP = 5000 WHERE name = 'Diabolos_HTBF' AND groupid = 6;
 INSERT INTO mob_skill_lists VALUES ('Diabolos_Prime_HTBF', 40002, 1910); -- Nether Blast -- no scipt -- testing
 INSERT INTO mob_skill_lists VALUES ('Diabolos_Prime_HTBF', 40002, 582); -- Cacodemonia -- no script -- testing
 INSERT INTO mob_skill_lists VALUES ('Diabolos_Prime_HTBF', 40002, 1905); -- Noctoshield -- no script -- testing
@@ -199,35 +199,35 @@ INSERT INTO `mob_pools` VALUES (40013,'Ark_Angel_TT_HTBF','Ark_Angel_TT',356,0x0
 INSERT INTO `mob_pools` VALUES (40014,'Ark_Angels_Mandragora','Ark_Angels_Mandragora',178,0x00002D0100000000000000000000000000000000,2,2,1,480,100,0,1,0,1,18,0,0,0,1667,8,0,0,0,0,178,178,0,6);
 INSERT INTO `mob_pools` VALUES (40015,'Ark_Angels_Tiger','Ark_Angels_Tiger',242,0x0000340100000000000000000000000000000000,1,1,7,240,100,0,1,0,1,18,0,0,0,1153,0,0,0,0,0,242,242,0,25);
 INSERT INTO `mob_pools` VALUES (40016,'Ark_Angels_Wyvern','Ark_Angels_Wyvern',193,0x00000C0300000000000000000000000000000000,14,1,7,200,100,0,1,0,1,18,0,0,0,1157,0,0,0,0,0,714,193,0,8);
-INSERT INTO `mob_groups` VALUES (11500, 40009, 180, 'Ark_Angel_EV_HTBF',0,128,0,155000,9999,115,120,0,NULL);
-INSERT INTO `mob_groups` VALUES (11501, 40010, 180, 'Ark_Angel_GK_HTBF',0,128,0,155000,9999,115,120,0,NULL);
-INSERT INTO `mob_groups` VALUES (11502, 40011, 180, 'Ark_Angel_HM_HTBF',0,128,0,155000,9999,115,120,0,NULL);
-INSERT INTO `mob_groups` VALUES (11503, 40012, 180, 'Ark_Angel_MR_HTBF',0,128,0,155000,9999,115,120,0,NULL);
-INSERT INTO `mob_groups` VALUES (11504, 40013, 180, 'Ark_Angel_TT_HTBF',0,128,0,155000,9999,115,120,0,NULL);
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33 WHERE mobid = 17514701;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33 WHERE mobid = 17514702;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33 WHERE mobid = 17514703;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_TT_HTBF',     groupid = 11504, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33 WHERE mobid = 17514704;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_TT_HTBF',     groupid = 11504, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33 WHERE mobid = 17514705;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_TT_HTBF',     groupid = 11504, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33 WHERE mobid = 17514706;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_GK_HTBF',     groupid = 11501, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33 WHERE mobid = 17514707;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_GK_HTBF',     groupid = 11501, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33 WHERE mobid = 17514708;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_GK_HTBF',     groupid = 11501, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33 WHERE mobid = 17514709;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Wyvern',                      pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33 WHERE mobid = 17514710;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Wyvern',                      pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33 WHERE mobid = 17514711;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Wyvern',                      pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33 WHERE mobid = 17514712;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_HM_HTBF',     groupid = 11502, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33 WHERE mobid = 17514737;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_HM_HTBF',     groupid = 11502, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33 WHERE mobid = 17514738;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_HM_HTBF',     groupid = 11502, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33 WHERE mobid = 17514739;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_MR_HTBF',     groupid = 11503, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33 WHERE mobid = 17514740;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_MR_HTBF',     groupid = 11503, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33 WHERE mobid = 17514741;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_MR_HTBF',     groupid = 11503, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33 WHERE mobid = 17514742;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Tiger',                       pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33 WHERE mobid = 17514743;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Tiger',                       pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33 WHERE mobid = 17514744;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Tiger',                       pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33 WHERE mobid = 17514745;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Mandragora',                  pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33 WHERE mobid = 17514746;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Mandragora',                  pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33 WHERE mobid = 17514747;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Mandragora',                  pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33 WHERE mobid = 17514748;
+INSERT INTO `mob_groups` VALUES (11500, 40009, 180, 'Ark_Angel_EV_HTBF',0,128,0,155000,9999,0,NULL);
+INSERT INTO `mob_groups` VALUES (11501, 40010, 180, 'Ark_Angel_GK_HTBF',0,128,0,155000,9999,0,NULL);
+INSERT INTO `mob_groups` VALUES (11502, 40011, 180, 'Ark_Angel_HM_HTBF',0,128,0,155000,9999,0,NULL);
+INSERT INTO `mob_groups` VALUES (11503, 40012, 180, 'Ark_Angel_MR_HTBF',0,128,0,155000,9999,0,NULL);
+INSERT INTO `mob_groups` VALUES (11504, 40013, 180, 'Ark_Angel_TT_HTBF',0,128,0,155000,9999,0,NULL);
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514701;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514702;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514703;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_TT_HTBF',     groupid = 11504, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514704;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_TT_HTBF',     groupid = 11504, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514705;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_TT_HTBF',     groupid = 11504, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514706;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_GK_HTBF',     groupid = 11501, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514707;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_GK_HTBF',     groupid = 11501, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514708;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_GK_HTBF',     groupid = 11501, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514709;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Wyvern',                      pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514710;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Wyvern',                      pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514711;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Wyvern',                      pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514712;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_HM_HTBF',     groupid = 11502, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514737;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_HM_HTBF',     groupid = 11502, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514738;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_HM_HTBF',     groupid = 11502, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514739;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_MR_HTBF',     groupid = 11503, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514740;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_MR_HTBF',     groupid = 11503, pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514741;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_MR_HTBF',     groupid = 11503, pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514742;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Tiger',                       pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514743;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Tiger',                       pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514744;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Tiger',                       pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514745;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Mandragora',                  pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514746;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Mandragora',                  pos_X = -562.3348,  pos_y = 242.6680,  pos_z = 56.3998,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514747;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Mandragora',                  pos_X = -477.6799,  pos_y = -317.6700, pos_z = 79.2236,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514748;
 INSERT INTO mob_spell_lists VALUES ('ArkAngelTTHTBF',516,148,1,255); -- fire_v
 INSERT INTO mob_spell_lists VALUES ('ArkAngelTTHTBF',516,153,1,255); -- blizzard_v
 INSERT INTO mob_spell_lists VALUES ('ArkAngelTTHTBF',516,158,1,255); -- aero_v
@@ -308,14 +308,14 @@ INSERT INTO mob_spell_lists VALUES ('ArkAngelEV',518,112,1,255); -- flash
 INSERT INTO mob_spell_lists VALUES ('ArkAngelEV',518,106,1,255); -- phalanx
 INSERT INTO mob_spell_lists VALUES ('ArkAngelEV',518,97,1,255); -- reprisal
 INSERT INTO mob_spell_lists VALUES ('ArkAngelEV',518,855,1,255); -- enlight_ii
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33 WHERE mobid = 17514781;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_TT_HTBF',     groupid = 11504, pos_X = -16.0718,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  54 WHERE mobid = 17514782;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_GK_HTBF',     groupid = 11501, pos_X = -18.6289,   pos_y = -18.7163,  pos_z = 14.2155,  pos_rot =  50 WHERE mobid = 17514783;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Wyvern',                      pos_X = -18.6289,   pos_y = -18.7163,  pos_z = 14.2155,  pos_rot =  50 WHERE mobid = 17514784;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_HM_HTBF',     groupid = 11502, pos_X =  -9.1463,   pos_y = -18.7163,  pos_z = 14.2155,  pos_rot =  43 WHERE mobid = 17514777;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angel_MR_HTBF',     groupid = 11503, pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39 WHERE mobid = 17514778;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Tiger',                       pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39 WHERE mobid = 17514779;
-UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Mandragora',                  pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39 WHERE mobid = 17514780;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_EV_HTBF',     groupid = 11500, pos_X = -13.9772,   pos_y = -18.7160,  pos_z = 14.2155,  pos_rot =  33, minLevel = 115, maxLevel = 120 WHERE mobid = 17514781;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_TT_HTBF',     groupid = 11504, pos_X = -16.0718,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  54, minLevel = 115, maxLevel = 120 WHERE mobid = 17514782;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_GK_HTBF',     groupid = 11501, pos_X = -18.6289,   pos_y = -18.7163,  pos_z = 14.2155,  pos_rot =  50, minLevel = 115, maxLevel = 120 WHERE mobid = 17514783;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Wyvern',                      pos_X = -18.6289,   pos_y = -18.7163,  pos_z = 14.2155,  pos_rot =  50, minLevel = 115, maxLevel = 120 WHERE mobid = 17514784;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_HM_HTBF',     groupid = 11502, pos_X =  -9.1463,   pos_y = -18.7163,  pos_z = 14.2155,  pos_rot =  43, minLevel = 115, maxLevel = 120 WHERE mobid = 17514777;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angel_MR_HTBF',     groupid = 11503, pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39, minLevel = 115, maxLevel = 120 WHERE mobid = 17514778;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Tiger',                       pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39, minLevel = 115, maxLevel = 120 WHERE mobid = 17514779;
+UPDATE mob_spawn_points SET mobname = 'Ark_Angels_Mandragora',                  pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39, minLevel = 115, maxLevel = 120 WHERE mobid = 17514780;
 
 -- puppet in peril HTBF
 UPDATE mob_pools SET name = 'Lancelord_Gaheel_HTBF',   spellList = 519 WHERE name = 'Lancelord_Gaheel_Ja'  AND poolid = 2370;
@@ -324,33 +324,33 @@ UPDATE mob_pools SET name = 'Mamool_Flamerearer_HTBF'  WHERE name = 'Mamool_Ja_F
 UPDATE mob_pools SET name = 'Mamool_Isangoma_HTBF',    spellList = 520 WHERE name = 'Mamool_Ja_Isangoma'    AND poolid = 6955;
 UPDATE mob_pools SET name = 'Mamool_Profligate_HTBF'   WHERE name = 'Mamool_Ja_Profligate'  AND poolid = 6957;
 UPDATE mob_pools SET name = 'Mamool_Polemicist_HTBF',  spellList = 516 WHERE name = 'Mamool_Ja_Polemicist'  AND poolid = 6956;
-UPDATE mob_groups SET HP = 175000, MP = 9999, minLevel = 120, maxLevel = 125, name = 'Lancelord_Gaheel_HTBF'   WHERE poolid = 2370 AND name = 'Lancelord_Gaheel_Ja'; 
-UPDATE mob_groups SET HP = 75000,  MP = 9999, minLevel = 110, maxLevel = 115, name = 'Mamool_Unseen_HTBF'      WHERE poolid = 6958 AND name = 'Mamool_Ja_Unseen'; 
-UPDATE mob_groups SET HP = 75000,  MP = 9999, minLevel = 110, maxLevel = 115, name = 'Mamool_Flamerearer_HTBF' WHERE poolid = 6959 AND name = 'Mamool_Ja_Flamerearer'; 
-UPDATE mob_groups SET HP = 75000,  MP = 9999, minLevel = 110, maxLevel = 115, name = 'Mamool_Isangoma_HTBF'    WHERE poolid = 6955 AND name = 'Mamool_Ja_Isangoma'; 
-UPDATE mob_groups SET HP = 75000,  MP = 9999, minLevel = 110, maxLevel = 115, name = 'Mamool_Profligate_HTBF'  WHERE poolid = 6957 AND name = 'Mamool_Ja_Profligate'; 
-UPDATE mob_groups SET HP = 75000,  MP = 9999, minLevel = 110, maxLevel = 115, name = 'Mamool_Polemicist_HTBF'  WHERE poolid = 6956 AND name = 'Mamool_Ja_Polemicist'; 
-UPDATE mob_spawn_points SET mobname = 'Lancelord_Gaheel_HTBF',   pos_X = 241.7711,   pos_y = -31.5431,  pos_z = 239.0438,  pos_rot =  159 WHERE mobid = 17051760;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Unseen_HTBF',      pos_X = 241.7711,   pos_y = -31.5431,  pos_z = 239.0438,  pos_rot =  159 WHERE mobid = 17051761;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Flamerearer_HTBF', pos_X = 244.7644,   pos_y = -31.1628,  pos_z = 239.6185,  pos_rot =  144 WHERE mobid = 17051762;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Isangoma_HTBF',    pos_X = 246.1002,   pos_y = -31.0492,  pos_z = 243.0372,  pos_rot =  121 WHERE mobid = 17051763;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Profligate_HTBF',  pos_X = 241.5989,   pos_y = -31.1523,  pos_z = 235.0241,  pos_rot =  174 WHERE mobid = 17051764;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Polemicist_HTBF',  pos_X = 239.5683,   pos_y = -31.0689,  pos_z = 233.3579,  pos_rot =  191 WHERE mobid = 17051765;
-UPDATE mob_spawn_points SET pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39 WHERE mobid = 17051766; -- Scorched-snout Wyvern
-UPDATE mob_spawn_points SET mobname = 'Lancelord_Gaheel_HTBF',   pos_X = 0.789,   pos_y = 8.5000,  pos_z = -0.2412,  pos_rot =  158 WHERE mobid = 17051767;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Unseen_HTBF',      pos_X = 0.789,   pos_y = 8.5000,  pos_z = -0.2412,  pos_rot =  158 WHERE mobid = 17051768;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Flamerearer_HTBF', pos_X = 3.2212,  pos_y = 8.6344,  pos_z = 1.7963,   pos_rot =  117 WHERE mobid = 17051769;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Isangoma_HTBF',    pos_X = 2.8961,  pos_y = 8.8946,  pos_z = 4.2043,   pos_rot =  99 WHERE mobid = 17051770;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Profligate_HTBF',  pos_X = 3.6058,  pos_y = 8.7719,  pos_z = -2.3333,  pos_rot =  165 WHERE mobid = 17051771;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Polemicist_HTBF',  pos_X = 2.2063,  pos_y = 8.8454,  pos_z = -4.9297,  pos_rot =  181 WHERE mobid = 17051772;
-UPDATE mob_spawn_points SET pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39 WHERE mobid = 17051773; -- Scorched-snout Wyvern
-UPDATE mob_spawn_points SET mobname = 'Lancelord_Gaheel_HTBF',   pos_X = -240.5868,  pos_y = 48.5000,  pos_z = -239.1030,  pos_rot =  158 WHERE mobid = 17051774;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Unseen_HTBF',      pos_X = -240.5868,  pos_y = 48.5000,  pos_z = -239.1030,  pos_rot =  158 WHERE mobid = 17051775;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Flamerearer_HTBF', pos_X = -238.7326,  pos_y = 48.5000,  pos_z = -238.6066,  pos_rot =  129 WHERE mobid = 17051776;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Isangoma_HTBF',    pos_X = -237.811,   pos_y = 48.6941,  pos_z = -236.6441,  pos_rot =  121 WHERE mobid = 17051777;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Profligate_HTBF',  pos_X = -238.2886,  pos_y = 48.5472,  pos_z = -242.3815,  pos_rot =  170 WHERE mobid = 17051778;
-UPDATE mob_spawn_points SET mobname = 'Mamool_Polemicist_HTBF',  pos_X = -239.4235,  pos_y = 48.8254,  pos_z = -244.5281,  pos_rot =  179 WHERE mobid = 17051779;
-UPDATE mob_spawn_points SET pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39 WHERE mobid = 17051780; -- Scorched-snout Wyvern
+UPDATE mob_groups SET HP = 175000, MP = 9999, name = 'Lancelord_Gaheel_HTBF'   WHERE poolid = 2370 AND name = 'Lancelord_Gaheel_Ja'; 
+UPDATE mob_groups SET HP = 75000,  MP = 9999, name = 'Mamool_Unseen_HTBF'      WHERE poolid = 6958 AND name = 'Mamool_Ja_Unseen'; 
+UPDATE mob_groups SET HP = 75000,  MP = 9999, name = 'Mamool_Flamerearer_HTBF' WHERE poolid = 6959 AND name = 'Mamool_Ja_Flamerearer'; 
+UPDATE mob_groups SET HP = 75000,  MP = 9999, name = 'Mamool_Isangoma_HTBF'    WHERE poolid = 6955 AND name = 'Mamool_Ja_Isangoma'; 
+UPDATE mob_groups SET HP = 75000,  MP = 9999, name = 'Mamool_Profligate_HTBF'  WHERE poolid = 6957 AND name = 'Mamool_Ja_Profligate'; 
+UPDATE mob_groups SET HP = 75000,  MP = 9999, name = 'Mamool_Polemicist_HTBF'  WHERE poolid = 6956 AND name = 'Mamool_Ja_Polemicist'; 
+UPDATE mob_spawn_points SET mobname = 'Lancelord_Gaheel_HTBF',   pos_X = 241.7711,   pos_y = -31.5431,  pos_z = 239.0438,  pos_rot =  159, minLevel = 120, maxLevel = 125 WHERE mobid = 17051760;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Unseen_HTBF',      pos_X = 241.7711,   pos_y = -31.5431,  pos_z = 239.0438,  pos_rot =  159, minLevel = 120, maxLevel = 125 WHERE mobid = 17051761;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Flamerearer_HTBF', pos_X = 244.7644,   pos_y = -31.1628,  pos_z = 239.6185,  pos_rot =  144, minLevel = 120, maxLevel = 125 WHERE mobid = 17051762;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Isangoma_HTBF',    pos_X = 246.1002,   pos_y = -31.0492,  pos_z = 243.0372,  pos_rot =  121, minLevel = 120, maxLevel = 125 WHERE mobid = 17051763;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Profligate_HTBF',  pos_X = 241.5989,   pos_y = -31.1523,  pos_z = 235.0241,  pos_rot =  174, minLevel = 120, maxLevel = 125 WHERE mobid = 17051764;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Polemicist_HTBF',  pos_X = 239.5683,   pos_y = -31.0689,  pos_z = 233.3579,  pos_rot =  191, minLevel = 120, maxLevel = 125 WHERE mobid = 17051765;
+UPDATE mob_spawn_points SET pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39, minLevel = 120, maxLevel = 125 WHERE mobid = 17051766; -- Scorched-snout Wyvern
+UPDATE mob_spawn_points SET mobname = 'Lancelord_Gaheel_HTBF',   pos_X = 0.789,   pos_y = 8.5000,  pos_z = -0.2412,  pos_rot =  158, minLevel = 120, maxLevel = 125 WHERE mobid = 17051767;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Unseen_HTBF',      pos_X = 0.789,   pos_y = 8.5000,  pos_z = -0.2412,  pos_rot =  158, minLevel = 120, maxLevel = 125 WHERE mobid = 17051768;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Flamerearer_HTBF', pos_X = 3.2212,  pos_y = 8.6344,  pos_z = 1.7963,   pos_rot =  117, minLevel = 120, maxLevel = 125 WHERE mobid = 17051769;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Isangoma_HTBF',    pos_X = 2.8961,  pos_y = 8.8946,  pos_z = 4.2043,   pos_rot =  99, minLevel = 120, maxLevel = 125 WHERE mobid = 17051770;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Profligate_HTBF',  pos_X = 3.6058,  pos_y = 8.7719,  pos_z = -2.3333,  pos_rot =  165, minLevel = 120, maxLevel = 125 WHERE mobid = 17051771;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Polemicist_HTBF',  pos_X = 2.2063,  pos_y = 8.8454,  pos_z = -4.9297,  pos_rot =  181, minLevel = 120, maxLevel = 125 WHERE mobid = 17051772;
+UPDATE mob_spawn_points SET pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39, minLevel = 120, maxLevel = 125 WHERE mobid = 17051773; -- Scorched-snout Wyvern
+UPDATE mob_spawn_points SET mobname = 'Lancelord_Gaheel_HTBF',   pos_X = -240.5868,  pos_y = 48.5000,  pos_z = -239.1030,  pos_rot =  158, minLevel = 120, maxLevel = 125 WHERE mobid = 17051774;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Unseen_HTBF',      pos_X = -240.5868,  pos_y = 48.5000,  pos_z = -239.1030,  pos_rot =  158, minLevel = 120, maxLevel = 125 WHERE mobid = 17051775;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Flamerearer_HTBF', pos_X = -238.7326,  pos_y = 48.5000,  pos_z = -238.6066,  pos_rot =  129, minLevel = 120, maxLevel = 125 WHERE mobid = 17051776;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Isangoma_HTBF',    pos_X = -237.811,   pos_y = 48.6941,  pos_z = -236.6441,  pos_rot =  121, minLevel = 120, maxLevel = 125 WHERE mobid = 17051777;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Profligate_HTBF',  pos_X = -238.2886,  pos_y = 48.5472,  pos_z = -242.3815,  pos_rot =  170, minLevel = 120, maxLevel = 125 WHERE mobid = 17051778;
+UPDATE mob_spawn_points SET mobname = 'Mamool_Polemicist_HTBF',  pos_X = -239.4235,  pos_y = 48.8254,  pos_z = -244.5281,  pos_rot =  179, minLevel = 120, maxLevel = 125 WHERE mobid = 17051779;
+UPDATE mob_spawn_points SET pos_X = -12.1318,   pos_y = -18.7161,  pos_z = 14.2155,  pos_rot =  39, minLevel = 120, maxLevel = 125 WHERE mobid = 17051780; -- Scorched-snout Wyvern
 INSERT INTO mob_spell_lists VALUES ('LancelordGaheelJa',519,1,1,255); -- cure
 INSERT INTO mob_spell_lists VALUES ('LancelordGaheelJa',519,2,1,255); -- cure_ii
 INSERT INTO mob_spell_lists VALUES ('LancelordGaheelJa',519,3,1,255); -- cure_iii
@@ -388,38 +388,38 @@ INSERT INTO mob_spell_lists VALUES ('MammolIsangomaHTBF',520,17,1,255); -- silen
 INSERT INTO mob_spell_lists VALUES ('MammolIsangomaHTBF',520,18,1,255); -- stona
 
 -- Warriors Path THTBF
-UPDATE mob_groups SET HP = 155000,  MP = 9999, minLevel = 120, maxLevel = 125, name = 'Tenzen_HTBF' WHERE groupid = 10 AND name = 'Tenzen'; 
-UPDATE mob_groups SET HP = 155000,  MP = 9999, minLevel = 110, maxLevel = 115, name = 'Cherukiki_HTBF'       WHERE groupid = 13 AND name = 'Cherukiki'; 
-UPDATE mob_groups SET HP = 155000,  MP = 9999, minLevel = 110, maxLevel = 115, name = 'Kukki-Chebukki_HTBF'  WHERE groupid = 12 AND name = 'Kukki-Chebukki'; 
-UPDATE mob_groups SET HP = 155000,  MP = 9999, minLevel = 110, maxLevel = 115, name = 'Makki-Chebukki_HTBF'  WHERE groupid = 11 AND name = 'Makki-Chebukki'; 
+UPDATE mob_groups SET HP = 155000,  MP = 9999, name = 'Tenzen_HTBF' WHERE groupid = 10 AND name = 'Tenzen'; 
+UPDATE mob_groups SET HP = 155000,  MP = 9999, name = 'Cherukiki_HTBF'       WHERE groupid = 13 AND name = 'Cherukiki'; 
+UPDATE mob_groups SET HP = 155000,  MP = 9999, name = 'Kukki-Chebukki_HTBF'  WHERE groupid = 12 AND name = 'Kukki-Chebukki'; 
+UPDATE mob_groups SET HP = 155000,  MP = 9999, name = 'Makki-Chebukki_HTBF'  WHERE groupid = 11 AND name = 'Makki-Chebukki'; 
 UPDATE mob_pools SET name = 'Tenzen_HTBF'                                             WHERE name = 'Tenzen'          AND poolid = 6956;
 UPDATE mob_pools SET spellList = 520, skill_list_id = 0, name = 'Cherukiki_HTBF'      WHERE name = 'Cherukiki'       AND poolid = 710;
 UPDATE mob_pools SET spellList = 516, skill_list_id = 0, name = 'Kukki-Chebukki_HTBF' WHERE name = 'Kukki-Chebukki'  AND poolid = 2293;
 UPDATE mob_pools SET skill_list_id = 0,                  name = 'Makki-Chebukki_HTBF' WHERE name = 'Makki-Chebukki'  AND poolid = 2492;
-UPDATE mob_spawn_points SET mobname = 'Tenzen_HTBF',           pos_x = -640.0229,  pos_y = -231.3476,  pos_z = 529.5814,  pos_rot =  61 WHERE mobid = 16908370;
-UPDATE mob_spawn_points SET mobname = 'Makki-Chebukki_HTBF'    WHERE mobid = 16908371;
-UPDATE mob_spawn_points SET mobname = 'Kukki-Chebukki_HTBF'    WHERE mobid = 16908372;
-UPDATE mob_spawn_points SET mobname = 'Cherukiki_HTBF'         WHERE mobid = 16908373;
-UPDATE mob_spawn_points SET mobname = 'Tenzen_HTBF',           pos_x = 0.1016,     pos_y = -151.3476,  pos_z = 170.1908,  pos_rot =  61 WHERE mobid = 16908374;
-UPDATE mob_spawn_points SET mobname = 'Makki-Chebukki_HTBF'    WHERE mobid = 16908375;
-UPDATE mob_spawn_points SET mobname = 'Kukki-Chebukki_HTBF'    WHERE mobid = 16908376;
-UPDATE mob_spawn_points SET mobname = 'Cherukiki_HTBF'         WHERE mobid = 16908377;
-UPDATE mob_spawn_points SET mobname = 'Tenzen_HTBF',           pos_x = 640.1404,   pos_y = -71.3476,  pos_z = -189.8488,  pos_rot =  61 WHERE mobid = 16908378;
-UPDATE mob_spawn_points SET mobname = 'Makki-Chebukki_HTBF'    WHERE mobid = 16908379;
-UPDATE mob_spawn_points SET mobname = 'Kukki-Chebukki_HTBF'    WHERE mobid = 16908380;
-UPDATE mob_spawn_points SET mobname = 'Cherukiki_HTBF'         WHERE mobid = 16908381;
+UPDATE mob_spawn_points SET mobname = 'Tenzen_HTBF',            pos_x = -640.0229,  pos_y = -231.3476,  pos_z = 529.5814,  pos_rot =  61, minLevel = 120, maxLevel = 125 WHERE mobid = 16908370;
+UPDATE mob_spawn_points SET mobname = 'Makki-Chebukki_HTBF',    minLevel = 110, maxLevel = 115    WHERE mobid = 16908371;
+UPDATE mob_spawn_points SET mobname = 'Kukki-Chebukki_HTBF',    minLevel = 110, maxLevel = 115    WHERE mobid = 16908372;
+UPDATE mob_spawn_points SET mobname = 'Cherukiki_HTBF',         minLevel = 110, maxLevel = 115         WHERE mobid = 16908373;
+UPDATE mob_spawn_points SET mobname = 'Tenzen_HTBF',            pos_x = 0.1016,     pos_y = -151.3476,  pos_z = 170.1908,  pos_rot =  61, minLevel = 120, maxLevel = 125 WHERE mobid = 16908374;
+UPDATE mob_spawn_points SET mobname = 'Makki-Chebukki_HTBF',    minLevel = 110, maxLevel = 115    WHERE mobid = 16908375;
+UPDATE mob_spawn_points SET mobname = 'Kukki-Chebukki_HTBF',    minLevel = 110, maxLevel = 115    WHERE mobid = 16908376;
+UPDATE mob_spawn_points SET mobname = 'Cherukiki_HTBF',         minLevel = 110, maxLevel = 115         WHERE mobid = 16908377;
+UPDATE mob_spawn_points SET mobname = 'Tenzen_HTBF',            pos_x = 640.1404,   pos_y = -71.3476,  pos_z = -189.8488,  pos_rot =  61, minLevel = 120, maxLevel = 125 WHERE mobid = 16908378;
+UPDATE mob_spawn_points SET mobname = 'Makki-Chebukki_HTBF',    minLevel = 110, maxLevel = 115    WHERE mobid = 16908379;
+UPDATE mob_spawn_points SET mobname = 'Kukki-Chebukki_HTBF',    minLevel = 110, maxLevel = 115    WHERE mobid = 16908380;
+UPDATE mob_spawn_points SET mobname = 'Cherukiki_HTBF',         minLevel = 110, maxLevel = 115         WHERE mobid = 16908381;
 
 -- One to e Feared HBF
 INSERT INTO `mob_pools` VALUES (40018,'Omega_HTBF','Omega',54,0x0000350400000000000000000000000000000000,1,1,6,240,100,0,1,1,0,34,22528,32,7,1691,13,0,0,0,0,54,54,1,15);
 INSERT INTO `mob_pools` VALUES (40017,'Ultima_HTBF','Ultima',54,0x0000330400000000000000000000000000000000,1,1,6,240,100,0,1,1,0,34,22528,32,2635,1691,13,0,0,0,0,728,54,1,15);
-UPDATE mob_groups SET poolid = 40017, HP = 155000,  MP = 9999, minLevel = 120, maxLevel = 125, name = 'Ultima_HTBF' WHERE groupid = 9 AND name = 'Ultima_HTBF'; 
-UPDATE mob_groups SET poolid = 40018,               HP = 155000,  MP = 9999, minLevel = 120, maxLevel = 125, name = 'Omega_HTBF' WHERE groupid = 8 AND name = 'Omega_HTBF'; 
-UPDATE mob_spawn_points SET mobname = 'Omega_HTBF', groupid = 8,          pos_x = -639.8127,  pos_y = -231.3477,  pos_z =  510.5845,  pos_rot = 191 WHERE mobid = 16908406; 
-UPDATE mob_spawn_points SET mobname = 'Omega_HTBF', groupid = 8,          pos_x =    0.0241,  pos_y = -151.3476,  pos_z =  150.8623,  pos_rot = 184 WHERE mobid = 16908408; 
-UPDATE mob_spawn_points SET mobname = 'Omega_HTBF', groupid = 8,          pos_x =  640.0577,  pos_y =  -71.3477,  pos_z = -209.3274,  pos_rot = 187 WHERE mobid = 16908410; 
-UPDATE mob_spawn_points SET mobname = 'Ultima_HTBF', groupid = 9,         pos_x = -779.9949,  pos_y = -103.3476,  pos_z =  -71.6040,  pos_rot =  63 WHERE mobid = 16908407;
-UPDATE mob_spawn_points SET mobname = 'Ultima_HTBF', groupid = 9,         pos_x = -139.9194,  pos_y =  -23.3476,  pos_z = -430.0629,  pos_rot =  66 WHERE mobid = 16908409;
-UPDATE mob_spawn_points SET mobname = 'Ultima_HTBF', groupid = 9,         pos_x =  499.9628,  pos_y =   56.6524,  pos_z = -790.0623,  pos_rot =  64 WHERE mobid = 16908411;
+UPDATE mob_groups SET poolid = 40017, HP = 155000,  MP = 9999, name = 'Ultima_HTBF' WHERE groupid = 9 AND name = 'Ultima_HTBF'; 
+UPDATE mob_groups SET poolid = 40018,               HP = 155000,  MP = 9999, name = 'Omega_HTBF' WHERE groupid = 8 AND name = 'Omega_HTBF'; 
+UPDATE mob_spawn_points SET mobname = 'Omega_HTBF', groupid = 8,          pos_x = -639.8127,  pos_y = -231.3477,  pos_z =  510.5845,  pos_rot = 191, minLevel = 120, maxLevel = 125 WHERE mobid = 16908406; 
+UPDATE mob_spawn_points SET mobname = 'Omega_HTBF', groupid = 8,          pos_x =    0.0241,  pos_y = -151.3476,  pos_z =  150.8623,  pos_rot = 184, minLevel = 120, maxLevel = 125 WHERE mobid = 16908408; 
+UPDATE mob_spawn_points SET mobname = 'Omega_HTBF', groupid = 8,          pos_x =  640.0577,  pos_y =  -71.3477,  pos_z = -209.3274,  pos_rot = 187, minLevel = 120, maxLevel = 125 WHERE mobid = 16908410; 
+UPDATE mob_spawn_points SET mobname = 'Ultima_HTBF', groupid = 9,         pos_x = -779.9949,  pos_y = -103.3476,  pos_z =  -71.6040,  pos_rot =  63, minLevel = 120, maxLevel = 125 WHERE mobid = 16908407;
+UPDATE mob_spawn_points SET mobname = 'Ultima_HTBF', groupid = 9,         pos_x = -139.9194,  pos_y =  -23.3476,  pos_z = -430.0629,  pos_rot =  66, minLevel = 120, maxLevel = 125 WHERE mobid = 16908409;
+UPDATE mob_spawn_points SET mobname = 'Ultima_HTBF', groupid = 9,         pos_x =  499.9628,  pos_y =   56.6524,  pos_z = -790.0623,  pos_rot =  64, minLevel = 120, maxLevel = 125 WHERE mobid = 16908411;
 
 UPDATE mob_groups SET poolid = 5106 WHERE name = 'Promathia_htbf';
 
@@ -428,23 +428,83 @@ UPDATE mob_groups SET poolid = 5106 WHERE name = 'Promathia_htbf';
 -- INSERT INTO `mob_skills` VALUES (1980,1197,'boreas_mantle',0,7.0,2000,1500,1,4,0,0,0,0,0); -- phantom puk
 INSERT INTO `mob_skills` VALUES (3290,3034,'bowels_of_agony',0,0.0,7.0,2000,0,4,0,0,0,0,0,0); -- Bowels of Agony - Shadow Lord
 INSERT INTO `mob_skill_lists` VALUES ('ShadowLord', 225, 3290);
+
+--=============================================
 -- Return to Delkfutt's Tower II HTBF
-UPDATE mob_groups SET HP = 200000,  MP = 9999, minLevel = 120, maxLevel = 125 WHERE name = 'Kamlanaut_HTBF' AND groupid = 16;
-UPDATE mob_groups SET HP = 20000,  MP = 9999, minLevel = 110, maxLevel = 115 WHERE name = 'Esoteric_Scrivening' AND groupid = 17;
-UPDATE mob_spawn_points SET mobname = 'Kamlanaut_HTBF' WHERE mobname = 'Kamlanaut' AND groupid = 16;
+--=============================================
 
+UPDATE mob_groups SET HP = 200000,  MP = 9999 WHERE name = 'Kamlanaut_HTBF' AND groupid = 16;
+UPDATE mob_groups SET HP = 20000,  MP = 9999 WHERE name = 'Esoteric_Scrivening' AND groupid = 17;
+UPDATE mob_spawn_points SET mobname = 'Kamlanaut_HTBF', minLevel = 120, maxLevel = 125 WHERE mobname = 'Kamlanaut' AND groupid = 16;
+UPDATE mob_spawn_points SET minLevel = 110, maxLevel = 115 WHERE mobname = 'Esoteric_Scrivening' AND groupid = 17;
+
+--=============================================
 -- Dawn II HTBF
+--=============================================
+
 --adds HP/MP and fixes modelid to phase 1
-UPDATE mob_groups SET HP = 80000,  MP = 9999, minLevel = 120, maxLevel = 125, poolid = 3205 WHERE name = 'Promathia_htbf' AND groupid = 7;
+UPDATE mob_groups SET HP = 80000,  MP = 9999, poolid = 3205 WHERE name = 'Promathia_htbf' AND groupid = 7;
 --add Phase 2 Promathia
-INSERT INTO mob_groups (groupid, poolid, zoneid, name, respawntime, spawntype, dropid, HP, MP, minLevel, maxLevel, allegiance, content_tag) VALUES (13, 5106, 36, 'Promathia_htbf_2', 0, 128, 0, 120000, 10000, 120, 125, 0,NULL);
+INSERT INTO mob_groups (groupid, poolid, zoneid, name, respawntime, spawntype, dropid, HP, MP, allegiance, content_tag) VALUES (13, 5106, 36, 'Promathia_htbf_2', 0, 128, 0, 120000, 10000, 0,NULL);
 
 
 --Spawnpoints for both Promathia's
---Spawnpoints for both Promathia's
-UPDATE mob_spawn_points SET mobid=16924691, mobname='Promathia_htbf', polutils_name='Promathia', groupid=7, pos_x=-520.000, pos_y=-120.000, pos_z=528.000, pos_rot=64 WHERE mobid=16924691;
-UPDATE mob_spawn_points SET mobid=16924692, mobname='Promathia_htbf_2', polutils_name='Promathia', groupid=13, pos_x=-520.000, pos_y=-120.000, pos_z=528.000, pos_rot=64 WHERE mobid=16924692;
-UPDATE mob_spawn_points SET mobid=16924693, mobname='Promathia_htbf', polutils_name='Promathia', groupid=7, pos_x=520.404, pos_y=0.000, pos_z=527.522, pos_rot=64 WHERE mobid=16924693;
-UPDATE mob_spawn_points SET mobid=16924694, mobname='Promathia_htbf_2', polutils_name='Promathia', groupid=13, pos_x=520.404, pos_y=0.000, pos_z=527.522, pos_rot=64 WHERE mobid=16924694;
-UPDATE mob_spawn_points SET mobid=16924695, mobname='Promathia_htbf', polutils_name='Promathia', groupid=7, pos_x=-519.557, pos_y=120.000, pos_z=-511.441, pos_rot=64 WHERE mobid=16924695;
-UPDATE mob_spawn_points SET mobid=16924696, mobname='Promathia_htbf_2', polutils_name='Promathia', groupid=13, pos_x=-519.557, pos_y=120.000, pos_z=-511.441, pos_rot=64 WHERE mobid=16924696;
+UPDATE mob_spawn_points SET mobid=16924691, mobname='Promathia_htbf', polutils_name='Promathia', groupid=7, pos_x=-520.000, pos_y=-120.000, pos_z=528.000, pos_rot=64, minLevel = 120, maxLevel = 125 WHERE mobid=16924691;
+UPDATE mob_spawn_points SET mobid=16924692, mobname='Promathia_htbf_2', polutils_name='Promathia', groupid=13, pos_x=-520.000, pos_y=-120.000, pos_z=528.000, pos_rot=64, minLevel = 120, maxLevel = 125 WHERE mobid=16924692;
+UPDATE mob_spawn_points SET mobid=16924693, mobname='Promathia_htbf', polutils_name='Promathia', groupid=7, pos_x=520.404, pos_y=0.000, pos_z=527.522, pos_rot=64, minLevel = 120, maxLevel = 125 WHERE mobid=16924693;
+UPDATE mob_spawn_points SET mobid=16924694, mobname='Promathia_htbf_2', polutils_name='Promathia', groupid=13, pos_x=520.404, pos_y=0.000, pos_z=527.522, pos_rot=64, minLevel = 120, maxLevel = 125 WHERE mobid=16924694;
+UPDATE mob_spawn_points SET mobid=16924695, mobname='Promathia_htbf', polutils_name='Promathia', groupid=7, pos_x=-519.557, pos_y=120.000, pos_z=-511.441, pos_rot=64, minLevel = 120, maxLevel = 125 WHERE mobid=16924695;
+UPDATE mob_spawn_points SET mobid=16924696, mobname='Promathia_htbf_2', polutils_name='Promathia', groupid=13, pos_x=-519.557, pos_y=120.000, pos_z=-511.441, pos_rot=64, minLevel = 120, maxLevel = 125 WHERE mobid=16924696;
+
+--=============================================
+--Alexander HTBF
+--=============================================
+
+--Sets Level, HP/MP
+UPDATE mob_groups SET HP= 300000, MP= 0 WHERE name='Alexander' AND zoneid=298 AND groupid=3;
+
+--Sets Spawn Point
+UPDATE mob_spawn_points SET pos_x=-700.000, pos_y=-13.270, pos_z=-140.000, pos_rot=64, minLevel=119, maxLevel=119 WHERE mobid=17997827;
+
+--Removes void of repentance and gospel of the lost from skill list
+DELETE FROM mob_skill_lists WHERE skill_list_id=784 AND mob_skill_id=2146;
+DELETE FROM mob_skill_lists WHERE skill_list_id=784 AND mob_skill_id=2145;
+
+-- Set skills AOE radius and make them the correct AOE status (or conal for Divine Spear)
+UPDATE mob_skills SET mob_skill_aoe_radius = 12, mob_skill_aoe = 4 WHERE mob_skill_id = 2144; --Divine Spear
+UPDATE mob_skills SET mob_skill_aoe_radius = 12, mob_skill_aoe = 1 WHERE mob_skill_id = 2141; --Radiant Sacrament
+UPDATE mob_skills SET mob_skill_aoe_radius = 12, mob_skill_aoe = 1 WHERE mob_skill_id = 2147; --Divine Judgment
+UPDATE mob_skills SET mob_skill_aoe_radius = 12, mob_skill_aoe = 1 WHERE mob_skill_id = 2142; --Mega Holy
+UPDATE mob_skills SET mob_skill_aoe_radius = 12, mob_skill_aoe = 1 WHERE mob_skill_id = 2146; --Void of Repentance
+
+
+
+--=============================================
+--Cait Sith HTBF
+--=============================================
+
+--Set HP/MP, Level, poolid (0 to 5775) 609 has no animations
+UPDATE mob_groups SET HP = 300000, MP = 9999, poolid = 5775 WHERE name = 'Cait_Sith' AND zoneid = 298;
+
+-- Set Spawn Points
+UPDATE mob_spawn_points SET mobid=17997826, mobname='Cait_Sith', polutils_name='Cait Sith', groupid=2, pos_x=-700.000, pos_y=-13.270, pos_z=-140.000, pos_rot=64, minLevel = 119, maxLevel = 119 WHERE mobid=17997826;
+
+--Change names of skills so they can be read by the luas and make them AOE, and set radius (0 to 16)
+UPDATE mob_skills SET mob_skill_name = 'level_1_holy', mob_skill_aoe = 1, mob_skill_aoe_radius = 16 WHERE mob_skill_id = 2452;
+UPDATE mob_skills SET mob_skill_name = 'level_2_holy', mob_skill_aoe = 1, mob_skill_aoe_radius = 16 WHERE mob_skill_id = 2453;
+UPDATE mob_skills SET mob_skill_name = 'level_3_holy', mob_skill_aoe = 1, mob_skill_aoe_radius = 16 WHERE mob_skill_id = 2454;
+UPDATE mob_skills SET mob_skill_name = 'level_4_holy', mob_skill_aoe = 1, mob_skill_aoe_radius = 16 WHERE mob_skill_id = 2455;
+UPDATE mob_skills SET mob_skill_name = 'level_5_holy', mob_skill_aoe = 1, mob_skill_aoe_radius = 16 WHERE mob_skill_id = 2456;
+UPDATE mob_skills SET mob_skill_name = 'level_6_holy', mob_skill_aoe = 1, mob_skill_aoe_radius = 16 WHERE mob_skill_id = 2457;
+
+--Fix Eerie Eye to be Conal in front of player (1 to 4) and set radius to 15 yalms (0 to 15)
+UPDATE mob_skills SET mob_skill_aoe = 4, mob_skill_aoe_radius = 15 WHERE mob_skill_id = 2450;
+
+--Make Regal Scrath non-AoE (1 to 0)
+UPDATE mob_skills SET mob_skill_aoe = 0 WHERE mob_skill_id = 2448;
+
+--Give Mewing Lullaby AoE range (0 to 15)
+UPDATE mob_skills SET mob_skill_aoe_radius = 15 WHERE mob_skill_id = 2449; 
+
+--Removes Divine Favor from skill list
+DELETE FROM mob_skill_lists WHERE skill_list_id=60 AND mob_skill_id = 2451;

@@ -40,48 +40,12 @@ INSERT INTO `spell_list` VALUES (753, 'tearing_gust',         0x0000000000000000
 INSERT INTO `spell_list` VALUES (717, 'sweeping_gouge',       0x00000000000000000000000000000063000000000000, 3, 0, 0, 0, 4, 43, 29, 500, 120000, 2, 0, 949, 2000, 0, 0, 1.00, 0, 0, 0, 58,0, 'ABYSSEA');
 
 -- update blue traits
-INSERT INTO `blue_traits` VALUES (29,8,2,68,72);
-INSERT INTO `blue_traits` VALUES (30,8,52,244,30);
-INSERT INTO `blue_traits` VALUES (31,8,110,487,13);
-INSERT INTO `blue_traits` VALUES (32,8,98,421,14);
-INSERT INTO `blue_traits` VALUES (33,8,118,963,11);
--- Nih Added traits
---INSERT INTO `blue_traits` VALUES (4,8,24,295,12);  -- 'clear mind iv'
-INSERT INTO `blue_traits` VALUES (5,4,48,240,15); -- 'resist sleep ii'
-INSERT INTO `blue_traits` VALUES (6,4,5,28,24); -- 'Magic Atk. Bonus ii'
-INSERT INTO `blue_traits` VALUES (6,6,5,28,28); -- 'Magic Atk. Bonus iii'
-INSERT INTO `blue_traits` VALUES (6,8,5,28,32); -- 'Magic Atk. Bonus iv'
-INSERT INTO `blue_traits` VALUES (8,4,3,23,22); -- 'attack bonus phy ii'
-INSERT INTO `blue_traits` VALUES (8,4,3,24,22); -- 'attack bonus rng ii'
-INSERT INTO `blue_traits` VALUES (8,6,3,23,35); -- 'attack bonus phy iii'
-INSERT INTO `blue_traits` VALUES (8,6,3,24,35); -- 'attack bonus rng iii'
-INSERT INTO `blue_traits` VALUES (8,8,3,23,48); -- 'attack bonus phy iv'
-INSERT INTO `blue_traits` VALUES (8,8,3,24,48); -- 'attack bonus rng iv'
-INSERT INTO `blue_traits` VALUES (11,4,4,1,22); -- 'defense bonus ii'
-INSERT INTO `blue_traits` VALUES (11,6,4,1,35); -- 'defense bonus iii'
-INSERT INTO `blue_traits` VALUES (11,8,4,1,48); -- 'defense bonus iv'
-INSERT INTO `blue_traits` VALUES (13,4,6,29,12); -- 'magic def bonus ii'
-INSERT INTO `blue_traits` VALUES (13,6,6,29,14); -- 'magic def bonus iii'
-INSERT INTO `blue_traits` VALUES (16,4,1,25,22); -- 'accuracy bonus -physical ii'
-INSERT INTO `blue_traits` VALUES (16,4,1,26,22); -- 'accuracy bonus -ranged ii'
-INSERT INTO `blue_traits` VALUES (16,6,1,25,35); -- 'accuracy bonus -physical iii'
-INSERT INTO `blue_traits` VALUES (16,6,1,26,35); -- 'accuracy bonus -ranged iii'
-INSERT INTO `blue_traits` VALUES (16,8,1,25,48); -- 'accuracy bonus -physical iv'
-INSERT INTO `blue_traits` VALUES (16,8,1,26,48); -- 'accuracy bonus -ranged iv'
-INSERT INTO `blue_traits` VALUES (17,4,13,296,28); -- 'conserve mp ii'
-INSERT INTO `blue_traits` VALUES (17,6,13,296,31); -- 'conserve mp iii'
-INSERT INTO `blue_traits` VALUES (18,4,2,68,22); -- 'evasion bonus ii'
-INSERT INTO `blue_traits` VALUES (18,6,2,68,35); -- 'evasion bonus iii'
-INSERT INTO `blue_traits` VALUES (20,6,14,73,30); -- 'store tp iii'
-INSERT INTO `blue_traits` VALUES (21,4,17,291,12); -- 'counter ii'
-INSERT INTO `blue_traits` VALUES (23,3,106,174,12); -- 'skillchain bonus ii'
-INSERT INTO `blue_traits` VALUES (23,4,106,174,16); -- 'skillchain bonus iii'
-INSERT INTO `blue_traits` VALUES (25,8,18,259,30); -- 'dual wield iv'
-INSERT INTO `blue_traits` VALUES (27,3,110,487,7); -- 'magic busrt bonus ii'
-INSERT INTO `blue_traits` VALUES (27,4,110,487,9); -- 'magic busrt bonus iii'
-INSERT INTO `blue_traits` VALUES (34,8,117,958,5); -- 'tenacity i mod:958 resist_all'
-INSERT INTO `blue_traits` VALUES (35,8,139,31,10); -- 'magic evasion bonus i'
-INSERT INTO `blue_traits` VALUES (36,8,140,30,10); -- 'magic accuracy bonus i'
+INSERT INTO `blue_traits` VALUES (29,8,2,68,72,1,0); -- Phy Eva Boost
+INSERT INTO `blue_traits` VALUES (30,8,52,244,30,1,0); 
+INSERT INTO `blue_traits` VALUES (31,8,110,487,13,1,0);
+INSERT INTO `blue_traits` VALUES (32,8,98,421,14,1,0); -- Crit Dmg Bns
+INSERT INTO `blue_traits` VALUES (33,8,118,963,11,1,0); -- Iquartata
+INSERT INTO `blue_traits` VALUES (34,8,117,958,5,1,0); -- 'tenacity i mod:958 resist_all'
 
 -- update blue spells lists
 INSERT INTO `blue_spell_list` VALUES (700,2945,6,16,8,0,0,0);

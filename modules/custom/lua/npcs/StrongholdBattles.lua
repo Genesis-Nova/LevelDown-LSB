@@ -111,8 +111,8 @@ local EVENT_HOST_ZONE_NAME = 'East_Ronfaure_[S]'
 -- MEGA BOSS CONFIGURATION
 -- =============================================================================
 local ENABLE_MEGA_BOSS = true
-local MEGA_BOSS_LEVEL = 130
-local MEGA_BOSS_HPP_MOD = 8000
+local MEGA_BOSS_LEVEL = 140
+local MEGA_BOSS_HPP_MOD = 9000
 local MEGA_BOSS_DMG_MOD = 150
 local MEGA_BOSS_ATT_MOD = 350
 local MEGA_BOSS_ACC_MOD = 150
@@ -666,8 +666,6 @@ local function spawnArmy(zone, selectedZone, battleFightStartHour)
                     if unitName == STAGED_UNITS.MANTELET.unitname or unitName == STAGED_UNITS.BELFRY.unitname then
                         --Mods meant to stop the Mantelets and Belfries from TPing or doing anything 
                         mob_spawned:setAutoAttackEnabled(false)
-                        mob_spawned:setMobMod(xi.mobMod.TP_USE_CHANCE, 0)
-                        mob_spawned:setMobMod(xi.mobMod.ATTACK_SKILL_LIST, 0)
                         mob_spawned:setMobMod(xi.mobMod.SKILL_LIST, 0)
                         mob_spawned:setMobMod(xi.mobMod.SPELL_LIST, 0)
                         mob_spawned:setMobMod(xi.mobMod.NO_AGGRO, 1)

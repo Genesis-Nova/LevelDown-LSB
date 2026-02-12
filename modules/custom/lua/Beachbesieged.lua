@@ -156,7 +156,6 @@ local function applyMobStats(mob, isBoss, difficultyMultiplier)
         mob:addMod(xi.mod.HPP, 175 * difficultyMultiplier)
         mob:addMod(xi.mod.DEF, 15 * difficultyMultiplier)
         mob:addMod(xi.mod.ACC, 150 * difficultyMultiplier)
-		mob:setMobMod(xi.mobMod.TP_USE_CHANCE, 500) -- set TP use at 50% chance
         for _, stat in ipairs({xi.mod.STR, xi.mod.VIT, xi.mod.INT, xi.mod.MND, xi.mod.CHR, xi.mod.AGI, xi.mod.DEX}) do
             mob:addMod(stat, 10 * difficultyMultiplier)
         end
