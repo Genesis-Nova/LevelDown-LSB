@@ -12,6 +12,13 @@ for _, phId in pairs(ID.mob.ESCHAN_PHUABO) do
     entity.phList[phId] = ID.mob.WARDER_OF_HOPE
 end
 
+entity.onMobSpawn = function(mob)
+    mob:setAnimationSub(6)
+    mob:setUntargetable(false)
+    mob:setAutoAttackEnabled(true)
+    mob:setMobMod(xi.mobMod.ALWAYS_AGGRO, 1)
+end
+
 entity.onMobDeath = function(mob, player, optParams)
     local keyItemChance = math.random(1,100)
 

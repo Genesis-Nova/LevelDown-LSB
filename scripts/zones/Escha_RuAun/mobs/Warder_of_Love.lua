@@ -12,6 +12,24 @@ for _, phId in pairs(ID.mob.ESCHAN_YOVRA) do
     entity.phList[phId] = ID.mob.WARDER_OF_LOVE
 end
 
+entity.onMobSpawn = function(mob)
+    mob:setMobMod(xi.mobMod.ALWAYS_AGGRO, 1)
+    mob:setUntargetable(true)
+    mob:hideName(true)
+end
+
+entity.onMobEngage = function(mob, target)
+    mob:hideName(false)
+    mob:setUntargetable(false)
+    mob:setAnimationSub(2)
+end
+
+entity.onMobDisengage = function(mob)
+    mob:hideName(true)
+    mob:setUntargetable(true)
+    mob:setAnimationSub(1)
+end
+
 entity.onMobDeath = function(mob, player, optParams)
     local keyItemChance = math.random(1,100)
 

@@ -30,6 +30,7 @@ zones[xi.zone.ESCHA_RUAUN] =
         WARDER_OF_MERCY      = GetFirstID('Warder_of_Mercy'),
         WARDER_OF_PRUDENCE   = GetFirstID('Warder_of_Prudence'),
         WARDER_OF_TEMPERANCE = GetFirstID('Warder_of_Temperance'),
+        KOURYU               = GetFirstID('Kouryu'),
         ESCHAN_LIMULE        = GetTableOfIDs('Eschan_Limule'),
         ESCHAN_EUVHI         = GetTableOfIDs('Eschan_Euvhi'),
         ESCHAN_GHRAH         = GetTableOfIDs('Eschan_Ghrah'),
