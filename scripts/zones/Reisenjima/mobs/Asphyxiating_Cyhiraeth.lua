@@ -15,8 +15,10 @@ entity.onMobDeath = function(mob, player, optParams)
         spawnPoints = { { x = mob:getXPos(), y = mob:getYPos(), z = mob:getZPos() } }
     }
 
+    local rareEnemyMod = 10 + player:getCharVar('[Vorseal]Rare Enemy')
+
     if not player:hasKeyItem(xi.ki.MOLLIFIER) then
-        xi.mob.phOnDespawn(mob, ID.mob.ASCENDED_CYHIRAETH, 30, 4800, params)
+        xi.mob.phOnDespawn(mob, ID.mob.ASCENDED_CYHIRAETH, rareEnemyMod, 180, params)
     end
 end
 
