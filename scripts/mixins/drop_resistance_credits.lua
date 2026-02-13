@@ -1,5 +1,5 @@
 require('scripts/globals/mixins')
-require('scripts/globals/utils')
+require("scripts/utils/utils")
 
 g_mixins = g_mixins or {}
 

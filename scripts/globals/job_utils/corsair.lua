@@ -3,7 +3,7 @@
 -----------------------------------
 require('scripts/globals/ability')
 require('scripts/globals/jobpoints')
---require('scripts/globals/utils')
+require("scripts/utils/utils")
 -----------------------------------
 xi = xi or {}
 xi.job_utils = xi.job_utils or {}
