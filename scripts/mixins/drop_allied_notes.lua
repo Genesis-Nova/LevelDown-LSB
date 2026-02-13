@@ -1,5 +1,5 @@
 require('scripts/globals/mixins')
-require('scripts/globals/utils')
+require("scripts/utils/utils")
 
 g_mixins = g_mixins or {}
 
@@ -15,7 +15,7 @@ g_mixins.drop_allied_notes = function(mob)
             for _, member in pairs(alliance) do
                 if member:hasStatusEffect(xi.effect.SIGIL) then
                 member:addCurrency('allied_notes', modifier)
-                member:printToPlayer(string.format('you obtained %s allied notes', modifier))
+                member:printToPlayer(string.format('You obtained %s Allied Notes', modifier))
                 end
             end
         end
