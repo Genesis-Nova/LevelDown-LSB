@@ -1638,7 +1638,7 @@ end
 -- =============================================================================
 -- INACTIVITY AND DEMOTION CONFIGURATION
 -- =============================================================================
-local INACTIVITY_GRACE_PERIOD_BATTLES = 56 -- Approx. 4 IRL days (14 battles/day * 2)
+local INACTIVITY_GRACE_PERIOD_BATTLES = 5000 -- Approx. 4 IRL days (14 battles/day * 2)
 local BATTLES_PER_DAY = 14 -- Used to calculate penalty per day.
 
 local DEMOTION_FLAG_VAR = 'PB_DemotionFlag' -- CharVar to prevent multiple demotions. (1 = Demoted)
