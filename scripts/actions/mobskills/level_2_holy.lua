@@ -38,21 +38,15 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     for _, member in ipairs(targets) do
         if member:getZoneID() == mob:getZoneID() and member:checkDistance(mob) <= 20 and not member:isDead() then
             local maxHP = member:getMaxHP()
-            print("Level 2 Holy: Target " .. member:getName() .. " MaxHP: " .. maxHP)
 
             if maxHP % divisor == 0 then
                 local dmg = math.random(600, 1200)
                 if divineFavor then dmg = 30000 end
 
-                print("Level 2 Holy: Base Damage for " .. member:getName() .. ": " .. dmg)
                 dmg = xi.mobskills.mobMagicalMove(mob, member, skill, dmg, xi.element.LIGHT, 1, xi.mobskills.magicalTpBonus.NO_EFFECT)
-                print("Level 2 Holy: After mobMagicalMove: " .. dmg)
                 dmg = xi.mobskills.mobFinalAdjustments(dmg, mob, skill, member, xi.attackType.MAGICAL, xi.damageType.LIGHT, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
-                print("Level 2 Holy: After mobFinalAdjustments: " .. dmg)
 
                 member:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.LIGHT)
-            else
-                print("Level 2 Holy: Missed " .. member:getName() .. " (HP not divisible by 2)")
             end
         end
     end
