@@ -143,6 +143,7 @@ local battlefieldConfig = {
         name = blackStar .. "Divine Interference",
         requiredKI = xi.ki.DIVINE_PHANTOM_GEM,
         mobName = "Alexander",
+        confrontationId = 1000,
         mobAbilityPermissions = {
             -- [Skill ID] = { name = "Skill Name", difficulties = { [1]=Very Easy, [2]=Easy, [3]=Normal, [4]=Difficult, [5]=Very Difficult } }
             [2141] = { name = "radiant_sacrament",  difficulties = { [1]=true, [2]=true, [3]=true, [4]=true, [5]=true } },
@@ -223,6 +224,7 @@ local battlefieldConfig = {
         name = blackStar .. "Champion of the Dawn",
         requiredKI = xi.ki.CHAMPION_PHANTOM_GEM,
         mobName = "Cait_Sith",
+        confrontationId = 2000,
         mobAbilityPermissions = {
             -- Placeholders
         },
@@ -425,6 +427,13 @@ local function onConfrontationWin(player)
     local lootTable = config.loot
     local remChapters = config.remChapters
 
+    -- Capture TH level immediately before the delay
+    local thLevel = 0
+    if mob and mob.getTHlevel then
+        thLevel = mob:getTHlevel()
+    end
+    debugPrint("Captured TH Level: " .. tostring(thLevel))
+
     -- Delay loot by 5 seconds
     player:timer(5000, function(p_loot)
         local z = p_loot:getZone()
@@ -452,10 +461,6 @@ local function onConfrontationWin(player)
         if lootTable then
             debugPrint("Loot table found. Selecting loot...")
             
-            local thLevel = 0
-            if mob and mob.getTHlevel then
-                thLevel = mob:getTHlevel()
-            end
             debugPrint("Applying TH Level: " .. tostring(thLevel))
             
             -- Standard Logic for all difficulties
@@ -463,6 +468,7 @@ local function onConfrontationWin(player)
                 for _, item in ipairs(group) do
                     local baseRate = (item.chance + dropRateBonus) * 10
                     local rate = xi.combat.treasureHunter.getDropRate(thLevel, baseRate)
+                    debugPrint(string.format("Loot Check - ItemID: %s, TH Level: %d, Base Rate: %d, Modified Rate: %d", tostring(item.itemId), thLevel, baseRate, rate))
 
                     if math.random(1, 10000) <= rate then
                         if item.itemId and item.itemId ~= xi.item.NONE then
@@ -879,13 +885,25 @@ m:addOverride("xi.zones.Walk_of_Echoes_[P1].Zone.onZoneIn", function(player, pre
                     local mob = GetMobByID(mobID)
                     if mob then
                         debugPrint("Mob entity found. isSpawned: " .. tostring(mob:isSpawned()))
+
+                        -- Check if all party members are present
+                        local partySize = p_timed:getCharVar("HTBF_Party_Size")
+                        if partySize > 0 then
+                            local membersPresent = 0
+                            for i = 1, partySize do
+                                local memberId = p_timed:getCharVar(string.format("HTBF_Party_Member_%d", i))
+                                local member = GetPlayerByID(memberId)
+                                if member and member:getZoneID() == zone:getID() then
+                                    membersPresent = membersPresent + 1
+                                end
+                            end
+                            if membersPresent < partySize then
+                                p_timed:printToPlayer(string.format("Waiting for party members... (%d/%d)", membersPresent, partySize), xi.msg.channel.SYSTEM_3)
+                                return
+                            end
+                        end
                         
-                        -- Only allow spawning if the player has the Needs_Spawn flag.
-                        -- This prevents relogging players from restarting a cleaned-up battle.
-                        if not mob:isSpawned() and p_timed:getCharVar("HTBF_Needs_Spawn") == 1 then
-                            -- Clear the flag immediately so it can't be used again
-                            p_timed:setCharVar("HTBF_Needs_Spawn", 0)
-                            
+                        if not mob:isSpawned() then
                             debugPrint("Spawning mob...")
                             
                             -- Clear arena of unauthorized players
@@ -916,7 +934,7 @@ m:addOverride("xi.zones.Walk_of_Echoes_[P1].Zone.onZoneIn", function(player, pre
                             SetServerVariable("HTBF_Battlefield_Active", 1)
                             debugPrint("Server variable HTBF_Battlefield_Active set to 1.")
                             
-                            local confrontationID = math.random(1, 60000)
+                            local confrontationID = config.confrontationId or math.random(1, 60000)
                             zone:setLocalVar("ActiveHTBF_ConfrontationID", confrontationID) -- Store in zone var for mob
                             debugPrint("ActiveHTBF_ConfrontationID set to: " .. confrontationID)
 
@@ -948,10 +966,12 @@ m:addOverride("xi.zones.Walk_of_Echoes_[P1].Zone.onZoneIn", function(player, pre
                                 debugPrint("Party list was empty, using solo player as fallback.")
                             end
 
-                            -- Apply to self (Spawner) only. Others handle themselves in their own onZoneIn.
-                            p_timed:addStatusEffect(xi.effect.CONFRONTATION, confrontationID, 0, timeLimitSeconds)
-                            p_timed:setCharVar("HTBF_ConfrontationID", confrontationID)
-                            p_timed:countdown(timeLimitSeconds)
+                            -- Apply to all present party members
+                            for _, p in ipairs(playerList) do
+                                p:addStatusEffect(xi.effect.CONFRONTATION, confrontationID, 0, timeLimitSeconds)
+                                p:setCharVar("HTBF_ConfrontationID", confrontationID)
+                                p:countdown(timeLimitSeconds)
+                            end
 
                             local combinedMobMods = {}
                             if config.mobMods then

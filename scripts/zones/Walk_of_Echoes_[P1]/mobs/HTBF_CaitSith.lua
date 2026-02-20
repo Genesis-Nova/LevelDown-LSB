@@ -70,40 +70,56 @@ local function setup(m, config, helpers)
             end
             spawnedMobs[mob:getID()] = true
 
-            local zone = mob:getZone()
-            if zone then
+            local function attemptSetup(m, attempts)
+                local zone = m:getZone()
+                if not zone then return end
                 local confrontationID = zone:getLocalVar("ActiveHTBF_ConfrontationID")
                 if confrontationID > 0 and xi.confrontation.lookup and xi.confrontation.lookup[confrontationID] then
                     local lookup = xi.confrontation.lookup[confrontationID]
-                    mob:addStatusEffect(xi.effect.CONFRONTATION, confrontationID, 0, 0)
-                    mob:setLocalVar("DifficultyIndex", lookup.difficultyIndex)
+                    m:addStatusEffect(xi.effect.CONFRONTATION, confrontationID, 0, 0)
+                    m:setLocalVar("DifficultyIndex", lookup.difficultyIndex)
                     debugPrint("Applied Confrontation ID " .. confrontationID .. " to Cait Sith.")
 
-                    local function ensureConfrontation(m, attempts)
-                        if not m or not m:isAlive() then return end
-                        if not m:hasStatusEffect(xi.effect.CONFRONTATION) then
-                            debugPrint("Confrontation effect missing on " .. m:getName() .. ". Re-applying. Attempts left: " .. attempts)
-                            m:addStatusEffect(xi.effect.CONFRONTATION, confrontationID, 0, 0)
+                    local function ensureConfrontation(mobRef, tries)
+                        if not mobRef or not mobRef:isAlive() then return end
+
+                        local z = mobRef:getZone()
+                        if not z or z:getLocalVar("ActiveHTBF_ConfrontationID") ~= confrontationID then
+                            return
                         end
-                        applyMobMods(m, lookup)
-                        if attempts > 0 then
-                            m:timer(1000, function(m2)
+
+                        if not mobRef:hasStatusEffect(xi.effect.CONFRONTATION) then
+                            debugPrint("Confrontation effect missing on " .. mobRef:getName() .. ". Re-applying. Attempts left: " .. tries)
+                            mobRef:addStatusEffect(xi.effect.CONFRONTATION, confrontationID, 0, 0)
+                        end
+                        applyMobMods(mobRef, lookup)
+                        if tries > 0 then
+                            mobRef:timer(1000, function(m2)
                                 if m2 and m2:isAlive() and not m2:hasStatusEffect(xi.effect.CONFRONTATION) then
-                                    ensureConfrontation(m2, attempts - 1)
+                                    ensureConfrontation(m2, tries - 1)
                                 end
                             end)
                         end
                     end
 
-                    mob:timer(500, function(m)
-                        ensureConfrontation(m, 5)
+                    m:timer(500, function(m2)
+                        ensureConfrontation(m2, 5)
                     end)
 
                     checkConfrontation(confrontationID)
+                    m:setUnkillable(true)
+                    m:setLocalVar("BenedictionUsed", 0)
+                else
+                    if attempts > 0 then
+                        debugPrint("Confrontation ID not found yet for Cait Sith. Retrying... " .. attempts)
+                        m:timer(500, function(m2) attemptSetup(m2, attempts - 1) end)
+                    else
+                        debugPrint("Failed to setup confrontation for Cait Sith.")
+                    end
                 end
             end
-            mob:setUnkillable(true)
-            mob:setLocalVar("BenedictionUsed", 0)
+
+            attemptSetup(mob, 5)
         end)
 
         m:addOverride(mobTablePath .. ".onMobEngage", function(mob, target)
