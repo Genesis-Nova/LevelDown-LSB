@@ -720,7 +720,8 @@ local caitSithLogic = require("scripts/zones/Walk_of_Echoes_[P1]/mobs/HTBF_CaitS
 caitSithLogic(m, battlefieldConfig[2], helpers)
 
 -- Odin Logic
-local odinLogic = require("scripts/zones/Walk_of_Echoes_[P1]/mobs/HTBF_Odin")
+local odinLogic = require("scripts/zones/Walk_of_Echoes_[P1]/mobs/HTBF_CaitSith") --change to Odin when ready
+
 odinLogic(m, battlefieldConfig[3], helpers)
 
 -- ============================================================================
