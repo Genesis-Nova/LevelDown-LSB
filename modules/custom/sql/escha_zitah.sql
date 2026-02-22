@@ -1,31 +1,3 @@
--- update mob spawn points to shift them to qms
-UPDATE mob_spawn_points SET pos_X = 39.0766,   pos_y = -0.7559, pos_z = 135.6011,   pos_rot = 75  WHERE mobid = 17957299; -- Wepwawet
-UPDATE mob_spawn_points SET pos_X = 601.2795,  pos_y = -0.2433, pos_z = -168.8869,  pos_rot = 162 WHERE mobid = 17957301; -- Lustful Lydia
-UPDATE mob_spawn_points SET pos_X = -11.9079,  pos_y = -0.3944, pos_z = -435.8526,  pos_rot = 39  WHERE mobid = 17957304; -- Aglaophotis
-UPDATE mob_spawn_points SET pos_X = 510.6931,  pos_y = -0.2643, pos_z = -483.201,   pos_rot = 238 WHERE mobid = 17957308; -- Tangata Manu
-UPDATE mob_spawn_points SET pos_X = 325.7415,  pos_y = -0.1989, pos_z = -129.1349,  pos_rot = 172 WHERE mobid = 17957310; -- Vidala
-UPDATE mob_spawn_points SET pos_X = 401.6606,  pos_y = -0.0000, pos_z = -638.9804,  pos_rot = 114 WHERE mobid = 17957313; -- Gestalt
-UPDATE mob_spawn_points SET pos_X = -364.7595, pos_y = -0.1233, pos_z = -434.251,   pos_rot = 31  WHERE mobid = 17957317; -- Angrboda
-UPDATE mob_spawn_points SET pos_X = -245.3619, pos_y = -0.4082, pos_z = 617.7747,   pos_rot = 16  WHERE mobid = 17957319; -- Cunnast
-UPDATE mob_spawn_points SET pos_X = -10.3273,  pos_y = -0.3153, pos_z = -158.021,   pos_rot = 20  WHERE mobid = 17957322; -- Revetaur
-UPDATE mob_spawn_points SET pos_X = -356.6668, pos_y = -0.496,  pos_z = 426.998,    pos_rot = 163 WHERE mobid = 17957325; -- Ferrodon
-UPDATE mob_spawn_points SET pos_X = 249.8434,  pos_y = -0.989,  pos_z = -298.2996,  pos_rot = 145 WHERE mobid = 17957329; -- Gulltop
-UPDATE mob_spawn_points SET pos_X = 452.257,   pos_y = -0.4118, pos_z = -280.8013,  pos_rot = 249 WHERE mobid = 17957332; -- Vyala
-UPDATE mob_spawn_points SET pos_X = -10.3273,  pos_y = -0.3153, pos_z = -158.021,   pos_rot = 20  WHERE mobid = 17957352; -- Ionos
-UPDATE mob_spawn_points SET pos_X = 601.2795,  pos_y = -0.2433, pos_z = -168.8869,  pos_rot = 162 WHERE mobid = 17957355; -- Sensual Sandy
-UPDATE mob_spawn_points SET pos_X = -356.6668, pos_y = -0.496,  pos_z = 426.998,    pos_rot = 163 WHERE mobid = 17957358; -- Nosoi
-UPDATE mob_spawn_points SET pos_X = -11.9079,  pos_y = -0.3944, pos_z = -435.8526,  pos_rot = 39  WHERE mobid = 17957361; -- Brittlis
-UPDATE mob_spawn_points SET pos_X = 510.6931,  pos_y = -0.2643, pos_z = -483.201,   pos_rot = 238 WHERE mobid = 17957365; -- Kamohoalii
-UPDATE mob_spawn_points SET pos_X = 325.7415,  pos_y = -0.1989, pos_z = -129.1349,  pos_rot = 172 WHERE mobid = 17957367; -- Umdhlebi
-UPDATE mob_spawn_points SET pos_X = 249.8434,  pos_y = -0.989,  pos_z = -298.2996,  pos_rot = 145 WHERE mobid = 17957370; -- Fleetstalker
-UPDATE mob_spawn_points SET pos_X = 452.257,   pos_y = -0.4118, pos_z = -280.8013,  pos_rot = 249 WHERE mobid = 17957373; -- Shockmaw
-UPDATE mob_spawn_points SET pos_X = 39.0766,   pos_y = -0.7559, pos_z = 135.6011,   pos_rot = 75  WHERE mobid = 17957376; -- Urmahlullu
-UPDATE mob_spawn_points SET pos_X = 401.6606,  pos_y = -0.0000, pos_z = -638.9804,  pos_rot = 114 WHERE mobid = 17957343; -- Alpluachra
-UPDATE mob_spawn_points SET pos_X = 403.1004,  pos_y = -0.0000, pos_z = -640.4817,  pos_rot = 125 WHERE mobid = 17957337; -- Bucca
-UPDATE mob_spawn_points SET pos_X = 400.8694,  pos_y = -0.0000, pos_z = -635.8933,  pos_rot = 94  WHERE mobid = 17957385; -- Puca
-UPDATE mob_spawn_points SET pos_X = -364.7595, pos_y = -0.1233, pos_z = -434.251,   pos_rot = 31  WHERE mobid = 17957334; -- blaze wing
-UPDATE mob_spawn_points SET pos_X = -245.3619, pos_y = -0.4082, pos_z = 617.7747,   pos_rot = 16  WHERE mobid = 17957349; -- Wrathare
-UPDATE mob_spawn_points SET pos_X = -10.3273,  pos_y = -0.3153, pos_z = -158.021,   pos_rot = 20  WHERE mobid = 17957347; -- Pazuzu
 -- Shockmaw
 INSERT INTO mob_skill_lists VALUES ('Shockmaw', 50001, 2869); -- deap sea dirge
 INSERT INTO mob_skill_lists VALUES ('Shockmaw', 50001, 2870); -- caudal capacitor
@@ -87,4 +59,50 @@ INSERT INTO mob_spell_lists VALUES ('Urmahlullu', 514, 213, 65, 255); -- burst i
 INSERT INTO mob_spell_lists VALUES ('Urmahlullu', 514, 239, 65, 255); -- shock
 UPDATE mob_pools SET sJob = 4, skill_list_id = 50002, spellList = 514 WHERE poolid = 5722 AND name = 'Urmahlullu';
 
+UPDATE mob_pools SET mobType = 2 WHERE name = 'Gulltop';
+UPDATE mob_pools SET mobType = 2 WHERE name = 'Palila';
+UPDATE mob_pools SET mobType = 2 WHERE name = 'Aglaophotis';
+UPDATE mob_pools SET mobType = 2 WHERE name = 'Ferrodon';
+UPDATE mob_pools SET mobType = 2 WHERE name = 'Brittlis';
+UPDATE mob_pools SET mobType = 2 WHERE name = 'Fleetstalker';
+UPDATE mob_pools SET mobType = 2 WHERE name = 'Yakshi';
+UPDATE mob_pools SET mobType = 2 WHERE name = 'Albumen';
+UPDATE mob_pools SET mobType = 2 WHERE name = 'Onychophora';
+
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -640.000, pos_y = -39.400, pos_z = -255.000 WHERE npcid = 17969965;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -590.000, pos_y = -60.400, pos_z = 108.700 WHERE npcid = 17969966;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -390.000, pos_y = -67.000, pos_z = 302.000 WHERE npcid = 17969967;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -490.000, pos_y = -54.400, pos_z = 437.200 WHERE npcid = 17969968;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -410.000, pos_y = -63.000, pos_z = 582.000 WHERE npcid = 17969969;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -283.000, pos_y = -55.600, pos_z = 519.000 WHERE npcid = 17969970;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -160.000, pos_y = -72.000, pos_z = 636.000 WHERE npcid = 17969971;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 60.500, pos_y = -83.400, pos_z = 583.300 WHERE npcid = 17969972;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 163.400, pos_y = -87.500, pos_z = 333.700 WHERE npcid = 17969973;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -589.000, pos_y = -417.400, pos_z = -1028.000 WHERE npcid = 17969974;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -614.200, pos_y = -417.400, pos_z = -1030.000 WHERE npcid = 17969975;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -612.000, pos_y = -417.400, pos_z = -1050.000 WHERE npcid = 17969976;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -291.395, pos_y = -42.000, pos_z = -401.071 WHERE npcid = 17961699;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -571.348, pos_y = -68.700, pos_z = -185.561 WHERE npcid = 17961700;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -440.593, pos_y = -40.000, pos_z = -4.551 WHERE npcid = 17961701;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -471.487, pos_y = -42.000, pos_z = 153.196 WHERE npcid = 17961702;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -352.868, pos_y = -68.700, pos_z = 486.310 WHERE npcid = 17961703;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -140.480, pos_y = -40.000, pos_z = 417.622 WHERE npcid = 17961704;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 107.020, pos_y = -40.000, pos_z = -432.584 WHERE npcid = 17961705;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 353.070, pos_y = -68.700, pos_z = 485.995 WHERE npcid = 17961706;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 471.487, pos_y = -42.000, pos_z = 153.196 WHERE npcid = 17961707;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 440.595, pos_y = -40.100, pos_z = -4.544 WHERE npcid = 17961708;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 571.480, pos_y = -68.700, pos_z = -185.686 WHERE npcid = 17961709;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 291.395, pos_y = -42.000, pos_z = -401.071 WHERE npcid = 17961710;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -238.000, pos_y = 0.000, pos_z = 612.000 WHERE npcid = 17957437;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -365.000, pos_y = 0.000, pos_z = 439.000 WHERE npcid = 17957438;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 35.000, pos_y = 0.000, pos_z = 126.000 WHERE npcid = 17957439;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -1.400, pos_y = 0.000, pos_z = -163.000 WHERE npcid = 17957440;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -360.000, pos_y = 0.000, pos_z = -440.000 WHERE npcid = 17957441;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = -6.700, pos_y = 0.000, pos_z = -443.500 WHERE npcid = 17957442;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 243.600, pos_y = 0.000, pos_z = -295.400 WHERE npcid = 17957443;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 461.000, pos_y = 0.000, pos_z = -278.400 WHERE npcid = 17957444;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 519.000, pos_y = 0.000, pos_z = -479.500 WHERE npcid = 17957445;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 321.000, pos_y = 0.000, pos_z = -119.900 WHERE npcid = 17957446;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 596.700, pos_y = 0.000, pos_z = -163.800 WHERE npcid = 17957447;
+UPDATE npc_list SET name = 'geasFete_qm', flag = 1, animation = 0, namevis = 112, status = 0, entityFlags = 3, name_prefix = 2, widescan = 0,  pos_rot = 0, look = 0x0000340000000000000000000000000000000000, pos_x = 396.000, pos_y = 0.000, pos_z = -641.000 WHERE npcid = 17957448;
 
