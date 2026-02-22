@@ -707,6 +707,8 @@ m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
         widescan  =  1,  
         groupId  =  2,  
         groupZoneId  =  175,
+        minLevel = 1,
+        maxLevel = 1,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   35)
@@ -737,6 +739,8 @@ m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
         widescan  =  1,  
         groupId  =  2,  
         groupZoneId  =  175,
+        minLevel = 1,
+        maxLevel = 1,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   35)
@@ -767,6 +771,8 @@ m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
         widescan  =  1,  
         groupId  =  2,  
         groupZoneId  =  175,
+        minLevel = 1,
+        maxLevel = 1,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   35)
@@ -797,6 +803,8 @@ m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
         widescan  =  1,  
         groupId  =  2,  
         groupZoneId  =  175,
+        minLevel = 1,
+        maxLevel = 1,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   35)
@@ -827,6 +835,8 @@ m:addOverride('xi.zones.Mog_Garden.Zone.onInitialize', function(zone)
         widescan  =  1,  
         groupId  =  2,  
         groupZoneId  =  175,
+        minLevel = 1,
+        maxLevel = 1,
 
         onMobSpawn  =  function(mob,   playerArg,   optParams)
             mob:setMobMod(xi.mobMod.ROAM_DISTANCE,   35)

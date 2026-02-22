@@ -19,6 +19,8 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         widescan = 1,
         groupId = 44,
         groupZoneId = 146,
+        minLevel = 1,
+        maxLevel = 150,
 
         onMobSpawn = function(mob1)
             mob1:addStatusEffect(xi.effect.STUN, 1, 0, 0)
@@ -79,6 +81,8 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         widescan = 1,
         groupId = 44,
         groupZoneId = 146,
+        minLevel = 1,
+        maxLevel = 150,
 
         onMobSpawn = function(mob2)
             mob2:addStatusEffect(xi.effect.STUN, 1, 0, 0)
@@ -139,6 +143,8 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         widescan = 1,
         groupId = 44,
         groupZoneId = 146,
+        minLevel = 1,
+        maxLevel = 150,
 
         onMobSpawn = function(mob3)
             mob3:addStatusEffect(xi.effect.STUN, 1, 0, 0)
@@ -199,6 +205,8 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         widescan = 1,
         groupId = 44,
         groupZoneId = 146,
+        minLevel = 1,
+        maxLevel = 150,
 
         onMobSpawn = function(mob4)
             mob4:addStatusEffect(xi.effect.STUN, 1, 0, 0)
@@ -258,6 +266,8 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         widescan = 1,
         groupId = 44,
         groupZoneId = 146,
+        minLevel = 1,
+        maxLevel = 150,
 
         onMobSpawn = function(mob5)
             mob5:addStatusEffect(xi.effect.STUN, 1, 0, 0)
@@ -317,6 +327,8 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         widescan = 1,
         groupId = 44,
         groupZoneId = 146,
+        minLevel = 1,
+        maxLevel = 150,
 
         onMobSpawn = function(mob6)
             mob6:addStatusEffect(xi.effect.STUN, 1, 0, 0)
