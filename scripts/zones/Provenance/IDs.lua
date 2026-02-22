@@ -15,12 +15,12 @@ zones[xi.zone.PROVENANCE] =
         GIL_OBTAINED                  = 6392, -- Obtained <number> gil.
         KEYITEM_OBTAINED              = 6394, -- Obtained key item: <keyitem>.
         LOST_KEYITEM                  = 6395, -- Lost key item: <keyitem>
-        CARRIED_OVER_POINTS           = 7001, -- You have carried over <number> login point[/s].
-        LOGIN_CAMPAIGN_UNDERWAY       = 7002, -- The [/January/February/March/April/May/June/July/August/September/October/November/December] <number> Login Campaign is currently underway!
-        LOGIN_NUMBER                  = 7003, -- In celebration of your most recent login (login no. <number>), we have provided you with <number> points! You currently have a total of <number> points.
-        MEMBERS_LEVELS_ARE_RESTRICTED = 7023, -- Your party is unable to participate because certain members' levels are restricted.
-        PARTY_MEMBERS_HAVE_FALLEN     = 7330, -- All party members have fallen in battle. Now leaving the battlefield.
-        THE_PARTY_WILL_BE_REMOVED     = 7343, -- All party members have fallen in battle. Leaving the battlefield in # minute[/s].
+        CARRIED_OVER_POINTS           = 7002, -- You have carried over <number> login point[/s].
+        LOGIN_CAMPAIGN_UNDERWAY       = 7003, -- The [/January/February/March/April/May/June/July/August/September/October/November/December] <number> Login Campaign is currently underway!
+        LOGIN_NUMBER                  = 7004, -- In celebration of your most recent login (login no. <number>), we have provided you with <number> points! You currently have a total of <number> points.
+        MEMBERS_LEVELS_ARE_RESTRICTED = 7024, -- Your party is unable to participate because certain members' levels are restricted.
+        PARTY_MEMBERS_HAVE_FALLEN     = 7334, -- All party members have fallen in battle. Now leaving the battlefield.
+        THE_PARTY_WILL_BE_REMOVED     = 7347, -- All party members have fallen in battle. Leaving the battlefield in # minute[/s].
     },
     mob =
     {

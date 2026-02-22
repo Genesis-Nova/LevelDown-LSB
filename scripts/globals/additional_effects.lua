@@ -179,11 +179,95 @@ function(attacker, defender, item, params)
     return params.subEffect, xi.msg.basic.ADD_EFFECT_MP_DRAIN, drain
 end
 
------------------------------------
--- Standard HP Drain
------------------------------------
-xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HP_DRAIN] =
-function(attacker, defender, item, params)
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.DEBUFF] = function(actor, target, item, params)
+    -- Early return: No actor or target.
+    if
+        not actor or
+        not target
+    then
+        return 0, 0, 0
+    end
+
+    -- Validate parameters.
+    local effectId      = utils.defaultIfNil(params.addStatus, 0)
+    local subEffect     = utils.defaultIfNil(params.subEffect, 0)
+    local actionElement = params.element > 0 and params.element or xi.data.statusEffect.getAssociatedElement(effectId, xi.element.NONE)
+
+    -- Early return: No effect to apply.
+    if effectId == 0 then
+        return 0, 0, 0
+    end
+
+    -- Early return: Target is immune to the effect.
+    if xi.data.statusEffect.isTargetImmune(target, effectId, actionElement) then
+        return 0, 0, 0
+    end
+
+    -- Early return: Trait nullifies effect.
+    if xi.data.statusEffect.isTargetResistant(actor, target, effectId) then
+        return 0, 0, 0
+    end
+
+    -- Early return: Incompatible effect in place.
+    if xi.data.statusEffect.isEffectNullified(target, effectId, 0) then
+        return 0, 0, 0
+    end
+
+    -- Early return: Regular resist rate.
+    local resistRate = xi.combat.magicHitRate.calculateResistRate(actor, target, 0, 0, xi.skillRank.A, actionElement, xi.mod.INT, effectId, 0)
+    if resistRate < 0.5 then
+        return 0, 0, 0
+    end
+
+    -- Apply status effect.
+    local power    = params.power
+    local tick     = xi.additionalEffect.statusAttack(effectId, target)
+    local duration = math.floor(params.duration * resistRate)
+
+    target:addStatusEffect(effectId, { power = power, duration = duration, origin = actor, tick = tick })
+
+    return subEffect, xi.msg.basic.ADD_EFFECT_STATUS_2, effectId
+end
+
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HP_HEAL] =  function(attacker, defender, item, params)
+    local subEffect = params.subEffect
+    local msgID     = 0
+    local msgParam  = 0
+    -- Its not a drain and works vs undead. https://www.bg-wiki.com/bg/Dominion_Mace
+    local hitPoints = params.damage -- Note: not actually damage, if you wanted damage see HP_DRAIN instead
+    -- Unknown what modifies the HP, using power directly for now
+    msgID = xi.msg.basic.ADD_EFFECT_HP_HEAL
+    attacker:addHP(hitPoints)
+    msgParam = hitPoints
+
+    return subEffect, msgID, msgParam
+end
+
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.MP_HEAL] =  function(attacker, defender, item, params)
+    local subEffect = params.subEffect
+    local msgID     = 0
+    local msgParam  = 0
+
+    local magicPoints = params.damage
+    -- Unknown what modifies this, using power directly for now
+    msgID = xi.msg.basic.ADD_EFFECT_MP_HEAL
+    attacker:addMP(magicPoints)
+    msgParam = magicPoints
+
+    return subEffect, msgID, msgParam
+end
+
+-- TODO: add resistance check for params.element
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HP_DRAIN] =  function(attacker, defender, item, params)
+    local subEffect = params.subEffect
+    local msgID     = 0
+    local msgParam  = 0
+
+    -- Hardcoded for now
+    params.element = xi.element.DARK
+    local damage = xi.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
+
+    -- Undead cannot be drained
     if defender:isUndead() then
         return 0, 0, 0
     end
@@ -215,9 +299,223 @@ function(attacker, defender, item, params)
     return params.subEffect, xi.msg.basic.ADD_EFFECT_MP_DRAIN, dmg
 end
 
------------------------------------
--- Attack Entry Point
------------------------------------
+-- TODO: add resistance check for params.element
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.DISPEL] =  function(attacker, defender, item, params)
+    local subEffect = params.subEffect
+    local msgID     = 0
+    local msgParam  = 0
+
+    local dispel = defender:dispelStatusEffect()
+
+    if dispel == xi.effect.NONE then
+        return 0, 0, 0
+    else
+        msgID = xi.msg.basic.ADD_EFFECT_DISPEL
+        msgParam = dispel
+    end
+
+    return subEffect, msgID, msgParam
+end
+
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.ABSORB_STATUS] =  function(attacker, defender, item, params)
+    local subEffect = params.subEffect
+    local msgID     = 0
+    local msgParam  = 0
+
+    -- Ripping off Aura Steal here
+    local resist = applyResistanceAddEffect(attacker, defender, params.element, 0)
+    if resist > 0.0625 then
+        local stolen = attacker:stealStatusEffect(defender)
+        msgID        = xi.msg.basic.STEAL_EFFECT
+        msgParam     = stolen
+    end
+
+    return subEffect, msgID, msgParam
+end
+
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.SELF_BUFF] =  function(attacker, defender, item, params)
+    local subEffect = params.subEffect
+    local msgID     = 0
+    local msgParam  = 0
+
+    if params.addStatus == xi.effect.BLINK then -- BLINK http://www.ffxiah.com/item/18830/gusterion
+        -- Does not stack with or replace other shadows
+        if
+            attacker:hasStatusEffect(xi.effect.BLINK) or
+            attacker:hasStatusEffect(xi.effect.COPY_IMAGE)
+        then
+            return 0, 0, 0
+        else
+            attacker:addStatusEffect(xi.effect.BLINK, { power = params.power, duration = params.duration, origin = attacker })
+            msgID    = xi.msg.basic.ADD_EFFECT_SELFBUFF
+            msgParam = xi.effect.BLINK
+        end
+    elseif params.addStatus == xi.effect.HASTE then
+        attacker:addStatusEffect(xi.effect.HASTE, { power = params.power, duration = params.duration, origin = attacker })
+        -- Todo: verify power/duration/tier/overwrite etc
+        msgID    = xi.msg.basic.ADD_EFFECT_SELFBUFF
+        msgParam = xi.effect.HASTE
+    else
+        print('scripts/globals/additional_effects.lua : unhandled additional effect selfbuff! Effect ID: ' .. params.addStatus)
+    end
+
+    return subEffect, msgID, msgParam
+end
+
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.DEATH] = function(attacker, defender, item, params)
+    local subEffect = params.subEffect
+    local msgID     = 0
+    local msgParam  = 0
+
+    if
+        defender:isNM() or
+        defender:isUndead() or
+        -- Todo: DeathRes has no place in the resistance functions so far..
+        math.random(1, 100) > defender:getMod(xi.mod.DEATHRES) -- We are checking for a fail, not a success.
+    then
+        return 0, 0, 0 -- NMs immune or roll failed so return out
+    else
+        msgID = xi.msg.basic.ADD_EFFECT_STATUS
+        msgParam = xi.effect.KO
+        defender:setHP(0)
+    end
+
+    return subEffect, msgID, msgParam
+end
+
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HPMP_DRAIN] = function(attacker, defender, item, params)
+    local drainRoll = math.random(1, 2) -- This is wrong and needs retail verification. Current theory is that it rolls one after another until one doesn't resist or they all resist.
+
+    local drainFuncs =
+    {
+        [1] = xi.additionalEffect.procType.HP_DRAIN,
+        [2] = xi.additionalEffect.procType.MP_DRAIN
+    }
+
+    return xi.additionalEffect.procFunctions[drainFuncs[drainRoll]](attacker, defender, item, params)
+end
+
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.HPMPTP_DRAIN] = function(attacker, defender, item, params)
+    local drainRoll = math.random(1, 3) -- This is wrong and needs retail verification. Current theory is that it rolls one after another until one doesn't resist or they all resist.
+
+    local drainFuncs =
+    {
+        [1] = xi.additionalEffect.procType.HP_DRAIN,
+        [2] = xi.additionalEffect.procType.MP_DRAIN,
+        [3] = xi.additionalEffect.procType.TP_DRAIN
+    }
+
+    return xi.additionalEffect.procFunctions[drainFuncs[drainRoll]](attacker, defender, item, params)
+end
+
+-- Script only for now
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.PHYS_DAMAGE] = function(attacker, defender, item, params)
+    local subEffect = params.subEffect
+    local msgID     = 0
+    local msgParam  = 0
+
+    local damage = xi.additionalEffect.calcPhysDamage(attacker, defender, item, params)
+    msgID  = xi.msg.basic.ADD_EFFECT_DMG
+
+    if damage < 0 then
+        msgID = xi.msg.basic.ADD_EFFECT_HEAL
+
+        damage = damage * -1
+
+        defender:addHP(damage)
+    else
+        defender:delHP(damage)
+    end
+
+    msgParam = damage
+
+    return subEffect, msgID, msgParam
+end
+
+-- NM-specific additional effects configuration table
+-- Options: requiredItem, specialAction, customSubEffect, customMsgID, customMsgParam
+-- Add new entries here: ['NM_Name'] = { requiredItem = xi.item.ITEM_ID, specialAction = function() }
+xi.additionalEffect.nmSpecificConfigs = {
+    ['Brigandish_Blade'] = {
+        requiredItem = xi.item.BUCCANEERS_KNIFE,
+        specialAction = function(defender)
+            -- If Brigandish Blade has damage immunity (at 1% HP), remove it
+            if defender:getMod(xi.mod.UDMGPHYS) == -10000 then
+                -- Remove all damage immunities
+                defender:setMod(xi.mod.UDMGPHYS, 0)
+                defender:setMod(xi.mod.UDMGRANGE, 0)
+                defender:setMod(xi.mod.UDMGMAGIC, 0)
+                defender:setMod(xi.mod.UDMGBREATH, 0)
+
+                defender:setLocalVar('killable', 1)
+                defender:setUnkillable(false)
+            end
+        end,
+    },
+    ['Seiryu'] = {
+        requiredItem = xi.item.ZEPHYR,
+        specialAction = function(defender)
+            defender:setMobMod(xi.mobMod.ADD_EFFECT, 0)
+        end,
+    },
+    ['Genbu'] = {
+        requiredItem = xi.item.ANTARCTIC_WIND,
+        specialAction = function(defender)
+            defender:setMobMod(xi.mobMod.ADD_EFFECT, 0)
+        end,
+    },
+    ['Suzaku'] = {
+        requiredItem = xi.item.ARCTIC_WIND,
+        specialAction = function(defender)
+            defender:setMobMod(xi.mobMod.ADD_EFFECT, 0)
+        end,
+    },
+    ['Byakko'] = {
+        requiredItem = xi.item.EAST_WIND,
+        specialAction = function(defender)
+            defender:setMobMod(xi.mobMod.ADD_EFFECT, 0)
+        end,
+    },
+}
+
+-- NM_SPECIFIC additional effect trigger
+xi.additionalEffect.procFunctions[xi.additionalEffect.procType.NM_SPECIFIC] = function(attacker, defender, item, params)
+    local subEffect = params.subEffect
+    local msgID     = 0
+    local msgParam  = 0
+    local defenderName = defender:getName()
+
+    local config = xi.additionalEffect.nmSpecificConfigs[defenderName]
+    if
+        config and
+        (config.requiredItem == item:getID() or
+        config.requiredItem == xi.item.NONE)
+    then
+        -- Calculate damage
+        local damage = xi.additionalEffect.calcDamage(attacker, params.element, defender, params.damage)
+        msgID = xi.msg.basic.ADD_EFFECT_DMG
+        msgParam = damage
+
+        -- Execute special action if configured
+        if config.specialAction then
+            config.specialAction(defender)
+        end
+
+        subEffect = config.customSubEffect or subEffect
+        msgID = config.customMsgID or msgID
+        msgParam = config.customMsgParam or msgParam
+    else
+        if defender and item then
+            defender:setLocalVar('aeFromItemId', item:getID())
+        end
+
+        return 0, 0, 0
+    end
+
+    return subEffect, msgID, msgParam
+end
+
+-- paralyze on hit, fire damage on hit, etc.
 xi.additionalEffect.attack = function(attacker, defender, baseAttackDamage, item)
     local params =
     {
