@@ -30,7 +30,7 @@ DELETE FROM `item_mods` WHERE itemId = 20615; -- Levante Dagger
 DELETE FROM `item_mods` WHERE itemId = 20944; -- Pelagos Lance 
 DELETE FROM `item_mods` WHERE itemId = 20856; -- Phreatic Axe 
 DELETE FROM `item_mods` WHERE itemId = 26970; -- Lapidary Tunic  
-
+DELETE FROM `item_mods` WHERE itemId = 14646; -- Shadow Ring Update DEATHRES (Nih) 
 
 UPDATE `item_equipment` SET su_level = 3 WHERE itemId = 25969; -- mousai crackows +1
 UPDATE `item_equipment` SET su_level = 3 WHERE itemId = 26538; -- mousai manteel +1
@@ -623,7 +623,7 @@ REPLACE INTO `item_mods` VALUES (26357,28,7);  -- MATT:
 REPLACE INTO `item_mods` VALUES (26357,311,35);  -- MAGIC_DAMAGE:
 -- Smertrios's Mantle
 REPLACE INTO `item_mods` VALUES (26257,94,8);    -- MEDITATE_DURATION: 8
-REPLACE INTO `item_mods` VALUES (26257,174,3); -- SKILLCHAINDMG: 3
+REPLACE INTO `item_mods` VALUES (26257,175,3); -- SKILLCHAINDMG: 3
 -- Solemnity Cape
 REPLACE INTO `item_mods` VALUES (26245, 1, 17); --Solemnity Cape -- Def
 REPLACE INTO `item_mods` VALUES (26245, 252, 15); --Solemnity Cape -- CHARMRES
@@ -1494,7 +1494,7 @@ UPDATE item_weapon SET subskill = 28 WHERE itemId = 20526;
 -- Blurred Claymore +1
 REPLACE INTO `item_mods` VALUES (21701,865,1); -- MYTHIC_OCC_ATT_TWICE
 -- Blurred Harp +1
-REPLACE INTO `item_mods` VALUES (21401,453,2); -- MAXIMUM_SONGS_BONUS: 2
+REPLACE INTO `item_mods` VALUES (21401,453,1); -- MAXIMUM_SONGS_BONUS: 1
 -- Blurred Knife
 UPDATE item_weapon SET ilvl_macc = 188 WHERE itemId = 20601;
 -- Blurred Knife +1
@@ -1962,6 +1962,8 @@ REPLACE INTO `item_mods` VALUES (23506,311,34);    -- MAGIC_DAMAGE: 34
 REPLACE INTO `item_mods` VALUES (23506,27,-28);   -- ENMITY: -28
 REPLACE INTO `item_mods` VALUES (23506,369,4);     -- REFRESH: 4
 REPLACE INTO `item_mods` VALUES (23506,384,300);   -- HASTE_GEAR: 3%
+-- Arbatel Loafers +2
+INSERT INTO `item_mods` VALUES (23372,274,4); -- MAGIC_BURST_BONUS_UNCAPPED: 4
 -- Arbatel Loafers +3
 REPLACE INTO `item_mods` VALUES (23707,1,95);    -- DEF: 95
 REPLACE INTO `item_mods` VALUES (23707,2,39);     -- HP: 39
@@ -2126,6 +2128,8 @@ REPLACE INTO `item_mods` VALUES (23535,115,23);  -- ELEM: 23
 REPLACE INTO `item_mods` VALUES (23535,116,23);  -- DARK: 23
 REPLACE INTO `item_mods` VALUES (23535,384,300); -- HASTE_GEAR: 3%
 REPLACE INTO `item_mods` VALUES (23535,487,20);  -- MAG_BURST_BONUS: 20
+-- Archmage's tonban +2
+REPLACE INTO `item_mods` VALUES (23267,274,2); -- MAGIC_BURST_BONUS_UNCAPPED: 2
 -- Archmage's tonban +3
 REPLACE INTO `item_mods` VALUES (23602,1,123);   -- DEF: 123
 REPLACE INTO `item_mods` VALUES (23602,2,63);    -- HP: 63
@@ -6323,6 +6327,8 @@ REPLACE INTO `item_mods` VALUES (23484, 113, 19); -- pedagogy gown +3 -- ENHANCE
 REPLACE INTO `item_mods` VALUES (23484, 384, 300); -- pedagogy gown +3 -- HASTE_GEAR
 REPLACE INTO `item_mods` VALUES (23484, 401, 5); -- pedagogy gown +3 -- SUBLIMATION_BONUS
 REPLACE INTO `item_mods` VALUES (23484, 890, 12); -- pedagogy gown +3 -- ENH_MAGIC_DURATION
+-- Pedagogy mortarboard +2 23082
+REPLACE INTO `item_mods` VALUES (23082,274,2); -- pedagogy mortarboard +2 -- MAGIC_BURST_BONUS_UNCAPPED
 -- Pedagogy mortarboard +3
 REPLACE INTO `item_mods` VALUES (23417, 1, 112); -- pedagogy mortarboard +3 -- DEF
 REPLACE INTO `item_mods` VALUES (23417, 2, 86); -- pedagogy mortarboard +3 -- HP
@@ -8808,7 +8814,6 @@ REPLACE INTO `item_mods` VALUES (26696,39,28);  -- DARK_MAB: 28
 REPLACE INTO `item_mods` VALUES (11614,1075,5); -- BREATH_DAMAGE_DEALT: 5
 -- Ardor Pendant +1
 REPLACE INTO `item_mods` VALUES (28355,1075,10); -- BREATH_DAMAGE_DEALT: 10
-
 -- Nih Fixes to Newer Mods
 -- Glassblowers Belt
 REPLACE INTO `item_mods` VALUES (10816,1075,5); -- BREATH_DAMAGE_DEALT: 5
@@ -8818,6 +8823,8 @@ REPLACE INTO `item_mods` VALUES (19255,1075,5); -- BREATH_DMG_DEALT: 5
 REPLACE INTO `item_mods` VALUES (26654,1075,18); -- BREATH_DMG_DEALT: 18
 -- Luhlaza Keffiyeh +1
 REPLACE INTO `item_mods` VALUES (26655,1075,20); -- BREATH_DMG_DEALT: 20
+-- Wicce Coat +2
+INSERT INTO `item_mods` VALUES (23155,274,4); -- MAGIC_BURST_BONUS_UNCAPPED: 4
 -- Impatiens
 REPLACE INTO `item_mods` VALUES (19761,909,3);   -- QUICK_MAGIC: 3
 -- Gerdr Belt
@@ -8830,17 +8837,53 @@ REPLACE INTO `item_mods` VALUES (26360,259,3); -- DUAL_WIELD: 3
 REPLACE INTO `item_mods` VALUES (21034,164,-410);-- DMGRANGE: -4%
 -- Kunimune +1
 REPLACE INTO `item_mods` VALUES (21035,164,-512);-- DMGRANGE: -5%
--- Malfeasance
-REPLACE INTO `item_mods` VALUES (20754,255,15);  -- DEATHRES: 15
--- Malfeasance +1
-REPLACE INTO `item_mods` VALUES (20755,255,16);  -- DEATHRES: 16
 -- Predatrice
 REPLACE INTO `item_mods` VALUES (20730,5,30);    -- MP: 30
 REPLACE INTO `item_mods` VALUES (20730,311,50);  -- MAGIC_DAMAGE: 50
 REPLACE INTO `item_mods` VALUES (20730,233,5);   -- DRAGON_KILLER: 5
--- Venery bow
-REPLACE INTO `item_mods` VALUES (22118,944,5); -- CONSERVE_TP: 5
-REPLACE INTO `item_mods` VALUES (22118,175,5); -- SKILLCHAINDMG: 5
+-- Shadow Ring
+REPLACE INTO `item_mods` VALUES (14646,255,25); -- DEATHRES: 25 
+REPLACE INTO `item_mods` VALUES (14646,476,13); -- MAGIC_NULL: 13
+-- Stikini Ring
+REPLACE INTO `item_mods` VALUES (26183,123,5); -- GEOMANCY_SKILL: 5
+REPLACE INTO `item_mods` VALUES (26183,124,5); -- HANDBELL_SKILL: 5
+-- Stikini Ring +1
+REPLACE INTO `item_mods` VALUES (26184,123,8); -- GEOMANCY_SKILL: 8
+REPLACE INTO `item_mods` VALUES (26184,124,8); -- HANDBELL_SKILL: 8
+-- Vocane Ring
+REPLACE INTO `item_mods` VALUES (27588,1172,2); -- KNOCKBACK_REDUCTION: 2
+-- Vocane Ring +1
+REPLACE INTO `item_mods` VALUES (26200,1172,2); -- KNOCKBACK_REDUCTION: 2
+-- Repulse Mantle
+REPLACE INTO `item_mods` VALUES (28639,1172,2); -- KNOCKBACK_REDUCTION: 2
+-- Philidor Mantle
+REPLACE INTO `item_mods` VALUES (27611,1,18);     -- DEF: 18
+REPLACE INTO `item_mods` VALUES (27611,27,5); -- ENMITY: 5
+REPLACE INTO `item_mods` VALUES (27611,160,-500); -- DMG: -5%
+REPLACE INTO `item_mods` VALUES (27611,1172,2); -- KNOCKBACK_REDUCTION: 2
+-- Impassive Mantle
+REPLACE INTO `item_mods` VALUES (27622,1,19);     -- DEF: 19
+REPLACE INTO `item_mods` VALUES (27622,25,3); -- ACC: 3
+REPLACE INTO `item_mods` VALUES (27622,27,3); -- ENMITY: 3
+REPLACE INTO `item_mods` VALUES (27622,161,-400); -- DMGPHYS: -400
+REPLACE INTO `item_mods` VALUES (27622,164,-400); -- DMGRANGE: -400
+REPLACE INTO `item_mods` VALUES (27622,1172,2); -- KNOCKBACK_REDUCTION: 2
+-- Dashing Subligar
+REPLACE INTO `item_mods` VALUES (25849, 1, 111); -- DEF: 111
+REPLACE INTO `item_mods` VALUES (25849, 2, 47); -- HP: 47
+REPLACE INTO `item_mods` VALUES (25849, 8, 29); -- STR: 29
+REPLACE INTO `item_mods` VALUES (25849, 10, 16); -- VIT: 16
+REPLACE INTO `item_mods` VALUES (25849, 11, 20); -- AGI: 20
+REPLACE INTO `item_mods` VALUES (25849, 12, 30); -- INT: 30
+REPLACE INTO `item_mods` VALUES (25849, 13, 17); -- MND: 17
+REPLACE INTO `item_mods` VALUES (25849, 14, 11); -- CHR: 11
+REPLACE INTO `item_mods` VALUES (25849, 29, 5);  -- MDEF: 5
+REPLACE INTO `item_mods` VALUES (25849, 31, 69); -- MEVA: 69
+REPLACE INTO `item_mods` VALUES (25849, 68, 73);  -- EVA: 73
+REPLACE INTO `item_mods` VALUES (25849,384,600); -- HASTE_GEAR: 6%
+REPLACE INTO `item_mods` VALUES (25849,491,10); -- WALTZ_POTENCY: 10
+REPLACE INTO `item_mods` VALUES (25849,1172,2); -- KNOCKBACK_REDUCTION: 2
+-- TODO: During "Waltz": Blink
 -- Tizona DMG TO MP Added Effect #16
 -- Tizona 75
 REPLACE INTO `item_mods` VALUES (19006,431,16);   -- ITEM_ADDEFFECT_TYPE: DMG_TO_MP
@@ -8882,3 +8925,51 @@ REPLACE INTO `item_mods` VALUES (20652,501,30); -- ITEM_ADDEFFECT_CHANCE: 30
 REPLACE INTO `item_mods` VALUES (20688,431,16);   -- ITEM_ADDEFFECT_TYPE: DMG_TO_MP
 REPLACE INTO `item_mods` VALUES (20688,499,22);  -- ITEM_SUBEFFECT: 22
 REPLACE INTO `item_mods` VALUES (20688,501,30); -- ITEM_ADDEFFECT_CHANCE: 30
+-- TODO: ZURIM 40 Pts sets
+-- Zurim 100 Dom pts
+-- Etana Ring
+REPLACE INTO `item_mods` VALUES (26163,2,60); -- HP: 60
+REPLACE INTO `item_mods` VALUES (26163,5,60); -- MP: 60
+REPLACE INTO `item_mods` VALUES (26163,25,7); -- ACC: 7
+REPLACE INTO `item_mods` VALUES (26163,30,7);  -- MACC: 7
+-- Izdubar Mantle
+REPLACE INTO `item_mods` VALUES (26355,1,12);  -- DEF: 12
+REPLACE INTO `item_mods` VALUES (26163,5,25); -- MP: 25
+REPLACE INTO `item_mods` VALUES (26163,30,5);  -- MACC: 5
+REPLACE INTO `item_mods` VALUES (27630,28,10);   -- MATT: 10
+REPLACE INTO `item_mods` VALUES (21362,296,2); -- CONSERVE_MP: 2
+-- Zurim 1000 Dom pts
+-- Ask Sash
+REPLACE INTO `item_mods` VALUES (26353,840,5); -- ALL_WSDMG_ALL_HITS: 5%
+-- Boost: Regain 200 in item ask_sash.lua as latent.
+-- Embla Sash
+REPLACE INTO `item_mods` VALUES (26354,170,5); -- FASTCAST: 5
+REPLACE INTO `item_mods` VALUES (26354,401,3); -- SUBLIMATION_BONUS: 3
+REPLACE INTO `item_mods` VALUES (26354,890,10);  -- ENH_MAGIC_DURATION: 10
+-- Audumbla Sash
+REPLACE INTO `item_mods` VALUES (26355,1,18);  -- DEF: 18
+REPLACE INTO `item_mods` VALUES (26355,168,10); -- SPELLINTERRUPT: 10
+REPLACE INTO `item_mods` VALUES (26355,161,-410); -- DMGPHYS: -4%
+REPLACE INTO `item_mods` VALUES (26355,164,-410); -- DMGRANGE: -4%
+-- Nehalennia Earring
+REPLACE INTO `item_mods` VALUES (26113,30,5);  -- MACC: 5
+REPLACE INTO `item_mods` VALUES (26113,7,60);  -- CONVHPTOMP: 60
+-- Tuisto Earring
+REPLACE INTO `item_mods` VALUES (26112,1,20);  -- DEF: 18
+REPLACE INTO `item_mods` VALUES (26112,10,10); -- VIT: 10
+REPLACE INTO `item_mods` VALUES (26112,4,150); -- CONVMPTOHP: 150
+-- Beyla Earring
+REPLACE INTO `item_mods` VALUES (26111,26,15); -- RACC: 15
+REPLACE INTO `item_mods` VALUES (26111,289,5); -- SUBTLE_BLOW: 5
+REPLACE INTO `item_mods` VALUES (26111,27,-8); -- ENMITY: -8
+-- Sjofn Earring
+REPLACE INTO `item_mods` VALUES (26110,491,10); -- WALTZ_POTENCY: 10
+-- Voluspa Tathlum
+REPLACE INTO `item_mods` VALUES (22296,8,5);   -- STR: 5
+REPLACE INTO `item_mods` VALUES (22296,9,5);   -- DEX: 5
+REPLACE INTO `item_mods` VALUES (22296,14,5);  -- CHR: 5
+REPLACE INTO `item_mods` VALUES (22296,25,10); -- ACC: 10
+REPLACE INTO `item_mods` VALUES (22296,23,10); -- ATT: 10
+REPLACE INTO `item_mods_pet` VALUES (22296,25,15, 0); -- PET_ACC: 15
+REPLACE INTO `item_mods_pet` VALUES (22296,26,15, 0); -- PET_RACC: 15
+REPLACE INTO `item_mods_pet` VALUES (22296,30,15, 0); -- PET_MACC: 15
