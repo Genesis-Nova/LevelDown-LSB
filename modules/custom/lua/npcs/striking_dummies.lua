@@ -23,7 +23,7 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         maxLevel = 150,
 
         onMobSpawn = function(mob1)
-            mob1:addStatusEffect(xi.effect.STUN, 1, 0, 0)
+            --mob1:addStatusEffect(xi.effect.STUN, 1, 0, 0)
             mob1:setMobMod(xi.mobMod.CHARMABLE, 0)
             mob1:setMobMod(xi.mobMod.NO_MOVE, 1)
             mob1:setMobMod(xi.mobMod.NO_AGGRO, 1)
@@ -85,7 +85,7 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         maxLevel = 150,
 
         onMobSpawn = function(mob2)
-            mob2:addStatusEffect(xi.effect.STUN, 1, 0, 0)
+            --mob2:addStatusEffect(xi.effect.STUN, 1, 0, 0)
             mob2:setMobMod(xi.mobMod.CHARMABLE, 0)
             mob2:setMobMod(xi.mobMod.NO_MOVE, 1)
             mob2:setMobMod(xi.mobMod.NO_AGGRO, 1)
@@ -147,7 +147,7 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         maxLevel = 150,
 
         onMobSpawn = function(mob3)
-            mob3:addStatusEffect(xi.effect.STUN, 1, 0, 0)
+            --mob3:addStatusEffect(xi.effect.STUN, 1, 0, 0)
             mob3:setMobMod(xi.mobMod.CHARMABLE, 0)
             mob3:setMobMod(xi.mobMod.NO_MOVE, 1)
             mob3:setMobMod(xi.mobMod.NO_AGGRO, 1)
@@ -209,7 +209,7 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         maxLevel = 150,
 
         onMobSpawn = function(mob4)
-            mob4:addStatusEffect(xi.effect.STUN, 1, 0, 0)
+            --mob4:addStatusEffect(xi.effect.STUN, 1, 0, 0)
             mob4:setMobMod(xi.mobMod.CHARMABLE, 0)
             mob4:setMobMod(xi.mobMod.NO_MOVE, 1)
             mob4:setMobMod(xi.mobMod.NO_AGGRO, 1)
@@ -270,7 +270,7 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         maxLevel = 150,
 
         onMobSpawn = function(mob5)
-            mob5:addStatusEffect(xi.effect.STUN, 1, 0, 0)
+            --mob5:addStatusEffect(xi.effect.STUN, 1, 0, 0)
             mob5:setMobMod(xi.mobMod.CHARMABLE, 0)
             mob5:setMobMod(xi.mobMod.NO_MOVE, 1)
             mob5:setMobMod(xi.mobMod.NO_AGGRO, 1)
@@ -331,7 +331,7 @@ m:addOverride('xi.zones.Rala_Waterways.Zone.onInitialize', function(zone)
         maxLevel = 150,
 
         onMobSpawn = function(mob6)
-            mob6:addStatusEffect(xi.effect.STUN, 1, 0, 0)
+            --mob6:addStatusEffect(xi.effect.STUN, 1, 0, 0)
             mob6:setMobMod(xi.mobMod.CHARMABLE, 0)
             mob6:setMobMod(xi.mobMod.NO_MOVE, 1)
             mob6:setMobMod(xi.mobMod.NO_AGGRO, 1)
