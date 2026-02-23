@@ -76,7 +76,7 @@ local function setup(m, config, helpers)
                 local confrontationID = zone:getLocalVar("ActiveHTBF_ConfrontationID")
                 if confrontationID > 0 and xi.confrontation.lookup and xi.confrontation.lookup[confrontationID] then
                     local lookup = xi.confrontation.lookup[confrontationID]
-                    m:addStatusEffect(xi.effect.CONFRONTATION, confrontationID, 0, 0)
+                    m:addStatusEffect(xi.effect.CONFRONTATION, { power = confrontationID, origin = m })
                     m:setLocalVar("DifficultyIndex", lookup.difficultyIndex)
                     debugPrint("Applied Confrontation ID " .. confrontationID .. " to Cait Sith.")
 
@@ -90,7 +90,7 @@ local function setup(m, config, helpers)
 
                         if not mobRef:hasStatusEffect(xi.effect.CONFRONTATION) then
                             debugPrint("Confrontation effect missing on " .. mobRef:getName() .. ". Re-applying. Attempts left: " .. tries)
-                            mobRef:addStatusEffect(xi.effect.CONFRONTATION, confrontationID, 0, 0)
+                            mobRef:addStatusEffect(xi.effect.CONFRONTATION, { power = confrontationID, origin = mobRef })
                         end
                         applyMobMods(mobRef, lookup)
                         if tries > 0 then

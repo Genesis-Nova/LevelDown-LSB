@@ -12,7 +12,7 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
     return 0
 end
 
-mobskillObject.onMobWeaponSkill = function(target, mob, skill)
+mobskillObject.onMobWeaponSkill = function(target, mob, skill, action)
     local divisor = 3
     local targets = {}
 
@@ -43,8 +43,15 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
                 local dmg = math.random(700, 1400)
                 if divineFavor then dmg = 30000 end
 
-                dmg = xi.mobskills.mobMagicalMove(mob, member, skill, dmg, xi.element.LIGHT, 1, xi.mobskills.magicalTpBonus.NO_EFFECT)
-                dmg = xi.mobskills.mobFinalAdjustments(dmg, mob, skill, member, xi.attackType.MAGICAL, xi.damageType.LIGHT, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
+                local params = {
+                    baseDamage = dmg,
+                    element = xi.element.LIGHT,
+                    attackType = xi.attackType.MAGICAL,
+                    damageType = xi.damageType.LIGHT,
+                    shadowBehavior = xi.mobskills.shadowBehavior.WIPE_SHADOWS,
+                }
+                local info = xi.mobskills.mobMagicalMove(mob, member, skill, nil, params)
+                dmg = xi.mobskills.mobFinalAdjustments(info.damage, mob, skill, member, xi.attackType.MAGICAL, xi.damageType.LIGHT, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
 
                 member:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.LIGHT)
             end

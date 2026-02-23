@@ -969,7 +969,7 @@ m:addOverride("xi.zones.Walk_of_Echoes_[P1].Zone.onZoneIn", function(player, pre
 
                             -- Apply to all present party members
                             for _, p in ipairs(playerList) do
-                                p:addStatusEffect(xi.effect.CONFRONTATION, confrontationID, 0, timeLimitSeconds)
+                                p:addStatusEffect(xi.effect.CONFRONTATION, { power = confrontationID, duration = timeLimitSeconds, origin = p })
                                 p:setCharVar("HTBF_ConfrontationID", confrontationID)
                                 p:countdown(timeLimitSeconds)
                             end
