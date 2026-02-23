@@ -50,7 +50,7 @@ custom/lua/homepoint_heal.lua
 custom/lua/af_level_reward.lua
 custom/lua/VWNotMon.lua
 custom/lua/add_silt.lua
-custom/lua/Escha_ZitahNMs.lua
+custom/lua/geas_FeteNM.lua
 custom/lua/choc_race.lua
 custom/lua/unitybattle.lua
 custom/lua/freeabby.lua
