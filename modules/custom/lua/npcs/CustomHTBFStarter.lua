@@ -825,7 +825,7 @@ m:addOverride("xi.zones.Walk_of_Echoes_[P1].Zone.onZoneIn", function(player, pre
                     end
 
                     -- Apply effects
-                    p_timed:addStatusEffect(xi.effect.CONFRONTATION, confrontationID, 0, 0)
+                    p_timed:addStatusEffect(xi.effect.CONFRONTATION, { power = confrontationID, origin = p_timed })
                     p_timed:setCharVar("HTBF_ConfrontationID", confrontationID)
                     local remaining = lookup.timeLimit - os.time()
                     if remaining > 0 then
@@ -969,7 +969,7 @@ m:addOverride("xi.zones.Walk_of_Echoes_[P1].Zone.onZoneIn", function(player, pre
 
                             -- Apply to all present party members
                             for _, p in ipairs(playerList) do
-                                p:addStatusEffect(xi.effect.CONFRONTATION, { power = confrontationID, duration = timeLimitSeconds, origin = p })
+                                p:addStatusEffect(xi.effect.CONFRONTATION, { power = confrontationID, origin = p })
                                 p:setCharVar("HTBF_ConfrontationID", confrontationID)
                                 p:countdown(timeLimitSeconds)
                             end

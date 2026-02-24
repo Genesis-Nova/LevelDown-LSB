@@ -24,7 +24,7 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
 	--Increase MP
 	local currentMP = mob:getMP()
 	
-	mob:addStatusEffect(xi.effect.MAX_MP_BOOST, 80, 0, 0)
+	mob:addStatusEffect(xi.effect.MAX_MP_BOOST, { power = 80, origin = mob })
     mob:setMP(mob:getMaxMP())
 	mob:addMod(xi.mod.DEF, trustLevel * 1.5)
     mob:addMod(xi.mod.MDEF, trustLevel * 1.5)
@@ -41,7 +41,7 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
 	mob:setMod(xi.mod.DOUBLE_ATTACK, 10) -- workaround because casting temper to self causes an endless loop
 	
 	 -- Job Abilities
-    mob:addStatusEffect(xi.effect.COMPOSURE, 0, 0, 0)
+    mob:addStatusEffect(xi.effect.COMPOSURE, { power = 0, duration = 0 , origin = mob })
 		
     -- GAMBIT SETUP
     -- The AI will check these rules from top to bottom.
