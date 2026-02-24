@@ -439,10 +439,10 @@ for _, entry in ipairs(npcOverrides) do
 
                         -- If the check passes, apply the buffs
                         --playerArg:addStatusEffect(ALLIED_TAGS_EFFECT_ID, 1, 3, EFFECT_DURATION_SECONDS) --makes it so you can't attack the mobs
-                        playerArg:addStatusEffect(432, 1, 3, EFFECT_DURATION_SECONDS) -- Multistrikes
-                        playerArg:addStatusEffect(170, 25, 3, EFFECT_DURATION_SECONDS) -- Regain
-                        playerArg:addStatusEffect(42, 10, 3, EFFECT_DURATION_SECONDS) -- Regen
-                        playerArg:addStatusEffect(43, 10, 3, EFFECT_DURATION_SECONDS) -- Refresh
+                        playerArg:addStatusEffect(xi.effect.MULTI_STRIKES, { power = 1, duration = EFFECT_DURATION_SECONDS, origin = playerArg}) -- Multistrikes
+                        playerArg:addStatusEffect (xi.effect.REGAIN, { power = 25, duration = EFFECT_DURATION_SECONDS, origin = playerArg})-- Regain
+                        playerArg:addStatusEffect (xi.effect.REGEN, { power = 10, duration = EFFECT_DURATION_SECONDS, origin = playerArg}) -- Regen
+                        playerArg:addStatusEffect (xi.effect.REFRESH, { power = 10, duration = EFFECT_DURATION_SECONDS, origin = playerArg}) -- Refresh
                         DebugPrint(string.format("Applied buffs (432, 170, 42, 43) for %d seconds.", EFFECT_DURATION_SECONDS))
                         playerArg:printToPlayer(MESSAGES.receivedTags, 0, npc:getPacketName())
                     end

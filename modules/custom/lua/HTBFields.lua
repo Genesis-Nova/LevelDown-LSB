@@ -352,14 +352,16 @@ m:addOverride('xi.zones.The_Celestial_Nexus.mobs.Ealdnarche.onMobSpawn', functio
     local ealdnarche = GetMobByID(17518682)
     ealdnarche:setAutoAttackEnabled(false)
     ealdnarche:setMobMod(xi.mobMod.GA_CHANCE, 25)
-    ealdnarche:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-    ealdnarche:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-    ealdnarche:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+    ealdnarche:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = ealdnarche, icon = 0 })
+    ealdnarche:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = ealdnarche, icon = 0 })
+    ealdnarche:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = 1, origin = ealdnarche, icon = 0 })
+
+
 end)
 
 m:addOverride('xi.zones.The_Celestial_Nexus.mobs.Ealdnarche.onMobEngaged', function(mob, target)
     local ealdnarche = GetMobByID(17518682)
-    ealdnarche:addStatusEffectEx(xi.effect.SILENCE, 0, 1, 0, 5)
+    ealdnarche:addStatusEffectEx(xi.effect.SILENCE, { duration = 0, origin = ealdnarche})
     GetMobByID(mob:getID() -16):updateEnmity(target)  --- assignes hate to exoplates if targeted
 end)
 
@@ -550,7 +552,7 @@ m:addOverride('xi.actions.mobskills.boreas_mantle.onMobWeaponSkill', function(ta
 
                                  mirrorImage:setPos(targPos.x + math.random(1, 6), targPos.y + math.random(1, 6), targPos.z, targPos.rot)
                                  mirrorImage:setHP(mob:getHP())
-                                 mirrorImage:addStatusEffect(xi.effect.BLINK, 5, 0, 30)
+                                 mirrorImage:addStatusEffect(xi.effect.BLINK, { power = 5, duration = 30, origin = mirrorImage })
                                  -- Wait 30 seconds and despawn adds
                                  mirrorImage:timer(30000, function(mob)
                                  DespawnMob(mob:getID())
