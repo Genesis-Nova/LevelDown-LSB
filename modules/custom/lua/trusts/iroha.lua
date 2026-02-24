@@ -68,7 +68,10 @@ m:addOverride('xi.actions.mobskills.rise_from_ashes.onMobSkillCheck', function(t
     end
 end)
 m:addOverride('xi.actions.mobskills.rise_from_ashes.onMobWeaponSkill', function(target, mob, skill)
-                if target:addStatusEffect(xi.effect.STONESKIN, 500, 0, 300, 0, 0, 4) then
+
+    
+
+                if target:addStatusEffect(xi.effect.STONESKIN, { power = 500, duration = 300, origin = target}) then
                    target:messageBasic(xi.msg.basic.GAINS_EFFECT_OF_STATUS, xi.effect.STONESKIN)
                 else
                    target:messageBasic(xi.msg.basic.NO_EFFECT)
@@ -101,7 +104,7 @@ m:addOverride('xi.actions.spells.trust.iroha.onMobSpawn', function(mob)
     mob:setMod(xi.mod.DOUBLE_ATTACK, 25)
     mob:setMod(xi.mod.SAVETP, 200)
     mob:setMod(xi.mod.STORETP, 150)
-    mob:addStatusEffect(xi.effect.MAX_MP_BOOST, 100, 0, 0)
+    mob:addStatusEffect(xi.effect.MAX_MP_BOOST, { power = 100, origin = mob })
     mob:setMP(mob:getMaxMP())
      
     mob:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, xi.effect.HASSO }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.HASSO })
@@ -155,7 +158,7 @@ m:addOverride('xi.actions.spells.trust.iroha_ii.onMobSpawn', function(mob)
     mob:setMod(xi.mod.SAVETP, Bonus)
     mob:setMod(xi.mod.STORETP, Bonus)
     mob:setMod(xi.mod.FASTCAST, 80)
-    mob:addStatusEffect(xi.effect.MAX_MP_BOOST, Bonus, 0, 0)
+    mob:addStatusEffect(xi.effect.MAX_MP_BOOST, { power = Bonus, origin = mob })
     mob:setMP(mob:getMaxMP())
     mob:addGambit(ai.t.SELF, { ai.c.NOT_STATUS, xi.effect.HASSO }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.HASSO })
     mob:addGambit(ai.t.SELF, { ai.c.HAS_TOP_ENMITY, 0 }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.THIRD_EYE })

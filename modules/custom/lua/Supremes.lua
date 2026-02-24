@@ -169,7 +169,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                if math.random(0, 99) < 10 then
                      if target:getLocalVar('supreme_procw') == 0 and user:isPC() or user:isTrust() and procjobs[user:getMainJob()] == 'ws' then
                          target:weaknessTrigger(0) -- Blue proc
-                         target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                         target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                          target:setLocalVar('supreme_procw', 1)
                      end
                end
@@ -184,7 +184,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                          mob:delStatusEffect(xi.effect.REGEN)
                          mob:delStatusEffect(xi.effect.REGAIN)
                          mob:delStatusEffect(xi.effect.ENFIRE_II)
-                         mob:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                         mob:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                          mob:setLocalVar('supreme_proca', 1)
                      end
                end)
@@ -937,7 +937,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
                 math.random(0, 99) < 10 and
                 target:getLocalVar('supreme_procm') == 0 then
                 target:weaknessTrigger(2) -- Red proc
-                target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 target:setLocalVar('supreme_procm', 1)
              end
        end)
@@ -945,7 +945,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
        if math.random(0, 99) < 10 then
              if target:getLocalVar('supreme_procw') == 0 and user:isPC() or user:isTrust() and procjobs[user:getMainJob()] == 'ws' then
                 target:weaknessTrigger(0) -- Blue proc
-                target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 target:setLocalVar('supreme_procw', 1)
              end
        end
@@ -959,7 +959,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
                 mob:delStatusEffect(xi.effect.REGEN)
                 mob:delStatusEffect(xi.effect.REGAIN)
                 mob:delStatusEffect(xi.effect.ENTHUNDER_II)
-                mob:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                mob:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 mob:setLocalVar('supreme_proca', 1)
              end
        end)
@@ -1309,7 +1309,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
                 math.random(0, 99) < 10 and
                 target:getLocalVar('supreme_procm') == 0 then
                 target:weaknessTrigger(2) -- Red proc
-                target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 target:setLocalVar('supreme_procm', 1)
              end
        end)
@@ -1317,7 +1317,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
        if math.random(0, 99) < 10 then
              if target:getLocalVar('supreme_procw') == 0 and user:isPC() or user:isTrust() and procjobs[user:getMainJob()] == 'ws' then
                 target:weaknessTrigger(0) -- Blue proc
-                target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 target:setLocalVar('supreme_procw', 1)
              end
        end
@@ -1685,7 +1685,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
                 math.random(0, 99) < 10 and
                 target:getLocalVar('supreme_procm') == 0 then
                 target:weaknessTrigger(2) -- Red proc
-                target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 target:setLocalVar('supreme_procm', 1)
              end
        end)
@@ -1707,7 +1707,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
                 mob:delStatusEffect(xi.effect.REGEN)
                 mob:delStatusEffect(xi.effect.REGAIN)
                 mob:delStatusEffect(xi.effect.ENBLIZZARD_II)
-                mob:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                mob:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 mob:setLocalVar('supreme_proca', 1)
              end
        end)
