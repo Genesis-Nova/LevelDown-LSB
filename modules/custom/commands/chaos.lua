@@ -24,7 +24,7 @@ commandObj.onTrigger = function(player)
                     end
 
                     for _, member in pairs(partyAllianceCheck) do
-                            member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+                            member:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = member })
                             member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                     end
 
@@ -90,12 +90,12 @@ commandObj.onTrigger = function(player)
                             mob:setMod(xi.mod.LULLABYRES, 0)
                             ]]--
                             mob:setMod(xi.mod.FASTCAST, 75) 
-                            mob:addStatusEffect(xi.effect.DREAD_SPIKES, 100, 0, 0)
-                            mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
-                            mob:addStatusEffect(xi.effect.REGAIN, 50, 3, 0)
-                            mob:addStatusEffect(xi.effect.REFRESH, 50, 3, 0)
-                            mob:addStatusEffect(xi.effect.ENTHUNDER_II, 100, 0, 0)
-                            mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+                            mob:addStatusEffect(xi.effect.DREAD_SPIKES, { power = 100, duration = 0, origin = mob})
+                            mob:addStatusEffect(xi.effect.REGEN, { power = 350, duration = 0, origin = mob, tick = 3 })
+                            mob:addStatusEffect(xi.effect.REGAIN, { power = 50, duration = 0, origin = mob})
+                            mob:addStatusEffect(xi.effect.REFRESH, { power = 50, tick = 3, duration = 0, origin = mob })
+                            mob:addStatusEffect(xi.effect.ENTHUNDER_II, { power = 100, duration = 0, origin = mob})
+                            mob:addStatusEffect(xi.effect.CONFRONTATION,{power = 1, origin = mob})
 
                             mob:addListener('TAKE_DAMAGE', 'CHAOS_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
                                 local accumulatedPhisical = mob:getLocalVar('physical')
@@ -140,7 +140,7 @@ commandObj.onTrigger = function(player)
                                     math.random(0, 99) < 10 and
                                     target:getLocalVar('supreme_procm') == 0 then
                                     target:weaknessTrigger(2) -- Red proc
-                                    target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                                    target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                                     target:setLocalVar('supreme_procm', 1)
                                 end
 
@@ -154,7 +154,7 @@ commandObj.onTrigger = function(player)
                                 if math.random(0, 99) < 10 then
                                     if target:getLocalVar('supreme_procw') == 0 and user:isPC() or user:isTrust() and procjobs[user:getMainJob()] == 'ws' then
                                         target:weaknessTrigger(0) -- Blue proc
-                                        target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                                        target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                                         target:setLocalVar('supreme_procw', 1)
                                     end
                                 end
