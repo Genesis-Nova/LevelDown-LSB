@@ -39,8 +39,8 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
   local power = mob:getMainLvl() * 3
     mob:addMod(xi.mod.MACC, power)
     mob:addMod(xi.mod.MATT, power)
-    mob:addStatusEffect(xi.effect.MAX_MP_BOOST, power, 0, 0)
-    mob:addStatusEffect(xi.effect.MAX_HP_BOOST, power, 0, 0)
+    mob:addStatusEffect(xi.effect.MAX_MP_BOOST, { power = power, origin = mob })
+    mob:addStatusEffect(xi.effect.MAX_HP_BOOST, { power = power, origin = mob })
     mob:setHP(mob:getMaxHP())
     mob:setMP(mob:getMaxMP())
     mob:setMod(xi.mod.DOUBLE_ATTACK, 60)

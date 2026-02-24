@@ -21,7 +21,7 @@ local trustLevel = mob:getMainLvl()
 	
 	--Increase MP
 	local currentMP = mob:getMP()	
-	mob:addStatusEffect(xi.effect.MAX_MP_BOOST, 120, 0, 0)
+	mob:addStatusEffect(xi.effect.MAX_MP_BOOST, { power = 120, origin = mob })
     mob:setMP(mob:getMaxMP())
 	
 	mob:addMod(xi.mod.DEF, trustLevel * 1.5)

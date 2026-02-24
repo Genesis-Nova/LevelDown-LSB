@@ -87,7 +87,7 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
             if math.random(1, 100) <= 66 then
                 xi.trust.message(mobArg, xi.trust.messageOffset.SPECIAL_MOVE_1)
             end
-            mob:addStatusEffect(xi.effect.ACCURACY_BOOST, 20, 0, 20) -- Cheat in Relic AM ACC
+            mob:addStatusEffect(xi.effect.ACCURACY_BOOST, {power = 20, origin = mob, duration = 20}) -- Cheat in Relic AM ACC
 			-- TODO: Expand Relic (Mjollnir) Handling (Occ. Double Damage, etc)
         end
     end)
