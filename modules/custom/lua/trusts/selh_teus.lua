@@ -49,8 +49,8 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
                         mob:setLocalVar('SelhAbil', 0)
                         mob:setLocalVar('SelhRejTime', os.time() + 240) -- 3 minute cool down
                         for _, partyMember in ipairs(mob:getMaster():getPartyWithTrusts()) do
-                               partyMember:addStatusEffect(xi.effect.REGAIN, 5, 0, 30) -- adds regain for 30 seconds
-                               partyMember:addStatusEffect(xi.effect.REGEN, 5, 0, 30) -- adds regen for 30 seconds
+                               partyMember:addStatusEffect(xi.effect.REGAIN, { power = 5, duration = 30, origin = mob}) -- adds regain for 30 seconds
+                               partyMember:addStatusEffect(xi.effect.REGEN, { power = 5, duration = 30, origin = mob}) -- adds regen for 30 seconds
                                partyMember:eraseAllStatusEffect()
                             local effects =
                                     {

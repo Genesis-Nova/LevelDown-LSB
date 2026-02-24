@@ -22,7 +22,7 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
     mob:addMod(xi.mod.TRIPLE_ATTACK, 20)
   if mob:getMaster():getMainLvl() == 99 then 
   local power = mob:getMainLvl() * 1.1
-    mob:addStatusEffect(xi.effect.MAX_HP_BOOST, power, 0, 0)
+    mob:addStatusEffect(xi.effect.MAX_HP_BOOST, {power = power, duration = 0, origin = mob})
     mob:setHP(mob:getMaxHP())
     mob:setMP(mob:getMaxMP())
     mob:setMod(xi.mod.DOUBLE_ATTACK, 30)
