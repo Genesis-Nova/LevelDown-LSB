@@ -38,7 +38,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
         if type(alliancePartyCheck) == "table" then
             for _, member in pairs(alliancePartyCheck) do
                 if member:getZoneID() == 127 then
-                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = member })
                     member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                 end
             end
@@ -62,6 +62,8 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
             rotation = 29,
             groupId = 63,
             groupZoneId = 288,
+            minLevel = 130,
+            maxLevel = 130,
             ---------------------------------------------------------------------------
             -----------onMobSpawn
             ---------------------------------------------------------------------------
@@ -105,11 +107,11 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                 mob:setMod(xi.mod.PARALYZERES, 100) 
                 mob:setMod(xi.mod.LULLABYRES, 0) 
                 mob:setMod(xi.mod.FASTCAST, 75) 
-                mob:addStatusEffect(xi.effect.BLAZE_SPIKES, 100, 0, 0)
-                mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
-                mob:addStatusEffect(xi.effect.REGAIN, 50, 3, 0)
-                mob:addStatusEffect(xi.effect.ENFIRE_II, 100, 0, 0)
-                mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+                mob:addStatusEffect(xi.effect.BLAZE_SPIKES, { power = 100, duration = 0, origin = mob})
+                mob:addStatusEffect(xi.effect.REGEN, { power = 35, duration = 0, origin = mob, tick = 3 })
+                mob:addStatusEffect(xi.effect.REGAIN, { power = 50, duration = 0, origin = mob})
+                mob:addStatusEffect(xi.effect.ENFIRE_II, { power = 100, duration = 0, origin = mob})
+                mob:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = mob })
                 mob:setMobMod(xi.mobMod.SKILL_LIST, 51)
                 mob:setMP(mob:getMaxMP())
                 mob:setLocalVar('Adds', 1)
@@ -158,7 +160,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                          math.random(0, 99) < 10 and
                          target:getLocalVar('supreme_procm') == 0 then
                          target:weaknessTrigger(2) -- Red proc
-                         target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                         target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                          target:setLocalVar('supreme_procm', 1)
                      end
                end)
@@ -238,12 +240,18 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                 mob:getLocalVar('Adds') == 1 then
 
                 local behID = zones[xi.zone.BEHEMOTHS_DOMINION] -- need to apply mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                    GetMobByID(behID.mob.BEHEMOTH):spawn()
-                    GetMobByID(behID.mob.BEHEMOTH):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                    GetMobByID(behID.mob.BEHEMOTH):updateClaim(target)
-                    GetMobByID(behID.mob.KING_BEHEMOTH):spawn()
-                    GetMobByID(behID.mob.KING_BEHEMOTH):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                    GetMobByID(behID.mob.KING_BEHEMOTH):updateClaim(target)
+                    local behemoth = GetMobByID(behID.mob.BEHEMOTH)
+                    if behemoth then
+                        behemoth:spawn()
+                        behemoth:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = behemoth })
+                        behemoth:updateClaim(target)
+                    end
+                    local kingBehemoth = GetMobByID(behID.mob.KING_BEHEMOTH)
+                    if kingBehemoth then
+                        kingBehemoth:spawn()
+                        kingBehemoth:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = kingBehemoth })
+                        kingBehemoth:updateClaim(target)
+                    end
                     mob:setLocalVar('Adds', 2)
                     mob:setLocalVar('AddsTimer', os.time())
             end
@@ -257,9 +265,9 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                 end
 
             if mob:getLocalVar('Adds') == 2 then
-                mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-                mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-                mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+                mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = 1, origin = mob, icon = 0 })
             end
 
             if mob:getLocalVar('Adds') == 4 then
@@ -287,7 +295,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
         onSpellPrecast = function(mob, spell)
             if spell:getID() == 218 or 219 then
                 spell:setAoE(xi.magic.aoe.RADIAL)
-                spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+                --spell:setFlag(xi.magic.spellFlag.HIT_ALL)
                 spell:setRadius(20)
                 spell:setAnimation(280)
                 spell:setMPCost(1)
@@ -335,33 +343,33 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
+                            mob:timer(5000, function(m) DespawnMob(m:getID()) end)
                         end,
                         ---------------------------------------------------------------------------
                         -----------onMobDespawn
                         ---------------------------------------------------------------------------
-                        onMobDespawn = function(mob, player, optParams)
-                            local partyAllianceCheck = {}
-                            if player then
-                                if player:checkSoloPartyAlliance() == 2 then
-                                    partyAllianceCheck = player:getAlliance()
-                                else
-                                    partyAllianceCheck = player:getPartyWithTrusts()
-                                end
-                            end
-
-                            for _, member in pairs(partyAllianceCheck) do
+                        onMobDespawn = function(mob)
+                            local zone = mob:getZone()
+                            for _, member in pairs(zone:getPlayers()) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
-                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                    local effect = member:getStatusEffect(xi.effect.CONFRONTATION)
+                                    if effect and effect:getPower() == 1 then
+                                        member:delStatusEffect(xi.effect.CONFRONTATION)
+                                    end
                                 end
                             end
 
                             local behID = zones[xi.zone.BEHEMOTHS_DOMINION]
                             if behID and behID.mob then
-                                if GetMobByID(behID.mob.BEHEMOTH):isAlive() then
+                                local behemoth = GetMobByID(behID.mob.BEHEMOTH)
+                                if behemoth and behemoth:isAlive() then
+                                    behemoth:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(behID.mob.BEHEMOTH)
                                 end
 
-                                if GetMobByID(behID.mob.KING_BEHEMOTH):isAlive() then
+                                local kingBehemoth = GetMobByID(behID.mob.KING_BEHEMOTH)
+                                if kingBehemoth and kingBehemoth:isAlive() then
+                                    kingBehemoth:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(behID.mob.KING_BEHEMOTH)
                                 end
                             end
@@ -401,7 +409,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
             spawnSupreme = false
         end
     end
-    if rand <= 45 and
+    if rand <= 100 and
         spawnSupreme then
 
         local leader = GetPlayerByID(player:getLeaderID())
@@ -420,7 +428,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
         if type(alliancePartyCheck) == "table" then
             for _, member in pairs(alliancePartyCheck) do
                 if member:getZoneID() == 127 then
-                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = member })
                     member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                 end
             end
@@ -444,6 +452,8 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
             rotation = 29,
             groupId = 63,
             groupZoneId = 288,
+            minLevel = 130,
+            maxLevel = 130,
             ---------------------------------------------------------------------------
             -----------onMobSpawn
             ---------------------------------------------------------------------------
@@ -487,11 +497,11 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                 mob:setMod(xi.mod.PARALYZERES, 100) 
                 mob:setMod(xi.mod.LULLABYRES, 0) 
                 mob:setMod(xi.mod.FASTCAST, 75) 
-                mob:addStatusEffect(xi.effect.BLAZE_SPIKES, 100, 0, 0)
-                mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
-                mob:addStatusEffect(xi.effect.REGAIN, 50, 3, 0)
-                mob:addStatusEffect(xi.effect.ENFIRE_II, 100, 0, 0)
-                mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+                mob:addStatusEffect(xi.effect.BLAZE_SPIKES, { power = 100, tick = 0, duration = 0, origin = mob })
+                mob:addStatusEffect(xi.effect.REGEN, { power = 350, tick = 3, duration = 0, origin = mob })
+                mob:addStatusEffect(xi.effect.REGAIN, { power = 50, tick = 3, duration = 0, origin = mob })
+                mob:addStatusEffect(xi.effect.ENFIRE_II, { power = 100, tick = 0, duration = 0, origin = mob })
+                mob:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = mob })
                 mob:setMobMod(xi.mobMod.SKILL_LIST, 51)
                 mob:setMP(mob:getMaxMP())
                 mob:setLocalVar('Adds', 1)
@@ -540,7 +550,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                          math.random(0, 99) < 10 and
                          target:getLocalVar('supreme_procm') == 0 then
                          target:weaknessTrigger(2) -- Red proc
-                         target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                         target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                          target:setLocalVar('supreme_procm', 1)
                      end
                end)
@@ -549,7 +559,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                if math.random(0, 99) < 10 then
                      if target:getLocalVar('supreme_procw') == 0 and user:isPC() or user:isTrust() and procjobs[user:getMainJob()] == 'ws' then
                          target:weaknessTrigger(0) -- Blue proc
-                         target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                         target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                          target:setLocalVar('supreme_procw', 1)
                      end
                end
@@ -564,7 +574,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                          mob:delStatusEffect(xi.effect.REGEN)
                          mob:delStatusEffect(xi.effect.REGAIN)
                          mob:delStatusEffect(xi.effect.ENFIRE_II)
-                         mob:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                         mob:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                          mob:setLocalVar('supreme_proca', 1)
                      end
                end)
@@ -620,12 +630,18 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                 mob:getLocalVar('Adds') == 1 then
 
                 local behID = zones[xi.zone.BEHEMOTHS_DOMINION]
-                    GetMobByID(behID.mob.BEHEMOTH):spawn()
-                    GetMobByID(behID.mob.BEHEMOTH):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                    GetMobByID(behID.mob.BEHEMOTH):updateClaim(target)
-                    GetMobByID(behID.mob.KING_BEHEMOTH):spawn()
-                    GetMobByID(behID.mob.KING_BEHEMOTH):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-                    GetMobByID(behID.mob.KING_BEHEMOTH):updateClaim(target)
+                    local behemoth = GetMobByID(behID.mob.BEHEMOTH)
+                    if behemoth then
+                        behemoth:spawn()
+                        behemoth:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = behemoth })
+                        behemoth:updateClaim(target)
+                    end
+                    local kingBehemoth = GetMobByID(behID.mob.KING_BEHEMOTH)
+                    if kingBehemoth then
+                        kingBehemoth:spawn()
+                        kingBehemoth:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = kingBehemoth })
+                        kingBehemoth:updateClaim(target)
+                    end
                     mob:setLocalVar('Adds', 2)
                     mob:setLocalVar('AddsTimer', os.time())
             end
@@ -639,9 +655,9 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                 end
 
             if mob:getLocalVar('Adds') == 2 then
-                mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-                mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-                mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+                mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = 1, origin = mob, icon = 0 })
             end
 
             if mob:getLocalVar('Adds') == 4 then
@@ -669,7 +685,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
         onSpellPrecast = function(mob, spell)
             if spell:getID() == 218 or 219 then
                 spell:setAoE(xi.magic.aoe.RADIAL)
-                spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+                --spell:setFlag(xi.magic.spellFlag.HIT_ALL)
                 spell:setRadius(20)
                 spell:setAnimation(280)
                 spell:setMPCost(1)
@@ -717,33 +733,33 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
+                            mob:timer(5000, function(m) DespawnMob(m:getID()) end)
                         end,
                         ---------------------------------------------------------------------------
                         -----------onMobDespawn
                         ---------------------------------------------------------------------------
-                        onMobDespawn = function(mob, player, optParams)
-                            local partyAllianceCheck = {}
-                            if player then
-                                if player:checkSoloPartyAlliance() == 2 then
-                                    partyAllianceCheck = player:getAlliance()
-                                else
-                                    partyAllianceCheck = player:getPartyWithTrusts()
-                                end
-                            end
-
-                            for _, member in pairs(partyAllianceCheck) do
+                        onMobDespawn = function(mob)
+                            local zone = mob:getZone()
+                            for _, member in pairs(zone:getPlayers()) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
-                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                    local effect = member:getStatusEffect(xi.effect.CONFRONTATION)
+                                    if effect and effect:getPower() == 1 then
+                                        member:delStatusEffect(xi.effect.CONFRONTATION)
+                                    end
                                 end
                             end
 
                             local behID = zones[xi.zone.BEHEMOTHS_DOMINION]
                             if behID and behID.mob then
-                                if GetMobByID(behID.mob.BEHEMOTH):isAlive() then
+                                local behemoth = GetMobByID(behID.mob.BEHEMOTH)
+                                if behemoth and behemoth:isAlive() then
+                                    behemoth:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(behID.mob.BEHEMOTH)
                                 end
 
-                                if GetMobByID(behID.mob.KING_BEHEMOTH):isAlive() then
+                                local kingBehemoth = GetMobByID(behID.mob.KING_BEHEMOTH)
+                                if kingBehemoth and kingBehemoth:isAlive() then
+                                    kingBehemoth:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(behID.mob.KING_BEHEMOTH)
                                 end
                             end
@@ -801,7 +817,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
         if type(alliancePartyCheck) == "table" then
             for _, member in pairs(alliancePartyCheck) do
                 if member:getZoneID() == 154 then
-                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = member })
                     member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                 end
             end
@@ -825,6 +841,8 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
         rotation = 127,
         groupId = 4,
         groupZoneId = 222,
+        minLevel = 130,
+        maxLevel = 130,
         ---------------------------------------------------------------------------
         -----------onMobSpawn
         ---------------------------------------------------------------------------
@@ -868,11 +886,11 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
         mob:setMod(xi.mod.PARALYZERES, 100) 
         mob:setMod(xi.mod.LULLABYRES, 0) 
         mob:setMod(xi.mod.FASTCAST, 75) 
-        mob:addStatusEffect(xi.effect.SHOCK_SPIKES, 100, 0, 0)
-        mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
-        mob:addStatusEffect(xi.effect.REGAIN, 50, 3, 0)
-        mob:addStatusEffect(xi.effect.ENTHUNDER_II, 100, 0, 0)
-        mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+        mob:addStatusEffect(xi.effect.SHOCK_SPIKES, { power = 100, tick = 0, duration = 0, origin = mob })
+        mob:addStatusEffect(xi.effect.REGEN, { power = 35, tick = 3, duration = 0, origin = mob })
+        mob:addStatusEffect(xi.effect.REGAIN, { power = 50, tick = 3, duration = 0, origin = mob })
+        mob:addStatusEffect(xi.effect.ENTHUNDER_II, { power = 100, tick = 0, duration = 0, origin = mob })
+        mob:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = mob })
         mob:setMobMod(xi.mobMod.SKILL_LIST, 263)
         mob:setMP(mob:getMaxMP())
         mob:setLocalVar('Adds', 1)
@@ -992,12 +1010,18 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
         if mob:getHPP() <= 50 and
            mob:getLocalVar('Adds') == 1 then
            local daerID = zones[xi.zone.DRAGONS_AERY]
-               GetMobByID(daerID.mob.FAFNIR):spawn()
-               GetMobByID(daerID.mob.FAFNIR):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(daerID.mob.FAFNIR):updateClaim(target)
-               GetMobByID(daerID.mob.NIDHOGG):spawn()
-               GetMobByID(daerID.mob.NIDHOGG):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(daerID.mob.NIDHOGG):updateClaim(target)
+               local fafnir = GetMobByID(daerID.mob.FAFNIR)
+               if fafnir then
+                   fafnir:spawn()
+                   fafnir:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = fafnir })
+                   fafnir:updateClaim(target)
+               end
+               local nidhogg = GetMobByID(daerID.mob.NIDHOGG)
+               if nidhogg then
+                   nidhogg:spawn()
+                   nidhogg:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = nidhogg })
+                   nidhogg:updateClaim(target)
+               end
            mob:setLocalVar('Adds', 2)
            mob:setLocalVar('AddsTimer', os.time())
         end
@@ -1009,9 +1033,9 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
            mob:setLocalVar('Adds', 4)
         end
         if mob:getLocalVar('Adds') == 2 then
-           mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-           mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-           mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+                mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = 1, origin = mob, icon = 0 })
         end
         if mob:getLocalVar('Adds') == 4 then
            mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
@@ -1036,7 +1060,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
         onSpellPrecast = function(mob, spell)
         if spell:getID() == 367 or 252 then
         spell:setAoE(xi.magic.aoe.RADIAL)
-        spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+        --spell:setFlag(xi.magic.spellFlag.HIT_ALL)
         spell:setRadius(20)
         --spell:setAnimation(280)
         spell:setMPCost(1)
@@ -1081,33 +1105,33 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobDeath', function(mob, play
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
+                            mob:timer(5000, function(m) DespawnMob(m:getID()) end)
                         end,
                         ---------------------------------------------------------------------------
                         -----------onMobDespawn
                         ---------------------------------------------------------------------------
-                        onMobDespawn = function(mob, player, optParams)
-                            local partyAllianceCheck = {}
-                            if player then
-                                if player:checkSoloPartyAlliance() == 2 then
-                                    partyAllianceCheck = player:getAlliance()
-                                else
-                                    partyAllianceCheck = player:getPartyWithTrusts()
-                                end
-                            end
-
-                            for _, member in pairs(partyAllianceCheck) do
+                        onMobDespawn = function(mob)
+                            local zone = mob:getZone()
+                            for _, member in pairs(zone:getPlayers()) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
-                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                    local effect = member:getStatusEffect(xi.effect.CONFRONTATION)
+                                    if effect and effect:getPower() == 1 then
+                                        member:delStatusEffect(xi.effect.CONFRONTATION)
+                                    end
                                 end
                             end
 
                             local daerID = zones[xi.zone.DRAGONS_AERY]
                             if daerID and daerID.mob then
-                                if GetMobByID(daerID.mob.FAFNIR):isAlive() then
+                                local fafnir = GetMobByID(daerID.mob.FAFNIR)
+                                if fafnir and fafnir:isAlive() then
+                                    fafnir:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(daerID.mob.FAFNIR)
                                 end
 
-                                if GetMobByID(daerID.mob.NIDHOGG):isAlive() then
+                                local nidhogg = GetMobByID(daerID.mob.NIDHOGG)
+                                if nidhogg and nidhogg:isAlive() then
+                                    nidhogg:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(daerID.mob.NIDHOGG)
                                 end
                             end
@@ -1166,7 +1190,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
         if type(alliancePartyCheck) == "table" then
             for _, member in pairs(alliancePartyCheck) do
                 if member:getZoneID() == 154 then
-                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = member })
                     member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                 end
             end
@@ -1189,6 +1213,8 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
         rotation = 127,
         groupId = 4,
         groupZoneId = 222,
+        minLevel = 130,
+        maxLevel = 130,
         ---------------------------------------------------------------------------
         -----------onMobSpawn
         ---------------------------------------------------------------------------
@@ -1232,11 +1258,11 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
         mob:setMod(xi.mod.PARALYZERES, 100) 
         mob:setMod(xi.mod.LULLABYRES, 0) 
         mob:setMod(xi.mod.FASTCAST, 75) 
-        mob:addStatusEffect(xi.effect.SHOCK_SPIKES, 100, 0, 0)
-        mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
-        mob:addStatusEffect(xi.effect.REGAIN, 50, 3, 0)
-        mob:addStatusEffect(xi.effect.ENTHUNDER_II, 100, 0, 0)
-        mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+        mob:addStatusEffect(xi.effect.SHOCK_SPIKES, { power = 100, duration = 0, origin = mob})
+        mob:addStatusEffect(xi.effect.REGEN, { power = 35, duration = 0, origin = mob, tick = 3 })
+        mob:addStatusEffect(xi.effect.REGAIN, { power = 50, duration = 0, origin = mob})
+        mob:addStatusEffect(xi.effect.ENTHUNDER_II, { power = 100, duration = 0, origin = mob })
+        mob:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = mob })
         mob:setMobMod(xi.mobMod.SKILL_LIST, 263)
         mob:setMP(mob:getMaxMP())
         mob:setLocalVar('Adds', 1)
@@ -1305,7 +1331,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
                 mob:delStatusEffect(xi.effect.REGEN)
                 mob:delStatusEffect(xi.effect.REGAIN)
                 mob:delStatusEffect(xi.effect.ENTHUNDER_II)
-                mob:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                mob:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 mob:setLocalVar('supreme_proca', 1)
              end
        end)
@@ -1356,12 +1382,18 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
         if mob:getHPP() <= 50 and
            mob:getLocalVar('Adds') == 1 then
            local daerID = zones[xi.zone.DRAGONS_AERY]
-               GetMobByID(daerID.mob.FAFNIR):spawn()
-               GetMobByID(daerID.mob.FAFNIR):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(daerID.mob.FAFNIR):updateClaim(target)
-               GetMobByID(daerID.mob.NIDHOGG):spawn()
-               GetMobByID(daerID.mob.NIDHOGG):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(daerID.mob.NIDHOGG):updateClaim(target)
+               local fafnir = GetMobByID(daerID.mob.FAFNIR)
+               if fafnir then
+                   fafnir:spawn()
+                   fafnir:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, tick = 0, duration = 0, origin = fafnir })
+                   fafnir:updateClaim(target)
+               end
+               local nidhogg = GetMobByID(daerID.mob.NIDHOGG)
+               if nidhogg then
+                   nidhogg:spawn()
+                   nidhogg:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, tick = 0, duration = 0, origin = nidhogg })
+                   nidhogg:updateClaim(target)
+               end
            mob:setLocalVar('Adds', 2)
            mob:setLocalVar('AddsTimer', os.time())
         end
@@ -1373,9 +1405,9 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
            mob:setLocalVar('Adds', 4)
         end
         if mob:getLocalVar('Adds') == 2 then
-           mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-           mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-           mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+                mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = 1, origin = mob, icon = 0 })
         end
         if mob:getLocalVar('Adds') == 4 then
            mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
@@ -1400,7 +1432,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
         onSpellPrecast = function(mob, spell)
         if spell:getID() == 367 or 252 then
         spell:setAoE(xi.magic.aoe.RADIAL)
-        spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+        --spell:setFlag(xi.magic.spellFlag.HIT_ALL)
         spell:setRadius(20)
         --spell:setAnimation(280)
         spell:setMPCost(1)
@@ -1445,6 +1477,7 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
+                            mob:timer(5000, function(m) DespawnMob(m:getID()) end)
                         end,
                         ---------------------------------------------------------------------------
                         -----------onMobDespawn
@@ -1467,11 +1500,15 @@ m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobDeath', function(mob, pla
 
                             local daerID = zones[xi.zone.DRAGONS_AERY]
                             if daerID and daerID.mob then
-                                if GetMobByID(daerID.mob.FAFNIR):isAlive() then
+                                local fafnir = GetMobByID(daerID.mob.FAFNIR)
+                                if fafnir and fafnir:isAlive() then
+                                    fafnir:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(daerID.mob.FAFNIR)
                                 end
 
-                                if GetMobByID(daerID.mob.NIDHOGG):isAlive() then
+                                local nidhogg = GetMobByID(daerID.mob.NIDHOGG)
+                                if nidhogg and nidhogg:isAlive() then
+                                    nidhogg:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(daerID.mob.NIDHOGG)
                                 end
                             end
@@ -1530,7 +1567,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
         if type(alliancePartyCheck) == "table" then
             for _, member in pairs(alliancePartyCheck) do
                 if member:getZoneID() == 128 then
-                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = member })
                     member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                 end
             end
@@ -1553,6 +1590,8 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
         rotation = 84,
         groupId = 4,
         groupZoneId = 222,
+        minLevel = 130,
+        maxLevel = 130,
         ---------------------------------------------------------------------------
         -----------onMobSpawn
         ---------------------------------------------------------------------------
@@ -1595,11 +1634,11 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
         mob:setMod(xi.mod.PARALYZERES, 100) 
         mob:setMod(xi.mod.LULLABYRES, 0) 
         mob:setMod(xi.mod.FASTCAST, 75) 
-        mob:addStatusEffect(xi.effect.ICE_SPIKES, 100, 0, 0)
-        mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
-        mob:addStatusEffect(xi.effect.REGAIN, 50, 3, 0)
-        mob:addStatusEffect(xi.effect.ENBLIZZARD_II, 100, 0, 0)
-        mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+        mob:addStatusEffect(xi.effect.ICE_SPIKES, { power = 100, duration = 0, origin = mob})
+        mob:addStatusEffect(xi.effect.REGEN, { power = 35, duration = 0, origin = mob, tick = 3 })
+        mob:addStatusEffect(xi.effect.REGAIN, { power = 50, duration = 0, origin = mob})
+        mob:addStatusEffect(xi.effect.ENBLIZZARD_II, { power = 100, duration = 0, origin = mob })
+        mob:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = mob })
         mob:setMobMod(xi.mobMod.SKILL_LIST, 2)
         mob:setMP(mob:getMaxMP())
         mob:setLocalVar('Adds', 1)
@@ -1654,7 +1693,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
        if math.random(0, 99) < 10 then
              if target:getLocalVar('supreme_procw') == 0 and user:isPC() or user:isTrust() and procjobs[user:getMainJob()] == 'ws' then
                 target:weaknessTrigger(0) -- Blue proc
-                target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 target:setLocalVar('supreme_procw', 1)
              end
        end
@@ -1719,12 +1758,14 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
         if mob:getHPP() <= 50 and
            mob:getLocalVar('Adds') == 1 then
            local vosID = zones[xi.zone.VALLEY_OF_SORROWS]
-               GetMobByID(vosID.mob.ADAMANTOISE):spawn()
-               GetMobByID(vosID.mob.ADAMANTOISE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(vosID.mob.ADAMANTOISE):updateClaim(target)
-               GetMobByID(vosID.mob.ASPIDOCHELONE):spawn()
-               GetMobByID(vosID.mob.ASPIDOCHELONE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(vosID.mob.ASPIDOCHELONE):updateClaim(target)
+               local adamantoise = GetMobByID(vosID.mob.ADAMANTOISE)
+               adamantoise:spawn()
+               adamantoise:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = adamantoise })
+               adamantoise:updateClaim(target)
+               local aspidochelone = GetMobByID(vosID.mob.ASPIDOCHELONE)
+               aspidochelone:spawn()
+               aspidochelone:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = aspidochelone })
+               aspidochelone:updateClaim(target)
            mob:setLocalVar('Adds', 2)
            mob:setLocalVar('AddsTimer', os.time())
         end
@@ -1736,9 +1777,9 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
            mob:setLocalVar('Adds', 4)
         end
         if mob:getLocalVar('Adds') == 2 then
-           mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-           mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-           mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+                mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = 1, origin = mob, icon = 0 })
         end
         if mob:getLocalVar('Adds') == 4 then
            mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
@@ -1763,7 +1804,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
         onSpellPrecast = function(mob, spell)
         if spell:getID() == 173 or 214 then
         spell:setAoE(xi.magic.aoe.RADIAL)
-        spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+        --spell:setFlag(xi.magic.spellFlag.HIT_ALL)
         spell:setRadius(20)
         spell:setMPCost(1)
         end
@@ -1807,6 +1848,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
+                            mob:timer(5000, function(m) DespawnMob(m:getID()) end)
                         end,
                         ---------------------------------------------------------------------------
                         -----------onMobDespawn
@@ -1829,11 +1871,15 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
 
                             local vosID = zones[xi.zone.VALLEY_OF_SORROWS]
                             if vosID and vosID.mob then
-                                if GetMobByID(vosID.mob.ADAMANTOISE):isAlive() then
+                                local adamantoise = GetMobByID(vosID.mob.ADAMANTOISE)
+                                if adamantoise and adamantoise:isAlive() then
+                                    adamantoise:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(vosID.mob.ADAMANTOISE)
                                 end
 
-                                if GetMobByID(vosID.mob.ASPIDOCHELONE):isAlive() then
+                                local aspidochelone = GetMobByID(vosID.mob.ASPIDOCHELONE)
+                                if aspidochelone and aspidochelone:isAlive() then
+                                    aspidochelone:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(vosID.mob.ASPIDOCHELONE)
                                 end
                             end
@@ -1892,7 +1938,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
         if type(alliancePartyCheck) == "table" then
             for _, member in pairs(alliancePartyCheck) do
                 if member:getZoneID() == 128 then
-                    member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                    member:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = member })
                     member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                 end
             end
@@ -1915,6 +1961,8 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
         rotation = 84,
         groupId = 4,
         groupZoneId = 222,
+        minLevel = 130,
+        maxLevel = 130,
         ---------------------------------------------------------------------------
         -----------onMobSpawn
         ---------------------------------------------------------------------------
@@ -1958,15 +2006,15 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
         mob:setMod(xi.mod.PARALYZERES, 100) 
         mob:setMod(xi.mod.LULLABYRES, 0) 
         mob:setMod(xi.mod.FASTCAST, 75) 
-        mob:addStatusEffect(xi.effect.ICE_SPIKES, 100, 0, 0)
-        mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
-        mob:addStatusEffect(xi.effect.REGAIN, 50, 3, 0)
-        mob:addStatusEffect(xi.effect.ENBLIZZARD_II, 100, 0, 0)
-        mob:addStatusEffect(xi.effect.PHALANX, 35, 0, 180)
-        mob:addStatusEffect(xi.effect.STONESKIN, 350, 0, 300)
-        mob:addStatusEffect(xi.effect.PROTECT, 175, 0, 1800)
-        mob:addStatusEffect(xi.effect.SHELL, 24, 0, 1800)
-        mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+        mob:addStatusEffect(xi.effect.ICE_SPIKES, { power = 100, tick = 0, duration = 0, origin = mob })
+        mob:addStatusEffect(xi.effect.REGEN, { power = 350, tick = 3, duration = 0, origin = mob })
+        mob:addStatusEffect(xi.effect.REGAIN, { power = 50, tick = 3, duration = 0, origin = mob })
+        mob:addStatusEffect(xi.effect.ENBLIZZARD_II, { power = 100, tick = 0, duration = 0, origin = mob })
+        mob:addStatusEffect(xi.effect.PHALANX, { power = 35, tick = 0, duration = 180, origin = mob })
+        mob:addStatusEffect(xi.effect.STONESKIN, { power = 350, tick = 0, duration = 300, origin = mob })
+        mob:addStatusEffect(xi.effect.PROTECT, { power = 175, tick = 0, duration = 1800, origin = mob })
+        mob:addStatusEffect(xi.effect.SHELL, { power = 24, tick = 0, duration = 1800, origin = mob })
+        mob:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = mob })
         mob:setMobMod(xi.mobMod.SKILL_LIST, 2)
         mob:setMP(mob:getMaxMP())
         mob:setLocalVar('Adds', 1)
@@ -2013,7 +2061,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
                 math.random(0, 99) < 10 and
                 target:getLocalVar('supreme_procm') == 0 then
                 target:weaknessTrigger(2) -- Red proc
-                target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 target:setLocalVar('supreme_procm', 1)
              end
        end)
@@ -2021,7 +2069,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
        if math.random(0, 99) < 10 then
              if target:getLocalVar('supreme_procw') == 0 and user:isPC() or user:isTrust() and procjobs[user:getMainJob()] == 'ws' then
                 target:weaknessTrigger(0) -- Blue proc
-                target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 target:setLocalVar('supreme_procw', 1)
              end
        end
@@ -2035,7 +2083,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
                 mob:delStatusEffect(xi.effect.REGEN)
                 mob:delStatusEffect(xi.effect.REGAIN)
                 mob:delStatusEffect(xi.effect.ENBLIZZARD_II)
-                mob:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                mob:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                 mob:setLocalVar('supreme_proca', 1)
              end
        end)
@@ -2086,12 +2134,18 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
         if mob:getHPP() <= 50 and
            mob:getLocalVar('Adds') == 1 then
            local vosID = zones[xi.zone.VALLEY_OF_SORROWS]
-               GetMobByID(vosID.mob.ADAMANTOISE):spawn()
-               GetMobByID(vosID.mob.ADAMANTOISE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(vosID.mob.ADAMANTOISE):updateClaim(target)
-               GetMobByID(vosID.mob.ASPIDOCHELONE):spawn()
-               GetMobByID(vosID.mob.ASPIDOCHELONE):addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
-               GetMobByID(vosID.mob.ASPIDOCHELONE):updateClaim(target)
+               local adamantoise = GetMobByID(vosID.mob.ADAMANTOISE)
+               if adamantoise then
+                   adamantoise:spawn()
+                   adamantoise:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = adamantoise })
+                   adamantoise:updateClaim(target)
+               end
+               local aspidochelone = GetMobByID(vosID.mob.ASPIDOCHELONE)
+               if aspidochelone then
+                   aspidochelone:spawn()
+                   aspidochelone:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = aspidochelone })
+                   aspidochelone:updateClaim(target)
+               end
            mob:setLocalVar('Adds', 2)
            mob:setLocalVar('AddsTimer', os.time())
         end
@@ -2103,9 +2157,9 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
            mob:setLocalVar('Adds', 4)
         end
         if mob:getLocalVar('Adds') == 2 then
-           mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-           mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-           mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+                mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = 1, origin = mob, icon = 0 })
         end
         if mob:getLocalVar('Adds') == 4 then
            mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
@@ -2130,7 +2184,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
         onSpellPrecast = function(mob, spell)
         if spell:getID() == 173 or 214 then
         spell:setAoE(xi.magic.aoe.RADIAL)
-        spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+        --spell:setFlag(xi.magic.spellFlag.HIT_ALL)
         spell:setRadius(20)
         spell:setMPCost(1)
         end
@@ -2174,6 +2228,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
+                            mob:timer(5000, function(m) DespawnMob(m:getID()) end)
                         end,
                         ---------------------------------------------------------------------------
                         -----------onMobDespawn
@@ -2196,11 +2251,15 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
 
                             local vosID = zones[xi.zone.VALLEY_OF_SORROWS]
                             if vosID and vosID.mob then
-                                if GetMobByID(vosID.mob.ADAMANTOISE):isAlive() then
+                                local adamantoise = GetMobByID(vosID.mob.ADAMANTOISE)
+                                if adamantoise and adamantoise:isAlive() then
+                                    adamantoise:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(vosID.mob.ADAMANTOISE)
                                 end
 
-                                if GetMobByID(vosID.mob.ASPIDOCHELONE):isAlive() then
+                                local aspidochelone = GetMobByID(vosID.mob.ASPIDOCHELONE)
+                                if aspidochelone and aspidochelone:isAlive() then
+                                    aspidochelone:delStatusEffect(xi.effect.CONFRONTATION)
                                     DespawnMob(vosID.mob.ASPIDOCHELONE)
                                 end
                             end
@@ -2278,7 +2337,7 @@ page1 =
                     if type(alliancePartyCheck) == "table" then
                         for _, member in pairs(alliancePartyCheck) do
                             if member:getZoneID() == 25 then
-                                member:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+                                member:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = member })
                                 member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                             end
                         end
@@ -2303,6 +2362,8 @@ page1 =
                         rotation = 13,
                         groupId = 11506,
                         groupZoneId = 299,
+                        minLevel = 130,
+                        maxLevel = 130,
                         ---------------------------------------------------------------------------
                         -----------onMobSpawn
                         ---------------------------------------------------------------------------
@@ -2312,12 +2373,12 @@ page1 =
                             mob:addMod(xi.mod.MAIN_DMG_RATING, 145)
                             mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
                             mob:setMod(xi.mod.FASTCAST, 75) 
-                            mob:addStatusEffect(xi.effect.DREAD_SPIKES, 100, 0, 0)
-                            mob:addStatusEffect(xi.effect.REGEN, 350, 3, 0)
-                            mob:addStatusEffect(xi.effect.REGAIN, 50, 3, 0)
-                            mob:addStatusEffect(xi.effect.REFRESH, 50, 3, 0)
-                            mob:addStatusEffect(xi.effect.ENTHUNDER_II, 100, 0, 0)
-                            mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+                            mob:addStatusEffect(xi.effect.DREAD_SPIKES, { power = 100, duration = 0, origin = mob})
+                            mob:addStatusEffect(xi.effect.REGEN, { power = 35, duration = 0, origin = mob, tick = 3 })
+                            mob:addStatusEffect(xi.effect.REGAIN, { power = 50, duration = 0, origin = mob})
+                            mob:addStatusEffect(xi.effect.REFRESH, { power = 50, tick = 3, duration = 0, origin = mob })
+                            mob:addStatusEffect(xi.effect.ENTHUNDER_II, { power = 100, duration = 0, origin = mob})
+                            mob:addStatusEffect(xi.effect.CONFRONTATION, { power = 1, origin = mob })
                             mob:setMP(mob:getMaxMP())
 
                             mob:addListener('TAKE_DAMAGE', 'CHAOS_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
@@ -2363,7 +2424,7 @@ page1 =
                                     math.random(0, 99) < 10 and
                                     target:getLocalVar('supreme_procm') == 0 then
                                     target:weaknessTrigger(2) -- Red proc
-                                    target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                                    target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                                     target:setLocalVar('supreme_procm', 1)
                                 end
 
@@ -2377,7 +2438,7 @@ page1 =
                                 if math.random(0, 99) < 10 then
                                     if target:getLocalVar('supreme_procw') == 0 and user:isPC() or user:isTrust() and procjobs[user:getMainJob()] == 'ws' then
                                         target:weaknessTrigger(0) -- Blue proc
-                                        target:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                                        target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                                         target:setLocalVar('supreme_procw', 1)
                                     end
                                 end
@@ -2398,7 +2459,7 @@ page1 =
                                     mob:delStatusEffect(xi.effect.REGEN)
                                     mob:delStatusEffect(xi.effect.REGAIN)
                                     mob:delStatusEffect(xi.effect.ENTHUNDER_II)
-                                    mob:addStatusEffect(xi.effect.TERROR, 0, 0, 15)
+                                    mob:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
                                     mob:setLocalVar('supreme_proca', 1)
                                 end
 
@@ -2476,7 +2537,7 @@ page1 =
                         onSpellPrecast = function(mob, spell)
                             if spell:getID() == 218 or spell:getID(252) or spell:getID(275) then
                                 spell:setAoE(xi.magic.aoe.RADIAL)
-                                spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+                                --spell:setFlag(xi.magic.spellFlag.HIT_ALL)
                                 spell:setRadius(20)
                                 spell:setMPCost(1)
                             end
@@ -2535,19 +2596,14 @@ page1 =
                         ---------------------------------------------------------------------------
                         -----------onMobDespawn
                         ---------------------------------------------------------------------------
-                        onMobDespawn = function(mob, player, optParams)
-                            local partyAllianceCheck = {}
-                            if player then
-                                if player:checkSoloPartyAlliance() == 2 then
-                                    partyAllianceCheck = player:getAlliance()
-                                else
-                                    partyAllianceCheck = player:getPartyWithTrusts()
-                                end
-                            end
-
-                            for _, member in pairs(partyAllianceCheck) do
+                        onMobDespawn = function(mob)
+                            local zone = mob:getZone()
+                            for _, member in pairs(zone:getPlayers()) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
-                                    member:delStatusEffect(xi.effect.CONFRONTATION)
+                                    local effect = member:getStatusEffect(xi.effect.CONFRONTATION)
+                                    if effect and effect:getPower() == 1 then
+                                        member:delStatusEffect(xi.effect.CONFRONTATION)
+                                    end
                                 end
                             end
                         end,
@@ -2609,6 +2665,34 @@ m:addOverride('xi.zones.Misareaux_Coast.Zone.onInitialize',function(zone)
     })
 end)
 
+m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobSpawn', function(mob)
+    super(mob)
+    mob:delStatusEffect(xi.effect.CONFRONTATION)
+end)
+
+m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobSpawn', function(mob)
+    super(mob)
+    mob:delStatusEffect(xi.effect.CONFRONTATION)
+end)
+
+m:addOverride('xi.zones.Dragons_Aery.mobs.Fafnir.onMobSpawn', function(mob)
+    super(mob)
+    mob:delStatusEffect(xi.effect.CONFRONTATION)
+end)
+
+m:addOverride('xi.zones.Dragons_Aery.mobs.Nidhogg.onMobSpawn', function(mob)
+    super(mob)
+    mob:delStatusEffect(xi.effect.CONFRONTATION)
+end)
+
+m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobSpawn', function(mob)
+    super(mob)
+    mob:delStatusEffect(xi.effect.CONFRONTATION)
+end)
+
+m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobSpawn', function(mob)
+    super(mob)
+    mob:delStatusEffect(xi.effect.CONFRONTATION)
+end)
+
 return m
-
-
