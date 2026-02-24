@@ -19,8 +19,9 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
     local power       = trustLevel / 5
     local spellDamage = trustLevel * math.floor((trustLevel + 1) / 10)
 
-    mob:addStatusEffect(xi.effect.MAX_HP_BOOST, 10, 0, 0)
-    mob:addStatusEffect(xi.effect.MAX_MP_BOOST, 100, 0, 0)
+    mob:addStatusEffect(xi.effect.MAX_HP_BOOST, { power = 10, origin = mob })
+    mob:addStatusEffect(xi.effect.MAX_MP_BOOST, { power = 100, origin = mob })
+
     mob:setHP(mob:getMaxHP())
     mob:setMP(mob:getMaxMP())
     mob:addMod(xi.mod.REFRESH, trustLevel / 10)

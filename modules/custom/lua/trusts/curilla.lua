@@ -19,7 +19,7 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
 
 
     local defBonus = mob:getMainLvl() * 1.1
-    mob:addStatusEffect(xi.effect.MAX_MP_BOOST, 30, 0, 0)
+    mob:addStatusEffect(xi.effect.MAX_MP_BOOST, { power = 30, origin = mob })
     mob:setMP(mob:getMaxMP())
     mob:addMod(xi.mod.CURE_POTENCY, 50)
 	mob:addMod(xi.mod.SPELLINTERRUPT, 35)
