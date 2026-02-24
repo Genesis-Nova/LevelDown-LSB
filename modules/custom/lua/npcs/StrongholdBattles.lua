@@ -111,8 +111,8 @@ local EVENT_HOST_ZONE_NAME = 'East_Ronfaure_[S]'
 -- MEGA BOSS CONFIGURATION
 -- =============================================================================
 local ENABLE_MEGA_BOSS = true
-local MEGA_BOSS_LEVEL = 140
-local MEGA_BOSS_HPP_MOD = 9000
+local MEGA_BOSS_LEVEL = 150
+local MEGA_BOSS_HPP_MOD = 15000
 local MEGA_BOSS_DMG_MOD = 150
 local MEGA_BOSS_ATT_MOD = 350
 local MEGA_BOSS_ACC_MOD = 150
@@ -611,6 +611,8 @@ local function spawnArmy(zone, selectedZone, battleFightStartHour)
                 groupId = unitConfig.groupid,
                 groupZoneId = unitConfig.zoneid,
                 entityFlags = entityFlags,
+                minLevel = mobLevel,
+                maxLevel = mobLevel,
                 allegiance = 0,
                 widescan = 1,
 
@@ -645,10 +647,10 @@ local function spawnArmy(zone, selectedZone, battleFightStartHour)
                         mob_spawned:setMobMod       (xi.mobMod.NO_DROPS, 1)
                         mob_spawned:setMobMod       (xi.mobMod.CLAIM_TYPE, xi.claimType.UNCLAIMABLE)
                         mob_spawned:setMobMod       (xi.mobMod.CHECK_AS_NM, 1)
-                        mob_spawned:addStatusEffect (xi.effect.BLAZE_SPIKES, 50, 0, 0)
-                        mob_spawned:addStatusEffect (xi.effect.REGEN, 350, 3, 0)
-                        mob_spawned:addStatusEffect (xi.effect.REGAIN, 50, 3, 0)
-                        mob_spawned:addStatusEffect (xi.effect.ENFIRE_II, 100, 0, 0)                       
+                        mob_spawned:addStatusEffect (xi.effect.BLAZE_SPIKES, { power = 150, duration = 0, origin = mob_spawned})
+                        mob_spawned:addStatusEffect (xi.effect.REGEN, { power = 5000, duration = 0, origin = mob_spawned, tick = 3 })
+                        mob_spawned:addStatusEffect (xi.effect.REGAIN, { power = 50, duration = 0, origin = mob_spawned})
+                        mob_spawned:addStatusEffect (xi.effect.ENFIRE_II, { power = 100, duration = 0, origin = mob_spawned })                       
                         
                     else
                         -- Apply regular mob stats
@@ -673,9 +675,9 @@ local function spawnArmy(zone, selectedZone, battleFightStartHour)
                         mob_spawned:setMobMod(xi.mobMod.NO_LINK, 1)
                         mob_spawned:setMobMod(xi.mobMod.MAGIC_COOL, 0)
                         mob_spawned:setMobMod(xi.mobMod.MAGIC_DELAY, 9999)
-                        mob_spawned:addStatusEffect(xi.effect.PETRIFICATION, 1, 0, 9999)
+                        mob_spawned:addStatusEffect(xi.effect.PETRIFICATION, { power = 1, origin = mob_spawned,  duration = 9999})
 
-                        mob_spawned:addStatusEffect(xi.effect.BLAZE_SPIKES, 100, 0, 0)
+                        mob_spawned:addStatusEffect(xi.effect.BLAZE_SPIKES, { power = 100, duration = 0, origin = mob_spawned})
                     end
 
                     mob_spawned:setLocalVar('BattleStartHour', battleFightStartHour)
@@ -769,6 +771,25 @@ local function spawnArmy(zone, selectedZone, battleFightStartHour)
 
                     applyTideScoreWinBonus()
 
+                    -- Get hate list to ensure everyone involved gets credit
+                    local hateList = boss_mob:getEnmityList()
+                    local playersOnHateList = {}
+                    if hateList then
+                        for _, entry in pairs(hateList) do
+                            local actor = entry.entity
+                            if actor then
+                                if actor:isPC() then
+                                    playersOnHateList[actor:getID()] = true
+                                elseif actor:isPet() then
+                                    local master = actor:getMaster()
+                                    if master and master:isPC() then
+                                        playersOnHateList[master:getID()] = true
+                                    end
+                                end
+                            end
+                        end
+                    end
+
                     -- Award Bonus Allied Notes and Kill Count to participating players
                     for _, p in pairs(battleZone:getPlayers()) do
                         if p and p:isPC() then
@@ -778,7 +799,7 @@ local function spawnArmy(zone, selectedZone, battleFightStartHour)
                                 totalBossPoints = totalBossPoints + (p:getCharVar(varName) or 0)
                             end
 
-                            if totalBossPoints > 0 then
+                            if totalBossPoints > 0 or playersOnHateList[p:getID()] then
                                 -- Award bonus notes for participation
                                 p:addCurrency("allied_notes", MEGA_BOSS_BONUS_ALLIED_NOTES)
                                 p:printToPlayer(string.format(MESSAGES.MEGA_BOSS_BONUS_NOTES_FMT, MEGA_BOSS_BONUS_ALLIED_NOTES), xi.msg.channel.SYSTEM_3)

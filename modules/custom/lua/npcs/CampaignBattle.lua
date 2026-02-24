@@ -2185,6 +2185,8 @@ local function spawnArmy(zone, selectedZone, selectedUnit, battleFightStartHour)
                 rotation = final_rot, 
                 groupId = unitConfig.groupid,
                 groupZoneId = unitConfig.zoneid,
+                minLevel = mobLevel,
+                maxLevel = mobLevel,
                 allegiance = 0, 
                 widescan = 1,
 
