@@ -55,14 +55,14 @@ end)
 m:addOverride("xi.effects.dedication.onEffectLose", function(target,effect)
 super(target,effect)
 if target:getCharVar('Buff') == 1 then
-   target:addStatusEffect(xi.effect.DEDICATION, 500, 3, 0, 0, 30000) -- max 30000 or server crash
+   target:addStatusEffect(xi.effect.DEDICATION, {power = 500, tick = 3, duration = 0, origin = target, subpower = 30000}) -- max 30000 or server crash
 end
 end)
 
 m:addOverride("xi.effects.commitment.onEffectLose", function(target,effect)
 super(target,effect)
 if target:getCharVar('Buff') == 2 then
-   target:addStatusEffect(xi.effect.COMMITMENT, 40, 0, 0, 0, 30000) -- max 30000 or server crash
+   target:addStatusEffect(xi.effect.COMMITMENT, { power = 40, duration = 0, origin = target, subpower = 30000}) -- max 30000 or server crash
 end
 end)
 
