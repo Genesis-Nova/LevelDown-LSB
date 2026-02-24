@@ -464,7 +464,7 @@ local function spawnSeaMonsters(player, spawnCount, waveCount, waveWinBonus, lev
         if p then
             table.insert(registeredPlayerIds, p:getID())
             -- Apply CONFRONTATION effect with duration 0 (persistent) and power 1 (generic)
-            p:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, 0)
+            p:addStatusEffect(xi.effect.CONFRONTATION, { power = confrontationID, origin = p })
             
             -- Check if forceUpdateEffect exists before calling it
             if p.forceUpdateEffect then
@@ -556,6 +556,8 @@ local function spawnSeaMonsters(player, spawnCount, waveCount, waveWinBonus, lev
                 groupId = mobData.groupId,
                 groupZoneId = mobData.groupZoneId,
                 releaseIdOnDisappear = true, -- prevent zone from running out of DE IDs when event is run for long periods
+                minLevel = currentConfrontation.level,
+                maxLevel = currentConfrontation.level,
                 -- Removed x, y, z, rotation, and spawn = true from here. These will be set by mob:setSpawn() and mob:spawn().
 
                 onMobSpawn = function(spawned_mob)
@@ -570,11 +572,11 @@ local function spawnSeaMonsters(player, spawnCount, waveCount, waveWinBonus, lev
                     applyMobStats(spawned_mob, isBoss, currentConfrontation.difficultyMultiplier)
 
                     -- Apply CONFRONTATION effect with generic power 1 for mobs
-                    spawned_mob:addStatusEffect(xi.effect.CONFRONTATION, 1, 0, confrontationDuration)
+                    spawned_mob:addStatusEffect(xi.effect.CONFRONTATION, { power = confrontationID, origin = spawned_mob })
                     -- print(string.format("[SEA MONSTER EVENT] Applied CONFRONTATION effect (power 1) to mob %s (ID:%d).", spawned_mob:getName(), spawned_mob:getID()))
 
-                    spawned_mob:addStatusEffect(xi.effect.ENWATER_II, 100, 0, 0)
-                    spawned_mob:addStatusEffect(xi.effect.REGEN, 100, 3, 0)
+                    spawned_mob:addStatusEffect(xi.effect.ENWATER_II, { power = 100, duration = 0, origin = spawned_mob })
+                    spawned_mob:addStatusEffect(xi.effect.REGEN, { power = 100, duration = 0, origin = spawned_mob, tick = 3 })
 					spawned_mob:setMod(xi.mod.MOVE_SPEED_OVERRIDE, 20) -- Makes mob move very slow
                     -- print(string.format("[SEA MONSTER EVENT] Applied ENWATER_II and REGEN to mob %s (ID:%d).", spawned_mob:getName(), spawned_mob:getID()))
 
