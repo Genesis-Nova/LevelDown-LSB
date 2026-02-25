@@ -28,6 +28,8 @@ spellObject.onSpellCast = function(caster, target, spell)
         params.bonusacc = 70
     elseif caster:hasStatusEffect(xi.effect.CHAIN_AFFINITY) then
         params.bonusacc = math.floor(caster:getTP() / 50)
+	elseif caster:hasStatusEffect(xi.effect.EFFLUX) then
+        params.bonusacc = math.floor(caster:getTP() / 50)
     end
 	
     params.attackType = xi.attackType.PHYSICAL

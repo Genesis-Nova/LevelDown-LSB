@@ -13,6 +13,7 @@
 -----------------------------------
 -- Combos: Fast Cast
 -----------------------------------
+---@type TSpell
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
@@ -20,15 +21,14 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local typeEffect = xi.effect.HASTE
     local power = 3000 -- 30%
     local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 300)
 
-    if not target:addStatusEffect(typeEffect, power, 0, duration) then
+    if not target:addStatusEffect(xi.effect.HASTE, { power = power, duration = duration, origin = caster }) then
         spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
     end
 
-    return typeEffect
+    return xi.effect.HASTE
 end
 
 return spellObject

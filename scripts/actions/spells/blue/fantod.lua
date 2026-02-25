@@ -14,8 +14,8 @@
 -----------------------------------
 local effectz =
 {
-    {xi.effect.MAGIC_ATK_BOOST, 30, 180},
-    {xi.effect.ATTACK_BOOST, 30, 180},
+    {xi.effect.MAGIC_ATK_BOOST, { power = 30, duration = 180, origin = caster }},
+    {xi.effect.ATTACK_BOOST, { power = 30, duration = 180, origin = caster }},
 }
 
 local spellObject = {}
@@ -27,22 +27,17 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
 
-
-
     local duration = 180
     local power = 30
     local apower = caster:getStat(xi.mod.ATT) *.3
-    local typeEffect = xi.effect.MAGIC_ATK_BOOST
-    local typeEffectone = xi.effect.ATTACK_BOOST
-    if not caster:addStatusEffect(typeEffect, power, 0, duration) then
+    if not caster:addStatusEffect(xi.effect.MAGIC_ATK_BOOST, { power = power, duration = duration, origin = caster }) then
         spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
     end
-    if not caster:addStatusEffect(typeEffectone, apower, 0, duration) then
+    if not caster:addStatusEffect(xi.effect.ATTACK_BOOST, { power = apower, duration = duration, origin = caster }) then
         spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
     end
-
     
-    return typeEffect, typeEffectone
+    return xi.effect.MAGIC_ATK_BOOST, xi.effect.ATTACK_BOOST
 
 end
 return spellObject

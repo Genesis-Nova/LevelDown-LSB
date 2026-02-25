@@ -19,17 +19,16 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local typeEffect = xi.effect.MAGIC_SHIELD
     local power = 4
     local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 300)
     if target:hasStatusEffect(xi.effect.STONESKIN) then
        return spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
     end
-    if not caster:addStatusEffect(typeEffect, 4, 3, duration,2) then
+    if not caster:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = power, duration = duration, origin = caster, tier = 2 }) then
         spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
     end
 
-    return typeEffect
+    return xi.effect.MAGIC_SHIELD
 end
 
 return spellObject

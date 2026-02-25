@@ -21,16 +21,14 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
 
-
-
     local duration = 180
     local power = 1000
-    local typeEffect = xi.effect.COUNTERSTANCE
-    if not caster:addStatusEffect(typeEffect, power, 0, duration) then
+	
+    if not caster:addStatusEffect(xi.effect.COUNTERSTANCE, { power = power, duration = duration, origin = caster }) then
         spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
     end
     
-    return typeEffect
+    return xi.effect.COUNTERSTANCE
 
 end
 return spellObject

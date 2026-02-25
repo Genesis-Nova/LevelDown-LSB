@@ -27,10 +27,11 @@ spellObject.onSpellCast = function(caster, target, spell)
     local returnEffect = xi.effect.MAGIC_ATK_BOOST
     local mabPower = caster:getMod(xi.mod.MATT) * .2
     local attPower = caster:getMod(xi.mod.ATT) * .2
+	local power = 10
 
-    local actionOne   = target:addStatusEffect(xi.effect.MAGIC_ATK_BOOST, mabPower, 0, 60)
-    local actionTwo   = target:addStatusEffect(xi.effect.ATTACK_BOOST, attPower, 0, 60)
-    local actionThree = target:addStatusEffect(xi.effect.AQUAVEIL, 10, 0, 900)
+    local actionOne   = target:addStatusEffect(xi.effect.MAGIC_ATK_BOOST, { power = mabpower, duration = 60 * duration, origin = caster })
+    local actionTwo   = target:addStatusEffect(xi.effect.ATTACK_BOOST, { power = attpower, duration = 60 * duration, origin = caster })
+    local actionThree = target:addStatusEffect(xi.effect.AQUAVEIL, { power = power, duration = 900 * duration, origin = caster })
 
 
     if not actionOne and not actionTwo and not actionThree then -- all statuses fail to apply
