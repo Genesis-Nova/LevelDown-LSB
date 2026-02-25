@@ -254,7 +254,7 @@ commandObj.onTrigger = function(player)
                         onSpellPrecast = function(mob, spell)
                             if spell:getID() == 218 or spell:getID(252) or spell:getID(275) then
                                 spell:setAoE(xi.magic.aoe.RADIAL)
-                                spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+                                --spell:setFlag(xi.magic.spellFlag.HIT_ALL) -- no longer exists
                                 spell:setRadius(20)
                                 spell:setMPCost(1)
                             end

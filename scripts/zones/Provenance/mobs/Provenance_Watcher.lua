@@ -93,9 +93,10 @@ entity.onMobFight = function(mob, target)
            SpawnMob(ID.mob.CRYSTAL_FETTER):updateEnmity(target)
            mob:setLocalVar('CFTrigger', cfTrigger - 10)
            mob:setLocalVar('CFSummon', crystalFetter +1)
-           mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-           mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)
-           mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+            mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = mob, icon = 0 })
+            mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 })
+            mob:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = 1, origin = mob, icon = 0 })
+
         end
     end
 end
@@ -103,7 +104,7 @@ end
 entity.onSpellPrecast = function(mob, spell)
    if spell:getID() == 218 or spell:getID() == 219 then
       spell:setAoE(xi.magic.aoe.RADIAL)
-      spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+      --spell:setFlag(xi.magic.spellFlag.HIT_ALL) -- no longer exists
       spell:setRadius(15)
    end
 end
