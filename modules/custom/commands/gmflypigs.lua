@@ -140,7 +140,7 @@ page1 =
           local playercount = GetServerVariable('[LPFSEvent] PlayerCount')
           SetServerVariable('[LPFSEvent] PlayerCount', playercount +1)
           player:setCharVar('[LPFSEvent] PlayerLevel', player:getMainLvl())
-          player:addStatusEffect(xi.effect.BATTLEFIELD, 2, 0, 0, 0, 0, 0, 0, 0)
+          player:addStatusEffect(xi.effect.CONFRONTATION, { power = 2, origin = player })
           if player:getMainLvl() < 10 then
           return
           else
@@ -150,7 +150,7 @@ page1 =
           local playercount = GetServerVariable('[LPFBEvent] PlayerCount')
           SetServerVariable('[LPFBEvent] PlayerCount', playercount +1)
           player:setCharVar('[LPFBEvent] PlayerLevel', player:getMainLvl())
-          player:addStatusEffect(xi.effect.BATTLEFIELD, 2, 0, 0, 0, 0, 0, 0, 0)
+          player:addStatusEffect(xi.effect.CONFRONTATION, { power = 2, origin = player })
           if player:getMainLvl() < 10 then
           return
           else
@@ -160,7 +160,7 @@ page1 =
           local playercount = GetServerVariable('[LPFWEvent] PlayerCount')
           SetServerVariable('[LPFWEvent] PlayerCount', playercount +1)
           player:setCharVar('[LPFWEvent] PlayerLevel', player:getMainLvl())
-          player:addStatusEffect(xi.effect.BATTLEFIELD, 2, 0, 0, 0, 0, 0, 0, 0)
+          player:addStatusEffect(xi.effect.CONFRONTATION, { power = 2, origin = player })
           if player:getMainLvl() < 10 then
           return
           else
@@ -186,8 +186,8 @@ page2 =
                        local playercountB = GetServerVariable('[LPFBEvent] PlayerCount')
                        local ExistLvlW = tonumber(player:getCharVar('[LPFWEvent] PlayerLevel'))
                        local playercountW = GetServerVariable('[LPFWEvent] PlayerCount')
-                             if player:hasStatusEffect(xi.effect.BATTLEFIELD) then
-                                player:delStatusEffect(xi.effect.BATTLEFIELD)
+                             if player:hasStatusEffect(xi.effect.CONFRONTATION) then
+                                player:delStatusEffect(xi.effect.CONFRONTATION)
                              end
                              if ExistLvlS > 0 then
                              player:setLevel(ExistLvlS)
@@ -265,6 +265,8 @@ commandObj.onTrigger = function(player, area)
 		allegiance = 0,
 		groupId = 16,
 		groupZoneId = 180,
+        minLevel = 10,
+        maxLevel = 10,
 
 		onMobSpawn = function(mob)
 			local lpfsEvent = GetServerVariable('[LPFSEvent] PigCount') -- Let Pigs Fly Sandy Event
@@ -274,7 +276,7 @@ commandObj.onTrigger = function(player, area)
                 mob:addMod(xi.mod.COUNTER, 5)
                 mob:addMod(xi.mod.DOUBLE_ATTACK, 10)
 		        mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 45)
-                mob:addStatusEffect(xi.effect.BATTLEFIELD, 2, 0, 0, 0, 0, 0, 0, 0)
+                mob:addStatusEffect(xi.effect.CONFRONTATION, { power = 2, origin = mob})
 				mob:setMobLevel(10)
 				mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
             mob:addListener('TAKE_DAMAGE', 'PIG_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
@@ -389,7 +391,7 @@ commandObj.onTrigger = function(player, area)
                        player:getCharVar('[LPFSEvent] PlayerLevel') > 0 and
                        GetServerVariable('[LPFSEvent] PlayerCount') > 1 then
                        local ExistLvl = tonumber(player:getCharVar('[LPFSEvent] PlayerLevel'))
-                             player:delStatusEffect(xi.effect.BATTLEFIELD)
+                             player:delStatusEffect(xi.effect.CONFRONTATION)
                              player:setLevel(ExistLvl)
                              player:setCharVar('[LPFSEvent] PlayerLevel', 0)
                              SetServerVariable('[LPFSEvent] PlayerCount', playercount - 1)
@@ -397,7 +399,7 @@ commandObj.onTrigger = function(player, area)
                        player:getCharVar('[LPFSEvent] PlayerLevel') > 0 and
                        GetServerVariable('[LPFSEvent] PlayerCount') == 1 then
                        local ExistLvl = tonumber(player:getCharVar('[LPFSEvent] PlayerLevel'))
-                             player:delStatusEffect(xi.effect.BATTLEFIELD)
+                             player:delStatusEffect(xi.effect.CONFRONTATION)
                              player:setLevel(ExistLvl)
                              player:setCharVar('[LPFSEvent] PlayerLevel', 0)
                              SetServerVariable('[LPFSEvent] PlayerCount', playercount - 1)
@@ -437,12 +439,14 @@ for i = 1, 21 do
 		allegiance = 0,
 		groupId = 16,
 		groupZoneId = 180,
+        minLevel = 10,
+        maxLevel = 10,
 
 		onMobSpawn = function(mob)
 			local LPFBEvent = GetServerVariable('[LPFBEvent] PigCount') -- Let Pigs Fly Bastok Event
 				SetServerVariable('[LPFBEvent] PigCount', LPFBEvent +1)
 		        mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 45)
-                mob:addStatusEffect(xi.effect.BATTLEFIELD, 2, 0, 0, 0, 0, 0, 0, 0)
+                mob:addStatusEffect(xi.effect.CONFRONTATION, { power = 2, origin = mob})
 				mob:setMobLevel(10)
 				mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
             mob:addListener('TAKE_DAMAGE', 'PIG_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
@@ -557,7 +561,7 @@ for i = 1, 21 do
                        player:getCharVar('[LPFBEvent] PlayerLevel') > 0 and
                        GetServerVariable('[LPFBEvent] PlayerCount') > 1 then
                        local ExistLvl = tonumber(player:getCharVar('[LPFBEvent] PlayerLevel'))
-                             player:delStatusEffect(xi.effect.BATTLEFIELD)
+                             player:delStatusEffect(xi.effect.CONFRONTATION)
                              player:setLevel(ExistLvl)
                              player:setCharVar('[LPFBEvent] PlayerLevel', 0)
                              SetServerVariable('[LPFBEvent] PlayerCount', playercount - 1)
@@ -565,7 +569,7 @@ for i = 1, 21 do
                        player:getCharVar('[LPFBEvent] PlayerLevel') > 0 and
                        GetServerVariable('[LPFBEvent] PlayerCount') == 1 then
                        local ExistLvl = tonumber(player:getCharVar('[LPFBEvent] PlayerLevel'))
-                             player:delStatusEffect(xi.effect.BATTLEFIELD)
+                             player:delStatusEffect(xi.effect.CONFRONTATION)
                              player:setLevel(ExistLvl)
                              player:setCharVar('[LPFBEvent] PlayerLevel', 0)
                              SetServerVariable('[LPFBEvent] PlayerCount', playercount - 1)
@@ -605,12 +609,14 @@ elseif area == 3 then
 		allegiance = 0,
 		groupId = 16,
 		groupZoneId = 180,
+        minLevel = 10,
+        maxLevel = 10,
 
 		onMobSpawn = function(mob)
 			local LPFWEvent = GetServerVariable('[LPFWEvent] PigCount') -- Let Pigs Fly Windy Event
 				SetServerVariable('[LPFWEvent] PigCount', LPFWEvent +1)
 		        mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 45)
-                mob:addStatusEffect(xi.effect.BATTLEFIELD, 2, 0, 0, 0, 0, 0, 0, 0)
+                mob:addStatusEffect(xi.effect.CONFRONTATION, { power = 2, origin = mob})
 				mob:setMobLevel(10)
 				mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
             mob:addListener('TAKE_DAMAGE', 'PIG_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
@@ -725,7 +731,7 @@ elseif area == 3 then
                        player:getCharVar('[LPFWEvent] PlayerLevel') > 0 and
                        GetServerVariable('[LPFWEvent] PlayerCount') > 1 then
                        local ExistLvl = tonumber(player:getCharVar('[LPFWEvent] PlayerLevel'))
-                             player:delStatusEffect(xi.effect.BATTLEFIELD)
+                             player:delStatusEffect(xi.effect.CONFRONTATION)
                              player:setLevel(ExistLvl)
                              player:setCharVar('[LPFWEvent] PlayerLevel', 0)
                              SetServerVariable('[LPFWEvent] PlayerCount', playercount - 1)
@@ -733,7 +739,7 @@ elseif area == 3 then
                        player:getCharVar('[LPFWEvent] PlayerLevel') > 0 and
                        GetServerVariable('[LPFWEvent] PlayerCount') == 1 then
                        local ExistLvl = tonumber(player:getCharVar('[LPFWEvent] PlayerLevel'))
-                             player:delStatusEffect(xi.effect.BATTLEFIELD)
+                             player:delStatusEffect(xi.effect.CONFRONTATION)
                              player:setLevel(ExistLvl)
                              player:setCharVar('[LPFWEvent] PlayerLevel', 0)
                              SetServerVariable('[LPFWEvent] PlayerCount', playercount - 1)
