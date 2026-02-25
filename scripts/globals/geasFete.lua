@@ -418,7 +418,7 @@ local function setCountDown(player, mob, npc)
 
     for _, member in pairs(alliance) do
         buildFencing(player, mob)
-        member:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+        member:addStatusEffect(xi.effect.CONFRONTATION, { power = 2, origin = player })
         member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH) -- retail Confrontation Effect on death incase of reraise
         member:messageSpecial(textID.REMAINING_TIME_MINUTES,15) -- battle time dialog 15 minutes
 
@@ -521,7 +521,7 @@ xi.geasFete.qmOnEventFinish = function(player, csid, option, npc)
 
         GetMobByID(mob:getID()):setSpawn(dx, dy, dz)
         SpawnMob(mob:getID()):updateClaim(player)
-        mob:addStatusEffect(xi.effect.CONFRONTATION,1,0,0)
+        mob:addStatusEffect(xi.effect.CONFRONTATION,{ power = 2, origin = mob })
         setCountDown(player,mob)
 
         mob:setLocalVar('Kill_Timer', os.time() + 900) -- set despawn timer for 15 minutes
@@ -2502,7 +2502,8 @@ xi.geasFeteNPC.npcOnEventUpdate = function(player, csid, option, npc)
 
                         player:setCharVar('[Vorseal]'..key,vorsealTier)
                         player:delCurrency('escha_silt', data.cost * costAdjustment)
-                        player:addStatusEffect(xi.effect.VORSEAL, xi.effect.VORSEAL, 0, 0, 3600)
+                        -- player:addStatusEffect(xi.effect.VORSEAL, xi.effect.VORSEAL, 0, 0, 3600)
+                        player:addStatusEffect(xi.effect.VORSEAL, { duration = 3600, origin = player, tick = 3, icon = xi.effect.VORSEAL })
 
                         local dialog = getDialog(player)
                         local currency = player:getCurrency('escha_silt')
@@ -2525,7 +2526,7 @@ xi.geasFeteNPC.npcOnEventUpdate = function(player, csid, option, npc)
                         end
 
                         if player:getCharVar('[Vorseal]'..key) > 0 then
-                            player:addStatusEffect(xi.effect.VORSEAL, xi.effect.VORSEAL, 0, 0, 3600)
+                            player:addStatusEffect(xi.effect.VORSEAL, { duration = 3600, origin = player, tick = 3, icon = xi.effect.VORSEAL })
                         end
 
                         local dialog = getDialog(player)
@@ -2598,7 +2599,7 @@ xi.geasFete.afterZoneIn = function(player)
     local vorsealEligibility = eligibleForVorseal(player)
 
     if vorsealEligibility then
-        player:addStatusEffect(xi.effect.VORSEAL, xi.effect.VORSEAL, 0, 0, 3600)
+        player:addStatusEffect(xi.effect.VORSEAL, { duration = 3600, origin = player, tick = 3, icon = xi.effect.VORSEAL })
     end
 
     player:addListener('EXPERIENCE_POINTS', 'ESCHA_BEADS', function(playerObj, mobObj, expGained)
