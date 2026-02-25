@@ -2,6 +2,7 @@
 -- func: !paidmoles
 -- desc: allow players to start whackamole event given they have the gil
 -----------------------------------
+require("scripts/globals/npc_util")
 local commandObj = {}
 
 commandObj.cmdprops =
@@ -165,6 +166,8 @@ menu.options =
                         groupZoneId = 95,
                         allegiance = 0,
                         widescan = 1,
+                        minLevel = 10,
+                        maxLevel = 10,
 
                         onMobSpawn = function(mob, mobPlayerArg, optParams)
                             mob:setMobMod(xi.mobMod.ROAM_DISTANCE, 45)
@@ -176,24 +179,22 @@ menu.options =
                             mob:addMod(xi.mod.EVA, -500)
                             mob:addMod(xi.mod.DEF, -500)
                             mob:setUnkillable(true)
-                            mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)
-                            mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+                            mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = mob, icon = 0 })
+                            mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 })
                             mob:setLocalVar('MoleDespawn', os.time() + 600)
                         end,
 
                         onMobFight = function(mob, target)
                             mob:addListener('TAKE_DAMAGE', 'MOLE_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
-                                if attacker:isPC() then
-                                    if damage > 0 then
-                                        local encumbranceId = xi.effect.ENCUMBRANCE_I or xi.effect.ENCUMBRANCE or 176
-                                        if not attacker:hasStatusEffect(encumbranceId) then
-                                            local duration = mob:getLocalVar('MoleDespawn') - os.time()
-                                            if duration > 0 then
-                                                for i = 0, 15 do
-                                                    attacker:unequipItem(i)
-                                                end
-                                                attacker:addStatusEffect(encumbranceId, 65535, 0, duration)
+                                if attacker and attacker:isPC() then
+                                    local encumbranceId = xi.effect.EMCUMBRANCE_I or 259
+                                    if not attacker:hasStatusEffect(encumbranceId) then
+                                        local duration = mob:getLocalVar('MoleDespawn') - os.time()
+                                        if duration > 0 then
+                                            for i = xi.slot.MAIN, xi.slot.BACK do
+                                                attacker:unequipItem(i)
                                             end
+                                            attacker:addStatusEffect(xi.effect.ENCUMBRANCE_I, { power = 65535, duration = 0, origin = attacker })
                                         end
                                     end
                                     if attackType == xi.attackType.PHYSICAL and
@@ -226,7 +227,16 @@ menu.options =
                         end,
 
                         onMobDeath = function(mob, mobPlayerArg, optParams) end,
-                        onMobDespawn = function(mob, mobPlayerArg, optParams) end,
+                        onMobDespawn = function(mob, mobPlayerArg, optParams)
+                            local zone = mob:getZone()
+                            local players = zone:getPlayers()
+                            local encumbranceId = xi.effect.ENCUMBRANCE or 177
+                            for _, player in pairs(players) do
+                                if player:hasStatusEffect(xi.effect.ENCUMBRANCE_I) then
+                                    player:delStatusEffect(xi.effect.ENCUMBRANCE_I)
+                                end
+                            end
+                        end,
 
                         releaseIdOnDisappear = true,
                         specialSpawnAnimation = true,
@@ -236,7 +246,7 @@ menu.options =
                     mob:setDropID(0)
                     mob:setMobMod(xi.mobMod.NO_DROPS, 1)
                     mob:setMobMod(xi.mobMod.CLAIM_TYPE, xi.claimType.UNCLAIMABLE)
-					-- mob:setClaimable(false)
+                    --mob:setClaimable(false) -- IGNORE - This function does not exist, using claim type instead
                     mob:spawn()
                 end
             end

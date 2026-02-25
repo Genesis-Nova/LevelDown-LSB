@@ -118,7 +118,7 @@ local function onTrigger(player, argString)
             end
             
             -- Dummy properties
-            mob:addStatusEffect(xi.effect.STUN, 1, 0, 0)
+            mob:addStatusEffect(xi.effect.STUN, { power = 1, origin = mob, duration = 0 })
             mob:setMobMod(xi.mobMod.CHARMABLE, 0)
             mob:setMobMod(xi.mobMod.NO_MOVE, 1)
             mob:setMobMod(xi.mobMod.NO_AGGRO, 1)
@@ -128,7 +128,7 @@ local function onTrigger(player, argString)
             mob:setMobMod(xi.mobMod.SKILL_LIST, 0)
             mob:setMagicCastingEnabled(false)
             mob:setAutoAttackEnabled(false)
-            mob:addStatusEffect(xi.effect.REGEN, 5000, 3, 0)
+            mob:addStatusEffect (xi.effect.REGEN, { power = 5000, duration = 0, origin = mob, tick = 3 })
             mob:addMod(xi.mod.HPP, 5000)
             mob:updateHealth()
             mob:setHP(mob:getMaxHP())
