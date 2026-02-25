@@ -9,7 +9,8 @@ local m = Module:new('kupofried')
 m:addOverride("xi.actions.spells.trust.kupofried.onSpellCast", function(caster, target, spell)
     local trust = caster:spawnTrust(spell:getID())
 
-    trust:addStatusEffectEx(xi.effect.COLURE_ACTIVE, xi.effect.COLURE_ACTIVE, 6, 3, 0, xi.effect.CORSAIRS_ROLL, 120, xi.auraTarget.ALLIES, xi.effectFlag.AURA)
+    trust:addStatusEffectEx(xi.effect.COLURE_ACTIVE, { power = 6, origin = trust, tick = 3, subType = xi.effect.CORSAIRS_ROLL, subPower = 120, tier = xi.auraTarget.ALLIES, flag = xi.effectFlag.AURA })
+
     trust:setAutoAttackEnabled(false)
     trust:setUnkillable(true)
 end)

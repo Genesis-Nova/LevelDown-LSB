@@ -15,8 +15,8 @@ m:addOverride("xi.actions.spells.trust.elivira.onSpellCast", function(caster, ta
     trust:addGambit(ai.t.PARTY, { ai.c.NOT_STATUS, xi.effect.WIZARDS_ROLL }, { ai.r.JA, ai.s.SPECIFIC, xi.ja.WIZARDS_ROLL }) -- Magic Attack Bonus
     trust:addGambit(ai.t.TARGET, { ai.c.ALWAYS, 0 }, { ai.r.RATTACK, 0, 0 }, 10)
 
-	trust:addStatusEffectEx(xi.effect.GEO_MAGIC_DEF_DOWN, xi.effect.GEO_MAGIC_DEF_DOWN, 6, 3, 0, xi.effect.GEO_MAGIC_DEF_DOWN, 15, xi.auraTarget.ENEMIES, xi.effectFlag.AURA) --custom Geo Mag Def Down -15
-
+	trust:addStatusEffectEx(xi.effect.COLURE_ACTIVE, { power = 6, origin = trust, tick = 3, subType = xi.effect.GEO_MAGIC_DEF_DOWN, subPower = 15, tier = xi.auraTarget.ENEMIES, flag = xi.effectFlag.AURA }) --custom Geo Mag Def Down -15
+	
     -- Notable: Uses a balance of melee and ranged attacks.
     -- TODO: Observe his WS behaviour on retail
     trust:setTrustTPSkillSettings(ai.tp.ASAP, ai.s.RANDOM)

@@ -118,8 +118,8 @@ entity.onMobSpawn = function(mob)
     mob:setMod(xi.mod.FASTCAST, 50)
     
     -- Regen/Regain
-    mob:addStatusEffect(xi.effect.REGEN,  25, 3, 0)
-    mob:addStatusEffect(xi.effect.REGAIN, 10, 3, 0)
+    mob:addStatusEffect(xi.effect.REGEN,  { power = 25, duration = 0, origin = mob, tick = 3 })
+    mob:addStatusEffect(xi.effect.REGAIN,  { power = 10, duration = 0, origin = mob, tick = 3 })
 
     mob:addListener("TAKE_DAMAGE", "KAMLANAUT_ABSORB", function(m, damage, attacker, attackType, damageType)
         local currentAbsorb = m:getLocalVar('currentAbsorb')
