@@ -20,7 +20,7 @@ commandObj.onTrigger = function(player, target)
     if not player:hasKeyItem(xi.ki.HOLLA_GATE_CRYSTAL) then
         result = 445
         else
-    player:addStatusEffectEx(xi.effect.TELEPORT, 0, xi.teleport.id.HOLLA, 0, 1)
+    player:addStatusEffect(xi.effect.TELEPORT, { power = xi.teleport.id.HOLLA, duration = 1, origin = player, icon = 0 })
     end
     end
 
