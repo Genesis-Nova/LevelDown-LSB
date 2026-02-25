@@ -59,7 +59,7 @@ entity.onMobSpawn = function(mob)
     mob:setMod(xi.mod.FASTCAST, 50)
 
     -- Regen/Regain
-    mob:addStatusEffect(xi.effect.REGEN,  25, 3, 0)
+    mob:addStatusEffect (xi.effect.REGEN, { power = 25, duration = 0, origin = mob, tick = 3 })
     mob:addMod(xi.mod.REGAIN, 75)
     mob:addMod(xi.mod.UFASTCAST, 50)
     mob:setMobMod(xi.mobMod.MAGIC_COOL, 15)
@@ -108,7 +108,7 @@ end
 entity.onSpellPrecast = function(mob, spell)
     if spell:getID() == 218 then
         spell:setAoE(xi.magic.aoe.RADIAL)
-        spell:setFlag(xi.magic.spellFlag.HIT_ALL)
+        --spell:setFlag(xi.magic.spellFlag.HIT_ALL) -- no longer exists
         spell:setRadius(30)
         spell:setAnimation(280)
         spell:setMPCost(1)

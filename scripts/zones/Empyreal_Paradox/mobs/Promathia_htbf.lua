@@ -48,7 +48,7 @@ entity.onMobSpawn = function(mob)
     mob:setMod(xi.mod.LULLABYRES, 0)
     mob:setMod(xi.mod.FASTCAST, 50)
 
-    mob:addStatusEffect(xi.effect.REGEN,  25, 3, 0)
+    mob:addStatusEffect (xi.effect.REGEN, { power = 25, duration = 0, origin = mob, tick = 3 })
     mob:addMod(xi.mod.REGAIN, 75)
     mob:addMod(xi.mod.UFASTCAST, 50)
     mob:setMobMod(xi.mobMod.MAGIC_COOL, 15)
