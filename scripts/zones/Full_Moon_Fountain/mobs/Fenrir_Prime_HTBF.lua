@@ -42,8 +42,9 @@ entity.onMobSpawn = function(mob)
         mob:setMod(xi.mod.PARALYZERES, 50) 
         mob:setMod(xi.mod.LULLABYRES, 0) 
         mob:setMod(xi.mod.FASTCAST, 50)
-        mob:addStatusEffect(xi.effect.REGEN,  25, 3, 0)
-        mob:addStatusEffect(xi.effect.REGAIN, 10, 3, 0)
+        mob:addStatusEffect(xi.effect.REGEN,  { power = 25, tick = 3, duration = 0, origin = mob})
+        mob:addStatusEffect(xi.effect.REGAIN,  { power = 10, tick = 3, duration = 0, origin = mob})
+
 
     xi.mix.jobSpecial.config(mob, {
         specials =

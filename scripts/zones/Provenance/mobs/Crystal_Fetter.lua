@@ -39,7 +39,7 @@ local function applyFetterAura(mob, target)
 
     for fetterModel, effect in pairs(auraEffects[modelId]) do
         -- Apply each effect individually without overwriting others
-        mob:addStatusEffectEx(effect, effect, 10, 3, 180, effect, 50, xi.auraTarget.ENEMIES, xi.effectFlag.AURA)
+        mob:addStatusEffect(effect, { power = 10, subType = effect, subPower = 50, tick = 3, duration = 180, tier = xi.auraTarget.ENEMIES, flag = xi.effectFlag.AURA, origin = mob })
     end
 
 end
