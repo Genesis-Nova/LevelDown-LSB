@@ -18,7 +18,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.PIERCING, info.hitslanded)
 
     target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.PIERCING)
-    target:addStatusEffect(xi.effect.SJ_RESTRICTION, 0, 0, 0, 60)
+    target:addStatusEffect(xi.effect.SJ_RESTRICTION, { origin = target, duration = 60 })
 
 
 
