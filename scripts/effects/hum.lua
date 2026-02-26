@@ -17,7 +17,7 @@ effectObject.onEffectTick = function(target, effect)
   if member:checkDistance(target) <= 10 then
      if member:getCharVar('[BodyAura]') == 0 then
         if member ~= target then
-           member:addStatusEffect(xi.effect.ENSPHERE,10,3, 6000000)
+           member:addStatusEffect(xi.effect.ENSPHERE, { power = 10, origin = member, tick = 3,  duration = 6000000})
         end
      end
   elseif member:checkDistance(target) > 10 and

@@ -16,7 +16,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.WIND, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
     target:takeDamage(damage, mob, xi.attackType.MAGICAL, xi.damageType.WIND)
     if not target:hasStatusEffect(xi.effect.CHOKE) then
-           target:addStatusEffect(xi.effect.CHOKE,18,3,180)
+           target:addStatusEffect(xi.effect.CHOKE, { power = 18, tick = 3, duration = 180, origin = mob })
     end
     return damage
 end

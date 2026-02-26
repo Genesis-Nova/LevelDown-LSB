@@ -18,7 +18,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
     local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.SLASHING, info.hitslanded)
         target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.SLASHING)
-        mob:addStatusEffectEx(xi.effect.DEFENSE_DOWN, xi.effect.DEFENSE_DOWN, 10, 3, 30, 0, 0, xi.auraTarget.ENEMIES, xi.effectFlag.AURA)
+        mob:addStatusEffect(xi.effect.DEFENSE_DOWN, { power = 10, subType = xi.effect.DEFENSE_DOWN, subPower = 0, tick = 3, duration = 30, tier = xi.auraTarget.ENEMIES, flag = xi.effectFlag.AURA, origin = mob })
     return dmg
 end
 

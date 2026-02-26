@@ -18,7 +18,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
 
     mob:setAnimationSub(1)
     mob:setLocalVar('Sheild', 1)
-    mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)  
+    mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 }) 
 
     mob:timer(30000, function(mobArg)
         mobArg:setAnimationSub(0)
