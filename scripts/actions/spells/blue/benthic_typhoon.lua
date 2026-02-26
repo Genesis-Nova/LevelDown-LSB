@@ -53,8 +53,8 @@ spellObject.onSpellCast = function(caster, target, spell)
 	-- Handle status effects. effect, power, tik, duration
 	 local effectTable =
     {
-        [1] = { xi.effect.DEFENSE_DOWN,30, 0, 90 },
-		[2] = { xi.effect.MAGIC_DEF_DOWN,30, 0, 90 },
+        [1] = { xi.effect.DEFENSE_DOWN, { power = 30, duration = 90, origin = caster }},
+		[2] = { xi.effect.MAGIC_DEF_DOWN, { power = 8, duration = 90, origin = caster }},
     }
 
     --local resist = applyResistanceEffect(caster, target, spell, params)

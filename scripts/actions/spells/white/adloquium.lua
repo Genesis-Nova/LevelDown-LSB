@@ -22,7 +22,7 @@ spellObject.onSpellCast = function(caster, target, spell)
            duration = 453
     end
 
-    local returnEffect = target:addStatusEffect(xi.effect.REGAIN, power, 0, duration)
+    local returnEffect = target:addStatusEffect(xi.effect.REGAIN, { power = power, origin = target, duration = duration })
 
 
     return returnEffect

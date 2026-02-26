@@ -33,7 +33,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     local resist = results[2]
 
     if resist >= 0.5 then
-        target:addStatusEffect(xi.effect.PARALYSIS, 15, 0, 60 * resist)
+        target:addStatusEffect(xi.effect.PARALYSIS, { power = 15, origin = target, duration = 60 * resist})
     end
 
     return damage

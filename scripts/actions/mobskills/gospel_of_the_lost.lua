@@ -23,7 +23,8 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    mob:eraseStatusEffect()
+    mob:eraseAllStatusEffect()
+    mob:addStatusEffect(xi.effect.STONESKIN, { power = 3000, origin = mob, duration = 120})
     -- Didn't see any msg for the erase in youtube vids.
     skill:setMsg(xi.msg.basic.SELF_HEAL)
     -- Assuming its a 4-6% heal based on its max HP and numbers quoted on wiki.
