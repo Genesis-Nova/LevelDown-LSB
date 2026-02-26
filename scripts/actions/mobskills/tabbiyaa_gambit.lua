@@ -21,7 +21,7 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     mob:eraseStatusEffect()
-    mob:addStatusEffect(xi.effect.PHALANX, 25, 3, 30)
+    mob:addStatusEffect(xi.effect.PHALANX, { power = 25, duration = 30, origin = mob })
     skill:setMsg(xi.msg.basic.SELF_HEAL)
     -- Assuming its a 4-6% heal based on its max HP and numbers quoted on wiki.
     return xi.mobskills.mobHealMove(mob, mob:getMaxHP() * (math.random(25, 45) * 0.01))
