@@ -115,7 +115,7 @@ entity.onMobSpawn = function(mob)
 
     -- Auras
     for _, aura in ipairs(config.aura) do
-        mob:addStatusEffectEx(aura.effect, aura.effect, aura.power, 3, 3600, aura.effect, 800, xi.auraTarget.ENEMIES, xi.effectFlag.AURA)
+        mob:addStatusEffect(aura.effect, { power = aura.power, subType = aura.effect, subPower = 800, tick = 3, duration = 3600, tier = xi.auraTarget.ENEMIES, flag = xi.effectFlag.AURA, origin = mob })
     end
 
     -- Transformation Timer
@@ -201,7 +201,7 @@ entity.onMobHit = function(mob, target)
     local element = mob:getLocalVar("ScriveningElement")
     local config = scriveningConfig[element]
     if config and config.enEffect then
-        target:addStatusEffect(config.enEffect.effect, config.enEffect.power, 0, config.enEffect.duration)
+        target:addStatusEffect(config.enEffect.effect, { power = config.enEffect.power, tick = 0, duration = config.enEffect.duration })
     end
 end
 

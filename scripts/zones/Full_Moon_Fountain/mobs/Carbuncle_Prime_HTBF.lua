@@ -80,9 +80,10 @@ entity.onMobFight = function(mob, target)
                 mob:setLocalVar('add'..g, 1)
                 mob:setLocalVar('numAdds', numAdds - 1)
                 battlefield:setLocalVar('[RemoveImmortal]', 1)
-                mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
-                mob:addStatusEffectEx(xi.effect.ARROW_SHIELD, 0, 1, 0, 0)   
-                mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
+                mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = 1, origin = mob, icon = 0 })
+
             end
         end
     end
