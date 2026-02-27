@@ -44,7 +44,7 @@ INSERT INTO mob_droplist VALUES(2821,1,2,1000,1110,250); -- Beetle Blood / NMs F
 INSERT INTO mob_droplist VALUES(2821,1,2,1000,837,250); -- Malboro Fiber / NMs Faust
 INSERT INTO mob_droplist VALUES(2821,1,3,1000,28512,333); -- Dawn Earring / NMs Faust
 INSERT INTO mob_droplist VALUES(2821,1,3,1000,28574,333); -- Icecrack Ring / NMs Faust
-INSERT INTO mob_droplist VALUES(2821,1,3,1000,21120,3334); -- Patriarch Cane / NMs Faust
+INSERT INTO mob_droplist VALUES(2821,1,3,1000,21120,333); -- Patriarch Cane / NMs Faust
 INSERT INTO mob_droplist VALUES(357,1,1,1000,4067,250); -- Rem tale 4 / NMs Brigandish Blade
 INSERT INTO mob_droplist VALUES(357,1,1,1000,4068,250); -- Rem tale 5 / NMs Brigandish Blade
 INSERT INTO mob_droplist VALUES(357,1,2,1000,836,250); -- Damascene Cloth / NMs Brigandish Blade
@@ -1228,6 +1228,1603 @@ INSERT INTO mob_droplist VALUES(4129,1,3,500,3509,333); -- heavy_metal_pouch / P
 INSERT INTO mob_droplist VALUES(4129,1,4,500,3499,333); -- pinch_of_riftcinder / Provenance_Watcher
 INSERT INTO mob_droplist VALUES(4129,1,5,500,3498,333); -- clump_of_riftdross / Provenance_Watcher
 
+-- ZoneID: 289 - Asida
+INSERT INTO mob_droplist VALUES (4130,0,0,1000,21411,150); -- Balarama Grip (Common, 26%)
+INSERT INTO mob_droplist VALUES (4130,0,0,1000,10774,150); -- Vertigo Ring (Common, 26.8%)
+INSERT INTO mob_droplist VALUES (4130,0,0,1000,8766,150); -- Bushin Abjuration: Feet (Common, 26.8%)
+INSERT INTO mob_droplist VALUES (4130,0,0,1000,8774,150); -- Grove Abjuration: Hands (Common, 28.3%)
+INSERT INTO mob_droplist VALUES (4130,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4130,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4130,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4130,1,1,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+--ZoneID: 289 - Bia
+INSERT INTO mob_droplist VALUES (4131,0,0,1000,27521,150); -- Reti Pendant (Common, 15%)
+INSERT INTO mob_droplist VALUES (4131,0,0,1000,21390,150); -- Albin Bane (Common, 21%)
+INSERT INTO mob_droplist VALUES (4131,0,0,1000,9107,240); -- Cronian Abjuration: Hands (VCommon, 26.8%)
+INSERT INTO mob_droplist VALUES (4131,0,0,1000,8776,240); -- Grove Abjuration: Feet (VCommon, 28.3%)
+INSERT INTO mob_droplist VALUES (4131,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4131,0,0,1000,9085,240); -- Eschalixir +1 (Very common, 24%)
+INSERT INTO mob_droplist VALUES (4131,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4131,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4131,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+--ZoneID: 289 - Emputa
+INSERT INTO mob_droplist VALUES (4132,0,0,1000,10773,240); -- Fortified Ring (Very Common, 36.1%)
+INSERT INTO mob_droplist VALUES (4132,0,0,1000,27536,240); -- Assuage Earring (Very Common, 37.1%)
+INSERT INTO mob_droplist VALUES (4132,0,0,1000,9127,240); -- Cyllenian Abjuration: Hands (Very Common, 32%)
+INSERT INTO mob_droplist VALUES (4132,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4132,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4132,0,0,1000,9085,240); -- Eschalixir +1 (Very common, 24%)
+INSERT INTO mob_droplist VALUES (4132,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4132,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+--ZoneID: 289 - Khon
+INSERT INTO mob_droplist VALUES (4133,0,0,1000,27523,240); -- Caro Necklace (VCommon, 21.3%)
+INSERT INTO mob_droplist VALUES (4133,0,0,1000,27612,240); -- Sokolski Mantle (VCommon, 23.3%)
+INSERT INTO mob_droplist VALUES (4133,0,0,1000,8789,150); -- Abyssal Abjuration: Hands (Common, 30.7%)
+INSERT INTO mob_droplist VALUES (4133,0,0,1000,9124,150); -- Venerian Abjuration: Feet (Common, 24.8%)
+INSERT INTO mob_droplist VALUES (4133,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4133,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4133,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4133,0,0,1000,9085,240); -- Eschalixir +1 (Very common, 24%)
+INSERT INTO mob_droplist VALUES (4133,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+
+--ZoneID: 289 - Khun
+INSERT INTO mob_droplist VALUES (4134,0,0,1000,28408,150); -- Grunfeld Rope (Common, 19.7%)
+INSERT INTO mob_droplist VALUES (4134,0,0,1000,27535,240); -- Halasz Earring (VCommon, 27.4%)
+INSERT INTO mob_droplist VALUES (4134,0,0,1000,8769,240); -- Vale Abjuration: Hands (VCommon, 28.7%)
+INSERT INTO mob_droplist VALUES (4134,0,0,1000,8786,150); -- Shinryu Abjuration: Feet (Common, 22.9%)
+INSERT INTO mob_droplist VALUES (4134,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4134,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4134,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4134,0,0,1000,9085,240); -- Eschalixir +1 (Very common, 24%)
+INSERT INTO mob_droplist VALUES (4134,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+
+--ZoneID: 289 - Ma
+INSERT INTO mob_droplist VALUES (4135,0,0,1000,21410,240); -- Giuoco Grip (Common, 30.2%)
+INSERT INTO mob_droplist VALUES (4135,0,0,1000,27611,150); -- Philidor Mantle (Common, 17.0%)
+INSERT INTO mob_droplist VALUES (4135,0,0,1000,8779,240); -- Triton Abjuration: Hands (Common, 33.0%)
+INSERT INTO mob_droplist VALUES (4135,0,0,1000,9109,240); -- Cronian Abjuration: Feet (Common, 23.6%)
+INSERT INTO mob_droplist VALUES (4135,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4135,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4135,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4135,0,0,1000,9085,240); -- Eschalixir +1 (Very common, 24%)
+
+--ZoneID: 289 - Met
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,27534,150); -- Evans Earring (Common, 22.3%)
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,22262,150); -- Amar Cluster (Common, 22.7%)
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,9122,240); -- Venerian Abjuration: Hands (VCommon, 27.8%)
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,8771,150); -- Vale Abjuration: Feet (Common, 19.6%)
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4136,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+--ZoneID: 289 - Peirithoos
+INSERT INTO mob_droplist VALUES (4137,0,0,1000,27537,150); -- Ishvara Earring (Common, 19.2%)
+INSERT INTO mob_droplist VALUES (4137,0,0,1000,22263,150); -- Hydrocera (Common, 20.5%)
+INSERT INTO mob_droplist VALUES (4137,0,0,1000,9117,240); -- Jovian Abjuration: Hands (Common, 29.9%)
+INSERT INTO mob_droplist VALUES (4137,0,0,1000,9129,150); -- Cyllenian Abjuration: Feet (Common, 19.6%)
+INSERT INTO mob_droplist VALUES (4137,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4137,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4137,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4137,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+--ZoneID: 289 - Ruea
+INSERT INTO mob_droplist VALUES (4138,0,0,1000,27522,150); -- Diemer Gorget (Common, 19.7%)
+INSERT INTO mob_droplist VALUES (4138,0,0,1000,10772,150); -- Petrov Ring (Common, 22.1%)
+INSERT INTO mob_droplist VALUES (4138,0,0,1000,8764,240); -- Bushin Abjuration: Hands (Common, 34.3%)
+INSERT INTO mob_droplist VALUES (4138,0,0,1000,8791,150); -- Abyssal Abjuration: Feet (Common, 22.1%)
+INSERT INTO mob_droplist VALUES (4138,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4138,0,0,1000,9085,240); -- Eschalixir +1 (Very Common, 24%)
+
+--ZoneID: 289 - Sava Savanovic
+INSERT INTO mob_droplist VALUES (4139,0,0,1000,27524,150); -- Nodens Gorget (Common, 25.2%)
+INSERT INTO mob_droplist VALUES (4139,0,0,1000,26160,240); -- Evanescense Ring (Common, 29.4%)
+INSERT INTO mob_droplist VALUES (4139,0,0,1000,9114,240); -- Arean Abjuration: Feet (Common, 30.8%)
+INSERT INTO mob_droplist VALUES (4139,0,0,1000,9119,150); -- Jovian Abjuration: Feet (Common, 21.0%)
+INSERT INTO mob_droplist VALUES (4139,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4139,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4139,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4139,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+--ZoneID: 289 - Tenodera
+INSERT INTO mob_droplist VALUES (4140,0,0,1000,28410,150); -- Sulla Belt (Common, 22.6%)
+INSERT INTO mob_droplist VALUES (4140,0,0,1000,22264,150); -- Mantoptera Eye (Common, 22.6%)
+INSERT INTO mob_droplist VALUES (4140,0,0,1000,8781,240); -- Triton Abjuration: Feet (Common, 30.6%)
+INSERT INTO mob_droplist VALUES (4140,0,0,1000,8784,240); -- Shinryu Abjuration: Hands (Common, 34.7%)
+INSERT INTO mob_droplist VALUES (4140,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4140,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4140,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4140,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4140,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+--ZoneID: 289 - Wasserspeier
+INSERT INTO mob_droplist VALUES (4141,0,0,1000,28409,150); -- Porous Rope (Common, 27.8%)
+INSERT INTO mob_droplist VALUES (4141,0,0,1000,27613,150); -- Quarrel Mantle (Common, 31.9%)
+INSERT INTO mob_droplist VALUES (4141,0,0,1000,9112,240); -- Arean Abjuration: Hands (Common, 41.7%)
+INSERT INTO mob_droplist VALUES (4141,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4141,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4141,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4141,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4141,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+-- ZoneID: 289 - Amymone
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,21698,100); -- Bidenhander (12.7%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,21482,100); -- Compensator (10.7%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,20892,150); -- Deathbane (16.6%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,8775,150); -- Grove abjuration: legs (14.5%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,9118,150); -- Jovian abjuration: legs (14.8%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,20598,100); -- Shijo (13.6%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,8777,150); -- Triton abjuration: head (18.6%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,9120,100); -- Venerian abjuration: head (12.4%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4142,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Hanbi
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,21150,100); -- Akademos (11.0%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,9110,100); -- Arean abjuration: head (11.0%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,8765,100); -- Bushin abjuration: legs (14.3%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,9108,100); -- Cronian abjuration: legs (13.7%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,20597,150); -- Enchufla (17.0%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,21149,100); -- Espiritus (13.9%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,20937,100); -- Rhomphaia (13.5%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,8767,150); -- Vale abjuration: head (16.6%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4143,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Kammavaca
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,8787,240); -- Abyssal abjuration: head (20.0%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,9128,240); -- Cyllenian abjuration: legs (19.1%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,21027,240); -- Ichigohitofuri (19.1%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,20599,240); -- Kali (19.4%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,20520,240); -- Midnights (17.5%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,8785,240); -- Shinryu abjuration: legs (16.9%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4144,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Naphula
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,9125,100); -- Cyllenian abjuration: head (12.8%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,8782,150); -- Shinryu abjuration: head (17.9%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,20797,150); -- Skullrender (20.4%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,21085,150); -- Solstice (18.1%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,8780,100); -- Triton abjuration: legs (11.5%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,9123,100); -- Venerian abjuration: legs (12.2%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,21215,150); -- Vijaya bow (17.3%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4145,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4145,1,1,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,1,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,1,1000,9086,150); -- Eschalixir +2 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,2,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,2,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,2,1000,9086,150); -- Eschalixir +2 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,3,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,3,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,3,1000,9086,150); -- Eschalixir +2 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,4,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,4,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,4,1000,9086,150); -- Eschalixir +2 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,5,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,5,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,5,1000,9086,150); -- Eschalixir +2 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,6,150,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,6,150,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4145,1,6,150,9086,150); -- Eschalixir +2 (Common, 15%)
+
+-- ZoneID: 289 - Palila
+INSERT INTO mob_droplist VALUES (4146,0,0,1000,8790,150); -- Abyssal abjuration: legs (18.8%)
+INSERT INTO mob_droplist VALUES (4146,0,0,1000,20979,100); -- Aizushintogo (11.2%)
+INSERT INTO mob_droplist VALUES (4146,0,0,1000,8762,150); -- Bushin abjuration: head (21.0%)
+INSERT INTO mob_droplist VALUES (4146,0,0,1000,9105,150); -- Cronian abjuration: head (19.2%)
+INSERT INTO mob_droplist VALUES (4146,0,0,1000,20519,150); -- Hammerfists (14.7%)
+INSERT INTO mob_droplist VALUES (4146,0,0,1000,20845,150); -- Instigator (15.6%)
+INSERT INTO mob_droplist VALUES (4146,0,0,1000,20700,100); -- Nixxer (8.9%)
+INSERT INTO mob_droplist VALUES (4146,0,0,1000,9086,150); -- Eschalixir +2 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4146,1,1,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4146,1,1,1000,9085,240); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4146,1,2,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4146,1,2,1000,9085,240); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4146,1,3,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4146,1,3,1000,9085,240); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4146,1,4,150,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4146,1,4,150,9085,240); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4146,1,5,100,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4146,1,5,100,9085,240); -- Eschalixir +1 (Always, 100%)
+
+-- ZoneID: 289 - Yilan
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,9113,150); -- Arean abjuration: legs (10.8%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,20702,100); -- Emissary (10.8%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,8772,150); -- Grove abjuration: head (17.2%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,20701,150); -- Iris (13.0%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,9115,150); -- Jovian abjuration: head (13.7%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,21151,100); -- Lathi (9.9%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,21084,150); -- Queller rod (20.3%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,8770,150); -- Vale abjuration: legs (11.6%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4147,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Duke Vepar
+--One or Two of Group 1/2 - 2 drops is rare
+INSERT INTO mob_droplist VALUES (4148,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4148,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4148,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4148,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4148,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4148,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4148,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4148,0,0,1000,9130,455); -- Chunk of eschite ore (45.5%)
+INSERT INTO mob_droplist VALUES (4148,1,1,1000,9106,150); -- Cronian abjuration: body (17.2%)
+INSERT INTO mob_droplist VALUES (4148,1,1,1000,9126,150); -- Cyllenian abjuration: body (16.2%)
+INSERT INTO mob_droplist VALUES (4148,1,1,1000,20518,150); -- Eshus (16.7%)
+INSERT INTO mob_droplist VALUES (4148,1,1,1000,27319,150); -- Obatala subligar (17.2%)
+INSERT INTO mob_droplist VALUES (4148,1,1,1000,25706,150); -- Shango robe (13.1%)
+INSERT INTO mob_droplist VALUES (4148,1,1,1000,8783,150); -- Shinryu abjuration: body (19.2%)
+INSERT INTO mob_droplist VALUES (4148,1,1,1000,8768,150); -- Vale abjuration: body (22.7%)
+INSERT INTO mob_droplist VALUES (4148,1,1,1000,28411,150); -- Yemaya belt (19.7%)
+INSERT INTO mob_droplist VALUES (4148,1,2,50,9106,150); -- Cronian abjuration: body (17.2%)
+INSERT INTO mob_droplist VALUES (4148,1,2,50,9126,150); -- Cyllenian abjuration: body (16.2%)
+INSERT INTO mob_droplist VALUES (4148,1,2,50,20518,150); -- Eshus (16.7%)
+INSERT INTO mob_droplist VALUES (4148,1,2,50,27319,150); -- Obatala subligar (17.2%)
+INSERT INTO mob_droplist VALUES (4148,1,2,50,25706,150); -- Shango robe (13.1%)
+INSERT INTO mob_droplist VALUES (4148,1,2,50,8783,150); -- Shinryu abjuration: body (19.2%)
+INSERT INTO mob_droplist VALUES (4148,1,2,50,8768,150); -- Vale abjuration: body (22.7%)
+INSERT INTO mob_droplist VALUES (4148,1,2,50,28411,150); -- Yemaya belt (19.7%)
+
+
+-- ZoneID: 289 - Pakecet
+--One or Two of Group 1/2 - 2 drops is rare
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9130,503); -- Chunk of eschite ore (50.3%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9084,100);	-- Eschalixir (UnCommon, 10%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9086,1000); -- Eschalixir +2 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9086,50); -- Eschalixir +2 (Rare, 5%)
+INSERT INTO mob_droplist VALUES (4149,0,0,1000,9086,50); -- Eschalixir +2 (Rare, 5%)
+INSERT INTO mob_droplist VALUES (4149,1,1,1000,8763,150); -- Bushin abjuration: body (23.6%)
+INSERT INTO mob_droplist VALUES (4149,1,1,1000,9116,150); -- Jovian abjuration: body (16.5%)
+INSERT INTO mob_droplist VALUES (4149,1,1,1000,27134,150); -- Kurys gloves (14.7%)
+INSERT INTO mob_droplist VALUES (4149,1,1,1000,8778,150); -- Triton abjuration: body (15.5%)
+INSERT INTO mob_droplist VALUES (4149,1,1,1000,27490,150); -- Tutyr sabots (17.0%)
+INSERT INTO mob_droplist VALUES (4149,1,1,1000,25703,150); -- Uac jerkin (21.1%)
+INSERT INTO mob_droplist VALUES (4149,1,1,1000,9121,150); -- Venerian abjuration: body (18.0%)
+INSERT INTO mob_droplist VALUES (4149,1,1,1000,27614,150); -- Xucau mantle (13.2%)
+INSERT INTO mob_droplist VALUES (4149,1,2,50,8763,150); -- Bushin abjuration: body (23.6%)
+INSERT INTO mob_droplist VALUES (4149,1,2,50,9116,150); -- Jovian abjuration: body (16.5%)
+INSERT INTO mob_droplist VALUES (4149,1,2,50,27134,150); -- Kurys gloves (14.7%)
+INSERT INTO mob_droplist VALUES (4149,1,2,50,8778,150); -- Triton abjuration: body (15.5%)
+INSERT INTO mob_droplist VALUES (4149,1,2,50,27490,150); -- Tutyr sabots (17.0%)
+INSERT INTO mob_droplist VALUES (4149,1,2,50,25703,150); -- Uac jerkin (21.1%)
+INSERT INTO mob_droplist VALUES (4149,1,2,50,9121,150); -- Venerian abjuration: body (18.0%)
+INSERT INTO mob_droplist VALUES (4149,1,2,50,27614,150); -- Xucau mantle (13.2%)
+
+
+-- ZoneID: 289 - Vir'ava
+--One or Two of Group 1/2 - 2 drops is rare
+INSERT INTO mob_droplist VALUES (4150,0,0,1000,9130,586); -- Chunk of eschite ore (58.6%)
+INSERT INTO mob_droplist VALUES (4150,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4150,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4150,0,0,1000,9084,100); -- Eschalixir (UnCommon, 10%)
+INSERT INTO mob_droplist VALUES (4150,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4150,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4150,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4150,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4150,0,0,1000,9086,1000); -- Eschalixir +2 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4150,0,0,1000,9086,50); -- Eschalixir +2 (Rare, 5%)
+INSERT INTO mob_droplist VALUES (4150,1,1,1000,25704,150); -- Abnoba kaftan (22.7%)
+INSERT INTO mob_droplist VALUES (4150,1,1,1000,8788,150); -- Abyssal abjuration: body (27.3%)
+INSERT INTO mob_droplist VALUES (4150,1,1,1000,9111,150); -- Arean abjuration: body (22.7%)
+INSERT INTO mob_droplist VALUES (4150,1,1,1000,8773,150); -- Grove abjuration: body (26.3%)
+INSERT INTO mob_droplist VALUES (4150,1,1,1000,27538,150); -- Lempo earring (12.1%)
+INSERT INTO mob_droplist VALUES (4150,1,1,1000,27320,150); -- Selvans subligar (18.2%)
+INSERT INTO mob_droplist VALUES (4150,1,1,1000,21083,150); -- Sucellus (16.2%)
+INSERT INTO mob_droplist VALUES (4150,1,2,50,25704,150); -- Abnoba kaftan (22.7%)
+INSERT INTO mob_droplist VALUES (4150,1,2,50,8788,150); -- Abyssal abjuration: body (27.3%)
+INSERT INTO mob_droplist VALUES (4150,1,2,50,9111,150); -- Arean abjuration: body (22.7%)
+INSERT INTO mob_droplist VALUES (4150,1,2,50,8773,150); -- Grove abjuration: body (26.3%)
+INSERT INTO mob_droplist VALUES (4150,1,2,50,27538,150); -- Lempo earring (12.1%)
+INSERT INTO mob_droplist VALUES (4150,1,2,50,27320,150); -- Selvans subligar (18.2%)
+INSERT INTO mob_droplist VALUES (4150,1,2,50,21083,150); -- Sucellus (16.2%)
+
+
+-- ZoneID: 289 - Ark Angel EV
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,9130,655); -- Chunk of eschite ore (65.5%)
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,20704,150); -- Deacon sword (20.7%)
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,22265,150); -- Elis tome (17.2%)
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,9086,1000); -- Eschalixir +2 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4151,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Ark Angel GK
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,9130,480); -- Chunk of eschite ore (48.0%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,28313,100); -- Daihanshi habaki (12.1%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,21028,100); -- Deacon blade (12.0%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,6415,240); -- Seki shuriken pouch (32.0%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,20765,50); -- Tunglmyrkvi (8.7%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,9086,1000); -- Eschalixir +2 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4152,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Ark Angel HM
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,9130,542); -- Chunk of eschite ore (54.2%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,20703,240); -- Deacon saber (25.0%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,26322,150); -- Kerygma belt (16.7%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,21427,150); -- Bloodrain strap (22.6%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,28311,150); -- Manabyss pigaches (15.3%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,9086,1000); -- Eschalixir +2 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4153,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Ark Angel MR
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,9130,391); -- Chunk of eschite ore (39.1%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,20798,150); -- Deacon tabar (21.7%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,27617,150); -- Enuma mantle (17.4%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,27745,150); -- Felistris mask (13.9%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,28461,240); -- Sekhmet corset (24.9%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,9086,1000); -- Eschalixir +2 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4154,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Ark Angel TT
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,9130,694); -- Chunk of eschite ore (69.4%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,20894,150); -- Deacon scythe (22.2%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,26162,100); -- Rahab ring (11.1%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,21181,100); -- Venabulum (7.9%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,9086,1000); -- Eschalixir +2 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4155,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Byakko
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,9130,363); -- Chunk of eschite ore (36.3%)
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,27525,150); -- Jokushu chain (18.4%)
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,27318,150); -- Jokushu haidate (15.4%)
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,20846,150); -- Jokushuono (22.4%)
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,9086,240); -- Eschalixir +2 (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4156,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Genbu
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,9130,369); -- Chunk of eschite ore (36.9%)
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,27539,150); -- Genmei earring (18.4%)
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,25629,150); -- Genmei kabuto (22.7%)
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,27645,240); -- Genmei shield (30.5%)
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,9086,240); -- Eschalixir +2 (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4157,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Kouryu
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,9130,500); -- Chunk of eschite ore (50.0%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,27615,240); -- Reiki cloak (57.6%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,25702,150); -- Reiki osode (20.3%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,26321,240); -- Reiki yotai (55.9%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,20690,240); -- Reikiko (39.0%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,21152,240); -- Reikikon (35.6%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,20842,240); -- Reikiono (44.1%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4158,0,0,1000,9086,150); -- Eschalixir +2 (Common, 24%)
+
+-- ZoneID: 289 - Seiryu
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,9130,377); -- Chunk of eschite ore (37.7%)
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,27133,240); -- Kobo kote (27.5%)
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,26320,150); -- Kobo obi (17.4%)
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,20699,150); -- Koboto (14.5%)
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,9086,240); -- Eschalixir +2 (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4159,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Suzaku
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,9130,238); -- Chunk of eschite ore (23.8%)
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,26161,150); -- Shukuyu ring (16.2%)
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,27489,150); -- Shukuyu sune-ate (21.2%)
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,20893,150); -- Shukuyu's scythe (17.5%)
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,9086,240); -- Eschalixir +2 (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4160,0,0,1000,9086,100); -- Eschalixir +2 (Uncommon, 10%)
+
+-- ZoneID: 289 - Warder of Courage
+INSERT INTO mob_droplist VALUES (4161,0,0,1000,22196,150); -- Alber strap (46.4%)
+INSERT INTO mob_droplist VALUES (4161,0,0,1000,20887,150); -- Dacnomania (39.3%)
+INSERT INTO mob_droplist VALUES (4161,0,0,1000,20932,150); -- Habile mazrak (53.6%)
+INSERT INTO mob_droplist VALUES (4161,0,0,1000,19209,150); -- Molybdosis (41.1%)
+INSERT INTO mob_droplist VALUES (4161,0,0,1000,27545,150); -- Telos earring (62.5%)
+INSERT INTO mob_droplist VALUES (4161,0,0,1000,25728,50); -- Zendik robe (17.9%)
+INSERT INTO mob_droplist VALUES (4161,0,0,1000,9085,240); -- Eschalixir +1 (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4161,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4161,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4161,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+-- ZoneID: 289 - Warder of Dignity
+INSERT INTO mob_droplist VALUES (4162,0,0,1000,26013,1); -- Henic torque (15.9%)
+INSERT INTO mob_droplist VALUES (4162,0,0,1000,27622,50); -- Impassive mantle (9.8%)
+INSERT INTO mob_droplist VALUES (4162,0,0,1000,27503,50); -- Thereoid greaves (11.8%)
+INSERT INTO mob_droplist VALUES (4162,0,0,1000,9085,240); -- Eschalixir +1 (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4162,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4162,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4162,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+-- ZoneID: 289 - Warder of Faith
+INSERT INTO mob_droplist VALUES (4163,0,0,1000,22269,100); -- Barathrum (11.3%)
+INSERT INTO mob_droplist VALUES (4163,0,0,1000,26007,150); -- Bilious torque (17.0%)
+INSERT INTO mob_droplist VALUES (4163,0,0,1000,27502,240); -- Maenadic gambieras (21.7%)
+INSERT INTO mob_droplist VALUES (4163,0,0,1000,9085,240); -- Eschalixir +1 (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4163,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4163,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4163,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+-- ZoneID: 289 - Warder of Fortitude
+INSERT INTO mob_droplist VALUES (4164,0,0,1000,27146,150); -- Bewegt cuffs (20.1%)
+INSERT INTO mob_droplist VALUES (4164,0,0,1000,26006,150); -- Decimus torque (15.7%)
+INSERT INTO mob_droplist VALUES (4164,0,0,1000,27544,1); -- Dedition earring (11.8%)
+INSERT INTO mob_droplist VALUES (4164,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4164,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4164,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4164,0,0,1000,9084,100); -- Eschalixir (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4164,0,0,1000,9085,240); -- Eschalixir +1 (Very Common, 24%)
+
+-- ZoneID: 289 - Warder of Hope
+INSERT INTO mob_droplist VALUES (4165,0,0,1000,27147,100); -- Redan gloves (12.4%)
+INSERT INTO mob_droplist VALUES (4165,0,0,1000,26325,100); -- Refoccilation stone (13.1%)
+INSERT INTO mob_droplist VALUES (4165,0,0,1000,26009,100); -- Yarak torque (13.7%)
+INSERT INTO mob_droplist VALUES (4165,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4165,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4165,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4165,0,0,1000,9084,100); -- Eschalixir (Uncommon, 10%)
+
+-- ZoneID: 289 - Warder of Justice
+INSERT INTO mob_droplist VALUES (4166,0,0,1000,26008,100); -- Agelast torque (11.8%)
+INSERT INTO mob_droplist VALUES (4166,0,0,1000,22195,100); -- Flanged grip (10.1%)
+INSERT INTO mob_droplist VALUES (4166,0,0,1000,25653,150); -- Halitus helm (16.3%)
+INSERT INTO mob_droplist VALUES (4166,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4166,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4166,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4166,0,0,1000,9084,100); -- Eschalixir (Uncommon, 10%)
+
+-- ZoneID: 289 - Warder of Love
+INSERT INTO mob_droplist VALUES (4167,0,0,1000,26003,100); -- Baetyl pendant (12.5%)
+INSERT INTO mob_droplist VALUES (4167,0,0,1000,26011,100); -- Maskirova torque (18.1%)
+INSERT INTO mob_droplist VALUES (4167,0,0,1000,25727,150); -- Passion jacket (19.4%)
+INSERT INTO mob_droplist VALUES (4167,0,0,1000,9085,240); -- Eschalixir +1 (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4167,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4167,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4167,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+-- ZoneID: 289 - Warder of Loyalty
+INSERT INTO mob_droplist VALUES (4168,0,0,1000,26014,100); -- Deceiver's torque (13.5%)
+INSERT INTO mob_droplist VALUES (4168,0,0,1000,26004,150); -- Lissome necklace (13.7%)
+INSERT INTO mob_droplist VALUES (4168,0,0,1000,25729,150); -- Vatic byrnie (15.4%)
+INSERT INTO mob_droplist VALUES (4168,0,0,1000,9085,240); -- Eschalixir +1 (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4168,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4168,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4168,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+-- ZoneID: 289 - Warder of Mercy
+INSERT INTO mob_droplist VALUES (4169,0,0,1000,26012,150); -- Melic torque (16.0%)
+INSERT INTO mob_droplist VALUES (4169,0,0,1000,26171,100); -- Rufescent ring (13.4%)
+INSERT INTO mob_droplist VALUES (4169,0,0,1000,25654,100); -- Welkin crown (11.7%)
+INSERT INTO mob_droplist VALUES (4169,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4169,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4169,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4169,0,0,1000,9084,100); -- Eschalixir (Uncommon, 10%)
+
+-- ZoneID: 289 - Warder of Prudence
+INSERT INTO mob_droplist VALUES (4170,0,0,1000,26010,100); -- Acantha torque (8.2%)
+INSERT INTO mob_droplist VALUES (4170,0,0,1000,25853,100); -- Querkening brais (9.9%)
+INSERT INTO mob_droplist VALUES (4170,0,0,1000,27621,1); -- Relucent cape (4.3%)
+INSERT INTO mob_droplist VALUES (4170,0,0,1000,9085,240); -- Eschalixir +1 (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4170,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4170,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
+INSERT INTO mob_droplist VALUES (4170,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
+
+-- ZoneID: 289 - Warder of Temperance
+INSERT INTO mob_droplist VALUES (4171,0,0,1000,26005,150); -- Carnal torque (15.3%)
+INSERT INTO mob_droplist VALUES (4171,0,0,1000,25852,150); -- Darraigner's brais (16.6%)
+INSERT INTO mob_droplist VALUES (4171,0,0,1000,26170,150); -- Speaker's ring (13.0%)
+INSERT INTO mob_droplist VALUES (4171,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4171,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4171,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
+INSERT INTO mob_droplist VALUES (4171,0,0,1000,9084,100); -- Eschalixir (Uncommon, 10%)
+INSERT INTO mob_droplist VALUES (4171,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+
+-- ZoneID: 291 - Eschan Porxie
+INSERT INTO mob_droplist VALUES (4172,0,0,1000,6393,240); -- Cut of porxie pork (35.0%)
+INSERT INTO mob_droplist VALUES (4172,0,0,1000,9147,240); -- Porxie wing (47.6%)
+INSERT INTO mob_droplist VALUES (4172,0,0,1000,9084,1000); -- Eschalixir (Always, 100%)
+INSERT INTO mob_droplist VALUES (4172,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
+INSERT INTO mob_droplist VALUES (4172,0,0,1000,9085,1000); -- Eschalixir +1 (Always, 100%)
+INSERT INTO mob_droplist VALUES (4172,0,0,1000,9085,100); -- Eschalixir +1 (Common, 10%)
+INSERT INTO mob_droplist VALUES (4172,1,1,240,4061,166); -- Group 1 - Riftborn boulder (16.6%)
+INSERT INTO mob_droplist VALUES (4172,1,1,240,6181,166); -- Group 1 - Beitetsu parcel (16.6%)
+INSERT INTO mob_droplist VALUES (4172,1,1,240,6182,166); -- Group 1 - Boulder case (16.6%)
+INSERT INTO mob_droplist VALUES (4172,1,1,240,4060,166); -- Group 1 - Chunk of beitetsu (16.6%)
+INSERT INTO mob_droplist VALUES (4172,1,1,240,4059,166); -- Group 1 - Pluton (16.6%)
+INSERT INTO mob_droplist VALUES (4172,1,1,240,6180,166); -- Group 1 - Pluton case (16.6%)
+
+-- ZoneID: 291 - Belphegor
+INSERT INTO mob_droplist VALUES (4173,0,0,1000,26327,267); -- Asklepian belt (26.7%)
+INSERT INTO mob_droplist VALUES (4173,0,0,1000,27496,334); -- Herculean boots (33.4%)
+INSERT INTO mob_droplist VALUES (4173,0,0,1000,25840,429); -- Odyssean cuisses (42.9%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Crom Dubh
+INSERT INTO mob_droplist VALUES (4174,0,0,1000,26326,287); -- Channeler's stone (28.7%)
+INSERT INTO mob_droplist VALUES (4174,0,0,1000,25843,287); -- Merlinic shalwar (28.7%)
+INSERT INTO mob_droplist VALUES (4174,0,0,1000,27138,415); -- Odyssean gauntlets (41.5%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Dazzling Dolores
+INSERT INTO mob_droplist VALUES (4175,0,0,1000,25643,332); -- Merlinic hood (33.2%)
+INSERT INTO mob_droplist VALUES (4175,0,0,1000,22197,197); -- Niobid strap (19.7%)
+INSERT INTO mob_droplist VALUES (4175,0,0,1000,27494,391); -- Odyssean greaves (39.1%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Golden Kist
+INSERT INTO mob_droplist VALUES (4176,0,0,1000,26240,466); -- Tantalic cape (46.6%)
+INSERT INTO mob_droplist VALUES (4176,0,0,1000,27495,569); -- Valorous greaves (56.9%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Kabandha
+INSERT INTO mob_droplist VALUES (4177,0,0,1000,27141,564); -- Merlinic dastanas (56.4%)
+INSERT INTO mob_droplist VALUES (4177,0,0,1000,26241,421); -- Scintillating cape (42.1%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Mauve-wristed Gomberry
+INSERT INTO mob_droplist VALUES (4178,0,0,1000,26172,281); -- Begrudging ring (28.1%)
+INSERT INTO mob_droplist VALUES (4178,0,0,1000,25644,393); -- Chironic hat (39.3%)
+INSERT INTO mob_droplist VALUES (4178,0,0,1000,27139,393); -- Valorous mitts (39.3%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Oryx
+INSERT INTO mob_droplist VALUES (4179,0,0,1000,25642,578); -- Herculean helm (57.8%)
+INSERT INTO mob_droplist VALUES (4179,0,0,1000,22198,455); -- Potent grip (45.5%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Sabotender Royal
+INSERT INTO mob_droplist VALUES (4180,0,0,1000,27498,274); -- Chironic slippers (27.4%)
+INSERT INTO mob_droplist VALUES (4180,0,0,1000,26018,387); -- Deino collar (38.7%)
+INSERT INTO mob_droplist VALUES (4180,0,0,1000,25640,387); -- Odyssean helm (38.7%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Sang Buaya
+INSERT INTO mob_droplist VALUES (4181,0,0,1000,27142,329); -- Chironic gloves (32.9%)
+INSERT INTO mob_droplist VALUES (4181,0,0,1000,27546,119); -- Thureous earring (11.9%)
+INSERT INTO mob_droplist VALUES (4181,0,0,1000,25641,450); -- Valorous mask (45.0%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Selkit
+INSERT INTO mob_droplist VALUES (4182,0,0,1000,26173,245); -- Apate ring (24.5%)
+INSERT INTO mob_droplist VALUES (4182,0,0,1000,25842,419); -- Herculean trousers (41.9%)
+INSERT INTO mob_droplist VALUES (4182,0,0,1000,27497,350); -- Merlinic crackows (35.0%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Taelmoth the Diremaw
+INSERT INTO mob_droplist VALUES (4183,0,0,1000,26017,284); -- Clotharius torque (28.4%)
+INSERT INTO mob_droplist VALUES (4183,0,0,1000,27140,359); -- Herculean gloves (35.9%)
+INSERT INTO mob_droplist VALUES (4183,0,0,1000,25841,444); -- Valorous hose (44.4%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Zduhac
+INSERT INTO mob_droplist VALUES (4184,0,0,1000,25844,584); -- Chironic hose (58.4%)
+INSERT INTO mob_droplist VALUES (4184,0,0,1000,22270,517); -- Expeditious pinion (51.7%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Heavenly Veela
+INSERT INTO mob_droplist VALUES (4185,0,0,1000,9214,526); -- Void crystal (52.6%)
+INSERT INTO mob_droplist VALUES (4185,1,1,1000,9210,250); -- Pellucid stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,1,1000,9211,250); -- Fern stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,1,1000,9212,250); -- Taupe stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,2,1000,9210,250); -- Pellucid stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,2,1000,9211,250); -- Fern stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,2,1000,9212,250); -- Taupe stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,3,1000,9210,250); -- Pellucid stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,3,1000,9211,250); -- Fern stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,3,1000,9212,250); -- Taupe stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,4,1000,9210,250); -- Pellucid stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,4,1000,9211,250); -- Fern stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,4,1000,9212,250); -- Taupe stone (25%)
+INSERT INTO mob_droplist VALUES (4185,1,5,1000,6487,350); -- Frayed sack of plenty (35%)
+INSERT INTO mob_droplist VALUES (4185,1,5,1000,6486,350); -- Frayed sack of fecundity (35%)
+INSERT INTO mob_droplist VALUES (4185,1,5,1000,6488,350); -- Frayed sack of opulence (35%)
+INSERT INTO mob_droplist VALUES (4185,1,6,1000,6487,350); -- Frayed sack of plenty (35%)
+INSERT INTO mob_droplist VALUES (4185,1,6,1000,6486,350); -- Frayed sack of fecundity (35%)
+INSERT INTO mob_droplist VALUES (4185,1,6,1000,6488,300); -- Frayed sack of opulence (35%)
+INSERT INTO mob_droplist VALUES (4185,1,7,350,4059,200); -- Pluton - Group 1 (25%)
+INSERT INTO mob_droplist VALUES (4185,1,7,350,4060,200); -- Beitetsu - Group 1 (25%)
+INSERT INTO mob_droplist VALUES (4185,1,7,350,4061,200); -- Riftborn Boulder - Group 1 (25%)
+INSERT INTO mob_droplist VALUES (4185,1,7,350,6181,200); -- Beitetsu Parcel - Group 1 (15%)
+INSERT INTO mob_droplist VALUES (4185,1,7,350,6182,200); -- Boulder Case - Group 1 (15%)
+
+-- ZoneID: 291 - Bashmu
+INSERT INTO mob_droplist VALUES (4186,0,0,1000,21754,355); -- Aganoshe (35.5%)
+INSERT INTO mob_droplist VALUES (4186,0,0,1000,22054,310); -- Grioavolr (31.0%)
+INSERT INTO mob_droplist VALUES (4186,0,0,1000,26328,414); -- Sarissaphoroi belt (41.4%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Gajasimha
+INSERT INTO mob_droplist VALUES (4187,0,0,1000,20505,320); -- Condemners (32.0%)
+INSERT INTO mob_droplist VALUES (4187,0,0,1000,21804,200); -- Obschine (20.0%)
+INSERT INTO mob_droplist VALUES (4187,0,0,1000,26174,380); -- Persis ring (38.0%)
+INSERT INTO mob_droplist VALUES (4187,0,0,1000,22113,220); -- Teller (22.0%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Ironside
+INSERT INTO mob_droplist VALUES (4188,0,0,1000,20677,358); -- Colada (35.8%)
+INSERT INTO mob_droplist VALUES (4188,0,0,1000,26019,400); -- Homeric gorget (40.0%)
+INSERT INTO mob_droplist VALUES (4188,0,0,1000,21904,364); -- Kanaria (36.4%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+
+-- ZoneID: 291 - Old Shuck
+INSERT INTO mob_droplist VALUES (4189,0,0,1000,21746,361); -- Digirbalag (36.1%)
+INSERT INTO mob_droplist VALUES (4189,0,0,1000,21072,246); -- Gada (24.6%)
+INSERT INTO mob_droplist VALUES (4189,0,0,1000,26242,492); -- Phalangite mantle (49.2%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Sarsaok
+INSERT INTO mob_droplist VALUES (4190,0,0,1000,22271,466); -- Pemphredo tathlum (46.6%)
+INSERT INTO mob_droplist VALUES (4190,0,0,1000,21021,288); -- Umaru (28.8%)
+INSERT INTO mob_droplist VALUES (4190,0,0,1000,21686,363); -- Zulfiqar (36.3%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Strophadia
+INSERT INTO mob_droplist VALUES (4191,0,0,1000,27547,297); -- Dignitary's earring (29.7%)
+INSERT INTO mob_droplist VALUES (4191,0,0,1000,22134,219); -- Holliday (21.9%)
+INSERT INTO mob_droplist VALUES (4191,0,0,1000,21854,302); -- Reienkyo (30.2%)
+INSERT INTO mob_droplist VALUES (4191,0,0,1000,20579,307); -- Skinflayer (30.7%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Maju
+INSERT INTO mob_droplist VALUES (4192,0,0,1000,9130,632); -- Chunk of eschite ore (63.2%)
+INSERT INTO mob_droplist VALUES (4192,0,0,1000,26175,332); -- Hetairoi ring (33.2%)
+INSERT INTO mob_droplist VALUES (4192,0,0,1000,25719,384); -- Merlinic jubbah (38.4%)
+INSERT INTO mob_droplist VALUES (4192,0,0,1000,25716,428); -- Odyssean chestplate (42.8%)
+INSERT INTO mob_droplist VALUES (4192,0,0,1000,26243,348); -- Perimede cape (34.8%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Neak
+INSERT INTO mob_droplist VALUES (4193,0,0,1000,9130,587); -- Chunk of eschite ore (58.7%)
+INSERT INTO mob_droplist VALUES (4193,0,0,1000,26244,505); -- Agema cape (50.5%)
+INSERT INTO mob_droplist VALUES (4193,0,0,1000,25718,527); -- Herculean vest (52.7%)
+INSERT INTO mob_droplist VALUES (4193,0,0,1000,26329,413); -- Luminary sash (41.3%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Yakshi
+INSERT INTO mob_droplist VALUES (4194,0,0,1000,9130,500); -- Chunk of eschite ore (50.0%)
+INSERT INTO mob_droplist VALUES (4194,0,0,1000,9130,500); -- Chunk of eschite ore (25.0%)
+INSERT INTO mob_droplist VALUES (4194,0,0,1000,26020,315); -- Ainia collar (31.5%)
+INSERT INTO mob_droplist VALUES (4194,0,0,1000,25720,408); -- Chironic doublet (40.8%)
+INSERT INTO mob_droplist VALUES (4194,0,0,1000,22199,392); -- Thrace strap (39.2%)
+INSERT INTO mob_droplist VALUES (4194,0,0,1000,25717,454); -- Valorous mail (45.4%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Albumen
+INSERT INTO mob_droplist VALUES (4195,0,0,1000,9130,500); -- Chunk of eschite ore (50.0%)
+INSERT INTO mob_droplist VALUES (4195,0,0,1000,9130,500); -- Chunk of eschite ore (25.0%)
+INSERT INTO mob_droplist VALUES (4195,0,0,1000,21747,421); -- Freydis (42.1%)
+INSERT INTO mob_droplist VALUES (4195,0,0,1000,25921,684); -- Skaoi boots (68.4%)
+INSERT INTO mob_droplist VALUES (4195,0,0,1000,22114,842); -- Steinthor (84.2%)
+INSERT INTO mob_droplist VALUES (4195,0,0,1000,25656,263); -- Ynglinga sallet (26.3%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Erinys
+INSERT INTO mob_droplist VALUES (4196,0,0,1000,9130,500); -- Chunk of eschite ore (50.0%)
+INSERT INTO mob_droplist VALUES (4196,0,0,1000,9130,500); -- Chunk of eschite ore (25.0%)
+INSERT INTO mob_droplist VALUES (4196,0,0,1000,21755,733); -- Hodadenon (73.3%)
+INSERT INTO mob_droplist VALUES (4196,0,0,1000,25761,533); -- Iktomi dastanas (53.3%)
+INSERT INTO mob_droplist VALUES (4196,0,0,1000,25731,600); -- Sayadio's kaftan (60.0%)
+INSERT INTO mob_droplist VALUES (4196,0,0,1000,22119,267); -- Wochowsen (26.7%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Onychophora
+INSERT INTO mob_droplist VALUES (4197,0,0,1000,9130,500); -- Chunk of eschite ore (50.0%)
+INSERT INTO mob_droplist VALUES (4197,0,0,1000,9130,500); -- Chunk of eschite ore (25.0%)
+INSERT INTO mob_droplist VALUES (4197,0,0,1000,20678,400); -- Firangi (40.0%)
+INSERT INTO mob_droplist VALUES (4197,0,0,1000,22056,467); -- Gozuki Mezuki (46.7%)
+INSERT INTO mob_droplist VALUES (4197,0,0,1000,21855,400); -- Lembing (40.0%)
+INSERT INTO mob_droplist VALUES (4197,0,0,1000,25922,733); -- Navon crackows (73.3%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Teles
+INSERT INTO mob_droplist VALUES (4198,0,0,1000,9130,500); -- Chunk of eschite ore (50.0%)
+INSERT INTO mob_droplist VALUES (4198,0,0,1000,27143,733); -- Composer's mitts (73.3%)
+INSERT INTO mob_droplist VALUES (4198,0,0,1000,27499,533); -- Composer's sabots (53.3%)
+INSERT INTO mob_droplist VALUES (4198,0,0,1000,20889,400); -- Misanthropy (40.0%)
+INSERT INTO mob_droplist VALUES (4198,0,0,1000,20592,467); -- Sangoma (46.7%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Vinipata
+INSERT INTO mob_droplist VALUES (4199,0,0,1000,9130,500); -- Chunk of eschite ore (50.0%)
+INSERT INTO mob_droplist VALUES (4199,0,0,1000,9130,500); -- Chunk of eschite ore (25.0%)
+INSERT INTO mob_droplist VALUES (4199,0,0,1000,25655,474); -- Ipoca beret (47.4%)
+INSERT INTO mob_droplist VALUES (4199,0,0,1000,21073,316); -- Izcalli (31.6%)
+INSERT INTO mob_droplist VALUES (4199,0,0,1000,21022,632); -- Shishio (63.2%)
+INSERT INTO mob_droplist VALUES (4199,0,0,1000,21905,579); -- Taka (57.9%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Zerde
+INSERT INTO mob_droplist VALUES (4200,0,0,1000,9130,500); -- Chunk of eschite ore (50.0%)
+INSERT INTO mob_droplist VALUES (4200,0,0,1000,9130,500); -- Chunk of eschite ore (25.0%)
+INSERT INTO mob_droplist VALUES (4200,0,0,1000,25854,438); -- Arjuna breeches (43.8%)
+INSERT INTO mob_droplist VALUES (4200,0,0,1000,25760,500); -- Mrigavyadha gloves (50.0%)
+INSERT INTO mob_droplist VALUES (4200,0,0,1000,20506,1000); -- Suwaiyas (100.0%)
+INSERT INTO mob_droplist VALUES (4200,0,0,1000,25721,438); -- Vedic coat (43.8%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
+-- ZoneID: 291 - Ascended Beetle
+INSERT INTO mob_droplist VALUES (4201,0,0,1000,9214,250); -- Void Crystal - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4201,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4201,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4201,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4201,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4201,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4201,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Chapuli
+INSERT INTO mob_droplist VALUES (4202,0,0,1000,9214,250); -- Void Crystal - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4202,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4202,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4202,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4202,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4202,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4202,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Chigoe
+INSERT INTO mob_droplist VALUES (4203,0,0,1000,9214,250); -- Void Crystal - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4203,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4203,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4203,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4203,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4203,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4203,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Cyhiraeth
+INSERT INTO mob_droplist VALUES (4204,0,0,1000,9215,250); -- Void Grass - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4204,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4204,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4204,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4204,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4204,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4204,1,6,125,6182,166); -- Boulder Case - Group 6
+
+--ZoneID: 291 - Ascended Faaz
+INSERT INTO mob_droplist VALUES (4205,0,0,1000,9214,250); -- Void Crystal - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4205,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4205,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4205,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4205,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4205,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4205,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Gefyrst
+INSERT INTO mob_droplist VALUES (4206,0,0,1000,9215,250); -- Void Grass - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4206,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4206,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4206,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4206,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4206,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4206,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Hippogryph
+INSERT INTO mob_droplist VALUES (4207,0,0,1000,9216,250); -- Void Snapper - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4207,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4207,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4207,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4207,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4207,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4207,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Lucani
+INSERT INTO mob_droplist VALUES (4208,0,0,1000,9216,250); -- Void Snapper - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4208,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4208,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4208,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4208,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4208,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4208,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Luckybug
+INSERT INTO mob_droplist VALUES (4209,0,0,1000,9215,250); -- Void Grass - (25%)
+INSERT INTO mob_droplist VALUES (4209,1,1,1000,9210,250); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4209,1,1,1000,9211,500); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4209,1,1,1000,9212,500); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4209,1,2,250,9210,250); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4209,1,2,250,9211,500); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4209,1,2,250,9212,500); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4209,1,3,1000,6486,500); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4209,1,3,1000,6488,500); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4209,1,3,1000,6487,500); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4209,1,4,250,6486,500); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4209,1,4,250,6488,500); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4209,1,4,250,6487,500); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4209,1,5,125,6486,500); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4209,1,5,125,6488,500); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4209,1,5,125,6487,500); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4209,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4209,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4209,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4209,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4209,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4209,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Mantis
+INSERT INTO mob_droplist VALUES (4210,0,0,1000,9216,250); -- Void Snapper - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4210,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4210,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4210,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4210,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4210,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4210,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Mosquito
+INSERT INTO mob_droplist VALUES (4211,0,0,1000,9215,250); -- Void Grass - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4211,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4211,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4211,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4211,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4211,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4211,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Naraka
+INSERT INTO mob_droplist VALUES (4212,0,0,1000,9214,250); -- Void Crystal - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4212,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4212,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4212,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4212,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4212,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4212,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Panopt
+INSERT INTO mob_droplist VALUES (4213,0,0,1000,9215,250); -- Void Grass - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4213,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4213,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4213,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4213,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4213,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4213,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Poroggo
+INSERT INTO mob_droplist VALUES (4214,0,0,1000,9216,250); -- Void Snapper - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4214,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4214,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4214,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4214,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4214,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4214,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Porxie
+INSERT INTO mob_droplist VALUES (4215,0,0,1000,9214,250); -- Void Crystal - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4215,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4215,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4215,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4215,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4215,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4215,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Tiger
+INSERT INTO mob_droplist VALUES (4216,0,0,1000,9216,250); -- Void Snapper - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4216,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4216,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4216,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4216,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4216,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4216,1,6,125,6182,166); -- Boulder Case - Group 6
+
+-- ZoneID: 291 - Ascended Ungeweder
+INSERT INTO mob_droplist VALUES (4217,0,0,1000,9216,250); -- Void Snapper - (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+INSERT INTO mob_droplist VALUES (4217,1,6,125,4059,170); -- Pluton - Group 6
+INSERT INTO mob_droplist VALUES (4217,1,6,125,6180,166); -- Pluton Case - Group 6
+INSERT INTO mob_droplist VALUES (4217,1,6,125,4060,166); -- Beitetsu - Group 6
+INSERT INTO mob_droplist VALUES (4217,1,6,125,6181,166); -- Beitetsu Parcel - Group 6
+INSERT INTO mob_droplist VALUES (4217,1,6,125,4061,166); -- Riftborn Boulder - Group 6
+INSERT INTO mob_droplist VALUES (4217,1,6,125,6182,166); -- Boulder Case - Group 6
+
 UPDATE mob_groups SET dropid = 4000 WHERE name = 'Ground_Guzzler';
 UPDATE mob_groups SET dropid = 4000 WHERE name = 'Globster';
 UPDATE mob_groups SET dropid = 4000 WHERE name = 'Quagmire_Pugil';
@@ -1386,3 +2983,91 @@ UPDATE mob_groups SET dropid = 4126 WHERE name = 'Sarbaz' AND groupid = 11528;
 UPDATE mob_groups SET dropid = 4127 WHERE name = 'Shah' AND groupid = 11529;
 UPDATE mob_groups SET dropid = 4128 WHERE name = 'Wazir' AND groupid = 11530;
 UPDATE mob_groups SET dropid = 4129 WHERE name = 'Provenance_Watcher' AND groupid = 11531;
+UPDATE mob_groups SET dropid = 4130 WHERE name = 'Asida' AND groupid = 54;
+UPDATE mob_groups SET dropid = 4131 WHERE name = 'Bia' AND groupid = 45;
+UPDATE mob_groups SET dropid = 4132 WHERE name = 'Emputa' AND groupid = 52;
+UPDATE mob_groups SET dropid = 4133 WHERE name = 'Khon' AND groupid = 48;
+UPDATE mob_groups SET dropid = 4134 WHERE name = 'Khun' AND groupid = 50;
+UPDATE mob_groups SET dropid = 4135 WHERE name = 'Ma' AND groupid = 47;
+UPDATE mob_groups SET dropid = 4136 WHERE name = 'Met' AND groupid = 49;
+UPDATE mob_groups SET dropid = 4137 WHERE name = 'Peirithoos' AND groupid = 53;
+UPDATE mob_groups SET dropid = 4138 WHERE name = 'Ruea' AND groupid = 46;
+UPDATE mob_groups SET dropid = 4139 WHERE name = 'Sava_Savanovic' AND groupid = 56;
+UPDATE mob_groups SET dropid = 4140 WHERE name = 'Tenodera' AND groupid = 55;
+UPDATE mob_groups SET dropid = 4141 WHERE name = 'Wasserspeier' AND groupid = 51;
+UPDATE mob_groups SET dropid = 4142 WHERE name = 'Amymone' AND groupid = 63;
+UPDATE mob_groups SET dropid = 4143 WHERE name = 'Hanbi' AND groupid = 59;
+UPDATE mob_groups SET dropid = 4144 WHERE name = 'Kammavaca' AND groupid = 67;
+UPDATE mob_groups SET dropid = 4145 WHERE name = 'Naphula' AND groupid = 65;
+UPDATE mob_groups SET dropid = 4146 WHERE name = 'Palila' AND groupid = 57;
+UPDATE mob_groups SET dropid = 4147 WHERE name = 'Yilan' AND groupid = 61;
+UPDATE mob_groups SET dropid = 4148 WHERE name = 'Duke_Vepar' AND groupid = 74;
+UPDATE mob_groups SET dropid = 4149 WHERE name = 'Pakecet' AND groupid = 72;
+UPDATE mob_groups SET dropid = 4150 WHERE name = 'Virava' AND groupid = 76;
+UPDATE mob_groups SET dropid = 4151 WHERE name = 'Ark_Angel_EV' AND groupid = 90;
+UPDATE mob_groups SET dropid = 4152 WHERE name = 'Ark_Angel_GK' AND groupid = 91;
+UPDATE mob_groups SET dropid = 4153 WHERE name = 'Ark_Angel_HM' AND groupid = 85;
+UPDATE mob_groups SET dropid = 4154 WHERE name = 'Ark_Angel_MR' AND groupid = 87;
+UPDATE mob_groups SET dropid = 4155 WHERE name = 'Ark_Angel_TT' AND groupid = 86;
+UPDATE mob_groups SET dropid = 4156 WHERE name = 'Byakko-Escha' AND groupid = 78;
+UPDATE mob_groups SET dropid = 4157 WHERE name = 'Genbu-Escha' AND groupid = 79;
+UPDATE mob_groups SET dropid = 4158 WHERE name = 'Kouryu' AND groupid = 84;
+UPDATE mob_groups SET dropid = 4159 WHERE name = 'Seiryu-Escha' AND groupid = 80;
+UPDATE mob_groups SET dropid = 4160 WHERE name = 'Suzaku-Escha' AND groupid = 81;
+UPDATE mob_groups SET dropid = 4161 WHERE name = 'Warder_of_Courage' AND groupid = 93;
+UPDATE mob_groups SET dropid = 4162 WHERE name = 'Warder_of_Dignity' AND groupid = 41;
+UPDATE mob_groups SET dropid = 4163 WHERE name = 'Warder_of_Faith' AND groupid = 31;
+UPDATE mob_groups SET dropid = 4164 WHERE name = 'Warder_of_Fortitude' AND groupid = 39;
+UPDATE mob_groups SET dropid = 4165 WHERE name = 'Warder_of_Hope' AND groupid = 34;
+UPDATE mob_groups SET dropid = 4166 WHERE name = 'Warder_of_Justice' AND groupid = 32;
+UPDATE mob_groups SET dropid = 4167 WHERE name = 'Warder_of_Love' AND groupid = 36;
+UPDATE mob_groups SET dropid = 4168 WHERE name = 'Warder_of_Loyalty' AND groupid = 42;
+UPDATE mob_groups SET dropid = 4169 WHERE name = 'Warder_of_Mercy' AND groupid = 43;
+UPDATE mob_groups SET dropid = 4170 WHERE name = 'Warder_of_Prudence' AND groupid = 35;
+UPDATE mob_groups SET dropid = 4171 WHERE name = 'Warder_of_Temperance' AND groupid = 29;
+UPDATE mob_groups SET dropid = 4172 WHERE name = 'Eschan_Porxie' AND groupid = 44;
+UPDATE mob_groups SET dropid = 4173 WHERE name = 'Belphegor' AND groupid = 50;
+UPDATE mob_groups SET dropid = 4174 WHERE name = 'Crom_Dubh' AND groupid = 45;
+UPDATE mob_groups SET dropid = 4175 WHERE name = 'Dazzling_Dolores' AND groupid = 48;
+UPDATE mob_groups SET dropid = 4176 WHERE name = 'Golden_Kist' AND groupid = 46;
+UPDATE mob_groups SET dropid = 4177 WHERE name = 'Kabandha' AND groupid = 51;
+UPDATE mob_groups SET dropid = 4178 WHERE name = 'Mauve-wristed_Gomberry' AND groupid = 47;
+UPDATE mob_groups SET dropid = 4179 WHERE name = 'Oryx' AND groupid = 56;
+UPDATE mob_groups SET dropid = 4180 WHERE name = 'Sabotender_Royal' AND groupid = 54;
+UPDATE mob_groups SET dropid = 4181 WHERE name = 'Sang_Buaya' AND groupid = 53;
+UPDATE mob_groups SET dropid = 4182 WHERE name = 'Selkit' AND groupid = 52;
+UPDATE mob_groups SET dropid = 4183 WHERE name = 'Taelmoth_the_Diremaw' AND groupid = 49;
+UPDATE mob_groups SET dropid = 4184 WHERE name = 'Zduhac' AND groupid = 55;
+UPDATE mob_groups SET dropid = 4185 WHERE name = 'Heavenly_Veela' AND groupid = 44;
+UPDATE mob_groups SET dropid = 4186 WHERE name = 'Bashmu' AND groupid = 62;
+UPDATE mob_groups SET dropid = 4187 WHERE name = 'Gajasimha' AND groupid = 58;
+UPDATE mob_groups SET dropid = 4188 WHERE name = 'Ironside' AND groupid = 59;
+UPDATE mob_groups SET dropid = 4189 WHERE name = 'Old_Shuck' AND groupid = 61;
+UPDATE mob_groups SET dropid = 4190 WHERE name = 'Sarsaok' AND groupid = 60;
+UPDATE mob_groups SET dropid = 4191 WHERE name = 'Strophadia' AND groupid = 57;
+UPDATE mob_groups SET dropid = 4192 WHERE name = 'Maju' AND groupid = 63;
+UPDATE mob_groups SET dropid = 4193 WHERE name = 'Neak' AND groupid = 65;
+UPDATE mob_groups SET dropid = 4194 WHERE name = 'Yakshi' AND groupid = 64;
+UPDATE mob_groups SET dropid = 4195 WHERE name = 'Albumen' AND groupid = 80;
+UPDATE mob_groups SET dropid = 4196 WHERE name = 'Erinys' AND groupid = 87;
+UPDATE mob_groups SET dropid = 4197 WHERE name = 'Onychophora' AND groupid = 85;
+UPDATE mob_groups SET dropid = 4198 WHERE name = 'Teles' AND groupid = 66;
+UPDATE mob_groups SET dropid = 4199 WHERE name = 'Vinipata' AND groupid = 71;
+UPDATE mob_groups SET dropid = 4200 WHERE name = 'Zerde' AND groupid = 67;
+UPDATE mob_groups SET dropid = 4201 WHERE name = 'Ascended_Beetle' AND groupid = 30;
+UPDATE mob_groups SET dropid = 4202 WHERE name = 'Ascended_Chapuli' AND groupid = 27;
+UPDATE mob_groups SET dropid = 4203 WHERE name = 'Ascended_Chigoe' AND groupid = 39;
+UPDATE mob_groups SET dropid = 4204 WHERE name = 'Ascended_Cyhiraeth' AND groupid = 34;
+UPDATE mob_groups SET dropid = 4205 WHERE name = 'Ascended_Faaz' AND groupid = 41;
+UPDATE mob_groups SET dropid = 4206 WHERE name = 'Ascended_Gefyrst' AND groupid = 42;
+UPDATE mob_groups SET dropid = 4207 WHERE name = 'Ascended_Hippogryph' AND groupid = 40;
+UPDATE mob_groups SET dropid = 4208 WHERE name = 'Ascended_Lucani' AND groupid = 32;
+UPDATE mob_groups SET dropid = 4209 WHERE name = 'Ascended_Luckybug' AND groupid = 31;
+UPDATE mob_groups SET dropid = 4210 WHERE name = 'Ascended_Mantis' AND groupid = 29;
+UPDATE mob_groups SET dropid = 4211 WHERE name = 'Ascended_Mosquito' AND groupid = 28;
+UPDATE mob_groups SET dropid = 4212 WHERE name = 'Ascended_Naraka' AND groupid = 36;
+UPDATE mob_groups SET dropid = 4213 WHERE name = 'Ascended_Panopt' AND groupid = 37;
+UPDATE mob_groups SET dropid = 4214 WHERE name = 'Ascended_Poroggo' AND groupid = 38;
+UPDATE mob_groups SET dropid = 4215 WHERE name = 'Ascended_Porxie' AND groupid = 33;
+UPDATE mob_groups SET dropid = 4216 WHERE name = 'Ascended_Tiger' AND groupid = 35;
+UPDATE mob_groups SET dropid = 4217 WHERE name = 'Ascended_Ungeweder' AND groupid = 43;
