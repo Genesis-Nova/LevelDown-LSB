@@ -2354,7 +2354,7 @@ page1 =
                     local mob = zoneOrInstanceObj:insertDynamicEntity({
 
                         objtype = xi.objType.MOB,
-                        name = 'Supreme Bahamut',
+                        name = 'Supreme Chaos',
                         look = '0x00004b0e00000000000000000000000000000000',
                         x = -156.9923,
                         y = -15.6044,

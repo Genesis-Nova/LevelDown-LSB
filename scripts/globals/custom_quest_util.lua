@@ -978,10 +978,10 @@ function totalCompletedReward(player) -- need to add into script and test
     end           
 end
 
-function randomReward(player)
-    local questVar = player:getCharVar('[LD]CustomQuest')
-    local questParams = tostring(questVar)
-    local questType = tonumber(questParams:sub(1,1))
+function randomReward(player, questType)
+    -- local questVar = player:getCharVar('[LD]CustomQuest')
+    -- local questParams = tostring(questVar)
+    -- local questType = tonumber(questParams:sub(1,1))
     local rand = math.random(1,100)
 
     if rand < 5 * questType then
@@ -998,37 +998,39 @@ function randomReward(player)
     npcUtil.giveReward(player, { exp = randomNumber })
 end
 
-function deleteCustomQuest(player)
-    local questVar = player:getCharVar('[LD]CustomQuest')
+function deleteCustomQuest(player, questType)
+    local varName = customQuestType[questType][4]
+    local questVar = player:getCharVar(varName)
     local questParams = tostring(questVar)
-    local questType = tonumber(questParams:sub(1,1))
+    -- local questType = tonumber(questParams:sub(1,1))
     local questId = tonumber(questParams:sub(3,5))
 
     if questType == 1 then
         player:printToPlayer(string.format('You have chosen to cancel your Daily Quest - %s',customQuestId[questId][1]), 0, 'Quest NPC')
         player:setCharVar('[LD]CustomQuestTotalDaily', player:getCharVar('[LD]CustomQuestTotalDaily') + 1)
         player:setCharVar('[LD]CustomQuestXDaily', player:getCharVar('[LD]CustomQuestXDaily') +1)
-        player:setCharVar('[LD]CustomQuest',0)
+        player:setCharVar(varName,0)
     elseif questType == 2 then
         player:printToPlayer(string.format('You have chosen to cancel your Weekly Quest - %s',customQuestId[questId][1]), 0, 'Quest NPC')
         player:setCharVar('[LD]CustomQuestTotalWeekly', player:getCharVar('[LD]CustomQuestTotalWeekly') + 1)
         player:setCharVar('[LD]CustomQuestXWeekly', player:getCharVar('[LD]CustomQuestXWeekly') +1)
-        player:setCharVar('[LD]CustomQuest',0)
+        player:setCharVar(varName,0)
     elseif questType == 3 then
         player:printToPlayer(string.format('You have chosen to cancel your Monthly Quest - %s',customQuestId[questId][1]), 0, 'Quest NPC')
         player:setCharVar('[LD]CustomQuestTotalMonthly', player:getCharVar('[LD]CustomQuestTotalMonthly') + 1)
         player:setCharVar('[LD]CustomQuestXMonthly', player:getCharVar('[LD]CustomQuestXMonthly') +1)
-        player:setCharVar('[LD]CustomQuest',0)
+        player:setCharVar(varName,0)
     end
 end
 --        311 - Congratulations! (Gold) Special
 --        312 - Congratulations! (Green) Monthly
 --        313 - Congratulations! (Silver) Weekly
 --        314 - Congratulations! (Copper) Daily
-function completeCustomQuest(player)
-    local questVar = player:getCharVar('[LD]CustomQuest')
+function completeCustomQuest(player, questType)
+    local varName = customQuestType[questType][4]
+    local questVar = player:getCharVar(varName)
     local questParams = tostring(questVar)
-    local questType = tonumber(questParams:sub(1,1))
+    -- local questType = tonumber(questParams:sub(1,1))
     local questLimit = tonumber(questParams:sub(2,2))
     local questId = tonumber(questParams:sub(3,5))
     local questCount = tonumber(questParams:sub(6,8))
@@ -1041,8 +1043,8 @@ function completeCustomQuest(player)
                 player:printToPlayer(string.format('Congratulations! you have completed your %s Quest - %s',customQuestType[questType][1], customQuestId[questId][1]), 0, 'Quest NPC')
                 player:setCharVar('[LD]CustomQuestTotalDaily', player:getCharVar('[LD]CustomQuestTotalDaily') + 1)
                 player:setCharVar('[LD]CustomQuestTotal', player:getCharVar('[LD]CustomQuestTotal') +1)
-                randomReward(player)
-                player:setCharVar('[LD]CustomQuest',0)
+                randomReward(player, questType)
+                player:setCharVar(varName,0)
                 player:addCurrency('domain_points', 10)
                 player:printToPlayer(string.format('%s was awarded %i %s, for a total of %i.', player:getName(), 10, 'Domain Points', player:getCurrency('domain_points')),xi.msg.channel.SYSTEM_3)
 
@@ -1054,24 +1056,24 @@ function completeCustomQuest(player)
                 if questType == 1 then
                     player:setCharVar('[LD]CustomQuestTotalDaily', player:getCharVar('[LD]CustomQuestTotalDaily') + 1)
                     player:setCharVar('[LD]CustomQuestTotal', player:getCharVar('[LD]CustomQuestTotal') +1 )
-                    randomReward(player)
-                    player:setCharVar('[LD]CustomQuest',0)
+                    randomReward(player, questType)
+                    player:setCharVar(varName,0)
                     player:addCurrency('domain_points', 10)
                     player:printToPlayer(string.format('%s was awarded %i %s, for a total of %i.', player:getName(), 10, 'Domain Points', player:getCurrency('domain_points')),xi.msg.channel.SYSTEM_3)
                     totalCompletedReward(player)
                 elseif questType == 2 then
                     player:setCharVar('[LD]CustomQuestTotalWeekly', player:getCharVar('[LD]CustomQuestTotalWeekly') + 1)
                     player:setCharVar('[LD]CustomQuestTotal', player:getCharVar('[LD]CustomQuestTotal') +1)
-                    randomReward(player)
-                    player:setCharVar('[LD]CustomQuest',0)
+                    randomReward(player, questType)
+                    player:setCharVar(varName,0)
                     player:addCurrency('current_hallmarks', 500)
                     player:printToPlayer(string.format('%s was awarded %i %s, for a total of %i.', player:getName(), 500, 'Hallmarks', player:getCurrency('current_hallmarks')),xi.msg.channel.SYSTEM_3)
                     totalCompletedReward(player)
                 elseif questType == 3 then
                     player:setCharVar('[LD]CustomQuestTotalMonthly', player:getCharVar('[LD]CustomQuestTotalMonthly') + 1)
                     player:setCharVar('[LD]CustomQuestTotal', player:getCharVar('[LD]CustomQuestTotal') +1)
-                    randomReward(player)
-                    player:setCharVar('[LD]CustomQuest',0)
+                    randomReward(player, questType)
+                    player:setCharVar(varName,0)
                     player:addCurrency('gallantry', 2000)
                     player:printToPlayer(string.format('%s was awarded %i %s, for a total of %i.', player:getName(), 2000, 'Gallantry', player:getCurrency('gallantry')),xi.msg.channel.SYSTEM_3)
                     totalCompletedReward(player)
@@ -1084,16 +1086,14 @@ function checkQuestTimer(player)
     local daily = player:getCharVar('[LD]CustomQuestTimeDaily')
     local weekly = player:getCharVar('[LD]CustomQuestTimeWeekly')
     local monthly = player:getCharVar('[LD]CustomQuestTimeMonthly')
-    local questVar = player:getCharVar('[LD]CustomQuest')
-    local questParams = tostring(questVar)
-    local questType = tonumber(questParams:sub(1,1))
 
+    local questVarDaily = player:getCharVar('[LD]CustomQuestDaily')
         if daily <= os.time() then
-            if questVar > 0 and questType == 1 then
-                player:setCharVar('[LD]CustomQuest', 0)
+            if questVarDaily > 0 then
+                player:setCharVar('[LD]CustomQuestDaily', 0)
                 player:setCharVar('[LD]CustomQuestTotalDaily',0)
                 player:setCharVar('[LD]CustomQuestTimeDaily', getMidnight())
-                player:setCharVar('[LD]CustomQuestTotal')
+                -- player:setCharVar('[LD]CustomQuestTotal')
                 player:printToPlayer(string.format('You quest has expired, please select a new quest.'), 0, 'Quest NPC')
                 player:setCharVar('[LD]CustomQuestXDaily',0)
             else
@@ -1103,9 +1103,10 @@ function checkQuestTimer(player)
             end
         end
 
+        local questVarWeekly = player:getCharVar('[LD]CustomQuestWeekly')
         if weekly <= os.time() then
-            if questVar > 0 and questType == 2 then
-                player:setCharVar('[LD]CustomQuest', 0)
+            if questVarWeekly > 0 then
+                player:setCharVar('[LD]CustomQuestWeekly', 0)
                 player:setCharVar('[LD]CustomQuestTotalWeekly',0)
                 player:setCharVar('[LD]CustomQuestTimeWeekly', NextConquestTally())
                 player:printToPlayer(string.format('You quest has expired, please select a new quest.'), 0, 'Quest NPC')
@@ -1117,9 +1118,10 @@ function checkQuestTimer(player)
             end
         end
 
+        local questVarMonthly = player:getCharVar('[LD]CustomQuestMonthly')
         if monthly ~= tonumber(os.date('%m')) then
-             if questVar > 0 and questType == 3 then
-                 player:setCharVar('[LD]CustomQuest', 0)
+             if questVarMonthly > 0 then
+                 player:setCharVar('[LD]CustomQuestMonthly', 0)
                  player:setCharVar('[LD]CustomQuestTotalMonthly',0)
                  player:setCharVar('[LD]CustomQuestTimeMonthly', tonumber(os.date('%m')))
                  player:printToPlayer(string.format('You quest has expired, please select a new quest.'), 0, 'Quest NPC')
@@ -1133,17 +1135,23 @@ function checkQuestTimer(player)
 end
 
 function checkQuestSignatureItem(player, trade)
-    local questVar = player:getCharVar('[LD]CustomQuest')
-    local questParams = tostring(questVar)
-    local questType = tonumber(questParams:sub(1,1))
-    local questLimit = tonumber(questParams:sub(2,2))
-    local questId = tonumber(questParams:sub(3,5))
-    local itemId = customQuestId[questId][2]
+    for i = 1, 3 do
+        local varName = customQuestType[i][4]
+        local questVar = player:getCharVar(varName)
+        if questVar > 0 then
+            local questParams = tostring(questVar)
+            local questType = tonumber(questParams:sub(1,1))
+            local questLimit = tonumber(questParams:sub(2,2))
+            local questId = tonumber(questParams:sub(3,5))
+            local itemId = customQuestId[questId][2]
 
-    if npcUtil.tradeHasExactly(trade, { { itemId, 1 } }) and
-        trade:getItem():getSignature() == player:getName() then
-        return true
+            if npcUtil.tradeHasExactly(trade, { { itemId, 1 } }) and
+                trade:getItem():getSignature() == player:getName() then
+                return true, i
+            end
+        end
     end
+    return false
 end
 
 local function delaySendMenu(player, menuToSend)
@@ -1165,11 +1173,13 @@ local function createAcceptQuestMenu(player, page)
             string.format('%s', YNMenu),
             function(player)
             if YNMenu == 'Yes' then -- 
-               player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuestSelection'))
+               local selection = player:getCharVar('[LD]CustomQuestSelection')
+               local questParams = tostring(selection)
+               local questType = tonumber(questParams:sub(1,1))
+               local varName = customQuestType[questType][4]
+               player:setCharVar(varName, selection)
                player:setCharVar('[LD]CustomQuestSelection',0)
-                local questVar = player:getCharVar('[LD]CustomQuest')
-                local questParams = tostring(questVar)
-                local questType = tonumber(questParams:sub(1,1))
+                local questVar = player:getCharVar(varName)
                 local questLimit = tonumber(questParams:sub(2,2))
                 local questId = tonumber(questParams:sub(3,5))
                    player:printToPlayer(string.format('You have activated the quest:'), 0, 'Quest NPC')
@@ -1404,7 +1414,7 @@ local function createQuestMenu(player, page)
                if player:getCharVar('[LD]CustomQuestTotalDaily') >= 5 then
                   player:printToPlayer(string.format('You have reached the maximum limit of daily quests you can participate in!'), 0, 'Quest NPC')
                else
-                    if player:getCharVar('[LD]CustomQuest') > 0 then
+                    if player:getCharVar('[LD]CustomQuestDaily') > 0 then
                        player:printToPlayer(string.format('You currently have a quest active! Please finish or cancel the active quest.'), 0, 'Quest NPC')
                     else
                        player:setCharVar('[LD]CustomQuestSelection', 10000000)
@@ -1415,7 +1425,7 @@ local function createQuestMenu(player, page)
                if player:getCharVar('[LD]CustomQuestTotalWeekly') >= 4 then
                   player:printToPlayer(string.format('You have reached the maximum limit of weekly quests you can participate in!'), 0, 'Quest NPC')
                else
-                   if player:getCharVar('[LD]CustomQuest') > 0 then
+                   if player:getCharVar('[LD]CustomQuestWeekly') > 0 then
                       player:printToPlayer(string.format('You currently have a quest active! Please finish or cancel the active quest.'), 0, 'Quest NPC')
                    else
                       player:setCharVar('[LD]CustomQuestSelection', 20000000)
@@ -1426,7 +1436,7 @@ local function createQuestMenu(player, page)
                if player:getCharVar('[LD]CustomQuestTotalMonthly') >= 2 then
                   player:printToPlayer(string.format('You have reached the maximum limit of monthly quests you can participate in!'), 0, 'Quest NPC')
                else
-                   if player:getCharVar('[LD]CustomQuest') > 0 then
+                   if player:getCharVar('[LD]CustomQuestMonthly') > 0 then
                       player:printToPlayer(string.format('You currently have a quest active! Please finish or cancel the active quest.'), 0, 'Quest NPC')
                    else
                       player:setCharVar('[LD]CustomQuestSelection', 30000000)
@@ -1462,25 +1472,37 @@ local function createQuestMenu(player, page)
 end
 
 local function createCancelQuestMenu(player, page)
-    local mainYNCQMenu     = {'Yes', 'No'}
+    local activeQuests = {}
+    for i = 1, 3 do
+        local varName = customQuestType[i][4]
+        if player:getCharVar(varName) > 0 then
+            table.insert(activeQuests, i)
+        end
+    end
+
     local linesPerPage = 5
     page = page or 1
     local startIndex = (page - 1) * linesPerPage + 1
-    local endIndex = math.min(startIndex + linesPerPage - 1, #mainYNCQMenu)
+    local endIndex = math.min(startIndex + linesPerPage - 1, #activeQuests)
     local options = {}
+
     for i = startIndex, endIndex do
-        local YNCQMenu = mainYNCQMenu[i]
+        local qType = activeQuests[i]
+        local varName = customQuestType[qType][4]
+        local questVar = player:getCharVar(varName)
+        local questParams = tostring(questVar)
+        local questId = tonumber(questParams:sub(3,5))
+        local questName = customQuestId[questId][1]
+        local typeName = customQuestType[qType][1]
+
         table.insert(options, {
-            string.format('%s', YNCQMenu),
+            string.format('%s: %s', typeName, questName),
             function(player)
-            if YNCQMenu == 'Yes' then -- 
-                deleteCustomQuest(player)
-            elseif YNCQMenu == 'No' then -- 
-                   return
+                deleteCustomQuest(player, qType)
             end
-        end
         })
     end
+
     -- Pagination options
     if page > 1 then
         table.insert(options, {
@@ -1490,7 +1512,7 @@ local function createCancelQuestMenu(player, page)
             end
         })
     end
-    if endIndex < #mainYNCQMenu then
+    if endIndex < #activeQuests then
         table.insert(options, {
             'Next Page',
             function(player)
@@ -1498,6 +1520,13 @@ local function createCancelQuestMenu(player, page)
             end
         })
     end
+
+    table.insert(options, {
+        'Exit',
+        function(player)
+            return
+        end
+    })
 
     delaySendMenu(player, {
         title = 'Cancel Quest?',
@@ -1518,28 +1547,38 @@ local function createMainMenu(player, page)
         table.insert(options, {
             string.format('%s', menu),
             function(player)
-                local questVar = player:getCharVar('[LD]CustomQuest')
-                local questParams = tostring(questVar)
-                local questType = tonumber(questParams:sub(1,1))
-                local questLimit = tonumber(questParams:sub(2,2))
-                local questId = tonumber(questParams:sub(3,5))
-                local questCount = tonumber(questParams:sub(6,8))
             if menu == 'Select Quest' then --
                createQuestMenu(player, page)
             elseif menu == 'Cancel Quest' then --
-                   if questVar > 0 then
+                   local anyActive = false
+                   for i = 1, 3 do
+                       if player:getCharVar(customQuestType[i][4]) > 0 then anyActive = true break end
+                   end
+                   if anyActive then
                       player:printToPlayer(string.format('Canceling a quest will decrease your quest total limit.'), 0, 'Quest NPC')
                       createCancelQuestMenu(player, page)
                    else
                       player:printToPlayer(string.format('You do not have an active quest to cancel.'), 0, 'Quest NPC')
                    end
             elseif menu == 'Current Quest' then -- 
-                if questVar > 0 then
+                local anyActive = false
+                for i = 1, 3 do
+                    local varName = customQuestType[i][4]
+                    local questVar = player:getCharVar(varName)
+                    if questVar > 0 then
+                        anyActive = true
+                        local questParams = tostring(questVar)
+                        local questType = tonumber(questParams:sub(1,1))
+                        local questLimit = tonumber(questParams:sub(2,2))
+                        local questId = tonumber(questParams:sub(3,5))
+                        local questCount = tonumber(questParams:sub(6,8))
                    player:printToPlayer(string.format('Your current quest is:'), 0, 'Quest NPC')
                    player:printToPlayer(string.format('%s', customQuestType[questType][1]), 0, 'Quest Type')
                    player:printToPlayer(string.format('%s', customQuestId[questId][1]), 0, 'Quest Name')
                    player:printToPlayer(string.format('%s of %s', questCount,customQuestId[questId][3]), 0, 'Quest Progress')
-                else
+                    end
+                end
+                if not anyActive then
                    player:printToPlayer('You do not currently have an active quest!', 0, 'Quest NPC')
                 end
             elseif menu == 'Completed Quests' then --
@@ -1581,26 +1620,22 @@ local function createMainMenu(player, page)
 end
 
 xi.custom_quest.onTrade = function(player, npc, trade)
-    local questVar = player:getCharVar('[LD]CustomQuest')
-    local questParams = tostring(questVar)
-    local questId = tonumber(questParams:sub(3,5))
 ----------------------------------------------
 -- LD quest signed crafting item
 ----------------------------------------------
-    if questId ~= nil then -- Original check to see if they have a quest active
-       checkQuestTimer(player) -- check to see if quest has expired
-         if questId > 0 then -- check to see if quest is still active again
+    checkQuestTimer(player) -- check to see if quest has expired
+    local found, qType = checkQuestSignatureItem(player, trade)
+    if found then
+        local varName = customQuestType[qType][4]
+        local questVar = player:getCharVar(varName)
+        local questParams = tostring(questVar)
+        local questId = tonumber(questParams:sub(3,5))
             if questId >= 584 and
                questId <= 925 then
-              if checkQuestSignatureItem(player, trade) then
                  player:tradeComplete()
-                 player:setCharVar('[LD]CustomQuest',questVar + 1 )
-                 completeCustomQuest(player)
-              end
+                 player:setCharVar(varName, questVar + 1 )
+                 completeCustomQuest(player, qType)
             end
-         else
-               player:printToPlayer(string.format('You quest has expired, please select a new quest.'), 0, 'Quest NPC')
-         end
     end
 end
 
@@ -1611,17 +1646,14 @@ order of operation -
 2. Check to see if quest is completed and give reward
 3. Create main menu
 ]]--
-    local questVar = player:getCharVar('[LD]CustomQuest')
-    local questParams = tostring(questVar)
-    local questId = tonumber(questParams:sub(3,5))
-        if questId ~= nil then -- Original check to see if they have a quest active
-           checkQuestTimer(player) -- check to see if quest has expired
-             if questId > 0 then -- check to see if quest is still active again
-                completeCustomQuest(player)
-                --return
-             end
+    checkQuestTimer(player) -- check to see if quest has expired
+    for i = 1, 3 do
+        local varName = customQuestType[i][4]
+        local questVar = player:getCharVar(varName)
+        if questVar > 0 then
+            completeCustomQuest(player, i)
         end
-                checkQuestTimer(player)
+    end
                 player:timer(500, function()
                     -- Delay menu to allow congradulations animation to play
                        createMainMenu(player, 1)
@@ -1653,7 +1685,10 @@ xi.custom_quest.onWeaponskillHit = function(mob, attacker, weaponskill)
 end
 
 xi.custom_quest.helmAdjustment = function(player, helmType) -- added to global helm.lua line 1552,
-    local questVar = player:getCharVar('[LD]CustomQuest')
+    for i = 1, 3 do
+    local varName = customQuestType[i][4]
+    local questVar = player:getCharVar(varName)
+    if questVar > 0 then
     local questParams = tostring(questVar)
     local questType = tonumber(questParams:sub(1,1))
     local questId = tonumber(questParams:sub(3,5))
@@ -1661,7 +1696,7 @@ xi.custom_quest.helmAdjustment = function(player, helmType) -- added to global h
         if helmType == xi.helmType.LOGGING then
            if questId == 97 then
               if questCount < 10 then 
-                 player:setCharVar('[LD]CustomQuest',questVar + 1 )
+                 player:setCharVar(varName,questVar + 1 )
                         player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                         player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
               --   print('LOGGING')
@@ -1670,7 +1705,7 @@ xi.custom_quest.helmAdjustment = function(player, helmType) -- added to global h
         elseif helmType == xi.helmType.MINING then
                if questId == 98 then
                   if questCount < 10 then 
-                     player:setCharVar('[LD]CustomQuest',questVar + 1 )
+                     player:setCharVar(varName,questVar + 1 )
                         player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                         player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
                   --   print('MINING')
@@ -1679,7 +1714,7 @@ xi.custom_quest.helmAdjustment = function(player, helmType) -- added to global h
         elseif helmType == xi.helmType.EXCAVATION then
                if questId == 99 then
                   if questCount < 10 then 
-                     player:setCharVar('[LD]CustomQuest',questVar + 1 )
+                     player:setCharVar(varName,questVar + 1 )
                         player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                         player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
                   --   print('EXCAVATION')
@@ -1688,67 +1723,77 @@ xi.custom_quest.helmAdjustment = function(player, helmType) -- added to global h
         elseif helmType == xi.helmType.HARVESTING then
                if questId == 96 then
                   if questCount < 10 then 
-                     player:setCharVar('[LD]CustomQuest',questVar + 1 )
+                     player:setCharVar(varName,questVar + 1 )
                         player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                         player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
                   --   print('HARVESTING')
                   end
                end
         end
+    end
+    end
 end
 
 xi.custom_quest.chocoboDigAdjustment = function(player) -- added to global chocobo_digging.lua line 965,
-    local questVar = player:getCharVar('[LD]CustomQuest')
+    for i = 1, 3 do
+    local varName = customQuestType[i][4]
+    local questVar = player:getCharVar(varName)
+    if questVar > 0 then
     local questParams = tostring(questVar)
     local questType = tonumber(questParams:sub(1,1))
     local questId = tonumber(questParams:sub(3,5))
     local questCount = tonumber(questParams:sub(6,8))
            if questId == 95 then
               if questCount < 10 then 
-                 player:setCharVar('[LD]CustomQuest',questVar + 1 )
+                 player:setCharVar(varName,questVar + 1 )
                         player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                         player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
               --   print('DIGGING')
               end
            end
+    end
+    end
 end
 
 xi.custom_quest.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill)
-    local questVar = player:getCharVar('[LD]CustomQuest')
+    for i = 1, 3 do
+    local varName = customQuestType[i][4]
+    local questVar = player:getCharVar(varName)
+    if questVar > 0 then
     local questParams = tostring(questVar)
     local questType = tonumber(questParams:sub(1,1))
     local questLimit = tonumber(questParams:sub(2,2))
     local questId = tonumber(questParams:sub(3,5))
     local questCount = tonumber(questParams:sub(6,8))
 
- if questId ~= nil then -- Original check to see if they have a quest active
+ -- if questId ~= nil then -- Original check to see if they have a quest active
 ----------------------------------------------
 -- LS quest to Kill Provenance Water or Supreme
 ----------------------------------------------
     if player then
         if questId == 90 and
             mob:getName() == 'DE_Supreme Chaos' then
-                player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                player:setCharVar(varName, questVar +1)
                 player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                 player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
         elseif questId == 91 and
             mob:getName() == 'DE_Supreme Behemoth' then
-                player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                player:setCharVar(varName, questVar +1)
                 player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                 player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
         elseif questId == 92 and
             mob:getName() == 'DE_Supreme Aspid' then
-                player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                player:setCharVar(varName, questVar +1)
                 player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                 player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
         elseif questId == 93 and
             mob:getName() == 'DE_Supreme Dragon' then
-                player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                player:setCharVar(varName, questVar +1)
                 player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                 player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
         elseif questId == 94 and
             mob:getName() == 'Provenance_Watcher' then
-                player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                player:setCharVar(varName, questVar +1)
                 player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                 player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
         end
@@ -1767,7 +1812,7 @@ xi.custom_quest.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill
                        if mob:getEcosystem() == questEco then
                              if isKiller then
                                if questCount < 50 then
-                                player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                                player:setCharVar(varName, questVar +1)
                                 player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                                 player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3] ),8)
                                end
@@ -1788,7 +1833,7 @@ xi.custom_quest.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill
                             if isWeaponSkillKill == true and 
                                meleeskilltype == customQuestId[questId][2] then
                                 if questCount < 50 then
-                                    player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                                    player:setCharVar(varName, questVar +1)
                                     player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                                     player:printToPlayer(string.format('%s Kill Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3]),8)
                                 end
@@ -1800,7 +1845,7 @@ xi.custom_quest.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill
                             if isWeaponSkillKill == true and 
                                rangeskilltype == customQuestId[questId][2] then
                                 if questCount < 50 then
-                                    player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                                    player:setCharVar(varName, questVar +1)
                                     player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                                     player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3]),8)
                                 end
@@ -1816,7 +1861,7 @@ xi.custom_quest.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill
             questId <= 283 then
                 if questCount < 1 then
                     if mob:getName() == customQuestId[questId][1]:sub(6) then
-                        player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                        player:setCharVar(varName, questVar +1)
                         player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                         player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3]),8)
                     end
@@ -1828,14 +1873,16 @@ xi.custom_quest.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill
             questId <= 583 then
                 if questCount < 1 then
                     if mob:getName():sub(5) == customQuestId[questId][1]:sub(6) then
-                        player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') +1)
+                        player:setCharVar(varName, questVar +1)
                         player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                         player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3]),8)
                     end
                 end
        end
     end
- end
+ -- end
+    end
+    end
 end
 
 xi.custom_quest.onMobDespawn = function(mob)
@@ -1847,22 +1894,26 @@ xi.custom_quest.onMobDeath = function(mob, player, optParams)
 end
 
 xi.custom_quest.getQuestInfo = function(player) -- for use in player command
-    local questVar = player:getCharVar('[LD]CustomQuest')
-    local questParams = tostring(questVar)
-    local questType = tonumber(questParams:sub(1,1))
-    local questLimit = tonumber(questParams:sub(2,2))
-    local questId = tonumber(questParams:sub(3,5))
-    local questCount = tonumber(questParams:sub(6,8))
-    local itemId = 0
-    if questVar > 0 then
-        itemId = customQuestId[questId][2]
+    local anyActive = false
+    for i = 1, 3 do
+        local varName = customQuestType[i][4]
+        local questVar = player:getCharVar(varName)
+        if questVar > 0 then
+            anyActive = true
+            local questParams = tostring(questVar)
+            local questType = tonumber(questParams:sub(1,1))
+            local questLimit = tonumber(questParams:sub(2,2))
+            local questId = tonumber(questParams:sub(3,5))
+            local questCount = tonumber(questParams:sub(6,8))
+
+            player:printToPlayer(string.format('Your current quest is:'), 0, 'Quest NPC')
+            player:printToPlayer(string.format('%s', customQuestType[questType][1]), 0, 'Quest Type')
+            player:printToPlayer(string.format('%s', customQuestId[questId][1]), 0, 'Quest Name')
+            player:printToPlayer(string.format('%s of %s', questCount,customQuestId[questId][3]), 0, 'Quest Progress')
+        end
     end
-    if questVar > 0 then
-        player:printToPlayer(string.format('Your current quest is:'), 0, 'Quest NPC')
-        player:printToPlayer(string.format('%s', customQuestType[questType][1]), 0, 'Quest Type')
-        player:printToPlayer(string.format('%s', customQuestId[questId][1]), 0, 'Quest Name')
-        player:printToPlayer(string.format('%s of %s', questCount,customQuestId[questId][3]), 0, 'Quest Progress')
-    else
+
+    if not anyActive then
         player:printToPlayer('You do not currently have an active quest!', 0, 'Quest NPC')
         return
     end
@@ -1877,43 +1928,12 @@ xi.custom_quest.getQuestInfo = function(player) -- for use in player command
     player:printToPlayer(string.format('Total Quests Completed [%s]', player:getCharVar('[LD]CustomQuestTotal')), 0, 'Quest Results')
     player:printToPlayer('Note: Quests Canceled and Daily / Weekly / Monthly Quest counts will reset after each time reset, Quest Total will not reset!', 0, 'Quest Results')
 
-    if questId >= 584 and questId <= 925 then
-        for _, recipe in ipairs(xi.custCrafting) do
-            if recipe.item == itemId then
-                local ingredientsText = {}
-
-                for _, recipeItem in ipairs(recipe.ingredients) do
-                    if recipeItem ~= nil and recipeItem ~= 0 then
-                        local id
-                        local count = 1
-
-                        if type(recipeItem) == "table" then
-                            id = recipeItem[1]
-                            count = recipeItem[2] or 1
-                        else
-                            id = recipeItem
-                        end
-
-                        local name = GetItemByID(id):getName()
-                        table.insert(ingredientsText, string.format("%s x%d", name, count))
-                    end
-                end
-                local recipeItem = GetItemByID(recipe.item):getName()
-                player:printToPlayer(string.format("*******************Crafting Recipe***********************"), 0, "Quest NPC")
-                player:printToPlayer(string.format("%s", recipeItem), 0, "Item")
-
-                for _, line in ipairs(ingredientsText) do
-                    player:printToPlayer(line, 0, "Ingredients")
-                end
-
-                return
-            end
-        end
-    end
 end
 
 xi.custom_quest.completeCurrentQuest = function(player) -- for use of GM Command
-    local questVar = player:getCharVar('[LD]CustomQuest')
+    for i = 1, 3 do
+    local varName = customQuestType[i][4]
+    local questVar = player:getCharVar(varName)
     local questParams = tostring(questVar)
     local questType = tonumber(questParams:sub(1,1))
     local questLimit = tonumber(questParams:sub(2,2))
@@ -1923,33 +1943,32 @@ xi.custom_quest.completeCurrentQuest = function(player) -- for use of GM Command
     local difference = questTotalCount - questCount
 
     if questVar > 0 then
-        player:setCharVar('[LD]CustomQuest', player:getCharVar('[LD]CustomQuest') + difference)
+        player:setCharVar(varName, questVar + difference)
         player:printToPlayer(string.format('Level Down %s Quest Completed!',customQuestType[questType][1]),8)
         player:printToPlayer(string.format('%s', customQuestType[questType][1]), 0, 'Quest Type')
         player:printToPlayer(string.format('%s', customQuestId[questId][1]), 0, 'Quest Name')
         player:printToPlayer(string.format('%s of %s', customQuestId[questId][3],customQuestId[questId][3]), 0, 'Quest Progress')
-        completeCustomQuest(player)
-    else
-        return
+        completeCustomQuest(player, i)
+    end
     end
 end
 
 xi.custom_quest.setCurrentQuest = function(player, questId) -- for use of GM Command
-    local questVar = player:getCharVar('[LD]CustomQuest')
+    -- local questVar = player:getCharVar('[LD]CustomQuest')
     local dailyQuest =  15000000
     local weeklyQuest = 22000000
     local monthlyQuest = 31000000
     local questIdCalc = questId * 1000
    
     if questId >= 90 and questId <= 94 then -- monthly
-        player:setCharVar('[LD]CustomQuest', monthlyQuest + questIdCalc)
+        player:setCharVar('[LD]CustomQuestMonthly', monthlyQuest + questIdCalc)
     elseif questId >= 100 and questId <= 583 then -- Weekly
-        player:setCharVar('[LD]CustomQuest', weeklyQuest + questIdCalc)
+        player:setCharVar('[LD]CustomQuestWeekly', weeklyQuest + questIdCalc)
     elseif questId >= 95 and questId <= 99 then -- daily
-        player:setCharVar('[LD]CustomQuest', dailyQuest + questIdCalc)
+        player:setCharVar('[LD]CustomQuestDaily', dailyQuest + questIdCalc)
     elseif questId >= 584 and questId <= 925 then -- daily
-        player:setCharVar('[LD]CustomQuest', dailyQuest + questIdCalc)
+        player:setCharVar('[LD]CustomQuestDaily', dailyQuest + questIdCalc)
     elseif questId == 89 then -- daily
-        player:setCharVar('[LD]CustomQuest', dailyQuest + questIdCalc)
+        player:setCharVar('[LD]CustomQuestDaily', dailyQuest + questIdCalc)
     end
 end
