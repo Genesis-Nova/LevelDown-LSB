@@ -131,9 +131,9 @@ local geasFeteText =
         MEMBER_OUT_OF_ZONE       = 7685, -- <1F:7B>One or more members of your party are not in the appropriate staging zone.<7F31>
         ALL_MEMBERS_DEAD         = 7692, -- <1F:7B>All party members have been knocked out. Leaving the battle in {0} minute{0:pluralSelect}[/s].<7F31>
         LEADER_COMMENCE_BATTLE   = 7693, -- <1F:7B>Your party leader is attempting to commence a battle.<7F31>
-        MISSING_KEY_ITEM         = 7703, -- You will be able to engage in combat here if you possess <0105:36,82,80,80,80> and a grisly trinket.<7F31>
-        LOSE_KEYITEM             = 7704, -- The <0105:33,82,80,80,80> {1:select}[disappears/and the grisly trinket disappear]!<7F31>
-        MEMBER_NO_KEYITEM        = 7713, -- <1F:7B>One or more party members do not possess <0105:36,82,80,80,80>.<7F31>
+        MISSING_KEY_ITEM         = 7822, -- You will be able to engage in combat here if you possess <0105:36,82,80,80,80> and a grisly trinket.<7F31>
+        LOSE_KEYITEM             = 7823, -- The <0105:33,82,80,80,80> {1:select}[disappears/and the grisly trinket disappear]!<7F31>
+        MEMBER_NO_KEYITEM        = 7832, -- <1F:7B>One or more party members do not possess <0105:36,82,80,80,80>.<7F31>
     },
     [xi.zone.ESCHA_ZITAH] = -- 289
     {
@@ -156,9 +156,9 @@ local geasFeteText =
         MEMBER_OUT_OF_ZONE       = 7804, -- <1F:7B>One or more members of your party are not in the appropriate staging zone.<7F31>
         ALL_MEMBERS_DEAD         = 7811, -- <1F:7B>All party members have been knocked out. Leaving the battle in {0} minute{0:pluralSelect}[/s].<7F31>
         LEADER_COMMENCE_BATTLE   = 7812, -- <1F:7B>Your party leader is attempting to commence a battle.<7F31>
-        MISSING_KEY_ITEM         = 7822, -- You will be able to engage in combat here if you possess <0105:36,82,80,80,80> and a grisly trinket.<7F31>
-        LOSE_KEYITEM             = 7823, -- The <0105:33,82,80,80,80> {1:select}[disappears/and the grisly trinket disappear]!<7F31>
-        MEMBER_NO_KEYITEM        = 7832, -- <1F:7B>One or more party members do not possess <0105:36,82,80,80,80>.<7F31>
+        MISSING_KEY_ITEM         = 7703, -- You will be able to engage in combat here if you possess <0105:36,82,80,80,80> and a grisly trinket.<7F31>
+        LOSE_KEYITEM             = 7704, -- The <0105:33,82,80,80,80> {1:select}[disappears/and the grisly trinket disappear]!<7F31>
+        MEMBER_NO_KEYITEM        = 7713, -- <1F:7B>One or more party members do not possess <0105:36,82,80,80,80>.<7F31>
     },
     [xi.zone.REISENJIMA] = -- 291
     {
@@ -281,13 +281,35 @@ local function checkRequirements(player, npc)
     return initialRequirement
 end
 
-local function getGeaFatesKI(player) -- this is not removing resijima key items from npc list
+local function getGeaFatesKI(player)
     local playerZone = player:getZoneID()
     local erKeyItems = 0
         for i = 1, #grislyTrinkets[playerZone] do
             erKeyItems = utils.mask.setBit(erKeyItems, i -1, player:hasKeyItem(grislyTrinkets[playerZone][i][1]))
         end
     return erKeyItems
+end
+
+local function getGeasFetesPurchasedKI(player)
+    local playerZone = player:getZoneID()
+    local purKeyItems = 0
+
+    local zoneTable = grislyTrinkets[playerZone]
+    if not zoneTable then
+        return 0
+    end
+
+    local max = math.min(#zoneTable, 12)
+
+    for i = 1, max do
+        local keyItemId = zoneTable[i][1]
+
+        if player:hasKeyItem(keyItemId) then
+            purKeyItems = purKeyItems + (2 ^ (i - 1))
+        end
+    end
+
+    return purKeyItems
 end
 
 local function deleteInitialKI(player)
@@ -2258,7 +2280,7 @@ local function getBits(option)
         results[#results + 1] = bit.band(bit.rshift(option, i), 0xF)
     end
 
-    print(table.concat(results, " "))
+    -- print(table.concat(results, " "))
 
 end
 
@@ -2271,13 +2293,17 @@ xi.geasFeteNPC.npcOnTrade = function(player, npc, trade)
             if npcUtil.tradeHasExactly(trade, tradeEntry.trade ) then
                 if tradeEntry.csid == nil then
                     if npcUtil.giveKeyItem(player, tradeEntry.keyItem) then
-                        player:confirmTrade()
+                        player:tradeComplete()
                         player:messageSpecial(zones[xi.zone.ESCHA_ZITAH].text.AFFI_KEYITEM_OBTAINED)
                         return
                     end
                 end
 
-                player:startEvent(tradeEntry.csid,0,-16)
+                player:setLocalVar("GeasFeteTradeItem", tradeEntry.trade[1][1])
+                player:setLocalVar("GeasFeteTradeQty", tradeEntry.trade[1][2])
+                player:tradeComplete()
+
+                player:startEvent(tradeEntry.csid,0,0,getGeasFetesPurchasedKI(player))
                 return
             end
         end
@@ -2555,22 +2581,27 @@ xi.geasFeteNPC.npcOnEventUpdate = function(player, csid, option, npc)
             end
         end
     end
-     print(csid, option)
+     -- print(csid, option)
 
 end
 
 xi.geasFeteNPC.npcOnEventFinish = function(player, csid, option, npc)
-    local guerdonSubCatagory = bit.rshift(option, 16)
-    local guerdonItemChosen = bit.band(bit.rshift(option,8), 0xFF)
-    local itemCategory = bit.band(option, 0xF)
     local itemSelected = bit.rshift(option, 8)
     local npcZone = npc:getZoneID()
     local keyItemsTable = grislyTrinketsTrade['KEYITEMS'][npcZone][csid]
+    local selectedOp = bit.band(bit.rshift(option,0), 0xFFFF)
 
     if csid >= 9702 and csid <= 9704 then
+        if selectedOp == 0 then
+            player:addItem(player:getLocalVar('GeasFeteTradeItem'), player:getLocalVar('GeasFeteTradeQty'))
+            player:setLocalVar('GeasFeteTradeItem', 0)
+            player:setLocalVar('GeasFeteTradeQty', 0)
+            return
+        end
+
         if not player:hasKeyItem(keyItemsTable[itemSelected][1]) then
             npcUtil.giveKeyItem(player, keyItemsTable[itemSelected][1])
-            player:confirmTrade()
+            player:tradeComplete()
         else
             return
         end
