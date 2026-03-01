@@ -907,6 +907,33 @@ m:addOverride("xi.zones.Walk_of_Echoes_[P1].Zone.onZoneIn", function(player, pre
                         if not mob:isSpawned() then
                             debugPrint("Spawning mob...")
                             
+                            local registeredPlayerIds = {}
+                            local playerList = {}
+                            local partySize = p_timed:getCharVar("HTBF_Party_Size")
+
+                            if partySize > 0 then
+                                debugPrint("Found party size: " .. partySize)
+                                for i = 1, partySize do
+                                    local memberId = p_timed:getCharVar(string.format("HTBF_Party_Member_%d", i))
+                                    if memberId > 0 then
+                                        -- Always register the ID so they are allowed in
+                                        table.insert(registeredPlayerIds, memberId)
+                                        
+                                        -- Try to get object to apply effect immediately if they are here
+                                        local p = GetPlayerByID(memberId)
+                                        if p then
+                                            table.insert(playerList, p)
+                                        end
+                                    end
+                                end
+                            end
+
+                            if #playerList == 0 then
+                                playerList = { p_timed }
+                                table.insert(registeredPlayerIds, p_timed:getID())
+                                debugPrint("Party list was empty, using solo player as fallback.")
+                            end
+
                             -- Clear arena of unauthorized players
                             local playersInZone = zone:getPlayers()
                             for _, pInZone in pairs(playersInZone) do
@@ -940,32 +967,6 @@ m:addOverride("xi.zones.Walk_of_Echoes_[P1].Zone.onZoneIn", function(player, pre
                             debugPrint("ActiveHTBF_ConfrontationID set to: " .. confrontationID)
 
                             local timeLimitSeconds = config.timeLimit * 60
-                            local registeredPlayerIds = {}
-                            local playerList = {}
-                            local partySize = p_timed:getCharVar("HTBF_Party_Size")
-
-                            if partySize > 0 then
-                                debugPrint("Found party size: " .. partySize)
-                                for i = 1, partySize do
-                                    local memberId = p_timed:getCharVar(string.format("HTBF_Party_Member_%d", i))
-                                    if memberId > 0 then
-                                        -- Always register the ID so they are allowed in
-                                        table.insert(registeredPlayerIds, memberId)
-                                        
-                                        -- Try to get object to apply effect immediately if they are here
-                                        local p = GetPlayerByID(memberId)
-                                        if p then
-                                            table.insert(playerList, p)
-                                        end
-                                    end
-                                end
-                            end
-
-                            if #playerList == 0 then
-                                playerList = { p_timed }
-                                table.insert(registeredPlayerIds, p_timed:getID())
-                                debugPrint("Party list was empty, using solo player as fallback.")
-                            end
 
                             -- Apply to all present party members
                             for _, p in ipairs(playerList) do
