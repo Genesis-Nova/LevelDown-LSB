@@ -372,7 +372,9 @@ local function getTimeOfBattle(mob)
     for _, data in ipairs(notificationTimes) do
         if now >= (startTime + data.offset) and mob:getLocalVar(data.var) == 0 then
             for _, member in ipairs(alliance) do
-                member:messageSpecial(data.text, data.arg)
+                if member:isPC() then
+                    member:messageSpecial(data.text, data.arg)
+                end
             end
             mob:setLocalVar(data.var, 1)
         end
@@ -420,7 +422,10 @@ local function checkPlayerDistance(player) -- possibly move this into the status
                             playerArg:delStatusEffect(xi.effect.CONFRONTATION)
                             playerArg:messageSpecial(textID.BATTLE_STATUS_REMOVED)
                             playerArg:removeListener('MOB_DESPAWN')
-                            playerArg:countdown()
+
+                            if playerArg:isPC() then
+                                playerArg:countdown()
+                            end
                         end
                     end)
             end
@@ -436,30 +441,54 @@ end
 local function setCountDown(player, mob, npc)
     local zone = player:getZoneID()
     local textID = geasFeteText[zone]
-    local alliance = player:getAlliance()
+    local leader = GetPlayerByID(player:getLeaderID())
 
-    for _, member in pairs(alliance) do
-        buildFencing(player, mob)
-        member:addStatusEffect(xi.effect.CONFRONTATION, { power = 2, origin = player })
-        member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH) -- retail Confrontation Effect on death incase of reraise
-        member:messageSpecial(textID.REMAINING_TIME_MINUTES,15) -- battle time dialog 15 minutes
+    if leader == nil then
+        return
+    end
 
-        member:addListener('TICK', 'MOB_DESPAWN', function(playerArg) -- clear countdown display in event mob despawns
-            checkPlayerDistance(playerArg)
+    local alliancePartyCheck = {}
 
-            if not mob:isAlive() then
-                member:countdown()
-                if mob:getHP() > 0 then
-                     member:messageSpecial(textID.MOB_DESPAWNS) -- The monster fades before your eyes, a look of disappointment on its face
-                end
+    if leader:checkSoloPartyAlliance() == 2 then
+        alliancePartyCheck = leader:getAlliance()
+    else
+        alliancePartyCheck = leader:getPartyWithTrusts()
+    end
 
-                if member:hasStatusEffect(xi.effect.CONFRONTATION) then
-                    member:delStatusEffect(xi.effect.CONFRONTATION)
-                end
-
-                member:removeListener('MOB_DESPAWN')
+    if type(alliancePartyCheck) == "table" then
+        for _, member in pairs(alliancePartyCheck) do
+            if member:isPC() then
+                buildFencing(player, mob)
             end
-        end)
+
+            member:addStatusEffect(xi.effect.CONFRONTATION, { power = 2, origin = member })
+            member:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
+
+            if member:isPC() then
+                member:messageSpecial(textID.REMAINING_TIME_MINUTES,15) -- battle time dialog 15 minutes
+            end
+
+            member:addListener('TICK', 'MOB_DESPAWN', function(playerArg) -- clear countdown display in event mob despawns
+                checkPlayerDistance(playerArg)
+
+                if not mob:isAlive() then
+                    if playerArg:isPC() then
+                        member:countdown()
+                    end
+                    if mob:getHP() > 0 then
+                        if member:isPC() then
+                            member:messageSpecial(textID.MOB_DESPAWNS) -- The monster fades before your eyes, a look of disappointment on its face
+                        end
+                    end
+
+                    if member:hasStatusEffect(xi.effect.CONFRONTATION) then
+                        member:delStatusEffect(xi.effect.CONFRONTATION)
+                    end
+
+                    member:removeListener('MOB_DESPAWN')
+                end
+            end)
+        end
     end
 end
 
