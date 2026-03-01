@@ -28,6 +28,7 @@ local abyseals_price = 1000 -- Aby Seals - 1 battle
 local abyingr_price = 4500 -- Job Ingredients - 3 battles
 local avatar_ring_nq_price = 100000
 local avatar_ring_hq_price = 300000
+local grand_coffer_price = 3000
 
 
 ---@type Module
@@ -63,6 +64,14 @@ local CAMPAIGN_REWARDS = {
             {"Fotia Gorget", xi.item.FOTIA_GORGET, special_price},
             {"Fotia Belt", xi.item.FOTIA_BELT, special_price},
             {"Gorney Ring", xi.item.GORNEY_RING, special_price},
+        },
+        ["Grand Coffers"] = {
+            {"Ymmr-Ulvid", xi.item.YMMR_ULVIDS_GRAND_COFFER, grand_coffer_price},
+            {"Ignor-Mnt", xi.item.IGNOR_MNT_GRAND_COFFER, grand_coffer_price},
+            {"Durs-Vike", xi.item.DURS_VIKES_GRAND_COFFER, grand_coffer_price},
+            {"Tryl-Wuj", xi.item.TRYL_WUJS_GRAND_COFFER, grand_coffer_price},
+            {"Liij-Vok", xi.item.LIIJ_VOKS_GRAND_COFFER, grand_coffer_price},
+            {"Gramk-Droog", xi.item.GRAMK_DROOGS_GRAND_COFFER, grand_coffer_price},
         },
     },
     ["Mega Boss Rewards"] = {
