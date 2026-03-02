@@ -23,15 +23,25 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 90)
+	local duration = 900
     local returnEffect = xi.effect.MAGIC_ATK_BOOST
     local mabPower = caster:getMod(xi.mod.MATT) * .2
     local attPower = caster:getMod(xi.mod.ATT) * .2
 	local power = 10
+	
+	if caster:hasStatusEffect(xi.effect.DIFFUSION) then
+        local diffMerit = caster:getMerit(xi.merit.DIFFUSION)
 
-    local actionOne   = target:addStatusEffect(xi.effect.MAGIC_ATK_BOOST, { power = mabpower, duration = 60 * duration, origin = caster })
-    local actionTwo   = target:addStatusEffect(xi.effect.ATTACK_BOOST, { power = attpower, duration = 60 * duration, origin = caster })
-    local actionThree = target:addStatusEffect(xi.effect.AQUAVEIL, { power = power, duration = 900 * duration, origin = caster })
+        if diffMerit > 0 then
+            duration = duration + (duration / 100) * diffMerit
+        end
+
+        caster:delStatusEffect(xi.effect.DIFFUSION)
+    end
+
+    local actionOne   = target:addStatusEffect(xi.effect.MAGIC_ATK_BOOST, { power = mabpower, duration = duration, origin = caster })
+    local actionTwo   = target:addStatusEffect(xi.effect.ATTACK_BOOST, { power = attpower, duration = duration, origin = caster })
+    local actionThree = target:addStatusEffect(xi.effect.AQUAVEIL, { power = power, duration = duration, origin = caster })
 
 
     if not actionOne and not actionTwo and not actionThree then -- all statuses fail to apply
