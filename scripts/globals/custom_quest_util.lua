@@ -1872,7 +1872,7 @@ xi.custom_quest.onMobDeathEx = function(mob, player, isKiller, isWeaponSkillKill
         elseif questId >= 284 and
             questId <= 583 then
                 if questCount < 1 then
-                    if mob:getName():sub(5) == customQuestId[questId][1]:sub(6) then
+                    if mob:getName():sub(6) == customQuestId[questId][1]:sub(6) then
                         player:setCharVar(varName, questVar +1)
                         player:printToPlayer(string.format('Level Down %s Quest!',customQuestType[questType][1]),8)
                         player:printToPlayer(string.format('%s Count: %s of %s.',customQuestId[questId][1],questCount + 1,customQuestId[questId][3]),8)
