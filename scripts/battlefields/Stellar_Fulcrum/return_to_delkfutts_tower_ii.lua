@@ -30,7 +30,19 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
+            local players = battlefield:getPlayers()
             battlefield:setStatus(xi.battlefield.status.WON)
+            if #players > 0 then
+                players[1]:timer(7000, function(p) -- timer to drop loot
+                    local selectedLoot = utils.selectFromLootGroups(p, content.loot)
+                    for _, item in ipairs(selectedLoot) do
+                        if item.itemId ~= xi.item.NONE then
+                            -- Add to treasure pool of the first player (shared with party)
+                            p:addTreasure(item.itemId, mob)
+                        end
+                    end
+                end)
+            end
         end,
     },
     {
