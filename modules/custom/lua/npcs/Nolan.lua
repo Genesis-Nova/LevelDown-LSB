@@ -740,7 +740,7 @@ local tradeTablePathD =
 [160] = { trade = { 20801,{ 9086, 6}}, base = 20801, aug1 =  518, aug1MAX = 14, aug2 =  111, aug2MAX =  2, aug3 =  123, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Nibiru Tabar
 [161] = { trade = { 21031,{ 9086, 6}}, base = 21031, aug1 =  31, aug1MAX = 19, aug2 =  37, aug2MAX =  19, aug3 =  54, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Sensui
 [162] = { trade = { 20979,{ 9086, 6}}, base = 20979, aug1 =  740, aug1MAX = 16, aug2 =  23, aug2MAX =  14, aug3 =  27, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Aizushintogo
-[163] = { trade = { 21150,{ 9086, 6}}, base = 21150, aug1 =  35, aug1MAX = 19, aug2 =  113, aug2MAX =  14, aug3 =  114, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Akademos
+[163] = { trade = { 21150,{ 9086, 6}}, base = 21150, aug1 =  35, aug1MAX = 19, aug2 =  290, aug2MAX =  14, aug3 =  291, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Akademos
 [164] = { trade = { 21698,{ 9086, 6}}, base = 21698, aug1 =  740, aug1MAX = 31, aug2 =  142, aug2MAX =  6, aug3 =  39, aug3MAX = 6, aug4 = 0, aug4MAX = 0 },--Bidenhander
 [165] = { trade = { 21482,{ 9086, 6}}, base = 21482, aug1 =  746, aug1MAX = 14, aug2 =  29, aug2MAX =  14, aug3 =  133, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Compensator
 [166] = { trade = { 20892,{ 9086, 6}}, base = 20892, aug1 =  740, aug1MAX = 31, aug2 =  11, aug2MAX =  15, aug3 =  512, aug3MAX = 19, aug4 = 0, aug4MAX = 0 },--Deathbane
@@ -751,8 +751,8 @@ local tradeTablePathD =
 [171] = { trade = { 21027,{ 9086, 6}}, base = 21027, aug1 =  515, aug1MAX = 19, aug2 =  27, aug2MAX =  24, aug3 =  212, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Ichigohitofuri
 [172] = { trade = { 20845,{ 9086, 6}}, base = 20845, aug1 =  740, aug1MAX = 31, aug2 =  512, aug2MAX =  14, aug3 =  514, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Instigator
 [173] = { trade = { 20701,{ 9086, 6}}, base = 20701, aug1 =  299, aug1MAX = 14, aug2 =  35, aug2MAX =  14, aug3 =  133, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Iris
-[174] = { trade = { 20599,{ 9086, 6}}, base = 20599, aug1 =  35, aug1MAX = 14, aug2 =  120, aug2MAX =  9, aug3 =  121, aug3MAX = 9, aug4 = 0, aug4MAX = 0 },--Kali
-[175] = { trade = { 21151,{ 9086, 6}}, base = 21151, aug1 =  35, aug1MAX = 19, aug2 =  114, aug2MAX =  14, aug3 =  116, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Lathi
+[174] = { trade = { 20599,{ 9086, 6}}, base = 20599, aug1 =  35, aug1MAX = 14, aug2 =  297, aug2MAX =  9, aug3 =  298, aug3MAX = 9, aug4 = 0, aug4MAX = 0 },--Kali
+[175] = { trade = { 21151,{ 9086, 6}}, base = 21151, aug1 =  35, aug1MAX = 19, aug2 =  291, aug2MAX =  14, aug3 =  293, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Lathi
 [176] = { trade = { 20520,{ 9086, 6}}, base = 20520, aug1 =  107, aug1MAX = 24, aug2 =  106, aug2MAX =  24, aug3 =  112, aug3MAX = 2, aug4 = 0, aug4MAX = 0 },--Midnights
 [177] = { trade = { 20700,{ 9086, 6}}, base = 20700, aug1 =  740, aug1MAX = 16, aug2 =  512, aug2MAX =  14, aug3 =  514, aug3MAX = 14, aug4 = 0, aug4MAX = 0 },--Nixxer
 [178] = { trade = { 21084,{ 9086, 6}}, base = 21084, aug1 =  289, aug1MAX = 14, aug2 =  329, aug2MAX =  9, aug3 =  323, aug3MAX = 6, aug4 = 0, aug4MAX = 0 },--Queller Rod
