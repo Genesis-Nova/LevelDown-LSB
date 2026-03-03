@@ -14,25 +14,22 @@ local function player_hate()
     local party = target:getParty()
     for _, partyMember in pairs(party) do
          if partyMember:hasEnmity() then
-            local a, b = partyMember:hasEnmity(), true
-                     if a==b then
-                        return true
-                     end
-                        end
-                        return false
-         end 
+            return true
+         end
     end
+    return false
+end
 
 
     local result = xi.msg.basic.ITEM_UNABLE_TO_USE
     local leader = target:getPartyLeader()
 
-    if leader ~= nil and not leader:isInMogHouse() then
+    if leader ~= nil then
         if leader:hasStatusEffect(xi.effect.BATTLEFIELD) or
            player_hate() == true or
            leader:isEngaged() or
            target:getID() == leader:getID() or
-           leader:getZone() == 222 then -- update to not allow nexus cap to transport player to Provenance
+           leader:getZoneID() == 222 then -- update to not allow nexus cap to transport player to Provenance
                     result = xi.msg.basic.ITEM_UNABLE_TO_USE_PARTY_LEADER
         else
                     result = 0
