@@ -19,7 +19,7 @@ spellObject.onMagicCastingCheck = function(caster, target, spell)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    local power = 4
+    local power = 1
 	local duration = 300
     if target:hasStatusEffect(xi.effect.STONESKIN) then
        return spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
