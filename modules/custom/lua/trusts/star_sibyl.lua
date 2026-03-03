@@ -35,7 +35,7 @@ m:addOverride(string.format('xi.actions.spells.trust.%s.onMobSpawn', trustToRepl
     end
 
     mob:addStatusEffectEx(xi.effect.COLURE_ACTIVE, { power = 6, origin = mob, tick = 3, subType = xi.effect.GEO_MAGIC_ATK_BOOST, subPower = tick_amount, tier = xi.auraTarget.ALLIES, flag = xi.effectFlag.AURA })
-    mob:addStatusEffectEx(xi.effect.GEO_MAGIC_ACC_BOOST, { power = 6, origin = mob, tick = 3, subType = xi.effect.GEO_MAGIC_ACC_BOOST, subPower = boostAmount, tier = xi.auraTarget.ALLIES, flag = xi.effectFlag.AURA })
+    mob:addStatusEffectEx(xi.effect.GEO_MAGIC_ACC_BOOST, { power = 6, origin = mob, tick = 3, subType = xi.effect.GEO_MAGIC_ACC_BOOST, subPower = boost_Amount, tier = xi.auraTarget.ALLIES, flag = xi.effectFlag.AURA })
 	
 end)
 
