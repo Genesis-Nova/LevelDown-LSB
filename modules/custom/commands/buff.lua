@@ -62,7 +62,7 @@ local buffOn = function(player)
     if player:hasStatusEffect(xi.effect.DEDICATION) then
         return
     else
-        player:addStatusEffect(xi.effect.DEDICATION, { power= expPower, tick = 3, duration = 0, origin = player, subpower = 30000}) -- max 30000 or server crash
+        player:addStatusEffect(xi.effect.DEDICATION, { power= expPower, origin = player, subPower = 30000}) -- max 30000 or server crash
     end
 
     player:addStatusEffect(xi.effect.REGAIN, { power = regainPower, duration = 0, origin = player})
@@ -134,7 +134,7 @@ local buffOff = function(player)
 end
 
 local buffOnCap = function(player)
-    player:addStatusEffect(xi.effect.COMMITMENT, { power = 200, duration = 0, origin = player, subpower = 30000})
+    player:addStatusEffect(xi.effect.COMMITMENT, { power = 200, origin = player, subPower = 30000})
     player:setCharVar('BuffLvl', player:getMainLvl())
     player:setCharVar('BuffJob', player:getMainJob())
     player:setCharVar('Buff', 2)

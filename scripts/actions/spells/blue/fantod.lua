@@ -30,6 +30,17 @@ spellObject.onSpellCast = function(caster, target, spell)
     local duration = 180
     local power = 30
     local apower = caster:getStat(xi.mod.ATT) *.3
+	
+	if caster:hasStatusEffect(xi.effect.DIFFUSION) then
+        local diffMerit = caster:getMerit(xi.merit.DIFFUSION)
+
+        if diffMerit > 0 then
+            duration = duration + (duration / 100) * diffMerit
+        end
+
+        caster:delStatusEffect(xi.effect.DIFFUSION)
+    end
+	
     if not caster:addStatusEffect(xi.effect.MAGIC_ATK_BOOST, { power = power, duration = duration, origin = caster }) then
         spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
     end

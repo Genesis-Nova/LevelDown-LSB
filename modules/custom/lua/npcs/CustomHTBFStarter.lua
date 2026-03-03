@@ -184,8 +184,8 @@ local battlefieldConfig = {
             { mod = xi.mod.ATT, val = 350, target = true },
             { mod = xi.mod.MATT, val = 250, target = true },
             { mod = xi.mod.MACC, val = 250, target = true },
-            { mod = xi.mod.MEVA, val = 400, target = true },
-            { mod = xi.mod.MDEF, val = 0, target = true },
+            { mod = xi.mod.MEVA, val = 700, target = true },
+            { mod = xi.mod.MDEF, val = 700, target = true },
             { mod = xi.mod.EVA, val = 1344, target = true },
         },
         difficulties = {
@@ -257,8 +257,8 @@ local battlefieldConfig = {
             { mod = xi.mod.ATT, val = 275, target = true },
             { mod = xi.mod.MATT, val = 250, target = true },
             { mod = xi.mod.MACC, val = 250, target = true },
-            { mod = xi.mod.MEVA, val = 200, target = true },
-            { mod = xi.mod.MDEF, val = 200, target = true },
+            { mod = xi.mod.MEVA, val = 700, target = true },
+            { mod = xi.mod.MDEF, val = 700, target = true },
             { mod = xi.mod.EVA, val = 1400, target = true },
         },
         difficulties = {
@@ -325,8 +325,8 @@ local battlefieldConfig = {
             { mod = xi.mod.ATT, val = 275, target = true },
             { mod = xi.mod.MATT, val = 250, target = true },
             { mod = xi.mod.MACC, val = 250, target = true },
-            { mod = xi.mod.MEVA, val = 200, target = true },
-            { mod = xi.mod.MDEF, val = 200, target = true },
+            { mod = xi.mod.MEVA, val = 700, target = true },
+            { mod = xi.mod.MDEF, val = 700, target = true },
             { mod = xi.mod.EVA, val = 1400, target = true },
         },
         difficulties = {
@@ -402,6 +402,8 @@ local function onConfrontationWin(player)
     for _, member in ipairs(playersInZone) do
         if member:isPC() then
             member:printToPlayer("You have 3 minutes before you are removed from the Battlefield.", xi.msg.channel.SYSTEM_3)
+            member:setCharVar("HTBF_Entry_Time", os.time())
+            member:countdown(180)
         end
     end
 
@@ -558,6 +560,7 @@ local function onConfrontationWin(player)
         local currentPlayers = zone:getPlayers()
         for _, member in ipairs(currentPlayers) do
             if member:isPC() then
+                member:setCharVar("HTBF_Timer_Active", 0)
                 member:printToPlayer("Battlefield closed. Warping to Selbina.", xi.msg.channel.SYSTEM_3)
                 member:setPos(17.6757, -14.5586, 72.5541, 117, xi.zone.SELBINA)
             end
@@ -662,12 +665,14 @@ local function checkConfrontation(lookupKey)
             if p:isPC() then
                 p:delStatusEffect(xi.effect.CONFRONTATION)
                 p:setCharVar("HTBF_ConfrontationID", 0)
-                p:setCharVar("HTBF_Timer_Active", 0)
-                p:countdown(0)
                 if didWin and lookup.onWin then
                     lookup.onWin(p)
-                elseif didLose and lookup.onLose then
-                    lookup.onLose(p)
+                elseif didLose then
+                    p:setCharVar("HTBF_Timer_Active", 0)
+                    p:countdown(0)
+                    if lookup.onLose then
+                        lookup.onLose(p)
+                    end
                 end
             end
         end
@@ -826,6 +831,7 @@ m:addOverride("xi.zones.Walk_of_Echoes_[P1].Zone.onZoneIn", function(player, pre
 
                     -- Apply effects
                     p_timed:addStatusEffect(xi.effect.CONFRONTATION, { power = confrontationID, origin = p_timed })
+                    p_timed:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                     p_timed:setCharVar("HTBF_ConfrontationID", confrontationID)
                     local remaining = lookup.timeLimit - os.time()
                     if remaining > 0 then
@@ -971,6 +977,7 @@ m:addOverride("xi.zones.Walk_of_Echoes_[P1].Zone.onZoneIn", function(player, pre
                             -- Apply to all present party members
                             for _, p in ipairs(playerList) do
                                 p:addStatusEffect(xi.effect.CONFRONTATION, { power = confrontationID, origin = p })
+                                p:getStatusEffect(xi.effect.CONFRONTATION):delEffectFlag(xi.effectFlag.DEATH)
                                 p:setCharVar("HTBF_ConfrontationID", confrontationID)
                                 p:countdown(timeLimitSeconds)
                             end

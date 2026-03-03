@@ -109,6 +109,7 @@ local function setup(m, config, helpers)
                     checkConfrontation(confrontationID)
                     m:setUnkillable(true)
                     m:setLocalVar("BenedictionUsed", 0)
+                    m:setLocalVar("BenedictionPending", 0)
                 else
                     if attempts > 0 then
                         debugPrint("Confrontation ID not found yet for Cait Sith. Retrying... " .. attempts)
@@ -132,6 +133,27 @@ local function setup(m, config, helpers)
         end)
 
         m:addOverride(mobTablePath .. ".onMobDisengage", function(mob)
+            local zone = mob:getZone()
+            if zone then
+                local confrontationID = zone:getLocalVar("ActiveHTBF_ConfrontationID")
+                if confrontationID > 0 and xi.confrontation.lookup and xi.confrontation.lookup[confrontationID] then
+                    local lookup = xi.confrontation.lookup[confrontationID]
+                    local anyAlive = false
+                    for _, pid in ipairs(lookup.registeredPlayerIds) do
+                        local p = GetPlayerByID(pid)
+                        if p and p:isAlive() and p:getZoneID() == zone:getID() then
+                            anyAlive = true
+                            break
+                        end
+                    end
+
+                    if anyAlive then
+                        debugPrint("onMobDisengage: Players still alive, skipping despawn.")
+                        return
+                    end
+                end
+            end
+
             debugPrint("onMobDisengage called for " .. mob:getName() .. ". Despawning to prevent exploit.")
             spawnedMobs[mob:getID()] = nil
             DespawnMob(mob:getID())
@@ -146,9 +168,12 @@ local function setup(m, config, helpers)
                 local currentTime = os.time()
                 if currentTime >= mob:getLocalVar("NextBeneCheckTime") then
                     mob:setLocalVar("NextBeneCheckTime", currentTime + 3)
-                    if math.random(1, 100) <= 25 and mob:getCurrentAction() <= 1 then
-                        mob:setLocalVar("BenedictionUsed", 1)
-                        mob:useMobAbility(1010) -- Benediction
+                    if mob:getLocalVar("BenedictionPending") == 0 or currentTime > mob:getLocalVar("BenedictionPendingTime") + 10 then
+                        if math.random(1, 100) <= 25 and mob:getCurrentAction() <= 1 then
+                            mob:setLocalVar("BenedictionPending", 1)
+                            mob:setLocalVar("BenedictionPendingTime", currentTime)
+                            mob:useMobAbility(1010) -- Benediction
+                        end
                     end
                 end
             end
@@ -191,6 +216,7 @@ local function setup(m, config, helpers)
         m:addOverride(mobTablePath .. ".onMobWeaponSkill", function(target, mob, skill)
             if skill:getID() == 1010 then -- Benediction
                 mob:setUnkillable(false)
+                mob:setLocalVar("BenedictionUsed", 1)
             end
         end)
 

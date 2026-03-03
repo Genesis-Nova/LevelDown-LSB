@@ -201,9 +201,10 @@ local debuffEffects = {
         end)
 
         m:addOverride(mobTablePath .. ".onMobWeaponSkill", function(target, mob, skill)
+            local skillID = skill:getID()
 
             -- Track Gospel usage
-            if skill:getID() == xi.mobSkill.GOSPEL_OF_THE_LOST then
+            if skillID == xi.mobSkill.GOSPEL_OF_THE_LOST then
                 mob:eraseAllStatusEffect()
                 for _, effectId in pairs(debuffEffects) do
                     mob:delStatusEffect(effectId)
@@ -215,6 +216,10 @@ local debuffEffects = {
                     gospelCount = 0
                 end
                 mob:setLocalVar("GospelCount", gospelCount)
+            elseif skillID == xi.mobSkill.PERFECT_DEFENSE then
+                mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, duration = 30, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, duration = 30, origin = mob, icon = 0 })
+                mob:addStatusEffect(xi.effect.MAGIC_SHIELD, { power = 1, duration = 30, origin = mob, icon = 0 })
             end
         end)
 
@@ -245,7 +250,28 @@ local debuffEffects = {
             end
         end)
 
-                m:addOverride(mobTablePath .. ".onMobDisengage", function(mob)
+        m:addOverride(mobTablePath .. ".onMobDisengage", function(mob)
+            local zone = mob:getZone()
+            if zone then
+                local confrontationID = zone:getLocalVar("ActiveHTBF_ConfrontationID")
+                if confrontationID > 0 and xi.confrontation.lookup and xi.confrontation.lookup[confrontationID] then
+                    local lookup = xi.confrontation.lookup[confrontationID]
+                    local anyAlive = false
+                    for _, pid in ipairs(lookup.registeredPlayerIds) do
+                        local p = GetPlayerByID(pid)
+                        if p and p:isAlive() and p:getZoneID() == zone:getID() then
+                            anyAlive = true
+                            break
+                        end
+                    end
+
+                    if anyAlive then
+                        debugPrint("onMobDisengage: Players still alive, skipping despawn.")
+                        return
+                    end
+                end
+            end
+
             debugPrint("onMobDisengage called for " .. mob:getName() .. ". Despawning to prevent exploit.")
             -- If mob disengages (wipe/disconnect), force despawn to clean up the instance
             -- This triggers onMobDeath/Despawn logic which handles the confrontation cleanup

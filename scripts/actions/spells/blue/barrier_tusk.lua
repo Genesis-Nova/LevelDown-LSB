@@ -19,7 +19,17 @@ end
 
 spellObject.onSpellCast = function(caster, target, spell)
     local power = 57.5 -- 57.5%
-    local duration = xi.spells.blue.calculateDurationWithDiffusion(caster, 90)
+    local duration = 90
+	
+	if caster:hasStatusEffect(xi.effect.DIFFUSION) then
+        local diffMerit = caster:getMerit(xi.merit.DIFFUSION)
+
+        if diffMerit > 0 then
+            duration = duration + (duration / 100) * diffMerit
+        end
+
+        caster:delStatusEffect(xi.effect.DIFFUSION)
+    end
 
     if not target:addStatusEffect(xi.effect.DEFENSE_BOOST, { power = power, duration = duration, origin = caster }) then
         spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)

@@ -9,3 +9,4 @@ UPDATE zone_settings SET misc = 2206 WHERE zoneid =  45;
 UPDATE zone_settings SET misc = 2206 WHERE zoneid = 253;
 UPDATE zone_settings SET misc = 2206 WHERE zoneid = 217;
 UPDATE zone_settings SET misc = 5736 WHERE zoneid = 280;
+UPDATE zone_settings SET misc = 2712 WHERE zoneid =  298;
