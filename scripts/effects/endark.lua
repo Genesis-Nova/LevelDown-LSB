@@ -25,6 +25,7 @@ end
 
 effectObject.onEffectLose = function(target, effect)
     local jpValue = target:getJobPointLevel(xi.jp.ENDARK_EFFECT)
+	local attpower  = jpValue / 2
 
     target:setMod(xi.mod.ENSPELL_DMG, 0)
     target:setMod(xi.mod.ENSPELL, 0)
