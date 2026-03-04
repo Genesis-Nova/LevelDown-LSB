@@ -65,6 +65,7 @@ zones[xi.zone.YUHTUNGA_JUNGLE] =
         ROSE_GARDEN          = GetFirstID('Rose_Garden'),
         SIREN                = GetFirstID('Siren'),
         VOLUPTUOUS_VILMA     = GetFirstID('Voluptuous_Vilma'),
+        VOIDWATCH            = GetTableOfIDs('Holy_Moly'),
     },
     npc =
     {
@@ -74,9 +75,10 @@ zones[xi.zone.YUHTUNGA_JUNGLE] =
         CERMET_HEADSTONE         = GetFirstID('Cermet_Headstone'),
         PEDDLESTOX               = GetFirstID('Peddlestox'),
         BEASTMEN_TREASURE_OFFSET = GetFirstID('qm3'),
-
-        HARVESTING = GetTableOfIDs('Harvesting_Point'),
-        LOGGING    = GetTableOfIDs('Logging_Point'),
+        PLANAR_RIFT              = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS           = GetTableOfIDs('Riftworn_Pyxis'),
+        HARVESTING               = GetTableOfIDs('Harvesting_Point'),
+        LOGGING                  = GetTableOfIDs('Logging_Point'),
     },
 }
 

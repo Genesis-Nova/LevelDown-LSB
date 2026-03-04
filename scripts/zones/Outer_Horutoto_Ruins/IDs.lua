@@ -55,11 +55,14 @@ zones[xi.zone.OUTER_HORUTOTO_RUINS] =
         DESMODONT                  = GetFirstID('Desmodont'),
         FULL_MOON_FOUNTAIN_OFFSET  = GetFirstID('Jack_of_Cups'),
         JESTER_WHOD_BE_KING_OFFSET = GetFirstID('Queen_of_Swords'),
+        VOIDWATCH                  = GetTableOfIDs('Voidwrought'),
     },
     npc =
     {
         GATE_MAGICAL_GIZMO = GetFirstID('_5e9'),
         TREASURE_CHEST     = GetFirstID('Treasure_Chest'),
+        PLANAR_RIFT        = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS     = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

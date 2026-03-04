@@ -58,11 +58,14 @@ zones[xi.zone.GUSGEN_MINES] =
         SMOTHERED_SCHMIDT   = GetFirstID('Smothered_Schmidt'),
         WOUNDED_WURFEL      = GetFirstID('Wounded_Wurfel'),
         APPARATUS_ELEMENTAL = GetTableOfIDs('Earth_Elemental')[3], -- Last elemental in the list
+        VOIDWATCH           = GetTableOfIDs('Lorbulcrud'),
     },
     npc =
     {
         TREASURE_CHEST = GetFirstID('Treasure_Chest'),
         MINING         = GetTableOfIDs('Mining_Point'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

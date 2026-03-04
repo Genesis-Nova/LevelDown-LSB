@@ -51,6 +51,25 @@ zones[xi.zone.EAST_RONFAURE] =
         VOIDWALKER_UPGRADE_KI_2       = 11066, -- The <keyitem> takes on a deeper, richer hue and becomes <keyitem>!
         VOIDWALKER_BREAK_KI           = 11067, -- The <keyitem> shatters into tiny fragments.
         VOIDWALKER_OBTAIN_KI          = 11068, -- Obtained key item: <keyitem>!
+        VOIDWATCH_CLEARANCE           = 11091, -- {player:name} gains clearance to participate in the Voidwatch operation.\x07One <0105:33,82,80,80,80> expended.<7F31>
+        VOIDWATCH_DISTANCE_TOFAR      = 11094, -- <1F:7B>You have ventured too far from the field of battle.\x07You will be automatically relieved of Voidwatcher status if you do not return.<7F31>
+        VOIDWATCH_STATUS_REMOVED      = 11095, -- You have ventured too far from the field of battle.\x07Voidwatcher status revoked.<7F31>
+        VOIDWATCH_DISTANCE_RETURNED   = 11096, -- You have returned to the field of battle.<7F31>
+        VOIDWATCH_MYSTERIOUS_ENERGY   = 11104, -- You feel a mysterious energy seeping forth from an unknown source...<7F31>
+        VOIDWATCH_VOIDSTONE_RESONATES = 11105, -- The <0105:33,82,80,80,80> resonates with the <0105:33,82,81,80,80>.\x07You may commence the Voidwatch operation at will.<7F31>
+        VOIDWATCH_NM_SPAWN            = 11111, -- A fiend materializes from the planar rift!<7F31>
+        VOIDWATCH_TRADE_CELLS         = 11180, -- {player:name} expends <0101:01> <0105:24,82,80,80,80> and increases {1:select}[blue/red/yellow/green] spectral alignment by {2}%!\x07Current value: +{3}%<7F31>
+        VOIDWATCH_CELL_MAX_VAL        = 11183, -- The <0105:23,82,81,80,80> increases {0:select}[blue/red/yellow/green] spectral alignment to its maximum value.<7F31>
+        OBTAINED_ALL_SPOILES          = 11190, -- You have obtained all spoils.<7F31>
+        FIEND_VULNERABLE_ATTACKS      = 11209, -- The fiend appears {2:select}[/highly /extremely ]vulnerable to {0:select}[/hand-to-hand/dagger/sword/great sword/axe/great axe/scythe/polearm/katana/great katana/club/staff/archery/marksmanship/pet/automaton/avatar/wyvern] {1:select}[weapon skills/special attacks/blood pacts]!<7F31>
+        FIEND_VULNERABLE_JOBABILITY   = 11210, -- The fiend appears {1:select}[/highly /extremely ]vulnerable to {0:select}[/warrior/monk/white mage/black mage/red mage/thief/paladin/dark knight/beastmaster/bard/ranger/samurai/ninja/dragoon/summoner/blue mage/corsair/puppetmaster/dancer/scholar] abilities!<7F31>
+        FIEND_VULNERABLE_ELEM_MAGIC   = 11211, -- The fiend appears {1:select}[/highly /extremely ]vulnerable to {0:select}[/fire elemental /ice elemental /wind elemental /earth elemental /lightning elemental /water elemental /light elemental /darkness elemental ]magic!<7F31>
+        FIEND_VULNERABLE_MAGIC_TYPE   = 11212, -- The fiend appears {1:select}[/highly /extremely ]vulnerable to {0:select}[/fire elemental /ice elemental /wind elemental /earth elemental /lightning elemental /water elemental /light elemental /darkness elemental ]{2:select}[/white magic/black magic//ninjutsu/bard songs/blue magic]!<7F31>
+        FIEND_VULNERABLE_PET_ABILITY  = 11213, -- The fiend appears {2:select}[/highly /extremely ]vulnerable to {0:select}[/fire elemental /ice elemental /wind elemental /earth elemental /lightning elemental /water elemental /light elemental /darkness elemental ]{1:select}[blood pacts/wyvern abilities]!<7F31>
+        FIEND_VULNERABLE_PET_SPECIAL  = 11214, -- The fiend appears {2:select}[/highly /extremely ]vulnerable to pet special attacks!<7F31>
+        FIEND_VULNERABLE_ATM_SPECIAL  = 11215, -- The fiend appears {2:select}[/highly /extremely ]vulnerable to automaton special attacks!<7F31>
+        PHASE_DISPLACER_TRADE         = 11229, -- Obtained {1} <0105:33,82,80,80,80> by expending {1} <0109:29,82,81,80,80,82,82,80,80>.<7F31>
+        CANNOT_OBTAIN_VOIDCLUSTER     = 11231, -- You cannot obtain any more <0105:35,82,80,80,80>.<7F31>
         LEARNS_SPELL                  = 11958, -- <name> learns <spell>!
         UNCANNY_SENSATION             = 11960, -- You are assaulted by an uncanny sensation.
     },
@@ -59,6 +78,7 @@ zones[xi.zone.EAST_RONFAURE] =
     {
         BIGMOUTH_BILLY = GetFirstID('Bigmouth_Billy'),
         SWAMFISK       = GetTableOfIDs('Swamfisk'), -- 2 NMs
+        VOIDWATCH      = GetTableOfIDs('Sarimanok'), -- 3 NMs
 
         VOIDWALKER =
         {
@@ -94,7 +114,9 @@ zones[xi.zone.EAST_RONFAURE] =
 
     npc =
     {
-        LOGGING = GetTableOfIDs('Logging_Point'),
+        LOGGING        = GetTableOfIDs('Logging_Point'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis')
     },
 }
 

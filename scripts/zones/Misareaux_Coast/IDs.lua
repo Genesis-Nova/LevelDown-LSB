@@ -67,12 +67,15 @@ zones[xi.zone.MISAREAUX_COAST] =
         OKYUPETE          = GetFirstID('Okyupete'),
         PM6_2_MOB_OFFSET  = GetFirstID('Warder_Aglaia'),
         ZIPHIUS           = GetFirstID('Ziphius'),
+        VOIDWATCH         = GetTableOfIDs('Tsui-Goab'),
     },
     npc =
     {
         LOGGING         = GetTableOfIDs('Logging_Point'),
         ZIPHIUS_QM_BASE = GetFirstID('qm_ziphius'),
         ALSHA_QM        = GetFirstID('qm_alsha'),
+        PLANAR_RIFT     = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS  = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

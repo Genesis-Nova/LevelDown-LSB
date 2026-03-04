@@ -36,6 +36,7 @@ zones[xi.zone.ROLANBERRY_FIELDS_S] =
         DELICIEUSE_DELPHINE = GetFirstID('Delicieuse_Delphine'),
         ERLE                = GetFirstID('Erle'), -- PH at -341 4 6
         DYINYINGA           = GetFirstID('Dyinyinga'), -- PH at 170 -31.8 -170
+        VOIDWATCH           = GetTableOfIDs('Agathos'),
 
         VOIDWALKER =
         {
@@ -72,6 +73,8 @@ zones[xi.zone.ROLANBERRY_FIELDS_S] =
     npc =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Hedioste_RK'), -- San, Bas, Win, Flag +4, CA
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

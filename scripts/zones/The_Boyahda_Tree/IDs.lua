@@ -45,10 +45,13 @@ zones[xi.zone.THE_BOYAHDA_TREE] =
         MIMIC             = GetFirstID('Mimic'),
         AGAS              = GetFirstID('Agas'),
         BEET_LEAFHOPPER   = GetFirstID('Beet_Leafhopper'),
+        VOIDWATCH         = GetTableOfIDs('Modron'),
     },
     npc =
     {
         TREASURE_COFFER = GetFirstID('Treasure_Coffer'),
+        PLANAR_RIFT     = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS  = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

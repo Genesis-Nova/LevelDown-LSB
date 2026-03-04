@@ -46,11 +46,14 @@ zones[xi.zone.BEHEMOTHS_DOMINION] =
         ANCIENT_WEAPON          = GetFirstID('Ancient_Weapon'),
         LEGENDARY_WEAPON        = GetFirstID('Legendary_Weapon'),
         TALEKEEPERS_GIFT_OFFSET = GetFirstID('Picklix_Longindex'),
+        VOIDWATCH               = GetTableOfIDs('Pil'),
     },
     npc =
     {
         BEHEMOTH_QM      = GetFirstID('qm2'),
         CERMET_HEADSTONE = GetFirstID('Cermet_Headstone'),
+        PLANAR_RIFT      = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS   = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

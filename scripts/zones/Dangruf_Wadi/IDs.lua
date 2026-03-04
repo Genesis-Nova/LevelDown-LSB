@@ -50,12 +50,15 @@ zones[xi.zone.DANGRUF_WADI] =
         GEYSER_LIZARD       = GetFirstID('Geyser_Lizard'),
         CHOCOBOLEECH        = GetFirstID('Chocoboleech'),
         APPARATUS_ELEMENTAL = GetFirstID('Fire_Elemental'),
+        VOIDWATCH           = GetTableOfIDs('Celaeno'),
     },
     npc =
     {
         GEYSER_OFFSET      = GetFirstID('blank'),
         AN_EMPTY_VESSEL_QM = GetFirstID('qm2'),
         TREASURE_CHEST     = GetFirstID('Treasure_Chest'),
+        PLANAR_RIFT        = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS     = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

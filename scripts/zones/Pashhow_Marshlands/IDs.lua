@@ -57,6 +57,7 @@ zones[xi.zone.PASHHOW_MARSHLANDS] =
         BLOODPOOL_VORAX    = GetFirstID('Bloodpool_Vorax'),
         BOWHO_WARMONGER    = GetFirstID('BoWho_Warmonger'),
         TOXIC_TAMLYN       = GetFirstID('Toxic_Tamlyn'),
+        VOIDWATCH          = GetTableOfIDs('Murk-veined_Baneberry'),
 
         VOIDWALKER  =
         {
@@ -105,7 +106,9 @@ zones[xi.zone.PASHHOW_MARSHLANDS] =
 
     npc =
     {
-        OVERSEER_BASE = GetFirstID('Mesachedeau_RK'),
+        OVERSEER_BASE  = GetFirstID('Mesachedeau_RK'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

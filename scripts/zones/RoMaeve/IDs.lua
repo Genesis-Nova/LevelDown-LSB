@@ -39,6 +39,7 @@ zones[xi.zone.ROMAEVE] =
         ROGUE_RECEPTACLE = GetFirstID('Rogue_Receptacle'),
         ELDHRIMNIR       = GetFirstID('Eldhrimnir'),
         MOKKURKALFI      = GetFirstID('Mokkurkalfi'),
+        VOIDWATCH        = GetTableOfIDs('Mimic_King'),
     },
     npc =
     {
@@ -58,6 +59,8 @@ zones[xi.zone.ROMAEVE] =
 
         MOONGATE_OFFSET = GetFirstID('_3e0'),
         BASTOK_7_1_QM   = GetFirstID('qm2'),
+        PLANAR_RIFT     = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS  = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

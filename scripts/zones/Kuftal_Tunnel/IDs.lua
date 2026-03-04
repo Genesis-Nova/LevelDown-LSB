@@ -48,12 +48,15 @@ zones[xi.zone.KUFTAL_TUNNEL] =
         PHANTOM_WORM         = GetFirstID('Phantom_Worm'),
         GUIVRE               = GetFirstID('Guivre'),
         KETTENKAEFER         = GetFirstID('Kettenkaefer'),
+        VOIDWATCH            = GetTableOfIDs('Tangaroa'),
     },
     npc =
     {
         PHANTOM_WORM_QM = GetFirstID('qm1'),
         DOOR_ROCK       = GetFirstID('_4u0'),
         TREASURE_COFFER = GetFirstID('Treasure_Coffer'),
+        PLANAR_RIFT     = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS  = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

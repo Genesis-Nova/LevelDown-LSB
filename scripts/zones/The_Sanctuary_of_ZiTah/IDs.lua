@@ -63,11 +63,14 @@ zones[xi.zone.THE_SANCTUARY_OF_ZITAH] =
         DOOMED_PILGRIMS   = GetFirstID('Doomed_Pilgrims'),
         ISONADE           = GetFirstID('Isonade'),
         GREENMAN          = GetFirstID('Greenman'),
+        VOIDWATCH         = GetTableOfIDs('Cath_Palug'),
     },
     npc =
     {
         OVERSEER_BASE     = GetFirstID('Credaurion_RK'),
         CERMET_HEADSTONE  = GetFirstID('Cermet_Headstone'),
+        PLANAR_RIFT       = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS    = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

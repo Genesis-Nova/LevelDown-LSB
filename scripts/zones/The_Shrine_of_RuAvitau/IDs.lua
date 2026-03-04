@@ -30,10 +30,11 @@ zones[xi.zone.THE_SHRINE_OF_RUAVITAU] =
     },
     mob =
     {
-        ULLIKUMMI       = GetFirstID('Ullikummi'),
-        OLLAS_OFFSET    = GetFirstID('Olla_Pequena'),
-        KIRIN           = GetFirstID('Kirin'),
-        MOTHER_GLOBE    = GetFirstID('Mother_Globe'),
+        ULLIKUMMI     = GetFirstID('Ullikummi'),
+        OLLAS_OFFSET  = GetFirstID('Olla_Pequena'),
+        KIRIN         = GetFirstID('Kirin'),
+        MOTHER_GLOBE  = GetFirstID('Mother_Globe'),
+        VOIDWATCH     = GetTableOfIDs('Qilin'),
     },
     npc =
     {
@@ -41,6 +42,8 @@ zones[xi.zone.THE_SHRINE_OF_RUAVITAU] =
         KIRIN_QM        = GetFirstID('qm2'),
         DOOR_OFFSET     = GetFirstID('_4y0'),
         MONOLITH_OFFSET = GetFirstID('Monolith'),
+        PLANAR_RIFT     = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS  = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

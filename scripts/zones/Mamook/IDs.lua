@@ -41,11 +41,14 @@ zones[xi.zone.MAMOOK] =
         NIKILULU             = GetFirstID('Nikilulu'),
         MIKILURU             = GetFirstID('Mikiluru'),
         MIKIRULU             = GetFirstID('Mikirulu'),
+        VOIDWATCH            = GetTableOfIDs('Yalungur'),
     },
     npc =
     {
-        LOGGING      = GetTableOfIDs('Logging_Point'),
-        QUEST_LIQUID = GetTableOfIDs('Viscous_Liquid')[6], -- Used in quest Two Horn the Savage
+        LOGGING        = GetTableOfIDs('Logging_Point'),
+        QUEST_LIQUID   = GetTableOfIDs('Viscous_Liquid')[6], -- Used in quest Two Horn the Savage
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

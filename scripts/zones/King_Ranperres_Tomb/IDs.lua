@@ -47,10 +47,13 @@ zones[xi.zone.KING_RANPERRES_TOMB] =
         CORRUPTED_SOFFEIL     = GetFirstID('Corrupted_Soffeil'),
         CORRUPTED_ULBRIG      = GetFirstID('Corrupted_Ulbrig'),
         ANKOU                 = GetFirstID('Ankou'),
+        VOIDWATCH             = GetTableOfIDs('Hahava'),
     },
     npc =
     {
         TREASURE_CHEST = GetFirstID('Treasure_Chest'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

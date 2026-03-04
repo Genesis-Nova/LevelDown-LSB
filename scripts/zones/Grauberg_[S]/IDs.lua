@@ -34,12 +34,15 @@ zones[xi.zone.GRAUBERG_S] =
         SCITALIS             = GetFirstID('Scitalis'),
         MIGRATORY_HIPPOGRYPH = GetFirstID('Migratory_Hippogryph'),
         VASILICERATOPS       = GetFirstID('Vasiliceratops'),
+        VOIDWATCH            = GetTableOfIDs('Ocythoe'),
     },
     npc =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Ulaciont_RK'), -- San, Bas, Win, Flag +4, CA
         HARVESTING          = GetTableOfIDs('Harvesting_Point'),
         INDESCRIPT_MARKINGS = GetFirstID('Indescript_Markings'),
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

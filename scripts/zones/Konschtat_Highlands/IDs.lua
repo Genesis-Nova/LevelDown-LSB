@@ -67,6 +67,7 @@ zones[xi.zone.KONSCHTAT_HIGHLANDS] =
         FORGER         = GetFirstID('Forger'),
         HATY           = GetFirstID('Haty'),
         BENDIGEIT_VRAN = GetFirstID('Bendigeit_Vran'),
+        VOIDWATCH      = GetTableOfIDs('Gwynn_ap_Nudd'),
 
         VOIDWALKER =
         {
@@ -102,6 +103,8 @@ zones[xi.zone.KONSCHTAT_HIGHLANDS] =
 
     npc =
     {
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

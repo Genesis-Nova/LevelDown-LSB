@@ -26,10 +26,13 @@ zones[xi.zone.THE_ELDIEME_NECROPOLIS_S] =
     },
     mob =
     {
+        VOIDWATCH = GetTableOfIDs('Giltine'),
     },
     npc =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Renvriche_TK'), -- San, Bas, Win, Flag +4, CA
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

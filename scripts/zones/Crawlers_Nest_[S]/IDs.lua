@@ -22,10 +22,13 @@ zones[xi.zone.CRAWLERS_NEST_S] =
     mob =
     {
         MORILLE_MORTELLE = GetFirstID('Morille_Mortelle'),
+        VOIDWATCH        = GetTableOfIDs('Nympha_Eunomia'),
     },
     npc =
     {
-        CAMPAIGN_NPC_OFFSET = GetFirstID('Chefroucauld_TK') -- San, Bas, Win, Flag +4, CA
+        CAMPAIGN_NPC_OFFSET = GetFirstID('Chefroucauld_TK'), -- San, Bas, Win, Flag +4, CA
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

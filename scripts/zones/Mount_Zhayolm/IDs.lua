@@ -54,11 +54,14 @@ zones[xi.zone.MOUNT_ZHAYOLM] =
         ANANTABOGA            = GetFirstID('Anantaboga'),
         KHROMASOUL_BHURBORLOR = GetFirstID('Khromasoul_Bhurborlor'),
         SARAMEYA              = GetFirstID('Sarameya'),
+        VOIDWATCH             = GetTableOfIDs('Vanasarvik'),
     },
     npc =
     {
-        HOOFPRINT = GetFirstID('Warhorse_Hoofprint'),
-        MINING    = GetTableOfIDs('Mining_Point'),
+        HOOFPRINT      = GetFirstID('Warhorse_Hoofprint'),
+        MINING         = GetTableOfIDs('Mining_Point'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

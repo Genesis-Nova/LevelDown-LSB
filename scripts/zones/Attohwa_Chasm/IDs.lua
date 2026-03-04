@@ -37,6 +37,7 @@ zones[xi.zone.ATTOHWA_CHASM] =
         ALASTOR_ANTLION     = GetFirstID('Alastor_Antlion'),
         EXECUTIONER_ANTLION = GetTableOfIDs('Executioner_Antlion'),
         XOLOTL              = GetFirstID('Xolotl'),
+        VOIDWATCH           = GetTableOfIDs('Fjalar'),
     },
     npc =
     {
@@ -44,6 +45,8 @@ zones[xi.zone.ATTOHWA_CHASM] =
         GASPONIA_OFFSET   = GetFirstID('_07n'),
         EXCAVATION        = GetTableOfIDs('Excavation_Point'),
         QM_FEELER_ANTLION = GetFirstID('qm_feeler_antlion'),
+        PLANAR_RIFT       = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS    = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

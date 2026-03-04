@@ -75,7 +75,8 @@ zones[xi.zone.TEMPLE_OF_UGGALEPIH] =
         TROMPE_LOEIL             = GetFirstID('Trompe_LOeil'),
         TEMPLE_GUARDIAN          = GetFirstID('Temple_Guardian'),
         TONBERRY_KINQ            = GetFirstID('Tonberry_Kinq'),
-        YALLERY_BROWN            = GetFirstID('Yallery_Brown')
+        YALLERY_BROWN            = GetFirstID('Yallery_Brown'),
+        VOIDWATCH                = GetTableOfIDs('Neith'),
     },
     npc =
     {
@@ -84,7 +85,9 @@ zones[xi.zone.TEMPLE_OF_UGGALEPIH] =
         DOOR_TO_RANCOR       = GetFirstID('_mfb'),
         PLONGEUR_MONBERRY    = GetFirstID('Plongeur_Monberry'),
         TEMPLE_GUARDIAN_DOOR = GetFirstID('_mf1'),
-        TREASURE_COFFER      = GetFirstID('Treasure_Coffer')
+        TREASURE_COFFER      = GetFirstID('Treasure_Coffer'),
+        PLANAR_RIFT          = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS       = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

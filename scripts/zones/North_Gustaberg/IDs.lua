@@ -58,6 +58,7 @@ zones[xi.zone.NORTH_GUSTABERG] =
         STINGING_SOPHIE     = GetTableOfIDs('Stinging_Sophie'), -- 2 NMs
         MAIGHDEAN_UAINE     = GetFirstID('Maighdean_Uaine'), -- TODO: PH Audit, 2 NMs
         GAMBILOX_WANDERLING = GetFirstID('Gambilox_Wanderling'),
+        VOIDWATCH           = GetTableOfIDs('Sallow_Seymour'),
 
         VOIDWALKER =
         {
@@ -106,7 +107,9 @@ zones[xi.zone.NORTH_GUSTABERG] =
 
     npc =
     {
-        OVERSEER_BASE = GetFirstID('Ennigreaud_RK'),
+        OVERSEER_BASE  = GetFirstID('Ennigreaud_RK'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

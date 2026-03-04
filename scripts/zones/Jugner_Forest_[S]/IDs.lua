@@ -49,6 +49,7 @@ zones[xi.zone.JUGNER_FOREST_S] =
         FINGERFILCHER_DRADZAD = GetFirstID('Fingerfilcher_Dradzad'),
         COBRACLAW_BUCHZVOTCH  = GetFirstID('Cobraclaw_Buchzvotch'),
         VULKODLAC             = GetFirstID('Vulkodlac'),
+        VOIDWATCH             = GetTableOfIDs('Kholomodumo'),
 
         VOIDWALKER =
         {
@@ -86,6 +87,8 @@ zones[xi.zone.JUGNER_FOREST_S] =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Roiloux_RK'), -- San, Bas, Win, Flag +4, CA
         LOGGING             = GetTableOfIDs('Logging_Point'),
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

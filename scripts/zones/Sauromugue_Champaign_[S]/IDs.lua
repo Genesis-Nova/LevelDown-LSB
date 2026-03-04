@@ -35,6 +35,7 @@ zones[xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
     {
         BALAM_QUITZ = GetFirstID('Balam-Quitz'),
         COQUECIGRUE = GetFirstID('Coquecigrue'),
+        VOIDWATCH   = GetTableOfIDs('Gugalanna'),
 
         VOIDWALKER =
         {
@@ -71,6 +72,8 @@ zones[xi.zone.SAUROMUGUE_CHAMPAIGN_S] =
     npc =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Alreage_RK'), -- San, Bas, Win, Flag +4, CA
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

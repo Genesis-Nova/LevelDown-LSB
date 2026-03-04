@@ -61,11 +61,14 @@ zones[xi.zone.WEST_RONFAURE] =
         FUNGUS_BEETLE      = GetFirstID('Fungus_Beetle'),
         JAGGEDY_EARED_JACK = GetFirstID('Jaggedy-Eared_Jack'),
         MARAUDER_DVOGZOG   = GetFirstID('Marauder_Dvogzog'),
+        VOIDWATCH          = GetTableOfIDs('Lancing_Lamorak'),
     },
     npc =
     {
         SIGNPOST_OFFSET = GetFirstID('Signpost'),
         OVERSEER_BASE   = GetFirstID('Doladepaiton_RK'),
+        PLANAR_RIFT     = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS  = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

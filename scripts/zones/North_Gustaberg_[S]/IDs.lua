@@ -36,6 +36,7 @@ zones[xi.zone.NORTH_GUSTABERG_S] =
     {
         ANKABUT    = GetFirstID('Ankabut'),
         GLOOMANITA = GetFirstID('Gloomanita'),
+        VOIDWATCH  = GetTableOfIDs('Ushumgal'),
 
         VOIDWALKER =
         {
@@ -86,6 +87,8 @@ zones[xi.zone.NORTH_GUSTABERG_S] =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Estineau_RK'), -- San, Bas, Win, Flag +4, CA
         MINING              = GetTableOfIDs('Mining_Point'),
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

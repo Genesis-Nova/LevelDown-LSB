@@ -71,6 +71,7 @@ zones[xi.zone.LA_THEINE_PLATEAU] =
         BLOODTEAR         = GetFirstID('Bloodtear_Baldurf'),
         BATTERING_RAM     = GetTableOfIDs('Battering_Ram'),
         NIHNIKNOOVI       = GetFirstID('Nihniknoovi'),
+        VOIDWATCH         = GetTableOfIDs('Stachysaurus'),
 
         VOIDWALKER =
         {
@@ -106,8 +107,10 @@ zones[xi.zone.LA_THEINE_PLATEAU] =
 
     npc =
     {
-        FALLEN_EGG  = GetFirstID('FallenEgg'),
-        RAINBOW     = GetFirstID('_2u0'),
+        FALLEN_EGG     = GetFirstID('FallenEgg'),
+        RAINBOW        = GetFirstID('_2u0'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

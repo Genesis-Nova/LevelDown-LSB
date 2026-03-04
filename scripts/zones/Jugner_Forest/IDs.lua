@@ -67,6 +67,7 @@ zones[xi.zone.JUGNER_FOREST] =
         METEORMAULER       = GetFirstID('Meteormauler_Zhagtegg'),
         PANZER_PERCIVAL    = GetTableOfIDs('Panzer_Percival'), -- 2 NMs
         SUPPLESPINE_MUJWUJ = GetFirstID('Supplespine_Mujwuj'),
+        VOIDWATCH          = GetTableOfIDs('Belphoebe'),
 
         VOIDWALKER =
         {
@@ -103,10 +104,12 @@ zones[xi.zone.JUGNER_FOREST] =
 
     npc =
     {
-        OVERSEER_BASE = GetFirstID('Chaplion_RK'),
-        LOGGING       = GetTableOfIDs('Logging_Point'),
-        SIGNPOST      = GetTableOfIDs('Signpost'),
-        TIMELYVISITQM = GetFirstID('qm1'),
+        OVERSEER_BASE  = GetFirstID('Chaplion_RK'),
+        LOGGING        = GetTableOfIDs('Logging_Point'),
+        SIGNPOST       = GetTableOfIDs('Signpost'),
+        TIMELYVISITQM  = GetFirstID('qm1'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

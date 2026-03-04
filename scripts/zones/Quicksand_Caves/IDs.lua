@@ -63,6 +63,7 @@ zones[xi.zone.QUICKSAND_CAVES] =
         ANCIENT_VESSEL        = GetFirstID('Ancient_Vessel'),
         TRIBUNUS_VII_I        = GetFirstID('Tribunus_VII-I'),
         GIRTABLULU            = GetFirstID('Girtablulu'),
+        VOIDWATCH             = GetTableOfIDs('Malleator_Maurok'),
     },
     npc =
     {
@@ -78,6 +79,8 @@ zones[xi.zone.QUICKSAND_CAVES] =
         CHAINS_THAT_BIND_US_QM = GetFirstID('qm6'),
         TREASURE_COFFER        = GetFirstID('Treasure_Coffer'),
         ANTICAN_TAG_QM         = GetFirstID('qm25'),
+        PLANAR_RIFT            = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS         = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

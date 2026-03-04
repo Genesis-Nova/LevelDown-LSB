@@ -35,6 +35,7 @@ zones[xi.zone.VELUGANNON_PALACE] =
         MIMIC            = GetFirstID('Mimic'),
         STEAM_CLEANER    = GetFirstID('Steam_Cleaner'),
         ZIPACNA          = GetFirstID('Zipacna'),
+        VOIDWATCH        = GetTableOfIDs('Uptala'),
     },
     npc =
     {
@@ -44,6 +45,8 @@ zones[xi.zone.VELUGANNON_PALACE] =
         Y_LITH_OFFSET   = GetTableOfIDs('Monolith')[1],
         B_LITH_OFFSET   = GetTableOfIDs('Monolith')[6],
         TREASURE_COFFER = GetFirstID('Treasure_Coffer'),
+        PLANAR_RIFT     = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS  = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

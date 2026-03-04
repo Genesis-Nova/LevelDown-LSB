@@ -70,6 +70,7 @@ zones[xi.zone.BATALLIA_DOWNS] =
         SUPARNA_FLEDGLING = GetFirstID('Suparna_Fledgling'),
         TOTTERING_TOBY    = GetFirstID('Tottering_Toby'),
         VEGNIX_GREENTHUMB = GetFirstID('Vegnix_Greenthumb'),
+        VOIDWATCH         = GetTableOfIDs('Cherufe'),
 
         VOIDWALKER =
         {
@@ -108,6 +109,8 @@ zones[xi.zone.BATALLIA_DOWNS] =
         BLUE_BEAM_BASE   = GetFirstID('NPC[2a4]'),
         RAPTOR_FOOD_BASE = GetFirstID('Raptors_Food_0'),
         SYRILLIA         = GetFirstID('Syrillia'),
+        PLANAR_RIFT      = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS   = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

@@ -68,6 +68,7 @@ zones[xi.zone.CAEDARVA_MIRE] =
         TYGER                 = GetFirstID('Tyger'),
         VERDELET              = GetFirstID('Verdelet'),
         ZIKKO                 = GetFirstID('Zikko'),
+        VOIDWATCH             = GetTableOfIDs('Brekekekex'),
     },
     npc =
     {
@@ -75,6 +76,8 @@ zones[xi.zone.CAEDARVA_MIRE] =
         LOGGING             = GetTableOfIDs('Logging_Point'),
         RUNIC_PORTAL_AZOUPH = GetFirstID('Runic_Portal_Azouph'),
         RUNIC_PORTAL_DVUCCA = GetFirstID('Runic_Portal_Dvucca'),
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

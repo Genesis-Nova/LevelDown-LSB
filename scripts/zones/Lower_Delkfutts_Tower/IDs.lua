@@ -38,10 +38,13 @@ zones[xi.zone.LOWER_DELKFUTTS_TOWER] =
         EPIALTES      = GetFirstID('Epialtes'),
         EURYMEDON     = GetFirstID('Eurymedon'),
         DISASTER_IDOL = GetFirstID('Disaster_Idol'),
+        VOIDWATCH     = GetTableOfIDs('Akvan'),
     },
     npc =
     {
         TALES_BEGINNING = GetFirstID('Tales_Beginning'), -- CoP 1-1 mission script uses this
+        PLANAR_RIFT     = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS  = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

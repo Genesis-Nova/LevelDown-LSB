@@ -36,6 +36,7 @@ zones[xi.zone.EAST_RONFAURE_S] =
         GOBLINTRAP = GetFirstID('Goblintrap'),
         SKOGS_FRU  = GetFirstID('Skogs_Fru'),
         MYRADROSH  = GetFirstID('Myradrosh'),
+        VOIDWATCH  = GetTableOfIDs('Cottus'),
 
         VOIDWALKER =
         {
@@ -73,6 +74,8 @@ zones[xi.zone.EAST_RONFAURE_S] =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Arlayse_RK'), -- San, Bas, Win, Flag +4, CA
         LOGGING             = GetTableOfIDs('Logging_Point'),
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

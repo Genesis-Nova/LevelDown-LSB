@@ -58,12 +58,15 @@ zones[xi.zone.MAZE_OF_SHAKHRAMI] =
         APPARATUS_ELEMENTAL = GetFirstID('Dark_Elemental'),
         AROMA_CRAWLER       = GetFirstID('Aroma_Crawler'),
         LOST_SOUL           = GetFirstID('Lost_Soul'),
+        VOIDWATCH           = GetTableOfIDs('Ogbunabali'),
     },
     npc =
     {
         FOSSIL_ROCK_OFFSET = GetFirstID('Fossil_Rock'),
         TREASURE_CHEST     = GetFirstID('Treasure_Chest'),
         EXCAVATION         = GetTableOfIDs('Excavation_Point'),
+        PLANAR_RIFT        = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS     = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

@@ -21,10 +21,13 @@ zones[xi.zone.GARLAIGE_CITADEL_S] =
     },
     mob =
     {
+        VOIDWATCH = GetTableOfIDs('Laidly_Laurence'),
     },
     npc =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Lidaise_TK'), -- San, Bas, Win, Flag +4, CA
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

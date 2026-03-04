@@ -58,12 +58,15 @@ zones[xi.zone.WESTERN_ALTEPA_DESERT] =
         PICOLATON            = GetFirstID('Picolaton'),
         SABOTENDER_ENAMORADO = GetFirstID('Sabotender_Enamorado'),
         WESTERN_SPHINX       = GetFirstID('Western_Sphinx'),
+        VOIDWATCH            = GetTableOfIDs('Sabotender_Campeador'),
     },
     npc =
     {
         ALTEPA_GATE              = GetFirstID('_3h0'),
         PEDDLESTOX               = GetFirstID('Peddlestox'),
         BEASTMEN_TREASURE_OFFSET = GetFirstID('qm3'),
+        PLANAR_RIFT              = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS           = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

@@ -67,6 +67,7 @@ zones[xi.zone.TAHRONGI_CANYON] =
         HERBAGE_HUNTER   = GetFirstID('Herbage_Hunter'),
         HABROK           = GetFirstID('Habrok'),
         YARA_MA_YHA_WHO  = GetFirstID('Yara_Ma_Yha_Who'),
+        VOIDWATCH        = GetTableOfIDs('Smierc'),
 
         VOIDWALKER =
         {
@@ -104,6 +105,8 @@ zones[xi.zone.TAHRONGI_CANYON] =
     {
         SIGNPOST_OFFSET = GetFirstID('Signpost'),
         EXCAVATION      = GetTableOfIDs('Excavation_Point'),
+        PLANAR_RIFT     = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS  = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

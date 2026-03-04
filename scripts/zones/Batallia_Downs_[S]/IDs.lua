@@ -40,6 +40,7 @@ zones[xi.zone.BATALLIA_DOWNS_S] =
         HABERGOASS         = GetFirstID('Habergoass'),
         LA_VELUE           = GetFirstID('La_Velue'),
         MENECHME           = GetFirstID('Menechme'),
+        VOIDWATCH          = GetTableOfIDs('Taweret'),
 
         VOIDWALKER =
         {
@@ -76,6 +77,8 @@ zones[xi.zone.BATALLIA_DOWNS_S] =
     npc =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Myllue_RK'), -- San, Bas, Win, Flag +4, CA
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

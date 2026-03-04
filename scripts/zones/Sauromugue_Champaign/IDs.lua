@@ -59,6 +59,7 @@ zones[xi.zone.SAUROMUGUE_CHAMPAIGN] =
         ROC                = GetFirstID('Roc'),
         CLIMBPIX_HIGHRISE  = GetFirstID('Climbpix_Highrise'),
         DRIBBLIX_GREASEMAW = GetFirstID('Dribblix_Greasemaw'),
+        VOIDWATCH          = GetTableOfIDs('Goji'),
 
         VOIDWALKER =
         {
@@ -94,7 +95,9 @@ zones[xi.zone.SAUROMUGUE_CHAMPAIGN] =
 
     npc =
     {
-        QM2 = GetFirstID('qm2'), -- THF AF2
+        QM2            = GetFirstID('qm2'), -- THF AF2
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

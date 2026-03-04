@@ -52,12 +52,15 @@ zones[xi.zone.IFRITS_CAULDRON] =
         BOMB_QUEEN       = GetFirstID('Bomb_Queen'),
         TARASQUE         = GetFirstID('Tarasque'),
         CAILLEACH_BHEUR  = GetFirstID('Cailleach_Bheur'),
+        VOIDWATCH        = GetTableOfIDs('Ildebrann'),
     },
     npc =
     {
         FLAME_SPOUT_OFFSET = GetFirstID('Flame_Spout'),
         TREASURE_COFFER    = GetFirstID('Treasure_Coffer'),
         MINING             = GetTableOfIDs('Mining_Point'),
+        PLANAR_RIFT        = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS     = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

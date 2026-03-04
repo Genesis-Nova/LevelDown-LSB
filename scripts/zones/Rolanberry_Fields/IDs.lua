@@ -58,6 +58,7 @@ zones[xi.zone.ROLANBERRY_FIELDS] =
         SILK_CATERPILLAR   = GetFirstID('Silk_Caterpillar'),
         SIMURGH            = GetFirstID('Simurgh'),
         CHUGLIX_BERRYPAWS  = GetFirstID('Chuglix_Berrypaws'),
+        VOIDWATCH          = GetTableOfIDs('Yatagarasu'),
 
         VOIDWALKER =
         {
@@ -93,6 +94,8 @@ zones[xi.zone.ROLANBERRY_FIELDS] =
 
     npc =
     {
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

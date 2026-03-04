@@ -71,11 +71,14 @@ zones[xi.zone.LUFAISE_MEADOWS] =
         SPLINTERSPINE_GRUKJUK = GetFirstID('Splinterspine_Grukjuk'),
         TAVNAZIAN_RAM         = GetTableOfIDs('Tavnazian_Ram'),
         TAVNAZIAN_SHEEP       = GetTableOfIDs('Tavnazian_Sheep'),
+        VOIDWATCH             = GetTableOfIDs('Abununnu'),
     },
     npc =
     {
-        LOGGING       = GetTableOfIDs('Logging_Point'),
-        OVERSEER_BASE = GetFirstID('Jemmoquel_RK'),
+        LOGGING        = GetTableOfIDs('Logging_Point'),
+        OVERSEER_BASE  = GetFirstID('Jemmoquel_RK'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

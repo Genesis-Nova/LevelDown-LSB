@@ -23,13 +23,16 @@ zones[xi.zone.VUNKERL_INLET_S] =
     },
     mob =
     {
-        BIG_BANG = GetFirstID('Big_Bang'),
-        PALLAS   = GetFirstID('Pallas'),
+        BIG_BANG  = GetFirstID('Big_Bang'),
+        PALLAS    = GetFirstID('Pallas'),
+        VOIDWATCH = GetTableOfIDs('Gaunab'),
     },
     npc =
     {
         INDESCRIPT_MARKINGS = GetFirstID('Indescript_Markings'),
         CAMPAIGN_NPC_OFFSET = GetFirstID('Toulsard_RK'), -- RK, LC, MC, flag +4, CA
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

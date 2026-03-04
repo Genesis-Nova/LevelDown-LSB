@@ -35,12 +35,13 @@ zones[xi.zone.RUAUN_GARDENS] =
 
     mob =
     {
-        DESPOT = GetFirstID('Despot'),
-        MIMIC  = GetFirstID('Mimic'),
-        GENBU  = GetFirstID('Genbu'),
-        SEIRYU = GetFirstID('Seiryu'),
-        BYAKKO = GetFirstID('Byakko'),
-        SUZAKU = GetFirstID('Suzaku'),
+        DESPOT    = GetFirstID('Despot'),
+        MIMIC     = GetFirstID('Mimic'),
+        GENBU     = GetFirstID('Genbu'),
+        SEIRYU    = GetFirstID('Seiryu'),
+        BYAKKO    = GetFirstID('Byakko'),
+        SUZAKU    = GetFirstID('Suzaku'),
+        VOIDWATCH = GetTableOfIDs('Aello'),
     },
 
     npc =
@@ -49,6 +50,8 @@ zones[xi.zone.RUAUN_GARDENS] =
         PINCERSTONE_OFFSET = GetFirstID('Pincerstone'),
         PORTAL_OFFSET      = GetFirstID('_3mc'),
         OVERSEER_BASE      = GetFirstID('Conquest_Banner'),
+        PLANAR_RIFT        = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS     = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

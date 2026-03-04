@@ -33,8 +33,9 @@ zones[xi.zone.WEST_SARUTABARUTA_S] =
 
     mob =
     {
-        JEDUAH = GetFirstID('Jeduah'),
+        JEDUAH     = GetFirstID('Jeduah'),
         RAMPONNEAU = GetFirstID('Ramponneau'),
+        VOIDWATCH  = GetTableOfIDs('Pancimanci'),
         VOIDWALKER =
         {
             [xi.keyItem.CLEAR_ABYSSITE] =
@@ -71,6 +72,8 @@ zones[xi.zone.WEST_SARUTABARUTA_S] =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Madelleon_RK'), -- San, Bas, Win, Flag +4 (NOT_CAPTURED), CA
         HARVESTING          = GetTableOfIDs('Harvesting_Point'),
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

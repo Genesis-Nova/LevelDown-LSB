@@ -68,6 +68,7 @@ zones[xi.zone.WEST_SARUTABARUTA] =
     {
         NUNYENUNC   = GetFirstID('Nunyenunc'),
         TOM_TIT_TAT = GetFirstID('Tom_Tit_Tat'),
+        VOIDWATCH   = GetTableOfIDs('Virvatuli'),
         VOIDWALKER  =
         {
             [xi.keyItem.CLEAR_ABYSSITE] =
@@ -105,6 +106,8 @@ zones[xi.zone.WEST_SARUTABARUTA] =
         SIGNPOST_OFFSET = GetFirstID('Signpost'),
         OVERSEER_BASE   = GetFirstID('Naguipeillont_RK'),
         HARVESTING      = GetTableOfIDs('Harvesting_Point'),
+        PLANAR_RIFT     = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS  = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

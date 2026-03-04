@@ -36,10 +36,13 @@ zones[xi.zone.AYDEEWA_SUBTERRANE] =
         PANDEMONIUM_WARDEN    = GetFirstID('Pandemonium_Warden'),
         PANDEMONIUM_LAMPS     = GetTableOfIDs('Pandemonium_Lamp'),
         PANDEMONIUM_AVATARS   = GetTableOfIDs('Pandemonium_Lamp_Avatar'),
+        VOIDWATCH             = GetTableOfIDs('Morta'),
     },
     npc =
     {
-        MUSHROOM_PATCH = GetFirstID('Mushroom_Patch')
+        MUSHROOM_PATCH = GetFirstID('Mushroom_Patch'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

@@ -57,6 +57,7 @@ zones[xi.zone.MERIPHATAUD_MOUNTAINS] =
         DAGGERCLAW_DRACOS      = GetFirstID('Daggerclaw_Dracos'),
         WARAXE_BEAK            = GetFirstID('Waraxe_Beak'),
         COO_KEJA_THE_UNSEEN    = GetFirstID('Coo_Keja_the_Unseen'),
+        VOIDWATCH              = GetTableOfIDs('Lord_Asag'),
 
         VOIDWALKER =
         {
@@ -92,7 +93,9 @@ zones[xi.zone.MERIPHATAUD_MOUNTAINS] =
 
     npc =
     {
-        OVERSEER_BASE = GetFirstID('Chegourt_RK'),
+        OVERSEER_BASE  = GetFirstID('Chegourt_RK'),
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

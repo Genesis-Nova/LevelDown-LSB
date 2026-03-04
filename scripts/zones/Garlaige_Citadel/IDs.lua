@@ -64,6 +64,7 @@ zones[xi.zone.GARLAIGE_CITADEL] =
         SERKET              = GetFirstID('Serket'),
         MIMIC               = GetFirstID('Mimic'),
         APPARATUS_ELEMENTAL = GetFirstID('Light_Elemental'),
+        VOIDWATCH           = GetTableOfIDs('Roly-Poly'),
     },
     npc =
     {
@@ -71,6 +72,8 @@ zones[xi.zone.GARLAIGE_CITADEL] =
         TREASURE_CHEST        = GetFirstID('Treasure_Chest'),
         TREASURE_COFFER       = GetFirstID('Treasure_Coffer'),
         CHANDELIER_QM         = 17596831,
+        PLANAR_RIFT           = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS        = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

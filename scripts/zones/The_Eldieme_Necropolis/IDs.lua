@@ -71,6 +71,7 @@ zones[xi.zone.THE_ELDIEME_NECROPOLIS] =
         MIMIC               = GetFirstID('Mimic'),
         APPARATUS_ELEMENTAL = 17576271,
         NAMORODO            = GetFirstID('Namorodo'),
+        VOIDWATCH           = GetTableOfIDs('Gasha'),
     },
 
     npc =
@@ -81,6 +82,8 @@ zones[xi.zone.THE_ELDIEME_NECROPOLIS] =
         TREASURE_COFFER    = GetFirstID('Treasure_Coffer'),
         SARCOPHAGUS_OFFSET = GetFirstID('Sarcophagus'),
         CANDLE_OFFSET      = GetFirstID('_5fu'),
+        PLANAR_RIFT        = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS     = GetTableOfIDs('Riftworn_Pyxis'),
         QM1                = GetFirstID('qm1'),
 
         QM1_POS =

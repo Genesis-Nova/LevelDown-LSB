@@ -55,9 +55,12 @@ zones[xi.zone.BIBIKI_BAY] =
         PEERIFOOL  = GetFirstID('Peerifool'),
         SERRA      = GetFirstID('Serra'),
         SPLACKNUCK = GetFirstID('Splacknuck'),
+        VOIDWATCH  = GetTableOfIDs('Bismarck'),
     },
     npc =
     {
+        PLANAR_RIFT    = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

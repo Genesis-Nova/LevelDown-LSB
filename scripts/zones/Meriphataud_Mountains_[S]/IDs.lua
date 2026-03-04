@@ -34,6 +34,7 @@ zones[xi.zone.MERIPHATAUD_MOUNTAINS_S] =
     {
         CENTIPEDAL_CENTRUROIDES = GetFirstID('Centipedal_Centruroides'),
         BLOODLAPPER             = GetFirstID('Bloodlapper'),
+        VOIDWATCH               = GetTableOfIDs('Akupara'),
 
         VOIDWALKER =
         {
@@ -71,6 +72,8 @@ zones[xi.zone.MERIPHATAUD_MOUNTAINS_S] =
     {
         CAMPAIGN_NPC_OFFSET = GetFirstID('Raurart_RK'), -- San, Bas, Win, Flag +4, CA
         INDESCRIPT_MARKINGS = GetFirstID('Indescript_Markings'),
+        PLANAR_RIFT         = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS      = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 

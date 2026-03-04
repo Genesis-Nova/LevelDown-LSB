@@ -35,11 +35,14 @@ zones[xi.zone.ULEGUERAND_RANGE] =
         GEUSH_URVAN = GetFirstID('Geush_Urvan'),
         WHITE_CONEY = GetFirstID('White_Coney'),
         BLACK_CONEY = GetFirstID('Black_Coney'),
+        VOIDWATCH   = GetTableOfIDs('Isarukitsck'),
     },
     npc =
     {
         WATERFALL        = GetFirstID('_058'),
         RABBIT_FOOTPRINT = GetFirstID('Rabbit_Footprint'),
+        PLANAR_RIFT      = GetTableOfIDs('Planar_Rift'),
+        RIFTWORN_PYXIS   = GetTableOfIDs('Riftworn_Pyxis'),
     },
 }
 
