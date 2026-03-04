@@ -483,8 +483,12 @@ UPDATE mob_skills SET mob_skill_aoe_radius = 12, mob_skill_aoe = 1 WHERE mob_ski
 --Cait Sith HTBF
 --=============================================
 
+--Create new pool for Cait Sith HTBF
+INSERT INTO mob_pools (poolid, name, packet_name, familyid, modelid, mJob, sJob, cmbSkill, cmbDelay, cmbDmgMult, behavior, aggro, true_detection, links, mobType, immunity, name_prefix, flag, entityFlags, animationsub, hasSpellScript, spellList, namevis, roamflag, skill_list_id, resist_id, modelSize, modelHitboxSize) VALUES (40022, 'Cait_Sith_HTBF', 'Cait_Sith', 60, 0x00001c0000000000000000000000000000000000, 5, 3, 2, 240, 100, 0, 1, 1, 0, 2, 0, 32, 0, 0, 0, 0, 1003, 0, 0, 60, 60, 0, 12);
+
+
 --Set HP/MP, Level, poolid (0 to 5775) 609 has no animations
-UPDATE mob_groups SET HP = 300000, MP = 9999, poolid = 5775 WHERE name = 'Cait_Sith' AND zoneid = 298;
+UPDATE mob_groups SET HP = 300000, MP = 9999, poolid = 40022 WHERE name = 'Cait_Sith' AND zoneid = 298;
 
 -- Set Spawn Points
 UPDATE mob_spawn_points SET mobid=17997826, mobname='Cait_Sith', polutils_name='Cait Sith', groupid=2, pos_x=-700.000, pos_y=-13.270, pos_z=-140.000, pos_rot=64, minLevel = 119, maxLevel = 119 WHERE mobid=17997826;
@@ -508,3 +512,18 @@ UPDATE mob_skills SET mob_skill_aoe_radius = 15 WHERE mob_skill_id = 2449;
 
 --Removes Divine Favor from skill list
 DELETE FROM mob_skill_lists WHERE skill_list_id=60 AND mob_skill_id = 2451;
+
+--Add new spell list
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 504, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 5, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 6, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 478, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 357, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 360, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 511, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 855, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 359, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 361, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 362, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 356, 1, 255);
+INSERT INTO mob_spell_lists (spell_list_name, spell_list_id, spell_id, min_level, max_level) VALUES ('Cait_Sith_HTBF', 1003, 40, 1, 255);
