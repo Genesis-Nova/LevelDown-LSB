@@ -282,12 +282,13 @@ g_mixins.rod_death_counter = function(mob)
                     setDIVar(mob, killer)
                 end
             end
-
+            --[[
             local chestSpawnCheck = canSpawnEmblazonedReliquary(mob, killer)
 
             if chestSpawnCheck then
                 spawnEmblazonedReliquary(mob, killer)
             end
+            ]]--
         end
     end)
 end
