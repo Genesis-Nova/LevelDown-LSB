@@ -22,7 +22,7 @@ local telepoints = {
         ki = xi.ki.CRIMSON_STRATUM_ABYSSITE_II,
         name = "Crimson Stratum Abyssite II",
         destinations = {
-            { name = "Ordelle's Caves",    x = 106.7037, y = 0.2551, z = 252.6193, rot = 72, zone = xi.zone.ORDELLES_CAVES },
+            { name = "Ordelle's Caves",    x = -127.4745, y = 0.0000, z = 249.7766, rot = 37, zone = xi.zone.ORDELLES_CAVES },
         }
     },
     {
