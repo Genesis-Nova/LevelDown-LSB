@@ -5550,21 +5550,31 @@ void AddExperiencePoints(bool expFromRaise, CCharEntity* PChar, CBaseEntity* PMo
         uint16 Pzone = PChar->getZone();
         if (zoneutils::GetCurrentRegion(Pzone) == REGION_TYPE::ABYSSEA)
         {
-            uint16 TextID = luautils::GetTextIDVariable(Pzone, "CRUOR_OBTAINED");
+            // uint16 TextID = luautils::GetTextIDVariable(Pzone, "CRUOR_OBTAINED");
             // uint32 Total  = charutils::GetPoints(PChar, "cruor");
-            // uint32 Cruor  = 0; // Need to work out how to do cruor chains, until then no cruor will drop unless this line is customized for non retail play.
+            uint32 Cruor  = exp * 0.1f; // Need to work out how to do cruor chains, until then no cruor will drop unless this line is customized for non retail play.
 
-            if (TextID == 0)
-            {
-                ShowWarning("Failed to fetch Cruor Message ID for zone: %i", Pzone);
-            }
+            // if (TextID == 0)
+           //  {
+           //      ShowWarning("Failed to fetch Cruor Message ID for zone: %i", Pzone);
+           //  }
 
             // TODO: Implement this once formula for Cruor attainment is implemented
-            // if (Cruor >= 1)
-            // {
-            //     PChar->pushPacket<CMessageSpecialPacket>(PChar, TextID, Cruor, Total + Cruor, 0, 0);
-            //     charutils::AddPoints(PChar, "cruor", Cruor);
-            // }
+            if (Cruor >= 1)
+            {
+                // PChar->pushPacket<CMessageSpecialPacket>(PChar, TextID, Cruor, Total + Cruor, 0, 0);
+                charutils::AddPoints(PChar, "cruor", Cruor);
+            }
+        }
+
+        if (exp > 0 && (Pzone == ZONEID::ZONE_ESCHA_ZITAH || Pzone == ZONEID::ZONE_ESCHA_RUAUN || Pzone == ZONEID::ZONE_REISENJIMA))
+        {
+            charutils::AddPoints(PChar, "escha_silt", (int32)(exp * 0.01f));
+
+            if (PMob->objtype == TYPE_MOB && (static_cast<CMobEntity*>(PMob)->m_Type & MOBTYPE_NOTORIOUS))
+            {
+                charutils::AddPoints(PChar, "escha_beads", (int32)(exp * 0.01f));
+            }
         }
     }
 

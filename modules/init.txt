@@ -49,13 +49,11 @@ custom/lua/new_player_gear.lua
 custom/lua/homepoint_heal.lua
 custom/lua/af_level_reward.lua
 custom/lua/VWNotMon.lua
-custom/lua/add_silt.lua
 custom/lua/geas_FeteNM.lua
 custom/lua/choc_race.lua
 custom/lua/unitybattle.lua
 custom/lua/freeabby.lua
 custom/lua/craft_rank_reward.lua
-custom/lua/add_cruor.lua
 custom/lua/open_caskets.lua
 custom/lua/wotg_decouple_story_missions_from_nation_quests.lua
 custom/lua/rov_2_39.lua
