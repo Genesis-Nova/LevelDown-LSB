@@ -57,26 +57,26 @@ local MAX_CAMPAIGN_SUPPLIES = 1000
 
 -- The campaign medal Key Item IDs and their required lifetime scores, indexed by rank (1 to 20).
 local CAMPAIGN_RANKS = {
-    [1] =  {     ki_id = xi.ki.BRONZE_RIBBON_OF_SERVICE,   threshold = 1000 },   -- ~5 battles from start
-    [2] =  {     ki_id = xi.ki.BRONZE_STAR,                threshold = 2000 },   -- ~5 battles from rank 1
-    [3] =  {     ki_id = xi.ki.COPPER_EMBLEM_OF_SERVICE,   threshold = 3200 },   -- ~6 battles from rank 2
-    [4] =  {     ki_id = xi.ki.BRASS_WINGS_OF_SERVICE,     threshold = 4600 },   -- ~7 battles from rank 3
-    [5] =  {     ki_id = xi.ki.STARLIGHT_MEDAL,            threshold = 6200 },   -- ~8 battles from rank 4
-    [6] =  {     ki_id = xi.ki.BRASS_RIBBON_OF_SERVICE,    threshold = 8000 },   -- ~9 battles from rank 5
-    [7] =  {     ki_id = xi.ki.STERLING_STAR,              threshold = 10000 },  -- ~10 battles from rank 6
-    [8] =  {     ki_id = xi.ki.IRON_EMBLEM_OF_SERVICE,     threshold = 12200 },  -- ~11 battles from rank 7
-    [9] =  {     ki_id = xi.ki.MYTHRIL_WINGS_OF_SERVICE,   threshold = 14600 },  -- ~12 battles from rank 8
-    [10] = {     ki_id = xi.ki.MOONLIGHT_MEDAL,             threshold = 17200 },  -- ~13 battles from rank 9
-    [11] = {     ki_id = xi.ki.ALLIED_RIBBON_OF_BRAVERY,    threshold = 20000, inactivity_penalty_percent = 0.0018 }, -- ~8 Days to demote
-    [12] = {     ki_id = xi.ki.MYTHRIL_STAR,                threshold = 23000, inactivity_penalty_percent = 0.0020 },
-    [13] = {     ki_id = xi.ki.STEELKNIGHT_EMBLEM,           threshold = 26200, inactivity_penalty_percent = 0.0022 },
-    [14] = {     ki_id = xi.ki.WINGS_OF_INTEGRITY,          threshold = 29600, inactivity_penalty_percent = 0.0024 },
-    [15] = {     ki_id = xi.ki.DAWNLIGHT_MEDAL,             threshold = 33200, inactivity_penalty_percent = 0.0026 },
-    [16] = {     ki_id = xi.ki.ALLIED_RIBBON_OF_GLORY,      threshold = 37000, inactivity_penalty_percent = 0.0028 },
-    [17] = {     ki_id = xi.ki.GOLDEN_STAR,                 threshold = 41000, inactivity_penalty_percent = 0.0030 },
-    [18] = {     ki_id = xi.ki.HOLYKNIGHT_EMBLEM,          threshold = 45000, inactivity_penalty_percent = 0.0032 },    
-    [19] = {     ki_id = xi.ki.WINGS_OF_HONOR,              threshold = 49000, inactivity_penalty_percent = 0.0034 },
-    [20] = {     ki_id = xi.ki.MEDAL_OF_ALTANA,             threshold = 53000, inactivity_penalty_percent = 0.0036 }, -- ~5 Days to demote
+    [1] =  {     ki_id = xi.ki.BRONZE_RIBBON_OF_SERVICE,   threshold = 1000, name = "Bronze Ribbon of Service" },   -- ~5 battles from start
+    [2] =  {     ki_id = xi.ki.BRONZE_STAR,                threshold = 2000, name = "Bronze Star" },   -- ~5 battles from rank 1
+    [3] =  {     ki_id = xi.ki.COPPER_EMBLEM_OF_SERVICE,   threshold = 3200, name = "Copper Emblem of Service" },   -- ~6 battles from rank 2
+    [4] =  {     ki_id = xi.ki.BRASS_WINGS_OF_SERVICE,     threshold = 4600, name = "Brass Wings of Service" },   -- ~7 battles from rank 3
+    [5] =  {     ki_id = xi.ki.STARLIGHT_MEDAL,            threshold = 6200, name = "Starlight Medal" },   -- ~8 battles from rank 4
+    [6] =  {     ki_id = xi.ki.BRASS_RIBBON_OF_SERVICE,    threshold = 8000, name = "Brass Ribbon of Service" },   -- ~9 battles from rank 5
+    [7] =  {     ki_id = xi.ki.STERLING_STAR,              threshold = 10000, name = "Sterling Star" },  -- ~10 battles from rank 6
+    [8] =  {     ki_id = xi.ki.IRON_EMBLEM_OF_SERVICE,     threshold = 12200, name = "Iron Emblem of Service" },  -- ~11 battles from rank 7
+    [9] =  {     ki_id = xi.ki.MYTHRIL_WINGS_OF_SERVICE,   threshold = 14600, name = "Mythril Wings of Service" },  -- ~12 battles from rank 8
+    [10] = {     ki_id = xi.ki.MOONLIGHT_MEDAL,             threshold = 17200, name = "Moonlight Medal" },  -- ~13 battles from rank 9
+    [11] = {     ki_id = xi.ki.ALLIED_RIBBON_OF_BRAVERY,    threshold = 20000, inactivity_penalty_percent = 0.0018, name = "Allied Ribbon of Bravery" }, -- ~8 Days to demote
+    [12] = {     ki_id = xi.ki.MYTHRIL_STAR,                threshold = 23000, inactivity_penalty_percent = 0.0020, name = "Mythril Star" },
+    [13] = {     ki_id = xi.ki.STEELKNIGHT_EMBLEM,           threshold = 26200, inactivity_penalty_percent = 0.0022, name = "Steelknight Emblem" },
+    [14] = {     ki_id = xi.ki.WINGS_OF_INTEGRITY,          threshold = 29600, inactivity_penalty_percent = 0.0024, name = "Wings of Integrity" },
+    [15] = {     ki_id = xi.ki.DAWNLIGHT_MEDAL,             threshold = 33200, inactivity_penalty_percent = 0.0026, name = "Dawnlight Medal" },
+    [16] = {     ki_id = xi.ki.ALLIED_RIBBON_OF_GLORY,      threshold = 37000, inactivity_penalty_percent = 0.0028, name = "Allied Ribbon of Glory" },
+    [17] = {     ki_id = xi.ki.GOLDEN_STAR,                 threshold = 41000, inactivity_penalty_percent = 0.0030, name = "Golden Star" },
+    [18] = {     ki_id = xi.ki.HOLYKNIGHT_EMBLEM,          threshold = 45000, inactivity_penalty_percent = 0.0032, name = "Holyknight Emblem" },
+    [19] = {     ki_id = xi.ki.WINGS_OF_HONOR,              threshold = 49000, inactivity_penalty_percent = 0.0034, name = "Wings of Honor" },
+    [20] = {     ki_id = xi.ki.MEDAL_OF_ALTANA,             threshold = 53000, inactivity_penalty_percent = 0.0036, name = "Medal of Altana" }, -- ~5 Days to demote
 }
 
 -- Removed CAMPAIGN_REWARDS and associated currency configuration
@@ -129,14 +129,13 @@ end
 
 --- Retrieves the name of a Key Item using its ID.
 local function getMedalName(itemId)
-    local name = GetKeyItemName(itemId)
-
-    if name then
-        return name
-    else
-        m:logDebug("WARNING: Failed to retrieve Key Item name for ID %d. Using fallback.", itemId)
-        return "New Medal (ID: " .. tostring(itemId) .. ")"
+    for _, rankData in ipairs(CAMPAIGN_RANKS) do
+        if rankData.ki_id == itemId then
+            return rankData.name
+        end
     end
+    m:logDebug("WARNING: Failed to retrieve Key Item name for ID %d. Using fallback.", itemId)
+    return "New Medal (ID: " .. tostring(itemId) .. ")"
 end
 
 --- Gets the player's highest campaign rank based on the KIs they possess.

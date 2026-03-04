@@ -2417,6 +2417,29 @@ INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecun
 INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
 INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
 
+-- ZoneID: 291 - Schah
+INSERT INTO mob_droplist VALUES (4219,0,0,1000,9130,500); -- Chunk of eschite ore (50.0%)
+INSERT INTO mob_droplist VALUES (4219,0,0,1000,9130,500); -- Chunk of eschite ore (25.0%)
+INSERT INTO mob_droplist VALUES (4219,0,0,1000,21687,773); -- Takoba (77.3%)
+INSERT INTO mob_droplist VALUES (4219,0,0,1000,22055,364); -- Oranyan (36.4%)
+INSERT INTO mob_droplist VALUES (4219,0,0,1000,25730,500); -- Nzingha Cuirass  (50.0%)
+INSERT INTO mob_droplist VALUES (4219,0,0,1000,25920,455); -- Ahosi Leggings (45.5%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9211,333); -- Fern stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,1,1000,9212,334); -- Taupe stone - Group 1  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9210,333); -- Pellucid stone - Group 2  (25%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9211,333); -- Fern stone - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,2,250,9212,334); -- Taupe stone  - Group 2  (50%)
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6486,333); -- Frayed sack of fecundity - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6488,333); -- Frayed sack of opulence - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,3,1000,6487,334); -- Frayed sack of plenty - Group 3
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6486,333); -- Frayed sack of fecundity - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6488,333); -- Frayed sack of opulence - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,4,250,6487,334); -- Frayed sack of plenty - Group 4
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6486,333); -- Frayed sack of fecundity - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6488,333); -- Frayed sack of opulence - Group 5
+INSERT INTO mob_droplist VALUES (4173,1,5,125,6487,334); -- Frayed sack of plenty - Group 5
+
 -- ZoneID: 291 - Ascended Beetle
 INSERT INTO mob_droplist VALUES (4201,0,0,1000,9214,250); -- Void Crystal - (25%)
 INSERT INTO mob_droplist VALUES (4173,1,1,1000,9210,333); -- Pellucid stone - Group 1  (25%)
@@ -3071,3 +3094,4 @@ UPDATE mob_groups SET dropid = 4214 WHERE name = 'Ascended_Poroggo' AND groupid 
 UPDATE mob_groups SET dropid = 4215 WHERE name = 'Ascended_Porxie' AND groupid = 33;
 UPDATE mob_groups SET dropid = 4216 WHERE name = 'Ascended_Tiger' AND groupid = 35;
 UPDATE mob_groups SET dropid = 4217 WHERE name = 'Ascended_Ungeweder' AND groupid = 43;
+UPDATE mob_groups SET dropid = 4219 WHERE name = 'Schah' AND groupid = 74;

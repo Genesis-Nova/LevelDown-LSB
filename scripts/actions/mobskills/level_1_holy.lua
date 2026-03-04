@@ -51,9 +51,10 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill, action)
                     shadowBehavior = xi.mobskills.shadowBehavior.WIPE_SHADOWS,
                 }
                 local info = xi.mobskills.mobMagicalMove(mob, member, skill, nil, params)
-                dmg = xi.mobskills.mobFinalAdjustments(info.damage, mob, skill, member, xi.attackType.MAGICAL, xi.damageType.LIGHT, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
 
-                member:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.LIGHT)
+                if xi.mobskills.processDamage(mob, member, skill, nil, info) then
+                    member:takeDamage(info.damage, mob, info.attackType, info.damageType)
+                end
             end
         end
     end
