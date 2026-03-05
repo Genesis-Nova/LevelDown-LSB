@@ -1714,7 +1714,7 @@ INSERT INTO mob_droplist VALUES (4161,0,0,1000,9085,150); -- Eschalixir +1 (Comm
 INSERT INTO mob_droplist VALUES (4161,0,0,1000,9085,100); -- Eschalixir +1 (Uncommon, 10%)
 
 -- ZoneID: 289 - Warder of Dignity
-INSERT INTO mob_droplist VALUES (4162,0,0,1000,26013,1); -- Henic torque (15.9%)
+INSERT INTO mob_droplist VALUES (4162,0,0,1000,26013,150); -- Henic torque (15.9%)
 INSERT INTO mob_droplist VALUES (4162,0,0,1000,27622,50); -- Impassive mantle (9.8%)
 INSERT INTO mob_droplist VALUES (4162,0,0,1000,27503,50); -- Thereoid greaves (11.8%)
 INSERT INTO mob_droplist VALUES (4162,0,0,1000,9085,240); -- Eschalixir +1 (Very Common, 24%)
@@ -1734,7 +1734,7 @@ INSERT INTO mob_droplist VALUES (4163,0,0,1000,9085,100); -- Eschalixir +1 (Unco
 -- ZoneID: 289 - Warder of Fortitude
 INSERT INTO mob_droplist VALUES (4164,0,0,1000,27146,150); -- Bewegt cuffs (20.1%)
 INSERT INTO mob_droplist VALUES (4164,0,0,1000,26006,150); -- Decimus torque (15.7%)
-INSERT INTO mob_droplist VALUES (4164,0,0,1000,27544,1); -- Dedition earring (11.8%)
+INSERT INTO mob_droplist VALUES (4164,0,0,1000,27544,100); -- Dedition earring (11.8%)
 INSERT INTO mob_droplist VALUES (4164,0,0,1000,9084,240); -- Eschalixir (Very Common, 24%)
 INSERT INTO mob_droplist VALUES (4164,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
 INSERT INTO mob_droplist VALUES (4164,0,0,1000,9084,150); -- Eschalixir (Common, 15%)
@@ -1789,7 +1789,7 @@ INSERT INTO mob_droplist VALUES (4169,0,0,1000,9084,100); -- Eschalixir (Uncommo
 -- ZoneID: 289 - Warder of Prudence
 INSERT INTO mob_droplist VALUES (4170,0,0,1000,26010,100); -- Acantha torque (8.2%)
 INSERT INTO mob_droplist VALUES (4170,0,0,1000,25853,100); -- Querkening brais (9.9%)
-INSERT INTO mob_droplist VALUES (4170,0,0,1000,27621,1); -- Relucent cape (4.3%)
+INSERT INTO mob_droplist VALUES (4170,0,0,1000,27621,50); -- Relucent cape (4.3%)
 INSERT INTO mob_droplist VALUES (4170,0,0,1000,9085,240); -- Eschalixir +1 (Very Common, 24%)
 INSERT INTO mob_droplist VALUES (4170,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
 INSERT INTO mob_droplist VALUES (4170,0,0,1000,9085,150); -- Eschalixir +1 (Common, 15%)
