@@ -57,7 +57,14 @@ local function setup(m, config, helpers)
 
         m:addOverride(mobTablePath .. ".onMobInitialize", function(mob)
             debugPrint("onMobInitialize called for " .. mob:getName())
-            -- Placeholders
+            mob:addImmunity(xi.immunity.GRAVITY)
+            mob:addImmunity(xi.immunity.BIND)
+            mob:addImmunity(xi.immunity.SILENCE)
+            mob:addImmunity(xi.immunity.DARK_SLEEP)
+            mob:addImmunity(xi.immunity.LIGHT_SLEEP)
+            mob:addImmunity(xi.immunity.PETRIFY)
+            mob:addImmunity(xi.immunity.TERROR)
+            mob:setMod(xi.mod.REGAIN, 150)
         end)
 
         m:addOverride(mobTablePath .. ".onMobSpawn", function(mob)
@@ -139,16 +146,25 @@ local function setup(m, config, helpers)
                 if confrontationID > 0 and xi.confrontation.lookup and xi.confrontation.lookup[confrontationID] then
                     local lookup = xi.confrontation.lookup[confrontationID]
                     local anyAlive = false
+                    local anyInZone = false
                     for _, pid in ipairs(lookup.registeredPlayerIds) do
                         local p = GetPlayerByID(pid)
-                        if p and p:isAlive() and p:getZoneID() == zone:getID() then
-                            anyAlive = true
-                            break
+                        if p and p:getZoneID() == zone:getID() then
+                            anyInZone = true
+                            if p:isAlive() then
+                                anyAlive = true
+                                break
+                            end
                         end
                     end
 
                     if anyAlive then
                         debugPrint("onMobDisengage: Players still alive, skipping despawn.")
+                        return
+                    end
+
+                    if anyInZone then
+                        debugPrint("onMobDisengage: Players wiped but still in zone. Skipping despawn.")
                         return
                     end
                 end

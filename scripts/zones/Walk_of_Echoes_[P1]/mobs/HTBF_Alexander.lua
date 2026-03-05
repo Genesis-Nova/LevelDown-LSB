@@ -48,6 +48,7 @@ local debuffEffects = {
             mob:addImmunity(xi.immunity.DARK_SLEEP)
             mob:addImmunity(xi.immunity.LIGHT_SLEEP)
             mob:addImmunity(xi.immunity.PETRIFY)
+            mob:addImmunity(xi.immunity.TERROR)
             mob:setMod(xi.mod.REGAIN, 150)
         end)
 
@@ -257,16 +258,25 @@ local debuffEffects = {
                 if confrontationID > 0 and xi.confrontation.lookup and xi.confrontation.lookup[confrontationID] then
                     local lookup = xi.confrontation.lookup[confrontationID]
                     local anyAlive = false
+                    local anyInZone = false
                     for _, pid in ipairs(lookup.registeredPlayerIds) do
                         local p = GetPlayerByID(pid)
-                        if p and p:isAlive() and p:getZoneID() == zone:getID() then
-                            anyAlive = true
-                            break
+                        if p and p:getZoneID() == zone:getID() then
+                            anyInZone = true
+                            if p:isAlive() then
+                                anyAlive = true
+                                break
+                            end
                         end
                     end
 
                     if anyAlive then
                         debugPrint("onMobDisengage: Players still alive, skipping despawn.")
+                        return
+                    end
+
+                    if anyInZone then
+                        debugPrint("onMobDisengage: Players wiped but still in zone. Skipping despawn.")
                         return
                     end
                 end
@@ -358,6 +368,10 @@ local debuffEffects = {
                         if m and m:isAlive() then
                             m:setLocalVar("ForceGospel", 1)
                             m:useMobAbility(xi.mobSkill.GOSPEL_OF_THE_LOST)
+                            m:eraseAllStatusEffect()
+                            for _, effectId in pairs(debuffEffects) do
+                                m:delStatusEffect(effectId)
+                            end
                             -- Reset pending after a delay to allow ability to go off and clear debuffs
                             m:timer(5000, function(m2)
                                 if m2 and m2:isAlive() then m2:setLocalVar("GospelPending", 0) end
