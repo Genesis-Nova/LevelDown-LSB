@@ -35,6 +35,9 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill, action)
         mob:setLocalVar("DivineFavor", 0)
     end
 
+    local primaryDamage = 0
+    local primaryMessage = xi.msg.basic.SKILL_NO_EFFECT
+
     for _, member in ipairs(targets) do
         if member:getZoneID() == mob:getZoneID() and member:checkDistance(mob) <= 20 and not member:isDead() then
             local maxHP = member:getMaxHP()
@@ -52,14 +55,19 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill, action)
                 }
                 local info = xi.mobskills.mobMagicalMove(mob, member, skill, nil, params)
 
-                if xi.mobskills.processDamage(mob, member, skill, nil, info) then
+                if member:getID() == target:getID() then
+                    primaryDamage = info.damage
+                    primaryMessage = skill:getMsg()
+                elseif xi.mobskills.processDamage(mob, member, skill, nil, info) then
                     member:takeDamage(info.damage, mob, info.attackType, info.damageType)
                 end
             end
         end
     end
 
-    return 0
+    skill:setMsg(primaryMessage)
+
+    return primaryDamage
 end
 
 return mobskillObject

@@ -23,17 +23,17 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill, action)
     params.damageType     = xi.damageType.LIGHT
     params.shadowBehavior = xi.mobskills.shadowBehavior.WIPE_SHADOWS
 
-    print("Mega Holy Debug: Caster: " .. mob:getName() .. " Target: " .. target:getName())
-    print("Mega Holy Debug: Base Damage: " .. params.baseDamage)
+    --print("Mega Holy Debug: Caster: " .. mob:getName() .. " Target: " .. target:getName())
+    --print("Mega Holy Debug: Base Damage: " .. params.baseDamage)
 
     local info = xi.mobskills.mobMagicalMove(mob, target, skill, action, params)
 
-    print("Mega Holy Debug: Calculated Damage: " .. info.damage)
+    --print("Mega Holy Debug: Calculated Damage: " .. info.damage)
 
     if xi.mobskills.processDamage(mob, target, skill, action, info) then
         target:takeDamage(info.damage, mob, info.attackType, info.damageType)
     else
-        print("Mega Holy Debug: processDamage returned false")
+        --print("Mega Holy Debug: processDamage returned false")
     end
 
     return info.damage
