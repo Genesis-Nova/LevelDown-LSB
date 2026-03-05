@@ -472,7 +472,7 @@ local function onConfrontationWin(player)
                     local rate = xi.combat.treasureHunter.getDropRate(thLevel, baseRate)
                     debugPrint(string.format("Loot Check - ItemID: %s, TH Level: %d, Base Rate: %d, Modified Rate: %d", tostring(item.itemId), thLevel, baseRate, rate))
 
-                    if math.random(1, 10000) <= rate then
+                    if math.random(1, 1000) <= rate then
                         if item.itemId and item.itemId ~= xi.item.NONE then
                             if item.itemId and not everyoneHasItem(item.itemId) then
                                 debugPrint("Adding treasure: " .. tostring(item.itemId))
