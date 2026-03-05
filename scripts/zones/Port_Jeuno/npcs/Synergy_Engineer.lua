@@ -3,69 +3,67 @@
 --  NPC: Synergy_Engineer
 -- !pos  -52 0 -11 246
 
---Contributed by Graves
+--Base file Contributed by Graves
 -----------------------------------
 local ID = zones[xi.zone.PORT_JEUNO]
 require("scripts/globals/npc_util")
 -----------------------------------
 local entity = {}
 
-local function handleQuantity(player, quantity)
+local function getScrapAmount()
     local random = math.random(1, 100)
 
     if random > 85 then
-        quantity = 12
+        return 12
     elseif random > 65 then
-        quantity = 9
+        return 9
     elseif random > 35 then
-        quantity = 6
+        return 6
     else
-        quantity = 3
+        return 3
     end
-
-    return quantity
-end
-
-local function handleTradeSuccesful(player, itemId, quantity)
-    player:tradeComplete();
-    player:printToPlayer( "Engineer: Here you go, use it in the furnace.", 0xd );
-    player:addItem(itemId,quantity);
-    player:messageSpecial(ID.text.ITEM_OBTAINED, itemId);
 end
 
 entity.onTrade = function(player, npc, trade)
-    --Initialize local variables.
-    local itemId   = 0
-    local quantity = 0
+    local seals = {
+        [xi.item.SEAL_OF_GENBU]  = xi.item.SEAL_OF_GENBU_SCRAP,
+        [xi.item.SEAL_OF_SUZAKU] = xi.item.SEAL_OF_SUZAKU_SCRAP,
+        [xi.item.SEAL_OF_SEIRYU] = xi.item.SEAL_OF_SEIRYU_SCRAP,
+        [xi.item.SEAL_OF_BYAKKO] = xi.item.SEAL_OF_BYAKKO_SCRAP,
+    }
+    local itemsToGive = {}
 
-    -- *Seal of Genbu Scrap*
-    if npcUtil.tradeHasExactly(trade, {xi.item.SEAL_OF_GENBU}) and player:getFreeSlotsCount() >= 1 then
-        itemId   = xi.item.SEAL_OF_GENBU_SCRAP
-        quantity = handleQuantity(player, quantity)
+    for i = 0, trade:getSlotCount() - 1 do
+        local itemId = trade:getItemId(i)
+        if itemId ~= 0 and not seals[itemId] then
+            player:printToPlayer( "Engineer: Where the Scraps I seek.", 0xd );
+            return
+        end
+    end
 
-        handleTradeSuccesful(player, itemId, quantity)
+    for sealId, scrapId in pairs(seals) do
+        local count = trade:getItemQty(sealId)
+        if count > 0 then
+            local quantity = 0
+            for i = 1, count do
+                quantity = quantity + getScrapAmount()
+            end
+            table.insert(itemsToGive, { scrapId, quantity })
+        end
+    end
 
-    -- *Seal of Suzaku Scrap*
-    elseif npcUtil.tradeHasExactly(trade, {xi.item.SEAL_OF_SUZAKU}) and player:getFreeSlotsCount() >= 1 then
-        itemId   = xi.item.SEAL_OF_SUZAKU_SCRAP
-        quantity = handleQuantity(player, quantity)
-
-        handleTradeSuccesful(player, itemId, quantity)
-
-    -- *Seal of Seiryu Scrap*
-    elseif npcUtil.tradeHasExactly(trade, {xi.item.SEAL_OF_SEIRYU}) and player:getFreeSlotsCount() >= 1 then
-        itemId   = xi.item.SEAL_OF_SEIRYU_SCRAP
-        quantity = handleQuantity(player, quantity)
-
-        handleTradeSuccesful(player, itemId, quantity)
-
-    -- *Seal of Byakko Scrap*
-    elseif npcUtil.tradeHasExactly(trade, {xi.item.SEAL_OF_BYAKKO}) and player:getFreeSlotsCount() >= 1 then
-        itemId   = xi.item.SEAL_OF_BYAKKO_SCRAP
-        quantity = handleQuantity(player, quantity)
-
-        handleTradeSuccesful(player, itemId, quantity)
-
+    if #itemsToGive > 0 then
+        if player:getFreeSlotsCount() >= #itemsToGive then
+            if npcUtil.giveItem(player, itemsToGive) then
+                player:tradeComplete()
+                player:printToPlayer( "Engineer: Here you go, use it in the furnace.", 0xd );
+            end
+        elseif player:getFreeSlotsCount() + trade:getSlotCount() >= #itemsToGive then
+            player:tradeComplete()
+            if npcUtil.giveItem(player, itemsToGive) then
+                player:printToPlayer( "Engineer: Here you go, use it in the furnace.", 0xd );
+            end
+        end
     else
         player:printToPlayer( "Engineer: Where the Scraps I seek.", 0xd );
     end
@@ -74,7 +72,7 @@ end
 entity.onTrigger = function(player, npc)
     player:printToPlayer( "Engineer: So you want some Scaps?", 0xd );
     player:printToPlayer( "Engineer: Trade me God Seals, you the Scraps simple as that.", 0xd );
-    player:printToPlayer( "Engineer: Trade 1 at a time I work slow.", 0xd );
+    --player:printToPlayer( "Engineer: Trade 1 at a time I work slow.", 0xd );
     player:printToPlayer( "Engineer: Take your time, I will be here all week.", 0xd );
 end
 
