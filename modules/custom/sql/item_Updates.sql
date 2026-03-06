@@ -34,6 +34,7 @@ UPDATE item_basic SET type = 6 WHERE itemID = 23871 AND name = 'hebenus_gilet';
 UPDATE item_basic SET type = 6 WHERE itemID = 23872 AND name = 'hebenus_boxers';
 UPDATE item_basic SET type = 6 WHERE itemID = 23873 AND name = 'hebenus_top';
 UPDATE item_basic SET type = 6 WHERE itemID = 23874 AND name = 'hebenus_shorts';
+UPDATE item_basic SET type = 7 WHERE itemID = 20593 AND name = 'hedron_dagger';
 
 UPDATE item_equipment SET slot = 1 WHERE itemID = 21520 AND name = 'ethereal_fists';
 UPDATE item_equipment SET slot = 3 WHERE itemID = 21624 AND name = 'ethereal_sword';
