@@ -351,7 +351,7 @@ local JOB_ABILITIES_TO_TRACK = {
     [223] 	= true, -- NO_FOOT_RISE
     [224] 	= true, -- ALTRUISM
     [225] 	= true, -- FOCALIZATION
-    [226] 	= true, -- TRANQUILITY
+    [226] 	= false, -- TRANQUILITY
     [227] 	= true, -- EQUANIMITY
     [228] 	= true, -- ENLIGHTENMENT
     [229] 	= true, -- AFFLATUS_SOLACE
@@ -1639,7 +1639,7 @@ end
 -- INACTIVITY AND DEMOTION CONFIGURATION
 -- =============================================================================
 local INACTIVITY_GRACE_PERIOD_BATTLES = 5000 -- Approx. 4 IRL days (14 battles/day * 2)
-local BATTLES_PER_DAY = 14 -- Used to calculate penalty per day.
+local BATTLES_PER_DAY = 6 -- Used to calculate penalty per day.
 
 local DEMOTION_FLAG_VAR = 'PB_DemotionFlag' -- CharVar to prevent multiple demotions. (1 = Demoted)
 
@@ -2185,6 +2185,8 @@ local function spawnArmy(zone, selectedZone, selectedUnit, battleFightStartHour)
                 rotation = final_rot, 
                 groupId = unitConfig.groupid,
                 groupZoneId = unitConfig.zoneid,
+                minLevel = mobLevel,
+                maxLevel = mobLevel,
                 allegiance = 0, 
                 widescan = 1,
 
