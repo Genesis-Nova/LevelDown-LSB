@@ -77,24 +77,16 @@ for _, entry in pairs(vw_mob_data) do
     for _, zoneName in pairs(targetZones) do
         local mobPath = string.format('xi.zones.%s.mobs.%s', zoneName, mobName)
 
-        -- 0. onMobEngage: Simple debug message for engagement.
-        M:addOverride(mobPath .. '.onMobEngage', function(mob, target)
-            if DEBUG_ENABLED then
-                local msg = string.format('[DEBUG:%s] Mob %s (ID %d) engaged. Loot pool will be determined by CONTINUOUS enmity snapshots.', 
-                    M.name, mob:getName(), mob:getID())
-                printf(msg)
-            end
-        end)
-        
         -- Only print setup messages if debug is enabled
         if DEBUG_ENABLED then
-            print(string.format('[VW Override] Added onMobEngage (Simple) function for %s in %s', mobName, zoneName))
+            print(string.format('[VW Override] Applying overrides for %s in %s', mobName, zoneName))
         end
         
         -- 0.5. onMobFight: Capture the list of contributors on every call.
         M:addOverride(mobPath .. '.onMobFight', function(mob, target)
-            -- MUST be called first to ensure original VW functionality (like triggers) works.
-            xi.voidwalker.onMobFight(mob, target)
+            if super then
+                super(mob, target)
+            end
             
             local mobID = mob:getID()
             local currentZoneId = mob:getZoneID()
@@ -136,6 +128,10 @@ for _, entry in pairs(vw_mob_data) do
         -- 1. onMobDeath: Main loot execution uses the latest snapped list
         M:addOverride(mobPath .. '.onMobDeath', function(mob, player, optParams)
             
+            if super then
+                super(mob, player, optParams)
+            end
+
             local mobID = mob:getID()
             local currentMobName = mob:getName() 
             local currentZoneId = mob:getZoneID()
@@ -145,26 +141,6 @@ for _, entry in pairs(vw_mob_data) do
                 local msg = '--- [DEBUG:' .. M.name .. '] Mob Death: ' .. currentMobName .. ' (' .. zoneName .. ') ---'
                 printf(msg)
             end
-
-            -- --- PRESERVED ORIGINAL LOGIC (Titles, Hunts, Listener) ---
-            if mobName == 'Krabkatoa' then
-                if player then player:addTitle(xi.title.KRABKATOA_STEAMER) end
-                xi.hunts.checkHunt(mob, player, 544)
-            elseif mobName == 'Orcus' then
-                if player then player:addTitle(xi.title.ORCUS_TROPHY_HUNTER) end
-                xi.hunts.checkHunt(mob, player, 550)
-                -- NOTE: WS_EXIT_LISTENER must be defined in your environment
-                mob:removeListener(WS_EXIT_LISTENER) 
-            elseif mobName == 'Verthandi' then
-                if player then player:addTitle(xi.title.VERTHANDI_ENSNARER) end
-                xi.hunts.checkHunt(mob, player, 553)
-            elseif mobName == 'Lord_Ruthven' then
-                if player then player:addTitle(xi.title.RUTHVEN_ENTOMBER) end
-                xi.hunts.checkHunt(mob, player, 556)
-            end
-
-            -- Universal VW Mob Death Call (REQUIRED FOR ALL VW MOBS)
-            xi.voidwalker.onMobDeath(mob, player, optParams, xi.keyItem.BLACK_ABYSSITE)
 
             -- --- CUSTOM JOB CARD LOOT LOGIC ---
             
