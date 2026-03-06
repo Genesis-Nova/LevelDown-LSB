@@ -241,6 +241,55 @@ local telepoints = {
 }
 
 local showAbyssiteMenu -- Forward declaration
+local showDestinationMenu -- Forward declaration
+
+showDestinationMenu = function(player, group, destPage, parentPage)
+    local dests_per_page = 3
+    local sorted_dests = {}
+    for _, d in ipairs(group.destinations) do
+        table.insert(sorted_dests, d)
+    end
+    table.sort(sorted_dests, function(a, b) return a.name < b.name end)
+
+    local total_dest_pages = math.ceil(#sorted_dests / dests_per_page)
+    destPage = math.max(1, math.min(destPage, total_dest_pages))
+
+    local start_dest_index = (destPage - 1) * dests_per_page + 1
+    local end_dest_index = math.min(start_dest_index + dests_per_page - 1, #sorted_dests)
+
+    local submenu = {
+        title = string.format("%s (%d/%d)", group.name, destPage, total_dest_pages),
+        options = {},
+    }
+
+    if destPage > 1 then
+        table.insert(submenu.options, { "Previous Page", function(p)
+            p:timer(50, function(p2) showDestinationMenu(p2, group, destPage - 1, parentPage) end)
+        end })
+    end
+
+    for i = start_dest_index, end_dest_index do
+        local dest = sorted_dests[i]
+        table.insert(submenu.options, {
+            dest.name,
+            function(p2)
+                p2:setPos(dest.x, dest.y, dest.z, dest.rot, dest.zone)
+            end,
+        })
+    end
+
+    if destPage < total_dest_pages then
+        table.insert(submenu.options, { "Next Page", function(p)
+            p:timer(50, function(p2) showDestinationMenu(p2, group, destPage + 1, parentPage) end)
+        end })
+    end
+
+    table.insert(submenu.options, { "Back", function(p2)
+        p2:timer(50, function(p3) showAbyssiteMenu(p3, parentPage) end)
+    end })
+
+    player:customMenu(submenu)
+end
 
 showAbyssiteMenu = function(player, page)
     local menu = {
@@ -278,23 +327,7 @@ showAbyssiteMenu = function(player, page)
         table.insert(menu.options, {
             group.name,
             function(p)
-                local submenu = {
-                    title = group.name,
-                    options = {},
-                }
-                for _, dest in ipairs(group.destinations) do
-                    table.insert(submenu.options, {
-                        dest.name,
-                        function(p2)
-                            p2:setPos(dest.x, dest.y, dest.z, dest.rot, dest.zone)
-                        end,
-                    })
-                end
-                table.sort(submenu.options, function(a, b) return a[1] < b[1] end)
-                table.insert(submenu.options, { "Back", function(p2)
-                    p2:timer(50, function(p3) showAbyssiteMenu(p3, page) end)
-                end })
-                p:timer(50, function(p2) p2:customMenu(submenu) end)
+                p:timer(50, function(p2) showDestinationMenu(p2, group, 1, page) end)
             end,
         })
     end
