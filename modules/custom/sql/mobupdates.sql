@@ -1426,4 +1426,37 @@ UPDATE mob_groups SET HP = 200000, MP = 9999 WHERE name = 'Schah' AND zoneid = 2
 UPDATE mob_groups SET HP = 200000, MP = 9999 WHERE name = 'Teles' AND zoneid = 291;
 UPDATE mob_groups SET HP = 200000, MP = 9999 WHERE name = 'Vinipata' AND zoneid = 291;
 UPDATE mob_groups SET HP = 200000, MP = 9999 WHERE name = 'Zerde' AND zoneid = 291;
+-- The Naakuals Wildskeeper Reive
+UPDATE mob_groups SET respawntime = 3600, spawntype = 0, HP = 250000, MP = 9999 WHERE name = 'Colkhab' AND zoneid = 261;
+UPDATE mob_groups SET respawntime = 3600, spawntype = 0, HP = 250000, MP = 9999 WHERE name = 'Tchakka' AND zoneid = 262;
+UPDATE mob_groups SET respawntime = 3600, spawntype = 0, HP = 250000, MP = 9999 WHERE name = 'Yumcax' AND zoneid = 263;
+UPDATE mob_groups SET respawntime = 3600, spawntype = 0, HP = 250000, MP = 9999 WHERE name = 'Achuka' AND zoneid = 265;
+UPDATE mob_groups SET respawntime = 3600, spawntype = 0, HP = 250000, MP = 9999 WHERE name = 'Hurkan' AND zoneid = 266;
+UPDATE mob_groups SET respawntime = 3600, spawntype = 0, HP = 250000, MP = 9999 WHERE name = 'Kumhau' AND zoneid = 267;
+UPDATE mob_pools SET skill_list_id = 452 WHERE poolid = 4925 AND name = 'Tchakka';
+INSERT INTO mob_skill_lists VALUES('Hurkan', 460, 3072); -- Crashing Thunder
 
+UPDATE mob_spawn_points SET minLevel = 135, maxLevel = 137 WHERE mobname = 'Colkhab' AND groupid = 36;
+UPDATE mob_spawn_points SET minLevel = 135, maxLevel = 137 WHERE mobname = 'Tchakka' AND groupid = 32;
+UPDATE mob_spawn_points SET minLevel = 135, maxLevel = 137 WHERE mobname = 'Yumcax' AND groupid = 37;
+UPDATE mob_spawn_points SET minLevel = 135, maxLevel = 137 WHERE mobname = 'Achuka' AND groupid = 33;
+UPDATE mob_spawn_points SET minLevel = 135, maxLevel = 137 WHERE mobname = 'Hurkan' AND groupid = 34;
+UPDATE mob_spawn_points SET minLevel = 135, maxLevel = 137 WHERE mobname = 'Kumhau' AND groupid = 31;
+INSERT INTO mob_skill_lists VALUES('Colkhab_Melee', 50004, 2999);
+INSERT INTO mob_skill_lists VALUES('Colkhab_Melee', 50004, 3000);
+INSERT INTO mob_skill_lists VALUES('Colkhab_Melee', 50004, 3001);
+INSERT INTO mob_skill_lists VALUES('Kumhau_Melee', 50005, 3134);
+INSERT INTO mob_skill_lists VALUES('Kumhau_Melee', 50005, 3135);
+INSERT INTO mob_skill_lists VALUES('Kumhau_Melee', 50005, 3136);
+INSERT INTO mob_skill_lists VALUES('Hurkan_Melee', 50006, 3069);
+INSERT INTO mob_skill_lists VALUES('Hurkan_Melee', 50006, 3070);
+INSERT INTO mob_skill_lists VALUES('Hurkan_Melee', 50006, 3071);
+INSERT INTO mob_skill_lists VALUES('Achuka_Melee', 50007, 3017);
+INSERT INTO mob_skill_lists VALUES('Achuka_Melee', 50007, 3018);
+INSERT INTO mob_skill_lists VALUES('Achuka_Melee', 50007, 3019);
+INSERT INTO mob_skill_lists VALUES('Yumcax_Melee', 50008, 3054);
+INSERT INTO mob_skill_lists VALUES('Yumcax_Melee', 50008, 3055);
+INSERT INTO mob_skill_lists VALUES('Yumcax_Melee', 50008, 3056);
+INSERT INTO mob_skill_lists VALUES('Tchakka_Melee', 50009, 3008);
+INSERT INTO mob_skill_lists VALUES('Tchakka_Melee', 50009, 3009);
+INSERT INTO mob_skill_lists VALUES('Tchakka_Melee', 50009, 3010);

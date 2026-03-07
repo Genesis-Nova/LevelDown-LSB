@@ -2848,6 +2848,241 @@ INSERT INTO mob_droplist VALUES (4217,1,6,125,6181,166); -- Beitetsu Parcel - Gr
 INSERT INTO mob_droplist VALUES (4217,1,6,125,4061,166); -- Riftborn Boulder - Group 6
 INSERT INTO mob_droplist VALUES (4217,1,6,125,6182,166); -- Boulder Case - Group 6
 
+-- Colkhab
+INSERT INTO mob_droplist VALUES (4220,0,0,1000,3980,1000);  -- Bztavian Stinger 100%
+INSERT INTO mob_droplist VALUES (4220,0,0,1000,3981,1000);  -- Bztavian Wing 100%
+INSERT INTO mob_droplist VALUES (4220,0,0,1000,4060,270);   -- Beitetsu 27%
+INSERT INTO mob_droplist VALUES (4220,1,1,1000,20829,200); -- Icoyoca - Group 1
+INSERT INTO mob_droplist VALUES (4220,1,1,1000,20965,200); -- Tlamini - Group 1
+INSERT INTO mob_droplist VALUES (4220,1,1,1000,20958,200); -- Kuakuakait - Group 1
+INSERT INTO mob_droplist VALUES (4220,1,1,1000,20820,200); -- Hatxiik - Group 1
+INSERT INTO mob_droplist VALUES (4220,1,1,1000,20992,200); -- Taikogane - Group 1
+INSERT INTO mob_droplist VALUES (4220,1,2,1000,28201,250); -- Xux Trousers - Group 2
+INSERT INTO mob_droplist VALUES (4220,1,2,1000,27781,250); -- Xux Hat  - Group 2
+INSERT INTO mob_droplist VALUES (4220,1,2,1000,27737,250); -- Kaabnax Hat  - Group 2
+INSERT INTO mob_droplist VALUES (4220,1,2,1000,28167,250); -- Kaabnax Trousers  - Group 2
+INSERT INTO mob_droplist VALUES (4220,1,3,1000,28457,250); -- Kuku Stone  - Group 3
+INSERT INTO mob_droplist VALUES (4220,1,3,1000,28384,250); -- Huani Collar  - Group 3
+INSERT INTO mob_droplist VALUES (4220,1,3,1000,28513,250); -- Phawaylla Earring  - Group 3
+INSERT INTO mob_droplist VALUES (4220,1,3,1000,28610,250); -- Ik Cape  - Group 3
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28617,45); -- MAULERS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28618,45); -- ANCHORETS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28619,45); -- MENDING_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28620,45); -- BANE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28621,45); -- GHOSTFYRE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28622,45); -- CANNY_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28623,45); -- WEARD_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28624,45); -- NIHT_MANTLE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28625,45); -- PASTORALISTS_MANTLE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28626,45); -- RHAPSODES_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28627,45); -- LUTIAN_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28628,45); -- TAKAHA_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28629,46); -- YOKAZE_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28630,46); -- UPDRAFT_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28631,46); -- CONVEYANCE_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28632,46); -- CORNFLOWER_CAPE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28633,46); -- GUNSLINGERS_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28634,46); -- DISPERSAL_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28635,46); -- TOETAPPER_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28636,46); -- BOOKWORMS_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28637,46); -- LIFESTREAM_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4220,1,4,1000,28638,46); -- EVASIONISTS_CAPE   - Group 4 JSE
+
+
+-- Achuka
+INSERT INTO mob_droplist VALUES (4221,0,0,1000,3977,1000); -- Gabbrath Horn 100%
+INSERT INTO mob_droplist VALUES (4221,0,0,1000,6068,1000); -- Gabbrath Meat 100%
+INSERT INTO mob_droplist VALUES (4221,0,0,1000,4061,270);  -- Riftborn Boulder 27%
+INSERT INTO mob_droplist VALUES (4221,1,1,1000,20554,200); -- Tlalpoloani - Group 1
+INSERT INTO mob_droplist VALUES (4221,1,1,1000,20740,200); -- Camatlatia - Group 1
+INSERT INTO mob_droplist VALUES (4221,1,1,1000,20731,200); -- Xiuleato - Group 1
+INSERT INTO mob_droplist VALUES (4221,1,1,1000,20543,200); -- Maochinoli - Group 1
+INSERT INTO mob_droplist VALUES (4221,1,1,1000,21385,200); -- Aqreqaq Bomblet - Group 1
+INSERT INTO mob_droplist VALUES (4221,1,2,1000,27779,250); -- Quauhpilli Helm - Group 2
+INSERT INTO mob_droplist VALUES (4221,1,2,1000,28062,250); -- Quauhpilli Gloves - Group 2
+INSERT INTO mob_droplist VALUES (4221,1,2,1000,27739,250); -- Otomi Helm  - Group 2
+INSERT INTO mob_droplist VALUES (4221,1,2,1000,28028,250); -- Otomi Gloves  - Group 2
+INSERT INTO mob_droplist VALUES (4221,1,3,1000,21426,334); -- Achaq Grip  - Group 3
+INSERT INTO mob_droplist VALUES (4221,1,3,1000,28612,333); -- Buquwik Cape  - Group 3
+INSERT INTO mob_droplist VALUES (4221,1,3,1000,28386,333); -- Cuamiz Collar  - Group 3
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28617,45); -- MAULERS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28618,45); -- ANCHORETS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28619,45); -- MENDING_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28620,45); -- BANE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28621,45); -- GHOSTFYRE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28622,45); -- CANNY_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28623,45); -- WEARD_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28624,45); -- NIHT_MANTLE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28625,45); -- PASTORALISTS_MANTLE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28626,45); -- RHAPSODES_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28627,45); -- LUTIAN_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28628,45); -- TAKAHA_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28629,46); -- YOKAZE_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28630,46); -- UPDRAFT_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28631,46); -- CONVEYANCE_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28632,46); -- CORNFLOWER_CAPE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28633,46); -- GUNSLINGERS_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28634,46); -- DISPERSAL_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28635,46); -- TOETAPPER_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28636,46); -- BOOKWORMS_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28637,46); -- LIFESTREAM_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4221,1,4,1000,28638,46); -- EVASIONISTS_CAPE   - Group 4 JSE
+
+-- Tchakka
+INSERT INTO mob_droplist VALUES (4222,0,0,1000,3978,1000); -- Rockfin Fin 100%
+INSERT INTO mob_droplist VALUES (4222,0,0,1000,3979,1000); -- Rockfin Tooth 100%
+INSERT INTO mob_droplist VALUES (4222,0,0,1000,4059,250);  -- Pluton 25%
+INSERT INTO mob_droplist VALUES (4222,0,0,1000,4060,250);  -- Bietetsu 25%
+INSERT INTO mob_droplist VALUES (4222,1,1,1000,20643,167); -- Macoquetza - Group 1
+INSERT INTO mob_droplist VALUES (4222,1,1,1000,21504,167); -- Suijingiri Manemitsu - Group 1
+INSERT INTO mob_droplist VALUES (4222,1,1,1000,21257,167); -- Zoquittihuitz - Group 1
+INSERT INTO mob_droplist VALUES (4222,1,1,1000,21047,167); -- Azukinagamitsu - Group 1
+INSERT INTO mob_droplist VALUES (4222,1,1,1000,20630,166); -- Atoyac - Group 1
+INSERT INTO mob_droplist VALUES (4222,1,1,1000,21253,166); -- Atetepeyorg - Group 1
+INSERT INTO mob_droplist VALUES (4222,1,2,1000,27780,250); -- Chocaliztli Mask - Group 2
+INSERT INTO mob_droplist VALUES (4222,1,2,1000,28343,250); -- Chocaliztli Boots - Group 2
+INSERT INTO mob_droplist VALUES (4222,1,2,1000,27738,250); -- Ejekamal Mask  - Group 2
+INSERT INTO mob_droplist VALUES (4222,1,2,1000,28305,250); -- Ejekamal Boots  - Group 2
+INSERT INTO mob_droplist VALUES (4222,1,3,1000,28611,250); -- Tuilha Cape  - Group 3
+INSERT INTO mob_droplist VALUES (4222,1,3,1000,28575,250); -- Cho'j Band  - Group 3
+INSERT INTO mob_droplist VALUES (4222,1,3,1000,28385,250); -- Atzintli Necklace - Group 3
+INSERT INTO mob_droplist VALUES (4222,1,3,1000,21384,250); -- Kalboron Stone - Group 3
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28617,45); -- MAULERS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28618,45); -- ANCHORETS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28619,45); -- MENDING_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28620,45); -- BANE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28621,45); -- GHOSTFYRE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28622,45); -- CANNY_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28623,45); -- WEARD_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28624,45); -- NIHT_MANTLE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28625,45); -- PASTORALISTS_MANTLE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28626,45); -- RHAPSODES_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28627,45); -- LUTIAN_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28628,45); -- TAKAHA_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28629,46); -- YOKAZE_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28630,46); -- UPDRAFT_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28631,46); -- CONVEYANCE_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28632,46); -- CORNFLOWER_CAPE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28633,46); -- GUNSLINGERS_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28634,46); -- DISPERSAL_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28635,46); -- TOETAPPER_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28636,46); -- BOOKWORMS_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28637,46); -- LIFESTREAM_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4222,1,4,1000,28638,46); -- EVASIONISTS_CAPE   - Group 4 JSE
+
+-- Hurkan
+INSERT INTO mob_droplist VALUES (4223,0,0,1000,4012,1000); -- Waktza Rostrum 100%
+INSERT INTO mob_droplist VALUES (4223,0,0,1000,4013,1000); -- Waltza Crest 100%
+INSERT INTO mob_droplist VALUES (4223,0,0,1000,4059,270);  -- Pluton 27%
+INSERT INTO mob_droplist VALUES (4223,1,1,1000,20917,200); -- Xbalanque - Group 1
+INSERT INTO mob_droplist VALUES (4223,1,1,1000,20826,200); -- Hunahpu - Group 1
+INSERT INTO mob_droplist VALUES (4223,1,1,1000,20768,200); -- Kaquljaan - Group 1
+INSERT INTO mob_droplist VALUES (4223,1,1,1000,21334,200); -- Animikii Bullet - Group 1
+INSERT INTO mob_droplist VALUES (4223,1,1,1000,21428,200); -- Tzacab Grip - Group 1
+INSERT INTO mob_droplist VALUES (4223,1,2,1000,27766,500); -- Uk'uxkaj Cap - Group 2
+INSERT INTO mob_droplist VALUES (4223,1,2,1000,28331,500); -- Uk'uxkaj Boots - Group 2
+INSERT INTO mob_droplist VALUES (4223,1,3,1000,28613,250); -- Kayapa Cape  - Group 3
+INSERT INTO mob_droplist VALUES (4223,1,3,1000,21386,250); -- Jukukik Feather - Group 3
+INSERT INTO mob_droplist VALUES (4223,1,3,1000,28458,250); -- Jaq'ij Sash  - Group 3
+INSERT INTO mob_droplist VALUES (4223,1,3,1000,28576,250); -- Paqichikaji Ring  - Group 3
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28617,45); -- MAULERS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28618,45); -- ANCHORETS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28619,45); -- MENDING_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28620,45); -- BANE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28621,45); -- GHOSTFYRE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28622,45); -- CANNY_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28623,45); -- WEARD_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28624,45); -- NIHT_MANTLE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28625,45); -- PASTORALISTS_MANTLE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28626,45); -- RHAPSODES_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28627,45); -- LUTIAN_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28628,45); -- TAKAHA_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28629,46); -- YOKAZE_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28630,46); -- UPDRAFT_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28631,46); -- CONVEYANCE_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28632,46); -- CORNFLOWER_CAPE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28633,46); -- GUNSLINGERS_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28634,46); -- DISPERSAL_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28635,46); -- TOETAPPER_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28636,46); -- BOOKWORMS_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28637,46); -- LIFESTREAM_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4223,1,4,1000,28638,46); -- EVASIONISTS_CAPE   - Group 4 JSE
+
+-- Yumcax
+INSERT INTO mob_droplist VALUES (4224,0,0,1000,4014,1000); -- Yggdreant Bole 100%
+INSERT INTO mob_droplist VALUES (4224,0,0,1000,4015,1000); -- Yggdreant Root 100%
+INSERT INTO mob_droplist VALUES (4224,0,0,1000,4060,250);  -- Bietetsu 25%
+INSERT INTO mob_droplist VALUES (4224,0,0,1000,4061,250);  -- Riftborn Boulder 25%
+INSERT INTO mob_droplist VALUES (4224,1,1,1000,21125,500); -- Tamaxchi - Group 1
+INSERT INTO mob_droplist VALUES (4224,1,1,1000,20872,500); -- Ixtab - Group 1
+INSERT INTO mob_droplist VALUES (4224,1,2,1000,27767,500); -- Buremte Hat - Group 2
+INSERT INTO mob_droplist VALUES (4224,1,2,1000,28050,500); -- Buremte Gloves - Group 2
+INSERT INTO mob_droplist VALUES (4224,1,3,1000,28548,143); -- Barataria Ring  - Group 3
+INSERT INTO mob_droplist VALUES (4224,1,3,1000,28640,143); -- Pahtli Cape - Group 3
+INSERT INTO mob_droplist VALUES (4224,1,3,1000,28400,143); -- Ocachi Gorget  - Group 3
+INSERT INTO mob_droplist VALUES (4224,1,3,1000,28577,143); -- Kunaji Ring  - Group 3
+INSERT INTO mob_droplist VALUES (4224,1,3,1000,28614,143); -- Iximulew Cape  - Group 3
+INSERT INTO mob_droplist VALUES (4224,1,3,1000,28387,143); -- Quanpur Necklace  - Group 3
+INSERT INTO mob_droplist VALUES (4224,1,3,1000,28459,142); -- Chuq'aba Belt  - Group 3
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28617,45); -- MAULERS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28618,45); -- ANCHORETS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28619,45); -- MENDING_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28620,45); -- BANE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28621,45); -- GHOSTFYRE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28622,45); -- CANNY_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28623,45); -- WEARD_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28624,45); -- NIHT_MANTLE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28625,45); -- PASTORALISTS_MANTLE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28626,45); -- RHAPSODES_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28627,45); -- LUTIAN_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28628,45); -- TAKAHA_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28629,46); -- YOKAZE_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28630,46); -- UPDRAFT_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28631,46); -- CONVEYANCE_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28632,46); -- CORNFLOWER_CAPE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28633,46); -- GUNSLINGERS_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28634,46); -- DISPERSAL_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28635,46); -- TOETAPPER_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28636,46); -- BOOKWORMS_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28637,46); -- LIFESTREAM_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4224,1,4,1000,28638,46); -- EVASIONISTS_CAPE   - Group 4 JSE
+
+-- Kumhau
+INSERT INTO mob_droplist VALUES (4225,0,0,1000,8752,942); -- Cehuetzi Claw 94.2%
+INSERT INTO mob_droplist VALUES (4225,0,0,1000,8754,726); -- Cehuetzi Pelt 72.6%
+INSERT INTO mob_droplist VALUES (4225,0,0,1000,8753,733); -- Cehuetzi Ice Shard 73.3%
+INSERT INTO mob_droplist VALUES (4225,1,1,1000,21186,500); -- Baqil Staff - Group 1
+INSERT INTO mob_droplist VALUES (4225,1,1,1000,21233,500); -- Ajjub Bow - Group 1
+INSERT INTO mob_droplist VALUES (4225,1,2,1000,28166,500); -- Quiahuiz Trousers - Group 2
+INSERT INTO mob_droplist VALUES (4225,1,2,1000,27736,500); -- Quiahuiz Helm - Group 2
+INSERT INTO mob_droplist VALUES (4225,1,3,1000,28460,200); -- Cetl belt  - Group 3
+INSERT INTO mob_droplist VALUES (4225,1,3,1000,28388,200); -- Tlamiztli Collar - Group 3
+INSERT INTO mob_droplist VALUES (4225,1,3,1000,21463,200); -- Nepote Bell  - Group 3
+INSERT INTO mob_droplist VALUES (4225,1,3,1000,28514,200); -- Friomisi Earring  - Group 3
+INSERT INTO mob_droplist VALUES (4225,1,3,1000,28615,200); -- Toro Cape  - Group 3
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28617,45); -- MAULERS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28618,45); -- ANCHORETS_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28619,45); -- MENDING_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28620,45); -- BANE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28621,45); -- GHOSTFYRE_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28622,45); -- CANNY_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28623,45); -- WEARD_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28624,45); -- NIHT_MANTLE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28625,45); -- PASTORALISTS_MANTLE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28626,45); -- RHAPSODES_CAPE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28627,45); -- LUTIAN_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28628,45); -- TAKAHA_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28629,46); -- YOKAZE_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28630,46); -- UPDRAFT_MANTLE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28631,46); -- CONVEYANCE_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28632,46); -- CORNFLOWER_CAPE    - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28633,46); -- GUNSLINGERS_CAPE - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28634,46); -- DISPERSAL_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28635,46); -- TOETAPPER_MANTLE  - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28636,46); -- BOOKWORMS_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28637,46); -- LIFESTREAM_CAPE   - Group 4 JSE
+INSERT INTO mob_droplist VALUES (4225,1,4,1000,28638,46); -- EVASIONISTS_CAPE   - Group 4 JSE
+
 UPDATE mob_groups SET dropid = 4000 WHERE name = 'Ground_Guzzler';
 UPDATE mob_groups SET dropid = 4000 WHERE name = 'Globster';
 UPDATE mob_groups SET dropid = 4000 WHERE name = 'Quagmire_Pugil';
@@ -3094,4 +3329,11 @@ UPDATE mob_groups SET dropid = 4214 WHERE name = 'Ascended_Poroggo' AND groupid 
 UPDATE mob_groups SET dropid = 4215 WHERE name = 'Ascended_Porxie' AND groupid = 33;
 UPDATE mob_groups SET dropid = 4216 WHERE name = 'Ascended_Tiger' AND groupid = 35;
 UPDATE mob_groups SET dropid = 4217 WHERE name = 'Ascended_Ungeweder' AND groupid = 43;
+-- 4218
 UPDATE mob_groups SET dropid = 4219 WHERE name = 'Schah' AND groupid = 74;
+UPDATE mob_groups SET dropid = 4220 WHERE name = 'Colkhab' AND groupid = 36;
+UPDATE mob_groups SET dropid = 4221 WHERE name = 'Achuka' AND groupid = 33;
+UPDATE mob_groups SET dropid = 4222 WHERE name = 'Tchakka' AND groupid = 32;
+UPDATE mob_groups SET dropid = 4223 WHERE name = 'Hurkan' AND groupid = 34;
+UPDATE mob_groups SET dropid = 4224 WHERE name = 'Yumcax' AND groupid = 37;
+UPDATE mob_groups SET dropid = 4225 WHERE name = 'Kumhau' AND groupid = 31;
