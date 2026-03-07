@@ -27,7 +27,7 @@ m:addOverride(string.format("xi.actions.spells.trust.%s.onSpellCast", trustToRep
 
     -- local boostAmount = math.ceil((30 / 99) * caster:getMainLvl())
     --trust:addStatusEffectEx(xi.effect.COLURE_ACTIVE, xi.effect.COLURE_ACTIVE, 6, 3, 0, xi.effect.GEO_HASTE, 1200, xi.auraTarget.ALLIES, xi.effectFlag.AURA)
-    trust:addStatusEffect(xi.effect.COLURE_ACTIVE, { power = 6, origin = trust, tick = 3, subType = xi.effect.GEO_HASTE, subPower = 1200, tier = xi.auraTarget.ALLIES, flag = xi.effectFlag.AURA })
+    trust:addStatusEffect(xi.effect.COLURE_ACTIVE, { power = 6, origin = trust, tick = 3, subType = xi.effect.GEO_HASTE, subPower = 2000, tier = xi.auraTarget.ALLIES, flag = xi.effectFlag.AURA })
     --trust:addStatusEffectEx(xi.effect.GEO_ACCURACY_BOOST, xi.effect.GEO_ACCURACY_BOOST, 6, 3, 0, xi.effect.GEO_ACCURACY_BOOST, boostAmount, xi.auraTarget.ALLIES, xi.effectFlag.AURA)
     --trust:addStatusEffectEx(xi.effect.GEO_MAGIC_ACC_BOOST, xi.effect.GEO_MAGIC_ACC_BOOST, 6, 3, 0, xi.effect.GEO_MAGIC_ACC_BOOST, boostAmount, xi.auraTarget.ALLIES, xi.effectFlag.AURA)
     -- TODO: Ranged accuracy boost
