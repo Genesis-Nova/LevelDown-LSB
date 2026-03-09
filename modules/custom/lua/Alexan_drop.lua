@@ -156,6 +156,14 @@ local MMob =
 {'Suhur_Mas'},
 }
 
+local AURMob =
+{
+{'Apex_Archaic_Cog'},
+{'Apex_Archaic_Cogs'},
+{'Qiqirn_Poulterer'},
+{'Qiqirn_Goldsmith'},
+{'Qiqirn_Mine'},
+}
 
 
 local ensureTable = function(str)
@@ -177,6 +185,9 @@ ensureTable(string.format("xi.zones.Halvung.mobs.%s", entry[1]))
 end
 for _, entry in pairs(MMob) do
 ensureTable(string.format("xi.zones.Mamook.mobs.%s", entry[1]))
+end
+for _, entry in pairs(AURMob) do
+ensureTable(string.format("xi.zones.Alzadaal_Undersea_Ruins.mobs.%s", entry[1]))
 end
 
 local m = Module:new("Alexan_drop")
@@ -235,6 +246,23 @@ end
 for _, entry in pairs(MMob) do
     local mobNamec    = entry[1]
 m:addOverride(string.format('xi.zones.Mamook.mobs.%s.onMobDeath', mobNamec), function(mob, player, optParams)
+    super(mob, player, optParams)
+    local rand = math.random(1, 2)
+    npcUtil.giveItem(player, { { xi.item.ALEXANDRITE, rand } })
+    local randz = math.random(1,75) 
+    if randz == 18 then
+    npcUtil.giveItem(player, { { xi.item.COTTON_COIN_PURSE, 1 } })
+    end
+    local randx = math.random(1,100) 
+    if randx == 11 then
+    npcUtil.giveItem(player, { { xi.item.LINEN_COIN_PURSE, 1 } })
+    end
+end)
+end
+
+for _, entry in pairs(AURMob) do
+    local mobNamed    = entry[1]
+m:addOverride(string.format('xi.zones.Alzadaal_Undersea_Ruins.mobs.%s.onMobDeath', mobNamed), function(mob, player, optParams)
     super(mob, player, optParams)
     local rand = math.random(1, 2)
     npcUtil.giveItem(player, { { xi.item.ALEXANDRITE, rand } })
