@@ -265,7 +265,7 @@ end)
 m:addOverride('xi.actions.mobskills.bowels_of_agony.onMobWeaponSkill', function(target, mob, skill)
     local dmgmod = 1
     local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getWeaponDmg(), xi.element.DARK, dmgmod, xi.mobskills.magicalTpBonus.MAB_BONUS, 1)
-    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.DARK,xi.mobskills.shadowBehavior.WIPE_SHADOWS)
+    local dmg = xi.mobskills.mobFinalAdjustments(info, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.DARK,xi.mobskills.shadowBehavior.WIPE_SHADOWS)
         target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.DARK)
     return dmg
 end)
