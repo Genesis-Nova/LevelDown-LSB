@@ -41,6 +41,13 @@ xi.additionalEffect.dStatBonus = function(attacker, defender, dStat, damage)
 end
 
 -----------------------------------
+-- Status Attack Helper
+-----------------------------------
+xi.additionalEffect.statusAttack = function(effectId, target)
+    return 0
+end
+
+-----------------------------------
 -- Magical additional damage
 -----------------------------------
 xi.additionalEffect.calcDamage = function(attacker, element, defender, damage)
