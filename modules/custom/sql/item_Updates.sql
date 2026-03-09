@@ -53,7 +53,7 @@ UPDATE item_equipment SET slot = 4 WHERE itemID = 22165 AND name = 'ethereal_gun
 UPDATE item_equipment SET slot = 1 WHERE itemID = 20931 AND name = 'celestial_spear';
 UPDATE item_equipment SET slot = 3 WHERE itemID = 20593 AND name = 'hedron_dagger';
 
-UPDATE item_equipment SET jobs = 337 WHERE itemID = 26487 AND name = 'sacro_bulwark';
+UPDATE `item_equipment` SET `itemId`=26487, `name`='sacro_bulwark', `level`=99, `ilevel`=119, `jobs`=337, `MId`=671, `shieldSize`=3, `scriptType`=0, `slot`=2, `rslot`=0, `rslotlook`=0, `su_level`=0 WHERE `itemId`=26487;
 
 
 --slots
