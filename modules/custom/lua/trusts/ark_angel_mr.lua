@@ -66,18 +66,24 @@ end)
 
     -- Cloud Splitter
     xi.module.ensureTable("xi.actions.mobskills.cloudsplitter")
-        m:addOverride("xi.actions.mobskills.cloudsplitter.onMobSkillCheck", function(target, mob, skill)
-
-            return 0
-        end)
-        m:addOverride("xi.actions.mobskills.cloudsplitter.onMobWeaponSkill", function(target, mob, skill)
-            local damage = math.floor(mob:getWeaponDmg() * 3)
-            local dmgmod = 2
+         m:addOverride("xi.actions.mobskills.cloudsplitter.onMobWeaponSkill", function(target, mob, skill)
+             local damage = math.floor(mob:getWeaponDmg() * 3)
+             local dmgmod = 2
             damage = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.element.THUNDER, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT, 1)
             damage = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.THUNDER, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
-            target:takeDamage(damage, mob, xi.attackType.MAGICAL, xi.damageType.THUNDER)
 
-            return damage
+            local skillParams = {
+                baseDamage = damage,
+                element = xi.element.THUNDER,
+                fTP = { dmgmod, dmgmod, dmgmod },
+                shadowBehavior = xi.mobskills.shadowBehavior.WIPE_SHADOWS,
+            }
+            local result = xi.mobskills.mobMagicalMove(mob, target, skill, nil, skillParams)
+            damage = result.damage
+
+             target:takeDamage(damage, mob, xi.attackType.MAGICAL, xi.damageType.THUNDER)
+ 
+             return damage
         end)
 
 return m
