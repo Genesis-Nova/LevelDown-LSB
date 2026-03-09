@@ -39,6 +39,8 @@ m:addOverride('xi.zones.Yorcia_Weald.Zone.onInitialize', function(zone)
                     widescan  =  1,
                     groupId  =  11506,
                     groupZoneId  =  299,
+                    minLevel = 99,
+                    maxLevel = 99,
 
                     onMobSpawn  =  function(mob,   player,   optParams)
                         mob:setMobMod(xi.mobMod.IDLE_DESPAWN, 300)
