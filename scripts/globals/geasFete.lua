@@ -598,13 +598,12 @@ xi.geasFete.qmOnEventFinish = function(player, csid, option, npc)
             end
         end)
 
-        mob:addListener('DESPAWN', 'QM_'..npc:getID(), function(mob) -- QM reappear after mob has vanished
-            npc:setLocalVar('MobCount', npc:getLocalVar('MobCount') -1)
+        mob:addListener('DESPAWN', 'QM_'..npc:getID(), function(mobArg) -- QM reappear after mob has vanished
+            npc:setLocalVar('MobCount', npc:getLocalVar('MobCount') - 1)
 
             if npc:getLocalVar('MobCount') == 0 then
-                npc:timer(1000, function(npcArg)
-                    npcArg:setStatus(xi.status.NORMAL)
-                end)
+                -- Directly set the status; do NOT use a timer on a disappeared NPC
+                npc:setStatus(xi.status.NORMAL)
             end
         end)
     end
@@ -1108,7 +1107,7 @@ local grislyTrinketsTrade =
             [5] = { trade = { xi.item.GOLD_BANGLES }, csid = 9702 }, -- add to enums 13983
             [6] = { trade = { xi.item.DEMONS_KNIFE }, csid = 9702 }, -- add to enum 17601
             [7] = { trade = { xi.item.BOWL_OF_TURTLE_SOUP }, csid = 9702 },
-            [8] = { trade = { xi.item.BLADEFISH }, csid = 9702 },
+            [8] = { trade = { xi.item.BLADEFISH_1 }, csid = 9702 },
             [9] = { trade = { xi.item.GRAMK_DROOGS_GRAND_COFFER }, csid = nil, keyItem = xi.ki.BASHMUS_TRINKET }, -- add to enum 6296
             [10] = { trade = { { xi.item.IGNOR_MNT_GRAND_COFFER, 2 } }, csid = nil, keyItem = xi.ki.GAJASIMHAS_MANE }, -- add to enum 6288
             [11] = { trade = { { xi.item.DURS_VIKES_GRAND_COFFER, 2 } }, csid = nil, keyItem = xi.ki.IRONSIDES_MAUL }, -- add to enum 6290
