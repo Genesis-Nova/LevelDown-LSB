@@ -1074,9 +1074,9 @@ local grislyTrinketsTrade =
             [4] = { trade = { { xi.item.SQUARE_OF_CATOBLEPAS_LEATHER, 2 } }, csid = 9702 },
             [5] = { trade = { { xi.item.PLATINUM_INGOT, 2 } }, csid = 9702 },
             [6] = { trade = { { xi.item.CERMET_CHUNK, 2 } }, csid = 9702 },
-            [7] = { trade = { xi.item.TURTLE_BANGLES }, csid = 9702 },
-            [8] = { trade = { xi.item.PAMAMA_TART }, csid = 9702 }, -- add to enum 4563
-            [9] = { trade = { xi.item.BHEFHEL_MARLIN }, csid = 9702 },
+            [7] = { trade = { { xi.item.TURTLE_BANGLES, 1 } }, csid = 9702 },
+            [8] = { trade = { { xi.item.PAMAMA_TART, 1 } }, csid = 9702 }, -- add to enum 4563
+            [9] = { trade = { { xi.item.BHEFHEL_MARLIN, 1 } }, csid = 9702 },
             [10] = { trade = { { xi.item.MHUUFYAS_BEAK, 5 } }, csid = nil, keyItem = xi.ki.AMYMONES_TOOTH }, -- add to enum 9097
             [11] = { trade = { { xi.item.AZRAELS_EYE, 5 } }, csid = nil, keyItem = xi.ki.HANBIS_NAIL }, -- add to enum 9059
             [12] = { trade = { { xi.item.VEDRFOLNIRS_WING, 5 } }, csid = nil, keyItem = xi.ki.KAMMAVACAS_BINDING }, -- add to enum 9031
@@ -1100,14 +1100,14 @@ local grislyTrinketsTrade =
 
         [xi.zone.REISENJIMA] = -- 291
         {
-            [1] = { trade = { xi.item.DARKSTEEL_BUCKLER }, csid = 9702 },
+            [1] = { trade = { { xi.item.DARKSTEEL_BUCKLER, 1 } }, csid = 9702 },
             [2] = { trade = { { xi.item.PIECE_OF_ANCIENT_LUMBER, 2 } }, csid = 9702 },
-            [3] = { trade = { xi.item.GOLD_OBI }, csid = 9702 },
-            [4] = { trade = { xi.item.SQUARE_OF_BEHEMOTH_LEATHER }, csid = 9702 },
-            [5] = { trade = { xi.item.GOLD_BANGLES }, csid = 9702 }, -- add to enums 13983
-            [6] = { trade = { xi.item.DEMONS_KNIFE }, csid = 9702 }, -- add to enum 17601
-            [7] = { trade = { xi.item.BOWL_OF_TURTLE_SOUP }, csid = 9702 },
-            [8] = { trade = { xi.item.BLADEFISH_1 }, csid = 9702 },
+            [3] = { trade = { { xi.item.GOLD_OBI, 1 } }, csid = 9702 },
+            [4] = { trade = { { xi.item.SQUARE_OF_BEHEMOTH_LEATHER, 1 } }, csid = 9702 },
+            [5] = { trade = { { xi.item.GOLD_BANGLES, 1 } }, csid = 9702 }, -- add to enums 13983
+            [6] = { trade = { { xi.item.DEMONS_KNIFE, 1 } }, csid = 9702 }, -- add to enum 17601
+            [7] = { trade = { { xi.item.BOWL_OF_TURTLE_SOUP, 1 } }, csid = 9702 },
+            [8] = { trade = { { xi.item.BLADEFISH_1, 1 } }, csid = 9702 },
             [9] = { trade = { xi.item.GRAMK_DROOGS_GRAND_COFFER }, csid = nil, keyItem = xi.ki.BASHMUS_TRINKET }, -- add to enum 6296
             [10] = { trade = { { xi.item.IGNOR_MNT_GRAND_COFFER, 2 } }, csid = nil, keyItem = xi.ki.GAJASIMHAS_MANE }, -- add to enum 6288
             [11] = { trade = { { xi.item.DURS_VIKES_GRAND_COFFER, 2 } }, csid = nil, keyItem = xi.ki.IRONSIDES_MAUL }, -- add to enum 6290
