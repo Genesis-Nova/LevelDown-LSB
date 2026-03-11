@@ -3329,7 +3329,7 @@ UPDATE mob_groups SET dropid = 4214 WHERE name = 'Ascended_Poroggo' AND groupid 
 UPDATE mob_groups SET dropid = 4215 WHERE name = 'Ascended_Porxie' AND groupid = 33;
 UPDATE mob_groups SET dropid = 4216 WHERE name = 'Ascended_Tiger' AND groupid = 35;
 UPDATE mob_groups SET dropid = 4217 WHERE name = 'Ascended_Ungeweder' AND groupid = 43;
--- 4218
+
 UPDATE mob_groups SET dropid = 4219 WHERE name = 'Schah' AND groupid = 74;
 UPDATE mob_groups SET dropid = 4220 WHERE name = 'Colkhab' AND groupid = 36;
 UPDATE mob_groups SET dropid = 4221 WHERE name = 'Achuka' AND groupid = 33;
@@ -3337,3 +3337,8 @@ UPDATE mob_groups SET dropid = 4222 WHERE name = 'Tchakka' AND groupid = 32;
 UPDATE mob_groups SET dropid = 4223 WHERE name = 'Hurkan' AND groupid = 34;
 UPDATE mob_groups SET dropid = 4224 WHERE name = 'Yumcax' AND groupid = 37;
 UPDATE mob_groups SET dropid = 4225 WHERE name = 'Kumhau' AND groupid = 31;
+
+INSERT INTO mob_droplist VALUES (4218,1,1,200,23714,50); -- Volte Doublet 5%
+INSERT INTO mob_droplist VALUES (4218,1,1,200,23715,50); -- Volte Harness 5%
+INSERT INTO mob_droplist VALUES (4218,1,1,200,23716,50); -- Volte Haubert 5%
+INSERT INTO mob_droplist VALUES (4218,1,1,200,23717,50); -- Volte Jupon 5%
