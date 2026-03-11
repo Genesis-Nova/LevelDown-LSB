@@ -52,9 +52,11 @@ m:addOverride(string.format("xi.actions.spells.trust.%s.onMobDespawn", trustToRe
     --     : we cached earlier
     local masterId = mob:getLocalVar("MASTER_ID")
     local master = GetPlayerByID(masterId)
-    for _, member in ipairs(master:getParty()) do
-        if member:isPC() then
-            member:printToPlayer("Remember: never give up!", 4, "Cornelia") -- 4: MESSAGE_PARTY
+    if master then
+        for _, member in ipairs(master:getParty()) do
+            if member:isPC() then
+                member:printToPlayer("Remember: never give up!", 4, "Cornelia") -- 4: MESSAGE_PARTY
+            end
         end
     end
 end)
