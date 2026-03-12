@@ -1,6 +1,6 @@
 local mobnames =
 {
-    ['Escha_Escha_RuAun'] =
+    ['Escha_RuAun'] =
     {
         { 'Bia' },
         { 'Ruea' },
