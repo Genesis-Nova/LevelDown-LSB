@@ -213,7 +213,9 @@ local debuffEffects = {
                 mob:setLocalVar("ForceGospel", 0)
                 local gospelCount = mob:getLocalVar("GospelCount") + 1
                 if gospelCount >= 3 then
-                    mob:setLocalVar("NextMovePerfectDefense", 1)
+                    if math.random(1, 100) <= 33 then
+                        mob:setLocalVar("NextMovePerfectDefense", 1)
+                    end
                     gospelCount = 0
                 end
                 mob:setLocalVar("GospelCount", gospelCount)
