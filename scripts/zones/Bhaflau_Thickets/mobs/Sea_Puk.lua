@@ -13,7 +13,7 @@ entity.onMobInitialize = function(mob)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, zones[xi.zone.BHAFLAU_THICKETS].mob.NIS_PUK, 5, 43200) -- 12 hours
+    xi.mob.phOnDespawn(mob, zones[xi.zone.BHAFLAU_THICKETS].mob.NIS_PUK, 10, 10800) -- 3 hours
 end
 
 return entity
