@@ -16,7 +16,7 @@ local content = Battlefield:new({
     index         = 3,
     entryNpc      = '_0w0',
     exitNpc       = 'Airship_Door',
-    requiredKeyItems = { xi.ki.FEARED_ONE_PHANTOM_GEM, keep = false   },
+    requiredKeyItems = { xi.ki.FEARED_ONE_PHANTOM_GEM, keep = false  },
 })
 
 -- NOTE: Mob spawning for phase changes in this battlefield is triggered
@@ -84,8 +84,55 @@ content.groups =
 
         spawned  = true,
         allDeath = function(battlefield, mob)
+            local players = battlefield:getPlayers()
             battlefield:setStatus(xi.battlefield.status.WON)
+            if #players > 0 then
+                players[1]:timer(7000, function(p) -- timer to drop loot
+                    local selectedLoot = utils.selectFromLootGroups(p, content.loot)
+                    for _, item in ipairs(selectedLoot) do
+                        if item.itemId ~= xi.item.NONE then
+                            -- Add to treasure pool of the first player (shared with party)
+                            p:addTreasure(item.itemId, mob)
+                        end
+                    end
+                end)
+            end
         end,
+    },
+}
+
+content.loot =
+{
+    {
+        { itemId = xi.item.COPY_OF_REMS_TALE_CHAPTER_10,     weight =  1000},  
+    },
+
+    {
+        { itemId = xi.item.NONE,                             weight = 750 }, -- nothing
+        { itemId = xi.item.COPY_OF_REMS_TALE_CHAPTER_10,     weight = 250}, 
+    },
+    --Unique Materials
+    {
+        { itemId = xi.item.NONE,                    weight = 167 }, -- nothing
+        { itemId = xi.item.EXALTED_LOG,             weight = 166 }, -- Exalted Log
+        { itemId = xi.item.HEPATIZON_ORE,           weight = 166 }, -- Hepatizon Ore
+        { itemId = xi.item.MALIYAKALEYA_ORB,        weight = 166 }, -- Maliyakaleya Coral
+        { itemId = xi.item.CHUNK_OF_BERYLLIUM_ORE,  weight = 166 }, -- Beryllium Ore
+        { itemId = xi.item.SIFS_LOCK,               weight = 166 }, -- Sif's Lock
+    },
+    --Weapons
+    {
+        { itemId = xi.item.NONE,                weight = 667 }, -- nothing
+        { itemId = xi.item.DENOUEMENTS,        	weight = 167 },
+        { itemId = xi.item.CULMINUS,        	weight = 166 },  
+    },
+    --Armor
+    {
+        { itemId = xi.item.NONE,                    weight = 333 }, -- nothing
+        { itemId = xi.item.TERMINAL_HELM,           weight = 166 },
+        { itemId = xi.item.TERMINAL_PLATE,          weight = 166 },
+        { itemId = xi.item.CESSANCE_EARRING,        weight = 166 },
+        { itemId = xi.item.CONSUMMATION_TORQUE,     weight = 166 },
     },
 }
 

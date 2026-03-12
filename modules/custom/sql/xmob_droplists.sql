@@ -952,199 +952,209 @@ INSERT INTO mob_droplist VALUES(4100,1,2,1000,837,250); -- Malboro Fiber / NMs I
 INSERT INTO mob_droplist VALUES(4100,1,2,1000,844,250); -- Phoenix Feather / NMs Ix'aern (MNK)
 INSERT INTO mob_droplist VALUES(4100,1,3,1000,20819,500); -- Antican Axe / NMs Ix'aern (MNK)
 INSERT INTO mob_droplist VALUES(4100,1,3,1000,20730,500); -- Predatrice / NMs Ix'aern (MNK)
-INSERT INTO mob_droplist VALUES(4101,0,0,1000,4072,1000); -- Rem's Tale Ch. 9 Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,1,500,4072,250); -- Rem's Tale Ch. 9 Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,2,1000,20944,333); -- Pelagos Lance Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,2,1000,21103,333); -- Vadose Rod Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,2,1000,20856,334); -- Phreatic Axe Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,3,1000,21420,500); -- Benthos Grip Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,3,1000,28493,500); -- Neritic Earring Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,4,1000,8720,200); -- Maliyakaleya Coral Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,4,1000,8721,200); -- Hepatizon Ore Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,4,1000,8723,200); -- Beryllium Ore Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,4,1000,8725,200); -- Exalted Log Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4101,1,4,1000,8727,200); -- Sif's Lock Leviathan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,0,0,1000,4069,1000); -- Rem's Tale Ch. 6 Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,1,500,4069,250); -- Rem's Tale Ch. 6 Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,2,1000,20615,333); -- Levante Dagger Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,2,1000,20808,333); -- Tramontane Axe Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,2,1000,28538,334); -- Lebeche Ring Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,3,1000,28441,500); -- Ponente Sash Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,3,1000,28286,500); -- Ostro Greaves Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,4,1000,8720,200); -- Maliyakaleya Coral Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,4,1000,8721,200); -- Hepatizon Ore Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,4,1000,8723,200); -- Beryllium Ore Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,4,1000,8725,200); -- Exalted Log Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4102,1,4,1000,8727,200); -- Sif's Lock Garuda_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,0,0,1000,4073,1000); -- Rem's Tale Ch. 10 Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,1,500,4073,250); -- Rem's Tale Ch. 10 Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,2,1000,20529,333); -- Calved Claws Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,2,1000,21167,333); -- Frazil Staff Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,2,1000,28495,334); -- Rimeice Earring Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,3,1000,28008,500); -- Nilas Gloves Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,3,1000,21366,500); -- Floestone Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,4,1000,8720,200); -- Maliyakaleya Coral Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,4,1000,8721,200); -- Hepatizon Ore Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,4,1000,8723,200); -- Beryllium Ore Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,4,1000,8725,200); -- Exalted Log Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4103,1,4,1000,8727,200); -- Sif's Lock Shiva_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,0,0,1000,4070,1000); -- Rem's Tale Ch. 7 Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,1,500,4070,250); -- Rem's Tale Ch. 7 Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,2,1000,21166,333); -- Staccato Staff Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,2,1000,21274,333); -- Donar Gun Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,2,1000,28354,334); -- Voltsurge Torque Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,3,1000,28432,500); -- Ukko Sash Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,3,1000,28142,500); -- Brontes Cuisses Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,4,1000,8720,200); -- Maliyakaleya Coral Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,4,1000,8721,200); -- Hepatizon Ore Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,4,1000,8723,200); -- Beryllium Ore Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,4,1000,8725,200); -- Exalted Log Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4104,1,4,1000,8727,200); -- Sif's Lock Ramuh_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,0,0,1000,4072,1000); -- Rem's Tale Ch. 9 Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,1,500,4072,250); -- Rem's Tale Ch. 9 Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,2,1000,20716,333); -- Perfervid Sword Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,2,1000,21036,333); -- Atakigiri Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,2,1000,28285,334); -- Coalrake Sabots Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,3,1000,27594,500); -- Annealed Mantle Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,3,1000,21421,500); -- Immolation Grip Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,4,1000,8720,200); -- Maliyakaleya Coral Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,4,1000,8721,200); -- Hepatizon Ore Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,4,1000,8723,200); -- Beryllium Ore Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,4,1000,8725,200); -- Exalted Log Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4105,1,4,1000,8727,200); -- Sif's Lock Ifrit_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,0,0,1000,4071,1000); -- Rem's Tale Ch. 8 Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,1,500,4071,250); -- Rem's Tale Ch. 8 Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,2,1000,21102,333); -- Mafic Cudgel Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,2,1000,20757,333); -- Foreshock Sword Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,2,1000,21357,334); -- Togakushi Shuriken Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,3,1000,28535,500); -- Supershear Ring Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,3,1000,21358,500); -- Plumose Sachet Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,4,1000,8720,200); -- Maliyakaleya Coral Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,4,1000,8721,200); -- Hepatizon Ore Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,4,1000,8723,200); -- Beryllium Ore Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,4,1000,8725,200); -- Exalted Log Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4106,1,4,1000,8727,200); -- Sif's Lock Titan_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,0,0,1000,4069,1000); -- Rem's Tale Ch. 6 Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,1,500,4069,250); -- Rem's Tale Ch. 6 Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,2,1000,20707,333); -- Medeina Kilij Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,2,1000,21412,333); -- Capitoline Strap Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,2,1000,25600,334); -- Ma'iitsoh Haube Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,3,1000,26969,500); -- Vrikodara Jupon Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,3,1000,27608,500); -- Lupine Cape Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,4,1000,8720,200); -- Maliyakaleya Coral Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,4,1000,8721,200); -- Hepatizon Ore Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,4,1000,8723,200); -- Beryllium Ore Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,4,1000,8725,200); -- Exalted Log Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4107,1,4,1000,8727,200); -- Sif's Lock Fenrir_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,0,0,1000,4070,1000); -- Rem's Tale Ch. 7 Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,1,500,4070,250); -- Rem's Tale Ch. 7 Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,2,1000,21155,333); -- Marquetry Staff Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,2,1000,26970,333); -- Lapidary Tunic Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,2,1000,27466,334); -- Diamantaire Sollerets Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,3,1000,27516,500); -- Satlada Necklace Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,3,1000,28414,500); -- Engraved Belt Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,4,1000,8720,200); -- Maliyakaleya Coral Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,4,1000,8721,200); -- Hepatizon Ore Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,4,1000,8723,200); -- Beryllium Ore Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,4,1000,8725,200); -- Exalted Log Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4108,1,4,1000,8727,200); -- Sif's Lock Carbuncle_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,0,0,1000,4071,1000); -- Rem's Tale Ch. 8 Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,1,500,4071,250); -- Rem's Tale Ch. 8 Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,2,1000,20982,333); -- Shuhansadamune Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,2,1000,26971,333); -- Chozoron Coselete Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,2,1000,27105,334); -- Loagaeth Cuffs Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,3,1000,27531,500); -- Darkside Earring Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,3,1000,10767,500); -- Pernicious Ring Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,4,1000,8720,200); -- Maliyakaleya Coral Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,4,1000,8721,200); -- Hepatizon Ore Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,4,1000,8723,200); -- Beryllium Ore Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,4,1000,8725,200); -- Exalted Log Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4109,1,4,1000,8727,200); -- Sif's Lock Diabolos_Prime_HTBF
-INSERT INTO mob_droplist VALUES(4110,0,0,1000,4070,1000); -- Rem Tale Ch 7 Ark_Angel_EV_HTBF
-INSERT INTO mob_droplist VALUES(4110,0,0,250,4070,1000); -- Rem Tale Ch 7 Ark_Angel_EV_HTBF
-INSERT INTO mob_droplist VALUES(4110,1,1,1000,8710,375); -- Buried Vestige Ark_Angel_EV_HTBF
-INSERT INTO mob_droplist VALUES(4110,1,1,1000,8725,375); -- Exalted Log Ark_Angel_EV_HTBF
-INSERT INTO mob_droplist VALUES(4110,1,2,1000,20734,250); -- Anahera Sword Ark_Angel_EV_HTBF
-INSERT INTO mob_droplist VALUES(4110,1,2,1000,21116,250); -- Cagliostros Rod Ark_Angel_EV_HTBF
-INSERT INTO mob_droplist VALUES(4110,1,3,1000,28173,225); -- Osmium Cuisses Ark_Angel_EV_HTBF
-INSERT INTO mob_droplist VALUES(4110,1,3,1000,28578,225); -- Patricius Ring Ark_Angel_EV_HTBF
-INSERT INTO mob_droplist VALUES(4110,1,3,1000,28034,200); -- Dynasty Mitts Ark_Angel_EV_HTBF
-INSERT INTO mob_droplist VALUES(4111,0,0,1000,4072,1000); -- Rem Tale Ch 9 Ark_Angel_GK_HTBF
-INSERT INTO mob_droplist VALUES(4111,0,0,250,4072,1000); -- Rem Tale Ch 9 Ark_Angel_GK_HTBF
-INSERT INTO mob_droplist VALUES(4111,1,1,1000,8710,375); -- Buried Vestige Ark_Angel_GK_HTBF
-INSERT INTO mob_droplist VALUES(4111,1,1,1000,8727,375); -- Sifs Lock Ark_Angel_GK_HTBF
-INSERT INTO mob_droplist VALUES(4111,1,2,1000,20765,250); -- Tunglmyrkvi Ark_Angel_GK_HTBF
-INSERT INTO mob_droplist VALUES(4111,1,2,1000,21049,250); -- Anahera Blade Ark_Angel_GK_HTBF
-INSERT INTO mob_droplist VALUES(4111,1,3,1000,28389,225); -- Agitators Collar Ark_Angel_GK_HTBF
-INSERT INTO mob_droplist VALUES(4111,1,3,1000,28035,225); -- Lurid Mitts Ark_Angel_GK_HTBF
-INSERT INTO mob_droplist VALUES(4111,1,3,1000,28313,200); -- Daihanshi Habaki Ark_Angel_GK_HTBF
-INSERT INTO mob_droplist VALUES(4112,0,0,1000,4069,1000); -- Rem Tale Ch 6 Ark_Angel_HM_HTBF
-INSERT INTO mob_droplist VALUES(4112,0,0,250,4069,1000); -- Rem Tale Ch 6 Ark_Angel_HM_HTBF
-INSERT INTO mob_droplist VALUES(4112,1,1,750,8710,375); -- Buried Vestige Ark_Angel_HM_HTBF
-INSERT INTO mob_droplist VALUES(4112,1,1,750,8719,375); -- Maliyakaleya Coral Ark_Angel_HM_HTBF
-INSERT INTO mob_droplist VALUES(4112,1,2,500,20864,250); -- Castigation Ark_Angel_HM_HTBF
-INSERT INTO mob_droplist VALUES(4112,1,2,500,20733,250); -- Anahera Saber Ark_Angel_HM_HTBF
-INSERT INTO mob_droplist VALUES(4112,1,3,750,27744,225); -- Lithelimb Cap Ark_Angel_HM_HTBF
-INSERT INTO mob_droplist VALUES(4112,1,3,750,21427,225); -- Bloodrain Strap Ark_Angel_HM_HTBF
-INSERT INTO mob_droplist VALUES(4112,1,3,750,28311,200); -- Manabyss Pigaches Ark_Angel_HM_HTBF
-INSERT INTO mob_droplist VALUES(4113,0,0,1000,4071,1000); -- Rem Tale Ch 8 Ark_Angel_MR_HTBF
-INSERT INTO mob_droplist VALUES(4113,0,0,250,4071,1000); -- Rem Tale Ch 8 Ark_Angel_MR_HTBF
-INSERT INTO mob_droplist VALUES(4113,1,1,1000,8710,375); -- Buried Vestige Ark_Angel_MR_HTBF
-INSERT INTO mob_droplist VALUES(4113,1,1,1000,8723,375); -- Beryllium Ore Ark_Angel_MR_HTBF
-INSERT INTO mob_droplist VALUES(4113,1,2,1000,20997,250); -- Raimitsukane Ark_Angel_MR_HTBF
-INSERT INTO mob_droplist VALUES(4113,1,2,1000,20822,250); -- Anahera Tabar Ark_Angel_MR_HTBF
-INSERT INTO mob_droplist VALUES(4113,1,3,1000,28025,225); -- Regimen Mittens Ark_Angel_MR_HTBF
-INSERT INTO mob_droplist VALUES(4113,1,3,1000,27745,225); -- Felistris Mask Ark_Angel_MR_HTBF
-INSERT INTO mob_droplist VALUES(4113,1,3,1000,28461,200); -- Sekhmet Corset Ark_Angel_MR_HTBF
-INSERT INTO mob_droplist VALUES(4114,0,0,1000,4073,1000); -- Rem Tale Ch 10 Ark_Angel_TT_HTBF
-INSERT INTO mob_droplist VALUES(4114,0,0,250,4073,1000); -- Rem Tale Ch 10 Ark_Angel_TT_HTBF
-INSERT INTO mob_droplist VALUES(4114,1,1,1000,8710,375); -- Buried Vestige Ark_Angel_TT_HTBF
-INSERT INTO mob_droplist VALUES(4114,1,1,1000,8721,375); -- Hepatizon Ore Ark_Angel_TT_HTBF
-INSERT INTO mob_droplist VALUES(4114,1,2,1000,20913,250); -- Anahera Scythe Ark_Angel_TT_HTBF
-INSERT INTO mob_droplist VALUES(4114,1,2,1000,21181,250); -- Venabulum Ark_Angel_TT_HTBF
-INSERT INTO mob_droplist VALUES(4114,1,3,1000,28174,225); -- Theurgists Slacks Ark_Angel_TT_HTBF
-INSERT INTO mob_droplist VALUES(4114,1,3,1000,28312,225); -- Scamps Sollerets Ark_Angel_TT_HTBF
-INSERT INTO mob_droplist VALUES(4114,1,3,1000,28616,200); -- Fravashi Mantle Ark_Angel_TT_HTBF
-INSERT INTO mob_droplist VALUES(4115,0,0,1000,4073,1000); -- Rem Tale Ch 10 Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,1,500,4073,500); -- Rem Tale Ch 10 Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,2,1000,8719,333); -- Maliyakaleya Coral Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,2,1000,8725,333); -- Exalted Log Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,2,1000,8727,334); -- Sif's Lock Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,3,750,21368,250); -- Bestas Bane Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,3,750,21381,250); -- Seraphicaller Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,3,750,21452,250); -- Divinator Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,3,750,22261,250); -- Divinator II Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,4,400,27862,100); -- Savas Jawshan Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,4,400,28151,100); -- Sifahir Slacks Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,4,400,27710,100); -- Sahip Helm Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4115,1,4,400,28498,100); -- Pratik Earring Lancelord_Gaheel_HTBF
-INSERT INTO mob_droplist VALUES(4116,0,0,1000,4072,1000); -- Rem Tale Ch 9 Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,1,500,4072,500); -- Rem Tale Ch 9 Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,2,1000,8721,250); -- Hepatizon Ore Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,2,1000,8723,250); -- Beryllium Ore Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,2,1000,8727,250); -- Sifs Lock Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,2,1000,687,250); -- Scarletite Ingot Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,3,750,21371,150); -- Ginsen Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,3,750,21227,150); -- Hangaku-no-Yumi Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,3,750,21381,150); -- Seraphicaller Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,3,750,21452,150); -- Divinator Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,3,750,22261,150); -- Divinator II Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,4,600,27719,200); -- Sukeroku Hachimaki Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,4,600,28292,200); -- Battlecast Gaiters Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4116,1,4,600,28379,200); -- Mizukage-no-Kubikazari Tenzen_HTBF
-INSERT INTO mob_droplist VALUES(4117,0,0,1000,4073,1000); -- Rem Tale Ch 10 Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,1,500,4073,500); -- Rem Tale Ch 10 Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,2,1000,8719,200); -- Maliyakaleya Coral Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,2,1000,8721,200); -- Hepatizon Ore Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,2,1000,8723,200); -- Beryllium Ore Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,2,1000,8725,200); -- Exalted Log Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,2,1000,8727,200); -- Sifs Lock Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,3,750,20516,375); -- Denouements Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,3,750,26400,375); -- Culminus Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,4,400,25634,100); -- Terminal Helm Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,4,400,25707,100); -- Terminal Plate Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,4,400,27541,100); -- Cessance Earring Ultima_HTBF
-INSERT INTO mob_droplist VALUES(4117,1,4,400,26000,100); -- Consummation Torque Ultima_HTBF
+
+--======================================================
+
+--=============HTBF NMs drops now in Lua=============--
+
+--======================================================
+
+--INSERT INTO mob_droplist VALUES(4101,0,0,1000,4072,1000); -- Rem's Tale Ch. 9 Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,1,500,4072,250); -- Rem's Tale Ch. 9 Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,2,1000,20944,333); -- Pelagos Lance Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,2,1000,21103,333); -- Vadose Rod Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,2,1000,20856,334); -- Phreatic Axe Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,3,1000,21420,500); -- Benthos Grip Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,3,1000,28493,500); -- Neritic Earring Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,4,1000,8720,200); -- Maliyakaleya Coral Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,4,1000,8721,200); -- Hepatizon Ore Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,4,1000,8723,200); -- Beryllium Ore Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,4,1000,8725,200); -- Exalted Log Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4101,1,4,1000,8727,200); -- Sif's Lock Leviathan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,0,0,1000,4069,1000); -- Rem's Tale Ch. 6 Garuda_Prime_HTBF
+----INSERT INTO mob_droplist VALUES(4102,1,1,500,4069,250); -- Rem's Tale Ch. 6 Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,1,2,1000,20615,333); -- Levante Dagger Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,1,2,1000,20808,333); -- Tramontane Axe Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,1,2,1000,28538,334); -- Lebeche Ring Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,1,3,1000,28441,500); -- Ponente Sash Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,1,3,1000,28286,500); -- Ostro Greaves Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,1,4,1000,8720,200); -- Maliyakaleya Coral Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,1,4,1000,8721,200); -- Hepatizon Ore Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,1,4,1000,8723,200); -- Beryllium Ore Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,1,4,1000,8725,200); -- Exalted Log Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4102,1,4,1000,8727,200); -- Sif's Lock Garuda_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,0,0,1000,4073,1000); -- Rem's Tale Ch. 10 Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,1,500,4073,250); -- Rem's Tale Ch. 10 Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,2,1000,20529,333); -- Calved Claws Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,2,1000,21167,333); -- Frazil Staff Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,2,1000,28495,334); -- Rimeice Earring Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,3,1000,28008,500); -- Nilas Gloves Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,3,1000,21366,500); -- Floestone Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,4,1000,8720,200); -- Maliyakaleya Coral Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,4,1000,8721,200); -- Hepatizon Ore Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,4,1000,8723,200); -- Beryllium Ore Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,4,1000,8725,200); -- Exalted Log Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4103,1,4,1000,8727,200); -- Sif's Lock Shiva_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,0,0,1000,4070,1000); -- Rem's Tale Ch. 7 Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,1,500,4070,250); -- Rem's Tale Ch. 7 Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,2,1000,21166,333); -- Staccato Staff Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,2,1000,21274,333); -- Donar Gun Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,2,1000,28354,334); -- Voltsurge Torque Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,3,1000,28432,500); -- Ukko Sash Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,3,1000,28142,500); -- Brontes Cuisses Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,4,1000,8720,200); -- Maliyakaleya Coral Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,4,1000,8721,200); -- Hepatizon Ore Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,4,1000,8723,200); -- Beryllium Ore Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,4,1000,8725,200); -- Exalted Log Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4104,1,4,1000,8727,200); -- Sif's Lock Ramuh_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,0,0,1000,4072,1000); -- Rem's Tale Ch. 9 Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,1,500,4072,250); -- Rem's Tale Ch. 9 Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,2,1000,20716,333); -- Perfervid Sword Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,2,1000,21036,333); -- Atakigiri Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,2,1000,28285,334); -- Coalrake Sabots Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,3,1000,27594,500); -- Annealed Mantle Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,3,1000,21421,500); -- Immolation Grip Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,4,1000,8720,200); -- Maliyakaleya Coral Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,4,1000,8721,200); -- Hepatizon Ore Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,4,1000,8723,200); -- Beryllium Ore Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,4,1000,8725,200); -- Exalted Log Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4105,1,4,1000,8727,200); -- Sif's Lock Ifrit_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,0,0,1000,4071,1000); -- Rem's Tale Ch. 8 Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,1,500,4071,250); -- Rem's Tale Ch. 8 Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,2,1000,21102,333); -- Mafic Cudgel Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,2,1000,20757,333); -- Foreshock Sword Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,2,1000,21357,334); -- Togakushi Shuriken Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,3,1000,28535,500); -- Supershear Ring Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,3,1000,21358,500); -- Plumose Sachet Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,4,1000,8720,200); -- Maliyakaleya Coral Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,4,1000,8721,200); -- Hepatizon Ore Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,4,1000,8723,200); -- Beryllium Ore Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,4,1000,8725,200); -- Exalted Log Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4106,1,4,1000,8727,200); -- Sif's Lock Titan_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,0,0,1000,4069,1000); -- Rem's Tale Ch. 6 Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,1,500,4069,250); -- Rem's Tale Ch. 6 Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,2,1000,20707,333); -- Medeina Kilij Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,2,1000,21412,333); -- Capitoline Strap Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,2,1000,25600,334); -- Ma'iitsoh Haube Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,3,1000,26969,500); -- Vrikodara Jupon Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,3,1000,27608,500); -- Lupine Cape Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,4,1000,8720,200); -- Maliyakaleya Coral Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,4,1000,8721,200); -- Hepatizon Ore Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,4,1000,8723,200); -- Beryllium Ore Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,4,1000,8725,200); -- Exalted Log Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4107,1,4,1000,8727,200); -- Sif's Lock Fenrir_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,0,0,1000,4070,1000); -- Rem's Tale Ch. 7 Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,1,500,4070,250); -- Rem's Tale Ch. 7 Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,2,1000,21155,333); -- Marquetry Staff Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,2,1000,26970,333); -- Lapidary Tunic Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,2,1000,27466,334); -- Diamantaire Sollerets Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,3,1000,27516,500); -- Satlada Necklace Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,3,1000,28414,500); -- Engraved Belt Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,4,1000,8720,200); -- Maliyakaleya Coral Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,4,1000,8721,200); -- Hepatizon Ore Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,4,1000,8723,200); -- Beryllium Ore Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,4,1000,8725,200); -- Exalted Log Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4108,1,4,1000,8727,200); -- Sif's Lock Carbuncle_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,0,0,1000,4071,1000); -- Rem's Tale Ch. 8 Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,1,500,4071,250); -- Rem's Tale Ch. 8 Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,2,1000,20982,333); -- Shuhansadamune Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,2,1000,26971,333); -- Chozoron Coselete Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,2,1000,27105,334); -- Loagaeth Cuffs Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,3,1000,27531,500); -- Darkside Earring Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,3,1000,10767,500); -- Pernicious Ring Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,4,1000,8720,200); -- Maliyakaleya Coral Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,4,1000,8721,200); -- Hepatizon Ore Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,4,1000,8723,200); -- Beryllium Ore Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,4,1000,8725,200); -- Exalted Log Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4109,1,4,1000,8727,200); -- Sif's Lock Diabolos_Prime_HTBF
+--INSERT INTO mob_droplist VALUES(4110,0,0,1000,4070,1000); -- Rem Tale Ch 7 Ark_Angel_EV_HTBF
+--INSERT INTO mob_droplist VALUES(4110,0,0,250,4070,1000); -- Rem Tale Ch 7 Ark_Angel_EV_HTBF
+--INSERT INTO mob_droplist VALUES(4110,1,1,1000,8710,375); -- Buried Vestige Ark_Angel_EV_HTBF
+--INSERT INTO mob_droplist VALUES(4110,1,1,1000,8725,375); -- Exalted Log Ark_Angel_EV_HTBF
+--INSERT INTO mob_droplist VALUES(4110,1,2,1000,20734,250); -- Anahera Sword Ark_Angel_EV_HTBF
+--INSERT INTO mob_droplist VALUES(4110,1,2,1000,21116,250); -- Cagliostros Rod Ark_Angel_EV_HTBF
+--INSERT INTO mob_droplist VALUES(4110,1,3,1000,28173,225); -- Osmium Cuisses Ark_Angel_EV_HTBF
+--INSERT INTO mob_droplist VALUES(4110,1,3,1000,28578,225); -- Patricius Ring Ark_Angel_EV_HTBF
+--INSERT INTO mob_droplist VALUES(4110,1,3,1000,28034,200); -- Dynasty Mitts Ark_Angel_EV_HTBF
+--INSERT INTO mob_droplist VALUES(4111,0,0,1000,4072,1000); -- Rem Tale Ch 9 Ark_Angel_GK_HTBF
+--INSERT INTO mob_droplist VALUES(4111,0,0,250,4072,1000); -- Rem Tale Ch 9 Ark_Angel_GK_HTBF
+--INSERT INTO mob_droplist VALUES(4111,1,1,1000,8710,375); -- Buried Vestige Ark_Angel_GK_HTBF
+--INSERT INTO mob_droplist VALUES(4111,1,1,1000,8727,375); -- Sifs Lock Ark_Angel_GK_HTBF
+--INSERT INTO mob_droplist VALUES(4111,1,2,1000,20765,250); -- Tunglmyrkvi Ark_Angel_GK_HTBF
+--INSERT INTO mob_droplist VALUES(4111,1,2,1000,21049,250); -- Anahera Blade Ark_Angel_GK_HTBF
+--INSERT INTO mob_droplist VALUES(4111,1,3,1000,28389,225); -- Agitators Collar Ark_Angel_GK_HTBF
+--INSERT INTO mob_droplist VALUES(4111,1,3,1000,28035,225); -- Lurid Mitts Ark_Angel_GK_HTBF
+--INSERT INTO mob_droplist VALUES(4111,1,3,1000,28313,200); -- Daihanshi Habaki Ark_Angel_GK_HTBF
+--INSERT INTO mob_droplist VALUES(4112,0,0,1000,4069,1000); -- Rem Tale Ch 6 Ark_Angel_HM_HTBF
+--INSERT INTO mob_droplist VALUES(4112,0,0,250,4069,1000); -- Rem Tale Ch 6 Ark_Angel_HM_HTBF
+--INSERT INTO mob_droplist VALUES(4112,1,1,750,8710,375); -- Buried Vestige Ark_Angel_HM_HTBF
+--INSERT INTO mob_droplist VALUES(4112,1,1,750,8719,375); -- Maliyakaleya Coral Ark_Angel_HM_HTBF
+--INSERT INTO mob_droplist VALUES(4112,1,2,500,20864,250); -- Castigation Ark_Angel_HM_HTBF
+--INSERT INTO mob_droplist VALUES(4112,1,2,500,20733,250); -- Anahera Saber Ark_Angel_HM_HTBF
+--INSERT INTO mob_droplist VALUES(4112,1,3,750,27744,225); -- Lithelimb Cap Ark_Angel_HM_HTBF
+--INSERT INTO mob_droplist VALUES(4112,1,3,750,21427,225); -- Bloodrain Strap Ark_Angel_HM_HTBF
+--INSERT INTO mob_droplist VALUES(4112,1,3,750,28311,200); -- Manabyss Pigaches Ark_Angel_HM_HTBF
+--INSERT INTO mob_droplist VALUES(4113,0,0,1000,4071,1000); -- Rem Tale Ch 8 Ark_Angel_MR_HTBF
+--INSERT INTO mob_droplist VALUES(4113,0,0,250,4071,1000); -- Rem Tale Ch 8 Ark_Angel_MR_HTBF
+--INSERT INTO mob_droplist VALUES(4113,1,1,1000,8710,375); -- Buried Vestige Ark_Angel_MR_HTBF
+--INSERT INTO mob_droplist VALUES(4113,1,1,1000,8723,375); -- Beryllium Ore Ark_Angel_MR_HTBF
+--INSERT INTO mob_droplist VALUES(4113,1,2,1000,20997,250); -- Raimitsukane Ark_Angel_MR_HTBF
+--INSERT INTO mob_droplist VALUES(4113,1,2,1000,20822,250); -- Anahera Tabar Ark_Angel_MR_HTBF
+--INSERT INTO mob_droplist VALUES(4113,1,3,1000,28025,225); -- Regimen Mittens Ark_Angel_MR_HTBF
+--INSERT INTO mob_droplist VALUES(4113,1,3,1000,27745,225); -- Felistris Mask Ark_Angel_MR_HTBF
+--INSERT INTO mob_droplist VALUES(4113,1,3,1000,28461,200); -- Sekhmet Corset Ark_Angel_MR_HTBF
+--INSERT INTO mob_droplist VALUES(4114,0,0,1000,4073,1000); -- Rem Tale Ch 10 Ark_Angel_TT_HTBF
+--INSERT INTO mob_droplist VALUES(4114,0,0,250,4073,1000); -- Rem Tale Ch 10 Ark_Angel_TT_HTBF
+--INSERT INTO mob_droplist VALUES(4114,1,1,1000,8710,375); -- Buried Vestige Ark_Angel_TT_HTBF
+--INSERT INTO mob_droplist VALUES(4114,1,1,1000,8721,375); -- Hepatizon Ore Ark_Angel_TT_HTBF
+--INSERT INTO mob_droplist VALUES(4114,1,2,1000,20913,250); -- Anahera Scythe Ark_Angel_TT_HTBF
+--INSERT INTO mob_droplist VALUES(4114,1,2,1000,21181,250); -- Venabulum Ark_Angel_TT_HTBF
+--INSERT INTO mob_droplist VALUES(4114,1,3,1000,28174,225); -- Theurgists Slacks Ark_Angel_TT_HTBF
+--INSERT INTO mob_droplist VALUES(4114,1,3,1000,28312,225); -- Scamps Sollerets Ark_Angel_TT_HTBF
+--INSERT INTO mob_droplist VALUES(4114,1,3,1000,28616,200); -- Fravashi Mantle Ark_Angel_TT_HTBF
+--INSERT INTO mob_droplist VALUES(4115,0,0,1000,4073,1000); -- Rem Tale Ch 10 Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,1,500,4073,500); -- Rem Tale Ch 10 Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,2,1000,8719,333); -- Maliyakaleya Coral Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,2,1000,8725,333); -- Exalted Log Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,2,1000,8727,334); -- Sif's Lock Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,3,750,21368,250); -- Bestas Bane Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,3,750,21381,250); -- Seraphicaller Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,3,750,21452,250); -- Divinator Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,3,750,22261,250); -- Divinator II Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,4,400,27862,100); -- Savas Jawshan Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,4,400,28151,100); -- Sifahir Slacks Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,4,400,27710,100); -- Sahip Helm Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4115,1,4,400,28498,100); -- Pratik Earring Lancelord_Gaheel_HTBF
+--INSERT INTO mob_droplist VALUES(4116,0,0,1000,4072,1000); -- Rem Tale Ch 9 Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,1,500,4072,500); -- Rem Tale Ch 9 Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,2,1000,8721,250); -- Hepatizon Ore Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,2,1000,8723,250); -- Beryllium Ore Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,2,1000,8727,250); -- Sifs Lock Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,2,1000,687,250); -- Scarletite Ingot Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,3,750,21371,150); -- Ginsen Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,3,750,21227,150); -- Hangaku-no-Yumi Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,3,750,21381,150); -- Seraphicaller Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,3,750,21452,150); -- Divinator Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,3,750,22261,150); -- Divinator II Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,4,600,27719,200); -- Sukeroku Hachimaki Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,4,600,28292,200); -- Battlecast Gaiters Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4116,1,4,600,28379,200); -- Mizukage-no-Kubikazari Tenzen_HTBF
+--INSERT INTO mob_droplist VALUES(4117,0,0,1000,4073,1000); -- Rem Tale Ch 10 Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,1,500,4073,500); -- Rem Tale Ch 10 Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,2,1000,8719,200); -- Maliyakaleya Coral Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,2,1000,8721,200); -- Hepatizon Ore Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,2,1000,8723,200); -- Beryllium Ore Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,2,1000,8725,200); -- Exalted Log Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,2,1000,8727,200); -- Sifs Lock Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,3,750,20516,375); -- Denouements Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,3,750,26400,375); -- Culminus Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,4,400,25634,100); -- Terminal Helm Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,4,400,25707,100); -- Terminal Plate Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,4,400,27541,100); -- Cessance Earring Ultima_HTBF
+--INSERT INTO mob_droplist VALUES(4117,1,4,400,26000,100); -- Consummation Torque Ultima_HTBF
+
+--======================================================
+
 INSERT INTO mob_droplist VALUES(4118,0,0,1000,11361,500); -- Pluviale / Ironclad_Executioner
 INSERT INTO mob_droplist VALUES(4118,0,0,1000,19256,500); -- Charis Feather / Ironclad_Executioner
 INSERT INTO mob_droplist VALUES(4118,1,1,750,19255,375); -- Mavi Tathlum / Ironclad_Executioner

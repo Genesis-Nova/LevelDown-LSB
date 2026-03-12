@@ -14,7 +14,7 @@ local content = Battlefield:new({
     index                 = 7,
     entryNpc              = 'qm1_2',
     exitNpc               = 'qm2',
-    requiredKeyItems      = { xi.ki.PHANTOM_GEM_OF_COWARDICE, keep = false   },
+    requiredKeyItems      = { xi.ki.PHANTOM_GEM_OF_COWARDICE, keep = false  },
 })
 
 content.groups =
@@ -28,8 +28,50 @@ content.groups =
         },
 
         allDeath = function(battlefield, mob)
+            local players = battlefield:getPlayers()
             battlefield:setStatus(xi.battlefield.status.WON)
+            if #players > 0 then
+                players[1]:timer(7000, function(p) -- timer to drop loot
+                    local selectedLoot = utils.selectFromLootGroups(p, content.loot)
+                    for _, item in ipairs(selectedLoot) do
+                        if item.itemId ~= xi.item.NONE then
+                            -- Add to treasure pool of the first player (shared with party)
+                            p:addTreasure(item.itemId, mob)
+                        end
+                    end
+                end)
+            end
         end,
+    },
+}
+
+content.loot =
+{
+    {
+        { itemId = xi.item.COPY_OF_REMS_TALE_CHAPTER_10,    weight =  1000},  
+    },
+
+    {
+        { itemId = xi.item.COPY_OF_REMS_TALE_CHAPTER_10,    weight = 1000}, 
+    },
+    --Unique Materials
+    {
+        { itemId = xi.item.NONE,                           weight = 250 }, -- nothing
+        { itemId = xi.item.VESTIGE_OF_A_BURIED_TRAIT,      weight = 375 }, -- Exalted Log
+        { itemId = xi.item.HEPATIZON_ORE,                  weight = 375 }, -- Hepatizon Ore
+    },
+    --Weapons
+    {
+        { itemId = xi.item.NONE,              weight = 500 }, -- nothing
+        { itemId = xi.item.ANAHERA_SCYTHE,    weight = 250 },
+        { itemId = xi.item.VENABULUM,         weight = 250 },  
+    },
+    --Armor
+    {
+        { itemId = xi.item.NONE,                weight = 334 }, -- nothing
+        { itemId = xi.item.THEURGISTS_SLACKS,   weight = 222 },
+        { itemId = xi.item.SCAMPS_SOLLERETS,    weight = 222 }, 
+        { itemId = xi.item.FRAVASHI_MANTLE,     weight = 222 }, 
     },
 }
 
