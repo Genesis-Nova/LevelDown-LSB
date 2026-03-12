@@ -195,14 +195,25 @@ for _, entry in pairs(Zolom) do
                     end
                 end)
 
-                local skillz = {2187, 2188, 2189}
+                local skillz = {2187, 2188, 2189, 2190, 2191, 2192}
                 if
                     os.time() > mob:getLocalVar('WS_Cooldown') and
                     mob:getTP() >= 1000
                 then
                     if mob:actionQueueEmpty() == true then
-                        mob:useMobAbility(skillz[math.random(1, 3)])
-                        mob:setLocalVar('WS_Cooldown', os.time() + 30)
+                        if
+                            mob:getHPP() >= 50 and
+                            mob:getHPP() < 100
+                        then
+                            mob:useMobAbility(skillz[math.random(1, 3)])
+                            mob:setLocalVar('WS_Cooldown', os.time() + 30)
+                        elseif
+                            mob:getHPP() <= 50 and
+                            mob:getHPP() > 0
+                        then
+                            mob:useMobAbility(skillz[math.random(4, 6)])
+                            mob:setLocalVar('WS_Cooldown', os.time() + 15)
+                        end
                     end
                 end
 
@@ -241,7 +252,7 @@ for _, entry in pairs(Zolom) do
                 end
 
                 if
-                    mob:getHPP() <= 5 and
+                    mob:getHPP() <= 10 and
                     mob:getLocalVar('HundoFist') == 0
                 then
                     mob:useMobAbility(690) -- uses Hundred fist
