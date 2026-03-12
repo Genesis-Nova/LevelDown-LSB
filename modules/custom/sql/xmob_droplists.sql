@@ -416,48 +416,48 @@ INSERT INTO mob_droplist VALUES(4006,1,4,300,27227,100); -- SU1 Sombra Tights Le
 INSERT INTO mob_droplist VALUES(4006,1,5,300,27397,100); -- SU1 Wildheitschuhs Feet / Yildegan Void Walker Tier 4
 INSERT INTO mob_droplist VALUES(4006,1,5,300,27401,100); -- SU1 Revealer's Pumps Feet +1 / Yildegan Void Walker Tier 4
 INSERT INTO mob_droplist VALUES(4006,1,5,300,27399,100); -- SU1 Sombra Leggings Feet +1 / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,22021,3); -- SU2 Weapons Ames / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21456,3); -- SU2 Weapons Animator P / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21458,3); -- SU2 Weapons Animator P II / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21706,3); -- SU2 Weapons Barbarity / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21556,3); -- SU2 Weapons Beryllium Kris / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,22023,3); -- SU2 Weapons Beryllium Mace / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21708,3); -- SU2 Weapons Beryllium Pick / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21659,3); -- SU2 Weapons Beryllium Sword / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21963,3); -- SU2 Weapons Beryllium Tachi / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,20802,3); -- SU2 Weapons Blurred Axe / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21217,3); -- SU2 Weapons Blurred Bow / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,20525,3); -- SU2 Weapons Blurred Claws / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,20849,3); -- SU2 Weapons Blurred Cleaver / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21480,3); -- SU2 Weapons Blurred Crossbow / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21400,3); -- SU2 Weapons Blurred Harp / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,20601,3); -- SU2 Weapons Blurred Knife / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,20940,3); -- SU2 Weapons Blurred Lance / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21093,3); -- SU2 Weapons Blurred Rod / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,20896,3); -- SU2 Weapons Blurred Scythe / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,27643,3); -- SU2 Weapons Blurred Shield / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21157,3); -- SU2 Weapons Blurred Staff / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,20711,3); -- SU2 Weapons Blurred Sword / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21656,3); -- SU2 Weapons Dyrnwyn / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21606,3); -- SU2 Weapons Enriching Sword / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,22125,3); -- SU2 Weapons Exalted Bow / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,22137,3); -- SU2 Weapons Exalted Crossbow / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21869,3); -- SU2 Weapons Exalted Spear / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,22078,3); -- SU2 Weapons Exalted Staff / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21765,3); -- SU2 Weapons Hepatizon Axe / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21511,3); -- SU2 Weapons Hepatizon Baghnakhs / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21610,3); -- SU2 Weapons Hepatizon Rapier / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21614,3); -- SU2 Weapons Hepatizon Sapara / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21506,3); -- SU2 Weapons Jolt Counter / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,20984,3); -- SU2 Weapons Kujaku / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21032,3); -- SU2 Weapons Kunitsuna / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,20754,3); -- SU2 Weapons Malfeasance / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21815,3); -- SU2 Weapons Maliya Sickle / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,21394,3); -- SU2 Weapons Sancus Sachet / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,6,150,22076,3); -- SU2 Weapons Was / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,7,50,26877,16); -- SU2 Armor Foppish Tunica / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,7,50,26875,16); -- SU2 Armor Ravenous Breastplate / Yildegan Void Walker Tier 4
-INSERT INTO mob_droplist VALUES(4006,1,7,50,26879,16); -- SU2 Armor Wretched Coat / Yildegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,22022,3); -- SU2 Weapons Ames +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21457,3); -- SU2 Weapons Animator P +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21459,3); -- SU2 Weapons Animator P II +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21707,3); -- SU2 Weapons Barbarity +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21557,3); -- SU2 Weapons Beryllium Kris +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,22024,3); -- SU2 Weapons Beryllium Mace +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21709,3); -- SU2 Weapons Beryllium Pick +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21660,3); -- SU2 Weapons Beryllium Sword +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21964,3); -- SU2 Weapons Beryllium Tachi +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,20803,3); -- SU2 Weapons Blurred Axe +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21218,3); -- SU2 Weapons Blurred Bow +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,20526,3); -- SU2 Weapons Blurred Claws +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,20850,3); -- SU2 Weapons Blurred Cleaver +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21481,3); -- SU2 Weapons Blurred Crossbow +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21401,3); -- SU2 Weapons Blurred Harp +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,20602,3); -- SU2 Weapons Blurred Knife +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,20941,3); -- SU2 Weapons Blurred Lance +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21094,3); -- SU2 Weapons Blurred Rod +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,20897,3); -- SU2 Weapons Blurred Scythe +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,27644,3); -- SU2 Weapons Blurred Shield +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21158,3); -- SU2 Weapons Blurred Staff +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,20712,3); -- SU2 Weapons Blurred Sword +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21657,3); -- SU2 Weapons Dyrnwyn +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21607,3); -- SU2 Weapons Enriching Sword +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,22126,3); -- SU2 Weapons Exalted Bow +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,22138,3); -- SU2 Weapons Exalted Crossbow +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21870,3); -- SU2 Weapons Exalted Spear +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,22079,3); -- SU2 Weapons Exalted Staff +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21766,3); -- SU2 Weapons Hepatizon Axe +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21512,3); -- SU2 Weapons Hepatizon Baghnakhs +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21611,3); -- SU2 Weapons Hepatizon Rapier +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21615,3); -- SU2 Weapons Hepatizon Sapara +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21507,3); -- SU2 Weapons Jolt Counter +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,20985,3); -- SU2 Weapons Kujaku +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21033,3); -- SU2 Weapons Kunitsuna +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,20755,3); -- SU2 Weapons Malfeasance +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21816,3); -- SU2 Weapons Maliya Sickle +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,21395,3); -- SU2 Weapons Sancus Sachet +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,6,150,22077,3); -- SU2 Weapons Was +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,7,50,26878,16); -- SU2 Armor Foppish Tunica +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,7,50,26876,16); -- SU2 Armor Ravenous Breastplate +1 / Yilbegan Void Walker Tier 4
+INSERT INTO mob_droplist VALUES(4006,1,7,50,26880,16); -- SU2 Armor Wretched Coat +1 / Yilbegan Void Walker Tier 4
 INSERT INTO mob_droplist VALUES(4006,1,8,20,4074,1); -- SU3 Mats Thought Crystal / Yildegan Void Walker Tier 4
 INSERT INTO mob_droplist VALUES(4006,1,8,20,4075,1); -- SU3 Mats Hope Crystal / Yildegan Void Walker Tier 4
 INSERT INTO mob_droplist VALUES(4006,1,8,20,4076,1); -- SU3 Mats Fulfillment Crystal / Yildegan Void Walker Tier 4
