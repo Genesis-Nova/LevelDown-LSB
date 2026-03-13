@@ -214,7 +214,6 @@ local battlefieldConfig = {
                 { itemId = xi.item.SACRO_GORGET,        chance = 10 }, -- Sacro Gorget
                 { itemId = xi.item.SACRO_CORD,          chance = 10 }, -- Sacro Cord
                 { itemId = xi.item.SACRO_MANTLE,        chance = 10 }, -- Sacro Mantle
-                { itemId = xi.item.SACRO_SASH,          chance = 10 }, -- Sacro Sash
                 { itemId = xi.item.SACRO_BREASTPLATE,   chance = 10 }, -- Sacro Breastplate
             },
         }
@@ -467,7 +466,17 @@ local function onConfrontationWin(player)
             
             -- Standard Logic for all difficulties
             for _, group in ipairs(lootTable) do
+                -- Shuffle the group to prevent drop priority bias
+                local shuffledGroup = {}
                 for _, item in ipairs(group) do
+                    table.insert(shuffledGroup, item)
+                end
+                for i = #shuffledGroup, 2, -1 do
+                    local j = math.random(i)
+                    shuffledGroup[i], shuffledGroup[j] = shuffledGroup[j], shuffledGroup[i]
+                end
+
+                for _, item in ipairs(shuffledGroup) do
                     local baseRate = (item.chance + dropRateBonus) * 10
                     local rate = xi.combat.treasureHunter.getDropRate(thLevel, baseRate)
                     debugPrint(string.format("Loot Check - ItemID: %s, TH Level: %d, Base Rate: %d, Modified Rate: %d", tostring(item.itemId), thLevel, baseRate, rate))

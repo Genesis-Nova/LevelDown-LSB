@@ -16785,7 +16785,7 @@ xi.magian.trials =
 
         rewardItem =
         {
-            itemId = xi.item.DAURDABLA_99,
+            itemId = xi.item.DAURDABLA,
         },
     },
 
@@ -16794,7 +16794,7 @@ xi.magian.trials =
         previousTrial = 3590,
         requiredItem  =
         {
-            itemId = xi.item.DAURDABLA_99,
+            itemId = xi.item.DAURDABLA,
         },
 
         textOffset  = 70,

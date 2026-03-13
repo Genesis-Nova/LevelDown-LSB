@@ -21,8 +21,8 @@ entity.onMobFight = function(mob, target)
         local kouryu = GetMobByID(ID.mob.KOURYU)
 
         if kouryu then
-            DespawnMob(mob:getID())
             SpawnMob(kouryu:getID()):updateEnmity(target)
+            DespawnMob(mob:getID())
             kouryu:setPos(pos.x, pos.y, pos.z, pos.rot)
         end
     end
