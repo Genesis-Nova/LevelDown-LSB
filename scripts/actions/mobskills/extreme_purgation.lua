@@ -18,10 +18,10 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
 
 	-- Status Effect ID from status_effect.h
 	for i = 1, 629 do
-		if (i ~= 1 or i ~= 2 or i ~= 14 or i ~= 17 or i ~= 18 or i ~= 127 or i ~= 143 or i ~= 177 or
-		   (i >= 233 and i <= 264) or (i >= 266 and i <= 273) or i ~= 276 or (i >= 284 and i <= 285) or i ~= 287 or
-		    i ~= 292 or i ~= 434 or i ~= 474 or i ~= 474 or (i >= 474 and i <= 476) or (i >= 510 and i <= 512) or
-			i ~= 575 or i ~= 578 or i ~= 579 or i ~= 585 or (i >= 613 and i <= 614) or i ~= 616 or i ~= 618 or i ~= 627) then
+		if (i ~= 1 and i ~= 2 and i ~= 14 and i ~= 17 and i ~= 18 and i ~= 127 and i ~= 143 and i ~= 177 and
+		   not (i >= 233 and i <= 264) and not (i >= 266 and i <= 273) and i ~= 276 and not (i >= 284 and i <= 285) and i ~= 287 and
+		    i ~= 292 and i ~= 434 and not (i >= 474 and i <= 476) and not (i >= 510 and i <= 512) and
+			i ~= 575 and i ~= 578 and i ~= 579 and i ~= 585 and not (i >= 613 and i <= 614) and i ~= 616 and i ~= 618 and i ~= 627) then
 			removables[counter] = i
 			counter = counter + 1
 		end
@@ -33,7 +33,7 @@ mobskillObject.onMobWeaponSkill = function(target, mob, skill)
 		if (target:hasStatusEffect(effect)) then
 			statusEffect = target:getStatusEffect(effect)
 
-			mob:addStatusEffect(statusEffect, statusEffect:getPower(), statusEffect:getTickCount(), statusEffect:getDuration())
+			mob:addStatusEffect(effect, statusEffect:getPower(), statusEffect:getTickCount(), statusEffect:getDuration())
 			target:delStatusEffect(effect)
 		end
 	end
