@@ -5827,6 +5827,53 @@ void CLuaBaseEntity::setModelId(uint16 modelId, const sol::object& slotObj)
 }
 
 /************************************************************************
+ *  Function: printModelIdLook()
+ *  Purpose : Prints the entity's look data to the console
+ *  Example : player:printModelIdLook()
+ ************************************************************************/
+
+void CLuaBaseEntity::printModelIdLook()
+{
+    if (m_PBaseEntity)
+    {
+        ShowInfo(fmt::format("Look for {} ({}):", m_PBaseEntity->name, m_PBaseEntity->id).c_str());
+        ShowInfo(fmt::format("  size:   {}", m_PBaseEntity->look.size).c_str());
+        ShowInfo(fmt::format("  face:   {}", m_PBaseEntity->look.face).c_str());
+        ShowInfo(fmt::format("  race:   {}", m_PBaseEntity->look.race).c_str());
+        ShowInfo(fmt::format("  head:   {}", m_PBaseEntity->look.head).c_str());
+        ShowInfo(fmt::format("  body:   {}", m_PBaseEntity->look.body).c_str());
+        ShowInfo(fmt::format("  hands:  {}", m_PBaseEntity->look.hands).c_str());
+        ShowInfo(fmt::format("  legs:   {}", m_PBaseEntity->look.legs).c_str());
+        ShowInfo(fmt::format("  feet:   {}", m_PBaseEntity->look.feet).c_str());
+        ShowInfo(fmt::format("  main:   {}", m_PBaseEntity->look.main).c_str());
+        ShowInfo(fmt::format("  sub:    {}", m_PBaseEntity->look.sub).c_str());
+        ShowInfo(fmt::format("  ranged: {}", m_PBaseEntity->look.ranged).c_str());
+    }
+}
+
+auto CLuaBaseEntity::getModelIdLook() -> sol::table
+{
+    auto table = lua.create_table();
+
+    if (m_PBaseEntity)
+    {
+        table["size"]   = m_PBaseEntity->look.size;
+        table["face"]   = m_PBaseEntity->look.face;
+        table["race"]   = m_PBaseEntity->look.race;
+        table["head"]   = m_PBaseEntity->look.head;
+        table["body"]   = m_PBaseEntity->look.body;
+        table["hands"]  = m_PBaseEntity->look.hands;
+        table["legs"]   = m_PBaseEntity->look.legs;
+        table["feet"]   = m_PBaseEntity->look.feet;
+        table["main"]   = m_PBaseEntity->look.main;
+        table["sub"]    = m_PBaseEntity->look.sub;
+        table["ranged"] = m_PBaseEntity->look.ranged;
+    }
+
+    return table;
+}
+
+/************************************************************************
  *  Function: setLook()
  *  Purpose : Updates the look of an equipped NPC
  *  Example : npc:setLook({ race = xi.race.HUME_M, face = 1 })
@@ -19855,6 +19902,8 @@ void CLuaBaseEntity::Register()
     SOL_REGISTER("hideName", CLuaBaseEntity::hideName);
     SOL_REGISTER("getModelId", CLuaBaseEntity::getModelId);
     SOL_REGISTER("setModelId", CLuaBaseEntity::setModelId);
+    SOL_REGISTER("printModelIdLook", CLuaBaseEntity::printModelIdLook);
+    SOL_REGISTER("getModelIdLook", CLuaBaseEntity::getModelIdLook);
     SOL_REGISTER("setLook", CLuaBaseEntity::setLook);
     SOL_REGISTER("getCostume", CLuaBaseEntity::getCostume);
     SOL_REGISTER("setCostume", CLuaBaseEntity::setCostume);
