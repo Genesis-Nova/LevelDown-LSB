@@ -4154,12 +4154,3 @@ end
 ---@return nil
 function CBaseEntity:clearPacketMods()
 end
-
----@return nil
-function CBaseEntity:printModelIdLook()
-end
-
----@nodiscard
----@return table
-function CBaseEntity:getModelIdLook()
-end
