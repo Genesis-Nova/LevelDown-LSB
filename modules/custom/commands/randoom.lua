@@ -50,10 +50,8 @@ end
 local function apply_doom_effect(target)
     local duration_sec = get_random_doom_duration_sec()
     local power = FIXED_DOOM_POWER
-    -- Apply Doom (type, power, subid, duration)
-    target:addStatusEffect(DOOM_STATUS_ID, power, 3, duration_sec)
-
-    print(string.format("[DOOM DEBUG] Applied Doom to %s (%d). Duration: %d seconds.", target:getName(), target:getID(), duration_sec))
+    -- Apply Doom (type, params)
+    target:addStatusEffect(DOOM_STATUS_ID, { power = power, tick = 3, duration = duration_sec, origin = target })
 
     local msg = string.format("Doom (Power %d) applied to %s. Time until death: %d seconds!", power, target:getName(), duration_sec)
     target:printToPlayer(msg)
@@ -73,7 +71,6 @@ local function cleanup_game(zoneId, announcer)
             -- Remove all event-related status effects regardless of alive/dead state
             if target:hasStatusEffect(DOOM_STATUS_ID) then
                 target:delStatusEffect(DOOM_STATUS_ID)
-                print(string.format("[DOOM DEBUG] Cleaned up residual Doom from player %s (%d).", target:getName(), charId))
             end
             if target:hasStatusEffect(RERAISE_STATUS_ID) then
                 target:delStatusEffect(RERAISE_STATUS_ID)
@@ -96,7 +93,6 @@ local function cleanup_game(zoneId, announcer)
 
     -- Clean up global state
     active_doom_games[zoneId] = nil
-    print(string.format("[DOOM DEBUG] --- GAME STATE %d CLEARED ---", zoneId))
 
     if announcer then
         announcer:printToArea("Event cleanup complete. Status effects removed.")
@@ -117,8 +113,6 @@ function commandObj.check_game_status(zoneId)
     end
     local announcer = GetPlayerByID(first_participant_id)
     local previous_alive_count = game_state.last_alive_count or 0
-
-    print(string.format("[DOOM DEBUG] --- Check Game Status (Zone: %d) ---", zoneId))
 
     -- PHASE 1: IDENTIFY DEAD/MISSING PLAYERS
     local players_to_remove = {}
@@ -146,14 +140,12 @@ function commandObj.check_game_status(zoneId)
     end
 
     local alive_count = #alive_participants
-    print(string.format("[DOOM DEBUG] Participants remaining after cleanup: %d", alive_count))
 
 
     -- PHASE 2: NEXT ROUND or END GAME CHECK
     if alive_count > 1 then
         -- Next round logic runs if someone died
         if alive_count < previous_alive_count then
-            print("[DOOM DEBUG] --- STARTING NEW DOOM ROUND (Survivors: " .. alive_count .. ") ---")
             for _, charId in ipairs(alive_participants) do
                 local target = GetPlayerByID(charId)
                 if target then
@@ -172,7 +164,6 @@ function commandObj.check_game_status(zoneId)
 
     -- WIN/END CONDITION CHECK
     elseif alive_count <= 1 then
-        print("[DOOM DEBUG] *** WIN CONDITION REACHED (Count: " .. alive_count .. ") ***")
         local winner_msg = "The Doom Survival event has ended!"
 
         if alive_count == 1 then
@@ -266,17 +257,17 @@ commandObj.onTrigger = function(player, arg1)
         local member = GetPlayerByID(member_id)
         if member then
             -- Grant Reraise IV
-            member:addStatusEffect(RERAISE_STATUS_ID, RERAISE_POWER, RERAISE_SUBID, RERAISE_DURATION)
+            member:addStatusEffect(RERAISE_STATUS_ID, { power = RERAISE_POWER, tick = RERAISE_SUBID, duration = RERAISE_DURATION, origin = member })
             member:printToPlayer("You have been granted **Reraise IV** for the duration of the event.")
             
             -- Apply initial Doom
             apply_doom_effect(member)
 
             -- APPLY NEW DEBUFFS
-            member:addStatusEffect(TERROR_STATUS_ID, DEBUFF_POWER, DEBUFF_SUBID, DEBUFF_DURATION)
-            member:addStatusEffect(SLEEP_II_STATUS_ID, DEBUFF_POWER, DEBUFF_SUBID, DEBUFF_DURATION)
-            member:addStatusEffect(SILENCE_STATUS_ID, DEBUFF_POWER, DEBUFF_SUBID, DEBUFF_DURATION)
-            member:addStatusEffect(MEDICINE_STATUS_ID, DEBUFF_POWER, DEBUFF_SUBID, DEBUFF_DURATION) -- Added Medicine
+            member:addStatusEffect(TERROR_STATUS_ID, { power = DEBUFF_POWER, tick = DEBUFF_SUBID, duration = DEBUFF_DURATION, origin = member })
+            member:addStatusEffect(SLEEP_II_STATUS_ID, { power = DEBUFF_POWER, tick = DEBUFF_SUBID, duration = DEBUFF_DURATION, origin = member })
+            member:addStatusEffect(SILENCE_STATUS_ID, { power = DEBUFF_POWER, tick = DEBUFF_SUBID, duration = DEBUFF_DURATION, origin = member })
+            member:addStatusEffect(MEDICINE_STATUS_ID, { power = DEBUFF_POWER, tick = DEBUFF_SUBID, duration = DEBUFF_DURATION, origin = member }) -- Added Medicine
             member:printToPlayer("WARNING! You have been afflicted with TERROR, SLEEP II, SILENCE, and MEDICINE!")
         end
     end
@@ -309,7 +300,6 @@ xi.player.onPlayerDeath = function(player)
     
     -- We check the game status using the exposed function on our commandObj table
     if commandObj.check_game_status and commandObj.active_doom_games[zoneId] then
-        print(string.format("[DOOM DEBUG] Global hook detected death of %s (%d) in Zone %d. Triggering immediate status check.", player:getName(), player:getID(), zoneId))
         commandObj.check_game_status(zoneId)
     end
 end
