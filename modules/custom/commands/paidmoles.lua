@@ -181,10 +181,10 @@ menu.options =
                             mob:setUnkillable(true)
                             mob:addStatusEffect(xi.effect.PHYSICAL_SHIELD, { power = 1, origin = mob, icon = 0 })
                             mob:addStatusEffect(xi.effect.ARROW_SHIELD, { power = 1, origin = mob, icon = 0 })
+                            mob:setMobMod(xi.mobMod.NO_DROPS, 1)
+                            mob:setMobMod(xi.mobMod.CLAIM_TYPE, xi.claimType.UNCLAIMABLE)
                             mob:setLocalVar('MoleDespawn', os.time() + 600)
-                        end,
 
-                        onMobFight = function(mob, target)
                             mob:addListener('TAKE_DAMAGE', 'MOLE_TAKE_DAMAGE', function(mob, damage, attacker, attackType, damageType)
                                 if attacker and attacker:isPC() then
                                     local encumbranceId = xi.effect.EMCUMBRANCE_I or 259
@@ -215,6 +215,9 @@ menu.options =
                                     end
                                 end
                             end)
+                        end,
+
+                        onMobFight = function(mob, target)
                             if mob:getLocalVar('MoleDespawn') <= os.time() then
                                 DespawnMob(mob:getID())
                             end
@@ -244,8 +247,6 @@ menu.options =
 
                     mob:setSpawn(playerArg:getXPos() + math.random(5, 15), playerArg:getYPos(), playerArg:getZPos() + math.random(5, 15), playerArg:getRotPos())
                     mob:setDropID(0)
-                    mob:setMobMod(xi.mobMod.NO_DROPS, 1)
-                    mob:setMobMod(xi.mobMod.CLAIM_TYPE, xi.claimType.UNCLAIMABLE)
                     --mob:setClaimable(false) -- IGNORE - This function does not exist, using claim type instead
                     mob:spawn()
                 end
