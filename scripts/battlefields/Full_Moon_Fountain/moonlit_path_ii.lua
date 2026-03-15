@@ -54,7 +54,7 @@ content.loot =
 
     {
         { itemId = xi.item.NONE,                            weight = 750 }, -- nothing
-        { itemId = xi.item.COPY_OF_REMS_TALE_CHAPTER_6,     weight = 50}, -- Rem Tale Ch 6
+        { itemId = xi.item.COPY_OF_REMS_TALE_CHAPTER_6,     weight = 250}, -- Rem Tale Ch 6
     },
     --Unique Materials
     {
