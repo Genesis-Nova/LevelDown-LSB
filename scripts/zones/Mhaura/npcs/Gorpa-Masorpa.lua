@@ -419,7 +419,7 @@ entity.onTrade = function(player, npc, trade)
     local pulseItem = 0
 
     if player:getFreeSlotsCount() < 1 then
-        player:messageSpecial(zones[xi.zone.MHAURA].CANNOT_OFREEUP_INV_SPACEBTAIN_INV_FULL,1)
+        player:messageSpecial(zones[xi.zone.MHAURA].text.FREEUP_INV_SPACE, 1)
         return
     end
         for i = 1, #pulseTrades do -- Determine if trade has a Pulse Weapon
@@ -692,7 +692,7 @@ entity.onEventUpdate = function(player, csid, option, npc)
                         addPurchaseAmountHallmark(player, hallmarkRewards, amountEntered)
                         player:updateEvent(player:getCurrency('current_hallmarks')) -- had to use getCurrency() so it would pull the updated currency
                     else
-                        player:messageSpecial(zones[xi.zone.MHAURA].ITEM_CANNOT_BE_OBTAINED, hallmarkRewards.item )
+                        player:messageSpecial(zones[xi.zone.MHAURA].text.ITEM_CANNOT_BE_OBTAINED, hallmarkRewards.item )
                     return
                     end
                 end
@@ -704,7 +704,7 @@ entity.onEventUpdate = function(player, csid, option, npc)
                         player:setCharVar('[AmbusTH]ItemsObtained', utils.mask.setBit(player:getCharVar('[AmbusTH]ItemsObtained'), totalHallMarkReward.bitIndex -1, true))
                         player:updateEvent(player:getCharVar('[AmbusTH]ItemsObtained'), totalHallMarkReward.quantity)
                     else
-                        player:messageSpecial(zones[xi.zone.MHAURA].ITEM_CANNOT_BE_OBTAINED, totalHallMarkReward.item )
+                        player:messageSpecial(zones[xi.zone.MHAURA].text.ITEM_CANNOT_BE_OBTAINED, totalHallMarkReward.item )
                     return
                     end
                 end
@@ -834,7 +834,7 @@ entity.onEventUpdate = function(player, csid, option, npc)
                         addPurchaseAmountGallantry(player, gallantryRewards, amountEntered)
                         player:updateEvent(player:getCurrency('gallantry')) -- had to use getCurrency() so it would pull the updated currency
                     else
-                        player:messageSpecial(zones[xi.zone.MHAURA].ITEM_CANNOT_BE_OBTAINED, gallantryRewards.item )
+                        player:messageSpecial(zones[xi.zone.MHAURA].text.ITEM_CANNOT_BE_OBTAINED, gallantryRewards.item )
                     return
                     end
                 end
