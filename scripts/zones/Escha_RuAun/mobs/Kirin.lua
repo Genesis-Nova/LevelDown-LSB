@@ -9,7 +9,9 @@ local entity = {}
 
 entity.onMobSpawn = function(mob)
     mob:setMobMod(xi.mobMod.ALWAYS_AGGRO, 1)
-    mob:setUntargetable(false)
+    mob:hideName(false)
+	mob:setUntargetable(false)
+    mob:setAutoAttackEnabled(true)
 end
 
 entity.onMobFight = function(mob, target)
