@@ -339,7 +339,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDeath', function(m
 
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
-                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 1, true))
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
@@ -729,7 +729,7 @@ m:addOverride('xi.zones.Behemoths_Dominion.mobs.King_Behemoth.onMobDeath', funct
 
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
-                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 1, true))
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
@@ -1844,7 +1844,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDeath', function
 
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
-                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 3, true))
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
@@ -2061,7 +2061,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
                 math.random(0, 99) < 10 and
                 target:getLocalVar('supreme_procm') == 0 then
                 target:weaknessTrigger(2) -- Red proc
-                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
+                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 , origin = target })
                 target:setLocalVar('supreme_procm', 1)
              end
        end)
@@ -2069,7 +2069,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
        if math.random(0, 99) < 10 then
              if target:getLocalVar('supreme_procw') == 0 and user:isPC() or user:isTrust() and procjobs[user:getMainJob()] == 'ws' then
                 target:weaknessTrigger(0) -- Blue proc
-                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 })
+                target:addStatusEffect(xi.effect.TERROR, { power = 0, tick = 0, duration = 15 , origin = target })
                 target:setLocalVar('supreme_procw', 1)
              end
        end
@@ -2224,7 +2224,7 @@ m:addOverride('xi.zones.Valley_of_Sorrows.mobs.Aspidochelone.onMobDeath', functi
 
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
-                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
+                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 3, true))
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
@@ -2588,7 +2588,6 @@ page1 =
 
                             for _, member in pairs(partyAllianceCheck) do
                                 if member:hasStatusEffect(xi.effect.CONFRONTATION) then
-                                    member:setCharVar('Supremes', utils.mask.setBit(member:getCharVar('Supremes'), 2, true))
                                     member:delStatusEffect(xi.effect.CONFRONTATION)
                                 end
                             end
