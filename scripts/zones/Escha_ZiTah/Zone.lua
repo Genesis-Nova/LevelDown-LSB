@@ -1,10 +1,12 @@
 -----------------------------------
 -- Zone: Escha - Zi'Tah (288)
+local controller = require("scripts/globals/di_controller")
 -----------------------------------
 ---@type TZone
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
+
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
@@ -19,6 +21,18 @@ zoneObject.onZoneIn = function(player, prevZone)
     end
 
     return cs
+end
+
+zoneObject.afterZoneIn = function(player)
+    --xi.geasFete.afterZoneIn(player)
+end
+
+zoneObject.onZoneOut = function(player)
+    xi.geasFete.onZoneOut(player)
+end
+
+zoneObject.onZoneTick = function(zone)
+    --controller.tick()
 end
 
 zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranking, isConquestAlliance)
