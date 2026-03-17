@@ -275,7 +275,7 @@ local battlefieldConfig = {
             },
             --Weapons
             {
-                { itemId = xi.item.CAIT_PALUG_HAMMER,        chance = 10 },
+                { itemId = xi.item.CATH_PALUG_HAMMER,        chance = 10 },
                 { itemId = xi.item.CATH_PALUG_STONE,         chance = 10 }, 
             },
             --Armor
